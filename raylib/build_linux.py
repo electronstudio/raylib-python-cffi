@@ -1,3 +1,5 @@
+# Linux build assumes raylib, GL, etc are all already installed as system libraries.  We dont distribute them.
+
 from cffi import FFI
 import os
 import platform
@@ -18,11 +20,7 @@ ffibuilder.set_source("_raylib_cffi",
                       libraries=['raylib','GL','m','pthread', 'dl', 'rt', 'X11']
                       )
 
-# Hack to produce static linked lib
-command = "clang -bundle -undefined dynamic_lookup ./_raylib_cffi.o -L/usr/local/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/sqlite/lib libraylib.a -F/System/Library/Frameworks -framework OpenGL -framework Cocoa -framework IOKit -framework CoreFoundation -framework CoreVideo -o ./_raylib_cffi.cpython-37m-darwin.so"
 
 if __name__ == "__main__":
     ffibuilder.compile(verbose=True)
-    if platform.system()=="Darwin":
-        print(command)
-        os.system(command)
+

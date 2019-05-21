@@ -1,6 +1,6 @@
 # Python Bindings for Raylib
 
-This uses CFFI API static bindins rather than ctypes.  Hopefully this will be faster, the static type knowledge from the C
+This uses CFFI API static bindings rather than ctypes.  Hopefully this will be faster, the static type knowledge from the C
 headers will result in fewer bugs, and using the original headers will make it easier to maintain.
 
 Currently the goal is make usage as similar to the original C as CFFI will allow.  There are a few differences
@@ -9,9 +9,28 @@ done yet.
 
 See test.py and examples/*.py for how to use.
 
+# Installing
+
+MacOS: Python 3.7: we distribute a statically linked Raylib library, so in theory the only thing you need to do is install
+us from Pypi.
+
+    pip3 install -i https://test.pypi.org/simple/ raylib
+
+Linux: Python 3.6: we dont distribute Raylib, so you must have Raylib 2.5dev already installed on your system.
+
+    pip3 install -i https://test.pypi.org/simple/ raylib
+
+If you're using a different version of Python, or using Windows, or maybe a Linux/Mac with incompatible libraries
+you will have to build.
+
+    cd raylib
+    python3 build_linux.py
+    python3 build_mac.py
+
 # Platforms tested
 
- * MacOS 10.12.6
+ * MacOS 10.12.6 - Python 3.7
+ * Ubuntu 18.04 LTS - Python 3.6
 
 # HELP WANTED
 

@@ -10,13 +10,13 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="raylib",
-    version="2.5.dev1",
+    version="2.5.dev2",
     description="Python CFFI bindings for Raylib",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/electronstudio/raylib-python-cffi",
     author="Electron Studio",
-    author_email="richard@electronstudio.co.uk",
+    author_email="github@electronstudio.co.uk",
     license="LGPLv3+",
     classifiers=[
         "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
