@@ -8,9 +8,6 @@ SetTargetFPS(60)
 
 camera = ffi.new("struct Camera3D *",  [[ 18.0, 16.0, 18.0 ], [ 0.0, 0.0, 0.0 ], [ 0.0, 1.0, 0.0 ], 45.0, 0 ])
 
-#   (( 18.0, 16.0, 18.0 ), ( 0.0, 0.0, 0.0 ), ( 0.0, 1.0, 0.0 ), 45.0, 0 )
-
-
 
 image = LoadImage(b"resources/heightmap.png")            # Load heightmap image (RAM)
 texture = LoadTextureFromImage(image)                # Convert image to texture (VRAM)
