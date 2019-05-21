@@ -15,7 +15,7 @@ ffibuilder.set_source("_raylib_cffi",
 #                      extra_link_args=['-Wl,-rpath,.'],
                       #extra_link_args=["/usr/local/lib/libraylib.a","-framework OpenGL"]# -F/System/Library/Frameworks -framework OpenGL -framework Cocoa -framework IOKit -framework CoreFoundation -framework CoreVideo"]
 #                     library_dirs=[os.path.dirname(__file__)+"/../lib"],
-                      #libraries=['raylib']
+                      libraries=['raylib','GL','m','pthread', 'dl', 'rt', 'X11']
                       )
 
 # Hack to produce static linked lib
