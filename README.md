@@ -7,7 +7,7 @@ Currently the goal is make usage as similar to the original C as CFFI will allow
 you can see in the examples.  Making a 'Pythonic' library would be an additional layer on top which hasn't been
 done yet.
 
-See test.py and examples/*.py for how to use.
+See test_static.py and examples/*.py for how to use.
 
 # Installing
 
@@ -45,4 +45,4 @@ materials of a model, because Python can't dynamically tell the difference betwe
   some way to specify this (e.g. in raylib_modified.h) but it's difficult to be sure we fixed them all because the errors
  are often completely silent.
  
- See test_static.py for the non-working example.
+ See test_dynamic.py for the non-working example.
