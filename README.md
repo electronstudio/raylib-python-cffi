@@ -14,11 +14,11 @@ See test.py and examples/*.py for how to use.
 MacOS: Python 3.7: we distribute a statically linked Raylib library, so in theory the only thing you need to do is install
 us from Pypi.
 
-    NOT WORKING CURRENTLY pip3 install -i https://test.pypi.org/simple/ raylib
+    pip3 install raylib
 
 Linux: Python 3.6: we dont distribute Raylib, so you must have Raylib 2.5dev already installed on your system.
 
-    NOT WORKING CURRENTLY pip3 install -i https://test.pypi.org/simple/ raylib
+    pip3 install raylib
 
 If you're using a different version of Python, or using Windows, or maybe a Linux/Mac with incompatible libraries
 you will have to build.
