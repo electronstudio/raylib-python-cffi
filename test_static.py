@@ -24,7 +24,7 @@ print(model.materials)
 print(model.materialCount)
 print(model.materials[0].maps[rl.MAP_DIFFUSE])
 
-model.materials[0].maps[MAP_DIFFUSE].texture = texture        # Set map diffuse texture
+model.materials.maps[MAP_DIFFUSE].texture = texture        # Set map diffuse texture
 print(model.materials[0].maps[rl.MAP_DIFFUSE].value)
 
 

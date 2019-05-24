@@ -20,7 +20,7 @@ mesh = rl.GenMeshHeightmap(image, [ 16, 8, 16 ])
 model = rl.LoadModelFromMesh(mesh)
 print(model.materials) # SHOULD BE A pointer to a 'struct Material' but some is NULL pointer to 'Material' ?
 
-model.materials[0].maps[rl.MAP_DIFFUSE].texture = texture
+model.materials.maps[rl.MAP_DIFFUSE].texture = texture
 mapPosition = ( -8.0, 0.0, -8.0 )
 
 rl.UnloadImage(image)
