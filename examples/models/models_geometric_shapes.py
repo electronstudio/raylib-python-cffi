@@ -1,11 +1,11 @@
 # /*******************************************************************************************
 # *
-# *   raylib [models] example - Drawing billboards
+# *   raylib [models] example - Draw some basic geometric shapes (cube, sphere, cylinder...)
 # *
-# *   This example has been created using raylib 1.3 (www.raylib.com)
+# *   This example has been created using raylib 1.0 (www.raylib.com)
 # *   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
 # *
-# *   Copyright (c) 2015 Ramon Santamaria (@raysan5)
+# *   Copyright (c) 2014 Ramon Santamaria (@raysan5)
 # *
 # ********************************************************************************************/
 
@@ -17,32 +17,25 @@ from raylib.static import *
 screenWidth = 800
 screenHeight = 450
 
-InitWindow(screenWidth, screenHeight, b"raylib [models] example - drawing billboards")
+InitWindow(screenWidth, screenHeight, b"raylib [models] example - geometric shapes")
 
 # Define the camera to look into our 3d world
 cameraPtr = ffi.new("struct Camera3D *")
 camera = cameraPtr[0]
-
-camera.position = [ 5.0, 4.0, 5.0 ]
-camera.target = [ 0.0, 2.0, 0.0 ]
+camera.position = [ 0.0, 10.0, 10.0 ]
+camera.target = [ 0.0, 0.0, 0.0 ]
 camera.up = [ 0.0, 1.0, 0.0 ]
 camera.fovy = 45.0
 camera.type = CAMERA_PERSPECTIVE
 
-
-bill = LoadTexture(b"resources/billboard.png")     # Our texture billboard
-billPosition = [ 0.0, 2.0, 0.0 ]                 # Position where draw billboard
-
-SetCameraMode(camera, CAMERA_ORBITAL)  # Set an orbital camera mode
-
-SetTargetFPS(60)                       # Set our game to run at 60 frames-per-second
+SetTargetFPS(60)   # Set our game to run at 60 frames-per-second
 #--------------------------------------------------------------------------------------
 
 # Main game loop
-while not WindowShouldClose()  :          # Detect window close button or ESC key
+while not WindowShouldClose():    # Detect window close button or ESC key
     # Update
     #----------------------------------------------------------------------------------
-    UpdateCamera(cameraPtr)              # Update camera
+    # TODO: Update your variables here
     #----------------------------------------------------------------------------------
 
     # Draw
@@ -53,7 +46,19 @@ while not WindowShouldClose()  :          # Detect window close button or ESC ke
 
     BeginMode3D(camera)
 
-    DrawBillboard(camera, bill, billPosition, 2.0, WHITE)
+    DrawCube([-4.0, 0.0, 2.0], 2.0, 5.0, 2.0, RED)
+    DrawCubeWires([-4.0, 0.0, 2.0], 2.0, 5.0, 2.0, GOLD)
+    DrawCubeWires([-4.0, 0.0, -2.0], 3.0, 6.0, 2.0, MAROON)
+
+    DrawSphere([-1.0, 0.0, -2.0], 1.0, GREEN)
+    DrawSphereWires([1.0, 0.0, 2.0], 2.0, 16, 16, LIME)
+
+    DrawCylinder([4.0, 0.0, -2.0], 1.0, 2.0, 3.0, 4, SKYBLUE)
+    DrawCylinderWires([4.0, 0.0, -2.0], 1.0, 2.0, 3.0, 4, DARKBLUE)
+    DrawCylinderWires([4.5, -1.0, 2.0], 1.0, 1.0, 2.0, 6, BROWN)
+
+    DrawCylinder([1.0, 0.0, -4.0], 0.0, 1.5, 3.0, 8, GOLD)
+    DrawCylinderWires([1.0, 0.0, -4.0], 0.0, 1.5, 3.0, 8, PINK)
 
     DrawGrid(10, 1.0)        # Draw a grid
 
@@ -67,8 +72,5 @@ while not WindowShouldClose()  :          # Detect window close button or ESC ke
 
 # De-Initialization
 #--------------------------------------------------------------------------------------
-UnloadTexture(bill)        # Unload texture
-
-CloseWindow()              # Close window and OpenGL context
+CloseWindow()        # Close window and OpenGL context
 #--------------------------------------------------------------------------------------
-

@@ -1,7 +1,7 @@
-from raylib import *
+from raylib.static import *
 
 
-InitWindow(800,450,b"foo")
+InitWindow(800,450,b"Raylib texture test")
 SetTargetFPS(60)
 
 print(Vector3(1,1,1))
@@ -10,15 +10,24 @@ camera = ffi.new("struct Camera3D *",  [[ 18.0, 16.0, 18.0 ], [ 0.0, 0.0, 0.0 ],
 
 
 image = LoadImage(b"examples/models/resources/heightmap.png")            # Load heightmap image (RAM)
+print(image)
 texture = LoadTextureFromImage(image)                # Convert image to texture (VRAM)
 
 mesh = GenMeshHeightmap(image, ( 16, 8, 16 ))   # Generate heightmap mesh (RAM and VRAM)
 print(mesh)
 model = LoadModelFromMesh(mesh)                          # Load model from generated mesh
 
+print(model.meshes)
+print(model.meshes[1])
+
 print(model.materials)
+print(model.materialCount)
+print(model.materials[0].maps[rl.MAP_DIFFUSE])
 
 model.materials[0].maps[MAP_DIFFUSE].texture = texture        # Set map diffuse texture
+print(model.materials[0].maps[rl.MAP_DIFFUSE].value)
+
+
 mapPosition = ( -8.0, 0.0, -8.0 )                # Define model position
 
 UnloadImage(image)                    # Unload heightmap image from RAM, already uploaded to VRAM
@@ -34,6 +43,6 @@ while not WindowShouldClose():
     DrawModel(model, mapPosition, 1.0, RED)
     DrawGrid(20, 1.0)
     EndMode3D()
-    DrawText(b"sdfsdf", 190, 200, 20, BLACK)
+    DrawText(b"This mesh should be textured", 190, 200, 20, VIOLET)
     EndDrawing()
 CloseWindow()

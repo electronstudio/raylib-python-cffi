@@ -35,6 +35,7 @@ you will have to build.  The specific version we built against is https://github
 
  * MacOS 10.12.6 - Python 3.7
  * Ubuntu 18.04 LTS - Python 3.6
+ * Windows 10 (64 bit) - Python 3.7
 
 # HELP WANTED
 
@@ -43,10 +44,10 @@ you will have to build.  The specific version we built against is https://github
  
 ### Dynamic bindings
 
-I have attempted to do CFFI ABI dynamic bindings too in order to avoid the need to compile a C extension module,
-but they don't work properly.  They fail in the same place the ctypes binding fails, accessing
-materials of a model, because Python can't dynamically tell the difference between a pointer and an array. There's probably
-  some way to specify this (e.g. in raylib_modified.h) but it's difficult to be sure we fixed them all because the errors
- are often completely silent.
- 
- See test_dynamic.py for the non-working example.
+In addition to the API static bindings I have attempted to do CFFI ABI dynamic bindings in order to avoid the need to compile a C extension module.
+There have been some weird failures with dynamic bindings and ctypes bindings before and often the failures are silent
+so you dont even know.  Also the static bindings should be faster.  Therefore I recommend the static ones...
+
+BUT the dynamic bindings have the big advantage that you don't need to compile anything to install.
+
+See test_dynamic.py for how to use them.

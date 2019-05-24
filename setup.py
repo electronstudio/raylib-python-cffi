@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="raylib",
-    version="2.5.dev4",
+    version="2.5.dev5",
     description="Python CFFI bindings for Raylib",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -23,7 +23,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=["raylib"],
+    packages=["raylib", "raylib.dynamic", "raylib.static"],
     include_package_data=True,
     install_requires=["cffi"],
     #cffi_modules=["raylib/build_mac.py:ffibuilder"], # this would build libs whenever the module is installed, but we are distributing static libs instead

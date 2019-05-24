@@ -6,12 +6,12 @@ import platform
 ffibuilder = FFI()
 
 
-ffibuilder.cdef(open("raylib_modified.h").read().replace('RLAPI ', ''))
+ffibuilder.cdef(open("../raylib_modified.h").read().replace('RLAPI ', ''))
 
 
 ffibuilder.set_source("_raylib_cffi",
                       """
-                           #include "raylib.h"   // the C header of the library
+                           #include "raylib.h"   // the C header, installed in the system include dir we assume
                       """,
                       #library_dirs=['/Volumes/Home/rich/raylib-latest/src'],
 #                      extra_link_args=['-Wl,-rpath,.'],

@@ -3,10 +3,10 @@
 from cffi import FFI
 
 ffibuilder = FFI()
-ffibuilder.cdef(open("raylib_modified.h").read().replace('RLAPI ', ''))
+ffibuilder.cdef(open("../raylib_modified.h").read().replace('RLAPI ', ''))
 ffibuilder.set_source("_raylib_cffi",
 	"""
-	#include "raylib.h"   // the C header of the library
+	#include "raylib.h"   // THIS MIGHT NEED TO BE CHANGED TO "../raylib.h" IF RAYLIB HEADERS NOT FOUND
 	""",
 	extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
 	libraries=['raylib', 'gdi32', 'shell32', 'user32','OpenGL32', 'winmm'],

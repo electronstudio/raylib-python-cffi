@@ -9,7 +9,7 @@
 # *
 # ********************************************************************************************/
 
-from raylib import *
+from raylib.static import *
 
 
 # Initialization
