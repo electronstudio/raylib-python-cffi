@@ -2,7 +2,8 @@
 """
 __version__ = '0.1'
 
-from ..dynamic import ffi, raylib as rl
+from ..static import ffi, rl
+#from ..dynamic import ffi, raylib as rl
 from ..colors import *
 
 import sys
@@ -44,16 +45,58 @@ class Vector(list):
     def z(self, value):
         self[2] = value
 
+    @property
+    def w(self):
+        return self[3]
 
-def make_color(c):
-    if isinstance(c, str):
-        return globals()[c.upper()]
-    else:
-        return c
+    @w.setter
+    def w(self, value):
+        self[3] = value
+
+class Color(list):
+    def __init__(self, s):
+        if isinstance(s, str):
+            super().__init__(globals()[s.upper()])
+        else:
+            super().__init__(s)
+        if len(self) == 3:
+            self.append(255)
+
+    @property
+    def r(self):
+        return self[0]
+
+    @r.setter
+    def r(self, value):
+        self[0] = value
+
+    @property
+    def g(self):
+        return self[1]
+
+    @g.setter
+    def g(self, value):
+        self[1] = value
+
+    @property
+    def b(self):
+        return self[2]
+
+    @b.setter
+    def b(self, value):
+        self[2] = value
+
+    @property
+    def a(self):
+        return self[3]
+
+    @a.setter
+    def a(self, value):
+        self[3] = value
 
 
 def clear(color=BLACK):
-    rl.ClearBackground(color)
+    rl.ClearBackground(Color(color))
 
 
 class Shape:
@@ -63,10 +106,7 @@ class Shape:
 
     @color.setter
     def color(self, value):
-        if isinstance(value, str):
-            self._color = globals()[value.upper()]
-        else:
-            self._color = value
+        self._color = Color(value)
 
     @property
     def pos(self):
@@ -82,10 +122,7 @@ class Shape:
 
     @wire_color.setter
     def wire_color(self, value):
-        if isinstance(value, str):
-            self._wire_color = globals()[value.upper()]
-        else:
-            self._wire_color = value
+        self._wire_color =  Color(value)
 
     @property
     def x(self):
@@ -117,7 +154,7 @@ class Box(Shape):
         self.pos = position
         self.size = size
         self.color = color
-        self.wire_color = wire_color  # make_color(wire_color)
+        self.wire_color = wire_color
         self.wires = wires
 
     # def __getattr__(self, item):
@@ -150,6 +187,7 @@ class Box(Shape):
         )
 
     def draw(self):
+        #print("draw color ",self.color)
         rl.DrawCubeV(self.pos, self.size, self.color)
         if self.wires:
             rl.DrawCubeWiresV(

@@ -5,8 +5,8 @@ HEIGHT=640
 #CAMERA=CAMERA_FIRST_PERSON
 DATA_DIR="examples/models/resources/models/"
 
-player = Box((0, 10, 20), (10, 20, 10), GREEN)
-enemy_box = Box((-40, 10, 0), (20, 20, 20), (70,70,70))
+player = Box((0, 10, 20), (10, 20, 10), 'green')
+enemy_box = Box((-40, 10, 0), (20, 20, 20), (150,0,0))
 enemy_sphere = Sphere((40, 15, 0), 15, 'gray')
 castle = Actor("castle", collision_radius=15)
 castle.z=-50
@@ -28,13 +28,13 @@ def update():
         player.pos.z -= 2
 
     if player.check_collision(enemy_box) or player.check_collision(enemy_sphere) or player.check_collision(castle):
-        player.color = RED
+        player.color = 'red'
     else:
-        player.color = GREEN
+        player.color = 'green'
 
 
 def draw3d():
-    rl.ClearBackground(WHITE)
+    clear('white')
     enemy_box.draw()
     enemy_sphere.draw()
     player.draw()
