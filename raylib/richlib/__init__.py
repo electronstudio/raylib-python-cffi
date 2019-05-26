@@ -2,7 +2,7 @@
 """
 __version__ = '0.1'
 
-from ..static import ffi, rl
+from ..static import ffi, rl, prl
 #from ..dynamic import ffi, raylib as rl
 from ..colors import *
 

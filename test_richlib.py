@@ -1,4 +1,5 @@
 from raylib.richlib import *
+from raylib.static.pyray import pyray
 
 WIDTH=800
 HEIGHT=640
@@ -13,6 +14,7 @@ castle.z=-50
 castle.scale.y=2
 castle.scale.x=1
 castle.scale.z=1
+
 
 #def init():
 #    set_camera_mode(camera, CAMERA_FIRST_PERSON)
@@ -39,12 +41,15 @@ def draw3d():
     enemy_sphere.draw()
     player.draw()
     castle.draw()
-    rl.DrawGrid(10, 10)
+    pyray.draw_grid(10, 10)
 
 
 def draw2d():
-    rl.DrawText(b"Move player with cursors to collide", 220, 40, 20, GRAY)
-    rl.DrawFPS(10, 10)
+    pyray.draw_text("Move player with cursors to collide", 220, 40, 20, (255,0,0,255))
+    rl.DrawText(b"Move player with cursors to collide", 220, 80, 20, (255,0,0,255))
+    #prl.DrawFPS(10, 10)
+    #pyray.foo(10,10)
+    pyray.draw_fps(20,20)
 
 
 run()

@@ -5,4 +5,3 @@ from .helpers import *
 
 
 print("RAYLIB STATIC LOADED")
-
