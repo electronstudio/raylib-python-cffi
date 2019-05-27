@@ -25,6 +25,6 @@ setup(
     ],
     packages=["raylib", "raylib.dynamic", "raylib.static"],
     include_package_data=True,
-    install_requires=["cffi"],
+    install_requires=["cffi","inflection"],
     #cffi_modules=["raylib/build_mac.py:ffibuilder"], # this would build libs whenever the module is installed, but we are distributing static libs instead
 )

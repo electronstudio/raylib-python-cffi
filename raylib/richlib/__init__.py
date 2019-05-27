@@ -2,7 +2,7 @@
 """
 __version__ = '0.1'
 
-from ..static import ffi, rl, prl
+from ..static import ffi, rl
 #from ..dynamic import ffi, raylib as rl
 from ..colors import *
 
@@ -325,7 +325,7 @@ def run():
     rl.SetTargetFPS(60)
 
     if hasattr(mod, "CAMERA"):
-        rl.SetCameraMode(camera, mod.CAMERA)
+        rl.SetCameraMode(camera[0], mod.CAMERA)
 
     if hasattr(mod, "init"):
         mod.init()
@@ -339,6 +339,8 @@ def run():
         if rl.IsKeyPressed(rl.KEY_ESCAPE):
             rl.Exit()
         rl.BeginDrawing()
+        if hasattr(mod, "draw2dbackground"):
+            mod.draw2dbackground()
         rl.BeginMode3D(camera[0])
         if hasattr(mod, "draw3d"):
             mod.draw3d()
