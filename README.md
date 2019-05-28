@@ -3,13 +3,7 @@
 This uses CFFI API static bindings rather than ctypes.  Hopefully this will be faster, the static type knowledge from the C
 headers will result in fewer bugs, and using the original headers will make it easier to maintain.
 
-Currently the goal is make usage as similar to the original C as CFFI will allow.  There are a few differences
-you can see in the examples.  Making a 'Pythonic' library would be an additional layer on top which hasn't been
-done yet.
-
-See test_static.py and examples/*.py for how to use.
-
-# Installing
+# Install
 
 **MacOS: Python 3.7**: we distribute a statically linked Raylib library, so in theory the only thing you need to do is install
 us from Pypi.
@@ -31,6 +25,31 @@ you will have to build.  The specific version we built against is https://github
     python3 build_linux.py
     python3 build_mac.py
 
+# Use
+
+## raylib.static
+
+Currently the goal is make usage as similar to the original C as CFFI will allow.  There are a few differences
+you can see in the examples.  See test_static.py and examples/*.py for how to use.
+
+## raylib.dynamic
+
+In addition to the API static bindings I have attempted to do CFFI ABI dynamic bindings in order to avoid the need to compile a C extension module.
+There have been some weird failures with dynamic bindings and ctypes bindings before and often the failures are silent
+so you dont even know.  Also the static bindings should be faster.  Therefore I recommend the static ones...
+
+BUT the dynamic bindings have the big advantage that you don't need to compile anything to install.
+
+See test_dynamic.py for how to use them.
+
+## raylib.static.pyray
+
+Wrapper around the static bindings.  Makes the names snakecase and converts strings to bytes automatically.  See test_pyray.py.
+
+## raylib.richlib
+
+A very easy to use library on top of static bindings, modelled after Pygame Zero.
+
 # Platforms tested
 
  * MacOS 10.12.6 - Python 3.7
@@ -42,12 +61,3 @@ you will have to build.  The specific version we built against is https://github
  * converting more examples from C to python
  * testing and building on more platforms
  
-### Dynamic bindings
-
-In addition to the API static bindings I have attempted to do CFFI ABI dynamic bindings in order to avoid the need to compile a C extension module.
-There have been some weird failures with dynamic bindings and ctypes bindings before and often the failures are silent
-so you dont even know.  Also the static bindings should be faster.  Therefore I recommend the static ones...
-
-BUT the dynamic bindings have the big advantage that you don't need to compile anything to install.
-
-See test_dynamic.py for how to use them.
