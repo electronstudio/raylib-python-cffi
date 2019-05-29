@@ -44,12 +44,12 @@ def update():
 
 def draw3d():
     if td:
-        #pyray.draw_plane((0, 0, 0), (300,300), DARKGREEN)
+        #pyray.draw_plane((0, 0, 0), (300,300), DARKRED)
         pyray.draw_grid(10, 1)
         pyray.draw_plane((player.x, 0, player.z), (1,1), GRAY)
         pyray.draw_ray([o,[0,0,1]],BLUE)
-    pyray.draw_ray([o,[0,1,0]],RED)
-    pyray.draw_ray([o,[1,0,0]],GREEN)
+    pyray.draw_ray([o,[0,1,0]],GREEN)
+    pyray.draw_ray([o,[1,0,0]],RED)
     player.draw()
 
 
@@ -61,13 +61,13 @@ def draw2dbackground():
         xa = rl.GetWorldToScreen((o.x+i,o.y,o.z),  camera[0])
         ya = rl.GetWorldToScreen((o.x,o.y+i,o.z),  camera[0])
         za = rl.GetWorldToScreen((o.x,o.y,o.z+i),  camera[0])
-        pyray.draw_text(str(i), int(xa.x), int(xa.y), 20, GREEN)
-        pyray.draw_text(str(i), int(ya.x), int(ya.y), 20, RED)
+        pyray.draw_text(str(i), int(xa.x), int(xa.y), 20, RED)
+        pyray.draw_text(str(i), int(ya.x), int(ya.y), 20, GREEN)
         if td:
             pyray.draw_text(str(i), int(za.x), int(za.y), 20, BLUE)
 
-    pyray.draw_text(f"X: {int(player.x+5)}", 10, 10, 30, GREEN)
-    pyray.draw_text(f"Y: {int(player.y)}", 10, 50, 30, RED)
+    pyray.draw_text(f"X: {int(player.x+5)}", 10, 10, 30, RED)
+    pyray.draw_text(f"Y: {int(player.y)}", 10, 50, 30, GREEN)
     if td:
         pyray.draw_text(f"Z: {int(player.z+5)}", 10, 110, 30, BLUE)
 
