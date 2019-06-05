@@ -20,4 +20,4 @@ if __name__ == "__main__":
     ffibuilder.compile(verbose=True)
     if platform.system()=="Darwin":
         print(command)
-        os.system(command)
+        #os.system(command)
