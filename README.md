@@ -1,29 +1,22 @@
-# Python Bindings for Raylib
+# Python Bindings for Raylib 2.5
 
-This uses CFFI API static bindings rather than ctypes.  Hopefully this will be faster, the static type knowledge from the C
-headers will result in fewer bugs, and using the original headers will make it easier to maintain.
+New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ctypes.
 
 # Install
 
-**MacOS: Python 3.7**: we distribute a statically linked Raylib library, so in theory the only thing you need to do is install
-us from Pypi.
+**Windows 10 (64 bit): Python 3.6 - 3.7**
+
+**MacOS: Python 3.5 - 3.7**
+
+We distribute a statically linked Raylib library,  install from Pypi.
 
     pip3 install raylib
 
-**Linux: Python 3.6**: we dont distribute Raylib, so you must have Raylib 2.5dev already installed on your system.  Currently we are building from the github version, specifically https://github.com/raysan5/raylib/commit/f325978b26ea934095f74ac628e6578ebbc2b7a0 although I guess any 2.5 build should work. First follow the instructions here: https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux Then do:
+If you're using **Linux** a different version of Python, or maybe a different version of Windows/Mac with incompatible libraries
+then you can either use the dynamic binding only or else you will have to build from source using Raylib 2.5, e.g.
 
-    pip3 install raylib
-    
-**Windows 10 (64 bit): Python 3.7**: we distribute a statically linked Raylib library, thanks to https://github.com/Pebaz, so in theory the only thing you need to do is install us from Pypi.
-                                     
-    pip3 install raylib
-
-If you're using a different version of Python, or maybe a Linux/Mac with incompatible libraries
-you will have to build.  The specific version we built against is https://github.com/raysan5/raylib/commit/f325978b26ea934095f74ac628e6578ebbc2b7a0 but we should soon try to synchronize with a proper released version of Raylib.
-
-    cd raylib
+    cd raylib/static
     python3 build_linux.py
-    python3 build_mac.py
 
 # Use
 
@@ -32,9 +25,28 @@ you will have to build.  The specific version we built against is https://github
 Currently the goal is make usage as similar to the original C as CFFI will allow.  There are a few differences
 you can see in the examples.  See test_static.py and examples/*.py for how to use.
 
+```
+from raylib.static import *
+
+InitWindow(800, 450, b"Hello Raylib")
+SetTargetFPS(60)
+
+camera = ffi.new("struct Camera3D *", [[18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45.0, 0])
+SetCameraMode(camera[0], CAMERA_ORBITAL)
+
+while not WindowShouldClose():
+    UpdateCamera(camera)
+    BeginDrawing()
+    ClearBackground(RAYWHITE)
+    DrawText(b"Hellow World", 190, 200, 20, VIOLET)
+    EndDrawing()
+CloseWindow()
+
+```
+
 ## raylib.dynamic
 
-In addition to the API static bindings I have attempted to do CFFI ABI dynamic bindings in order to avoid the need to compile a C extension module.
+In addition to the API static bindings we have CFFI ABI dynamic bindings in order to avoid the need to compile a C extension module.
 There have been some weird failures with dynamic bindings and ctypes bindings before and often the failures are silent
 so you dont even know.  Also the static bindings should be faster.  Therefore I recommend the static ones...
 
@@ -45,6 +57,28 @@ See test_dynamic.py for how to use them.
 ## raylib.static.pyray
 
 Wrapper around the static bindings.  Makes the names snakecase and converts strings to bytes automatically.  See test_pyray.py.
+
+
+```
+from raylib.static.pyray import pyray as prl
+from raylib.colors import *
+
+prl.init_window(800, 450, "Hello Pyray")
+prl.set_target_fps(60)
+
+camera = prl.Camera3D([18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45.0, 0)
+image = prl.load_image("examples/models/resources/heightmap.png")
+prl.set_camera_mode(camera, prl.CAMERA_ORBITAL)
+
+while not prl.window_should_close():
+    prl.update_camera(prl.pointer(camera))
+    prl.begin_drawing()
+    prl.clear_background(RAYWHITE)
+    prl.draw_text("Hello world", 190, 200, 20, VIOLET)
+    prl.end_drawing()
+prl.close_window()
+
+```
 
 ## raylib.richlib
 
@@ -60,4 +94,5 @@ A very easy to use library on top of static bindings, modelled after Pygame Zero
 
  * converting more examples from C to python
  * testing and building on more platforms
+ * sorting out binary wheel distribution for Mac/Win and compile-from-source distributtion for Linux
  

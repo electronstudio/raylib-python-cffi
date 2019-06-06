@@ -1,7 +1,7 @@
 include raylib/static/*.so
 include raylib/static/*.pyd
 exclude raylib/static/*.a
-exclude raylib/static/*.h
+include raylib/*.h
 exclude raylib/static/*.c
 exclude raylib/static/*.o
 include raylib/dynamic/*.dylib
