@@ -12,8 +12,9 @@ We distribute a statically linked Raylib library,  install from Pypi.
 
     pip3 install raylib
 
-If you're using **Linux** a different version of Python, or maybe a different version of Windows/Mac with incompatible libraries
-then you can either use the dynamic binding only or else you will have to build from source using Raylib 2.5, e.g.
+If you're using **Linux**, or a different version of Python, or maybe Windows/Mac with incompatible libraries
+then you can either *use the dynamic binding only* or else you will have to build from source.  Download, compile
+and install Raylib 2.5 then
 
     cd raylib/static
     python3 build_linux.py
@@ -22,7 +23,7 @@ then you can either use the dynamic binding only or else you will have to build 
 
 ## raylib.static
 
-Currently the goal is make usage as similar to the original C as CFFI will allow.  There are a few differences
+Goal is make usage as similar to the original C as CFFI will allow.  There are a few differences
 you can see in the examples.  See test_static.py and examples/*.py for how to use.
 
 ```
@@ -50,9 +51,10 @@ In addition to the API static bindings we have CFFI ABI dynamic bindings in orde
 There have been some weird failures with dynamic bindings and ctypes bindings before and often the failures are silent
 so you dont even know.  Also the static bindings should be faster.  Therefore I recommend the static ones...
 
-BUT the dynamic bindings have the big advantage that you don't need to compile anything to install.
+BUT the dynamic bindings have the big advantage that you don't need to compile anything to install.  You just need a Raylib DLL,
+which we supply for Windows/Mac/Linux.
 
-See test_dynamic.py for how to use them.
+See test_dynamic.py for how to use.
 
 ## raylib.static.pyray
 
