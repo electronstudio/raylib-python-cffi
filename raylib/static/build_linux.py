@@ -11,13 +11,10 @@ ffibuilder.cdef(open("../raylib_modified.h").read().replace('RLAPI ', ''))
 
 ffibuilder.set_source("_raylib_cffi",
                       """
-                           #include "raylib.h"   // the C header, installed in the system include dir we assume
+                           #include "../raylib.h"   // the C header, installed in the system include dir we assume
                       """,
-                      #library_dirs=['/Volumes/Home/rich/raylib-latest/src'],
-#                      extra_link_args=['-Wl,-rpath,.'],
-                      #extra_link_args=["/usr/local/lib/libraylib.a","-framework OpenGL"]# -F/System/Library/Frameworks -framework OpenGL -framework Cocoa -framework IOKit -framework CoreFoundation -framework CoreVideo"]
-#                     library_dirs=[os.path.dirname(__file__)+"/../lib"],
-                      libraries=['raylib','GL','m','pthread', 'dl', 'rt', 'X11']
+                      extra_link_args=['../../linux_libs/core.o', '../../linux_libs/models.o', '../../linux_libs/raudio.o', '../../linux_libs/rglfw.o','../../linux_libs/shapes.o','../../linux_libs/text.o','../../linux_libs/textures.o','../../linux_libs/utils.o'],
+                      libraries=['GL','m','pthread', 'dl', 'rt', 'X11']
                       )
 
 
