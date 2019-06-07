@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="raylib",
-    version="2.5.0",
+    version="2.5.0.post1",
     description="Python CFFI bindings for Raylib",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -21,6 +21,8 @@ setup(
     classifiers=[
         "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
     packages=["raylib", "raylib.dynamic", "raylib.static", "raylib.richlib"],

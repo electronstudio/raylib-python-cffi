@@ -1,0 +1,9 @@
+include raylib/static/*.so
+include raylib/static/*.pyd
+exclude raylib/static/*.a
+include raylib/*.h
+exclude raylib/static/*.c
+exclude raylib/static/*.o
+include raylib/dynamic/*.dylib
+include raylib/dynamic/*.dll
+include raylib/dynamic/*.so
