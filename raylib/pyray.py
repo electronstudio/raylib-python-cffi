@@ -1,13 +1,11 @@
-from . import rl, ffi
-from ..colors import *
+from .static import rl, ffi
+from .colors import *
 from inspect import ismethod,getmembers,isbuiltin
 import inflection
 
 class PyRay:
     def pointer(self, struct):
         return ffi.addressof(struct)
-
-pyray = PyRay()
 
 
 def makefunc(a):
@@ -31,10 +29,12 @@ def makeStructHelper(struct):
 
 
 for name, attr in getmembers(rl):
-    print(name, attr)
+    #print(name, attr)
     uname = inflection.underscore(name).replace('3_d','_3d').replace('2_d','_2d')
     if isbuiltin(attr):
-        #print(attr)
+        #print(attr.__call__)
+        #print(attr.__doc__)
+        #print(attr.__text_signature__)
         #print(dir(attr))
         #print(dir(attr.__repr__))
         f = makefunc(attr)
@@ -48,3 +48,4 @@ for name, attr in getmembers(rl):
 for struct in ('Vector2','Vector3','Vector4','Camera2D', 'Camera3D', 'Quaternion', 'Color'):
     f = makeStructHelper(struct)
     setattr(PyRay, struct, f)
+

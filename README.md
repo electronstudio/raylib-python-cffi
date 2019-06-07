@@ -47,6 +47,33 @@ CloseWindow()
 
 ```
 
+## raylib.pyray
+
+Wrapper around the static bindings.  Makes the names snakecase and converts strings to bytes automatically.  See test_pyray.py.
+
+
+```
+from raylib.pyray import PyRay
+from raylib.colors import *
+
+pyray = PyRay()
+
+pyray.init_window(800, 450, "Hello Pyray")
+pyray.set_target_fps(60)
+
+camera = pyray.Camera3D([18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45.0, 0)
+pyray.set_camera_mode(camera, pyray.CAMERA_ORBITAL)
+
+while not pyray.window_should_close():
+    pyray.update_camera(pyray.pointer(camera))
+    pyray.begin_drawing()
+    pyray.clear_background(RAYWHITE)
+    pyray.draw_text("Hello world", 190, 200, 20, VIOLET)
+    pyray.end_drawing()
+pyray.close_window()
+
+```
+
 ## raylib.dynamic
 
 In addition to the API static bindings we have CFFI ABI dynamic bindings in order to avoid the need to compile a C extension module.
@@ -57,31 +84,6 @@ BUT the dynamic bindings have the big advantage that you don't need to compile a
 which we supply for Windows/Mac/Linux.
 
 See test_dynamic.py for how to use.
-
-## raylib.static.pyray
-
-Wrapper around the static bindings.  Makes the names snakecase and converts strings to bytes automatically.  See test_pyray.py.
-
-
-```
-from raylib.static.pyray import pyray as prl
-from raylib.colors import *
-
-prl.init_window(800, 450, "Hello Pyray")
-prl.set_target_fps(60)
-
-camera = prl.Camera3D([18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45.0, 0)
-prl.set_camera_mode(camera, prl.CAMERA_ORBITAL)
-
-while not prl.window_should_close():
-    prl.update_camera(prl.pointer(camera))
-    prl.begin_drawing()
-    prl.clear_background(RAYWHITE)
-    prl.draw_text("Hello world", 190, 200, 20, VIOLET)
-    prl.end_drawing()
-prl.close_window()
-
-```
 
 ## raylib.richlib
 
@@ -98,4 +100,5 @@ A very easy to use library on top of static bindings, modelled after Pygame Zero
  * converting more examples from C to python
  * testing and building on more platforms
  * sorting out binary wheel distribution for Mac/Win and compile-from-source distributtion for Linux
+ * dealing with conversions to pointers in PyRay automatically
  

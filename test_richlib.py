@@ -1,5 +1,5 @@
 from raylib.richlib import *
-from raylib.static.pyray import pyray
+
 
 WIDTH=800
 HEIGHT=640

@@ -10,6 +10,10 @@ import sys
 
 data_dir = ""
 
+from ..pyray import PyRay
+
+pyray = PyRay()
+
 camera = ffi.new("struct Camera3D *")
 camera.position = (0.0, 100, 100)
 camera.target = (0.0, 0.0, 0.0)
