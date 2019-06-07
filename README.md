@@ -8,11 +8,13 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 **MacOS: Python 3.5 - 3.7**
 
+**Linux (Ubuntu 16.04+): Python 3.5 - 3.7**
+
 We distribute a statically linked Raylib library,  install from Pypi.
 
     pip3 install raylib
 
-If you're using **Linux**, or a different version of Python, or maybe Windows/Mac with incompatible libraries
+If you're a different version of Python, or a Linux with incompatible libraries
 then you can either *use the dynamic binding only* or else you will have to build from source.  Download, compile
 and install Raylib 2.5 then
 
@@ -69,7 +71,6 @@ prl.init_window(800, 450, "Hello Pyray")
 prl.set_target_fps(60)
 
 camera = prl.Camera3D([18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45.0, 0)
-image = prl.load_image("examples/models/resources/heightmap.png")
 prl.set_camera_mode(camera, prl.CAMERA_ORBITAL)
 
 while not prl.window_should_close():
