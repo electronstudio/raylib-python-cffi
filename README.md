@@ -2,6 +2,10 @@
 
 New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ctypes.
 
+# Advert
+
+[RetroWar: 8-bit Party Battle](https://retrowar.net) is out now.  Defeat up to 15 of your friends in a tournament of 80s-inspired retro mini games.
+
 # Install
 
 **Windows 10 (64 bit): Python 3.6 - 3.7**
@@ -91,9 +95,9 @@ which we supply for Windows/Mac/Linux.
 
 See test_dynamic.py for how to use.
 
-## raylib.richlib
+## richlib
 
-A very easy to use library on top of static bindings, modelled after Pygame Zero.
+[A simplified API for Raylib for use in education and to enable beginners to create 3d games](https://github.com/electronstudio/richlib)
 
 # Platforms tested
 
