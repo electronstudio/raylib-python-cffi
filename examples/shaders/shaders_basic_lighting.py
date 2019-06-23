@@ -109,40 +109,71 @@ def MatrixMultiply(left,  right):
 #// Types and Structures Definition
 #//----------------------------------------------------------------------------------
 
-MAX_LIGHTS = 4         #// Max dynamic lights supported by shader
-lightsCount = 0
+class LightSystem:
+    MAX_LIGHTS = 4         #// Max dynamic lights supported by shader
+    lightsCount = 0
+    lights = []
 
-#// Light type
+    def __init__(self, ambient = [ 0.2, 0.2, 0.2, 1.0 ], *ls):
+        self.shader = LoadShader(b"resources/shaders/glsl330/basic_lighting.vs",
+                            b"resources/shaders/glsl330/basic_lighting.fs");
+
+        #// Get some shader loactions
+        self.shader.locs[LOC_MATRIX_MODEL] = GetShaderLocation(self.shader, b"matModel");
+        self.shader.locs[LOC_VECTOR_VIEW] = GetShaderLocation(self.shader, b"viewPos");
+
+        #// ambient light level
+        self.ambientLoc = GetShaderLocation(self.shader, b"ambient");
+        v = ffi.new("struct Vector4 *", ambient)
+        SetShaderValue(self.shader, self.ambientLoc, v, UNIFORM_VEC4);
+
+        for light in ls:
+            self.add(light)
+
+    def add(self, light):
+        light.configure(len(self.lights), self.shader)
+        self.lights.append(light)
+        if len(self.lights) > self.MAX_LIGHTS:
+            raise Exception("Too many lights")
+
+    def update(self, cameraPos):
+        SetShaderValue(self.shader, self.shader.locs[LOC_VECTOR_VIEW], ffi.new("struct Vector3 *",cameraPos), UNIFORM_VEC3)
+        for light in self.lights:
+            light.UpdateLightValues()
+
+    def draw(self):
+        for light in self.lights:
+            if light.enabled:
+                DrawSphereEx(light.position[0], 0.2, 8, 8, light.color)
+
+
+
 
 LIGHT_DIRECTIONAL=0
 LIGHT_POINT=1
 
 
 class Light:
-    def __init__(self, type,  position,  target, color,  shader):
-        global lightsCount
-        if lightsCount >= MAX_LIGHTS:
-            raise Exception("Too many lights")
+    def __init__(self, type,  position,  target, color):
         self.enabled = True
         self.type = type
-        self.position = position
+        self.position = ffi.new("struct Vector3 *",position)
         self.target = target
         self.color = color
-        self.shader = shader
 
+
+
+
+    def configure(self, id, shader):
+        self.shader = shader
         #// TODO: Below code doesn't look good to me,
         #                        // it assumes a specific shader naming and structure
         #                                                       // Probably this implementation could be improved
-        self.enabledName = f"lights[{lightsCount}].enabled"
-        self.typeName = f"lights[{lightsCount}].type"
-        self.posName = f"lights[{lightsCount}].position"
-        self.targetName = f"lights[{lightsCount}].target"
-        self.colorName = f"lights[{lightsCount}].color"
-        # enabledName = '0' + str(lightsCount)
-        # typeName = '0' + str(lightsCount)
-        # posName = '0' + str(lightsCount)
-        # targetName = '0' + str(lightsCount)
-        # colorName = '0' + str(lightsCount)
+        self.enabledName = f"lights[{id}].enabled"
+        self.typeName = f"lights[{id}].type"
+        self.posName = f"lights[{id}].position"
+        self.targetName = f"lights[{id}].target"
+        self.colorName = f"lights[{id}].color"
 
         self.enabledLoc = GetShaderLocation(shader, self.enabledName.encode('utf-8'))
         self.typeLoc = GetShaderLocation(shader, self.typeName.encode('utf-8'))
@@ -152,26 +183,25 @@ class Light:
 
         self.UpdateLightValues()
 
-        lightsCount += 1
 
-#// Send light properties to shader
-#                            // NOTE: Light shader locations should be available
+    #// Send light properties to shader
+    #// NOTE: Light shader locations should be available
     def UpdateLightValues(self):
         #// Send to shader light enabled state and type
-        SetShaderValue(shader, self.enabledLoc, ffi.new("int *",self.enabled), UNIFORM_INT)
-        SetShaderValue(shader, self.typeLoc, ffi.new("int *",self.type), UNIFORM_INT)
+        SetShaderValue(self.shader, self.enabledLoc, ffi.new("int *",self.enabled), UNIFORM_INT)
+        SetShaderValue(self.shader, self.typeLoc, ffi.new("int *",self.type), UNIFORM_INT)
 
         #// Send to shader light position values
         position = [ self.position.x, self.position.y, self.position.z]
-        SetShaderValue(shader, self.posLoc, ffi.new("struct Vector3 *",position), UNIFORM_VEC3)
+        SetShaderValue(self.shader, self.posLoc, ffi.new("struct Vector3 *",position), UNIFORM_VEC3)
 
         #// Send to shader light target position values
         target =[  self.target.x, self.target.y, self.target.z ]
-        SetShaderValue(shader, self.targetLoc, ffi.new("struct Vector3 *",target), UNIFORM_VEC3)
+        SetShaderValue(self.shader, self.targetLoc, ffi.new("struct Vector3 *",target), UNIFORM_VEC3)
 
         #// Send to shader light color values
         color = [self.color[0]/255.0, self.color[1]/255.0,  self.color[2]/255.0, self.color[3]/255.0]
-        SetShaderValue(shader, self.colorLoc, ffi.new("struct Vector4 *",color), UNIFORM_VEC4)
+        SetShaderValue(self.shader, self.colorLoc, ffi.new("struct Vector4 *",color), UNIFORM_VEC4)
 
 
 
@@ -208,34 +238,28 @@ modelA.materials[0].maps[MAP_DIFFUSE].texture = texture
 modelB.materials[0].maps[MAP_DIFFUSE].texture = texture
 modelC.materials[0].maps[MAP_DIFFUSE].texture = texture
 
-shader = LoadShader(b"resources/shaders/glsl330/basic_lighting.vs",
-                        b"resources/shaders/glsl330/basic_lighting.fs");
 
-#// Get some shader loactions
-shader.locs[LOC_MATRIX_MODEL] = GetShaderLocation(shader, b"matModel");
-shader.locs[LOC_VECTOR_VIEW] = GetShaderLocation(shader, b"viewPos");
-
-#// ambient light level
-ambientLoc = GetShaderLocation(shader, b"ambient");
-v = ffi.new("struct Vector4 *", [ 0.2, 0.2, 0.2, 1.0 ])
-SetShaderValue(shader, ambientLoc, v, UNIFORM_VEC4);
 
 
 
 angle = 6.282;
 
-#// All models use the same shader
-modelA.materials[0].shader = shader
-modelB.materials[0].shader = shader
-modelC.materials[0].shader = shader
 
 #// Using 4 point lights, white, red, green and blue
-lights = [0] * 4
+
 #lights[0] = Light(LIGHT_POINT,  ffi.new("struct Vector3 *",[ 400, 400, 400 ]), Vector3Zero(), WHITE, shader)
-lights[0] = Light(LIGHT_POINT,  ffi.new("struct Vector3 *",[ 4, 2, 4 ]), Vector3Zero(), WHITE, shader)
-lights[1] = Light(LIGHT_POINT, ffi.new("struct Vector3 *",[4, 2, 4 ]), Vector3Zero(), RED, shader)
-lights[2] = Light(LIGHT_POINT, ffi.new("struct Vector3 *",[ 0, 4, 2 ]), Vector3Zero(), GREEN, shader)
-lights[3] = Light(LIGHT_POINT, ffi.new("struct Vector3 *",[ 0, 4, 2 ]), Vector3Zero(), BLUE, shader)
+lights0 = Light(LIGHT_POINT,  [ 4, 2, 4 ], Vector3Zero(), WHITE)
+lights1 = Light(LIGHT_POINT, [4, 2, 4 ], Vector3Zero(), RED)
+lights2 = Light(LIGHT_POINT, [ 0, 4, 2 ], Vector3Zero(), GREEN)
+lights3 = Light(LIGHT_POINT, [ 0, 4, 2 ], Vector3Zero(), BLUE)
+
+lightSystem = LightSystem([ 0.2, 0.2, 0.2, 1.0 ], lights0, lights1, lights2, lights3)
+
+#// All models use the same shader
+modelA.materials[0].shader = lightSystem.shader
+modelB.materials[0].shader = lightSystem.shader
+modelC.materials[0].shader = lightSystem.shader
+
 
 SetCameraMode(camera, CAMERA_ORBITAL) #// Set an orbital camera mode
 
@@ -246,28 +270,28 @@ SetTargetFPS(60)                      # // Set our game to run at 60 frames-per-
 while not WindowShouldClose():            #// Detect window close button or ESC key
     #// Update
     #//----------------------------------------------------------------------------------
-    if IsKeyPressed(KEY_W):  lights[0].enabled = not lights[0].enabled
-    if IsKeyPressed(KEY_R):  lights[1].enabled = not lights[1].enabled
-    if IsKeyPressed(KEY_G):  lights[2].enabled = not lights[2].enabled
-    if IsKeyPressed(KEY_B):  lights[3].enabled = not lights[3].enabled
+    if IsKeyPressed(KEY_W):  lights0.enabled = not lights0.enabled
+    if IsKeyPressed(KEY_R):  lights1.enabled = not lights1.enabled
+    if IsKeyPressed(KEY_G):  lights2.enabled = not lights2.enabled
+    if IsKeyPressed(KEY_B):  lights3.enabled = not lights3.enabled
 
     UpdateCamera(cameraPtr);              #// Update camera
 
     #// Make the lights do differing orbits
     angle -= 0.02
-    lights[0].position.x = math.cos(angle)*4.0
-    lights[0].position.z = math.sin(angle)*4.0
-    lights[1].position.x = math.cos(-angle*0.6)*4.0
-    lights[1].position.z = math.sin(-angle*0.6)*4.0
-    lights[2].position.y = math.cos(angle*0.2)*4.0
-    lights[2].position.z = math.sin(angle*0.2)*4.0
-    lights[3].position.y = math.cos(-angle*0.35)*4.0
-    lights[3].position.z = math.sin(-angle*0.35)*4.0
+    lights0.position.x = math.cos(angle)*4.0
+    lights0.position.z = math.sin(angle)*4.0
+    lights1.position.x = math.cos(-angle*0.6)*4.0
+    lights1.position.z = math.sin(-angle*0.6)*4.0
+    lights2.position.y = math.cos(angle*0.2)*4.0
+    lights2.position.z = math.sin(angle*0.2)*4.0
+    lights3.position.y = math.cos(-angle*0.35)*4.0
+    lights3.position.z = math.sin(-angle*0.35)*4.0
 
-    lights[0].UpdateLightValues()
-    lights[1].UpdateLightValues()
-    lights[2].UpdateLightValues()
-    lights[3].UpdateLightValues()
+    #// Update the light shader with the camera view position
+
+    lightSystem.update(camera.position)
+
 
 
     #// Rotate the torus
@@ -277,9 +301,7 @@ while not WindowShouldClose():            #// Detect window close button or ESC 
 
 
 
-    #// Update the light shader with the camera view position
-    cameraPos = [ camera.position.x, camera.position.y, camera.position.z ]
-    SetShaderValue(shader, shader.locs[LOC_VECTOR_VIEW], ffi.new("struct Vector3 *",cameraPos), UNIFORM_VEC3)
+
     #//----------------------------------------------------------------------------------
 
     #// Draw
@@ -296,10 +318,8 @@ while not WindowShouldClose():            #// Detect window close button or ESC 
     DrawModel(modelC, [ 1.6,0,0], 1.0, WHITE)
 
     #// Draw markers to show where the lights are
-    if lights[0].enabled: DrawSphereEx(lights[0].position[0], 0.2, 8, 8, WHITE)
-    if lights[1].enabled: DrawSphereEx(lights[1].position[0], 0.2, 8, 8, RED)
-    if lights[2].enabled: DrawSphereEx(lights[2].position[0], 0.2, 8, 8, GREEN)
-    if lights[3].enabled: DrawSphereEx(lights[3].position[0], 0.2, 8, 8, BLUE)
+    lightSystem.draw()
+
 
     DrawGrid(10, 1.0)
 
