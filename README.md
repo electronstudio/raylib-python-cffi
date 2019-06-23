@@ -2,7 +2,7 @@
 
 New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ctypes.
 
-# Advert
+### Advert
 
 [RetroWar: 8-bit Party Battle](https://retrowar.net) is out now.  Defeat up to 15 of your friends in a tournament of 80s-inspired retro mini games.
 
