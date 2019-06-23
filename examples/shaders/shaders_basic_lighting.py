@@ -31,8 +31,7 @@ from enum import Enum
 from typing import Any
 import math
 
-MAX_LIGHTS = 4         #// Max dynamic lights supported by shader
-lightsCount = 0
+
 
 
 def MatrixRotateX(angle):
@@ -110,24 +109,8 @@ def MatrixMultiply(left,  right):
 #// Types and Structures Definition
 #//----------------------------------------------------------------------------------
 
-#// Light data
-@dataclass
-class Light:
-    def __init__(self):
-        pass
-    type: Any
-    position: Any
-    target: Any
-    color: Any
-    enabled: Any
-
-    #// Shader locations
-    enabledLoc: Any
-    typeLoc: Any
-    posLoc: Any
-    targetLoc: Any
-    colorLoc: Any
-
+MAX_LIGHTS = 4         #// Max dynamic lights supported by shader
+lightsCount = 0
 
 #// Light type
 
@@ -135,65 +118,60 @@ LIGHT_DIRECTIONAL=0
 LIGHT_POINT=1
 
 
-#// Create a light and get shader locations
-def CreateLight(type,  position,  target, color,  shader):
-    global lightsCount
-    light = Light()
-
-
-    if lightsCount < MAX_LIGHTS:
-        light.enabled = True
-        light.type = type
-        light.position = position
-        light.target = target
-        light.color = color
+class Light:
+    def __init__(self, type,  position,  target, color,  shader):
+        global lightsCount
+        if lightsCount >= MAX_LIGHTS:
+            raise Exception("Too many lights")
+        self.enabled = True
+        self.type = type
+        self.position = position
+        self.target = target
+        self.color = color
+        self.shader = shader
 
         #// TODO: Below code doesn't look good to me,
-         #                        // it assumes a specific shader naming and structure
-          #                                                       // Probably this implementation could be improved
-        enabledName = f"lights[{lightsCount}].enabled"
-        typeName = f"lights[{lightsCount}].type"
-        posName = f"lights[{lightsCount}].position"
-        targetName = f"lights[{lightsCount}].target"
-        colorName = f"lights[{lightsCount}].color"
+        #                        // it assumes a specific shader naming and structure
+        #                                                       // Probably this implementation could be improved
+        self.enabledName = f"lights[{lightsCount}].enabled"
+        self.typeName = f"lights[{lightsCount}].type"
+        self.posName = f"lights[{lightsCount}].position"
+        self.targetName = f"lights[{lightsCount}].target"
+        self.colorName = f"lights[{lightsCount}].color"
         # enabledName = '0' + str(lightsCount)
         # typeName = '0' + str(lightsCount)
         # posName = '0' + str(lightsCount)
         # targetName = '0' + str(lightsCount)
         # colorName = '0' + str(lightsCount)
 
-        light.enabledLoc = GetShaderLocation(shader, enabledName.encode('utf-8'))
-        light.typeLoc = GetShaderLocation(shader, typeName.encode('utf-8'))
-        light.posLoc = GetShaderLocation(shader, posName.encode('utf-8'))
-        light.targetLoc = GetShaderLocation(shader, targetName.encode('utf-8'))
-        light.colorLoc = GetShaderLocation(shader, colorName.encode('utf-8'))
+        self.enabledLoc = GetShaderLocation(shader, self.enabledName.encode('utf-8'))
+        self.typeLoc = GetShaderLocation(shader, self.typeName.encode('utf-8'))
+        self.posLoc = GetShaderLocation(shader, self.posName.encode('utf-8'))
+        self.targetLoc = GetShaderLocation(shader, self.targetName.encode('utf-8'))
+        self.colorLoc = GetShaderLocation(shader, self.colorName.encode('utf-8'))
 
-        UpdateLightValues(shader, light)
+        self.UpdateLightValues()
 
-        lightsCount+=1
-
-
-    return light
-
+        lightsCount += 1
 
 #// Send light properties to shader
 #                            // NOTE: Light shader locations should be available
-def UpdateLightValues(shader, light):
-    #// Send to shader light enabled state and type
-    SetShaderValue(shader, light.enabledLoc, ffi.new("int *",light.enabled), UNIFORM_INT)
-    SetShaderValue(shader, light.typeLoc, ffi.new("int *",light.type), UNIFORM_INT)
+    def UpdateLightValues(self):
+        #// Send to shader light enabled state and type
+        SetShaderValue(shader, self.enabledLoc, ffi.new("int *",self.enabled), UNIFORM_INT)
+        SetShaderValue(shader, self.typeLoc, ffi.new("int *",self.type), UNIFORM_INT)
 
-    #// Send to shader light position values
-    position = [ light.position.x, light.position.y, light.position.z]
-    SetShaderValue(shader, light.posLoc, ffi.new("struct Vector3 *",position), UNIFORM_VEC3)
+        #// Send to shader light position values
+        position = [ self.position.x, self.position.y, self.position.z]
+        SetShaderValue(shader, self.posLoc, ffi.new("struct Vector3 *",position), UNIFORM_VEC3)
 
-    #// Send to shader light target position values
-    target =[  light.target.x, light.target.y, light.target.z ]
-    SetShaderValue(shader, light.targetLoc, ffi.new("struct Vector3 *",target), UNIFORM_VEC3)
+        #// Send to shader light target position values
+        target =[  self.target.x, self.target.y, self.target.z ]
+        SetShaderValue(shader, self.targetLoc, ffi.new("struct Vector3 *",target), UNIFORM_VEC3)
 
-    #// Send to shader light color values
-    color = [light.color[0]/255.0, light.color[1]/255.0,  light.color[2]/255.0, light.color[3]/255.0]
-    SetShaderValue(shader, light.colorLoc, ffi.new("struct Vector4 *",color), UNIFORM_VEC4)
+        #// Send to shader light color values
+        color = [self.color[0]/255.0, self.color[1]/255.0,  self.color[2]/255.0, self.color[3]/255.0]
+        SetShaderValue(shader, self.colorLoc, ffi.new("struct Vector4 *",color), UNIFORM_VEC4)
 
 
 
@@ -253,10 +231,11 @@ modelC.materials[0].shader = shader
 
 #// Using 4 point lights, white, red, green and blue
 lights = [0] * 4
-lights[0] = CreateLight(LIGHT_POINT,  ffi.new("struct Vector3 *",[ 4, 2, 4 ]), Vector3Zero(), WHITE, shader)
-lights[1] = CreateLight(LIGHT_POINT, ffi.new("struct Vector3 *",[4, 2, 4 ]), Vector3Zero(), RED, shader)
-lights[2] = CreateLight(LIGHT_POINT, ffi.new("struct Vector3 *",[ 0, 4, 2 ]), Vector3Zero(), GREEN, shader)
-lights[3] = CreateLight(LIGHT_POINT, ffi.new("struct Vector3 *",[ 0, 4, 2 ]), Vector3Zero(), BLUE, shader)
+#lights[0] = Light(LIGHT_POINT,  ffi.new("struct Vector3 *",[ 400, 400, 400 ]), Vector3Zero(), WHITE, shader)
+lights[0] = Light(LIGHT_POINT,  ffi.new("struct Vector3 *",[ 4, 2, 4 ]), Vector3Zero(), WHITE, shader)
+lights[1] = Light(LIGHT_POINT, ffi.new("struct Vector3 *",[4, 2, 4 ]), Vector3Zero(), RED, shader)
+lights[2] = Light(LIGHT_POINT, ffi.new("struct Vector3 *",[ 0, 4, 2 ]), Vector3Zero(), GREEN, shader)
+lights[3] = Light(LIGHT_POINT, ffi.new("struct Vector3 *",[ 0, 4, 2 ]), Vector3Zero(), BLUE, shader)
 
 SetCameraMode(camera, CAMERA_ORBITAL) #// Set an orbital camera mode
 
@@ -285,10 +264,11 @@ while not WindowShouldClose():            #// Detect window close button or ESC 
     lights[3].position.y = math.cos(-angle*0.35)*4.0
     lights[3].position.z = math.sin(-angle*0.35)*4.0
 
-    UpdateLightValues(shader, lights[0])
-    UpdateLightValues(shader, lights[1])
-    UpdateLightValues(shader, lights[2])
-    UpdateLightValues(shader, lights[3])
+    lights[0].UpdateLightValues()
+    lights[1].UpdateLightValues()
+    lights[2].UpdateLightValues()
+    lights[3].UpdateLightValues()
+
 
     #// Rotate the torus
 
