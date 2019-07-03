@@ -316,6 +316,7 @@ typedef struct Ray {
 } Ray;
 
 // Raycast hit information
+
 typedef struct RayHitInfo {
     bool hit;               // Did the ray hit something?
     float distance;         // Distance to nearest hit

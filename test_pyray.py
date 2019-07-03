@@ -20,6 +20,11 @@ model.materials.maps[pyray.MAP_DIFFUSE].texture = texture
 pyray.unload_image(image)
 pyray.set_camera_mode(camera, pyray.CAMERA_ORBITAL)
 
+pos = pyray.get_mouse_position()
+ray = pyray.get_mouse_ray(pos, camera)
+rayhit = pyray.get_collision_ray_ground(ray, 0)
+print(str(rayhit.position.x))
+
 while not pyray.window_should_close():
     pyray.update_camera(pyray.pointer(camera))
     pyray.begin_drawing()
@@ -30,4 +35,10 @@ while not pyray.window_should_close():
     pyray.end_mode_3d()
     pyray.draw_text("This mesh should be textured", 190, 200, 20, VIOLET)
     pyray.end_drawing()
+
+    pos = pyray.get_mouse_position()
+    ray = pyray.get_mouse_ray(pos, camera)
+    rayhit = pyray.get_collision_ray_ground(ray, 0)
+    print(str(rayhit.position.x))
+
 pyray.close_window()

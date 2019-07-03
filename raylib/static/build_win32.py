@@ -3,7 +3,7 @@
 from cffi import FFI
 
 ffibuilder = FFI()
-ffibuilder.cdef(open("../raylib_modified.h").read().replace('RLAPI ', ''))
+ffibuilder.cdef(open("../raylib_modified.h").read().replace('RLAPI ', '').replace('bool','int'))
 ffibuilder.set_source("_raylib_cffi",
 	"""
 	#include "../raylib.h"   
