@@ -12,8 +12,8 @@ cube = rl.GenMeshCube(100, 100, 100)
 skybox = rl.LoadModelFromMesh(cube)
 
 skybox.materials[0].shader = rl.LoadShader(
-	b'res/shader/skybox.vs.glsl',
-	b'res/shader/skybox.fs.glsl'
+	b'resources/shaders/skybox.vs',
+	b'resources/shaders/skybox.fs'
 )
 
 rl.SetShaderValue(
@@ -24,8 +24,8 @@ rl.SetShaderValue(
 )
 
 shdrCubemap = rl.LoadShader(
-	b'res/shader/cubemap.vs.glsl',
-	b'res/shader/cubemap.fs.glsl'
+	b'resources/shaders/cubemap.vs',
+	b'resources/shaders/cubemap.fs'
 )
 
 rl.SetShaderValue(
@@ -35,7 +35,7 @@ rl.SetShaderValue(
 	rl.UNIFORM_INT
 )
 
-texHDR = rl.LoadTexture(b'res/img/skymap.hdr')
+texHDR = rl.LoadTexture(b'resources/dresden_square.hdr')
 
 skybox.materials[0].maps[rl.MAP_CUBEMAP].texture = rl.GenTextureCubemap(shdrCubemap, texHDR, 512);
 
