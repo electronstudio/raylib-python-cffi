@@ -2,12 +2,16 @@
 Requirements:
 - raylib
 - pytweening
-- glm
+- pyglm
 
 Windows-Only Requirements:
 - win32gui
 - win32con
 - pywintypes
+
+Mac:
+- pyobjus
+- Cython
 """
 
 import sys, time
