@@ -23,7 +23,7 @@ def makefunc(a):
     return func
 
 def makeStructHelper(struct):
-    def func(self, *args):
+    def func(*args):
         return ffi.new(f"struct {struct} *", args)[0]
     return func
 
