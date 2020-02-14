@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 2.5
+# Python Bindings for Raylib 2.6
 
 New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ctypes.
 
@@ -8,11 +8,11 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 # Install
 
-**Windows 10 (64 bit): Python 3.6 - 3.7**
+**Windows 10 (64 bit): Python 3.6 - 3.8**
 
-**MacOS: Python 3.5 - 3.7**
+**MacOS: Python 3.6 - 3.8**
 
-**Linux (Ubuntu 16.04+): Python 3.5 - 3.7**
+**Linux (Ubuntu 16.04+): Python 3.6 - 3.8**
 
 We distribute a statically linked Raylib library,  install from Pypi.
 
@@ -20,7 +20,7 @@ We distribute a statically linked Raylib library,  install from Pypi.
 
 If you're a different version of Python, or a Linux with incompatible libraries
 then you can either *use the dynamic binding only* or else you will have to build from source.  Download, compile
-and install Raylib 2.5 then
+and install Raylib 2.6 then
 
     cd raylib/static
     python3 build_linux.py
@@ -101,9 +101,10 @@ See test_dynamic.py for how to use.
 
 # Platforms tested
 
- * MacOS 10.12.6 - Python 3.7
- * Ubuntu 18.04 LTS - Python 3.6
- * Windows 10 (64 bit) - Python 3.7
+ * (MacOS 10.12.6 - Python 3.7)
+ * (Ubuntu 18.04 LTS - Python 3.6)
+ * Debian 10 - Python 3.7
+ * Windows 10 (64 bit) - Python 3.8
 
 # HELP WANTED
 
