@@ -538,7 +538,7 @@ static void (*_cffi_call_python_org)(struct _cffi_externpy_s *, char *);
 /************************************************************/
 
 
-                           #include "../raylib.h"   // the C header of the library, supplied by us here
+                           #include "../raylib.h"   // the C header, installed in the system include dir we assume
                       
 
 /************************************************************/
