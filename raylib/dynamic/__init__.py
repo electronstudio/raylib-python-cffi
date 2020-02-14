@@ -8,7 +8,7 @@ import platform
 # Probably unnecessary, just covering all bases in case people add or remove dlls
 MAC_NAMES = ['libraylib.2.6.0.dylib', 'libraylib.261.dylib', 'libraylib.dylib']
 LINUX_NAMES = ['libraylib.so.2.6.0','libraylib.so.2', 'libraylib.so']
-WINDOWS_NAMES = ['raylib.dll', 'libraylib.dll']
+WINDOWS_NAMES = ['raylib.dll', 'raylib.32.dll', 'raylib.64.dll', 'libraylib.dll']
 
 
 if platform.system() == "Darwin":

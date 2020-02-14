@@ -538,22 +538,22 @@ static void (*_cffi_call_python_org)(struct _cffi_externpy_s *, char *);
 /************************************************************/
 
 
-                           #include "../raylib.h"   // the C header, installed in the system include dir we assume
-                      
+	#include "../raylib.h"   
+	
 
 /************************************************************/
 
 static void *_cffi_types[] = {
-/*  0 */ _CFFI_OP(_CFFI_OP_FUNCTION, 312), // AudioStream()(unsigned int, unsigned int, unsigned int)
+/*  0 */ _CFFI_OP(_CFFI_OP_FUNCTION, 384), // AudioStream()(unsigned int, unsigned int, unsigned int)
 /*  1 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 8), // unsigned int
 /*  2 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 8),
 /*  3 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 8),
 /*  4 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/*  5 */ _CFFI_OP(_CFFI_OP_FUNCTION, 315), // BoundingBox()(Mesh)
+/*  5 */ _CFFI_OP(_CFFI_OP_FUNCTION, 387), // BoundingBox()(Mesh)
 /*  6 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 12), // Mesh
 /*  7 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/*  8 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1164), // CharInfo *()(char const *, int, int *, int, int)
-/*  9 */ _CFFI_OP(_CFFI_OP_POINTER, 430), // char const *
+/*  8 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1148), // CharInfo *()(char const *, int, int *, int, int)
+/*  9 */ _CFFI_OP(_CFFI_OP_POINTER, 337), // char const *
 /* 10 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7), // int
 /* 11 */ _CFFI_OP(_CFFI_OP_POINTER, 10), // int *
 /* 12 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
@@ -597,8 +597,8 @@ static void *_cffi_types[] = {
 /* 50 */ _CFFI_OP(_CFFI_OP_FUNCTION, 66), // Font()(void)
 /* 51 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
 /* 52 */ _CFFI_OP(_CFFI_OP_FUNCTION, 16), // Image()(CharInfo const *, Rectangle * *, int, int, int, int)
-/* 53 */ _CFFI_OP(_CFFI_OP_POINTER, 1165), // CharInfo const *
-/* 54 */ _CFFI_OP(_CFFI_OP_POINTER, 1182), // Rectangle * *
+/* 53 */ _CFFI_OP(_CFFI_OP_POINTER, 1149), // CharInfo const *
+/* 54 */ _CFFI_OP(_CFFI_OP_POINTER, 1166), // Rectangle * *
 /* 55 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 56 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 57 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
@@ -685,28 +685,28 @@ static void *_cffi_types[] = {
 /* 138 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
 /* 139 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
 /* 140 */ _CFFI_OP(_CFFI_OP_FUNCTION, 16), // Image()(void *, int, int, int)
-/* 141 */ _CFFI_OP(_CFFI_OP_POINTER, 1208), // void *
+/* 141 */ _CFFI_OP(_CFFI_OP_POINTER, 1192), // void *
 /* 142 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 143 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 144 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 145 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
 /* 146 */ _CFFI_OP(_CFFI_OP_FUNCTION, 16), // Image()(void)
 /* 147 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 148 */ _CFFI_OP(_CFFI_OP_FUNCTION, 715), // Material *()(char const *, int *)
+/* 148 */ _CFFI_OP(_CFFI_OP_FUNCTION, 699), // Material *()(char const *, int *)
 /* 149 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 150 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
 /* 151 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 152 */ _CFFI_OP(_CFFI_OP_FUNCTION, 720), // Material()(void)
+/* 152 */ _CFFI_OP(_CFFI_OP_FUNCTION, 704), // Material()(void)
 /* 153 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 154 */ _CFFI_OP(_CFFI_OP_FUNCTION, 723), // Matrix()(Camera2D)
+/* 154 */ _CFFI_OP(_CFFI_OP_FUNCTION, 707), // Matrix()(Camera2D)
 /* 155 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 3), // Camera2D
 /* 156 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 157 */ _CFFI_OP(_CFFI_OP_FUNCTION, 723), // Matrix()(Camera3D)
+/* 157 */ _CFFI_OP(_CFFI_OP_FUNCTION, 707), // Matrix()(Camera3D)
 /* 158 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 4), // Camera3D
 /* 159 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 160 */ _CFFI_OP(_CFFI_OP_FUNCTION, 723), // Matrix()(void)
+/* 160 */ _CFFI_OP(_CFFI_OP_FUNCTION, 707), // Matrix()(void)
 /* 161 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 162 */ _CFFI_OP(_CFFI_OP_FUNCTION, 726), // Mesh *()(char const *, int *)
+/* 162 */ _CFFI_OP(_CFFI_OP_FUNCTION, 710), // Mesh *()(char const *, int *)
 /* 163 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 164 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
 /* 165 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
@@ -745,28 +745,28 @@ static void *_cffi_types[] = {
 /* 198 */ _CFFI_OP(_CFFI_OP_FUNCTION, 214), // Model()(char const *)
 /* 199 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 200 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 201 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1177), // ModelAnimation *()(char const *, int *)
+/* 201 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1161), // ModelAnimation *()(char const *, int *)
 /* 202 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 203 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
 /* 204 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 205 */ _CFFI_OP(_CFFI_OP_FUNCTION, 328), // Music()(char const *)
+/* 205 */ _CFFI_OP(_CFFI_OP_FUNCTION, 371), // Music()(char const *)
 /* 206 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 207 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
 /* 208 */ _CFFI_OP(_CFFI_OP_FUNCTION, 213), // Ray()(Vector2, Camera3D)
 /* 209 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 25), // Vector2
 /* 210 */ _CFFI_OP(_CFFI_OP_NOOP, 158),
 /* 211 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 212 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1181), // RayHitInfo()(Ray, Model)
+/* 212 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1165), // RayHitInfo()(Ray, Model)
 /* 213 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 17), // Ray
 /* 214 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 13), // Model
 /* 215 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 216 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1181), // RayHitInfo()(Ray, Vector3, Vector3, Vector3)
+/* 216 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1165), // RayHitInfo()(Ray, Vector3, Vector3, Vector3)
 /* 217 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
 /* 218 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
 /* 219 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
 /* 220 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
 /* 221 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 222 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1181), // RayHitInfo()(Ray, float)
+/* 222 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1165), // RayHitInfo()(Ray, float)
 /* 223 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
 /* 224 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
 /* 225 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
@@ -778,7 +778,7 @@ static void *_cffi_types[] = {
 /* 231 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
 /* 232 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
 /* 233 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 234 */ _CFFI_OP(_CFFI_OP_FUNCTION, 816), // RenderTexture2D()(int, int)
+/* 234 */ _CFFI_OP(_CFFI_OP_FUNCTION, 800), // RenderTexture2D()(int, int)
 /* 235 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 236 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 237 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
@@ -788,10 +788,10 @@ static void *_cffi_types[] = {
 /* 241 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
 /* 242 */ _CFFI_OP(_CFFI_OP_FUNCTION, 258), // Shader()(void)
 /* 243 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 244 */ _CFFI_OP(_CFFI_OP_FUNCTION, 350), // Sound()(Wave)
+/* 244 */ _CFFI_OP(_CFFI_OP_FUNCTION, 433), // Sound()(Wave)
 /* 245 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 29), // Wave
 /* 246 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 247 */ _CFFI_OP(_CFFI_OP_FUNCTION, 350), // Sound()(char const *)
+/* 247 */ _CFFI_OP(_CFFI_OP_FUNCTION, 433), // Sound()(char const *)
 /* 248 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 249 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
 /* 250 */ _CFFI_OP(_CFFI_OP_FUNCTION, 80), // Texture2D()(Image)
@@ -843,7 +843,7 @@ static void *_cffi_types[] = {
 /* 296 */ _CFFI_OP(_CFFI_OP_FUNCTION, 28), // Vector3()(Color)
 /* 297 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
 /* 298 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 299 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1191), // Vector4 *()(Image)
+/* 299 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1175), // Vector4 *()(Image)
 /* 300 */ _CFFI_OP(_CFFI_OP_NOOP, 16),
 /* 301 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
 /* 302 */ _CFFI_OP(_CFFI_OP_FUNCTION, 31), // Vector4()(Color)
@@ -855,904 +855,888 @@ static void *_cffi_types[] = {
 /* 308 */ _CFFI_OP(_CFFI_OP_FUNCTION, 245), // Wave()(char const *)
 /* 309 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 310 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 311 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(AudioStream)
-/* 312 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 0), // AudioStream
-/* 313 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 314 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(BoundingBox, BoundingBox)
-/* 315 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 2), // BoundingBox
-/* 316 */ _CFFI_OP(_CFFI_OP_NOOP, 315),
+/* 311 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1176), // char * *()(char const *, int *)
+/* 312 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 313 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
+/* 314 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 315 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1176), // char * *()(int *)
+/* 316 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
 /* 317 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 318 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(BoundingBox, Vector3, float)
-/* 319 */ _CFFI_OP(_CFFI_OP_NOOP, 315),
-/* 320 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 321 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 318 */ _CFFI_OP(_CFFI_OP_FUNCTION, 319), // char *()(char *, char const *, char const *)
+/* 319 */ _CFFI_OP(_CFFI_OP_POINTER, 337), // char *
+/* 320 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 321 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 322 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 323 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Model, ModelAnimation)
-/* 324 */ _CFFI_OP(_CFFI_OP_NOOP, 214),
-/* 325 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 14), // ModelAnimation
-/* 326 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 327 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Music)
-/* 328 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 15), // Music
-/* 329 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 330 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Ray, BoundingBox)
-/* 331 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
-/* 332 */ _CFFI_OP(_CFFI_OP_NOOP, 315),
-/* 333 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 334 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Ray, Vector3, float)
-/* 335 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
-/* 336 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 337 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 338 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 339 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Ray, Vector3, float, Vector3 *)
-/* 340 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
-/* 341 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 342 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 343 */ _CFFI_OP(_CFFI_OP_POINTER, 28), // Vector3 *
+/* 323 */ _CFFI_OP(_CFFI_OP_FUNCTION, 319), // char *()(char const *)
+/* 324 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 325 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 326 */ _CFFI_OP(_CFFI_OP_FUNCTION, 319), // char *()(char const *, char const *, int)
+/* 327 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 328 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 329 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 330 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 331 */ _CFFI_OP(_CFFI_OP_FUNCTION, 319), // char *()(int *, int)
+/* 332 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
+/* 333 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 334 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 335 */ _CFFI_OP(_CFFI_OP_FUNCTION, 341), // char const * *()(char const *, char, int *)
+/* 336 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 337 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 2), // char
+/* 338 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
+/* 339 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 340 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(char const * *, int, char const *)
+/* 341 */ _CFFI_OP(_CFFI_OP_POINTER, 9), // char const * *
+/* 342 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 343 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 344 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 345 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Rectangle, Rectangle)
-/* 346 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 347 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 348 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 349 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Sound)
-/* 350 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 22), // Sound
-/* 351 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 352 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Vector2, Rectangle)
-/* 353 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 354 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 345 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(char const *)
+/* 346 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 347 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 348 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(char const *, ...)
+/* 349 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 350 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 1),
+/* 351 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(char const *, int, int)
+/* 352 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 353 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 354 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 355 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 356 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Vector2, Vector2, Vector2, Vector2)
-/* 357 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 358 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 359 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 360 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 361 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 362 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Vector2, Vector2, float)
-/* 363 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 364 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 365 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 356 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(int)
+/* 357 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 358 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 359 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(int, int *)
+/* 360 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 361 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
+/* 362 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 363 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(void)
+/* 364 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 365 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1180), // double()(void)
 /* 366 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 367 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Vector2, float, Rectangle)
-/* 368 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 369 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 370 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 371 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 372 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Vector2, float, Vector2, float)
-/* 373 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 374 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 375 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 376 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 377 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 378 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(Vector3, float, Vector3, float)
-/* 379 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 380 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 381 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 382 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 383 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 384 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(char const *)
-/* 385 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 386 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 387 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(char const *, char const *)
-/* 388 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 389 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 390 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 391 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(int)
-/* 392 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 393 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 394 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(int, char const *)
-/* 395 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 396 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 367 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1181), // float *()(Wave)
+/* 368 */ _CFFI_OP(_CFFI_OP_NOOP, 245),
+/* 369 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 370 */ _CFFI_OP(_CFFI_OP_FUNCTION, 25), // float()(Music)
+/* 371 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 15), // Music
+/* 372 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 373 */ _CFFI_OP(_CFFI_OP_FUNCTION, 25), // float()(int, int)
+/* 374 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 375 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 376 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 377 */ _CFFI_OP(_CFFI_OP_FUNCTION, 25), // float()(void)
+/* 378 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 379 */ _CFFI_OP(_CFFI_OP_FUNCTION, 11), // int *()(char const *, int *)
+/* 380 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 381 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
+/* 382 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 383 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(AudioStream)
+/* 384 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 0), // AudioStream
+/* 385 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 386 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(BoundingBox, BoundingBox)
+/* 387 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 2), // BoundingBox
+/* 388 */ _CFFI_OP(_CFFI_OP_NOOP, 387),
+/* 389 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 390 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(BoundingBox, Vector3, float)
+/* 391 */ _CFFI_OP(_CFFI_OP_NOOP, 387),
+/* 392 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 393 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 394 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 395 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Color)
+/* 396 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
 /* 397 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 398 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(int, int)
-/* 399 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 398 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Font, int)
+/* 399 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
 /* 400 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 401 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 402 */ _CFFI_OP(_CFFI_OP_FUNCTION, 589), // _Bool()(void)
-/* 403 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 404 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // char * *()(char const *, int *)
-/* 405 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 406 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
-/* 407 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 408 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // char * *()(int *)
-/* 409 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
-/* 410 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 411 */ _CFFI_OP(_CFFI_OP_FUNCTION, 412), // char *()(char *, char const *, char const *)
-/* 412 */ _CFFI_OP(_CFFI_OP_POINTER, 430), // char *
-/* 413 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 414 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 415 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 416 */ _CFFI_OP(_CFFI_OP_FUNCTION, 412), // char *()(char const *)
-/* 417 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 418 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 419 */ _CFFI_OP(_CFFI_OP_FUNCTION, 412), // char *()(char const *, char const *, int)
-/* 420 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 421 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 422 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 402 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Model, ModelAnimation)
+/* 403 */ _CFFI_OP(_CFFI_OP_NOOP, 214),
+/* 404 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 14), // ModelAnimation
+/* 405 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 406 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Music)
+/* 407 */ _CFFI_OP(_CFFI_OP_NOOP, 371),
+/* 408 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 409 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Ray, BoundingBox)
+/* 410 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
+/* 411 */ _CFFI_OP(_CFFI_OP_NOOP, 387),
+/* 412 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 413 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Ray, Vector3, float)
+/* 414 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
+/* 415 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 416 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 417 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 418 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Ray, Vector3, float, Vector3 *)
+/* 419 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
+/* 420 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 421 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 422 */ _CFFI_OP(_CFFI_OP_POINTER, 28), // Vector3 *
 /* 423 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 424 */ _CFFI_OP(_CFFI_OP_FUNCTION, 412), // char *()(int *, int)
-/* 425 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
-/* 426 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 424 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Rectangle, Rectangle)
+/* 425 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 426 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
 /* 427 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 428 */ _CFFI_OP(_CFFI_OP_FUNCTION, 434), // char const * *()(char const *, char, int *)
-/* 429 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 430 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 2), // char
-/* 431 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
-/* 432 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 433 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(char const * *, int, char const *)
-/* 434 */ _CFFI_OP(_CFFI_OP_POINTER, 9), // char const * *
-/* 435 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 436 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 437 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 438 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(char const *)
-/* 439 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 440 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 441 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(char const *, ...)
-/* 442 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 443 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 1),
-/* 444 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(char const *, int, int)
-/* 445 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 446 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 447 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 448 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 449 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(int)
-/* 450 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 451 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 452 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(int, int *)
-/* 453 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 454 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
-/* 455 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 456 */ _CFFI_OP(_CFFI_OP_FUNCTION, 9), // char const *()(void)
-/* 457 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 458 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1196), // double()(void)
-/* 459 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 460 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1197), // float *()(Wave)
-/* 461 */ _CFFI_OP(_CFFI_OP_NOOP, 245),
-/* 462 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 463 */ _CFFI_OP(_CFFI_OP_FUNCTION, 25), // float()(Music)
-/* 464 */ _CFFI_OP(_CFFI_OP_NOOP, 328),
-/* 465 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 466 */ _CFFI_OP(_CFFI_OP_FUNCTION, 25), // float()(int, int)
-/* 467 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 468 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 469 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 470 */ _CFFI_OP(_CFFI_OP_FUNCTION, 25), // float()(void)
-/* 471 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 472 */ _CFFI_OP(_CFFI_OP_FUNCTION, 11), // int *()(char const *, int *)
-/* 473 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 474 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
-/* 475 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 476 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Color)
-/* 477 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 478 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 479 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Font, int)
-/* 480 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
-/* 481 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 482 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 483 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Shader, char const *)
-/* 484 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
-/* 485 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 486 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 487 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char *, char const *)
-/* 488 */ _CFFI_OP(_CFFI_OP_NOOP, 412),
-/* 489 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 490 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 491 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char const *)
-/* 492 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 493 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 494 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char const *, char const *)
-/* 495 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 496 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 497 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 498 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char const *, int *)
-/* 499 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 500 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
+/* 428 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Shader, char const *)
+/* 429 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
+/* 430 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 431 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 432 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Sound)
+/* 433 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 22), // Sound
+/* 434 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 435 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Vector2, Rectangle)
+/* 436 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 437 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 438 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 439 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Vector2, Vector2, Vector2, Vector2)
+/* 440 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 441 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 442 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 443 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 444 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 445 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Vector2, Vector2, float)
+/* 446 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 447 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 448 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 449 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 450 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Vector2, float, Rectangle)
+/* 451 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 452 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 453 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 454 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 455 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Vector2, float, Vector2, float)
+/* 456 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 457 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 458 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 459 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 460 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 461 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(Vector3, float, Vector3, float)
+/* 462 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 463 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 464 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 465 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 466 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 467 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char *, char const *)
+/* 468 */ _CFFI_OP(_CFFI_OP_NOOP, 319),
+/* 469 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 470 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 471 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char const *)
+/* 472 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 473 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 474 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char const *, char const *)
+/* 475 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 476 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 477 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 478 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char const *, int *)
+/* 479 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 480 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
+/* 481 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 482 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char const *, int)
+/* 483 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 484 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 485 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 486 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(int)
+/* 487 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 488 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 489 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(int, char const *)
+/* 490 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 491 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 492 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 493 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(int, int)
+/* 494 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 495 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 496 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 497 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(int, int, int)
+/* 498 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 499 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 500 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 501 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 502 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(char const *, int)
-/* 503 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 504 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 505 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 506 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(int)
-/* 507 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 508 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 509 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(int, int)
-/* 510 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 511 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 512 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 513 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(int, int, int)
-/* 514 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 515 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 516 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 517 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 518 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(void)
+/* 502 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // int()(void)
+/* 503 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 504 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1184), // long()(char const *)
+/* 505 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 506 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 507 */ _CFFI_OP(_CFFI_OP_FUNCTION, 508), // unsigned char *()(unsigned char *, int, int *)
+/* 508 */ _CFFI_OP(_CFFI_OP_POINTER, 1187), // unsigned char *
+/* 509 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 510 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
+/* 511 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 512 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1), // unsigned int()(char const *)
+/* 513 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 514 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 515 */ _CFFI_OP(_CFFI_OP_FUNCTION, 141), // void *()(void)
+/* 516 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 517 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(AudioStream)
+/* 518 */ _CFFI_OP(_CFFI_OP_NOOP, 384),
 /* 519 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 520 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1200), // long()(char const *)
-/* 521 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 522 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 523 */ _CFFI_OP(_CFFI_OP_FUNCTION, 524), // unsigned char *()(unsigned char *, int, int *)
-/* 524 */ _CFFI_OP(_CFFI_OP_POINTER, 1203), // unsigned char *
-/* 525 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 526 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
-/* 527 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 528 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1), // unsigned int()(char const *)
-/* 529 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 530 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 531 */ _CFFI_OP(_CFFI_OP_FUNCTION, 141), // void *()(void)
+/* 520 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(AudioStream, float)
+/* 521 */ _CFFI_OP(_CFFI_OP_NOOP, 384),
+/* 522 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 523 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 524 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(AudioStream, void const *, int)
+/* 525 */ _CFFI_OP(_CFFI_OP_NOOP, 384),
+/* 526 */ _CFFI_OP(_CFFI_OP_POINTER, 1192), // void const *
+/* 527 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 528 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 529 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(BoundingBox, Color)
+/* 530 */ _CFFI_OP(_CFFI_OP_NOOP, 387),
+/* 531 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
 /* 532 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 533 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(AudioStream)
-/* 534 */ _CFFI_OP(_CFFI_OP_NOOP, 312),
+/* 533 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Camera2D)
+/* 534 */ _CFFI_OP(_CFFI_OP_NOOP, 155),
 /* 535 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 536 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(AudioStream, float)
-/* 537 */ _CFFI_OP(_CFFI_OP_NOOP, 312),
-/* 538 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 539 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 540 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(AudioStream, void const *, int)
-/* 541 */ _CFFI_OP(_CFFI_OP_NOOP, 312),
-/* 542 */ _CFFI_OP(_CFFI_OP_POINTER, 1208), // void const *
-/* 543 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 544 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 545 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(BoundingBox, Color)
-/* 546 */ _CFFI_OP(_CFFI_OP_NOOP, 315),
-/* 547 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 548 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 549 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Camera2D)
-/* 550 */ _CFFI_OP(_CFFI_OP_NOOP, 155),
-/* 551 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 552 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Camera3D *)
-/* 553 */ _CFFI_OP(_CFFI_OP_POINTER, 158), // Camera3D *
-/* 554 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 555 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Camera3D)
-/* 556 */ _CFFI_OP(_CFFI_OP_NOOP, 158),
-/* 557 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 558 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Camera3D, Texture2D, Rectangle, Vector3, float, Color)
-/* 559 */ _CFFI_OP(_CFFI_OP_NOOP, 158),
-/* 560 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 561 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 562 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 563 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 564 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 565 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 566 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Camera3D, Texture2D, Vector3, float, Color)
-/* 567 */ _CFFI_OP(_CFFI_OP_NOOP, 158),
-/* 568 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 569 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 570 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 571 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 572 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 573 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Camera3D, int)
-/* 574 */ _CFFI_OP(_CFFI_OP_NOOP, 158),
-/* 575 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 576 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 577 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Color)
-/* 578 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 579 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 580 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Font)
-/* 581 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
-/* 582 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 583 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Font, char const *, Rectangle, float, float, _Bool, Color)
-/* 584 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
-/* 585 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 586 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 587 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 588 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 589 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 1), // _Bool
-/* 590 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 591 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 592 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Font, char const *, Rectangle, float, float, _Bool, Color, int, int, Color, Color)
-/* 593 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
-/* 594 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 595 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 596 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 597 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 598 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 1),
-/* 599 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 600 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 601 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 536 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Camera3D *)
+/* 537 */ _CFFI_OP(_CFFI_OP_POINTER, 158), // Camera3D *
+/* 538 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 539 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Camera3D)
+/* 540 */ _CFFI_OP(_CFFI_OP_NOOP, 158),
+/* 541 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 542 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Camera3D, Texture2D, Rectangle, Vector3, float, Color)
+/* 543 */ _CFFI_OP(_CFFI_OP_NOOP, 158),
+/* 544 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 545 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 546 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 547 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 548 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 549 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 550 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Camera3D, Texture2D, Vector3, float, Color)
+/* 551 */ _CFFI_OP(_CFFI_OP_NOOP, 158),
+/* 552 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 553 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 554 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 555 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 556 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 557 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Camera3D, int)
+/* 558 */ _CFFI_OP(_CFFI_OP_NOOP, 158),
+/* 559 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 560 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 561 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Color)
+/* 562 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 563 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 564 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Font)
+/* 565 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
+/* 566 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 567 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Font, char const *, Rectangle, float, float, int, Color)
+/* 568 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
+/* 569 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 570 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 571 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 572 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 573 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 574 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 575 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 576 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Font, char const *, Rectangle, float, float, int, Color, int, int, Color, Color)
+/* 577 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
+/* 578 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 579 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 580 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 581 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 582 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 583 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 584 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 585 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 586 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 587 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 588 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 589 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Font, char const *, Vector2, float, float, Color)
+/* 590 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
+/* 591 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 592 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 593 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 594 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 595 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 596 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 597 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Font, int, Vector2, float, Color)
+/* 598 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
+/* 599 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 600 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 601 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
 /* 602 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 603 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 604 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 605 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Font, char const *, Vector2, float, float, Color)
-/* 606 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
-/* 607 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 608 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 609 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 610 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 611 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 612 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 613 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Font, int, Vector2, float, Color)
-/* 614 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
-/* 615 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 616 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 617 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 603 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 604 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *)
+/* 605 */ _CFFI_OP(_CFFI_OP_POINTER, 16), // Image *
+/* 606 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 607 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Color)
+/* 608 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 609 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 610 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 611 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Color, Color)
+/* 612 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 613 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 614 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 615 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 616 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Color, float)
+/* 617 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
 /* 618 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 619 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 620 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *)
-/* 621 */ _CFFI_OP(_CFFI_OP_POINTER, 16), // Image *
-/* 622 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 623 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Color)
-/* 624 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 625 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 626 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 627 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Color, Color)
-/* 628 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 629 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 619 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 620 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 621 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Image)
+/* 622 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 623 */ _CFFI_OP(_CFFI_OP_NOOP, 16),
+/* 624 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 625 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Image, Rectangle, Rectangle, Color)
+/* 626 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 627 */ _CFFI_OP(_CFFI_OP_NOOP, 16),
+/* 628 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 629 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
 /* 630 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
 /* 631 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 632 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Color, float)
-/* 633 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 634 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 635 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 636 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 637 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Image)
-/* 638 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 639 */ _CFFI_OP(_CFFI_OP_NOOP, 16),
+/* 632 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Rectangle)
+/* 633 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 634 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 635 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 636 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Rectangle, Color)
+/* 637 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 638 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 639 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
 /* 640 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 641 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Image, Rectangle, Rectangle, Color)
-/* 642 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 643 */ _CFFI_OP(_CFFI_OP_NOOP, 16),
-/* 644 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 645 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 646 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 647 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 648 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Rectangle)
-/* 649 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 650 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 651 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 652 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Rectangle, Color)
-/* 653 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 654 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 655 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 656 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 657 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Rectangle, int, Color)
-/* 658 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 659 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 641 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Rectangle, int, Color)
+/* 642 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 643 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 644 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 645 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 646 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 647 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Vector2, Font, char const *, float, float, Color)
+/* 648 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 649 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 650 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
+/* 651 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 652 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 653 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 654 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 655 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 656 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, Vector2, char const *, int, Color)
+/* 657 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 658 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 659 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 660 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 661 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
 /* 662 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 663 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Vector2, Font, char const *, float, float, Color)
-/* 664 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 665 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 666 */ _CFFI_OP(_CFFI_OP_NOOP, 66),
-/* 667 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 668 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 669 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 670 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 671 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 672 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, Vector2, char const *, int, Color)
-/* 673 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 674 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 675 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 676 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 677 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 678 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 679 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, float)
-/* 680 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 681 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 663 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, float)
+/* 664 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 665 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 666 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 667 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, int)
+/* 668 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 669 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 670 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 671 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, int, int)
+/* 672 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 673 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 674 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 675 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 676 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, int, int, int, int)
+/* 677 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
+/* 678 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 679 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 680 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 681 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 682 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 683 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, int)
-/* 684 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
+/* 683 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image *, int, int, int, int, Color)
+/* 684 */ _CFFI_OP(_CFFI_OP_NOOP, 605),
 /* 685 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 686 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 687 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, int, int)
-/* 688 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 689 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 690 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 691 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 692 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, int, int, int, int)
-/* 693 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 694 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 695 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 696 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 697 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 698 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 699 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image *, int, int, int, int, Color)
-/* 700 */ _CFFI_OP(_CFFI_OP_NOOP, 621),
-/* 701 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 702 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 703 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 704 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 705 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 706 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 707 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image)
-/* 708 */ _CFFI_OP(_CFFI_OP_NOOP, 16),
-/* 709 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 710 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Image, char const *)
-/* 711 */ _CFFI_OP(_CFFI_OP_NOOP, 16),
-/* 712 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 713 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 714 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Material *, int, Texture2D)
-/* 715 */ _CFFI_OP(_CFFI_OP_POINTER, 720), // Material *
-/* 716 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 717 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 686 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 687 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 688 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 689 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 690 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 691 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image)
+/* 692 */ _CFFI_OP(_CFFI_OP_NOOP, 16),
+/* 693 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 694 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Image, char const *)
+/* 695 */ _CFFI_OP(_CFFI_OP_NOOP, 16),
+/* 696 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 697 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 698 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Material *, int, Texture2D)
+/* 699 */ _CFFI_OP(_CFFI_OP_POINTER, 704), // Material *
+/* 700 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 701 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 702 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 703 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Material)
+/* 704 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 9), // Material
+/* 705 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 706 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Matrix)
+/* 707 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 11), // Matrix
+/* 708 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 709 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Mesh *)
+/* 710 */ _CFFI_OP(_CFFI_OP_POINTER, 6), // Mesh *
+/* 711 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 712 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Mesh)
+/* 713 */ _CFFI_OP(_CFFI_OP_NOOP, 6),
+/* 714 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 715 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Mesh, char const *)
+/* 716 */ _CFFI_OP(_CFFI_OP_NOOP, 6),
+/* 717 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
 /* 718 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 719 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Material)
-/* 720 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 9), // Material
-/* 721 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 722 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Matrix)
-/* 723 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 11), // Matrix
-/* 724 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 725 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Mesh *)
-/* 726 */ _CFFI_OP(_CFFI_OP_POINTER, 6), // Mesh *
-/* 727 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 728 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Mesh)
-/* 729 */ _CFFI_OP(_CFFI_OP_NOOP, 6),
-/* 730 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 731 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Mesh, char const *)
-/* 732 */ _CFFI_OP(_CFFI_OP_NOOP, 6),
-/* 733 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 734 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 735 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Model *, int, int)
-/* 736 */ _CFFI_OP(_CFFI_OP_POINTER, 214), // Model *
-/* 737 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 738 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 719 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Model *, int, int)
+/* 720 */ _CFFI_OP(_CFFI_OP_POINTER, 214), // Model *
+/* 721 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 722 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 723 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 724 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Model)
+/* 725 */ _CFFI_OP(_CFFI_OP_NOOP, 214),
+/* 726 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 727 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Model, ModelAnimation, int)
+/* 728 */ _CFFI_OP(_CFFI_OP_NOOP, 214),
+/* 729 */ _CFFI_OP(_CFFI_OP_NOOP, 404),
+/* 730 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 731 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 732 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Model, Vector3, Vector3, float, Vector3, Color)
+/* 733 */ _CFFI_OP(_CFFI_OP_NOOP, 214),
+/* 734 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 735 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 736 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 737 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 738 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
 /* 739 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 740 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Model)
+/* 740 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Model, Vector3, float, Color)
 /* 741 */ _CFFI_OP(_CFFI_OP_NOOP, 214),
-/* 742 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 743 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Model, ModelAnimation, int)
-/* 744 */ _CFFI_OP(_CFFI_OP_NOOP, 214),
-/* 745 */ _CFFI_OP(_CFFI_OP_NOOP, 325),
-/* 746 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 747 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 748 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Model, Vector3, Vector3, float, Vector3, Color)
-/* 749 */ _CFFI_OP(_CFFI_OP_NOOP, 214),
-/* 750 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 751 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 752 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 753 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 754 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 742 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 743 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 744 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 745 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 746 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(ModelAnimation)
+/* 747 */ _CFFI_OP(_CFFI_OP_NOOP, 404),
+/* 748 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 749 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Music)
+/* 750 */ _CFFI_OP(_CFFI_OP_NOOP, 371),
+/* 751 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 752 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Music, float)
+/* 753 */ _CFFI_OP(_CFFI_OP_NOOP, 371),
+/* 754 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
 /* 755 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 756 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Model, Vector3, float, Color)
-/* 757 */ _CFFI_OP(_CFFI_OP_NOOP, 214),
-/* 758 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 759 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 760 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 761 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 762 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(ModelAnimation)
-/* 763 */ _CFFI_OP(_CFFI_OP_NOOP, 325),
-/* 764 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 765 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Music)
-/* 766 */ _CFFI_OP(_CFFI_OP_NOOP, 328),
+/* 756 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Music, int)
+/* 757 */ _CFFI_OP(_CFFI_OP_NOOP, 371),
+/* 758 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 759 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 760 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Ray, Color)
+/* 761 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
+/* 762 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 763 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 764 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Rectangle, Color)
+/* 765 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 766 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
 /* 767 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 768 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Music, float)
-/* 769 */ _CFFI_OP(_CFFI_OP_NOOP, 328),
-/* 770 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 771 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 772 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Music, int)
-/* 773 */ _CFFI_OP(_CFFI_OP_NOOP, 328),
-/* 774 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 775 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 776 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Ray, Color)
-/* 777 */ _CFFI_OP(_CFFI_OP_NOOP, 213),
-/* 778 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 779 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 780 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Rectangle, Color)
-/* 781 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 782 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 783 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 784 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Rectangle, Color, Color, Color, Color)
-/* 785 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 786 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 787 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 788 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 789 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 790 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 791 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Rectangle, Vector2, float, Color)
-/* 792 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 793 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 794 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 795 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 796 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 797 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Rectangle, float, int, Color)
-/* 798 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 799 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 800 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 801 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 802 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 803 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Rectangle, float, int, int, Color)
-/* 804 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 805 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 806 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 768 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Rectangle, Color, Color, Color, Color)
+/* 769 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 770 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 771 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 772 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 773 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 774 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 775 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Rectangle, Vector2, float, Color)
+/* 776 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 777 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 778 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 779 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 780 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 781 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Rectangle, float, int, Color)
+/* 782 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 783 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 784 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 785 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 786 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 787 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Rectangle, float, int, int, Color)
+/* 788 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 789 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 790 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 791 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 792 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 793 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 794 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Rectangle, int, Color)
+/* 795 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 796 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 797 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 798 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 799 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(RenderTexture2D)
+/* 800 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 20), // RenderTexture2D
+/* 801 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 802 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Shader)
+/* 803 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
+/* 804 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 805 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Shader, int, Matrix)
+/* 806 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
 /* 807 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 808 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 808 */ _CFFI_OP(_CFFI_OP_NOOP, 707),
 /* 809 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 810 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Rectangle, int, Color)
-/* 811 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 810 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Shader, int, Texture2D)
+/* 811 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
 /* 812 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 813 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 813 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
 /* 814 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 815 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(RenderTexture2D)
-/* 816 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 20), // RenderTexture2D
-/* 817 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 818 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Shader)
-/* 819 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
+/* 815 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Shader, int, void const *, int)
+/* 816 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
+/* 817 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 818 */ _CFFI_OP(_CFFI_OP_NOOP, 526),
+/* 819 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 820 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 821 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Shader, int, Matrix)
+/* 821 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Shader, int, void const *, int, int)
 /* 822 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
 /* 823 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 824 */ _CFFI_OP(_CFFI_OP_NOOP, 723),
-/* 825 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 826 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Shader, int, Texture2D)
-/* 827 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
-/* 828 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 829 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 824 */ _CFFI_OP(_CFFI_OP_NOOP, 526),
+/* 825 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 826 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 827 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 828 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Sound)
+/* 829 */ _CFFI_OP(_CFFI_OP_NOOP, 433),
 /* 830 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 831 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Shader, int, void const *, int)
-/* 832 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
-/* 833 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 834 */ _CFFI_OP(_CFFI_OP_NOOP, 542),
-/* 835 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 836 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 837 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Shader, int, void const *, int, int)
-/* 838 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
-/* 839 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 840 */ _CFFI_OP(_CFFI_OP_NOOP, 542),
-/* 841 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 842 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 843 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 844 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Sound)
-/* 845 */ _CFFI_OP(_CFFI_OP_NOOP, 350),
-/* 846 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 847 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Sound, float)
-/* 848 */ _CFFI_OP(_CFFI_OP_NOOP, 350),
-/* 849 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 850 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 851 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Sound, void const *, int)
-/* 852 */ _CFFI_OP(_CFFI_OP_NOOP, 350),
-/* 853 */ _CFFI_OP(_CFFI_OP_NOOP, 542),
-/* 854 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 855 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 856 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D *)
-/* 857 */ _CFFI_OP(_CFFI_OP_POINTER, 80), // Texture2D *
-/* 858 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 859 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D)
-/* 860 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 861 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 862 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, NPatchInfo, Rectangle, Vector2, float, Color)
-/* 863 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 864 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 16), // NPatchInfo
-/* 865 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 866 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 867 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 868 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 869 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 870 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, Rectangle)
-/* 871 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 872 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 873 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 874 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, Rectangle, Rectangle, Vector2, float, Color)
-/* 875 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 876 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 877 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 878 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 879 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 880 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 881 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 882 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, Rectangle, Vector2, Color)
-/* 883 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 884 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 885 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 886 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 887 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 888 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, Vector2, Color)
-/* 889 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 890 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 891 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 892 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 893 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, Vector2, Vector2, Rectangle, Color)
-/* 894 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 895 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 896 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 897 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
-/* 898 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 899 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 900 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, Vector2, float, float, Color)
-/* 901 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 902 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 903 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 904 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 905 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 906 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 907 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, Vector3, float, float, float, Color)
-/* 908 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 909 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 910 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 911 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 912 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 913 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 914 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 915 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, int)
-/* 916 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 917 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 918 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 919 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, int, int, Color)
-/* 920 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 921 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 922 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 923 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 924 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 925 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Texture2D, void const *)
-/* 926 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
-/* 927 */ _CFFI_OP(_CFFI_OP_NOOP, 542),
-/* 928 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 929 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector2 *, int, Color)
-/* 930 */ _CFFI_OP(_CFFI_OP_POINTER, 209), // Vector2 *
-/* 931 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 932 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 933 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 934 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector2, Color)
+/* 831 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Sound, float)
+/* 832 */ _CFFI_OP(_CFFI_OP_NOOP, 433),
+/* 833 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 834 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 835 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Sound, void const *, int)
+/* 836 */ _CFFI_OP(_CFFI_OP_NOOP, 433),
+/* 837 */ _CFFI_OP(_CFFI_OP_NOOP, 526),
+/* 838 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 839 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 840 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D *)
+/* 841 */ _CFFI_OP(_CFFI_OP_POINTER, 80), // Texture2D *
+/* 842 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 843 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D)
+/* 844 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 845 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 846 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, NPatchInfo, Rectangle, Vector2, float, Color)
+/* 847 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 848 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 16), // NPatchInfo
+/* 849 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 850 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 851 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 852 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 853 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 854 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, Rectangle)
+/* 855 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 856 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 857 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 858 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, Rectangle, Rectangle, Vector2, float, Color)
+/* 859 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 860 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 861 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 862 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 863 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 864 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 865 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 866 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, Rectangle, Vector2, Color)
+/* 867 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 868 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 869 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 870 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 871 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 872 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, Vector2, Color)
+/* 873 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 874 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 875 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 876 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 877 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, Vector2, Vector2, Rectangle, Color)
+/* 878 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 879 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 880 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 881 */ _CFFI_OP(_CFFI_OP_NOOP, 77),
+/* 882 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 883 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 884 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, Vector2, float, float, Color)
+/* 885 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 886 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 887 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 888 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 889 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 890 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 891 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, Vector3, float, float, float, Color)
+/* 892 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 893 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 894 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 895 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 896 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 897 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 898 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 899 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, int)
+/* 900 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 901 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 902 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 903 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, int, int, Color)
+/* 904 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 905 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 906 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 907 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 908 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 909 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Texture2D, void const *)
+/* 910 */ _CFFI_OP(_CFFI_OP_NOOP, 80),
+/* 911 */ _CFFI_OP(_CFFI_OP_NOOP, 526),
+/* 912 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 913 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector2 *, int, Color)
+/* 914 */ _CFFI_OP(_CFFI_OP_POINTER, 209), // Vector2 *
+/* 915 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 916 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 917 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 918 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector2, Color)
+/* 919 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 920 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 921 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 922 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector2, Vector2, Color)
+/* 923 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 924 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 925 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 926 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 927 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector2, Vector2, Vector2, Color)
+/* 928 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 929 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 930 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 931 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 932 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 933 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector2, Vector2, float, Color)
+/* 934 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
 /* 935 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 936 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 937 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 938 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector2, Vector2, Color)
-/* 939 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 936 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 937 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 938 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 939 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector2, float, Color)
 /* 940 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 941 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 942 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 943 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector2, Vector2, Vector2, Color)
-/* 944 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 941 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 942 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 943 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 944 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector2, float, float, int, int, int, Color)
 /* 945 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 946 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 947 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 948 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 949 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector2, Vector2, float, Color)
-/* 950 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 951 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 952 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 953 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 954 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 955 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector2, float, Color)
-/* 956 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 957 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 958 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 959 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 960 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector2, float, float, int, int, int, Color)
-/* 961 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 962 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 963 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 964 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 965 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 966 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 967 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 968 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 969 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector2, float, int, int, int, Color)
-/* 970 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 971 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 972 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 973 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 974 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 975 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 976 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 977 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector2, int, float, float, Color)
-/* 978 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 979 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 980 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 981 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 982 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 983 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 984 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector3)
-/* 985 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 986 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 987 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector3, Color)
-/* 988 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 989 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 990 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 991 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector3, Vector2, Color)
-/* 992 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 993 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
-/* 994 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 995 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 996 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector3, Vector3, Color)
-/* 997 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 946 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 947 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 948 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 949 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 950 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 951 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 952 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 953 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector2, float, int, int, int, Color)
+/* 954 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 955 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 956 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 957 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 958 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 959 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 960 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 961 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector2, int, float, float, Color)
+/* 962 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 963 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 964 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 965 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 966 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 967 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 968 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector3)
+/* 969 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 970 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 971 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector3, Color)
+/* 972 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 973 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 974 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 975 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector3, Vector2, Color)
+/* 976 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 977 */ _CFFI_OP(_CFFI_OP_NOOP, 209),
+/* 978 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 979 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 980 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector3, Vector3, Color)
+/* 981 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 982 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 983 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 984 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 985 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector3, float, Color)
+/* 986 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 987 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 988 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 989 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 990 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector3, float, Vector3, float, Color)
+/* 991 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 992 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 993 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 994 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 995 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 996 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 997 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector3, float, float, float, Color)
 /* 998 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 999 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1000 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1001 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector3, float, Color)
-/* 1002 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 1003 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1004 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1005 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1006 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector3, float, Vector3, float, Color)
-/* 1007 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 999 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1000 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1001 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1002 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1003 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1004 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector3, float, float, float, int, Color)
+/* 1005 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 1006 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1007 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
 /* 1008 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1009 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 1010 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1011 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1012 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1013 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector3, float, float, float, Color)
-/* 1014 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 1015 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1016 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1017 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1018 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1019 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1020 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector3, float, float, float, int, Color)
-/* 1021 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 1022 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1023 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1024 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1009 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1010 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1011 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1012 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Vector3, float, int, int, Color)
+/* 1013 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
+/* 1014 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1015 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1016 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1017 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1018 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1019 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(VrDeviceInfo, Shader)
+/* 1020 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 28), // VrDeviceInfo
+/* 1021 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
+/* 1022 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1023 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Wave *, int, int)
+/* 1024 */ _CFFI_OP(_CFFI_OP_POINTER, 245), // Wave *
 /* 1025 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1026 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1026 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1027 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1028 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Vector3, float, int, int, Color)
-/* 1029 */ _CFFI_OP(_CFFI_OP_NOOP, 28),
-/* 1030 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1028 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Wave *, int, int, int)
+/* 1029 */ _CFFI_OP(_CFFI_OP_NOOP, 1024),
+/* 1030 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1031 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1032 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1033 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1034 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1035 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(VrDeviceInfo, Shader)
-/* 1036 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 28), // VrDeviceInfo
-/* 1037 */ _CFFI_OP(_CFFI_OP_NOOP, 258),
-/* 1038 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1039 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Wave *, int, int)
-/* 1040 */ _CFFI_OP(_CFFI_OP_POINTER, 245), // Wave *
-/* 1041 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1042 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1043 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1044 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Wave *, int, int, int)
-/* 1045 */ _CFFI_OP(_CFFI_OP_NOOP, 1040),
-/* 1046 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1047 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1048 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1049 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1050 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Wave)
-/* 1051 */ _CFFI_OP(_CFFI_OP_NOOP, 245),
-/* 1052 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1053 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(Wave, char const *)
-/* 1054 */ _CFFI_OP(_CFFI_OP_NOOP, 245),
-/* 1055 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 1056 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1057 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(char *, char const *, int *)
-/* 1058 */ _CFFI_OP(_CFFI_OP_NOOP, 412),
-/* 1059 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 1060 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
-/* 1061 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1062 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(char const *)
-/* 1063 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 1064 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1065 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(char const *, int, int, int, Color)
-/* 1066 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 1033 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1034 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Wave)
+/* 1035 */ _CFFI_OP(_CFFI_OP_NOOP, 245),
+/* 1036 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1037 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(Wave, char const *)
+/* 1038 */ _CFFI_OP(_CFFI_OP_NOOP, 245),
+/* 1039 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 1040 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1041 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(char *, char const *, int *)
+/* 1042 */ _CFFI_OP(_CFFI_OP_NOOP, 319),
+/* 1043 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 1044 */ _CFFI_OP(_CFFI_OP_NOOP, 11),
+/* 1045 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1046 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(char const *)
+/* 1047 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 1048 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1049 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(char const *, int, int, int, Color)
+/* 1050 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 1051 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1052 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1053 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1054 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1055 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1056 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(float)
+/* 1057 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1058 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1059 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(float, float)
+/* 1060 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1061 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1062 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1063 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int)
+/* 1064 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1065 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1066 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, char const *, ...)
 /* 1067 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1068 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1069 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1070 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1071 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1072 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(float)
-/* 1073 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1074 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1075 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(float, float)
-/* 1076 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1077 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1078 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1079 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int)
+/* 1068 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 1069 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 1),
+/* 1070 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, float)
+/* 1071 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1072 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1073 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1074 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int)
+/* 1075 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1076 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1077 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1078 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int, Color)
+/* 1079 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1080 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1081 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1082 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, char const *, ...)
-/* 1083 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1084 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 1085 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 1),
-/* 1086 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, float)
-/* 1087 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1088 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1089 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1090 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int)
-/* 1091 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1092 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1081 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1082 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1083 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int, char const *)
+/* 1084 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1085 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1086 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
+/* 1087 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1088 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int, float, Color)
+/* 1089 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1090 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1091 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1092 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
 /* 1093 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1094 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int, Color)
+/* 1094 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int, float, Color, Color)
 /* 1095 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1096 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1097 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1098 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1099 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int, char const *)
-/* 1100 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1101 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1102 */ _CFFI_OP(_CFFI_OP_NOOP, 9),
-/* 1103 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1104 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int, float, Color)
-/* 1105 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1106 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1107 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1108 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1109 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1110 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int, float, Color, Color)
+/* 1097 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1098 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1099 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1100 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1101 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int, float, float, Color)
+/* 1102 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1103 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1104 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1105 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
+/* 1106 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1107 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1108 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int, int, int)
+/* 1109 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1110 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1111 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1112 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1113 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1114 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1115 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1116 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1117 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int, float, float, Color)
+/* 1113 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1114 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int, int, int, Color)
+/* 1115 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1116 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1117 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1118 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1119 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1120 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1121 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 13),
-/* 1122 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1123 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1124 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int, int, int)
+/* 1119 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1120 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1121 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int, int, int, Color, Color)
+/* 1122 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1123 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
+/* 1124 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1125 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1126 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1127 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1128 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1129 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1130 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int, int, int, Color)
+/* 1126 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1127 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1128 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1129 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(int, int, int, int, int, int)
+/* 1130 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1131 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1132 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1133 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1134 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1135 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
+/* 1135 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
 /* 1136 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1137 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int, int, int, Color, Color)
-/* 1138 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1139 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1140 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1141 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1142 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1143 */ _CFFI_OP(_CFFI_OP_NOOP, 24),
-/* 1144 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1145 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(int, int, int, int, int, int)
-/* 1146 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1147 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1148 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1149 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1150 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1151 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 7),
-/* 1152 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1153 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(unsigned int)
-/* 1154 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 8),
-/* 1155 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1156 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1208), // void()(void)
-/* 1157 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 1158 */ _CFFI_OP(_CFFI_OP_ENUM, 0), // AndroidButton
-/* 1159 */ _CFFI_OP(_CFFI_OP_ENUM, 1), // BlendMode
-/* 1160 */ _CFFI_OP(_CFFI_OP_POINTER, 1161), // BoneInfo *
-/* 1161 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 1), // BoneInfo
-/* 1162 */ _CFFI_OP(_CFFI_OP_ENUM, 2), // CameraMode
-/* 1163 */ _CFFI_OP(_CFFI_OP_ENUM, 3), // CameraType
-/* 1164 */ _CFFI_OP(_CFFI_OP_POINTER, 1165), // CharInfo *
-/* 1165 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 5), // CharInfo
-/* 1166 */ _CFFI_OP(_CFFI_OP_ENUM, 4), // ConfigFlag
-/* 1167 */ _CFFI_OP(_CFFI_OP_ENUM, 5), // CubemapLayoutType
-/* 1168 */ _CFFI_OP(_CFFI_OP_ENUM, 6), // FontType
-/* 1169 */ _CFFI_OP(_CFFI_OP_ENUM, 7), // GamepadAxis
-/* 1170 */ _CFFI_OP(_CFFI_OP_ENUM, 8), // GamepadButton
-/* 1171 */ _CFFI_OP(_CFFI_OP_ENUM, 9), // GamepadNumber
-/* 1172 */ _CFFI_OP(_CFFI_OP_ENUM, 10), // GestureType
-/* 1173 */ _CFFI_OP(_CFFI_OP_ENUM, 11), // KeyboardKey
-/* 1174 */ _CFFI_OP(_CFFI_OP_POINTER, 1175), // MaterialMap *
-/* 1175 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 10), // MaterialMap
-/* 1176 */ _CFFI_OP(_CFFI_OP_ENUM, 12), // MaterialMapType
-/* 1177 */ _CFFI_OP(_CFFI_OP_POINTER, 325), // ModelAnimation *
-/* 1178 */ _CFFI_OP(_CFFI_OP_ENUM, 13), // MouseButton
-/* 1179 */ _CFFI_OP(_CFFI_OP_ENUM, 14), // NPatchType
-/* 1180 */ _CFFI_OP(_CFFI_OP_ENUM, 15), // PixelFormat
-/* 1181 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 18), // RayHitInfo
-/* 1182 */ _CFFI_OP(_CFFI_OP_POINTER, 77), // Rectangle *
-/* 1183 */ _CFFI_OP(_CFFI_OP_ENUM, 16), // ShaderLocationIndex
-/* 1184 */ _CFFI_OP(_CFFI_OP_ENUM, 17), // ShaderUniformDataType
-/* 1185 */ _CFFI_OP(_CFFI_OP_ENUM, 18), // TextureFilterMode
-/* 1186 */ _CFFI_OP(_CFFI_OP_ENUM, 19), // TextureWrapMode
-/* 1187 */ _CFFI_OP(_CFFI_OP_ENUM, 20), // TraceLogType
-/* 1188 */ _CFFI_OP(_CFFI_OP_POINTER, 1189), // Transform * *
-/* 1189 */ _CFFI_OP(_CFFI_OP_POINTER, 1190), // Transform *
-/* 1190 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 24), // Transform
-/* 1191 */ _CFFI_OP(_CFFI_OP_POINTER, 31), // Vector4 *
-/* 1192 */ _CFFI_OP(_CFFI_OP_POINTER, 412), // char * *
-/* 1193 */ _CFFI_OP(_CFFI_OP_POINTER, 441), // char const *(*)(char const *, ...)
-/* 1194 */ _CFFI_OP(_CFFI_OP_ARRAY, 430), // char[32]
-/* 1195 */ (_cffi_opcode_t)(32),
-/* 1196 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14), // double
-/* 1197 */ _CFFI_OP(_CFFI_OP_POINTER, 25), // float *
-/* 1198 */ _CFFI_OP(_CFFI_OP_ARRAY, 25), // float[4]
-/* 1199 */ (_cffi_opcode_t)(4),
-/* 1200 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 9), // long
-/* 1201 */ _CFFI_OP(_CFFI_OP_POINTER, 1202), // rAudioBuffer *
-/* 1202 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 30), // rAudioBuffer
-/* 1203 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 4), // unsigned char
-/* 1204 */ _CFFI_OP(_CFFI_OP_POINTER, 1), // unsigned int *
-/* 1205 */ _CFFI_OP(_CFFI_OP_POINTER, 1206), // unsigned short *
-/* 1206 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 6), // unsigned short
-/* 1207 */ _CFFI_OP(_CFFI_OP_POINTER, 1082), // void(*)(int, char const *, ...)
-/* 1208 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 0), // void
+/* 1137 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(unsigned int)
+/* 1138 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 8),
+/* 1139 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1140 */ _CFFI_OP(_CFFI_OP_FUNCTION, 1192), // void()(void)
+/* 1141 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 1142 */ _CFFI_OP(_CFFI_OP_ENUM, 0), // AndroidButton
+/* 1143 */ _CFFI_OP(_CFFI_OP_ENUM, 1), // BlendMode
+/* 1144 */ _CFFI_OP(_CFFI_OP_POINTER, 1145), // BoneInfo *
+/* 1145 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 1), // BoneInfo
+/* 1146 */ _CFFI_OP(_CFFI_OP_ENUM, 2), // CameraMode
+/* 1147 */ _CFFI_OP(_CFFI_OP_ENUM, 3), // CameraType
+/* 1148 */ _CFFI_OP(_CFFI_OP_POINTER, 1149), // CharInfo *
+/* 1149 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 5), // CharInfo
+/* 1150 */ _CFFI_OP(_CFFI_OP_ENUM, 4), // ConfigFlag
+/* 1151 */ _CFFI_OP(_CFFI_OP_ENUM, 5), // CubemapLayoutType
+/* 1152 */ _CFFI_OP(_CFFI_OP_ENUM, 6), // FontType
+/* 1153 */ _CFFI_OP(_CFFI_OP_ENUM, 7), // GamepadAxis
+/* 1154 */ _CFFI_OP(_CFFI_OP_ENUM, 8), // GamepadButton
+/* 1155 */ _CFFI_OP(_CFFI_OP_ENUM, 9), // GamepadNumber
+/* 1156 */ _CFFI_OP(_CFFI_OP_ENUM, 10), // GestureType
+/* 1157 */ _CFFI_OP(_CFFI_OP_ENUM, 11), // KeyboardKey
+/* 1158 */ _CFFI_OP(_CFFI_OP_POINTER, 1159), // MaterialMap *
+/* 1159 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 10), // MaterialMap
+/* 1160 */ _CFFI_OP(_CFFI_OP_ENUM, 12), // MaterialMapType
+/* 1161 */ _CFFI_OP(_CFFI_OP_POINTER, 404), // ModelAnimation *
+/* 1162 */ _CFFI_OP(_CFFI_OP_ENUM, 13), // MouseButton
+/* 1163 */ _CFFI_OP(_CFFI_OP_ENUM, 14), // NPatchType
+/* 1164 */ _CFFI_OP(_CFFI_OP_ENUM, 15), // PixelFormat
+/* 1165 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 18), // RayHitInfo
+/* 1166 */ _CFFI_OP(_CFFI_OP_POINTER, 77), // Rectangle *
+/* 1167 */ _CFFI_OP(_CFFI_OP_ENUM, 16), // ShaderLocationIndex
+/* 1168 */ _CFFI_OP(_CFFI_OP_ENUM, 17), // ShaderUniformDataType
+/* 1169 */ _CFFI_OP(_CFFI_OP_ENUM, 18), // TextureFilterMode
+/* 1170 */ _CFFI_OP(_CFFI_OP_ENUM, 19), // TextureWrapMode
+/* 1171 */ _CFFI_OP(_CFFI_OP_ENUM, 20), // TraceLogType
+/* 1172 */ _CFFI_OP(_CFFI_OP_POINTER, 1173), // Transform * *
+/* 1173 */ _CFFI_OP(_CFFI_OP_POINTER, 1174), // Transform *
+/* 1174 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 24), // Transform
+/* 1175 */ _CFFI_OP(_CFFI_OP_POINTER, 31), // Vector4 *
+/* 1176 */ _CFFI_OP(_CFFI_OP_POINTER, 319), // char * *
+/* 1177 */ _CFFI_OP(_CFFI_OP_POINTER, 348), // char const *(*)(char const *, ...)
+/* 1178 */ _CFFI_OP(_CFFI_OP_ARRAY, 337), // char[32]
+/* 1179 */ (_cffi_opcode_t)(32),
+/* 1180 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14), // double
+/* 1181 */ _CFFI_OP(_CFFI_OP_POINTER, 25), // float *
+/* 1182 */ _CFFI_OP(_CFFI_OP_ARRAY, 25), // float[4]
+/* 1183 */ (_cffi_opcode_t)(4),
+/* 1184 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 9), // long
+/* 1185 */ _CFFI_OP(_CFFI_OP_POINTER, 1186), // rAudioBuffer *
+/* 1186 */ _CFFI_OP(_CFFI_OP_STRUCT_UNION, 30), // rAudioBuffer
+/* 1187 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 4), // unsigned char
+/* 1188 */ _CFFI_OP(_CFFI_OP_POINTER, 1), // unsigned int *
+/* 1189 */ _CFFI_OP(_CFFI_OP_POINTER, 1190), // unsigned short *
+/* 1190 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 6), // unsigned short
+/* 1191 */ _CFFI_OP(_CFFI_OP_POINTER, 1066), // void(*)(int, char const *, ...)
+/* 1192 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 0), // void
 };
 
 static int _cffi_const_KEY_BACK(unsigned long long *o)
@@ -3826,7 +3810,7 @@ _cffi_f_BeginTextureMode(PyObject *self, PyObject *arg0)
 {
   RenderTexture2D x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(816), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(800), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -3870,7 +3854,7 @@ _cffi_f_BeginVrDrawing(PyObject *self, PyObject *noarg)
 #  define _cffi_f_BeginVrDrawing _cffi_d_BeginVrDrawing
 #endif
 
-static _Bool _cffi_d_ChangeDirectory(char const * x0)
+static int _cffi_d_ChangeDirectory(char const * x0)
 {
   return ChangeDirectory(x0);
 }
@@ -3881,7 +3865,7 @@ _cffi_f_ChangeDirectory(PyObject *self, PyObject *arg0)
   char const * x0;
   Py_ssize_t datasize;
   struct _cffi_freeme_s *large_args_free = NULL;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   datasize = _cffi_prepare_pointer_call_argument(
@@ -3900,7 +3884,7 @@ _cffi_f_ChangeDirectory(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -3908,7 +3892,7 @@ _cffi_f_ChangeDirectory(PyObject *self, PyObject *arg0)
 #  define _cffi_f_ChangeDirectory _cffi_d_ChangeDirectory
 #endif
 
-static _Bool _cffi_d_CheckCollisionBoxSphere(BoundingBox x0, Vector3 x1, float x2)
+static int _cffi_d_CheckCollisionBoxSphere(BoundingBox x0, Vector3 x1, float x2)
 {
   return CheckCollisionBoxSphere(x0, x1, x2);
 }
@@ -3919,7 +3903,7 @@ _cffi_f_CheckCollisionBoxSphere(PyObject *self, PyObject *args)
   BoundingBox x0;
   Vector3 x1;
   float x2;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -3928,7 +3912,7 @@ _cffi_f_CheckCollisionBoxSphere(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "CheckCollisionBoxSphere", 3, 3, &arg0, &arg1, &arg2))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(315), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(387), arg0) < 0)
     return NULL;
 
   if (_cffi_to_c((char *)&x1, _cffi_type(28), arg1) < 0)
@@ -3945,19 +3929,19 @@ _cffi_f_CheckCollisionBoxSphere(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionBoxSphere(BoundingBox *x0, Vector3 *x1, float x2)
+static int _cffi_f_CheckCollisionBoxSphere(BoundingBox *x0, Vector3 *x1, float x2)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionBoxSphere(*x0, *x1, x2); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionBoxes(BoundingBox x0, BoundingBox x1)
+static int _cffi_d_CheckCollisionBoxes(BoundingBox x0, BoundingBox x1)
 {
   return CheckCollisionBoxes(x0, x1);
 }
@@ -3967,7 +3951,7 @@ _cffi_f_CheckCollisionBoxes(PyObject *self, PyObject *args)
 {
   BoundingBox x0;
   BoundingBox x1;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -3975,10 +3959,10 @@ _cffi_f_CheckCollisionBoxes(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "CheckCollisionBoxes", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(315), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(387), arg0) < 0)
     return NULL;
 
-  if (_cffi_to_c((char *)&x1, _cffi_type(315), arg1) < 0)
+  if (_cffi_to_c((char *)&x1, _cffi_type(387), arg1) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -3988,19 +3972,19 @@ _cffi_f_CheckCollisionBoxes(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionBoxes(BoundingBox *x0, BoundingBox *x1)
+static int _cffi_f_CheckCollisionBoxes(BoundingBox *x0, BoundingBox *x1)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionBoxes(*x0, *x1); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionCircleRec(Vector2 x0, float x1, Rectangle x2)
+static int _cffi_d_CheckCollisionCircleRec(Vector2 x0, float x1, Rectangle x2)
 {
   return CheckCollisionCircleRec(x0, x1, x2);
 }
@@ -4011,7 +3995,7 @@ _cffi_f_CheckCollisionCircleRec(PyObject *self, PyObject *args)
   Vector2 x0;
   float x1;
   Rectangle x2;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4037,19 +4021,19 @@ _cffi_f_CheckCollisionCircleRec(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionCircleRec(Vector2 *x0, float x1, Rectangle *x2)
+static int _cffi_f_CheckCollisionCircleRec(Vector2 *x0, float x1, Rectangle *x2)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionCircleRec(*x0, x1, *x2); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionCircles(Vector2 x0, float x1, Vector2 x2, float x3)
+static int _cffi_d_CheckCollisionCircles(Vector2 x0, float x1, Vector2 x2, float x3)
 {
   return CheckCollisionCircles(x0, x1, x2, x3);
 }
@@ -4061,7 +4045,7 @@ _cffi_f_CheckCollisionCircles(PyObject *self, PyObject *args)
   float x1;
   Vector2 x2;
   float x3;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4092,19 +4076,19 @@ _cffi_f_CheckCollisionCircles(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionCircles(Vector2 *x0, float x1, Vector2 *x2, float x3)
+static int _cffi_f_CheckCollisionCircles(Vector2 *x0, float x1, Vector2 *x2, float x3)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionCircles(*x0, x1, *x2, x3); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionPointCircle(Vector2 x0, Vector2 x1, float x2)
+static int _cffi_d_CheckCollisionPointCircle(Vector2 x0, Vector2 x1, float x2)
 {
   return CheckCollisionPointCircle(x0, x1, x2);
 }
@@ -4115,7 +4099,7 @@ _cffi_f_CheckCollisionPointCircle(PyObject *self, PyObject *args)
   Vector2 x0;
   Vector2 x1;
   float x2;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4141,19 +4125,19 @@ _cffi_f_CheckCollisionPointCircle(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionPointCircle(Vector2 *x0, Vector2 *x1, float x2)
+static int _cffi_f_CheckCollisionPointCircle(Vector2 *x0, Vector2 *x1, float x2)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionPointCircle(*x0, *x1, x2); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionPointRec(Vector2 x0, Rectangle x1)
+static int _cffi_d_CheckCollisionPointRec(Vector2 x0, Rectangle x1)
 {
   return CheckCollisionPointRec(x0, x1);
 }
@@ -4163,7 +4147,7 @@ _cffi_f_CheckCollisionPointRec(PyObject *self, PyObject *args)
 {
   Vector2 x0;
   Rectangle x1;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4184,19 +4168,19 @@ _cffi_f_CheckCollisionPointRec(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionPointRec(Vector2 *x0, Rectangle *x1)
+static int _cffi_f_CheckCollisionPointRec(Vector2 *x0, Rectangle *x1)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionPointRec(*x0, *x1); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionPointTriangle(Vector2 x0, Vector2 x1, Vector2 x2, Vector2 x3)
+static int _cffi_d_CheckCollisionPointTriangle(Vector2 x0, Vector2 x1, Vector2 x2, Vector2 x3)
 {
   return CheckCollisionPointTriangle(x0, x1, x2, x3);
 }
@@ -4208,7 +4192,7 @@ _cffi_f_CheckCollisionPointTriangle(PyObject *self, PyObject *args)
   Vector2 x1;
   Vector2 x2;
   Vector2 x3;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4237,19 +4221,19 @@ _cffi_f_CheckCollisionPointTriangle(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionPointTriangle(Vector2 *x0, Vector2 *x1, Vector2 *x2, Vector2 *x3)
+static int _cffi_f_CheckCollisionPointTriangle(Vector2 *x0, Vector2 *x1, Vector2 *x2, Vector2 *x3)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionPointTriangle(*x0, *x1, *x2, *x3); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionRayBox(Ray x0, BoundingBox x1)
+static int _cffi_d_CheckCollisionRayBox(Ray x0, BoundingBox x1)
 {
   return CheckCollisionRayBox(x0, x1);
 }
@@ -4259,7 +4243,7 @@ _cffi_f_CheckCollisionRayBox(PyObject *self, PyObject *args)
 {
   Ray x0;
   BoundingBox x1;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4270,7 +4254,7 @@ _cffi_f_CheckCollisionRayBox(PyObject *self, PyObject *args)
   if (_cffi_to_c((char *)&x0, _cffi_type(213), arg0) < 0)
     return NULL;
 
-  if (_cffi_to_c((char *)&x1, _cffi_type(315), arg1) < 0)
+  if (_cffi_to_c((char *)&x1, _cffi_type(387), arg1) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -4280,19 +4264,19 @@ _cffi_f_CheckCollisionRayBox(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionRayBox(Ray *x0, BoundingBox *x1)
+static int _cffi_f_CheckCollisionRayBox(Ray *x0, BoundingBox *x1)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionRayBox(*x0, *x1); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionRaySphere(Ray x0, Vector3 x1, float x2)
+static int _cffi_d_CheckCollisionRaySphere(Ray x0, Vector3 x1, float x2)
 {
   return CheckCollisionRaySphere(x0, x1, x2);
 }
@@ -4303,7 +4287,7 @@ _cffi_f_CheckCollisionRaySphere(PyObject *self, PyObject *args)
   Ray x0;
   Vector3 x1;
   float x2;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4329,19 +4313,19 @@ _cffi_f_CheckCollisionRaySphere(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionRaySphere(Ray *x0, Vector3 *x1, float x2)
+static int _cffi_f_CheckCollisionRaySphere(Ray *x0, Vector3 *x1, float x2)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionRaySphere(*x0, *x1, x2); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionRaySphereEx(Ray x0, Vector3 x1, float x2, Vector3 * x3)
+static int _cffi_d_CheckCollisionRaySphereEx(Ray x0, Vector3 x1, float x2, Vector3 * x3)
 {
   return CheckCollisionRaySphereEx(x0, x1, x2, x3);
 }
@@ -4355,7 +4339,7 @@ _cffi_f_CheckCollisionRaySphereEx(PyObject *self, PyObject *args)
   Vector3 * x3;
   Py_ssize_t datasize;
   struct _cffi_freeme_s *large_args_free = NULL;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4376,10 +4360,10 @@ _cffi_f_CheckCollisionRaySphereEx(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(343), arg3, (char **)&x3);
+      _cffi_type(422), arg3, (char **)&x3);
   if (datasize != 0) {
     x3 = ((size_t)datasize) <= 640 ? (Vector3 *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(343), arg3, (char **)&x3,
+    if (_cffi_convert_array_argument(_cffi_type(422), arg3, (char **)&x3,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -4391,20 +4375,20 @@ _cffi_f_CheckCollisionRaySphereEx(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionRaySphereEx(Ray *x0, Vector3 *x1, float x2, Vector3 * x3)
+static int _cffi_f_CheckCollisionRaySphereEx(Ray *x0, Vector3 *x1, float x2, Vector3 * x3)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionRaySphereEx(*x0, *x1, x2, x3); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionRecs(Rectangle x0, Rectangle x1)
+static int _cffi_d_CheckCollisionRecs(Rectangle x0, Rectangle x1)
 {
   return CheckCollisionRecs(x0, x1);
 }
@@ -4414,7 +4398,7 @@ _cffi_f_CheckCollisionRecs(PyObject *self, PyObject *args)
 {
   Rectangle x0;
   Rectangle x1;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4435,19 +4419,19 @@ _cffi_f_CheckCollisionRecs(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionRecs(Rectangle *x0, Rectangle *x1)
+static int _cffi_f_CheckCollisionRecs(Rectangle *x0, Rectangle *x1)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionRecs(*x0, *x1); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_CheckCollisionSpheres(Vector3 x0, float x1, Vector3 x2, float x3)
+static int _cffi_d_CheckCollisionSpheres(Vector3 x0, float x1, Vector3 x2, float x3)
 {
   return CheckCollisionSpheres(x0, x1, x2, x3);
 }
@@ -4459,7 +4443,7 @@ _cffi_f_CheckCollisionSpheres(PyObject *self, PyObject *args)
   float x1;
   Vector3 x2;
   float x3;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -4490,13 +4474,13 @@ _cffi_f_CheckCollisionSpheres(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_CheckCollisionSpheres(Vector3 *x0, float x1, Vector3 *x2, float x3)
+static int _cffi_f_CheckCollisionSpheres(Vector3 *x0, float x1, Vector3 *x2, float x3)
 {
-  _Bool result;
+  int result;
   { result = CheckCollisionSpheres(*x0, x1, *x2, x3); }
   return result;
 }
@@ -4614,7 +4598,7 @@ _cffi_f_CloseAudioStream(PyObject *self, PyObject *arg0)
 {
   AudioStream x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -4915,10 +4899,10 @@ _cffi_f_CompressData(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(524), arg0, (char **)&x0);
+      _cffi_type(508), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (unsigned char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(524), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(508), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -4943,7 +4927,7 @@ _cffi_f_CompressData(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(524));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(508));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -4974,10 +4958,10 @@ _cffi_f_DecompressData(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(524), arg0, (char **)&x0);
+      _cffi_type(508), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (unsigned char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(524), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(508), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -5002,7 +4986,7 @@ _cffi_f_DecompressData(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(524));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(508));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -5010,7 +4994,7 @@ _cffi_f_DecompressData(PyObject *self, PyObject *args)
 #  define _cffi_f_DecompressData _cffi_d_DecompressData
 #endif
 
-static _Bool _cffi_d_DirectoryExists(char const * x0)
+static int _cffi_d_DirectoryExists(char const * x0)
 {
   return DirectoryExists(x0);
 }
@@ -5021,7 +5005,7 @@ _cffi_f_DirectoryExists(PyObject *self, PyObject *arg0)
   char const * x0;
   Py_ssize_t datasize;
   struct _cffi_freeme_s *large_args_free = NULL;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   datasize = _cffi_prepare_pointer_call_argument(
@@ -5040,7 +5024,7 @@ _cffi_f_DirectoryExists(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -5203,7 +5187,7 @@ _cffi_f_DrawBoundingBox(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "DrawBoundingBox", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(315), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(387), arg0) < 0)
     return NULL;
 
   if (_cffi_to_c((char *)&x1, _cffi_type(24), arg1) < 0)
@@ -6449,10 +6433,10 @@ _cffi_f_DrawLineStrip(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(930), arg0, (char **)&x0);
+      _cffi_type(914), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Vector2 *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(930), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(914), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -8138,7 +8122,7 @@ static void _cffi_f_DrawTextEx(Font *x0, char const * x1, Vector2 *x2, float x3,
 }
 #endif
 
-static void _cffi_d_DrawTextRec(Font x0, char const * x1, Rectangle x2, float x3, float x4, _Bool x5, Color x6)
+static void _cffi_d_DrawTextRec(Font x0, char const * x1, Rectangle x2, float x3, float x4, int x5, Color x6)
 {
   DrawTextRec(x0, x1, x2, x3, x4, x5, x6);
 }
@@ -8151,7 +8135,7 @@ _cffi_f_DrawTextRec(PyObject *self, PyObject *args)
   Rectangle x2;
   float x3;
   float x4;
-  _Bool x5;
+  int x5;
   Color x6;
   Py_ssize_t datasize;
   struct _cffi_freeme_s *large_args_free = NULL;
@@ -8189,8 +8173,8 @@ _cffi_f_DrawTextRec(PyObject *self, PyObject *args)
   if (x4 == (float)-1 && PyErr_Occurred())
     return NULL;
 
-  x5 = (_Bool)_cffi_to_c__Bool(arg5);
-  if (x5 == (_Bool)-1 && PyErr_Occurred())
+  x5 = _cffi_to_c_int(arg5, int);
+  if (x5 == (int)-1 && PyErr_Occurred())
     return NULL;
 
   if (_cffi_to_c((char *)&x6, _cffi_type(24), arg6) < 0)
@@ -8208,13 +8192,13 @@ _cffi_f_DrawTextRec(PyObject *self, PyObject *args)
   return Py_None;
 }
 #else
-static void _cffi_f_DrawTextRec(Font *x0, char const * x1, Rectangle *x2, float x3, float x4, _Bool x5, Color *x6)
+static void _cffi_f_DrawTextRec(Font *x0, char const * x1, Rectangle *x2, float x3, float x4, int x5, Color *x6)
 {
   { DrawTextRec(*x0, x1, *x2, x3, x4, x5, *x6); }
 }
 #endif
 
-static void _cffi_d_DrawTextRecEx(Font x0, char const * x1, Rectangle x2, float x3, float x4, _Bool x5, Color x6, int x7, int x8, Color x9, Color x10)
+static void _cffi_d_DrawTextRecEx(Font x0, char const * x1, Rectangle x2, float x3, float x4, int x5, Color x6, int x7, int x8, Color x9, Color x10)
 {
   DrawTextRecEx(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10);
 }
@@ -8227,7 +8211,7 @@ _cffi_f_DrawTextRecEx(PyObject *self, PyObject *args)
   Rectangle x2;
   float x3;
   float x4;
-  _Bool x5;
+  int x5;
   Color x6;
   int x7;
   int x8;
@@ -8273,8 +8257,8 @@ _cffi_f_DrawTextRecEx(PyObject *self, PyObject *args)
   if (x4 == (float)-1 && PyErr_Occurred())
     return NULL;
 
-  x5 = (_Bool)_cffi_to_c__Bool(arg5);
-  if (x5 == (_Bool)-1 && PyErr_Occurred())
+  x5 = _cffi_to_c_int(arg5, int);
+  if (x5 == (int)-1 && PyErr_Occurred())
     return NULL;
 
   if (_cffi_to_c((char *)&x6, _cffi_type(24), arg6) < 0)
@@ -8306,7 +8290,7 @@ _cffi_f_DrawTextRecEx(PyObject *self, PyObject *args)
   return Py_None;
 }
 #else
-static void _cffi_f_DrawTextRecEx(Font *x0, char const * x1, Rectangle *x2, float x3, float x4, _Bool x5, Color *x6, int x7, int x8, Color *x9, Color *x10)
+static void _cffi_f_DrawTextRecEx(Font *x0, char const * x1, Rectangle *x2, float x3, float x4, int x5, Color *x6, int x7, int x8, Color *x9, Color *x10)
 {
   { DrawTextRecEx(*x0, x1, *x2, x3, x4, x5, *x6, x7, x8, *x9, *x10); }
 }
@@ -8446,7 +8430,7 @@ _cffi_f_DrawTextureNPatch(PyObject *self, PyObject *args)
   if (_cffi_to_c((char *)&x0, _cffi_type(80), arg0) < 0)
     return NULL;
 
-  if (_cffi_to_c((char *)&x1, _cffi_type(864), arg1) < 0)
+  if (_cffi_to_c((char *)&x1, _cffi_type(848), arg1) < 0)
     return NULL;
 
   if (_cffi_to_c((char *)&x2, _cffi_type(77), arg2) < 0)
@@ -8756,10 +8740,10 @@ _cffi_f_DrawTriangleFan(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(930), arg0, (char **)&x0);
+      _cffi_type(914), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Vector2 *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(930), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(914), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -8859,10 +8843,10 @@ _cffi_f_DrawTriangleStrip(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(930), arg0, (char **)&x0);
+      _cffi_type(914), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Vector2 *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(930), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(914), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -9390,7 +9374,7 @@ static void _cffi_f_Fade(Color *result, Color *x0, float x1)
 }
 #endif
 
-static _Bool _cffi_d_FileExists(char const * x0)
+static int _cffi_d_FileExists(char const * x0)
 {
   return FileExists(x0);
 }
@@ -9401,7 +9385,7 @@ _cffi_f_FileExists(PyObject *self, PyObject *arg0)
   char const * x0;
   Py_ssize_t datasize;
   struct _cffi_freeme_s *large_args_free = NULL;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   datasize = _cffi_prepare_pointer_call_argument(
@@ -9420,7 +9404,7 @@ _cffi_f_FileExists(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -10580,10 +10564,10 @@ _cffi_f_GenTextureMipmaps(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(857), arg0, (char **)&x0);
+      _cffi_type(841), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Texture2D *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(857), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(841), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -10672,7 +10656,7 @@ _cffi_f_GetCameraMatrix(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(723));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(707));
   return pyresult;
 }
 #else
@@ -10704,7 +10688,7 @@ _cffi_f_GetCameraMatrix2D(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(723));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(707));
   return pyresult;
 }
 #else
@@ -10863,7 +10847,7 @@ _cffi_f_GetCollisionRayGround(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(1181));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(1165));
   return pyresult;
 }
 #else
@@ -10904,7 +10888,7 @@ _cffi_f_GetCollisionRayModel(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(1181));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(1165));
   return pyresult;
 }
 #else
@@ -10955,7 +10939,7 @@ _cffi_f_GetCollisionRayTriangle(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(1181));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(1165));
   return pyresult;
 }
 #else
@@ -11084,7 +11068,7 @@ _cffi_f_GetDirectoryFiles(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1192));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1176));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -11160,7 +11144,7 @@ _cffi_f_GetDroppedFiles(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1192));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1176));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -11831,7 +11815,7 @@ _cffi_f_GetImageDataNormalized(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1191));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1175));
   return pyresult;
 }
 #else
@@ -11888,7 +11872,7 @@ _cffi_f_GetMatrixModelview(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(723));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(707));
   return pyresult;
 }
 #else
@@ -11917,7 +11901,7 @@ _cffi_f_GetMatrixProjection(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(723));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(707));
   return pyresult;
 }
 #else
@@ -12263,7 +12247,7 @@ _cffi_f_GetMusicTimeLength(PyObject *self, PyObject *arg0)
   float result;
   PyObject *pyresult;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -12297,7 +12281,7 @@ _cffi_f_GetMusicTimePlayed(PyObject *self, PyObject *arg0)
   float result;
   PyObject *pyresult;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -12945,7 +12929,7 @@ _cffi_f_GetWaveData(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1197));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1181));
   return pyresult;
 }
 #else
@@ -13242,10 +13226,10 @@ _cffi_f_ImageAlphaClear(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13294,10 +13278,10 @@ _cffi_f_ImageAlphaCrop(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13340,10 +13324,10 @@ _cffi_f_ImageAlphaMask(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13382,10 +13366,10 @@ _cffi_f_ImageAlphaPremultiply(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13424,10 +13408,10 @@ _cffi_f_ImageColorBrightness(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13470,10 +13454,10 @@ _cffi_f_ImageColorContrast(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13510,10 +13494,10 @@ _cffi_f_ImageColorGrayscale(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13546,10 +13530,10 @@ _cffi_f_ImageColorInvert(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13590,10 +13574,10 @@ _cffi_f_ImageColorReplace(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13641,10 +13625,10 @@ _cffi_f_ImageColorTint(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13721,10 +13705,10 @@ _cffi_f_ImageCrop(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13775,10 +13759,10 @@ _cffi_f_ImageDither(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13839,10 +13823,10 @@ _cffi_f_ImageDraw(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13898,10 +13882,10 @@ _cffi_f_ImageDrawRectangle(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -13953,10 +13937,10 @@ _cffi_f_ImageDrawRectangleLines(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14014,10 +13998,10 @@ _cffi_f_ImageDrawText(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14088,10 +14072,10 @@ _cffi_f_ImageDrawTextEx(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14211,10 +14195,10 @@ _cffi_f_ImageFlipHorizontal(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14247,10 +14231,10 @@ _cffi_f_ImageFlipVertical(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14289,10 +14273,10 @@ _cffi_f_ImageFormat(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14370,10 +14354,10 @@ _cffi_f_ImageMipmaps(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14414,10 +14398,10 @@ _cffi_f_ImageResize(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14472,10 +14456,10 @@ _cffi_f_ImageResizeCanvas(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14538,10 +14522,10 @@ _cffi_f_ImageResizeNN(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14582,10 +14566,10 @@ _cffi_f_ImageRotateCCW(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14618,10 +14602,10 @@ _cffi_f_ImageRotateCW(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14783,10 +14767,10 @@ _cffi_f_ImageToPOT(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(621), arg0, (char **)&x0);
+      _cffi_type(605), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Image *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(621), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(605), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -14875,7 +14859,7 @@ _cffi_f_InitAudioStream(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(312));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(384));
   return pyresult;
 }
 #else
@@ -14961,7 +14945,7 @@ _cffi_f_InitWindow(PyObject *self, PyObject *args)
 #  define _cffi_f_InitWindow _cffi_d_InitWindow
 #endif
 
-static _Bool _cffi_d_IsAudioDeviceReady(void)
+static int _cffi_d_IsAudioDeviceReady(void)
 {
   return IsAudioDeviceReady();
 }
@@ -14969,7 +14953,7 @@ static _Bool _cffi_d_IsAudioDeviceReady(void)
 static PyObject *
 _cffi_f_IsAudioDeviceReady(PyObject *self, PyObject *noarg)
 {
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
@@ -14980,14 +14964,14 @@ _cffi_f_IsAudioDeviceReady(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsAudioDeviceReady _cffi_d_IsAudioDeviceReady
 #endif
 
-static _Bool _cffi_d_IsAudioStreamPlaying(AudioStream x0)
+static int _cffi_d_IsAudioStreamPlaying(AudioStream x0)
 {
   return IsAudioStreamPlaying(x0);
 }
@@ -14996,10 +14980,10 @@ static PyObject *
 _cffi_f_IsAudioStreamPlaying(PyObject *self, PyObject *arg0)
 {
   AudioStream x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15009,19 +14993,19 @@ _cffi_f_IsAudioStreamPlaying(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_IsAudioStreamPlaying(AudioStream *x0)
+static int _cffi_f_IsAudioStreamPlaying(AudioStream *x0)
 {
-  _Bool result;
+  int result;
   { result = IsAudioStreamPlaying(*x0); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_IsAudioStreamProcessed(AudioStream x0)
+static int _cffi_d_IsAudioStreamProcessed(AudioStream x0)
 {
   return IsAudioStreamProcessed(x0);
 }
@@ -15030,10 +15014,10 @@ static PyObject *
 _cffi_f_IsAudioStreamProcessed(PyObject *self, PyObject *arg0)
 {
   AudioStream x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15043,19 +15027,19 @@ _cffi_f_IsAudioStreamProcessed(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_IsAudioStreamProcessed(AudioStream *x0)
+static int _cffi_f_IsAudioStreamProcessed(AudioStream *x0)
 {
-  _Bool result;
+  int result;
   { result = IsAudioStreamProcessed(*x0); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_IsCursorHidden(void)
+static int _cffi_d_IsCursorHidden(void)
 {
   return IsCursorHidden();
 }
@@ -15063,7 +15047,7 @@ static _Bool _cffi_d_IsCursorHidden(void)
 static PyObject *
 _cffi_f_IsCursorHidden(PyObject *self, PyObject *noarg)
 {
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15074,14 +15058,14 @@ _cffi_f_IsCursorHidden(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsCursorHidden _cffi_d_IsCursorHidden
 #endif
 
-static _Bool _cffi_d_IsFileDropped(void)
+static int _cffi_d_IsFileDropped(void)
 {
   return IsFileDropped();
 }
@@ -15089,7 +15073,7 @@ static _Bool _cffi_d_IsFileDropped(void)
 static PyObject *
 _cffi_f_IsFileDropped(PyObject *self, PyObject *noarg)
 {
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15100,14 +15084,14 @@ _cffi_f_IsFileDropped(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsFileDropped _cffi_d_IsFileDropped
 #endif
 
-static _Bool _cffi_d_IsFileExtension(char const * x0, char const * x1)
+static int _cffi_d_IsFileExtension(char const * x0, char const * x1)
 {
   return IsFileExtension(x0, x1);
 }
@@ -15119,7 +15103,7 @@ _cffi_f_IsFileExtension(PyObject *self, PyObject *args)
   char const * x1;
   Py_ssize_t datasize;
   struct _cffi_freeme_s *large_args_free = NULL;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -15152,7 +15136,7 @@ _cffi_f_IsFileExtension(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -15160,7 +15144,7 @@ _cffi_f_IsFileExtension(PyObject *self, PyObject *args)
 #  define _cffi_f_IsFileExtension _cffi_d_IsFileExtension
 #endif
 
-static _Bool _cffi_d_IsGamepadAvailable(int x0)
+static int _cffi_d_IsGamepadAvailable(int x0)
 {
   return IsGamepadAvailable(x0);
 }
@@ -15169,7 +15153,7 @@ static PyObject *
 _cffi_f_IsGamepadAvailable(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15183,14 +15167,14 @@ _cffi_f_IsGamepadAvailable(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsGamepadAvailable _cffi_d_IsGamepadAvailable
 #endif
 
-static _Bool _cffi_d_IsGamepadButtonDown(int x0, int x1)
+static int _cffi_d_IsGamepadButtonDown(int x0, int x1)
 {
   return IsGamepadButtonDown(x0, x1);
 }
@@ -15200,7 +15184,7 @@ _cffi_f_IsGamepadButtonDown(PyObject *self, PyObject *args)
 {
   int x0;
   int x1;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -15223,14 +15207,14 @@ _cffi_f_IsGamepadButtonDown(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsGamepadButtonDown _cffi_d_IsGamepadButtonDown
 #endif
 
-static _Bool _cffi_d_IsGamepadButtonPressed(int x0, int x1)
+static int _cffi_d_IsGamepadButtonPressed(int x0, int x1)
 {
   return IsGamepadButtonPressed(x0, x1);
 }
@@ -15240,7 +15224,7 @@ _cffi_f_IsGamepadButtonPressed(PyObject *self, PyObject *args)
 {
   int x0;
   int x1;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -15263,14 +15247,14 @@ _cffi_f_IsGamepadButtonPressed(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsGamepadButtonPressed _cffi_d_IsGamepadButtonPressed
 #endif
 
-static _Bool _cffi_d_IsGamepadButtonReleased(int x0, int x1)
+static int _cffi_d_IsGamepadButtonReleased(int x0, int x1)
 {
   return IsGamepadButtonReleased(x0, x1);
 }
@@ -15280,7 +15264,7 @@ _cffi_f_IsGamepadButtonReleased(PyObject *self, PyObject *args)
 {
   int x0;
   int x1;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -15303,14 +15287,14 @@ _cffi_f_IsGamepadButtonReleased(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsGamepadButtonReleased _cffi_d_IsGamepadButtonReleased
 #endif
 
-static _Bool _cffi_d_IsGamepadButtonUp(int x0, int x1)
+static int _cffi_d_IsGamepadButtonUp(int x0, int x1)
 {
   return IsGamepadButtonUp(x0, x1);
 }
@@ -15320,7 +15304,7 @@ _cffi_f_IsGamepadButtonUp(PyObject *self, PyObject *args)
 {
   int x0;
   int x1;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -15343,14 +15327,14 @@ _cffi_f_IsGamepadButtonUp(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsGamepadButtonUp _cffi_d_IsGamepadButtonUp
 #endif
 
-static _Bool _cffi_d_IsGamepadName(int x0, char const * x1)
+static int _cffi_d_IsGamepadName(int x0, char const * x1)
 {
   return IsGamepadName(x0, x1);
 }
@@ -15362,7 +15346,7 @@ _cffi_f_IsGamepadName(PyObject *self, PyObject *args)
   char const * x1;
   Py_ssize_t datasize;
   struct _cffi_freeme_s *large_args_free = NULL;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -15390,7 +15374,7 @@ _cffi_f_IsGamepadName(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -15398,7 +15382,7 @@ _cffi_f_IsGamepadName(PyObject *self, PyObject *args)
 #  define _cffi_f_IsGamepadName _cffi_d_IsGamepadName
 #endif
 
-static _Bool _cffi_d_IsGestureDetected(int x0)
+static int _cffi_d_IsGestureDetected(int x0)
 {
   return IsGestureDetected(x0);
 }
@@ -15407,7 +15391,7 @@ static PyObject *
 _cffi_f_IsGestureDetected(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15421,14 +15405,14 @@ _cffi_f_IsGestureDetected(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsGestureDetected _cffi_d_IsGestureDetected
 #endif
 
-static _Bool _cffi_d_IsKeyDown(int x0)
+static int _cffi_d_IsKeyDown(int x0)
 {
   return IsKeyDown(x0);
 }
@@ -15437,7 +15421,7 @@ static PyObject *
 _cffi_f_IsKeyDown(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15451,14 +15435,14 @@ _cffi_f_IsKeyDown(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsKeyDown _cffi_d_IsKeyDown
 #endif
 
-static _Bool _cffi_d_IsKeyPressed(int x0)
+static int _cffi_d_IsKeyPressed(int x0)
 {
   return IsKeyPressed(x0);
 }
@@ -15467,7 +15451,7 @@ static PyObject *
 _cffi_f_IsKeyPressed(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15481,14 +15465,14 @@ _cffi_f_IsKeyPressed(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsKeyPressed _cffi_d_IsKeyPressed
 #endif
 
-static _Bool _cffi_d_IsKeyReleased(int x0)
+static int _cffi_d_IsKeyReleased(int x0)
 {
   return IsKeyReleased(x0);
 }
@@ -15497,7 +15481,7 @@ static PyObject *
 _cffi_f_IsKeyReleased(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15511,14 +15495,14 @@ _cffi_f_IsKeyReleased(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsKeyReleased _cffi_d_IsKeyReleased
 #endif
 
-static _Bool _cffi_d_IsKeyUp(int x0)
+static int _cffi_d_IsKeyUp(int x0)
 {
   return IsKeyUp(x0);
 }
@@ -15527,7 +15511,7 @@ static PyObject *
 _cffi_f_IsKeyUp(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15541,14 +15525,14 @@ _cffi_f_IsKeyUp(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsKeyUp _cffi_d_IsKeyUp
 #endif
 
-static _Bool _cffi_d_IsModelAnimationValid(Model x0, ModelAnimation x1)
+static int _cffi_d_IsModelAnimationValid(Model x0, ModelAnimation x1)
 {
   return IsModelAnimationValid(x0, x1);
 }
@@ -15558,7 +15542,7 @@ _cffi_f_IsModelAnimationValid(PyObject *self, PyObject *args)
 {
   Model x0;
   ModelAnimation x1;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -15569,7 +15553,7 @@ _cffi_f_IsModelAnimationValid(PyObject *self, PyObject *args)
   if (_cffi_to_c((char *)&x0, _cffi_type(214), arg0) < 0)
     return NULL;
 
-  if (_cffi_to_c((char *)&x1, _cffi_type(325), arg1) < 0)
+  if (_cffi_to_c((char *)&x1, _cffi_type(404), arg1) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15579,19 +15563,19 @@ _cffi_f_IsModelAnimationValid(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_IsModelAnimationValid(Model *x0, ModelAnimation *x1)
+static int _cffi_f_IsModelAnimationValid(Model *x0, ModelAnimation *x1)
 {
-  _Bool result;
+  int result;
   { result = IsModelAnimationValid(*x0, *x1); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_IsMouseButtonDown(int x0)
+static int _cffi_d_IsMouseButtonDown(int x0)
 {
   return IsMouseButtonDown(x0);
 }
@@ -15600,7 +15584,7 @@ static PyObject *
 _cffi_f_IsMouseButtonDown(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15614,14 +15598,14 @@ _cffi_f_IsMouseButtonDown(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsMouseButtonDown _cffi_d_IsMouseButtonDown
 #endif
 
-static _Bool _cffi_d_IsMouseButtonPressed(int x0)
+static int _cffi_d_IsMouseButtonPressed(int x0)
 {
   return IsMouseButtonPressed(x0);
 }
@@ -15630,7 +15614,7 @@ static PyObject *
 _cffi_f_IsMouseButtonPressed(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15644,14 +15628,14 @@ _cffi_f_IsMouseButtonPressed(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsMouseButtonPressed _cffi_d_IsMouseButtonPressed
 #endif
 
-static _Bool _cffi_d_IsMouseButtonReleased(int x0)
+static int _cffi_d_IsMouseButtonReleased(int x0)
 {
   return IsMouseButtonReleased(x0);
 }
@@ -15660,7 +15644,7 @@ static PyObject *
 _cffi_f_IsMouseButtonReleased(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15674,14 +15658,14 @@ _cffi_f_IsMouseButtonReleased(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsMouseButtonReleased _cffi_d_IsMouseButtonReleased
 #endif
 
-static _Bool _cffi_d_IsMouseButtonUp(int x0)
+static int _cffi_d_IsMouseButtonUp(int x0)
 {
   return IsMouseButtonUp(x0);
 }
@@ -15690,7 +15674,7 @@ static PyObject *
 _cffi_f_IsMouseButtonUp(PyObject *self, PyObject *arg0)
 {
   int x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   x0 = _cffi_to_c_int(arg0, int);
@@ -15704,14 +15688,14 @@ _cffi_f_IsMouseButtonUp(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsMouseButtonUp _cffi_d_IsMouseButtonUp
 #endif
 
-static _Bool _cffi_d_IsMusicPlaying(Music x0)
+static int _cffi_d_IsMusicPlaying(Music x0)
 {
   return IsMusicPlaying(x0);
 }
@@ -15720,10 +15704,10 @@ static PyObject *
 _cffi_f_IsMusicPlaying(PyObject *self, PyObject *arg0)
 {
   Music x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15733,19 +15717,19 @@ _cffi_f_IsMusicPlaying(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_IsMusicPlaying(Music *x0)
+static int _cffi_f_IsMusicPlaying(Music *x0)
 {
-  _Bool result;
+  int result;
   { result = IsMusicPlaying(*x0); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_IsSoundPlaying(Sound x0)
+static int _cffi_d_IsSoundPlaying(Sound x0)
 {
   return IsSoundPlaying(x0);
 }
@@ -15754,10 +15738,10 @@ static PyObject *
 _cffi_f_IsSoundPlaying(PyObject *self, PyObject *arg0)
 {
   Sound x0;
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15767,19 +15751,19 @@ _cffi_f_IsSoundPlaying(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
-static _Bool _cffi_f_IsSoundPlaying(Sound *x0)
+static int _cffi_f_IsSoundPlaying(Sound *x0)
 {
-  _Bool result;
+  int result;
   { result = IsSoundPlaying(*x0); }
   return result;
 }
 #endif
 
-static _Bool _cffi_d_IsVrSimulatorReady(void)
+static int _cffi_d_IsVrSimulatorReady(void)
 {
   return IsVrSimulatorReady();
 }
@@ -15787,7 +15771,7 @@ static _Bool _cffi_d_IsVrSimulatorReady(void)
 static PyObject *
 _cffi_f_IsVrSimulatorReady(PyObject *self, PyObject *noarg)
 {
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15798,14 +15782,14 @@ _cffi_f_IsVrSimulatorReady(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsVrSimulatorReady _cffi_d_IsVrSimulatorReady
 #endif
 
-static _Bool _cffi_d_IsWindowHidden(void)
+static int _cffi_d_IsWindowHidden(void)
 {
   return IsWindowHidden();
 }
@@ -15813,7 +15797,7 @@ static _Bool _cffi_d_IsWindowHidden(void)
 static PyObject *
 _cffi_f_IsWindowHidden(PyObject *self, PyObject *noarg)
 {
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15824,14 +15808,14 @@ _cffi_f_IsWindowHidden(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsWindowHidden _cffi_d_IsWindowHidden
 #endif
 
-static _Bool _cffi_d_IsWindowMinimized(void)
+static int _cffi_d_IsWindowMinimized(void)
 {
   return IsWindowMinimized();
 }
@@ -15839,7 +15823,7 @@ static _Bool _cffi_d_IsWindowMinimized(void)
 static PyObject *
 _cffi_f_IsWindowMinimized(PyObject *self, PyObject *noarg)
 {
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15850,14 +15834,14 @@ _cffi_f_IsWindowMinimized(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsWindowMinimized _cffi_d_IsWindowMinimized
 #endif
 
-static _Bool _cffi_d_IsWindowReady(void)
+static int _cffi_d_IsWindowReady(void)
 {
   return IsWindowReady();
 }
@@ -15865,7 +15849,7 @@ static _Bool _cffi_d_IsWindowReady(void)
 static PyObject *
 _cffi_f_IsWindowReady(PyObject *self, PyObject *noarg)
 {
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15876,14 +15860,14 @@ _cffi_f_IsWindowReady(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
 #  define _cffi_f_IsWindowReady _cffi_d_IsWindowReady
 #endif
 
-static _Bool _cffi_d_IsWindowResized(void)
+static int _cffi_d_IsWindowResized(void)
 {
   return IsWindowResized();
 }
@@ -15891,7 +15875,7 @@ static _Bool _cffi_d_IsWindowResized(void)
 static PyObject *
 _cffi_f_IsWindowResized(PyObject *self, PyObject *noarg)
 {
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
@@ -15902,7 +15886,7 @@ _cffi_f_IsWindowResized(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
@@ -16013,7 +15997,7 @@ _cffi_f_LoadFontData(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1164));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1148));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -16385,7 +16369,7 @@ _cffi_f_LoadMaterialDefault(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(720));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(704));
   return pyresult;
 }
 #else
@@ -16440,7 +16424,7 @@ _cffi_f_LoadMaterials(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(715));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(699));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -16493,7 +16477,7 @@ _cffi_f_LoadMeshes(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(726));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(710));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -16587,7 +16571,7 @@ _cffi_f_LoadModelAnimations(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1177));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(1161));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -16657,7 +16641,7 @@ _cffi_f_LoadMusicStream(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(328));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(371));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -16701,7 +16685,7 @@ _cffi_f_LoadRenderTexture(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(816));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(800));
   return pyresult;
 }
 #else
@@ -16853,7 +16837,7 @@ _cffi_f_LoadSound(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(350));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(433));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -16886,7 +16870,7 @@ _cffi_f_LoadSoundFromWave(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(350));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(433));
   return pyresult;
 }
 #else
@@ -16926,7 +16910,7 @@ _cffi_f_LoadText(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(412));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(319));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -17213,10 +17197,10 @@ _cffi_f_MeshBinormals(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(726), arg0, (char **)&x0);
+      _cffi_type(710), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Mesh *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(726), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(710), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -17258,7 +17242,7 @@ _cffi_f_MeshBoundingBox(PyObject *self, PyObject *arg0)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(315));
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(387));
   return pyresult;
 }
 #else
@@ -17281,10 +17265,10 @@ _cffi_f_MeshTangents(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(726), arg0, (char **)&x0);
+      _cffi_type(710), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Mesh *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(726), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(710), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -17350,7 +17334,7 @@ _cffi_f_PauseAudioStream(PyObject *self, PyObject *arg0)
 {
   AudioStream x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17380,7 +17364,7 @@ _cffi_f_PauseMusicStream(PyObject *self, PyObject *arg0)
 {
   Music x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17410,7 +17394,7 @@ _cffi_f_PauseSound(PyObject *self, PyObject *arg0)
 {
   Sound x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17440,7 +17424,7 @@ _cffi_f_PlayAudioStream(PyObject *self, PyObject *arg0)
 {
   AudioStream x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17470,7 +17454,7 @@ _cffi_f_PlayMusicStream(PyObject *self, PyObject *arg0)
 {
   Music x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17500,7 +17484,7 @@ _cffi_f_PlaySound(PyObject *self, PyObject *arg0)
 {
   Sound x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17530,7 +17514,7 @@ _cffi_f_PlaySoundMulti(PyObject *self, PyObject *arg0)
 {
   Sound x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17560,7 +17544,7 @@ _cffi_f_ResumeAudioStream(PyObject *self, PyObject *arg0)
 {
   AudioStream x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17590,7 +17574,7 @@ _cffi_f_ResumeMusicStream(PyObject *self, PyObject *arg0)
 {
   Music x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17620,7 +17604,7 @@ _cffi_f_ResumeSound(PyObject *self, PyObject *arg0)
 {
   Sound x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -17656,7 +17640,7 @@ _cffi_f_SetAudioStreamPitch(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "SetAudioStreamPitch", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   x1 = (float)_cffi_to_c_float(arg1);
@@ -17696,7 +17680,7 @@ _cffi_f_SetAudioStreamVolume(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "SetAudioStreamVolume", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   x1 = (float)_cffi_to_c_float(arg1);
@@ -18075,10 +18059,10 @@ _cffi_f_SetMaterialTexture(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(715), arg0, (char **)&x0);
+      _cffi_type(699), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Material *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(715), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(699), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -18118,7 +18102,7 @@ _cffi_f_SetMatrixModelview(PyObject *self, PyObject *arg0)
 {
   Matrix x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(723), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(707), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -18148,7 +18132,7 @@ _cffi_f_SetMatrixProjection(PyObject *self, PyObject *arg0)
 {
   Matrix x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(723), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(707), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -18189,10 +18173,10 @@ _cffi_f_SetModelMeshMaterial(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(736), arg0, (char **)&x0);
+      _cffi_type(720), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Model *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(736), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(720), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -18350,7 +18334,7 @@ _cffi_f_SetMusicLoopCount(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "SetMusicLoopCount", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   x1 = _cffi_to_c_int(arg1, int);
@@ -18390,7 +18374,7 @@ _cffi_f_SetMusicPitch(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "SetMusicPitch", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   x1 = (float)_cffi_to_c_float(arg1);
@@ -18430,7 +18414,7 @@ _cffi_f_SetMusicVolume(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "SetMusicVolume", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   x1 = (float)_cffi_to_c_float(arg1);
@@ -18484,10 +18468,10 @@ _cffi_f_SetShaderValue(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(542), arg2, (char **)&x2);
+      _cffi_type(526), arg2, (char **)&x2);
   if (datasize != 0) {
     x2 = ((size_t)datasize) <= 640 ? (void const *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(542), arg2, (char **)&x2,
+    if (_cffi_convert_array_argument(_cffi_type(526), arg2, (char **)&x2,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -18539,7 +18523,7 @@ _cffi_f_SetShaderValueMatrix(PyObject *self, PyObject *args)
   if (x1 == (int)-1 && PyErr_Occurred())
     return NULL;
 
-  if (_cffi_to_c((char *)&x2, _cffi_type(723), arg2) < 0)
+  if (_cffi_to_c((char *)&x2, _cffi_type(707), arg2) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -18636,10 +18620,10 @@ _cffi_f_SetShaderValueV(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(542), arg2, (char **)&x2);
+      _cffi_type(526), arg2, (char **)&x2);
   if (datasize != 0) {
     x2 = ((size_t)datasize) <= 640 ? (void const *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(542), arg2, (char **)&x2,
+    if (_cffi_convert_array_argument(_cffi_type(526), arg2, (char **)&x2,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -18725,7 +18709,7 @@ _cffi_f_SetSoundPitch(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "SetSoundPitch", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   x1 = (float)_cffi_to_c_float(arg1);
@@ -18765,7 +18749,7 @@ _cffi_f_SetSoundVolume(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "SetSoundVolume", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   x1 = (float)_cffi_to_c_float(arg1);
@@ -18969,7 +18953,7 @@ _cffi_f_SetVrConfiguration(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "SetVrConfiguration", 2, 2, &arg0, &arg1))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(1036), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(1020), arg0) < 0)
     return NULL;
 
   if (_cffi_to_c((char *)&x1, _cffi_type(258), arg1) < 0)
@@ -19234,7 +19218,7 @@ _cffi_f_StopAudioStream(PyObject *self, PyObject *arg0)
 {
   AudioStream x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -19264,7 +19248,7 @@ _cffi_f_StopMusicStream(PyObject *self, PyObject *arg0)
 {
   Music x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -19294,7 +19278,7 @@ _cffi_f_StopSound(PyObject *self, PyObject *arg0)
 {
   Sound x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -19463,10 +19447,10 @@ _cffi_f_TextAppend(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(412), arg0, (char **)&x0);
+      _cffi_type(319), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(412), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(319), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -19525,10 +19509,10 @@ _cffi_f_TextCopy(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(412), arg0, (char **)&x0);
+      _cffi_type(319), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(412), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(319), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -19666,7 +19650,7 @@ _cffi_f_TextInsert(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(412));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(319));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -19674,7 +19658,7 @@ _cffi_f_TextInsert(PyObject *self, PyObject *args)
 #  define _cffi_f_TextInsert _cffi_d_TextInsert
 #endif
 
-static _Bool _cffi_d_TextIsEqual(char const * x0, char const * x1)
+static int _cffi_d_TextIsEqual(char const * x0, char const * x1)
 {
   return TextIsEqual(x0, x1);
 }
@@ -19686,7 +19670,7 @@ _cffi_f_TextIsEqual(PyObject *self, PyObject *args)
   char const * x1;
   Py_ssize_t datasize;
   struct _cffi_freeme_s *large_args_free = NULL;
-  _Bool result;
+  int result;
   PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
@@ -19719,7 +19703,7 @@ _cffi_f_TextIsEqual(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -19750,10 +19734,10 @@ _cffi_f_TextJoin(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(434), arg0, (char **)&x0);
+      _cffi_type(341), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (char const * *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(434), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(341), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -19847,10 +19831,10 @@ _cffi_f_TextReplace(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(412), arg0, (char **)&x0);
+      _cffi_type(319), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(412), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(319), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -19880,7 +19864,7 @@ _cffi_f_TextReplace(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(412));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(319));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -19939,7 +19923,7 @@ _cffi_f_TextSplit(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(434));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(341));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -20193,7 +20177,7 @@ _cffi_f_TextToUtf8(PyObject *self, PyObject *args)
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(412));
+  pyresult = _cffi_from_c_pointer((char *)result, _cffi_type(319));
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
   return pyresult;
 }
@@ -20348,7 +20332,7 @@ _cffi_f_UnloadMaterial(PyObject *self, PyObject *arg0)
 {
   Material x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(720), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(704), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -20438,7 +20422,7 @@ _cffi_f_UnloadModelAnimation(PyObject *self, PyObject *arg0)
 {
   ModelAnimation x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(325), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(404), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -20468,7 +20452,7 @@ _cffi_f_UnloadMusicStream(PyObject *self, PyObject *arg0)
 {
   Music x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -20498,7 +20482,7 @@ _cffi_f_UnloadRenderTexture(PyObject *self, PyObject *arg0)
 {
   RenderTexture2D x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(816), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(800), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -20558,7 +20542,7 @@ _cffi_f_UnloadSound(PyObject *self, PyObject *arg0)
 {
   Sound x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -20658,14 +20642,14 @@ _cffi_f_UpdateAudioStream(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "UpdateAudioStream", 3, 3, &arg0, &arg1, &arg2))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(312), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(384), arg0) < 0)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(542), arg1, (char **)&x1);
+      _cffi_type(526), arg1, (char **)&x1);
   if (datasize != 0) {
     x1 = ((size_t)datasize) <= 640 ? (void const *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(542), arg1, (char **)&x1,
+    if (_cffi_convert_array_argument(_cffi_type(526), arg1, (char **)&x1,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -20705,10 +20689,10 @@ _cffi_f_UpdateCamera(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(553), arg0, (char **)&x0);
+      _cffi_type(537), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Camera3D *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(553), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(537), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -20749,7 +20733,7 @@ _cffi_f_UpdateModelAnimation(PyObject *self, PyObject *args)
   if (_cffi_to_c((char *)&x0, _cffi_type(214), arg0) < 0)
     return NULL;
 
-  if (_cffi_to_c((char *)&x1, _cffi_type(325), arg1) < 0)
+  if (_cffi_to_c((char *)&x1, _cffi_type(404), arg1) < 0)
     return NULL;
 
   x2 = _cffi_to_c_int(arg2, int);
@@ -20783,7 +20767,7 @@ _cffi_f_UpdateMusicStream(PyObject *self, PyObject *arg0)
 {
   Music x0;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(328), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(371), arg0) < 0)
     return NULL;
 
   Py_BEGIN_ALLOW_THREADS
@@ -20823,14 +20807,14 @@ _cffi_f_UpdateSound(PyObject *self, PyObject *args)
   if (!PyArg_UnpackTuple(args, "UpdateSound", 3, 3, &arg0, &arg1, &arg2))
     return NULL;
 
-  if (_cffi_to_c((char *)&x0, _cffi_type(350), arg0) < 0)
+  if (_cffi_to_c((char *)&x0, _cffi_type(433), arg0) < 0)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(542), arg1, (char **)&x1);
+      _cffi_type(526), arg1, (char **)&x1);
   if (datasize != 0) {
     x1 = ((size_t)datasize) <= 640 ? (void const *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(542), arg1, (char **)&x1,
+    if (_cffi_convert_array_argument(_cffi_type(526), arg1, (char **)&x1,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -20879,10 +20863,10 @@ _cffi_f_UpdateTexture(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(542), arg1, (char **)&x1);
+      _cffi_type(526), arg1, (char **)&x1);
   if (datasize != 0) {
     x1 = ((size_t)datasize) <= 640 ? (void const *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(542), arg1, (char **)&x1,
+    if (_cffi_convert_array_argument(_cffi_type(526), arg1, (char **)&x1,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -20918,10 +20902,10 @@ _cffi_f_UpdateVrTracking(PyObject *self, PyObject *arg0)
   struct _cffi_freeme_s *large_args_free = NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(553), arg0, (char **)&x0);
+      _cffi_type(537), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Camera3D *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(553), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(537), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -20994,10 +20978,10 @@ _cffi_f_WaveCrop(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1040), arg0, (char **)&x0);
+      _cffi_type(1024), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Wave *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1040), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(1024), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -21048,10 +21032,10 @@ _cffi_f_WaveFormat(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(1040), arg0, (char **)&x0);
+      _cffi_type(1024), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (Wave *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(1040), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(1024), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -21083,7 +21067,7 @@ _cffi_f_WaveFormat(PyObject *self, PyObject *args)
 #  define _cffi_f_WaveFormat _cffi_d_WaveFormat
 #endif
 
-static _Bool _cffi_d_WindowShouldClose(void)
+static int _cffi_d_WindowShouldClose(void)
 {
   return WindowShouldClose();
 }
@@ -21091,7 +21075,7 @@ static _Bool _cffi_d_WindowShouldClose(void)
 static PyObject *
 _cffi_f_WindowShouldClose(PyObject *self, PyObject *noarg)
 {
-  _Bool result;
+  int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
@@ -21102,7 +21086,7 @@ _cffi_f_WindowShouldClose(PyObject *self, PyObject *noarg)
 
   (void)self; /* unused */
   (void)noarg; /* unused */
-  pyresult = _cffi_from_c__Bool(result);
+  pyresult = _cffi_from_c_int(result, int);
   return pyresult;
 }
 #else
@@ -21545,14 +21529,14 @@ static const struct _cffi_global_s _cffi_globals[] = {
   { "BLEND_ADDITIVE", (void *)_cffi_const_BLEND_ADDITIVE, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "BLEND_ALPHA", (void *)_cffi_const_BLEND_ALPHA, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "BLEND_MULTIPLIED", (void *)_cffi_const_BLEND_MULTIPLIED, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
-  { "BeginBlendMode", (void *)_cffi_f_BeginBlendMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1079), (void *)_cffi_d_BeginBlendMode },
-  { "BeginDrawing", (void *)_cffi_f_BeginDrawing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_BeginDrawing },
-  { "BeginMode2D", (void *)_cffi_f_BeginMode2D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 549), (void *)_cffi_d_BeginMode2D },
-  { "BeginMode3D", (void *)_cffi_f_BeginMode3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 555), (void *)_cffi_d_BeginMode3D },
-  { "BeginScissorMode", (void *)_cffi_f_BeginScissorMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1124), (void *)_cffi_d_BeginScissorMode },
-  { "BeginShaderMode", (void *)_cffi_f_BeginShaderMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 818), (void *)_cffi_d_BeginShaderMode },
-  { "BeginTextureMode", (void *)_cffi_f_BeginTextureMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 815), (void *)_cffi_d_BeginTextureMode },
-  { "BeginVrDrawing", (void *)_cffi_f_BeginVrDrawing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_BeginVrDrawing },
+  { "BeginBlendMode", (void *)_cffi_f_BeginBlendMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1063), (void *)_cffi_d_BeginBlendMode },
+  { "BeginDrawing", (void *)_cffi_f_BeginDrawing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_BeginDrawing },
+  { "BeginMode2D", (void *)_cffi_f_BeginMode2D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 533), (void *)_cffi_d_BeginMode2D },
+  { "BeginMode3D", (void *)_cffi_f_BeginMode3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 539), (void *)_cffi_d_BeginMode3D },
+  { "BeginScissorMode", (void *)_cffi_f_BeginScissorMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1108), (void *)_cffi_d_BeginScissorMode },
+  { "BeginShaderMode", (void *)_cffi_f_BeginShaderMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 802), (void *)_cffi_d_BeginShaderMode },
+  { "BeginTextureMode", (void *)_cffi_f_BeginTextureMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 799), (void *)_cffi_d_BeginTextureMode },
+  { "BeginVrDrawing", (void *)_cffi_f_BeginVrDrawing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_BeginVrDrawing },
   { "CAMERA_CUSTOM", (void *)_cffi_const_CAMERA_CUSTOM, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "CAMERA_FIRST_PERSON", (void *)_cffi_const_CAMERA_FIRST_PERSON, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "CAMERA_FREE", (void *)_cffi_const_CAMERA_FREE, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
@@ -21577,121 +21561,121 @@ static const struct _cffi_global_s _cffi_globals[] = {
   { "CUBEMAP_LINE_HORIZONTAL", (void *)_cffi_const_CUBEMAP_LINE_HORIZONTAL, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "CUBEMAP_LINE_VERTICAL", (void *)_cffi_const_CUBEMAP_LINE_VERTICAL, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "CUBEMAP_PANORAMA", (void *)_cffi_const_CUBEMAP_PANORAMA, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
-  { "ChangeDirectory", (void *)_cffi_f_ChangeDirectory, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 384), (void *)_cffi_d_ChangeDirectory },
-  { "CheckCollisionBoxSphere", (void *)_cffi_f_CheckCollisionBoxSphere, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 318), (void *)_cffi_d_CheckCollisionBoxSphere },
-  { "CheckCollisionBoxes", (void *)_cffi_f_CheckCollisionBoxes, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 314), (void *)_cffi_d_CheckCollisionBoxes },
-  { "CheckCollisionCircleRec", (void *)_cffi_f_CheckCollisionCircleRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 367), (void *)_cffi_d_CheckCollisionCircleRec },
-  { "CheckCollisionCircles", (void *)_cffi_f_CheckCollisionCircles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 372), (void *)_cffi_d_CheckCollisionCircles },
-  { "CheckCollisionPointCircle", (void *)_cffi_f_CheckCollisionPointCircle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 362), (void *)_cffi_d_CheckCollisionPointCircle },
-  { "CheckCollisionPointRec", (void *)_cffi_f_CheckCollisionPointRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 352), (void *)_cffi_d_CheckCollisionPointRec },
-  { "CheckCollisionPointTriangle", (void *)_cffi_f_CheckCollisionPointTriangle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 356), (void *)_cffi_d_CheckCollisionPointTriangle },
-  { "CheckCollisionRayBox", (void *)_cffi_f_CheckCollisionRayBox, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 330), (void *)_cffi_d_CheckCollisionRayBox },
-  { "CheckCollisionRaySphere", (void *)_cffi_f_CheckCollisionRaySphere, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 334), (void *)_cffi_d_CheckCollisionRaySphere },
-  { "CheckCollisionRaySphereEx", (void *)_cffi_f_CheckCollisionRaySphereEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 339), (void *)_cffi_d_CheckCollisionRaySphereEx },
-  { "CheckCollisionRecs", (void *)_cffi_f_CheckCollisionRecs, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 345), (void *)_cffi_d_CheckCollisionRecs },
-  { "CheckCollisionSpheres", (void *)_cffi_f_CheckCollisionSpheres, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 378), (void *)_cffi_d_CheckCollisionSpheres },
-  { "ClearBackground", (void *)_cffi_f_ClearBackground, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 577), (void *)_cffi_d_ClearBackground },
-  { "ClearDirectoryFiles", (void *)_cffi_f_ClearDirectoryFiles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_ClearDirectoryFiles },
-  { "ClearDroppedFiles", (void *)_cffi_f_ClearDroppedFiles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_ClearDroppedFiles },
-  { "CloseAudioDevice", (void *)_cffi_f_CloseAudioDevice, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_CloseAudioDevice },
-  { "CloseAudioStream", (void *)_cffi_f_CloseAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 533), (void *)_cffi_d_CloseAudioStream },
-  { "CloseVrSimulator", (void *)_cffi_f_CloseVrSimulator, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_CloseVrSimulator },
-  { "CloseWindow", (void *)_cffi_f_CloseWindow, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_CloseWindow },
-  { "CodepointToUtf8", (void *)_cffi_f_CodepointToUtf8, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 452), (void *)_cffi_d_CodepointToUtf8 },
+  { "ChangeDirectory", (void *)_cffi_f_ChangeDirectory, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 471), (void *)_cffi_d_ChangeDirectory },
+  { "CheckCollisionBoxSphere", (void *)_cffi_f_CheckCollisionBoxSphere, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 390), (void *)_cffi_d_CheckCollisionBoxSphere },
+  { "CheckCollisionBoxes", (void *)_cffi_f_CheckCollisionBoxes, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 386), (void *)_cffi_d_CheckCollisionBoxes },
+  { "CheckCollisionCircleRec", (void *)_cffi_f_CheckCollisionCircleRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 450), (void *)_cffi_d_CheckCollisionCircleRec },
+  { "CheckCollisionCircles", (void *)_cffi_f_CheckCollisionCircles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 455), (void *)_cffi_d_CheckCollisionCircles },
+  { "CheckCollisionPointCircle", (void *)_cffi_f_CheckCollisionPointCircle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 445), (void *)_cffi_d_CheckCollisionPointCircle },
+  { "CheckCollisionPointRec", (void *)_cffi_f_CheckCollisionPointRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 435), (void *)_cffi_d_CheckCollisionPointRec },
+  { "CheckCollisionPointTriangle", (void *)_cffi_f_CheckCollisionPointTriangle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 439), (void *)_cffi_d_CheckCollisionPointTriangle },
+  { "CheckCollisionRayBox", (void *)_cffi_f_CheckCollisionRayBox, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 409), (void *)_cffi_d_CheckCollisionRayBox },
+  { "CheckCollisionRaySphere", (void *)_cffi_f_CheckCollisionRaySphere, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 413), (void *)_cffi_d_CheckCollisionRaySphere },
+  { "CheckCollisionRaySphereEx", (void *)_cffi_f_CheckCollisionRaySphereEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 418), (void *)_cffi_d_CheckCollisionRaySphereEx },
+  { "CheckCollisionRecs", (void *)_cffi_f_CheckCollisionRecs, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 424), (void *)_cffi_d_CheckCollisionRecs },
+  { "CheckCollisionSpheres", (void *)_cffi_f_CheckCollisionSpheres, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 461), (void *)_cffi_d_CheckCollisionSpheres },
+  { "ClearBackground", (void *)_cffi_f_ClearBackground, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 561), (void *)_cffi_d_ClearBackground },
+  { "ClearDirectoryFiles", (void *)_cffi_f_ClearDirectoryFiles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_ClearDirectoryFiles },
+  { "ClearDroppedFiles", (void *)_cffi_f_ClearDroppedFiles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_ClearDroppedFiles },
+  { "CloseAudioDevice", (void *)_cffi_f_CloseAudioDevice, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_CloseAudioDevice },
+  { "CloseAudioStream", (void *)_cffi_f_CloseAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 517), (void *)_cffi_d_CloseAudioStream },
+  { "CloseVrSimulator", (void *)_cffi_f_CloseVrSimulator, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_CloseVrSimulator },
+  { "CloseWindow", (void *)_cffi_f_CloseWindow, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_CloseWindow },
+  { "CodepointToUtf8", (void *)_cffi_f_CodepointToUtf8, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 359), (void *)_cffi_d_CodepointToUtf8 },
   { "ColorFromHSV", (void *)_cffi_f_ColorFromHSV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 27), (void *)_cffi_d_ColorFromHSV },
   { "ColorFromNormalized", (void *)_cffi_f_ColorFromNormalized, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 30), (void *)_cffi_d_ColorFromNormalized },
   { "ColorNormalize", (void *)_cffi_f_ColorNormalize, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 302), (void *)_cffi_d_ColorNormalize },
   { "ColorToHSV", (void *)_cffi_f_ColorToHSV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 296), (void *)_cffi_d_ColorToHSV },
-  { "ColorToInt", (void *)_cffi_f_ColorToInt, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 476), (void *)_cffi_d_ColorToInt },
-  { "CompressData", (void *)_cffi_f_CompressData, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 523), (void *)_cffi_d_CompressData },
-  { "DecompressData", (void *)_cffi_f_DecompressData, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 523), (void *)_cffi_d_DecompressData },
-  { "DirectoryExists", (void *)_cffi_f_DirectoryExists, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 384), (void *)_cffi_d_DirectoryExists },
-  { "DisableCursor", (void *)_cffi_f_DisableCursor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_DisableCursor },
-  { "DrawBillboard", (void *)_cffi_f_DrawBillboard, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 566), (void *)_cffi_d_DrawBillboard },
-  { "DrawBillboardRec", (void *)_cffi_f_DrawBillboardRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 558), (void *)_cffi_d_DrawBillboardRec },
-  { "DrawBoundingBox", (void *)_cffi_f_DrawBoundingBox, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 545), (void *)_cffi_d_DrawBoundingBox },
-  { "DrawCircle", (void *)_cffi_f_DrawCircle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1104), (void *)_cffi_d_DrawCircle },
-  { "DrawCircle3D", (void *)_cffi_f_DrawCircle3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1006), (void *)_cffi_d_DrawCircle3D },
-  { "DrawCircleGradient", (void *)_cffi_f_DrawCircleGradient, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1110), (void *)_cffi_d_DrawCircleGradient },
-  { "DrawCircleLines", (void *)_cffi_f_DrawCircleLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1104), (void *)_cffi_d_DrawCircleLines },
-  { "DrawCircleSector", (void *)_cffi_f_DrawCircleSector, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 969), (void *)_cffi_d_DrawCircleSector },
-  { "DrawCircleSectorLines", (void *)_cffi_f_DrawCircleSectorLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 969), (void *)_cffi_d_DrawCircleSectorLines },
-  { "DrawCircleV", (void *)_cffi_f_DrawCircleV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 955), (void *)_cffi_d_DrawCircleV },
-  { "DrawCube", (void *)_cffi_f_DrawCube, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1013), (void *)_cffi_d_DrawCube },
-  { "DrawCubeTexture", (void *)_cffi_f_DrawCubeTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 907), (void *)_cffi_d_DrawCubeTexture },
-  { "DrawCubeV", (void *)_cffi_f_DrawCubeV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 996), (void *)_cffi_d_DrawCubeV },
-  { "DrawCubeWires", (void *)_cffi_f_DrawCubeWires, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1013), (void *)_cffi_d_DrawCubeWires },
-  { "DrawCubeWiresV", (void *)_cffi_f_DrawCubeWiresV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 996), (void *)_cffi_d_DrawCubeWiresV },
-  { "DrawCylinder", (void *)_cffi_f_DrawCylinder, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1020), (void *)_cffi_d_DrawCylinder },
-  { "DrawCylinderWires", (void *)_cffi_f_DrawCylinderWires, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1020), (void *)_cffi_d_DrawCylinderWires },
-  { "DrawEllipse", (void *)_cffi_f_DrawEllipse, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1117), (void *)_cffi_d_DrawEllipse },
-  { "DrawEllipseLines", (void *)_cffi_f_DrawEllipseLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1117), (void *)_cffi_d_DrawEllipseLines },
-  { "DrawFPS", (void *)_cffi_f_DrawFPS, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1090), (void *)_cffi_d_DrawFPS },
-  { "DrawGizmo", (void *)_cffi_f_DrawGizmo, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 984), (void *)_cffi_d_DrawGizmo },
-  { "DrawGrid", (void *)_cffi_f_DrawGrid, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1086), (void *)_cffi_d_DrawGrid },
-  { "DrawLine", (void *)_cffi_f_DrawLine, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1130), (void *)_cffi_d_DrawLine },
-  { "DrawLine3D", (void *)_cffi_f_DrawLine3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 996), (void *)_cffi_d_DrawLine3D },
-  { "DrawLineBezier", (void *)_cffi_f_DrawLineBezier, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 949), (void *)_cffi_d_DrawLineBezier },
-  { "DrawLineEx", (void *)_cffi_f_DrawLineEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 949), (void *)_cffi_d_DrawLineEx },
-  { "DrawLineStrip", (void *)_cffi_f_DrawLineStrip, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 929), (void *)_cffi_d_DrawLineStrip },
-  { "DrawLineV", (void *)_cffi_f_DrawLineV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 938), (void *)_cffi_d_DrawLineV },
-  { "DrawModel", (void *)_cffi_f_DrawModel, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 756), (void *)_cffi_d_DrawModel },
-  { "DrawModelEx", (void *)_cffi_f_DrawModelEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 748), (void *)_cffi_d_DrawModelEx },
-  { "DrawModelWires", (void *)_cffi_f_DrawModelWires, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 756), (void *)_cffi_d_DrawModelWires },
-  { "DrawModelWiresEx", (void *)_cffi_f_DrawModelWiresEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 748), (void *)_cffi_d_DrawModelWiresEx },
-  { "DrawPixel", (void *)_cffi_f_DrawPixel, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1094), (void *)_cffi_d_DrawPixel },
-  { "DrawPixelV", (void *)_cffi_f_DrawPixelV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 934), (void *)_cffi_d_DrawPixelV },
-  { "DrawPlane", (void *)_cffi_f_DrawPlane, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 991), (void *)_cffi_d_DrawPlane },
-  { "DrawPoint3D", (void *)_cffi_f_DrawPoint3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 987), (void *)_cffi_d_DrawPoint3D },
-  { "DrawPoly", (void *)_cffi_f_DrawPoly, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 977), (void *)_cffi_d_DrawPoly },
-  { "DrawPolyLines", (void *)_cffi_f_DrawPolyLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 977), (void *)_cffi_d_DrawPolyLines },
-  { "DrawRay", (void *)_cffi_f_DrawRay, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 776), (void *)_cffi_d_DrawRay },
-  { "DrawRectangle", (void *)_cffi_f_DrawRectangle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1130), (void *)_cffi_d_DrawRectangle },
-  { "DrawRectangleGradientEx", (void *)_cffi_f_DrawRectangleGradientEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 784), (void *)_cffi_d_DrawRectangleGradientEx },
-  { "DrawRectangleGradientH", (void *)_cffi_f_DrawRectangleGradientH, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1137), (void *)_cffi_d_DrawRectangleGradientH },
-  { "DrawRectangleGradientV", (void *)_cffi_f_DrawRectangleGradientV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1137), (void *)_cffi_d_DrawRectangleGradientV },
-  { "DrawRectangleLines", (void *)_cffi_f_DrawRectangleLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1130), (void *)_cffi_d_DrawRectangleLines },
-  { "DrawRectangleLinesEx", (void *)_cffi_f_DrawRectangleLinesEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 810), (void *)_cffi_d_DrawRectangleLinesEx },
-  { "DrawRectanglePro", (void *)_cffi_f_DrawRectanglePro, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 791), (void *)_cffi_d_DrawRectanglePro },
-  { "DrawRectangleRec", (void *)_cffi_f_DrawRectangleRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 780), (void *)_cffi_d_DrawRectangleRec },
-  { "DrawRectangleRounded", (void *)_cffi_f_DrawRectangleRounded, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 797), (void *)_cffi_d_DrawRectangleRounded },
-  { "DrawRectangleRoundedLines", (void *)_cffi_f_DrawRectangleRoundedLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 803), (void *)_cffi_d_DrawRectangleRoundedLines },
-  { "DrawRectangleV", (void *)_cffi_f_DrawRectangleV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 938), (void *)_cffi_d_DrawRectangleV },
-  { "DrawRing", (void *)_cffi_f_DrawRing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 960), (void *)_cffi_d_DrawRing },
-  { "DrawRingLines", (void *)_cffi_f_DrawRingLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 960), (void *)_cffi_d_DrawRingLines },
-  { "DrawSphere", (void *)_cffi_f_DrawSphere, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1001), (void *)_cffi_d_DrawSphere },
-  { "DrawSphereEx", (void *)_cffi_f_DrawSphereEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1028), (void *)_cffi_d_DrawSphereEx },
-  { "DrawSphereWires", (void *)_cffi_f_DrawSphereWires, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1028), (void *)_cffi_d_DrawSphereWires },
-  { "DrawText", (void *)_cffi_f_DrawText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1065), (void *)_cffi_d_DrawText },
-  { "DrawTextCodepoint", (void *)_cffi_f_DrawTextCodepoint, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 613), (void *)_cffi_d_DrawTextCodepoint },
-  { "DrawTextEx", (void *)_cffi_f_DrawTextEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 605), (void *)_cffi_d_DrawTextEx },
-  { "DrawTextRec", (void *)_cffi_f_DrawTextRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 583), (void *)_cffi_d_DrawTextRec },
-  { "DrawTextRecEx", (void *)_cffi_f_DrawTextRecEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 592), (void *)_cffi_d_DrawTextRecEx },
-  { "DrawTexture", (void *)_cffi_f_DrawTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 919), (void *)_cffi_d_DrawTexture },
-  { "DrawTextureEx", (void *)_cffi_f_DrawTextureEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 900), (void *)_cffi_d_DrawTextureEx },
-  { "DrawTextureNPatch", (void *)_cffi_f_DrawTextureNPatch, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 862), (void *)_cffi_d_DrawTextureNPatch },
-  { "DrawTexturePro", (void *)_cffi_f_DrawTexturePro, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 874), (void *)_cffi_d_DrawTexturePro },
-  { "DrawTextureQuad", (void *)_cffi_f_DrawTextureQuad, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 893), (void *)_cffi_d_DrawTextureQuad },
-  { "DrawTextureRec", (void *)_cffi_f_DrawTextureRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 882), (void *)_cffi_d_DrawTextureRec },
-  { "DrawTextureV", (void *)_cffi_f_DrawTextureV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 888), (void *)_cffi_d_DrawTextureV },
-  { "DrawTriangle", (void *)_cffi_f_DrawTriangle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 943), (void *)_cffi_d_DrawTriangle },
-  { "DrawTriangleFan", (void *)_cffi_f_DrawTriangleFan, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 929), (void *)_cffi_d_DrawTriangleFan },
-  { "DrawTriangleLines", (void *)_cffi_f_DrawTriangleLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 943), (void *)_cffi_d_DrawTriangleLines },
-  { "DrawTriangleStrip", (void *)_cffi_f_DrawTriangleStrip, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 929), (void *)_cffi_d_DrawTriangleStrip },
-  { "EnableCursor", (void *)_cffi_f_EnableCursor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_EnableCursor },
-  { "EndBlendMode", (void *)_cffi_f_EndBlendMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_EndBlendMode },
-  { "EndDrawing", (void *)_cffi_f_EndDrawing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_EndDrawing },
-  { "EndMode2D", (void *)_cffi_f_EndMode2D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_EndMode2D },
-  { "EndMode3D", (void *)_cffi_f_EndMode3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_EndMode3D },
-  { "EndScissorMode", (void *)_cffi_f_EndScissorMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_EndScissorMode },
-  { "EndShaderMode", (void *)_cffi_f_EndShaderMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_EndShaderMode },
-  { "EndTextureMode", (void *)_cffi_f_EndTextureMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_EndTextureMode },
-  { "EndVrDrawing", (void *)_cffi_f_EndVrDrawing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_EndVrDrawing },
-  { "ExportImage", (void *)_cffi_f_ExportImage, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 710), (void *)_cffi_d_ExportImage },
-  { "ExportImageAsCode", (void *)_cffi_f_ExportImageAsCode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 710), (void *)_cffi_d_ExportImageAsCode },
-  { "ExportMesh", (void *)_cffi_f_ExportMesh, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 731), (void *)_cffi_d_ExportMesh },
-  { "ExportWave", (void *)_cffi_f_ExportWave, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1053), (void *)_cffi_d_ExportWave },
-  { "ExportWaveAsCode", (void *)_cffi_f_ExportWaveAsCode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1053), (void *)_cffi_d_ExportWaveAsCode },
+  { "ColorToInt", (void *)_cffi_f_ColorToInt, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 395), (void *)_cffi_d_ColorToInt },
+  { "CompressData", (void *)_cffi_f_CompressData, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 507), (void *)_cffi_d_CompressData },
+  { "DecompressData", (void *)_cffi_f_DecompressData, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 507), (void *)_cffi_d_DecompressData },
+  { "DirectoryExists", (void *)_cffi_f_DirectoryExists, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 471), (void *)_cffi_d_DirectoryExists },
+  { "DisableCursor", (void *)_cffi_f_DisableCursor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_DisableCursor },
+  { "DrawBillboard", (void *)_cffi_f_DrawBillboard, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 550), (void *)_cffi_d_DrawBillboard },
+  { "DrawBillboardRec", (void *)_cffi_f_DrawBillboardRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 542), (void *)_cffi_d_DrawBillboardRec },
+  { "DrawBoundingBox", (void *)_cffi_f_DrawBoundingBox, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 529), (void *)_cffi_d_DrawBoundingBox },
+  { "DrawCircle", (void *)_cffi_f_DrawCircle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1088), (void *)_cffi_d_DrawCircle },
+  { "DrawCircle3D", (void *)_cffi_f_DrawCircle3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 990), (void *)_cffi_d_DrawCircle3D },
+  { "DrawCircleGradient", (void *)_cffi_f_DrawCircleGradient, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1094), (void *)_cffi_d_DrawCircleGradient },
+  { "DrawCircleLines", (void *)_cffi_f_DrawCircleLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1088), (void *)_cffi_d_DrawCircleLines },
+  { "DrawCircleSector", (void *)_cffi_f_DrawCircleSector, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 953), (void *)_cffi_d_DrawCircleSector },
+  { "DrawCircleSectorLines", (void *)_cffi_f_DrawCircleSectorLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 953), (void *)_cffi_d_DrawCircleSectorLines },
+  { "DrawCircleV", (void *)_cffi_f_DrawCircleV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 939), (void *)_cffi_d_DrawCircleV },
+  { "DrawCube", (void *)_cffi_f_DrawCube, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 997), (void *)_cffi_d_DrawCube },
+  { "DrawCubeTexture", (void *)_cffi_f_DrawCubeTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 891), (void *)_cffi_d_DrawCubeTexture },
+  { "DrawCubeV", (void *)_cffi_f_DrawCubeV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 980), (void *)_cffi_d_DrawCubeV },
+  { "DrawCubeWires", (void *)_cffi_f_DrawCubeWires, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 997), (void *)_cffi_d_DrawCubeWires },
+  { "DrawCubeWiresV", (void *)_cffi_f_DrawCubeWiresV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 980), (void *)_cffi_d_DrawCubeWiresV },
+  { "DrawCylinder", (void *)_cffi_f_DrawCylinder, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1004), (void *)_cffi_d_DrawCylinder },
+  { "DrawCylinderWires", (void *)_cffi_f_DrawCylinderWires, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1004), (void *)_cffi_d_DrawCylinderWires },
+  { "DrawEllipse", (void *)_cffi_f_DrawEllipse, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1101), (void *)_cffi_d_DrawEllipse },
+  { "DrawEllipseLines", (void *)_cffi_f_DrawEllipseLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1101), (void *)_cffi_d_DrawEllipseLines },
+  { "DrawFPS", (void *)_cffi_f_DrawFPS, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1074), (void *)_cffi_d_DrawFPS },
+  { "DrawGizmo", (void *)_cffi_f_DrawGizmo, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 968), (void *)_cffi_d_DrawGizmo },
+  { "DrawGrid", (void *)_cffi_f_DrawGrid, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1070), (void *)_cffi_d_DrawGrid },
+  { "DrawLine", (void *)_cffi_f_DrawLine, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1114), (void *)_cffi_d_DrawLine },
+  { "DrawLine3D", (void *)_cffi_f_DrawLine3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 980), (void *)_cffi_d_DrawLine3D },
+  { "DrawLineBezier", (void *)_cffi_f_DrawLineBezier, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 933), (void *)_cffi_d_DrawLineBezier },
+  { "DrawLineEx", (void *)_cffi_f_DrawLineEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 933), (void *)_cffi_d_DrawLineEx },
+  { "DrawLineStrip", (void *)_cffi_f_DrawLineStrip, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 913), (void *)_cffi_d_DrawLineStrip },
+  { "DrawLineV", (void *)_cffi_f_DrawLineV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 922), (void *)_cffi_d_DrawLineV },
+  { "DrawModel", (void *)_cffi_f_DrawModel, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 740), (void *)_cffi_d_DrawModel },
+  { "DrawModelEx", (void *)_cffi_f_DrawModelEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 732), (void *)_cffi_d_DrawModelEx },
+  { "DrawModelWires", (void *)_cffi_f_DrawModelWires, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 740), (void *)_cffi_d_DrawModelWires },
+  { "DrawModelWiresEx", (void *)_cffi_f_DrawModelWiresEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 732), (void *)_cffi_d_DrawModelWiresEx },
+  { "DrawPixel", (void *)_cffi_f_DrawPixel, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1078), (void *)_cffi_d_DrawPixel },
+  { "DrawPixelV", (void *)_cffi_f_DrawPixelV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 918), (void *)_cffi_d_DrawPixelV },
+  { "DrawPlane", (void *)_cffi_f_DrawPlane, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 975), (void *)_cffi_d_DrawPlane },
+  { "DrawPoint3D", (void *)_cffi_f_DrawPoint3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 971), (void *)_cffi_d_DrawPoint3D },
+  { "DrawPoly", (void *)_cffi_f_DrawPoly, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 961), (void *)_cffi_d_DrawPoly },
+  { "DrawPolyLines", (void *)_cffi_f_DrawPolyLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 961), (void *)_cffi_d_DrawPolyLines },
+  { "DrawRay", (void *)_cffi_f_DrawRay, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 760), (void *)_cffi_d_DrawRay },
+  { "DrawRectangle", (void *)_cffi_f_DrawRectangle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1114), (void *)_cffi_d_DrawRectangle },
+  { "DrawRectangleGradientEx", (void *)_cffi_f_DrawRectangleGradientEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 768), (void *)_cffi_d_DrawRectangleGradientEx },
+  { "DrawRectangleGradientH", (void *)_cffi_f_DrawRectangleGradientH, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1121), (void *)_cffi_d_DrawRectangleGradientH },
+  { "DrawRectangleGradientV", (void *)_cffi_f_DrawRectangleGradientV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1121), (void *)_cffi_d_DrawRectangleGradientV },
+  { "DrawRectangleLines", (void *)_cffi_f_DrawRectangleLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1114), (void *)_cffi_d_DrawRectangleLines },
+  { "DrawRectangleLinesEx", (void *)_cffi_f_DrawRectangleLinesEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 794), (void *)_cffi_d_DrawRectangleLinesEx },
+  { "DrawRectanglePro", (void *)_cffi_f_DrawRectanglePro, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 775), (void *)_cffi_d_DrawRectanglePro },
+  { "DrawRectangleRec", (void *)_cffi_f_DrawRectangleRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 764), (void *)_cffi_d_DrawRectangleRec },
+  { "DrawRectangleRounded", (void *)_cffi_f_DrawRectangleRounded, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 781), (void *)_cffi_d_DrawRectangleRounded },
+  { "DrawRectangleRoundedLines", (void *)_cffi_f_DrawRectangleRoundedLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 787), (void *)_cffi_d_DrawRectangleRoundedLines },
+  { "DrawRectangleV", (void *)_cffi_f_DrawRectangleV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 922), (void *)_cffi_d_DrawRectangleV },
+  { "DrawRing", (void *)_cffi_f_DrawRing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 944), (void *)_cffi_d_DrawRing },
+  { "DrawRingLines", (void *)_cffi_f_DrawRingLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 944), (void *)_cffi_d_DrawRingLines },
+  { "DrawSphere", (void *)_cffi_f_DrawSphere, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 985), (void *)_cffi_d_DrawSphere },
+  { "DrawSphereEx", (void *)_cffi_f_DrawSphereEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1012), (void *)_cffi_d_DrawSphereEx },
+  { "DrawSphereWires", (void *)_cffi_f_DrawSphereWires, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1012), (void *)_cffi_d_DrawSphereWires },
+  { "DrawText", (void *)_cffi_f_DrawText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1049), (void *)_cffi_d_DrawText },
+  { "DrawTextCodepoint", (void *)_cffi_f_DrawTextCodepoint, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 597), (void *)_cffi_d_DrawTextCodepoint },
+  { "DrawTextEx", (void *)_cffi_f_DrawTextEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 589), (void *)_cffi_d_DrawTextEx },
+  { "DrawTextRec", (void *)_cffi_f_DrawTextRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 567), (void *)_cffi_d_DrawTextRec },
+  { "DrawTextRecEx", (void *)_cffi_f_DrawTextRecEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 576), (void *)_cffi_d_DrawTextRecEx },
+  { "DrawTexture", (void *)_cffi_f_DrawTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 903), (void *)_cffi_d_DrawTexture },
+  { "DrawTextureEx", (void *)_cffi_f_DrawTextureEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 884), (void *)_cffi_d_DrawTextureEx },
+  { "DrawTextureNPatch", (void *)_cffi_f_DrawTextureNPatch, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 846), (void *)_cffi_d_DrawTextureNPatch },
+  { "DrawTexturePro", (void *)_cffi_f_DrawTexturePro, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 858), (void *)_cffi_d_DrawTexturePro },
+  { "DrawTextureQuad", (void *)_cffi_f_DrawTextureQuad, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 877), (void *)_cffi_d_DrawTextureQuad },
+  { "DrawTextureRec", (void *)_cffi_f_DrawTextureRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 866), (void *)_cffi_d_DrawTextureRec },
+  { "DrawTextureV", (void *)_cffi_f_DrawTextureV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 872), (void *)_cffi_d_DrawTextureV },
+  { "DrawTriangle", (void *)_cffi_f_DrawTriangle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 927), (void *)_cffi_d_DrawTriangle },
+  { "DrawTriangleFan", (void *)_cffi_f_DrawTriangleFan, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 913), (void *)_cffi_d_DrawTriangleFan },
+  { "DrawTriangleLines", (void *)_cffi_f_DrawTriangleLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 927), (void *)_cffi_d_DrawTriangleLines },
+  { "DrawTriangleStrip", (void *)_cffi_f_DrawTriangleStrip, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 913), (void *)_cffi_d_DrawTriangleStrip },
+  { "EnableCursor", (void *)_cffi_f_EnableCursor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_EnableCursor },
+  { "EndBlendMode", (void *)_cffi_f_EndBlendMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_EndBlendMode },
+  { "EndDrawing", (void *)_cffi_f_EndDrawing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_EndDrawing },
+  { "EndMode2D", (void *)_cffi_f_EndMode2D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_EndMode2D },
+  { "EndMode3D", (void *)_cffi_f_EndMode3D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_EndMode3D },
+  { "EndScissorMode", (void *)_cffi_f_EndScissorMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_EndScissorMode },
+  { "EndShaderMode", (void *)_cffi_f_EndShaderMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_EndShaderMode },
+  { "EndTextureMode", (void *)_cffi_f_EndTextureMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_EndTextureMode },
+  { "EndVrDrawing", (void *)_cffi_f_EndVrDrawing, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_EndVrDrawing },
+  { "ExportImage", (void *)_cffi_f_ExportImage, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 694), (void *)_cffi_d_ExportImage },
+  { "ExportImageAsCode", (void *)_cffi_f_ExportImageAsCode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 694), (void *)_cffi_d_ExportImageAsCode },
+  { "ExportMesh", (void *)_cffi_f_ExportMesh, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 715), (void *)_cffi_d_ExportMesh },
+  { "ExportWave", (void *)_cffi_f_ExportWave, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1037), (void *)_cffi_d_ExportWave },
+  { "ExportWaveAsCode", (void *)_cffi_f_ExportWaveAsCode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1037), (void *)_cffi_d_ExportWaveAsCode },
   { "FILTER_ANISOTROPIC_16X", (void *)_cffi_const_FILTER_ANISOTROPIC_16X, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "FILTER_ANISOTROPIC_4X", (void *)_cffi_const_FILTER_ANISOTROPIC_4X, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "FILTER_ANISOTROPIC_8X", (void *)_cffi_const_FILTER_ANISOTROPIC_8X, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
@@ -21711,7 +21695,7 @@ static const struct _cffi_global_s _cffi_globals[] = {
   { "FONT_DEFAULT", (void *)_cffi_const_FONT_DEFAULT, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "FONT_SDF", (void *)_cffi_const_FONT_SDF, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "Fade", (void *)_cffi_f_Fade, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 23), (void *)_cffi_d_Fade },
-  { "FileExists", (void *)_cffi_f_FileExists, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 384), (void *)_cffi_d_FileExists },
+  { "FileExists", (void *)_cffi_f_FileExists, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 471), (void *)_cffi_d_FileExists },
   { "GAMEPAD_AXIS_LEFT_TRIGGER", (void *)_cffi_const_GAMEPAD_AXIS_LEFT_TRIGGER, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "GAMEPAD_AXIS_LEFT_X", (void *)_cffi_const_GAMEPAD_AXIS_LEFT_X, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "GAMEPAD_AXIS_LEFT_Y", (void *)_cffi_const_GAMEPAD_AXIS_LEFT_Y, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
@@ -21774,150 +21758,150 @@ static const struct _cffi_global_s _cffi_globals[] = {
   { "GenTextureBRDF", (void *)_cffi_f_GenTextureBRDF, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 262), (void *)_cffi_d_GenTextureBRDF },
   { "GenTextureCubemap", (void *)_cffi_f_GenTextureCubemap, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 257), (void *)_cffi_d_GenTextureCubemap },
   { "GenTextureIrradiance", (void *)_cffi_f_GenTextureIrradiance, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 257), (void *)_cffi_d_GenTextureIrradiance },
-  { "GenTextureMipmaps", (void *)_cffi_f_GenTextureMipmaps, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 856), (void *)_cffi_d_GenTextureMipmaps },
+  { "GenTextureMipmaps", (void *)_cffi_f_GenTextureMipmaps, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 840), (void *)_cffi_d_GenTextureMipmaps },
   { "GenTexturePrefilter", (void *)_cffi_f_GenTexturePrefilter, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 257), (void *)_cffi_d_GenTexturePrefilter },
   { "GetCameraMatrix", (void *)_cffi_f_GetCameraMatrix, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 157), (void *)_cffi_d_GetCameraMatrix },
   { "GetCameraMatrix2D", (void *)_cffi_f_GetCameraMatrix2D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 154), (void *)_cffi_d_GetCameraMatrix2D },
-  { "GetClipboardText", (void *)_cffi_f_GetClipboardText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 456), (void *)_cffi_d_GetClipboardText },
-  { "GetCodepoints", (void *)_cffi_f_GetCodepoints, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 472), (void *)_cffi_d_GetCodepoints },
-  { "GetCodepointsCount", (void *)_cffi_f_GetCodepointsCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 491), (void *)_cffi_d_GetCodepointsCount },
+  { "GetClipboardText", (void *)_cffi_f_GetClipboardText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 363), (void *)_cffi_d_GetClipboardText },
+  { "GetCodepoints", (void *)_cffi_f_GetCodepoints, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 379), (void *)_cffi_d_GetCodepoints },
+  { "GetCodepointsCount", (void *)_cffi_f_GetCodepointsCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 471), (void *)_cffi_d_GetCodepointsCount },
   { "GetCollisionRayGround", (void *)_cffi_f_GetCollisionRayGround, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 222), (void *)_cffi_d_GetCollisionRayGround },
   { "GetCollisionRayModel", (void *)_cffi_f_GetCollisionRayModel, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 212), (void *)_cffi_d_GetCollisionRayModel },
   { "GetCollisionRayTriangle", (void *)_cffi_f_GetCollisionRayTriangle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 216), (void *)_cffi_d_GetCollisionRayTriangle },
   { "GetCollisionRec", (void *)_cffi_f_GetCollisionRec, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 230), (void *)_cffi_d_GetCollisionRec },
   { "GetColor", (void *)_cffi_f_GetColor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 33), (void *)_cffi_d_GetColor },
-  { "GetDirectoryFiles", (void *)_cffi_f_GetDirectoryFiles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 404), (void *)_cffi_d_GetDirectoryFiles },
-  { "GetDirectoryPath", (void *)_cffi_f_GetDirectoryPath, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 438), (void *)_cffi_d_GetDirectoryPath },
-  { "GetDroppedFiles", (void *)_cffi_f_GetDroppedFiles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 408), (void *)_cffi_d_GetDroppedFiles },
-  { "GetExtension", (void *)_cffi_f_GetExtension, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 438), (void *)_cffi_d_GetExtension },
-  { "GetFPS", (void *)_cffi_f_GetFPS, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetFPS },
-  { "GetFileModTime", (void *)_cffi_f_GetFileModTime, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 520), (void *)_cffi_d_GetFileModTime },
-  { "GetFileName", (void *)_cffi_f_GetFileName, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 438), (void *)_cffi_d_GetFileName },
-  { "GetFileNameWithoutExt", (void *)_cffi_f_GetFileNameWithoutExt, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 438), (void *)_cffi_d_GetFileNameWithoutExt },
+  { "GetDirectoryFiles", (void *)_cffi_f_GetDirectoryFiles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 311), (void *)_cffi_d_GetDirectoryFiles },
+  { "GetDirectoryPath", (void *)_cffi_f_GetDirectoryPath, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 345), (void *)_cffi_d_GetDirectoryPath },
+  { "GetDroppedFiles", (void *)_cffi_f_GetDroppedFiles, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 315), (void *)_cffi_d_GetDroppedFiles },
+  { "GetExtension", (void *)_cffi_f_GetExtension, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 345), (void *)_cffi_d_GetExtension },
+  { "GetFPS", (void *)_cffi_f_GetFPS, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetFPS },
+  { "GetFileModTime", (void *)_cffi_f_GetFileModTime, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 504), (void *)_cffi_d_GetFileModTime },
+  { "GetFileName", (void *)_cffi_f_GetFileName, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 345), (void *)_cffi_d_GetFileName },
+  { "GetFileNameWithoutExt", (void *)_cffi_f_GetFileNameWithoutExt, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 345), (void *)_cffi_d_GetFileNameWithoutExt },
   { "GetFontDefault", (void *)_cffi_f_GetFontDefault, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 50), (void *)_cffi_d_GetFontDefault },
-  { "GetFrameTime", (void *)_cffi_f_GetFrameTime, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 470), (void *)_cffi_d_GetFrameTime },
-  { "GetGamepadAxisCount", (void *)_cffi_f_GetGamepadAxisCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 506), (void *)_cffi_d_GetGamepadAxisCount },
-  { "GetGamepadAxisMovement", (void *)_cffi_f_GetGamepadAxisMovement, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 466), (void *)_cffi_d_GetGamepadAxisMovement },
-  { "GetGamepadButtonPressed", (void *)_cffi_f_GetGamepadButtonPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetGamepadButtonPressed },
-  { "GetGamepadName", (void *)_cffi_f_GetGamepadName, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 449), (void *)_cffi_d_GetGamepadName },
-  { "GetGestureDetected", (void *)_cffi_f_GetGestureDetected, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetGestureDetected },
-  { "GetGestureDragAngle", (void *)_cffi_f_GetGestureDragAngle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 470), (void *)_cffi_d_GetGestureDragAngle },
+  { "GetFrameTime", (void *)_cffi_f_GetFrameTime, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 377), (void *)_cffi_d_GetFrameTime },
+  { "GetGamepadAxisCount", (void *)_cffi_f_GetGamepadAxisCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_GetGamepadAxisCount },
+  { "GetGamepadAxisMovement", (void *)_cffi_f_GetGamepadAxisMovement, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 373), (void *)_cffi_d_GetGamepadAxisMovement },
+  { "GetGamepadButtonPressed", (void *)_cffi_f_GetGamepadButtonPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetGamepadButtonPressed },
+  { "GetGamepadName", (void *)_cffi_f_GetGamepadName, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 356), (void *)_cffi_d_GetGamepadName },
+  { "GetGestureDetected", (void *)_cffi_f_GetGestureDetected, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetGestureDetected },
+  { "GetGestureDragAngle", (void *)_cffi_f_GetGestureDragAngle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 377), (void *)_cffi_d_GetGestureDragAngle },
   { "GetGestureDragVector", (void *)_cffi_f_GetGestureDragVector, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 294), (void *)_cffi_d_GetGestureDragVector },
-  { "GetGestureHoldDuration", (void *)_cffi_f_GetGestureHoldDuration, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 470), (void *)_cffi_d_GetGestureHoldDuration },
-  { "GetGesturePinchAngle", (void *)_cffi_f_GetGesturePinchAngle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 470), (void *)_cffi_d_GetGesturePinchAngle },
+  { "GetGestureHoldDuration", (void *)_cffi_f_GetGestureHoldDuration, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 377), (void *)_cffi_d_GetGestureHoldDuration },
+  { "GetGesturePinchAngle", (void *)_cffi_f_GetGesturePinchAngle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 377), (void *)_cffi_d_GetGesturePinchAngle },
   { "GetGesturePinchVector", (void *)_cffi_f_GetGesturePinchVector, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 294), (void *)_cffi_d_GetGesturePinchVector },
-  { "GetGlyphIndex", (void *)_cffi_f_GetGlyphIndex, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 479), (void *)_cffi_d_GetGlyphIndex },
+  { "GetGlyphIndex", (void *)_cffi_f_GetGlyphIndex, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 398), (void *)_cffi_d_GetGlyphIndex },
   { "GetImageAlphaBorder", (void *)_cffi_f_GetImageAlphaBorder, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 226), (void *)_cffi_d_GetImageAlphaBorder },
   { "GetImageData", (void *)_cffi_f_GetImageData, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 15), (void *)_cffi_d_GetImageData },
   { "GetImageDataNormalized", (void *)_cffi_f_GetImageDataNormalized, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 299), (void *)_cffi_d_GetImageDataNormalized },
-  { "GetKeyPressed", (void *)_cffi_f_GetKeyPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetKeyPressed },
+  { "GetKeyPressed", (void *)_cffi_f_GetKeyPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetKeyPressed },
   { "GetMatrixModelview", (void *)_cffi_f_GetMatrixModelview, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 160), (void *)_cffi_d_GetMatrixModelview },
   { "GetMatrixProjection", (void *)_cffi_f_GetMatrixProjection, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 160), (void *)_cffi_d_GetMatrixProjection },
-  { "GetMonitorCount", (void *)_cffi_f_GetMonitorCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetMonitorCount },
-  { "GetMonitorHeight", (void *)_cffi_f_GetMonitorHeight, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 506), (void *)_cffi_d_GetMonitorHeight },
-  { "GetMonitorName", (void *)_cffi_f_GetMonitorName, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 449), (void *)_cffi_d_GetMonitorName },
-  { "GetMonitorPhysicalHeight", (void *)_cffi_f_GetMonitorPhysicalHeight, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 506), (void *)_cffi_d_GetMonitorPhysicalHeight },
-  { "GetMonitorPhysicalWidth", (void *)_cffi_f_GetMonitorPhysicalWidth, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 506), (void *)_cffi_d_GetMonitorPhysicalWidth },
-  { "GetMonitorWidth", (void *)_cffi_f_GetMonitorWidth, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 506), (void *)_cffi_d_GetMonitorWidth },
+  { "GetMonitorCount", (void *)_cffi_f_GetMonitorCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetMonitorCount },
+  { "GetMonitorHeight", (void *)_cffi_f_GetMonitorHeight, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_GetMonitorHeight },
+  { "GetMonitorName", (void *)_cffi_f_GetMonitorName, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 356), (void *)_cffi_d_GetMonitorName },
+  { "GetMonitorPhysicalHeight", (void *)_cffi_f_GetMonitorPhysicalHeight, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_GetMonitorPhysicalHeight },
+  { "GetMonitorPhysicalWidth", (void *)_cffi_f_GetMonitorPhysicalWidth, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_GetMonitorPhysicalWidth },
+  { "GetMonitorWidth", (void *)_cffi_f_GetMonitorWidth, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_GetMonitorWidth },
   { "GetMousePosition", (void *)_cffi_f_GetMousePosition, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 294), (void *)_cffi_d_GetMousePosition },
   { "GetMouseRay", (void *)_cffi_f_GetMouseRay, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 208), (void *)_cffi_d_GetMouseRay },
-  { "GetMouseWheelMove", (void *)_cffi_f_GetMouseWheelMove, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetMouseWheelMove },
-  { "GetMouseX", (void *)_cffi_f_GetMouseX, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetMouseX },
-  { "GetMouseY", (void *)_cffi_f_GetMouseY, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetMouseY },
-  { "GetMusicTimeLength", (void *)_cffi_f_GetMusicTimeLength, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 463), (void *)_cffi_d_GetMusicTimeLength },
-  { "GetMusicTimePlayed", (void *)_cffi_f_GetMusicTimePlayed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 463), (void *)_cffi_d_GetMusicTimePlayed },
-  { "GetNextCodepoint", (void *)_cffi_f_GetNextCodepoint, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 498), (void *)_cffi_d_GetNextCodepoint },
-  { "GetPixelDataSize", (void *)_cffi_f_GetPixelDataSize, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 513), (void *)_cffi_d_GetPixelDataSize },
-  { "GetPrevDirectoryPath", (void *)_cffi_f_GetPrevDirectoryPath, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 438), (void *)_cffi_d_GetPrevDirectoryPath },
-  { "GetRandomValue", (void *)_cffi_f_GetRandomValue, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 509), (void *)_cffi_d_GetRandomValue },
+  { "GetMouseWheelMove", (void *)_cffi_f_GetMouseWheelMove, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetMouseWheelMove },
+  { "GetMouseX", (void *)_cffi_f_GetMouseX, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetMouseX },
+  { "GetMouseY", (void *)_cffi_f_GetMouseY, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetMouseY },
+  { "GetMusicTimeLength", (void *)_cffi_f_GetMusicTimeLength, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 370), (void *)_cffi_d_GetMusicTimeLength },
+  { "GetMusicTimePlayed", (void *)_cffi_f_GetMusicTimePlayed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 370), (void *)_cffi_d_GetMusicTimePlayed },
+  { "GetNextCodepoint", (void *)_cffi_f_GetNextCodepoint, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 478), (void *)_cffi_d_GetNextCodepoint },
+  { "GetPixelDataSize", (void *)_cffi_f_GetPixelDataSize, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 497), (void *)_cffi_d_GetPixelDataSize },
+  { "GetPrevDirectoryPath", (void *)_cffi_f_GetPrevDirectoryPath, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 345), (void *)_cffi_d_GetPrevDirectoryPath },
+  { "GetRandomValue", (void *)_cffi_f_GetRandomValue, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 493), (void *)_cffi_d_GetRandomValue },
   { "GetScreenData", (void *)_cffi_f_GetScreenData, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 146), (void *)_cffi_d_GetScreenData },
-  { "GetScreenHeight", (void *)_cffi_f_GetScreenHeight, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetScreenHeight },
+  { "GetScreenHeight", (void *)_cffi_f_GetScreenHeight, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetScreenHeight },
   { "GetScreenToWorld2D", (void *)_cffi_f_GetScreenToWorld2D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 277), (void *)_cffi_d_GetScreenToWorld2D },
-  { "GetScreenWidth", (void *)_cffi_f_GetScreenWidth, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetScreenWidth },
+  { "GetScreenWidth", (void *)_cffi_f_GetScreenWidth, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetScreenWidth },
   { "GetShaderDefault", (void *)_cffi_f_GetShaderDefault, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 242), (void *)_cffi_d_GetShaderDefault },
-  { "GetShaderLocation", (void *)_cffi_f_GetShaderLocation, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 483), (void *)_cffi_d_GetShaderLocation },
-  { "GetSoundsPlaying", (void *)_cffi_f_GetSoundsPlaying, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetSoundsPlaying },
+  { "GetShaderLocation", (void *)_cffi_f_GetShaderLocation, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 428), (void *)_cffi_d_GetShaderLocation },
+  { "GetSoundsPlaying", (void *)_cffi_f_GetSoundsPlaying, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetSoundsPlaying },
   { "GetTextureData", (void *)_cffi_f_GetTextureData, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 79), (void *)_cffi_d_GetTextureData },
   { "GetTextureDefault", (void *)_cffi_f_GetTextureDefault, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 269), (void *)_cffi_d_GetTextureDefault },
-  { "GetTime", (void *)_cffi_f_GetTime, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 458), (void *)_cffi_d_GetTime },
-  { "GetTouchPointsCount", (void *)_cffi_f_GetTouchPointsCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetTouchPointsCount },
+  { "GetTime", (void *)_cffi_f_GetTime, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 365), (void *)_cffi_d_GetTime },
+  { "GetTouchPointsCount", (void *)_cffi_f_GetTouchPointsCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetTouchPointsCount },
   { "GetTouchPosition", (void *)_cffi_f_GetTouchPosition, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 291), (void *)_cffi_d_GetTouchPosition },
-  { "GetTouchX", (void *)_cffi_f_GetTouchX, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetTouchX },
-  { "GetTouchY", (void *)_cffi_f_GetTouchY, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 518), (void *)_cffi_d_GetTouchY },
-  { "GetWaveData", (void *)_cffi_f_GetWaveData, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 460), (void *)_cffi_d_GetWaveData },
-  { "GetWindowHandle", (void *)_cffi_f_GetWindowHandle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 531), (void *)_cffi_d_GetWindowHandle },
+  { "GetTouchX", (void *)_cffi_f_GetTouchX, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetTouchX },
+  { "GetTouchY", (void *)_cffi_f_GetTouchY, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_GetTouchY },
+  { "GetWaveData", (void *)_cffi_f_GetWaveData, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 367), (void *)_cffi_d_GetWaveData },
+  { "GetWindowHandle", (void *)_cffi_f_GetWindowHandle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 515), (void *)_cffi_d_GetWindowHandle },
   { "GetWindowPosition", (void *)_cffi_f_GetWindowPosition, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 294), (void *)_cffi_d_GetWindowPosition },
-  { "GetWorkingDirectory", (void *)_cffi_f_GetWorkingDirectory, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 456), (void *)_cffi_d_GetWorkingDirectory },
+  { "GetWorkingDirectory", (void *)_cffi_f_GetWorkingDirectory, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 363), (void *)_cffi_d_GetWorkingDirectory },
   { "GetWorldToScreen", (void *)_cffi_f_GetWorldToScreen, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 281), (void *)_cffi_d_GetWorldToScreen },
   { "GetWorldToScreen2D", (void *)_cffi_f_GetWorldToScreen2D, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 277), (void *)_cffi_d_GetWorldToScreen2D },
   { "GetWorldToScreenEx", (void *)_cffi_f_GetWorldToScreenEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 285), (void *)_cffi_d_GetWorldToScreenEx },
-  { "HideCursor", (void *)_cffi_f_HideCursor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_HideCursor },
-  { "HideWindow", (void *)_cffi_f_HideWindow, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_HideWindow },
-  { "ImageAlphaClear", (void *)_cffi_f_ImageAlphaClear, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 632), (void *)_cffi_d_ImageAlphaClear },
-  { "ImageAlphaCrop", (void *)_cffi_f_ImageAlphaCrop, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 679), (void *)_cffi_d_ImageAlphaCrop },
-  { "ImageAlphaMask", (void *)_cffi_f_ImageAlphaMask, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 637), (void *)_cffi_d_ImageAlphaMask },
-  { "ImageAlphaPremultiply", (void *)_cffi_f_ImageAlphaPremultiply, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 620), (void *)_cffi_d_ImageAlphaPremultiply },
-  { "ImageColorBrightness", (void *)_cffi_f_ImageColorBrightness, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 683), (void *)_cffi_d_ImageColorBrightness },
-  { "ImageColorContrast", (void *)_cffi_f_ImageColorContrast, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 679), (void *)_cffi_d_ImageColorContrast },
-  { "ImageColorGrayscale", (void *)_cffi_f_ImageColorGrayscale, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 620), (void *)_cffi_d_ImageColorGrayscale },
-  { "ImageColorInvert", (void *)_cffi_f_ImageColorInvert, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 620), (void *)_cffi_d_ImageColorInvert },
-  { "ImageColorReplace", (void *)_cffi_f_ImageColorReplace, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 627), (void *)_cffi_d_ImageColorReplace },
-  { "ImageColorTint", (void *)_cffi_f_ImageColorTint, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 623), (void *)_cffi_d_ImageColorTint },
+  { "HideCursor", (void *)_cffi_f_HideCursor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_HideCursor },
+  { "HideWindow", (void *)_cffi_f_HideWindow, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_HideWindow },
+  { "ImageAlphaClear", (void *)_cffi_f_ImageAlphaClear, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 616), (void *)_cffi_d_ImageAlphaClear },
+  { "ImageAlphaCrop", (void *)_cffi_f_ImageAlphaCrop, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 663), (void *)_cffi_d_ImageAlphaCrop },
+  { "ImageAlphaMask", (void *)_cffi_f_ImageAlphaMask, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 621), (void *)_cffi_d_ImageAlphaMask },
+  { "ImageAlphaPremultiply", (void *)_cffi_f_ImageAlphaPremultiply, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 604), (void *)_cffi_d_ImageAlphaPremultiply },
+  { "ImageColorBrightness", (void *)_cffi_f_ImageColorBrightness, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 667), (void *)_cffi_d_ImageColorBrightness },
+  { "ImageColorContrast", (void *)_cffi_f_ImageColorContrast, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 663), (void *)_cffi_d_ImageColorContrast },
+  { "ImageColorGrayscale", (void *)_cffi_f_ImageColorGrayscale, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 604), (void *)_cffi_d_ImageColorGrayscale },
+  { "ImageColorInvert", (void *)_cffi_f_ImageColorInvert, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 604), (void *)_cffi_d_ImageColorInvert },
+  { "ImageColorReplace", (void *)_cffi_f_ImageColorReplace, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 611), (void *)_cffi_d_ImageColorReplace },
+  { "ImageColorTint", (void *)_cffi_f_ImageColorTint, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 607), (void *)_cffi_d_ImageColorTint },
   { "ImageCopy", (void *)_cffi_f_ImageCopy, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 72), (void *)_cffi_d_ImageCopy },
-  { "ImageCrop", (void *)_cffi_f_ImageCrop, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 648), (void *)_cffi_d_ImageCrop },
-  { "ImageDither", (void *)_cffi_f_ImageDither, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 692), (void *)_cffi_d_ImageDither },
-  { "ImageDraw", (void *)_cffi_f_ImageDraw, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 641), (void *)_cffi_d_ImageDraw },
-  { "ImageDrawRectangle", (void *)_cffi_f_ImageDrawRectangle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 652), (void *)_cffi_d_ImageDrawRectangle },
-  { "ImageDrawRectangleLines", (void *)_cffi_f_ImageDrawRectangleLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 657), (void *)_cffi_d_ImageDrawRectangleLines },
-  { "ImageDrawText", (void *)_cffi_f_ImageDrawText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 672), (void *)_cffi_d_ImageDrawText },
-  { "ImageDrawTextEx", (void *)_cffi_f_ImageDrawTextEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 663), (void *)_cffi_d_ImageDrawTextEx },
+  { "ImageCrop", (void *)_cffi_f_ImageCrop, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 632), (void *)_cffi_d_ImageCrop },
+  { "ImageDither", (void *)_cffi_f_ImageDither, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 676), (void *)_cffi_d_ImageDither },
+  { "ImageDraw", (void *)_cffi_f_ImageDraw, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 625), (void *)_cffi_d_ImageDraw },
+  { "ImageDrawRectangle", (void *)_cffi_f_ImageDrawRectangle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 636), (void *)_cffi_d_ImageDrawRectangle },
+  { "ImageDrawRectangleLines", (void *)_cffi_f_ImageDrawRectangleLines, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 641), (void *)_cffi_d_ImageDrawRectangleLines },
+  { "ImageDrawText", (void *)_cffi_f_ImageDrawText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 656), (void *)_cffi_d_ImageDrawText },
+  { "ImageDrawTextEx", (void *)_cffi_f_ImageDrawTextEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 647), (void *)_cffi_d_ImageDrawTextEx },
   { "ImageExtractPalette", (void *)_cffi_f_ImageExtractPalette, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 18), (void *)_cffi_d_ImageExtractPalette },
-  { "ImageFlipHorizontal", (void *)_cffi_f_ImageFlipHorizontal, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 620), (void *)_cffi_d_ImageFlipHorizontal },
-  { "ImageFlipVertical", (void *)_cffi_f_ImageFlipVertical, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 620), (void *)_cffi_d_ImageFlipVertical },
-  { "ImageFormat", (void *)_cffi_f_ImageFormat, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 683), (void *)_cffi_d_ImageFormat },
+  { "ImageFlipHorizontal", (void *)_cffi_f_ImageFlipHorizontal, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 604), (void *)_cffi_d_ImageFlipHorizontal },
+  { "ImageFlipVertical", (void *)_cffi_f_ImageFlipVertical, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 604), (void *)_cffi_d_ImageFlipVertical },
+  { "ImageFormat", (void *)_cffi_f_ImageFormat, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 667), (void *)_cffi_d_ImageFormat },
   { "ImageFromImage", (void *)_cffi_f_ImageFromImage, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 75), (void *)_cffi_d_ImageFromImage },
-  { "ImageMipmaps", (void *)_cffi_f_ImageMipmaps, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 620), (void *)_cffi_d_ImageMipmaps },
-  { "ImageResize", (void *)_cffi_f_ImageResize, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 687), (void *)_cffi_d_ImageResize },
-  { "ImageResizeCanvas", (void *)_cffi_f_ImageResizeCanvas, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 699), (void *)_cffi_d_ImageResizeCanvas },
-  { "ImageResizeNN", (void *)_cffi_f_ImageResizeNN, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 687), (void *)_cffi_d_ImageResizeNN },
-  { "ImageRotateCCW", (void *)_cffi_f_ImageRotateCCW, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 620), (void *)_cffi_d_ImageRotateCCW },
-  { "ImageRotateCW", (void *)_cffi_f_ImageRotateCW, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 620), (void *)_cffi_d_ImageRotateCW },
+  { "ImageMipmaps", (void *)_cffi_f_ImageMipmaps, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 604), (void *)_cffi_d_ImageMipmaps },
+  { "ImageResize", (void *)_cffi_f_ImageResize, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 671), (void *)_cffi_d_ImageResize },
+  { "ImageResizeCanvas", (void *)_cffi_f_ImageResizeCanvas, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 683), (void *)_cffi_d_ImageResizeCanvas },
+  { "ImageResizeNN", (void *)_cffi_f_ImageResizeNN, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 671), (void *)_cffi_d_ImageResizeNN },
+  { "ImageRotateCCW", (void *)_cffi_f_ImageRotateCCW, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 604), (void *)_cffi_d_ImageRotateCCW },
+  { "ImageRotateCW", (void *)_cffi_f_ImageRotateCW, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 604), (void *)_cffi_d_ImageRotateCW },
   { "ImageText", (void *)_cffi_f_ImageText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 85), (void *)_cffi_d_ImageText },
   { "ImageTextEx", (void *)_cffi_f_ImageTextEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 65), (void *)_cffi_d_ImageTextEx },
-  { "ImageToPOT", (void *)_cffi_f_ImageToPOT, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 623), (void *)_cffi_d_ImageToPOT },
-  { "InitAudioDevice", (void *)_cffi_f_InitAudioDevice, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_InitAudioDevice },
+  { "ImageToPOT", (void *)_cffi_f_ImageToPOT, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 607), (void *)_cffi_d_ImageToPOT },
+  { "InitAudioDevice", (void *)_cffi_f_InitAudioDevice, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_InitAudioDevice },
   { "InitAudioStream", (void *)_cffi_f_InitAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 0), (void *)_cffi_d_InitAudioStream },
-  { "InitVrSimulator", (void *)_cffi_f_InitVrSimulator, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_InitVrSimulator },
-  { "InitWindow", (void *)_cffi_f_InitWindow, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1099), (void *)_cffi_d_InitWindow },
-  { "IsAudioDeviceReady", (void *)_cffi_f_IsAudioDeviceReady, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 402), (void *)_cffi_d_IsAudioDeviceReady },
-  { "IsAudioStreamPlaying", (void *)_cffi_f_IsAudioStreamPlaying, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 311), (void *)_cffi_d_IsAudioStreamPlaying },
-  { "IsAudioStreamProcessed", (void *)_cffi_f_IsAudioStreamProcessed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 311), (void *)_cffi_d_IsAudioStreamProcessed },
-  { "IsCursorHidden", (void *)_cffi_f_IsCursorHidden, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 402), (void *)_cffi_d_IsCursorHidden },
-  { "IsFileDropped", (void *)_cffi_f_IsFileDropped, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 402), (void *)_cffi_d_IsFileDropped },
-  { "IsFileExtension", (void *)_cffi_f_IsFileExtension, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 387), (void *)_cffi_d_IsFileExtension },
-  { "IsGamepadAvailable", (void *)_cffi_f_IsGamepadAvailable, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsGamepadAvailable },
-  { "IsGamepadButtonDown", (void *)_cffi_f_IsGamepadButtonDown, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 398), (void *)_cffi_d_IsGamepadButtonDown },
-  { "IsGamepadButtonPressed", (void *)_cffi_f_IsGamepadButtonPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 398), (void *)_cffi_d_IsGamepadButtonPressed },
-  { "IsGamepadButtonReleased", (void *)_cffi_f_IsGamepadButtonReleased, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 398), (void *)_cffi_d_IsGamepadButtonReleased },
-  { "IsGamepadButtonUp", (void *)_cffi_f_IsGamepadButtonUp, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 398), (void *)_cffi_d_IsGamepadButtonUp },
-  { "IsGamepadName", (void *)_cffi_f_IsGamepadName, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 394), (void *)_cffi_d_IsGamepadName },
-  { "IsGestureDetected", (void *)_cffi_f_IsGestureDetected, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsGestureDetected },
-  { "IsKeyDown", (void *)_cffi_f_IsKeyDown, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsKeyDown },
-  { "IsKeyPressed", (void *)_cffi_f_IsKeyPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsKeyPressed },
-  { "IsKeyReleased", (void *)_cffi_f_IsKeyReleased, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsKeyReleased },
-  { "IsKeyUp", (void *)_cffi_f_IsKeyUp, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsKeyUp },
-  { "IsModelAnimationValid", (void *)_cffi_f_IsModelAnimationValid, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 323), (void *)_cffi_d_IsModelAnimationValid },
-  { "IsMouseButtonDown", (void *)_cffi_f_IsMouseButtonDown, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsMouseButtonDown },
-  { "IsMouseButtonPressed", (void *)_cffi_f_IsMouseButtonPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsMouseButtonPressed },
-  { "IsMouseButtonReleased", (void *)_cffi_f_IsMouseButtonReleased, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsMouseButtonReleased },
-  { "IsMouseButtonUp", (void *)_cffi_f_IsMouseButtonUp, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 391), (void *)_cffi_d_IsMouseButtonUp },
-  { "IsMusicPlaying", (void *)_cffi_f_IsMusicPlaying, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 327), (void *)_cffi_d_IsMusicPlaying },
-  { "IsSoundPlaying", (void *)_cffi_f_IsSoundPlaying, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 349), (void *)_cffi_d_IsSoundPlaying },
-  { "IsVrSimulatorReady", (void *)_cffi_f_IsVrSimulatorReady, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 402), (void *)_cffi_d_IsVrSimulatorReady },
-  { "IsWindowHidden", (void *)_cffi_f_IsWindowHidden, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 402), (void *)_cffi_d_IsWindowHidden },
-  { "IsWindowMinimized", (void *)_cffi_f_IsWindowMinimized, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 402), (void *)_cffi_d_IsWindowMinimized },
-  { "IsWindowReady", (void *)_cffi_f_IsWindowReady, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 402), (void *)_cffi_d_IsWindowReady },
-  { "IsWindowResized", (void *)_cffi_f_IsWindowResized, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 402), (void *)_cffi_d_IsWindowResized },
+  { "InitVrSimulator", (void *)_cffi_f_InitVrSimulator, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_InitVrSimulator },
+  { "InitWindow", (void *)_cffi_f_InitWindow, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1083), (void *)_cffi_d_InitWindow },
+  { "IsAudioDeviceReady", (void *)_cffi_f_IsAudioDeviceReady, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_IsAudioDeviceReady },
+  { "IsAudioStreamPlaying", (void *)_cffi_f_IsAudioStreamPlaying, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 383), (void *)_cffi_d_IsAudioStreamPlaying },
+  { "IsAudioStreamProcessed", (void *)_cffi_f_IsAudioStreamProcessed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 383), (void *)_cffi_d_IsAudioStreamProcessed },
+  { "IsCursorHidden", (void *)_cffi_f_IsCursorHidden, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_IsCursorHidden },
+  { "IsFileDropped", (void *)_cffi_f_IsFileDropped, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_IsFileDropped },
+  { "IsFileExtension", (void *)_cffi_f_IsFileExtension, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 474), (void *)_cffi_d_IsFileExtension },
+  { "IsGamepadAvailable", (void *)_cffi_f_IsGamepadAvailable, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsGamepadAvailable },
+  { "IsGamepadButtonDown", (void *)_cffi_f_IsGamepadButtonDown, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 493), (void *)_cffi_d_IsGamepadButtonDown },
+  { "IsGamepadButtonPressed", (void *)_cffi_f_IsGamepadButtonPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 493), (void *)_cffi_d_IsGamepadButtonPressed },
+  { "IsGamepadButtonReleased", (void *)_cffi_f_IsGamepadButtonReleased, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 493), (void *)_cffi_d_IsGamepadButtonReleased },
+  { "IsGamepadButtonUp", (void *)_cffi_f_IsGamepadButtonUp, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 493), (void *)_cffi_d_IsGamepadButtonUp },
+  { "IsGamepadName", (void *)_cffi_f_IsGamepadName, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 489), (void *)_cffi_d_IsGamepadName },
+  { "IsGestureDetected", (void *)_cffi_f_IsGestureDetected, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsGestureDetected },
+  { "IsKeyDown", (void *)_cffi_f_IsKeyDown, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsKeyDown },
+  { "IsKeyPressed", (void *)_cffi_f_IsKeyPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsKeyPressed },
+  { "IsKeyReleased", (void *)_cffi_f_IsKeyReleased, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsKeyReleased },
+  { "IsKeyUp", (void *)_cffi_f_IsKeyUp, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsKeyUp },
+  { "IsModelAnimationValid", (void *)_cffi_f_IsModelAnimationValid, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 402), (void *)_cffi_d_IsModelAnimationValid },
+  { "IsMouseButtonDown", (void *)_cffi_f_IsMouseButtonDown, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsMouseButtonDown },
+  { "IsMouseButtonPressed", (void *)_cffi_f_IsMouseButtonPressed, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsMouseButtonPressed },
+  { "IsMouseButtonReleased", (void *)_cffi_f_IsMouseButtonReleased, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsMouseButtonReleased },
+  { "IsMouseButtonUp", (void *)_cffi_f_IsMouseButtonUp, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_IsMouseButtonUp },
+  { "IsMusicPlaying", (void *)_cffi_f_IsMusicPlaying, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 406), (void *)_cffi_d_IsMusicPlaying },
+  { "IsSoundPlaying", (void *)_cffi_f_IsSoundPlaying, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 432), (void *)_cffi_d_IsSoundPlaying },
+  { "IsVrSimulatorReady", (void *)_cffi_f_IsVrSimulatorReady, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_IsVrSimulatorReady },
+  { "IsWindowHidden", (void *)_cffi_f_IsWindowHidden, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_IsWindowHidden },
+  { "IsWindowMinimized", (void *)_cffi_f_IsWindowMinimized, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_IsWindowMinimized },
+  { "IsWindowReady", (void *)_cffi_f_IsWindowReady, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_IsWindowReady },
+  { "IsWindowResized", (void *)_cffi_f_IsWindowResized, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_IsWindowResized },
   { "KEY_A", (void *)_cffi_const_KEY_A, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "KEY_APOSTROPHE", (void *)_cffi_const_KEY_APOSTROPHE, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "KEY_B", (void *)_cffi_const_KEY_B, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
@@ -22082,7 +22066,7 @@ static const struct _cffi_global_s _cffi_globals[] = {
   { "LoadShaderCode", (void *)_cffi_f_LoadShaderCode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 238), (void *)_cffi_d_LoadShaderCode },
   { "LoadSound", (void *)_cffi_f_LoadSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 247), (void *)_cffi_d_LoadSound },
   { "LoadSoundFromWave", (void *)_cffi_f_LoadSoundFromWave, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 244), (void *)_cffi_d_LoadSoundFromWave },
-  { "LoadText", (void *)_cffi_f_LoadText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 416), (void *)_cffi_d_LoadText },
+  { "LoadText", (void *)_cffi_f_LoadText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 323), (void *)_cffi_d_LoadText },
   { "LoadTexture", (void *)_cffi_f_LoadTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 266), (void *)_cffi_d_LoadTexture },
   { "LoadTextureCubemap", (void *)_cffi_f_LoadTextureCubemap, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 253), (void *)_cffi_d_LoadTextureCubemap },
   { "LoadTextureFromImage", (void *)_cffi_f_LoadTextureFromImage, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 250), (void *)_cffi_d_LoadTextureFromImage },
@@ -22104,93 +22088,93 @@ static const struct _cffi_global_s _cffi_globals[] = {
   { "MOUSE_LEFT_BUTTON", (void *)_cffi_const_MOUSE_LEFT_BUTTON, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "MOUSE_MIDDLE_BUTTON", (void *)_cffi_const_MOUSE_MIDDLE_BUTTON, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "MOUSE_RIGHT_BUTTON", (void *)_cffi_const_MOUSE_RIGHT_BUTTON, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
-  { "MeasureText", (void *)_cffi_f_MeasureText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 502), (void *)_cffi_d_MeasureText },
+  { "MeasureText", (void *)_cffi_f_MeasureText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 482), (void *)_cffi_d_MeasureText },
   { "MeasureTextEx", (void *)_cffi_f_MeasureTextEx, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 271), (void *)_cffi_d_MeasureTextEx },
-  { "MeshBinormals", (void *)_cffi_f_MeshBinormals, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 725), (void *)_cffi_d_MeshBinormals },
+  { "MeshBinormals", (void *)_cffi_f_MeshBinormals, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 709), (void *)_cffi_d_MeshBinormals },
   { "MeshBoundingBox", (void *)_cffi_f_MeshBoundingBox, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 5), (void *)_cffi_d_MeshBoundingBox },
-  { "MeshTangents", (void *)_cffi_f_MeshTangents, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 725), (void *)_cffi_d_MeshTangents },
+  { "MeshTangents", (void *)_cffi_f_MeshTangents, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 709), (void *)_cffi_d_MeshTangents },
   { "NPT_3PATCH_HORIZONTAL", (void *)_cffi_const_NPT_3PATCH_HORIZONTAL, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "NPT_3PATCH_VERTICAL", (void *)_cffi_const_NPT_3PATCH_VERTICAL, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "NPT_9PATCH", (void *)_cffi_const_NPT_9PATCH, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
-  { "OpenURL", (void *)_cffi_f_OpenURL, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1062), (void *)_cffi_d_OpenURL },
-  { "PauseAudioStream", (void *)_cffi_f_PauseAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 533), (void *)_cffi_d_PauseAudioStream },
-  { "PauseMusicStream", (void *)_cffi_f_PauseMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 765), (void *)_cffi_d_PauseMusicStream },
-  { "PauseSound", (void *)_cffi_f_PauseSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 844), (void *)_cffi_d_PauseSound },
-  { "PlayAudioStream", (void *)_cffi_f_PlayAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 533), (void *)_cffi_d_PlayAudioStream },
-  { "PlayMusicStream", (void *)_cffi_f_PlayMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 765), (void *)_cffi_d_PlayMusicStream },
-  { "PlaySound", (void *)_cffi_f_PlaySound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 844), (void *)_cffi_d_PlaySound },
-  { "PlaySoundMulti", (void *)_cffi_f_PlaySoundMulti, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 844), (void *)_cffi_d_PlaySoundMulti },
-  { "ResumeAudioStream", (void *)_cffi_f_ResumeAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 533), (void *)_cffi_d_ResumeAudioStream },
-  { "ResumeMusicStream", (void *)_cffi_f_ResumeMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 765), (void *)_cffi_d_ResumeMusicStream },
-  { "ResumeSound", (void *)_cffi_f_ResumeSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 844), (void *)_cffi_d_ResumeSound },
-  { "SetAudioStreamPitch", (void *)_cffi_f_SetAudioStreamPitch, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 536), (void *)_cffi_d_SetAudioStreamPitch },
-  { "SetAudioStreamVolume", (void *)_cffi_f_SetAudioStreamVolume, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 536), (void *)_cffi_d_SetAudioStreamVolume },
-  { "SetCameraAltControl", (void *)_cffi_f_SetCameraAltControl, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1079), (void *)_cffi_d_SetCameraAltControl },
-  { "SetCameraMode", (void *)_cffi_f_SetCameraMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 573), (void *)_cffi_d_SetCameraMode },
-  { "SetCameraMoveControls", (void *)_cffi_f_SetCameraMoveControls, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1145), (void *)_cffi_d_SetCameraMoveControls },
-  { "SetCameraPanControl", (void *)_cffi_f_SetCameraPanControl, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1079), (void *)_cffi_d_SetCameraPanControl },
-  { "SetCameraSmoothZoomControl", (void *)_cffi_f_SetCameraSmoothZoomControl, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1079), (void *)_cffi_d_SetCameraSmoothZoomControl },
-  { "SetClipboardText", (void *)_cffi_f_SetClipboardText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1062), (void *)_cffi_d_SetClipboardText },
-  { "SetConfigFlags", (void *)_cffi_f_SetConfigFlags, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1153), (void *)_cffi_d_SetConfigFlags },
-  { "SetExitKey", (void *)_cffi_f_SetExitKey, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1079), (void *)_cffi_d_SetExitKey },
-  { "SetGesturesEnabled", (void *)_cffi_f_SetGesturesEnabled, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1153), (void *)_cffi_d_SetGesturesEnabled },
-  { "SetMasterVolume", (void *)_cffi_f_SetMasterVolume, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1072), (void *)_cffi_d_SetMasterVolume },
-  { "SetMaterialTexture", (void *)_cffi_f_SetMaterialTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 714), (void *)_cffi_d_SetMaterialTexture },
-  { "SetMatrixModelview", (void *)_cffi_f_SetMatrixModelview, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 722), (void *)_cffi_d_SetMatrixModelview },
-  { "SetMatrixProjection", (void *)_cffi_f_SetMatrixProjection, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 722), (void *)_cffi_d_SetMatrixProjection },
-  { "SetModelMeshMaterial", (void *)_cffi_f_SetModelMeshMaterial, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 735), (void *)_cffi_d_SetModelMeshMaterial },
-  { "SetMouseOffset", (void *)_cffi_f_SetMouseOffset, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1090), (void *)_cffi_d_SetMouseOffset },
-  { "SetMousePosition", (void *)_cffi_f_SetMousePosition, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1090), (void *)_cffi_d_SetMousePosition },
-  { "SetMouseScale", (void *)_cffi_f_SetMouseScale, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1075), (void *)_cffi_d_SetMouseScale },
-  { "SetMusicLoopCount", (void *)_cffi_f_SetMusicLoopCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 772), (void *)_cffi_d_SetMusicLoopCount },
-  { "SetMusicPitch", (void *)_cffi_f_SetMusicPitch, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 768), (void *)_cffi_d_SetMusicPitch },
-  { "SetMusicVolume", (void *)_cffi_f_SetMusicVolume, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 768), (void *)_cffi_d_SetMusicVolume },
-  { "SetShaderValue", (void *)_cffi_f_SetShaderValue, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 831), (void *)_cffi_d_SetShaderValue },
-  { "SetShaderValueMatrix", (void *)_cffi_f_SetShaderValueMatrix, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 821), (void *)_cffi_d_SetShaderValueMatrix },
-  { "SetShaderValueTexture", (void *)_cffi_f_SetShaderValueTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 826), (void *)_cffi_d_SetShaderValueTexture },
-  { "SetShaderValueV", (void *)_cffi_f_SetShaderValueV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 837), (void *)_cffi_d_SetShaderValueV },
-  { "SetShapesTexture", (void *)_cffi_f_SetShapesTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 870), (void *)_cffi_d_SetShapesTexture },
-  { "SetSoundPitch", (void *)_cffi_f_SetSoundPitch, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 847), (void *)_cffi_d_SetSoundPitch },
-  { "SetSoundVolume", (void *)_cffi_f_SetSoundVolume, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 847), (void *)_cffi_d_SetSoundVolume },
-  { "SetTargetFPS", (void *)_cffi_f_SetTargetFPS, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1079), (void *)_cffi_d_SetTargetFPS },
-  { "SetTextureFilter", (void *)_cffi_f_SetTextureFilter, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 915), (void *)_cffi_d_SetTextureFilter },
-  { "SetTextureWrap", (void *)_cffi_f_SetTextureWrap, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 915), (void *)_cffi_d_SetTextureWrap },
-  { "SetTraceLogExit", (void *)_cffi_f_SetTraceLogExit, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1079), (void *)_cffi_d_SetTraceLogExit },
-  { "SetTraceLogLevel", (void *)_cffi_f_SetTraceLogLevel, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1079), (void *)_cffi_d_SetTraceLogLevel },
-  { "SetVrConfiguration", (void *)_cffi_f_SetVrConfiguration, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1035), (void *)_cffi_d_SetVrConfiguration },
-  { "SetWindowIcon", (void *)_cffi_f_SetWindowIcon, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 707), (void *)_cffi_d_SetWindowIcon },
-  { "SetWindowMinSize", (void *)_cffi_f_SetWindowMinSize, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1090), (void *)_cffi_d_SetWindowMinSize },
-  { "SetWindowMonitor", (void *)_cffi_f_SetWindowMonitor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1079), (void *)_cffi_d_SetWindowMonitor },
-  { "SetWindowPosition", (void *)_cffi_f_SetWindowPosition, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1090), (void *)_cffi_d_SetWindowPosition },
-  { "SetWindowSize", (void *)_cffi_f_SetWindowSize, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1090), (void *)_cffi_d_SetWindowSize },
-  { "SetWindowTitle", (void *)_cffi_f_SetWindowTitle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1062), (void *)_cffi_d_SetWindowTitle },
-  { "ShowCursor", (void *)_cffi_f_ShowCursor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_ShowCursor },
-  { "StopAudioStream", (void *)_cffi_f_StopAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 533), (void *)_cffi_d_StopAudioStream },
-  { "StopMusicStream", (void *)_cffi_f_StopMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 765), (void *)_cffi_d_StopMusicStream },
-  { "StopSound", (void *)_cffi_f_StopSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 844), (void *)_cffi_d_StopSound },
-  { "StopSoundMulti", (void *)_cffi_f_StopSoundMulti, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_StopSoundMulti },
-  { "StorageLoadValue", (void *)_cffi_f_StorageLoadValue, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 506), (void *)_cffi_d_StorageLoadValue },
-  { "StorageSaveValue", (void *)_cffi_f_StorageSaveValue, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1090), (void *)_cffi_d_StorageSaveValue },
-  { "TakeScreenshot", (void *)_cffi_f_TakeScreenshot, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1062), (void *)_cffi_d_TakeScreenshot },
-  { "TextAppend", (void *)_cffi_f_TextAppend, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1057), (void *)_cffi_d_TextAppend },
-  { "TextCopy", (void *)_cffi_f_TextCopy, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 487), (void *)_cffi_d_TextCopy },
-  { "TextFindIndex", (void *)_cffi_f_TextFindIndex, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 494), (void *)_cffi_d_TextFindIndex },
-  { "TextFormat", (void *)_cffi_const_TextFormat, _CFFI_OP(_CFFI_OP_CONSTANT, 1193), (void *)0 },
-  { "TextInsert", (void *)_cffi_f_TextInsert, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 419), (void *)_cffi_d_TextInsert },
-  { "TextIsEqual", (void *)_cffi_f_TextIsEqual, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 387), (void *)_cffi_d_TextIsEqual },
-  { "TextJoin", (void *)_cffi_f_TextJoin, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 433), (void *)_cffi_d_TextJoin },
-  { "TextLength", (void *)_cffi_f_TextLength, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 528), (void *)_cffi_d_TextLength },
-  { "TextReplace", (void *)_cffi_f_TextReplace, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 411), (void *)_cffi_d_TextReplace },
-  { "TextSplit", (void *)_cffi_f_TextSplit, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 428), (void *)_cffi_d_TextSplit },
-  { "TextSubtext", (void *)_cffi_f_TextSubtext, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 444), (void *)_cffi_d_TextSubtext },
-  { "TextToInteger", (void *)_cffi_f_TextToInteger, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 491), (void *)_cffi_d_TextToInteger },
-  { "TextToLower", (void *)_cffi_f_TextToLower, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 438), (void *)_cffi_d_TextToLower },
-  { "TextToPascal", (void *)_cffi_f_TextToPascal, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 438), (void *)_cffi_d_TextToPascal },
-  { "TextToUpper", (void *)_cffi_f_TextToUpper, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 438), (void *)_cffi_d_TextToUpper },
-  { "TextToUtf8", (void *)_cffi_f_TextToUtf8, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 424), (void *)_cffi_d_TextToUtf8 },
-  { "ToggleFullscreen", (void *)_cffi_f_ToggleFullscreen, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_ToggleFullscreen },
-  { "ToggleVrMode", (void *)_cffi_f_ToggleVrMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_ToggleVrMode },
-  { "TraceLog", (void *)_cffi_const_TraceLog, _CFFI_OP(_CFFI_OP_CONSTANT, 1207), (void *)0 },
+  { "OpenURL", (void *)_cffi_f_OpenURL, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1046), (void *)_cffi_d_OpenURL },
+  { "PauseAudioStream", (void *)_cffi_f_PauseAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 517), (void *)_cffi_d_PauseAudioStream },
+  { "PauseMusicStream", (void *)_cffi_f_PauseMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 749), (void *)_cffi_d_PauseMusicStream },
+  { "PauseSound", (void *)_cffi_f_PauseSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 828), (void *)_cffi_d_PauseSound },
+  { "PlayAudioStream", (void *)_cffi_f_PlayAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 517), (void *)_cffi_d_PlayAudioStream },
+  { "PlayMusicStream", (void *)_cffi_f_PlayMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 749), (void *)_cffi_d_PlayMusicStream },
+  { "PlaySound", (void *)_cffi_f_PlaySound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 828), (void *)_cffi_d_PlaySound },
+  { "PlaySoundMulti", (void *)_cffi_f_PlaySoundMulti, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 828), (void *)_cffi_d_PlaySoundMulti },
+  { "ResumeAudioStream", (void *)_cffi_f_ResumeAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 517), (void *)_cffi_d_ResumeAudioStream },
+  { "ResumeMusicStream", (void *)_cffi_f_ResumeMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 749), (void *)_cffi_d_ResumeMusicStream },
+  { "ResumeSound", (void *)_cffi_f_ResumeSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 828), (void *)_cffi_d_ResumeSound },
+  { "SetAudioStreamPitch", (void *)_cffi_f_SetAudioStreamPitch, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 520), (void *)_cffi_d_SetAudioStreamPitch },
+  { "SetAudioStreamVolume", (void *)_cffi_f_SetAudioStreamVolume, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 520), (void *)_cffi_d_SetAudioStreamVolume },
+  { "SetCameraAltControl", (void *)_cffi_f_SetCameraAltControl, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1063), (void *)_cffi_d_SetCameraAltControl },
+  { "SetCameraMode", (void *)_cffi_f_SetCameraMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 557), (void *)_cffi_d_SetCameraMode },
+  { "SetCameraMoveControls", (void *)_cffi_f_SetCameraMoveControls, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1129), (void *)_cffi_d_SetCameraMoveControls },
+  { "SetCameraPanControl", (void *)_cffi_f_SetCameraPanControl, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1063), (void *)_cffi_d_SetCameraPanControl },
+  { "SetCameraSmoothZoomControl", (void *)_cffi_f_SetCameraSmoothZoomControl, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1063), (void *)_cffi_d_SetCameraSmoothZoomControl },
+  { "SetClipboardText", (void *)_cffi_f_SetClipboardText, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1046), (void *)_cffi_d_SetClipboardText },
+  { "SetConfigFlags", (void *)_cffi_f_SetConfigFlags, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1137), (void *)_cffi_d_SetConfigFlags },
+  { "SetExitKey", (void *)_cffi_f_SetExitKey, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1063), (void *)_cffi_d_SetExitKey },
+  { "SetGesturesEnabled", (void *)_cffi_f_SetGesturesEnabled, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1137), (void *)_cffi_d_SetGesturesEnabled },
+  { "SetMasterVolume", (void *)_cffi_f_SetMasterVolume, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1056), (void *)_cffi_d_SetMasterVolume },
+  { "SetMaterialTexture", (void *)_cffi_f_SetMaterialTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 698), (void *)_cffi_d_SetMaterialTexture },
+  { "SetMatrixModelview", (void *)_cffi_f_SetMatrixModelview, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 706), (void *)_cffi_d_SetMatrixModelview },
+  { "SetMatrixProjection", (void *)_cffi_f_SetMatrixProjection, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 706), (void *)_cffi_d_SetMatrixProjection },
+  { "SetModelMeshMaterial", (void *)_cffi_f_SetModelMeshMaterial, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 719), (void *)_cffi_d_SetModelMeshMaterial },
+  { "SetMouseOffset", (void *)_cffi_f_SetMouseOffset, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1074), (void *)_cffi_d_SetMouseOffset },
+  { "SetMousePosition", (void *)_cffi_f_SetMousePosition, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1074), (void *)_cffi_d_SetMousePosition },
+  { "SetMouseScale", (void *)_cffi_f_SetMouseScale, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1059), (void *)_cffi_d_SetMouseScale },
+  { "SetMusicLoopCount", (void *)_cffi_f_SetMusicLoopCount, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 756), (void *)_cffi_d_SetMusicLoopCount },
+  { "SetMusicPitch", (void *)_cffi_f_SetMusicPitch, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 752), (void *)_cffi_d_SetMusicPitch },
+  { "SetMusicVolume", (void *)_cffi_f_SetMusicVolume, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 752), (void *)_cffi_d_SetMusicVolume },
+  { "SetShaderValue", (void *)_cffi_f_SetShaderValue, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 815), (void *)_cffi_d_SetShaderValue },
+  { "SetShaderValueMatrix", (void *)_cffi_f_SetShaderValueMatrix, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 805), (void *)_cffi_d_SetShaderValueMatrix },
+  { "SetShaderValueTexture", (void *)_cffi_f_SetShaderValueTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 810), (void *)_cffi_d_SetShaderValueTexture },
+  { "SetShaderValueV", (void *)_cffi_f_SetShaderValueV, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 821), (void *)_cffi_d_SetShaderValueV },
+  { "SetShapesTexture", (void *)_cffi_f_SetShapesTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 854), (void *)_cffi_d_SetShapesTexture },
+  { "SetSoundPitch", (void *)_cffi_f_SetSoundPitch, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 831), (void *)_cffi_d_SetSoundPitch },
+  { "SetSoundVolume", (void *)_cffi_f_SetSoundVolume, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 831), (void *)_cffi_d_SetSoundVolume },
+  { "SetTargetFPS", (void *)_cffi_f_SetTargetFPS, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1063), (void *)_cffi_d_SetTargetFPS },
+  { "SetTextureFilter", (void *)_cffi_f_SetTextureFilter, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 899), (void *)_cffi_d_SetTextureFilter },
+  { "SetTextureWrap", (void *)_cffi_f_SetTextureWrap, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 899), (void *)_cffi_d_SetTextureWrap },
+  { "SetTraceLogExit", (void *)_cffi_f_SetTraceLogExit, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1063), (void *)_cffi_d_SetTraceLogExit },
+  { "SetTraceLogLevel", (void *)_cffi_f_SetTraceLogLevel, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1063), (void *)_cffi_d_SetTraceLogLevel },
+  { "SetVrConfiguration", (void *)_cffi_f_SetVrConfiguration, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1019), (void *)_cffi_d_SetVrConfiguration },
+  { "SetWindowIcon", (void *)_cffi_f_SetWindowIcon, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 691), (void *)_cffi_d_SetWindowIcon },
+  { "SetWindowMinSize", (void *)_cffi_f_SetWindowMinSize, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1074), (void *)_cffi_d_SetWindowMinSize },
+  { "SetWindowMonitor", (void *)_cffi_f_SetWindowMonitor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1063), (void *)_cffi_d_SetWindowMonitor },
+  { "SetWindowPosition", (void *)_cffi_f_SetWindowPosition, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1074), (void *)_cffi_d_SetWindowPosition },
+  { "SetWindowSize", (void *)_cffi_f_SetWindowSize, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1074), (void *)_cffi_d_SetWindowSize },
+  { "SetWindowTitle", (void *)_cffi_f_SetWindowTitle, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1046), (void *)_cffi_d_SetWindowTitle },
+  { "ShowCursor", (void *)_cffi_f_ShowCursor, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_ShowCursor },
+  { "StopAudioStream", (void *)_cffi_f_StopAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 517), (void *)_cffi_d_StopAudioStream },
+  { "StopMusicStream", (void *)_cffi_f_StopMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 749), (void *)_cffi_d_StopMusicStream },
+  { "StopSound", (void *)_cffi_f_StopSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 828), (void *)_cffi_d_StopSound },
+  { "StopSoundMulti", (void *)_cffi_f_StopSoundMulti, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_StopSoundMulti },
+  { "StorageLoadValue", (void *)_cffi_f_StorageLoadValue, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 486), (void *)_cffi_d_StorageLoadValue },
+  { "StorageSaveValue", (void *)_cffi_f_StorageSaveValue, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1074), (void *)_cffi_d_StorageSaveValue },
+  { "TakeScreenshot", (void *)_cffi_f_TakeScreenshot, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1046), (void *)_cffi_d_TakeScreenshot },
+  { "TextAppend", (void *)_cffi_f_TextAppend, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1041), (void *)_cffi_d_TextAppend },
+  { "TextCopy", (void *)_cffi_f_TextCopy, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 467), (void *)_cffi_d_TextCopy },
+  { "TextFindIndex", (void *)_cffi_f_TextFindIndex, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 474), (void *)_cffi_d_TextFindIndex },
+  { "TextFormat", (void *)_cffi_const_TextFormat, _CFFI_OP(_CFFI_OP_CONSTANT, 1177), (void *)0 },
+  { "TextInsert", (void *)_cffi_f_TextInsert, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 326), (void *)_cffi_d_TextInsert },
+  { "TextIsEqual", (void *)_cffi_f_TextIsEqual, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 474), (void *)_cffi_d_TextIsEqual },
+  { "TextJoin", (void *)_cffi_f_TextJoin, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 340), (void *)_cffi_d_TextJoin },
+  { "TextLength", (void *)_cffi_f_TextLength, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 512), (void *)_cffi_d_TextLength },
+  { "TextReplace", (void *)_cffi_f_TextReplace, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 318), (void *)_cffi_d_TextReplace },
+  { "TextSplit", (void *)_cffi_f_TextSplit, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 335), (void *)_cffi_d_TextSplit },
+  { "TextSubtext", (void *)_cffi_f_TextSubtext, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 351), (void *)_cffi_d_TextSubtext },
+  { "TextToInteger", (void *)_cffi_f_TextToInteger, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 471), (void *)_cffi_d_TextToInteger },
+  { "TextToLower", (void *)_cffi_f_TextToLower, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 345), (void *)_cffi_d_TextToLower },
+  { "TextToPascal", (void *)_cffi_f_TextToPascal, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 345), (void *)_cffi_d_TextToPascal },
+  { "TextToUpper", (void *)_cffi_f_TextToUpper, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 345), (void *)_cffi_d_TextToUpper },
+  { "TextToUtf8", (void *)_cffi_f_TextToUtf8, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 331), (void *)_cffi_d_TextToUtf8 },
+  { "ToggleFullscreen", (void *)_cffi_f_ToggleFullscreen, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_ToggleFullscreen },
+  { "ToggleVrMode", (void *)_cffi_f_ToggleVrMode, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_ToggleVrMode },
+  { "TraceLog", (void *)_cffi_const_TraceLog, _CFFI_OP(_CFFI_OP_CONSTANT, 1191), (void *)0 },
   { "UNCOMPRESSED_GRAYSCALE", (void *)_cffi_const_UNCOMPRESSED_GRAYSCALE, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "UNCOMPRESSED_GRAY_ALPHA", (void *)_cffi_const_UNCOMPRESSED_GRAY_ALPHA, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "UNCOMPRESSED_R32", (void *)_cffi_const_UNCOMPRESSED_R32, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
@@ -22210,34 +22194,34 @@ static const struct _cffi_global_s _cffi_globals[] = {
   { "UNIFORM_VEC2", (void *)_cffi_const_UNIFORM_VEC2, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "UNIFORM_VEC3", (void *)_cffi_const_UNIFORM_VEC3, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "UNIFORM_VEC4", (void *)_cffi_const_UNIFORM_VEC4, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
-  { "UnhideWindow", (void *)_cffi_f_UnhideWindow, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1156), (void *)_cffi_d_UnhideWindow },
-  { "UnloadFont", (void *)_cffi_f_UnloadFont, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 580), (void *)_cffi_d_UnloadFont },
-  { "UnloadImage", (void *)_cffi_f_UnloadImage, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 707), (void *)_cffi_d_UnloadImage },
-  { "UnloadMaterial", (void *)_cffi_f_UnloadMaterial, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 719), (void *)_cffi_d_UnloadMaterial },
-  { "UnloadMesh", (void *)_cffi_f_UnloadMesh, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 728), (void *)_cffi_d_UnloadMesh },
-  { "UnloadModel", (void *)_cffi_f_UnloadModel, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 740), (void *)_cffi_d_UnloadModel },
-  { "UnloadModelAnimation", (void *)_cffi_f_UnloadModelAnimation, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 762), (void *)_cffi_d_UnloadModelAnimation },
-  { "UnloadMusicStream", (void *)_cffi_f_UnloadMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 765), (void *)_cffi_d_UnloadMusicStream },
-  { "UnloadRenderTexture", (void *)_cffi_f_UnloadRenderTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 815), (void *)_cffi_d_UnloadRenderTexture },
-  { "UnloadShader", (void *)_cffi_f_UnloadShader, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 818), (void *)_cffi_d_UnloadShader },
-  { "UnloadSound", (void *)_cffi_f_UnloadSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 844), (void *)_cffi_d_UnloadSound },
-  { "UnloadTexture", (void *)_cffi_f_UnloadTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 859), (void *)_cffi_d_UnloadTexture },
-  { "UnloadWave", (void *)_cffi_f_UnloadWave, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1050), (void *)_cffi_d_UnloadWave },
-  { "UpdateAudioStream", (void *)_cffi_f_UpdateAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 540), (void *)_cffi_d_UpdateAudioStream },
-  { "UpdateCamera", (void *)_cffi_f_UpdateCamera, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 552), (void *)_cffi_d_UpdateCamera },
-  { "UpdateModelAnimation", (void *)_cffi_f_UpdateModelAnimation, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 743), (void *)_cffi_d_UpdateModelAnimation },
-  { "UpdateMusicStream", (void *)_cffi_f_UpdateMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 765), (void *)_cffi_d_UpdateMusicStream },
-  { "UpdateSound", (void *)_cffi_f_UpdateSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 851), (void *)_cffi_d_UpdateSound },
-  { "UpdateTexture", (void *)_cffi_f_UpdateTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 925), (void *)_cffi_d_UpdateTexture },
-  { "UpdateVrTracking", (void *)_cffi_f_UpdateVrTracking, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 552), (void *)_cffi_d_UpdateVrTracking },
+  { "UnhideWindow", (void *)_cffi_f_UnhideWindow, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 1140), (void *)_cffi_d_UnhideWindow },
+  { "UnloadFont", (void *)_cffi_f_UnloadFont, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 564), (void *)_cffi_d_UnloadFont },
+  { "UnloadImage", (void *)_cffi_f_UnloadImage, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 691), (void *)_cffi_d_UnloadImage },
+  { "UnloadMaterial", (void *)_cffi_f_UnloadMaterial, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 703), (void *)_cffi_d_UnloadMaterial },
+  { "UnloadMesh", (void *)_cffi_f_UnloadMesh, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 712), (void *)_cffi_d_UnloadMesh },
+  { "UnloadModel", (void *)_cffi_f_UnloadModel, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 724), (void *)_cffi_d_UnloadModel },
+  { "UnloadModelAnimation", (void *)_cffi_f_UnloadModelAnimation, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 746), (void *)_cffi_d_UnloadModelAnimation },
+  { "UnloadMusicStream", (void *)_cffi_f_UnloadMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 749), (void *)_cffi_d_UnloadMusicStream },
+  { "UnloadRenderTexture", (void *)_cffi_f_UnloadRenderTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 799), (void *)_cffi_d_UnloadRenderTexture },
+  { "UnloadShader", (void *)_cffi_f_UnloadShader, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 802), (void *)_cffi_d_UnloadShader },
+  { "UnloadSound", (void *)_cffi_f_UnloadSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 828), (void *)_cffi_d_UnloadSound },
+  { "UnloadTexture", (void *)_cffi_f_UnloadTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 843), (void *)_cffi_d_UnloadTexture },
+  { "UnloadWave", (void *)_cffi_f_UnloadWave, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 1034), (void *)_cffi_d_UnloadWave },
+  { "UpdateAudioStream", (void *)_cffi_f_UpdateAudioStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 524), (void *)_cffi_d_UpdateAudioStream },
+  { "UpdateCamera", (void *)_cffi_f_UpdateCamera, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 536), (void *)_cffi_d_UpdateCamera },
+  { "UpdateModelAnimation", (void *)_cffi_f_UpdateModelAnimation, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 727), (void *)_cffi_d_UpdateModelAnimation },
+  { "UpdateMusicStream", (void *)_cffi_f_UpdateMusicStream, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 749), (void *)_cffi_d_UpdateMusicStream },
+  { "UpdateSound", (void *)_cffi_f_UpdateSound, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 835), (void *)_cffi_d_UpdateSound },
+  { "UpdateTexture", (void *)_cffi_f_UpdateTexture, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 909), (void *)_cffi_d_UpdateTexture },
+  { "UpdateVrTracking", (void *)_cffi_f_UpdateVrTracking, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 536), (void *)_cffi_d_UpdateVrTracking },
   { "WRAP_CLAMP", (void *)_cffi_const_WRAP_CLAMP, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "WRAP_MIRROR_CLAMP", (void *)_cffi_const_WRAP_MIRROR_CLAMP, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "WRAP_MIRROR_REPEAT", (void *)_cffi_const_WRAP_MIRROR_REPEAT, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "WRAP_REPEAT", (void *)_cffi_const_WRAP_REPEAT, _CFFI_OP(_CFFI_OP_ENUM, -1), (void *)0 },
   { "WaveCopy", (void *)_cffi_f_WaveCopy, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 305), (void *)_cffi_d_WaveCopy },
-  { "WaveCrop", (void *)_cffi_f_WaveCrop, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1039), (void *)_cffi_d_WaveCrop },
-  { "WaveFormat", (void *)_cffi_f_WaveFormat, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1044), (void *)_cffi_d_WaveFormat },
-  { "WindowShouldClose", (void *)_cffi_f_WindowShouldClose, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 402), (void *)_cffi_d_WindowShouldClose },
+  { "WaveCrop", (void *)_cffi_f_WaveCrop, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1023), (void *)_cffi_d_WaveCrop },
+  { "WaveFormat", (void *)_cffi_f_WaveFormat, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 1028), (void *)_cffi_d_WaveFormat },
+  { "WindowShouldClose", (void *)_cffi_f_WindowShouldClose, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 502), (void *)_cffi_d_WindowShouldClose },
 };
 
 static const struct _cffi_field_s _cffi_fields[] = {
@@ -22252,10 +22236,10 @@ static const struct _cffi_field_s _cffi_fields[] = {
                 _CFFI_OP(_CFFI_OP_NOOP, 1) },
   { "buffer", offsetof(AudioStream, buffer),
               sizeof(((AudioStream *)0)->buffer),
-              _CFFI_OP(_CFFI_OP_NOOP, 1201) },
+              _CFFI_OP(_CFFI_OP_NOOP, 1185) },
   { "name", offsetof(BoneInfo, name),
             sizeof(((BoneInfo *)0)->name),
-            _CFFI_OP(_CFFI_OP_NOOP, 1194) },
+            _CFFI_OP(_CFFI_OP_NOOP, 1178) },
   { "parent", offsetof(BoneInfo, parent),
               sizeof(((BoneInfo *)0)->parent),
               _CFFI_OP(_CFFI_OP_NOOP, 10) },
@@ -22309,16 +22293,16 @@ static const struct _cffi_field_s _cffi_fields[] = {
              _CFFI_OP(_CFFI_OP_NOOP, 16) },
   { "r", offsetof(Color, r),
          sizeof(((Color *)0)->r),
-         _CFFI_OP(_CFFI_OP_NOOP, 1203) },
+         _CFFI_OP(_CFFI_OP_NOOP, 1187) },
   { "g", offsetof(Color, g),
          sizeof(((Color *)0)->g),
-         _CFFI_OP(_CFFI_OP_NOOP, 1203) },
+         _CFFI_OP(_CFFI_OP_NOOP, 1187) },
   { "b", offsetof(Color, b),
          sizeof(((Color *)0)->b),
-         _CFFI_OP(_CFFI_OP_NOOP, 1203) },
+         _CFFI_OP(_CFFI_OP_NOOP, 1187) },
   { "a", offsetof(Color, a),
          sizeof(((Color *)0)->a),
-         _CFFI_OP(_CFFI_OP_NOOP, 1203) },
+         _CFFI_OP(_CFFI_OP_NOOP, 1187) },
   { "baseSize", offsetof(Font, baseSize),
                 sizeof(((Font *)0)->baseSize),
                 _CFFI_OP(_CFFI_OP_NOOP, 10) },
@@ -22330,10 +22314,10 @@ static const struct _cffi_field_s _cffi_fields[] = {
                _CFFI_OP(_CFFI_OP_NOOP, 80) },
   { "recs", offsetof(Font, recs),
             sizeof(((Font *)0)->recs),
-            _CFFI_OP(_CFFI_OP_NOOP, 1182) },
+            _CFFI_OP(_CFFI_OP_NOOP, 1166) },
   { "chars", offsetof(Font, chars),
              sizeof(((Font *)0)->chars),
-             _CFFI_OP(_CFFI_OP_NOOP, 1164) },
+             _CFFI_OP(_CFFI_OP_NOOP, 1148) },
   { "data", offsetof(Image, data),
             sizeof(((Image *)0)->data),
             _CFFI_OP(_CFFI_OP_NOOP, 141) },
@@ -22354,10 +22338,10 @@ static const struct _cffi_field_s _cffi_fields[] = {
               _CFFI_OP(_CFFI_OP_NOOP, 258) },
   { "maps", offsetof(Material, maps),
             sizeof(((Material *)0)->maps),
-            _CFFI_OP(_CFFI_OP_NOOP, 1174) },
+            _CFFI_OP(_CFFI_OP_NOOP, 1158) },
   { "params", offsetof(Material, params),
               sizeof(((Material *)0)->params),
-              _CFFI_OP(_CFFI_OP_NOOP, 1197) },
+              _CFFI_OP(_CFFI_OP_NOOP, 1181) },
   { "texture", offsetof(MaterialMap, texture),
                sizeof(((MaterialMap *)0)->texture),
                _CFFI_OP(_CFFI_OP_NOOP, 80) },
@@ -22423,58 +22407,58 @@ static const struct _cffi_field_s _cffi_fields[] = {
                      _CFFI_OP(_CFFI_OP_NOOP, 10) },
   { "vertices", offsetof(Mesh, vertices),
                 sizeof(((Mesh *)0)->vertices),
-                _CFFI_OP(_CFFI_OP_NOOP, 1197) },
+                _CFFI_OP(_CFFI_OP_NOOP, 1181) },
   { "texcoords", offsetof(Mesh, texcoords),
                  sizeof(((Mesh *)0)->texcoords),
-                 _CFFI_OP(_CFFI_OP_NOOP, 1197) },
+                 _CFFI_OP(_CFFI_OP_NOOP, 1181) },
   { "texcoords2", offsetof(Mesh, texcoords2),
                   sizeof(((Mesh *)0)->texcoords2),
-                  _CFFI_OP(_CFFI_OP_NOOP, 1197) },
+                  _CFFI_OP(_CFFI_OP_NOOP, 1181) },
   { "normals", offsetof(Mesh, normals),
                sizeof(((Mesh *)0)->normals),
-               _CFFI_OP(_CFFI_OP_NOOP, 1197) },
+               _CFFI_OP(_CFFI_OP_NOOP, 1181) },
   { "tangents", offsetof(Mesh, tangents),
                 sizeof(((Mesh *)0)->tangents),
-                _CFFI_OP(_CFFI_OP_NOOP, 1197) },
+                _CFFI_OP(_CFFI_OP_NOOP, 1181) },
   { "colors", offsetof(Mesh, colors),
               sizeof(((Mesh *)0)->colors),
-              _CFFI_OP(_CFFI_OP_NOOP, 524) },
+              _CFFI_OP(_CFFI_OP_NOOP, 508) },
   { "indices", offsetof(Mesh, indices),
                sizeof(((Mesh *)0)->indices),
-               _CFFI_OP(_CFFI_OP_NOOP, 1205) },
+               _CFFI_OP(_CFFI_OP_NOOP, 1189) },
   { "animVertices", offsetof(Mesh, animVertices),
                     sizeof(((Mesh *)0)->animVertices),
-                    _CFFI_OP(_CFFI_OP_NOOP, 1197) },
+                    _CFFI_OP(_CFFI_OP_NOOP, 1181) },
   { "animNormals", offsetof(Mesh, animNormals),
                    sizeof(((Mesh *)0)->animNormals),
-                   _CFFI_OP(_CFFI_OP_NOOP, 1197) },
+                   _CFFI_OP(_CFFI_OP_NOOP, 1181) },
   { "boneIds", offsetof(Mesh, boneIds),
                sizeof(((Mesh *)0)->boneIds),
                _CFFI_OP(_CFFI_OP_NOOP, 11) },
   { "boneWeights", offsetof(Mesh, boneWeights),
                    sizeof(((Mesh *)0)->boneWeights),
-                   _CFFI_OP(_CFFI_OP_NOOP, 1197) },
+                   _CFFI_OP(_CFFI_OP_NOOP, 1181) },
   { "vaoId", offsetof(Mesh, vaoId),
              sizeof(((Mesh *)0)->vaoId),
              _CFFI_OP(_CFFI_OP_NOOP, 1) },
   { "vboId", offsetof(Mesh, vboId),
              sizeof(((Mesh *)0)->vboId),
-             _CFFI_OP(_CFFI_OP_NOOP, 1204) },
+             _CFFI_OP(_CFFI_OP_NOOP, 1188) },
   { "transform", offsetof(Model, transform),
                  sizeof(((Model *)0)->transform),
-                 _CFFI_OP(_CFFI_OP_NOOP, 723) },
+                 _CFFI_OP(_CFFI_OP_NOOP, 707) },
   { "meshCount", offsetof(Model, meshCount),
                  sizeof(((Model *)0)->meshCount),
                  _CFFI_OP(_CFFI_OP_NOOP, 10) },
   { "meshes", offsetof(Model, meshes),
               sizeof(((Model *)0)->meshes),
-              _CFFI_OP(_CFFI_OP_NOOP, 726) },
+              _CFFI_OP(_CFFI_OP_NOOP, 710) },
   { "materialCount", offsetof(Model, materialCount),
                      sizeof(((Model *)0)->materialCount),
                      _CFFI_OP(_CFFI_OP_NOOP, 10) },
   { "materials", offsetof(Model, materials),
                  sizeof(((Model *)0)->materials),
-                 _CFFI_OP(_CFFI_OP_NOOP, 715) },
+                 _CFFI_OP(_CFFI_OP_NOOP, 699) },
   { "meshMaterial", offsetof(Model, meshMaterial),
                     sizeof(((Model *)0)->meshMaterial),
                     _CFFI_OP(_CFFI_OP_NOOP, 11) },
@@ -22483,22 +22467,22 @@ static const struct _cffi_field_s _cffi_fields[] = {
                  _CFFI_OP(_CFFI_OP_NOOP, 10) },
   { "bones", offsetof(Model, bones),
              sizeof(((Model *)0)->bones),
-             _CFFI_OP(_CFFI_OP_NOOP, 1160) },
+             _CFFI_OP(_CFFI_OP_NOOP, 1144) },
   { "bindPose", offsetof(Model, bindPose),
                 sizeof(((Model *)0)->bindPose),
-                _CFFI_OP(_CFFI_OP_NOOP, 1189) },
+                _CFFI_OP(_CFFI_OP_NOOP, 1173) },
   { "boneCount", offsetof(ModelAnimation, boneCount),
                  sizeof(((ModelAnimation *)0)->boneCount),
                  _CFFI_OP(_CFFI_OP_NOOP, 10) },
   { "bones", offsetof(ModelAnimation, bones),
              sizeof(((ModelAnimation *)0)->bones),
-             _CFFI_OP(_CFFI_OP_NOOP, 1160) },
+             _CFFI_OP(_CFFI_OP_NOOP, 1144) },
   { "frameCount", offsetof(ModelAnimation, frameCount),
                   sizeof(((ModelAnimation *)0)->frameCount),
                   _CFFI_OP(_CFFI_OP_NOOP, 10) },
   { "framePoses", offsetof(ModelAnimation, framePoses),
                   sizeof(((ModelAnimation *)0)->framePoses),
-                  _CFFI_OP(_CFFI_OP_NOOP, 1188) },
+                  _CFFI_OP(_CFFI_OP_NOOP, 1172) },
   { "ctxType", offsetof(Music, ctxType),
                sizeof(((Music *)0)->ctxType),
                _CFFI_OP(_CFFI_OP_NOOP, 10) },
@@ -22513,7 +22497,7 @@ static const struct _cffi_field_s _cffi_fields[] = {
                  _CFFI_OP(_CFFI_OP_NOOP, 1) },
   { "stream", offsetof(Music, stream),
               sizeof(((Music *)0)->stream),
-              _CFFI_OP(_CFFI_OP_NOOP, 312) },
+              _CFFI_OP(_CFFI_OP_NOOP, 384) },
   { "sourceRec", offsetof(NPatchInfo, sourceRec),
                  sizeof(((NPatchInfo *)0)->sourceRec),
                  _CFFI_OP(_CFFI_OP_NOOP, 77) },
@@ -22540,7 +22524,7 @@ static const struct _cffi_field_s _cffi_fields[] = {
                  _CFFI_OP(_CFFI_OP_NOOP, 28) },
   { "hit", offsetof(RayHitInfo, hit),
            sizeof(((RayHitInfo *)0)->hit),
-           _CFFI_OP(_CFFI_OP_NOOP, 589) },
+           _CFFI_OP(_CFFI_OP_NOOP, 10) },
   { "distance", offsetof(RayHitInfo, distance),
                 sizeof(((RayHitInfo *)0)->distance),
                 _CFFI_OP(_CFFI_OP_NOOP, 25) },
@@ -22573,7 +22557,7 @@ static const struct _cffi_field_s _cffi_fields[] = {
              _CFFI_OP(_CFFI_OP_NOOP, 80) },
   { "depthTexture", offsetof(RenderTexture2D, depthTexture),
                     sizeof(((RenderTexture2D *)0)->depthTexture),
-                    _CFFI_OP(_CFFI_OP_NOOP, 589) },
+                    _CFFI_OP(_CFFI_OP_NOOP, 10) },
   { "id", offsetof(Shader, id),
           sizeof(((Shader *)0)->id),
           _CFFI_OP(_CFFI_OP_NOOP, 1) },
@@ -22585,7 +22569,7 @@ static const struct _cffi_field_s _cffi_fields[] = {
                    _CFFI_OP(_CFFI_OP_NOOP, 1) },
   { "stream", offsetof(Sound, stream),
               sizeof(((Sound *)0)->stream),
-              _CFFI_OP(_CFFI_OP_NOOP, 312) },
+              _CFFI_OP(_CFFI_OP_NOOP, 384) },
   { "id", offsetof(Texture2D, id),
           sizeof(((Texture2D *)0)->id),
           _CFFI_OP(_CFFI_OP_NOOP, 1) },
@@ -22663,10 +22647,10 @@ static const struct _cffi_field_s _cffi_fields[] = {
                               _CFFI_OP(_CFFI_OP_NOOP, 25) },
   { "lensDistortionValues", offsetof(VrDeviceInfo, lensDistortionValues),
                             sizeof(((VrDeviceInfo *)0)->lensDistortionValues),
-                            _CFFI_OP(_CFFI_OP_NOOP, 1198) },
+                            _CFFI_OP(_CFFI_OP_NOOP, 1182) },
   { "chromaAbCorrection", offsetof(VrDeviceInfo, chromaAbCorrection),
                           sizeof(((VrDeviceInfo *)0)->chromaAbCorrection),
-                          _CFFI_OP(_CFFI_OP_NOOP, 1198) },
+                          _CFFI_OP(_CFFI_OP_NOOP, 1182) },
   { "sampleCount", offsetof(Wave, sampleCount),
                    sizeof(((Wave *)0)->sampleCount),
                    _CFFI_OP(_CFFI_OP_NOOP, 1) },
@@ -22685,17 +22669,17 @@ static const struct _cffi_field_s _cffi_fields[] = {
 };
 
 static const struct _cffi_struct_union_s _cffi_struct_unions[] = {
-  { "AudioStream", 312, _CFFI_F_CHECK_FIELDS,
+  { "AudioStream", 384, _CFFI_F_CHECK_FIELDS,
     sizeof(AudioStream), offsetof(struct _cffi_align__AudioStream, y), 0, 4 },
-  { "BoneInfo", 1161, _CFFI_F_CHECK_FIELDS,
+  { "BoneInfo", 1145, _CFFI_F_CHECK_FIELDS,
     sizeof(BoneInfo), offsetof(struct _cffi_align__BoneInfo, y), 4, 2 },
-  { "BoundingBox", 315, _CFFI_F_CHECK_FIELDS,
+  { "BoundingBox", 387, _CFFI_F_CHECK_FIELDS,
     sizeof(BoundingBox), offsetof(struct _cffi_align__BoundingBox, y), 6, 2 },
   { "Camera2D", 155, _CFFI_F_CHECK_FIELDS,
     sizeof(Camera2D), offsetof(struct _cffi_align__Camera2D, y), 8, 4 },
   { "Camera3D", 158, _CFFI_F_CHECK_FIELDS,
     sizeof(Camera3D), offsetof(struct _cffi_align__Camera3D, y), 12, 5 },
-  { "CharInfo", 1165, _CFFI_F_CHECK_FIELDS,
+  { "CharInfo", 1149, _CFFI_F_CHECK_FIELDS,
     sizeof(CharInfo), offsetof(struct _cffi_align__CharInfo, y), 17, 5 },
   { "Color", 24, _CFFI_F_CHECK_FIELDS,
     sizeof(Color), offsetof(struct _cffi_align__Color, y), 22, 4 },
@@ -22703,37 +22687,37 @@ static const struct _cffi_struct_union_s _cffi_struct_unions[] = {
     sizeof(Font), offsetof(struct _cffi_align__Font, y), 26, 5 },
   { "Image", 16, _CFFI_F_CHECK_FIELDS,
     sizeof(Image), offsetof(struct _cffi_align__Image, y), 31, 5 },
-  { "Material", 720, _CFFI_F_CHECK_FIELDS,
+  { "Material", 704, _CFFI_F_CHECK_FIELDS,
     sizeof(Material), offsetof(struct _cffi_align__Material, y), 36, 3 },
-  { "MaterialMap", 1175, _CFFI_F_CHECK_FIELDS,
+  { "MaterialMap", 1159, _CFFI_F_CHECK_FIELDS,
     sizeof(MaterialMap), offsetof(struct _cffi_align__MaterialMap, y), 39, 3 },
-  { "Matrix", 723, _CFFI_F_CHECK_FIELDS,
+  { "Matrix", 707, _CFFI_F_CHECK_FIELDS,
     sizeof(Matrix), offsetof(struct _cffi_align__Matrix, y), 42, 16 },
   { "Mesh", 6, _CFFI_F_CHECK_FIELDS,
     sizeof(Mesh), offsetof(struct _cffi_align__Mesh, y), 58, 15 },
   { "Model", 214, _CFFI_F_CHECK_FIELDS,
     sizeof(Model), offsetof(struct _cffi_align__Model, y), 73, 9 },
-  { "ModelAnimation", 325, _CFFI_F_CHECK_FIELDS,
+  { "ModelAnimation", 404, _CFFI_F_CHECK_FIELDS,
     sizeof(ModelAnimation), offsetof(struct _cffi_align__ModelAnimation, y), 82, 4 },
-  { "Music", 328, _CFFI_F_CHECK_FIELDS,
+  { "Music", 371, _CFFI_F_CHECK_FIELDS,
     sizeof(Music), offsetof(struct _cffi_align__Music, y), 86, 5 },
-  { "NPatchInfo", 864, _CFFI_F_CHECK_FIELDS,
+  { "NPatchInfo", 848, _CFFI_F_CHECK_FIELDS,
     sizeof(NPatchInfo), offsetof(struct _cffi_align__NPatchInfo, y), 91, 6 },
   { "Ray", 213, _CFFI_F_CHECK_FIELDS,
     sizeof(Ray), offsetof(struct _cffi_align__Ray, y), 97, 2 },
-  { "RayHitInfo", 1181, _CFFI_F_CHECK_FIELDS,
+  { "RayHitInfo", 1165, _CFFI_F_CHECK_FIELDS,
     sizeof(RayHitInfo), offsetof(struct _cffi_align__RayHitInfo, y), 99, 4 },
   { "Rectangle", 77, _CFFI_F_CHECK_FIELDS,
     sizeof(Rectangle), offsetof(struct _cffi_align__Rectangle, y), 103, 4 },
-  { "RenderTexture2D", 816, _CFFI_F_CHECK_FIELDS,
+  { "RenderTexture2D", 800, _CFFI_F_CHECK_FIELDS,
     sizeof(RenderTexture2D), offsetof(struct _cffi_align__RenderTexture2D, y), 107, 4 },
   { "Shader", 258, _CFFI_F_CHECK_FIELDS,
     sizeof(Shader), offsetof(struct _cffi_align__Shader, y), 111, 2 },
-  { "Sound", 350, _CFFI_F_CHECK_FIELDS,
+  { "Sound", 433, _CFFI_F_CHECK_FIELDS,
     sizeof(Sound), offsetof(struct _cffi_align__Sound, y), 113, 2 },
   { "Texture2D", 80, _CFFI_F_CHECK_FIELDS,
     sizeof(Texture2D), offsetof(struct _cffi_align__Texture2D, y), 115, 5 },
-  { "Transform", 1190, _CFFI_F_CHECK_FIELDS,
+  { "Transform", 1174, _CFFI_F_CHECK_FIELDS,
     sizeof(Transform), offsetof(struct _cffi_align__Transform, y), 120, 3 },
   { "Vector2", 209, _CFFI_F_CHECK_FIELDS,
     sizeof(Vector2), offsetof(struct _cffi_align__Vector2, y), 123, 2 },
@@ -22741,117 +22725,117 @@ static const struct _cffi_struct_union_s _cffi_struct_unions[] = {
     sizeof(Vector3), offsetof(struct _cffi_align__Vector3, y), 125, 3 },
   { "Vector4", 31, _CFFI_F_CHECK_FIELDS,
     sizeof(Vector4), offsetof(struct _cffi_align__Vector4, y), 128, 4 },
-  { "VrDeviceInfo", 1036, _CFFI_F_CHECK_FIELDS,
+  { "VrDeviceInfo", 1020, _CFFI_F_CHECK_FIELDS,
     sizeof(VrDeviceInfo), offsetof(struct _cffi_align__VrDeviceInfo, y), 132, 10 },
   { "Wave", 245, _CFFI_F_CHECK_FIELDS,
     sizeof(Wave), offsetof(struct _cffi_align__Wave, y), 142, 5 },
-  { "rAudioBuffer", 1202, _CFFI_F_OPAQUE,
+  { "rAudioBuffer", 1186, _CFFI_F_OPAQUE,
     (size_t)-1, -1, -1, 0 /* opaque */ },
 };
 
 static const struct _cffi_enum_s _cffi_enums[] = {
-  { "$AndroidButton", 1158, _cffi_prim_int(sizeof(AndroidButton), ((AndroidButton)-1) <= 0),
+  { "$AndroidButton", 1142, _cffi_prim_int(sizeof(AndroidButton), ((AndroidButton)-1) <= 0),
     "KEY_BACK,KEY_MENU,KEY_VOLUME_UP,KEY_VOLUME_DOWN" },
-  { "$BlendMode", 1159, _cffi_prim_int(sizeof(BlendMode), ((BlendMode)-1) <= 0),
+  { "$BlendMode", 1143, _cffi_prim_int(sizeof(BlendMode), ((BlendMode)-1) <= 0),
     "BLEND_ALPHA,BLEND_ADDITIVE,BLEND_MULTIPLIED" },
-  { "$CameraMode", 1162, _cffi_prim_int(sizeof(CameraMode), ((CameraMode)-1) <= 0),
+  { "$CameraMode", 1146, _cffi_prim_int(sizeof(CameraMode), ((CameraMode)-1) <= 0),
     "CAMERA_CUSTOM,CAMERA_FREE,CAMERA_ORBITAL,CAMERA_FIRST_PERSON,CAMERA_THIRD_PERSON" },
-  { "$CameraType", 1163, _cffi_prim_int(sizeof(CameraType), ((CameraType)-1) <= 0),
+  { "$CameraType", 1147, _cffi_prim_int(sizeof(CameraType), ((CameraType)-1) <= 0),
     "CAMERA_PERSPECTIVE,CAMERA_ORTHOGRAPHIC" },
-  { "$ConfigFlag", 1166, _cffi_prim_int(sizeof(ConfigFlag), ((ConfigFlag)-1) <= 0),
+  { "$ConfigFlag", 1150, _cffi_prim_int(sizeof(ConfigFlag), ((ConfigFlag)-1) <= 0),
     "FLAG_RESERVED,FLAG_FULLSCREEN_MODE,FLAG_WINDOW_RESIZABLE,FLAG_WINDOW_UNDECORATED,FLAG_WINDOW_TRANSPARENT,FLAG_WINDOW_HIDDEN,FLAG_WINDOW_ALWAYS_RUN,FLAG_MSAA_4X_HINT,FLAG_VSYNC_HINT" },
-  { "$CubemapLayoutType", 1167, _cffi_prim_int(sizeof(CubemapLayoutType), ((CubemapLayoutType)-1) <= 0),
+  { "$CubemapLayoutType", 1151, _cffi_prim_int(sizeof(CubemapLayoutType), ((CubemapLayoutType)-1) <= 0),
     "CUBEMAP_AUTO_DETECT,CUBEMAP_LINE_VERTICAL,CUBEMAP_LINE_HORIZONTAL,CUBEMAP_CROSS_THREE_BY_FOUR,CUBEMAP_CROSS_FOUR_BY_THREE,CUBEMAP_PANORAMA" },
-  { "$FontType", 1168, _cffi_prim_int(sizeof(FontType), ((FontType)-1) <= 0),
+  { "$FontType", 1152, _cffi_prim_int(sizeof(FontType), ((FontType)-1) <= 0),
     "FONT_DEFAULT,FONT_BITMAP,FONT_SDF" },
-  { "$GamepadAxis", 1169, _cffi_prim_int(sizeof(GamepadAxis), ((GamepadAxis)-1) <= 0),
+  { "$GamepadAxis", 1153, _cffi_prim_int(sizeof(GamepadAxis), ((GamepadAxis)-1) <= 0),
     "GAMEPAD_AXIS_UNKNOWN,GAMEPAD_AXIS_LEFT_X,GAMEPAD_AXIS_LEFT_Y,GAMEPAD_AXIS_RIGHT_X,GAMEPAD_AXIS_RIGHT_Y,GAMEPAD_AXIS_LEFT_TRIGGER,GAMEPAD_AXIS_RIGHT_TRIGGER" },
-  { "$GamepadButton", 1170, _cffi_prim_int(sizeof(GamepadButton), ((GamepadButton)-1) <= 0),
+  { "$GamepadButton", 1154, _cffi_prim_int(sizeof(GamepadButton), ((GamepadButton)-1) <= 0),
     "GAMEPAD_BUTTON_UNKNOWN,GAMEPAD_BUTTON_LEFT_FACE_UP,GAMEPAD_BUTTON_LEFT_FACE_RIGHT,GAMEPAD_BUTTON_LEFT_FACE_DOWN,GAMEPAD_BUTTON_LEFT_FACE_LEFT,GAMEPAD_BUTTON_RIGHT_FACE_UP,GAMEPAD_BUTTON_RIGHT_FACE_RIGHT,GAMEPAD_BUTTON_RIGHT_FACE_DOWN,GAMEPAD_BUTTON_RIGHT_FACE_LEFT,GAMEPAD_BUTTON_LEFT_TRIGGER_1,GAMEPAD_BUTTON_LEFT_TRIGGER_2,GAMEPAD_BUTTON_RIGHT_TRIGGER_1,GAMEPAD_BUTTON_RIGHT_TRIGGER_2,GAMEPAD_BUTTON_MIDDLE_LEFT,GAMEPAD_BUTTON_MIDDLE,GAMEPAD_BUTTON_MIDDLE_RIGHT,GAMEPAD_BUTTON_LEFT_THUMB,GAMEPAD_BUTTON_RIGHT_THUMB" },
-  { "$GamepadNumber", 1171, _cffi_prim_int(sizeof(GamepadNumber), ((GamepadNumber)-1) <= 0),
+  { "$GamepadNumber", 1155, _cffi_prim_int(sizeof(GamepadNumber), ((GamepadNumber)-1) <= 0),
     "GAMEPAD_PLAYER1,GAMEPAD_PLAYER2,GAMEPAD_PLAYER3,GAMEPAD_PLAYER4" },
-  { "$GestureType", 1172, _cffi_prim_int(sizeof(GestureType), ((GestureType)-1) <= 0),
+  { "$GestureType", 1156, _cffi_prim_int(sizeof(GestureType), ((GestureType)-1) <= 0),
     "GESTURE_NONE,GESTURE_TAP,GESTURE_DOUBLETAP,GESTURE_HOLD,GESTURE_DRAG,GESTURE_SWIPE_RIGHT,GESTURE_SWIPE_LEFT,GESTURE_SWIPE_UP,GESTURE_SWIPE_DOWN,GESTURE_PINCH_IN,GESTURE_PINCH_OUT" },
-  { "$KeyboardKey", 1173, _cffi_prim_int(sizeof(KeyboardKey), ((KeyboardKey)-1) <= 0),
+  { "$KeyboardKey", 1157, _cffi_prim_int(sizeof(KeyboardKey), ((KeyboardKey)-1) <= 0),
     "KEY_APOSTROPHE,KEY_COMMA,KEY_MINUS,KEY_PERIOD,KEY_SLASH,KEY_ZERO,KEY_ONE,KEY_TWO,KEY_THREE,KEY_FOUR,KEY_FIVE,KEY_SIX,KEY_SEVEN,KEY_EIGHT,KEY_NINE,KEY_SEMICOLON,KEY_EQUAL,KEY_A,KEY_B,KEY_C,KEY_D,KEY_E,KEY_F,KEY_G,KEY_H,KEY_I,KEY_J,KEY_K,KEY_L,KEY_M,KEY_N,KEY_O,KEY_P,KEY_Q,KEY_R,KEY_S,KEY_T,KEY_U,KEY_V,KEY_W,KEY_X,KEY_Y,KEY_Z,KEY_SPACE,KEY_ESCAPE,KEY_ENTER,KEY_TAB,KEY_BACKSPACE,KEY_INSERT,KEY_DELETE,KEY_RIGHT,KEY_LEFT,KEY_DOWN,KEY_UP,KEY_PAGE_UP,KEY_PAGE_DOWN,KEY_HOME,KEY_END,KEY_CAPS_LOCK,KEY_SCROLL_LOCK,KEY_NUM_LOCK,KEY_PRINT_SCREEN,KEY_PAUSE,KEY_F1,KEY_F2,KEY_F3,KEY_F4,KEY_F5,KEY_F6,KEY_F7,KEY_F8,KEY_F9,KEY_F10,KEY_F11,KEY_F12,KEY_LEFT_SHIFT,KEY_LEFT_CONTROL,KEY_LEFT_ALT,KEY_LEFT_SUPER,KEY_RIGHT_SHIFT,KEY_RIGHT_CONTROL,KEY_RIGHT_ALT,KEY_RIGHT_SUPER,KEY_KB_MENU,KEY_LEFT_BRACKET,KEY_BACKSLASH,KEY_RIGHT_BRACKET,KEY_GRAVE,KEY_KP_0,KEY_KP_1,KEY_KP_2,KEY_KP_3,KEY_KP_4,KEY_KP_5,KEY_KP_6,KEY_KP_7,KEY_KP_8,KEY_KP_9,KEY_KP_DECIMAL,KEY_KP_DIVIDE,KEY_KP_MULTIPLY,KEY_KP_SUBTRACT,KEY_KP_ADD,KEY_KP_ENTER,KEY_KP_EQUAL" },
-  { "$MaterialMapType", 1176, _cffi_prim_int(sizeof(MaterialMapType), ((MaterialMapType)-1) <= 0),
+  { "$MaterialMapType", 1160, _cffi_prim_int(sizeof(MaterialMapType), ((MaterialMapType)-1) <= 0),
     "MAP_ALBEDO,MAP_METALNESS,MAP_NORMAL,MAP_ROUGHNESS,MAP_OCCLUSION,MAP_EMISSION,MAP_HEIGHT,MAP_CUBEMAP,MAP_IRRADIANCE,MAP_PREFILTER,MAP_BRDF" },
-  { "$MouseButton", 1178, _cffi_prim_int(sizeof(MouseButton), ((MouseButton)-1) <= 0),
+  { "$MouseButton", 1162, _cffi_prim_int(sizeof(MouseButton), ((MouseButton)-1) <= 0),
     "MOUSE_LEFT_BUTTON,MOUSE_RIGHT_BUTTON,MOUSE_MIDDLE_BUTTON" },
-  { "$NPatchType", 1179, _cffi_prim_int(sizeof(NPatchType), ((NPatchType)-1) <= 0),
+  { "$NPatchType", 1163, _cffi_prim_int(sizeof(NPatchType), ((NPatchType)-1) <= 0),
     "NPT_9PATCH,NPT_3PATCH_VERTICAL,NPT_3PATCH_HORIZONTAL" },
-  { "$PixelFormat", 1180, _cffi_prim_int(sizeof(PixelFormat), ((PixelFormat)-1) <= 0),
+  { "$PixelFormat", 1164, _cffi_prim_int(sizeof(PixelFormat), ((PixelFormat)-1) <= 0),
     "UNCOMPRESSED_GRAYSCALE,UNCOMPRESSED_GRAY_ALPHA,UNCOMPRESSED_R5G6B5,UNCOMPRESSED_R8G8B8,UNCOMPRESSED_R5G5B5A1,UNCOMPRESSED_R4G4B4A4,UNCOMPRESSED_R8G8B8A8,UNCOMPRESSED_R32,UNCOMPRESSED_R32G32B32,UNCOMPRESSED_R32G32B32A32,COMPRESSED_DXT1_RGB,COMPRESSED_DXT1_RGBA,COMPRESSED_DXT3_RGBA,COMPRESSED_DXT5_RGBA,COMPRESSED_ETC1_RGB,COMPRESSED_ETC2_RGB,COMPRESSED_ETC2_EAC_RGBA,COMPRESSED_PVRT_RGB,COMPRESSED_PVRT_RGBA,COMPRESSED_ASTC_4x4_RGBA,COMPRESSED_ASTC_8x8_RGBA" },
-  { "$ShaderLocationIndex", 1183, _cffi_prim_int(sizeof(ShaderLocationIndex), ((ShaderLocationIndex)-1) <= 0),
+  { "$ShaderLocationIndex", 1167, _cffi_prim_int(sizeof(ShaderLocationIndex), ((ShaderLocationIndex)-1) <= 0),
     "LOC_VERTEX_POSITION,LOC_VERTEX_TEXCOORD01,LOC_VERTEX_TEXCOORD02,LOC_VERTEX_NORMAL,LOC_VERTEX_TANGENT,LOC_VERTEX_COLOR,LOC_MATRIX_MVP,LOC_MATRIX_MODEL,LOC_MATRIX_VIEW,LOC_MATRIX_PROJECTION,LOC_VECTOR_VIEW,LOC_COLOR_DIFFUSE,LOC_COLOR_SPECULAR,LOC_COLOR_AMBIENT,LOC_MAP_ALBEDO,LOC_MAP_METALNESS,LOC_MAP_NORMAL,LOC_MAP_ROUGHNESS,LOC_MAP_OCCLUSION,LOC_MAP_EMISSION,LOC_MAP_HEIGHT,LOC_MAP_CUBEMAP,LOC_MAP_IRRADIANCE,LOC_MAP_PREFILTER,LOC_MAP_BRDF" },
-  { "$ShaderUniformDataType", 1184, _cffi_prim_int(sizeof(ShaderUniformDataType), ((ShaderUniformDataType)-1) <= 0),
+  { "$ShaderUniformDataType", 1168, _cffi_prim_int(sizeof(ShaderUniformDataType), ((ShaderUniformDataType)-1) <= 0),
     "UNIFORM_FLOAT,UNIFORM_VEC2,UNIFORM_VEC3,UNIFORM_VEC4,UNIFORM_INT,UNIFORM_IVEC2,UNIFORM_IVEC3,UNIFORM_IVEC4,UNIFORM_SAMPLER2D" },
-  { "$TextureFilterMode", 1185, _cffi_prim_int(sizeof(TextureFilterMode), ((TextureFilterMode)-1) <= 0),
+  { "$TextureFilterMode", 1169, _cffi_prim_int(sizeof(TextureFilterMode), ((TextureFilterMode)-1) <= 0),
     "FILTER_POINT,FILTER_BILINEAR,FILTER_TRILINEAR,FILTER_ANISOTROPIC_4X,FILTER_ANISOTROPIC_8X,FILTER_ANISOTROPIC_16X" },
-  { "$TextureWrapMode", 1186, _cffi_prim_int(sizeof(TextureWrapMode), ((TextureWrapMode)-1) <= 0),
+  { "$TextureWrapMode", 1170, _cffi_prim_int(sizeof(TextureWrapMode), ((TextureWrapMode)-1) <= 0),
     "WRAP_REPEAT,WRAP_CLAMP,WRAP_MIRROR_REPEAT,WRAP_MIRROR_CLAMP" },
-  { "$TraceLogType", 1187, _cffi_prim_int(sizeof(TraceLogType), ((TraceLogType)-1) <= 0),
+  { "$TraceLogType", 1171, _cffi_prim_int(sizeof(TraceLogType), ((TraceLogType)-1) <= 0),
     "LOG_ALL,LOG_TRACE,LOG_DEBUG,LOG_INFO,LOG_WARNING,LOG_ERROR,LOG_FATAL,LOG_NONE" },
 };
 
 static const struct _cffi_typename_s _cffi_typenames[] = {
-  { "AndroidButton", 1158 },
-  { "AudioStream", 312 },
-  { "BlendMode", 1159 },
-  { "BoneInfo", 1161 },
-  { "BoundingBox", 315 },
+  { "AndroidButton", 1142 },
+  { "AudioStream", 384 },
+  { "BlendMode", 1143 },
+  { "BoneInfo", 1145 },
+  { "BoundingBox", 387 },
   { "Camera", 158 },
   { "Camera2D", 155 },
   { "Camera3D", 158 },
-  { "CameraMode", 1162 },
-  { "CameraType", 1163 },
-  { "CharInfo", 1165 },
+  { "CameraMode", 1146 },
+  { "CameraType", 1147 },
+  { "CharInfo", 1149 },
   { "Color", 24 },
-  { "ConfigFlag", 1166 },
-  { "CubemapLayoutType", 1167 },
+  { "ConfigFlag", 1150 },
+  { "CubemapLayoutType", 1151 },
   { "Font", 66 },
-  { "FontType", 1168 },
-  { "GamepadAxis", 1169 },
-  { "GamepadButton", 1170 },
-  { "GamepadNumber", 1171 },
-  { "GestureType", 1172 },
+  { "FontType", 1152 },
+  { "GamepadAxis", 1153 },
+  { "GamepadButton", 1154 },
+  { "GamepadNumber", 1155 },
+  { "GestureType", 1156 },
   { "Image", 16 },
-  { "KeyboardKey", 1173 },
-  { "Material", 720 },
-  { "MaterialMap", 1175 },
-  { "MaterialMapType", 1176 },
-  { "Matrix", 723 },
+  { "KeyboardKey", 1157 },
+  { "Material", 704 },
+  { "MaterialMap", 1159 },
+  { "MaterialMapType", 1160 },
+  { "Matrix", 707 },
   { "Mesh", 6 },
   { "Model", 214 },
-  { "ModelAnimation", 325 },
-  { "MouseButton", 1178 },
-  { "Music", 328 },
-  { "NPatchInfo", 864 },
-  { "NPatchType", 1179 },
-  { "PixelFormat", 1180 },
+  { "ModelAnimation", 404 },
+  { "MouseButton", 1162 },
+  { "Music", 371 },
+  { "NPatchInfo", 848 },
+  { "NPatchType", 1163 },
+  { "PixelFormat", 1164 },
   { "Quaternion", 31 },
   { "Ray", 213 },
-  { "RayHitInfo", 1181 },
+  { "RayHitInfo", 1165 },
   { "Rectangle", 77 },
-  { "RenderTexture", 816 },
-  { "RenderTexture2D", 816 },
+  { "RenderTexture", 800 },
+  { "RenderTexture2D", 800 },
   { "Shader", 258 },
-  { "ShaderLocationIndex", 1183 },
-  { "ShaderUniformDataType", 1184 },
-  { "Sound", 350 },
+  { "ShaderLocationIndex", 1167 },
+  { "ShaderUniformDataType", 1168 },
+  { "Sound", 433 },
   { "Texture", 80 },
   { "Texture2D", 80 },
   { "TextureCubemap", 80 },
-  { "TextureFilterMode", 1185 },
-  { "TextureWrapMode", 1186 },
-  { "TraceLogType", 1187 },
-  { "Transform", 1190 },
+  { "TextureFilterMode", 1169 },
+  { "TextureWrapMode", 1170 },
+  { "TraceLogType", 1171 },
+  { "Transform", 1174 },
   { "Vector2", 209 },
   { "Vector3", 28 },
   { "Vector4", 31 },
-  { "VrDeviceInfo", 1036 },
+  { "VrDeviceInfo", 1020 },
   { "Wave", 245 },
-  { "rAudioBuffer", 1202 },
+  { "rAudioBuffer", 1186 },
 };
 
 static const struct _cffi_type_context_s _cffi_type_context = {
@@ -22866,7 +22850,7 @@ static const struct _cffi_type_context_s _cffi_type_context = {
   21,  /* num_enums */
   57,  /* num_typenames */
   NULL,  /* no includes */
-  1209,  /* num_types */
+  1193,  /* num_types */
   0,  /* flags */
 };
 
