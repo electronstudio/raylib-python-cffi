@@ -102,3 +102,35 @@ class CameraFly:
         self.front = glm.normalize(front)
         self.right = glm.normalize(glm.cross(self.front, self.world_up))
         self.up = glm.normalize(glm.cross(self.right, self.front))
+
+
+def camera_test():
+    rl.SetTraceLogLevel(rl.LOG_ERROR)
+    rl.SetConfigFlags(rl.FLAG_WINDOW_RESIZABLE)
+    rl.InitWindow(512, 256, b'Test')
+    rl.SetTargetFPS(60)
+    rl.DisableCursor()
+
+    flycam = CameraFly()
+
+
+    while not rl.WindowShouldClose():
+        flycam.update()
+        cam = flycam.get_camera()
+
+        rl.BeginDrawing()
+        rl.ClearBackground((0, 200, 255, 255))
+        rl.BeginMode3D(cam[0])
+
+        # NOTE(pebaz): For whatever reason, this can solve a percentage of artifacts
+        rl.DrawGizmo([100000000, 100000000, 100000000])
+
+        rl.DrawGrid(32, 1)
+
+        rl.EndMode3D()
+        rl.EndDrawing()
+
+    rl.CloseWindow()
+
+if __name__ == '__main__':
+    camera_test()
