@@ -4,14 +4,11 @@ raylib [core] example - Input Gestures Detection
 
 """
 from raylib.pyray import PyRay, makeStructHelper
-from raylib.static import ffi
 from raylib.colors import (
     RAYWHITE,
     LIGHTGRAY,
     DARKGRAY,
     MAROON,
-    DARKBLUE,
-    LIME,
     GRAY,
 )
 
