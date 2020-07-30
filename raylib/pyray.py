@@ -45,7 +45,7 @@ for name, attr in getmembers(rl):
     else:
         setattr(PyRay, name, attr)
 
-for struct in ('Vector2','Vector3','Vector4','Camera2D', 'Camera3D', 'Quaternion', 'Color'):
+for struct in ('Vector2','Vector3','Vector4','Camera2D', 'Camera3D', 'Quaternion', 'Color', 'Rectangle'):
     f = makeStructHelper(struct)
     setattr(PyRay, struct, f)
 
