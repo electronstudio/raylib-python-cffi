@@ -2,6 +2,7 @@
 from raylib.dynamic import raylib as rl, ffi
 import math
 
+<<<<<<< HEAD
 PI = 3.14159265358979323846
 DEG2RAD = (PI/180.0)
 RAD2DEG = (180.0/PI)
@@ -19,6 +20,8 @@ def Lerp(start: float, end: float, amount: float):
 def Vector2Zero():
     return ffi.new("struct Vector2 *",[ 0, 0])
 
+=======
+>>>>>>> ffe4403 (complete fog example)
 def Vector3Zero():
     return ffi.new("struct Vector3 *",[ 0, 0, 0])
     

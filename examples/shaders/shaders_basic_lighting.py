@@ -27,7 +27,11 @@
 # *
 # ********************************************************************************************/
 
+<<<<<<< HEAD
 from raylib.static import rl, ffi
+=======
+from raylib.dynamic import raylib as rl, ffi
+>>>>>>> ffe4403 (complete fog example)
 from raylib.colors import *
 from dataclasses import dataclass
 from enum import Enum

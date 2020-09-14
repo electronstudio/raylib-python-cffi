@@ -9,7 +9,11 @@ http://bedroomcoders.co.uk/raylib-fog/
 
 """
 
+<<<<<<< HEAD
 from raylib.static import rl, ffi
+=======
+from raylib.dynamic import raylib as rl, ffi
+>>>>>>> ffe4403 (complete fog example)
 from raylib.colors import *
 import math
 
@@ -40,9 +44,13 @@ model3.materials[0].maps[rl.MAP_DIFFUSE].texture = texture
 light = Light(LIGHT_POINT,  [ 0, 4, 0 ], Vector3Zero(), WHITE)
 lightSystem = LightSystem([ 0.2, 0.2, 0.2, 1.0 ], light)
 
+<<<<<<< HEAD
 fog_color = ffi.new('float[]', [0.2,0.2,1.0,1.0])
 fogC = rl.GetShaderLocation(lightSystem.shader, b'fogColor')
 rl.SetShaderValue(lightSystem.shader, fogC, fog_color, rl.UNIFORM_VEC4);
+=======
+fog_color = [0.2, 0.2, 1.0, 1.0]
+>>>>>>> ffe4403 (complete fog example)
 fogD = rl.GetShaderLocation(lightSystem.shader, b'FogDensity')
 fogDensity = 0.12
 
@@ -76,8 +84,11 @@ while not rl.WindowShouldClose():
     rl.BeginDrawing()
 
     rl.ClearBackground([int(255 * i) for i in fog_color])
+<<<<<<< HEAD
     if rl.IsKeyDown(rl.KEY_SPACE):
         rl.ClearBackground(BLACK)
+=======
+>>>>>>> ffe4403 (complete fog example)
     
     rl.BeginMode3D(camera[0])
     rl.DrawModel(model, [0] * 3, 1, WHITE)
