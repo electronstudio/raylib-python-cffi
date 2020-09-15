@@ -88,4 +88,5 @@ void main()
 
     fogFactor = clamp( fogFactor, 0.0, 1.0 );
     finalColor = mix(fogColor, finalColor, fogFactor);
+
 }

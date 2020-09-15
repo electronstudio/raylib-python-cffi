@@ -27,7 +27,7 @@
 # *
 # ********************************************************************************************/
 
-from raylib.dynamic import raylib as rl, ffi
+from raylib.static import rl, ffi
 from raylib.colors import *
 from dataclasses import dataclass
 from enum import Enum
@@ -79,6 +79,8 @@ lights2 = Light(LIGHT_POINT, [ 0, 4, 2 ], Vector3Zero(), GREEN)
 lights3 = Light(LIGHT_POINT, [ 0, 4, 2 ], Vector3Zero(), BLUE)
 
 lightSystem = LightSystem([ 0.2, 0.2, 0.2, 1.0 ], lights0, lights1, lights2, lights3)
+fogD = rl.GetShaderLocation(lightSystem.shader, b'FogDensity')
+fogDensity = 0.0
 
 #// All models use the same shader - which lights them
 modelA.materials[0].shader = lightSystem.shader

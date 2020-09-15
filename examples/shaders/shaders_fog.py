@@ -9,7 +9,7 @@ http://bedroomcoders.co.uk/raylib-fog/
 
 """
 
-from raylib.dynamic import raylib as rl, ffi
+from raylib.static import rl, ffi
 from raylib.colors import *
 import math
 
