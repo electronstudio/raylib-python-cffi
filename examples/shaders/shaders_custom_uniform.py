@@ -1,5 +1,35 @@
 #!/usr/bin/env python3
+<<<<<<< HEAD
 
+=======
+# /*******************************************************************************************
+# *
+# *   raylib [shaders] example - basic lighting
+# *
+# *   NOTE: This example requires raylib OpenGL 3.3 or ES2 versions for shaders support,
+#     *         OpenGL 1.1 does not support shaders, recompile raylib to OpenGL 3.3 version.
+# *
+# *   NOTE: Shaders used in this example are #version 330 (OpenGL 3.3).
+# *
+# *   This example has been created using raylib 2.5 (www.raylib.com)
+# *   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
+# *
+# *   Example contributed by Chris Camacho (@codifies) and reviewed by Ramon Santamaria (@raysan5)
+# *
+# *   Chris Camacho (@codifies -  http://bedroomcoders.co.uk/) notes:
+# *
+# *   This is based on the PBR lighting example, but greatly simplified to aid learning...
+# *   actually there is very little of the PBR example left!
+# *   When I first looked at the bewildering complexity of the PBR example I feared
+# *   I would never understand how I could do simple lighting with raylib however its
+# *   a testement to the authors of raylib (including rlights.h) that the example
+# *   came together fairly quickly.
+# *
+# *   Copyright (c) 2019 Chris Camacho (@codifies) and Ramon Santamaria (@raysan5)
+# *
+# *
+# ********************************************************************************************/
+>>>>>>> 2e2e575 (added shaders custom uniform)
 
 from raylib.dynamic import raylib as rl, ffi
 from raylib.colors import *
