@@ -2,6 +2,23 @@
 from raylib.dynamic import raylib as rl, ffi
 import math
 
+PI = 3.14159265358979323846
+DEG2RAD = (PI/180.0)
+RAD2DEG = (180.0/PI)
+
+def Clamp(value: float, minv: float, maxv: float):
+    #res = value < minv ? minv : value
+    res = minv if value < minv else value
+    #return res > maxv ? maxv : res
+    return maxv if res > maxv else res
+
+def Lerp(start: float, end: float, amount: float):
+    return start + amount*(end - start)
+
+
+def Vector2Zero():
+    return ffi.new("struct Vector2 *",[ 0, 0])
+
 def Vector3Zero():
     return ffi.new("struct Vector3 *",[ 0, 0, 0])
     
