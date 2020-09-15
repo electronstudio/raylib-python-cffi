@@ -25,21 +25,17 @@ camera = ffi.new('struct Camera3D *', [
     rl.CAMERA_PERSPECTIVE
 ])
 
-model = rl.LoadModel(b"resources/models/barracks.obj")                  # // Load OBJ model
-texture = rl.LoadTexture(b"resources/models/barracks_diffuse.png")      # // Load model texture (diffuse map)
+imBlank = rl.GenImageColor(1024, 1024, BLANK)
+texture = rl.LoadTextureFromImage(imBlank)  #// Load blank texture to fill on shader
+rl.UnloadImage(imBlank);
 
-#// Assign texture to default model material
-model.materials[0].maps[rl.MAP_DIFFUSE].texture = texture
-#// NOTE: Defining 0 (NULL) for vertex shader forces usage of internal default vertex shader
-shader = rl.LoadShader(b"", b"resources/shaders/glsl330/swirl.fs")
-swirlCenterLoc = rl.GetShaderLocation(shader, b"center")
-angle = 6.282;
+#// NOTE: Using GLSL 330 shader version, on OpenGL ES 2.0 use GLSL 100 shader version
+shader = rl.LoadShader(b"", b"resources/shaders/glsl330/cubes_panning.fs");
 
-
-
-swirl = ffi.new("struct Vector2 *", [0,0])
-
-target = rl.LoadRenderTexture(screenWidth, screenHeight)
+time = ffi.new("float *", 0.0)
+timeLoc = rl.GetShaderLocation(shader, b"uTime");
+rl.SetShaderValue(shader, timeLoc, time, rl.UNIFORM_FLOAT);
+    
 
 rl.SetTargetFPS(60)                      # // Set our game to run at 60 frames-per-second
 #//--------------------------------------------------------------------------------------
@@ -48,43 +44,23 @@ rl.SetTargetFPS(60)                      # // Set our game to run at 60 frames-p
 while not rl.WindowShouldClose():            #// Detect window close button or ESC key
     #// Update
     #//----------------------------------------------------------------------------------
+    time[0] = rl.GetTime();
+    rl.SetShaderValue(shader, timeLoc, time, rl.UNIFORM_FLOAT);
 
-    angle -= 0.002
-    camera.position.x = math.sin(angle) * 30.0
-    camera.position.z = math.cos(angle) * 30.0
-    rl.UpdateCamera(camera)              #// Update camera
-
-    swirl.x = rl.GetMouseX()
-    swirl.y = screenHeight - rl.GetMouseY()
-    rl.SetShaderValue(shader, swirlCenterLoc, swirl, rl.UNIFORM_VEC2);
     #//----------------------------------------------------------------------------------
 
     #// Draw
     #//----------------------------------------------------------------------------------
     rl.BeginDrawing()
 
-
-    rl.BeginTextureMode(target)
     rl.ClearBackground(RAYWHITE)
-    rl.BeginMode3D(camera[0])
 
-    #// Draw the three models
-    rl.DrawModel(model, [0,0,0], 1.0, WHITE)
+    rl.BeginShaderMode(shader)    #// Enable our custom shader for next shapes/textures drawings
+    rl.DrawTexture(texture, 0, 0, WHITE)  #// Drawing BLANK texture, all magic happens on shader
+    rl.EndShaderMode()            #// Disable our custom shader, return to default shader
 
-    rl.DrawGrid(10, 1.0)
+    rl.DrawText(b"BACKGROUND is PAINTED and ANIMATED on SHADER!", 10, 10, 20, MAROON);
 
-    rl.EndTextureMode()
-    rl.EndMode3D()
-    
-    rl.BeginShaderMode(shader)
-    #// NOTE: Render texture must be y-flipped due to default OpenGL coordinates (left-bottom)
-    rl.DrawTextureRec(target.texture, [ 0, 0, target.texture.width,-target.texture.height], [0.0], WHITE)
-    rl.EndShaderMode()
-    #// Draw some 2d text over drawn texture
-    rl.DrawText(b"(c) Barracks 3D model by Alberto Cano", screenWidth - 220, screenHeight - 20, 10, GRAY);
-
-    
-    rl.DrawFPS(10, 10)
 
     rl.EndDrawing()
 #//----------------------------------------------------------------------------------
