@@ -40,7 +40,9 @@ model3.materials[0].maps[rl.MAP_DIFFUSE].texture = texture
 light = Light(LIGHT_POINT,  [ 0, 4, 0 ], Vector3Zero(), WHITE)
 lightSystem = LightSystem([ 0.2, 0.2, 0.2, 1.0 ], light)
 
-fog_color = [0.2, 0.2, 1.0, 1.0]
+fog_color = ffi.new('float[]', [0.2,0.2,1.0,1.0])
+fogC = rl.GetShaderLocation(lightSystem.shader, b'fogColor')
+rl.SetShaderValue(lightSystem.shader, fogC, fog_color, rl.UNIFORM_VEC4);
 fogD = rl.GetShaderLocation(lightSystem.shader, b'FogDensity')
 fogDensity = 0.12
 
@@ -74,6 +76,8 @@ while not rl.WindowShouldClose():
     rl.BeginDrawing()
 
     rl.ClearBackground([int(255 * i) for i in fog_color])
+    if rl.IsKeyDown(rl.KEY_SPACE):
+        rl.ClearBackground(BLACK)
     
     rl.BeginMode3D(camera[0])
     rl.DrawModel(model, [0] * 3, 1, WHITE)

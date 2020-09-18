@@ -3,7 +3,7 @@
 
 from raylib.dynamic import raylib as rl, ffi
 from raylib.colors import *
-import math
+
 
 # a few functions ported from raymath
 from rlmath import *
@@ -68,7 +68,7 @@ while not rl.WindowShouldClose():            #// Detect window close button or E
 
 #// De-Initialization
 #//--------------------------------------------------------------------------------------
-rl.UnloadModel(model) #        // Unload the model
+
 
 rl.UnloadTexture(texture)     #// Unload the texture
 
