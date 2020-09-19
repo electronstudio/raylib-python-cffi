@@ -28,10 +28,14 @@ pyray.set_target_fps(60)  # Set our game to run at 60 frames-per-second
 # Main game loop
 while not pyray.window_should_close():  # Detect window close button or ESC key
     # Update
-    if pyray.is_key_down(pyray.KEY_RIGHT): ball_position.x += 2
-    if pyray.is_key_down(pyray.KEY_LEFT): ball_position.x -= 2
-    if pyray.is_key_down(pyray.KEY_UP): ball_position.y -= 2
-    if pyray.is_key_down(pyray.KEY_DOWN): ball_position.y += 2
+    if pyray.is_key_down(pyray.KEY_RIGHT):
+        ball_position.x += 2
+    if pyray.is_key_down(pyray.KEY_LEFT):
+        ball_position.x -= 2
+    if pyray.is_key_down(pyray.KEY_UP):
+        ball_position.y -= 2
+    if pyray.is_key_down(pyray.KEY_DOWN):
+        ball_position.y += 2
 
     # Draw
     pyray.begin_drawing()

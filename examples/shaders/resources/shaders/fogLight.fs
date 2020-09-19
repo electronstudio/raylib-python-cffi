@@ -78,6 +78,7 @@ void main()
     // gamma
     finalColor = pow(finalColor, vec4(1.0/2.2));
 
+
     float dist = length(viewPos - fragPosition) ;
     float fogFactor = 1.0 / exp( (dist * FogDensity) * (dist * FogDensity));
 
@@ -88,4 +89,5 @@ void main()
 
     fogFactor = clamp( fogFactor, 0.0, 1.0 );
     finalColor = mix(fogColor, finalColor, fogFactor);
+
 }
