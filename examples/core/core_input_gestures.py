@@ -3,7 +3,7 @@
 raylib [core] example - Input Gestures Detection
 
 """
-from raylib.pyray import PyRay, makeStructHelper
+from raylib.pyray import PyRay
 from raylib.colors import (
     RAYWHITE,
     LIGHTGRAY,
@@ -73,14 +73,10 @@ while not pyray.window_should_close():  # Detect window close button or ESC key
     pyray.draw_rectangle_rec(touch_area, GRAY)
     pyray.draw_rectangle(225, 15, SCREEN_WIDTH - 240, SCREEN_HEIGHT - 30,
                          RAYWHITE)
-
     pyray.draw_text(
         'GESTURES TEST AREA',
         SCREEN_WIDTH - 270, SCREEN_HEIGHT - 40, 20, pyray.fade(GRAY, 0.5)
     )
-
-    pyray.draw_rectangle(10, 29, 200, SCREEN_HEIGHT - 50, GRAY)
-    pyray.draw_text('DETECTED GESTURES', 50, 15, 10, GRAY)
 
     for i, val in enumerate(gesture_strings):
         if i % 2 == 0:
@@ -95,10 +91,11 @@ while not pyray.window_should_close():  # Detect window close button or ESC key
         else:
             pyray.draw_text(val, 35, 36 + 20 * i, 10, MAROON)
 
+    pyray.draw_rectangle_lines(10, 29, 200, SCREEN_HEIGHT - 50, GRAY)
+    pyray.draw_text('DETECTED GESTURES', 50, 15, 10, GRAY)
 
     if current_gesture != pyray.GESTURE_NONE:
         pyray.draw_circle_v(touch_position, 30, MAROON)
-
 
     pyray.end_drawing()
 
