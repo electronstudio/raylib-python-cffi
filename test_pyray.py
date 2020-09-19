@@ -26,7 +26,7 @@ rayhit = pyray.get_collision_ray_ground(ray, 0)
 print(str(rayhit.position.x))
 
 while not pyray.window_should_close():
-    pyray.update_camera(pyray.pointer(camera))
+    pyray.update_camera(camera)
     pyray.begin_drawing()
     pyray.clear_background(RAYWHITE)
     pyray.begin_mode_3d(camera)

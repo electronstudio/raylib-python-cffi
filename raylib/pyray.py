@@ -9,14 +9,16 @@ class PyRay:
 
 
 def makefunc(a):
-    #print("makefunc ",a)
+    #print("makefunc ",a, ffi.typeof(a).args)
     def func(self, *args):
         modified_args = []
-        for arg in args:
-            #print(arg, type(arg))
+        for (c_arg, arg) in zip(ffi.typeof(a).args, args):
+            #print(arg, c_arg.kind)
             if type(arg) == str:
                 encoded = arg.encode('utf-8')
                 modified_args.append(encoded)
+            elif c_arg.kind == 'pointer':
+                modified_args.append(ffi.addressof(arg))
             else:
                 modified_args.append(arg)
         return a(*modified_args)
