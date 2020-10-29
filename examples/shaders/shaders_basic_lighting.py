@@ -28,10 +28,14 @@
 # ********************************************************************************************/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 from raylib.static import rl, ffi
 =======
 from raylib.dynamic import raylib as rl, ffi
 >>>>>>> ffe4403 (complete fog example)
+=======
+from raylib.static import rl, ffi
+>>>>>>> 10b63b9 (added shaders_texture_waves.py)
 from raylib.colors import *
 from dataclasses import dataclass
 from enum import Enum
