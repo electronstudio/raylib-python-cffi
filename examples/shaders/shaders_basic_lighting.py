@@ -29,6 +29,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from raylib.static import rl, ffi
 =======
 from raylib.dynamic import raylib as rl, ffi
@@ -36,6 +37,9 @@ from raylib.dynamic import raylib as rl, ffi
 =======
 from raylib.static import rl, ffi
 >>>>>>> 10b63b9 (added shaders_texture_waves.py)
+=======
+from raylib.static import rl, ffi
+>>>>>>> 1775ffc4b093c881ee44a8027b4143add066d738
 from raylib.colors import *
 from dataclasses import dataclass
 from enum import Enum

@@ -4,8 +4,11 @@ import math
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 2e2e575 (added shaders custom uniform)
+=======
+>>>>>>> 1775ffc4b093c881ee44a8027b4143add066d738
 PI = 3.14159265358979323846
 DEG2RAD = (PI/180.0)
 RAD2DEG = (180.0/PI)
@@ -24,10 +27,13 @@ def Vector2Zero():
     return ffi.new("struct Vector2 *",[ 0, 0])
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> ffe4403 (complete fog example)
 =======
 >>>>>>> 2e2e575 (added shaders custom uniform)
+=======
+>>>>>>> 1775ffc4b093c881ee44a8027b4143add066d738
 def Vector3Zero():
     return ffi.new("struct Vector3 *",[ 0, 0, 0])
     
