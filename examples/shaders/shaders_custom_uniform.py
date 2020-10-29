@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-<<<<<<< HEAD
-<<<<<<< HEAD
+#<<<<<<< HEAD
+#<<<<<<< HEAD
 
-=======
+#=======
 # /*******************************************************************************************
 # *
 # *   raylib [shaders] example - basic lighting
@@ -30,10 +30,10 @@
 # *
 # *
 # ********************************************************************************************/
->>>>>>> 2e2e575 (added shaders custom uniform)
-=======
-
->>>>>>> 1775ffc4b093c881ee44a8027b4143add066d738
+#>>>>>>> 2e2e575 (added shaders custom uniform)
+#=======#
+#
+#>>>>>>> 1775ffc4b093c881ee44a8027b4143add066d738
 
 from raylib.dynamic import raylib as rl, ffi
 from raylib.colors import *

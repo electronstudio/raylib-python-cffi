@@ -37,7 +37,7 @@ rl.SetShaderValue(
 
 texHDR = rl.LoadTexture(b'resources/dresden_square.hdr')
 
-skybox.materials[0].maps[rl.MAP_CUBEMAP].texture = rl.GenTextureCubemap(shdrCubemap, texHDR, 512);
+skybox.materials[0].maps[rl.MAP_CUBEMAP].texture = rl.GenTextureCubemap(shdrCubemap, texHDR, 512, rl.UNCOMPRESSED_R32G32B32);
 
 rl.UnloadTexture(texHDR)
 rl.UnloadShader(shdrCubemap)
