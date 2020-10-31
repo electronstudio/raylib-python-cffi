@@ -567,7 +567,7 @@ static void (*_cffi_call_python_org)(struct _cffi_externpy_s *, char *);
 /************************************************************/
 
 
-                           #include "../raylib.h"   
+                           #include "../../raylib-c/src/raylib.h"   
                       
 
 /************************************************************/

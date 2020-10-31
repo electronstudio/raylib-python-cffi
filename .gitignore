@@ -16,3 +16,4 @@ raylib/dynamic/libraylib.so
 raylib/static/_raylib_cffi.c
 !./raylib/dynamic/*
 ./raylib/dynamic/*
+raylib/static/_raylib_cffi.c

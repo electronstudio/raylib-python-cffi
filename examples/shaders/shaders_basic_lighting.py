@@ -54,8 +54,8 @@ from light_system import *
 
 #// Initialization
 #//--------------------------------------------------------------------------------------
-screenWidth = 800;
-screenHeight = 450;
+screenWidth = 1200;
+screenHeight = 720;
 
 rl.SetConfigFlags(rl.FLAG_MSAA_4X_HINT| rl.FLAG_WINDOW_RESIZABLE);  # Enable Multi Sampling Anti Aliasing 4x (if available)
 rl.InitWindow(screenWidth, screenHeight, b"raylib [shaders] example - basic lighting")
@@ -137,6 +137,9 @@ while not rl.WindowShouldClose():            #// Detect window close button or E
 #    modelA.transform = MatrixMultiply(modelA.transform, MatrixRotateZ(0.012)[0])[0]
     modelA.transform = ffi.cast('Matrix *', MatrixMultiply(modelA.transform, MatrixRotateX(-0.025)))[0]
     modelA.transform = ffi.cast('Matrix *', MatrixMultiply(modelA.transform, MatrixRotateZ(0.012)))[0]
+
+    if (rl.IsKeyPressed(rl.KEY_F)):
+        rl.ToggleFullscreen()
 
 
     #//----------------------------------------------------------------------------------
