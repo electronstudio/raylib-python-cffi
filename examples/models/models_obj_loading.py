@@ -20,15 +20,17 @@ InitWindow(screenWidth, screenHeight, b"raylib [models] example - obj model load
 
 # Define the camera to look into our 3d world
 camera =  ffi.new("struct Camera3D *")
-camera.position = [ 50.0, 50.0, 50.0 ]    # Camera position
+camera.position = [ 5.0, 5.0, 5.0 ]    # Camera position
 camera.target = [ 0.0, 2.5, 0.0 ]      # Camera looking at point
 camera.up = [ 0.0, 1.0, 0.0 ]          # Camera up vector (rotation towards target)
 camera.fovy = 45.0                                # Camera field-of-view Y
 camera.type = CAMERA_PERSPECTIVE                   # Camera mode type
 
-model = LoadModel(b"resources/models/monkey/monkey4.gltf")                 # Load OBJ model
-texture = LoadTexture(b"resources/models/castle_diffuse.png") # Load model texture
-#model.materials.maps[MAP_DIFFUSE].texture = texture                     # Set map diffuse texture
+rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)
+
+model = LoadModel(b"resources/models/house.obj")                 # Load OBJ model
+texture = LoadTexture(b"resources/models/house_diffuse.png") # Load model texture
+model.materials.maps[MAP_DIFFUSE].texture = texture                     # Set map diffuse texture
 position = [ 0.0, 0.0, 0.0 ]                                # Set model position
 
 SetTargetFPS(60)   # Set our game to run at 60 frames-per-second
@@ -40,7 +42,7 @@ while not WindowShouldClose():    # Detect window close button or ESC key
     #----------------------------------------------------------------------------------
     #...
     #----------------------------------------------------------------------------------
-
+    rl.UpdateCamera(camera);
     # Draw
     #----------------------------------------------------------------------------------
     BeginDrawing()
