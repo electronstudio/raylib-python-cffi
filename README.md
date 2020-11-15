@@ -1,22 +1,3 @@
-# Python Binding for Raylib Master
-
-This work is almost entirely based on the 2.5 binding, but with minor
-alterations to compile with the latest github raylib master branch
-
-current status
-
-. only supports Python 3.9.0
-. windows support is by PR only (not a windows user)
-
-usage - simply make a sym-link from your project (where you python source is) to the raylib directory in the root of the repository once you have cloned it.
- (see code examples)
- 
-
-
-here follows the original README.md
-
-
-
 # Python Bindings for Raylib 2.6
 
 New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ctypes.

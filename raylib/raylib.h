@@ -71,21 +71,104 @@
 *
 **********************************************************************************************/
 
+#ifndef RAYLIB_H
+#define RAYLIB_H
 
+#include <stdarg.h>     // Required for: va_list - Only used by TraceLogCallback
+
+#if defined(_WIN32)
+    // Microsoft attibutes to tell compiler that symbols are imported/exported from a .dll
+    #if defined(BUILD_LIBTYPE_SHARED)
+        #define RLAPI __declspec(dllexport)     // We are building raylib as a Win32 shared library (.dll)
+    #elif defined(USE_LIBTYPE_SHARED)
+        #define RLAPI __declspec(dllimport)     // We are using raylib as a Win32 shared library (.dll)
+    #else
+        #define RLAPI   // We are building or using raylib as a static library
+    #endif
+#else
+    #define RLAPI       // We are building or using raylib as a static library (or Linux shared library)
+#endif
 
 //----------------------------------------------------------------------------------
 // Some basic Defines
 //----------------------------------------------------------------------------------
+#ifndef PI
+    #define PI 3.14159265358979323846f
+#endif
 
+#define DEG2RAD (PI/180.0f)
+#define RAD2DEG (180.0f/PI)
 
 #define MAX_TOUCH_POINTS        10      // Maximum number of touch points supported
 
+// Allow custom memory allocators
+#ifndef RL_MALLOC
+    #define RL_MALLOC(sz)       malloc(sz)
+#endif
+#ifndef RL_CALLOC
+    #define RL_CALLOC(n,sz)     calloc(n,sz)
+#endif
+#ifndef RL_REALLOC
+    #define RL_REALLOC(ptr,sz)  realloc(ptr,sz)
+#endif
+#ifndef RL_FREE
+    #define RL_FREE(ptr)        free(ptr)
+#endif
 
+// NOTE: MSC C++ compiler does not support compound literals (C99 feature)
+// Plain structures in C++ (without constructors) can be initialized from { } initializers.
+#if defined(__cplusplus)
+    #define CLITERAL(type)      type
+#else
+    #define CLITERAL(type)      (type)
+#endif
+
+// Some Basic Colors
+// NOTE: Custom raylib color palette for amazing visuals on WHITE background
+#define LIGHTGRAY  CLITERAL(Color){ 200, 200, 200, 255 }   // Light Gray
+#define GRAY       CLITERAL(Color){ 130, 130, 130, 255 }   // Gray
+#define DARKGRAY   CLITERAL(Color){ 80, 80, 80, 255 }      // Dark Gray
+#define YELLOW     CLITERAL(Color){ 253, 249, 0, 255 }     // Yellow
+#define GOLD       CLITERAL(Color){ 255, 203, 0, 255 }     // Gold
+#define ORANGE     CLITERAL(Color){ 255, 161, 0, 255 }     // Orange
+#define PINK       CLITERAL(Color){ 255, 109, 194, 255 }   // Pink
+#define RED        CLITERAL(Color){ 230, 41, 55, 255 }     // Red
+#define MAROON     CLITERAL(Color){ 190, 33, 55, 255 }     // Maroon
+#define GREEN      CLITERAL(Color){ 0, 228, 48, 255 }      // Green
+#define LIME       CLITERAL(Color){ 0, 158, 47, 255 }      // Lime
+#define DARKGREEN  CLITERAL(Color){ 0, 117, 44, 255 }      // Dark Green
+#define SKYBLUE    CLITERAL(Color){ 102, 191, 255, 255 }   // Sky Blue
+#define BLUE       CLITERAL(Color){ 0, 121, 241, 255 }     // Blue
+#define DARKBLUE   CLITERAL(Color){ 0, 82, 172, 255 }      // Dark Blue
+#define PURPLE     CLITERAL(Color){ 200, 122, 255, 255 }   // Purple
+#define VIOLET     CLITERAL(Color){ 135, 60, 190, 255 }    // Violet
+#define DARKPURPLE CLITERAL(Color){ 112, 31, 126, 255 }    // Dark Purple
+#define BEIGE      CLITERAL(Color){ 211, 176, 131, 255 }   // Beige
+#define BROWN      CLITERAL(Color){ 127, 106, 79, 255 }    // Brown
+#define DARKBROWN  CLITERAL(Color){ 76, 63, 47, 255 }      // Dark Brown
+
+#define WHITE      CLITERAL(Color){ 255, 255, 255, 255 }   // White
+#define BLACK      CLITERAL(Color){ 0, 0, 0, 255 }         // Black
+#define BLANK      CLITERAL(Color){ 0, 0, 0, 0 }           // Blank (Transparent)
+#define MAGENTA    CLITERAL(Color){ 255, 0, 255, 255 }     // Magenta
+#define RAYWHITE   CLITERAL(Color){ 245, 245, 245, 255 }   // My own White (raylib logo)
+
+// Temporal hack to avoid breaking old codebases using
+// deprecated raylib implementation of these functions
+#define FormatText  TextFormat
+#define SubText     TextSubtext
+#define ShowWindow  UnhideWindow
+#define LoadText    LoadFileText
 
 //----------------------------------------------------------------------------------
 // Structures Definition
 //----------------------------------------------------------------------------------
-
+// Boolean type
+#if defined(__STDC__) && __STDC_VERSION__ >= 199901L
+    #include <stdbool.h>
+#elif !defined(__cplusplus) && !defined(bool)
+    typedef enum { false, true } bool;
+#endif
 
 // Vector2 type
 typedef struct Vector2 {
@@ -200,6 +283,7 @@ typedef struct Font {
     CharInfo *chars;        // Characters info data
 } Font;
 
+#define SpriteFont Font     // SpriteFont type fallback, defaults to Font
 
 // Camera type, defines a camera position/orientation in 3d space
 typedef struct Camera3D {
@@ -626,8 +710,8 @@ typedef enum {
     LOC_MAP_BRDF
 } ShaderLocationIndex;
 
-#define LOC_MAP_DIFFUSE      14
-#define LOC_MAP_SPECULAR     15
+#define LOC_MAP_DIFFUSE      LOC_MAP_ALBEDO
+#define LOC_MAP_SPECULAR     LOC_MAP_METALNESS
 
 // Shader uniform data types
 typedef enum {
@@ -657,8 +741,8 @@ typedef enum {
     MAP_BRDF
 } MaterialMapType;
 
-#define MAP_DIFFUSE      0
-#define MAP_SPECULAR     1
+#define MAP_DIFFUSE      MAP_ALBEDO
+#define MAP_SPECULAR     MAP_METALNESS
 
 // Pixel formats
 // NOTE: Support depends on OpenGL version and platform
@@ -768,8 +852,12 @@ typedef enum {
     NPT_3PATCH_HORIZONTAL   // Npatch defined by 3x1 tiles
 } NPatchType;
 
+// Callbacks to be implemented by users
+typedef void (*TraceLogCallback)(int logType, const char *text, va_list args);
 
-
+#if defined(__cplusplus)
+extern "C" {            // Prevents name mangling of functions
+#endif
 
 //------------------------------------------------------------------------------------
 // Global Variables Definition
@@ -859,7 +947,7 @@ RLAPI Color Fade(Color color, float alpha);                       // Color fade-
 RLAPI void SetConfigFlags(unsigned int flags);                    // Setup window configuration flags (view FLAGS)
 RLAPI void SetTraceLogLevel(int logType);                         // Set the current threshold (minimum) log level
 RLAPI void SetTraceLogExit(int logType);                          // Set the exit threshold (minimum) log level
-//RLAPI void SetTraceLogCallback(TraceLogCallback callback);        // Set a trace log callback to enable custom logging
+RLAPI void SetTraceLogCallback(TraceLogCallback callback);        // Set a trace log callback to enable custom logging
 RLAPI void TraceLog(int logType, const char *text, ...);          // Show trace log messages (LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR)
 RLAPI void TakeScreenshot(const char *fileName);                  // Takes a screenshot of current screen (saved a .png)
 RLAPI int GetRandomValue(int min, int max);                       // Returns a random value between min and max (both included)
@@ -1373,4 +1461,8 @@ RLAPI void SetAudioStreamBufferSizeDefault(int size);                 // Default
 
 // IN PROGRESS: Check rnet.h for reference
 
+#if defined(__cplusplus)
+}
+#endif
 
+#endif // RAYLIB_H

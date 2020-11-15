@@ -12,9 +12,9 @@ ffibuilder.cdef(open("../raylib_modified.h").read().replace('RLAPI ', ''))
 
 ffibuilder.set_source("_raylib_cffi",
                       """
-                           #include "../../raylib-c/src/raylib.h"   
+                           #include "../raylib.h"   
                       """,
-                      extra_link_args=['../../../raylib/libraylib.a','-lm', '-lpthread', '-lGLU', '-lGL',  '-lrt', '-lm', '-ldl', '-lX11', '-lpthread'],
+                      extra_link_args=['/usr/local/lib/libraylib.a','-lm', '-lpthread', '-lGLU', '-lGL',  '-lrt', '-lm', '-ldl', '-lX11', '-lpthread'],
                       libraries=['GL','m','pthread', 'dl', 'rt', 'X11']
                       )
 
