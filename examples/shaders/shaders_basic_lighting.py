@@ -99,6 +99,8 @@ modelA.materials[0].shader = lightSystem.shader
 modelB.materials[0].shader = lightSystem.shader
 modelC.materials[0].shader = lightSystem.shader
 
+rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)  # Set an orbital camera mode
+
 rl.SetTargetFPS(60)                      # // Set our game to run at 60 frames-per-second
 #//--------------------------------------------------------------------------------------
 
