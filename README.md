@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 2.6
+# Python Bindings for Raylib 3.x
 
 New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ctypes.
 
@@ -7,6 +7,8 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 [RetroWar: 8-bit Party Battle](https://store.steampowered.com/app/664240/RetroWar_8bit_Party_Battle/?git) is out now.  Defeat up to 15 of your friends in a tournament of 80s-inspired retro mini games.
 
 # Install
+
+## Install from Pypi (easiest)
 
 **Windows 10 (64 bit): Python 3.6 - 3.8**
 
@@ -18,9 +20,16 @@ We distribute a statically linked Raylib library,  install from Pypi.
 
     pip3 install raylib
 
+## Install from github
+    
+The version on Pypi may not always be up to date.  If you want to test the very latest version,
+clone the git repo and make a symlink to the `raylib` directory in your current project directory.
+
+## Build from source
+
 If you're a different version of Python, or a Linux with incompatible libraries
 then you can either *use the dynamic binding only* or else you will have to build from source.  Download, compile
-and install Raylib 2.6 then
+and install Raylib then
 
     cd raylib/static
     python3 build_linux.py
