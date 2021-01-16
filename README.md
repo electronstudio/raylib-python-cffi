@@ -28,10 +28,30 @@ clone the git repo and make a symlink to the `raylib` directory in your current 
 ## Build from source
 
 If you're a different version of Python, or a Linux with incompatible libraries
-then you can either *use the dynamic binding only* or else you will have to build from source.  Download, compile
-and install Raylib then
+then you can either *use the dynamic binding only* or else you will have to build from source.
 
-    cd raylib/static
+Clone this repo including submodules so you get correct version of Raylib.
+
+    git clone --recurse-submodules https://github.com/electronstudio/raylib-python-cffi
+
+Build and install Raylib from the raylib-c directory.
+
+    cd raylib-python-cffi/raylib-c
+    mkdir build
+    cd build
+    cmake -DWITH_PIC=on ..
+    sudo make install
+
+Make a patched version of raylib header.
+
+    cd ../../raylib
+    cp raylib.h raylib_modified.h
+    patch  -p0 <raylib_modified.h.patch
+
+Build 
+
+    cd static
+    pip3 install cffi
     python3 build_linux.py
 
 # Use
