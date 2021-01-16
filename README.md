@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 3.x
+# Python Bindings for Raylib 3.5
 
 New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ctypes.
 
@@ -39,7 +39,7 @@ Build and install Raylib from the raylib-c directory.
     cd raylib-python-cffi/raylib-c
     mkdir build
     cd build
-    cmake -DWITH_PIC=on ..
+    cmake -DWITH_PIC=on -DSTATIC=on -DSHARED=on ..
     sudo make install
 
 Make a patched version of raylib header.
@@ -53,6 +53,16 @@ Build
     cd static
     pip3 install cffi
     python3 build_linux.py
+    
+To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:
+
+    ./build_linux_multi.sh
+    
+To update the dynamic libs too:
+
+    cd ../..
+    rm raylib/dynamic/*.so*
+    cp --preserve=links /usr/local/lib/libraylib.so* raylib/dynamic/
 
 # Use
 
@@ -140,5 +150,4 @@ See test_dynamic.py for how to use.
  * converting more examples from C to python
  * testing and building on more platforms
  * sorting out binary wheel distribution for Mac/Win and compile-from-source distributtion for Linux
- * dealing with conversions to pointers in PyRay automatically
  
