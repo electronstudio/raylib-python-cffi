@@ -8,7 +8,7 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 # Install
 
-## Install from Pypi (easiest)
+## Option 1: Install from Pypi (easiest but currently out of date, Raylib 2.6 and Python 3.6 - 3.8)
 
 **Windows 10 (64 bit): Python 3.6 - 3.8**
 
@@ -20,15 +20,18 @@ We distribute a statically linked Raylib library,  install from Pypi.
 
     pip3 install raylib
 
-## Install from github
+## Option 2: Install from github (Raylib 3.5, Python 3.6 - 3.9, Linux, awaiting builds for other platforms)
     
-The version on Pypi may not always be up to date.  If you want to test the very latest version,
+The version on Pypi may not always be up to date.  If you want to test the latest version,
 clone the git repo and make a symlink to the `raylib` directory in your current project directory.
 
-## Build from source
+## Option 3: Build from source (Raylib 3.5, all platforms)
 
-If you're a different version of Python, or a Linux with incompatible libraries
-then you can either *use the dynamic binding only* or else you will have to build from source.
+If you're using a platform we dont have binary builds for yet
+then you can either *use the dynamic binding only* or else you will have to build from source.  If you do build on a new platform please
+submit your binaries as a PR.
+
+These instructions have been tested on Ubuntu 20.10.  Mac should be very similar.  Windows is probably different.
 
 Clone this repo including submodules so you get correct version of Raylib.
 
@@ -137,13 +140,6 @@ See test_dynamic.py for how to use.
 ## richlib
 
 [A simplified API for Raylib for use in education and to enable beginners to create 3d games](https://github.com/electronstudio/richlib)
-
-# Platforms tested
-
- * (MacOS 10.12.6 - Python 3.7)
- * (Ubuntu 18.04 LTS - Python 3.6)
- * Debian 10 - Python 3.7
- * Windows 10 (64 bit) - Python 3.8
 
 # HELP WANTED
 
