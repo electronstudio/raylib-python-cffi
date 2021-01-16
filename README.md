@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 3.x
+# Python Bindings for Raylib 3.5
 
 New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ctypes.
 
@@ -57,6 +57,12 @@ Build
 To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:
 
     ./build_linux_multi.sh
+    
+To update the dynamic libs too:
+
+    cd ../..
+    rm raylib/dynamic/*.so*
+    cp --preserve=links /usr/local/lib/libraylib.so* raylib/dynamic/
 
 # Use
 
