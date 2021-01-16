@@ -28,10 +28,11 @@ clone the git repo and make a symlink to the `raylib` directory in your current 
 ## Option 3: Build from source (Raylib 3.5, all platforms)
 
 If you're using a platform we dont have binary builds for yet
-then you can either *use the dynamic binding only* or else you will have to build from source.  If you do build on a new platform please
+then you can either *use the dynamic binding with your own dll* or else you will have to build from source.
+If you do build on a new platform please
 submit your binaries as a PR.
 
-These instructions have been tested on Ubuntu 20.10.  Mac should be very similar.  Windows is probably different.
+These instructions have been tested on Ubuntu 20.10 and 16.04.  Mac should be very similar.  Windows is probably different.
 
 Clone this repo including submodules so you get correct version of Raylib.
 
@@ -61,11 +62,11 @@ To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:
 
     ./build_linux_multi.sh
     
-To update the dynamic libs too:
+To update the Linux dynamic libs (names will be different on other platfroms):
 
     cd ../..
     rm raylib/dynamic/*.so*
-    cp --preserve=links /usr/local/lib/libraylib.so* raylib/dynamic/
+    cp -P /usr/local/lib/libraylib.so* raylib/dynamic/
 
 # Use
 
