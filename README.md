@@ -115,7 +115,7 @@ camera = pyray.Camera3D([18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45
 pyray.set_camera_mode(camera, pyray.CAMERA_ORBITAL)
 
 while not pyray.window_should_close():
-    pyray.update_camera(pyray.pointer(camera))
+    pyray.update_camera(camera)
     pyray.begin_drawing()
     pyray.clear_background(RAYWHITE)
     pyray.begin_mode_3d(camera)
