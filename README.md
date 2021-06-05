@@ -68,6 +68,32 @@ To update the Linux dynamic libs (names will be different on other platfroms):
     rm raylib/dynamic/*.so*
     cp -P /usr/local/lib/libraylib.so* raylib/dynamic/
 
+### Raspberry Pi
+
+The integrated GPU hardware in a Raspberry Pi ("VideoCore") is rather
+idiosyncratic, resulting in a complex set of software options. Probably the
+most interesting two options for Raylib applications are:
+
+ 1. Use the Broadcom proprietary Open GL ES 2.0 drivers, installed by Raspbian
+    into `/opt/vc`. These are 32-bit only, and currently X11 doesn't use these
+    for its acceleration, so this is most suitable for driving the entire HDMI
+    output from one application with minimal overhead (no X11).
+
+ 2. Use the more recent open-source `vc4-fkms-v3d` kernel driver. This can run
+    in either 32-bit or 64-bit, and X11 can use these, so using X11 is probably
+    the more common choice here.
+
+With option 2, the regular linux install instructions above should probably
+work as-is.
+
+For option 1, then also follow the above instructions, but with these
+modifications:
+
+ - With `cmake`, use `cmake -DWITH_PIC=on -DSTATIC=on -DSHARED=on -DPLATFORM='Raspberry Pi' ..`
+ - Use `python3 build_rpi_nox.py` instead of `python3 build_linux.py`
+ - Use `build_rpi_nox_multi.sh` to build a complete set of libs if you need it
+   (if you're not sure, then you almost certainly don't).
+
 # Use
 
 ## raylib.static
