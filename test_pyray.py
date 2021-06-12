@@ -15,7 +15,7 @@ image = pyray.load_image("examples/models/resources/heightmap.png")
 texture = pyray.load_texture_from_image(image)
 mesh = pyray.gen_mesh_heightmap(image, (16, 8, 16))
 model = pyray.load_model_from_mesh(mesh)
-model.materials.maps[pyray.MAP_DIFFUSE].texture = texture
+model.materials.maps[pyray.MATERIAL_MAP_DIFFUSE].texture = texture
 
 pyray.unload_image(image)
 pyray.set_camera_mode(camera, pyray.CAMERA_ORBITAL)

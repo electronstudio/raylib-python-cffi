@@ -42,10 +42,10 @@ Build and install Raylib from the raylib-c directory.
     cd raylib-python-cffi/raylib-c
     mkdir build
     cd build
-    cmake -DWITH_PIC=on -DSTATIC=on -DSHARED=on ..
+    ccmake -DWITH_PIC=on -DBUILD_SHARED_LIBS=on -DCMAKE_BUILD_TYPE=Release ..
     sudo make install
 
-Make a patched version of raylib header.
+Make a patched version of raylib header.  (Not necessary if you've already got raylib_modifed.h from repo and haven't changed anything.)
 
     cd ../../raylib
     cp raylib.h raylib_modified.h
