@@ -6,8 +6,8 @@ materials of a model.  But now it __seems__ to work
 import platform
 
 # Probably unnecessary, just covering all bases in case people add or remove dlls
-MAC_NAMES = ['libraylib.3.0.0.dylib', 'libraylib.301.dylib', 'libraylib.dylib']
-LINUX_NAMES = ['libraylib.so.3.0.0','libraylib.so.3', 'libraylib.so']
+MAC_NAMES = ['libraylib.3.5.0.dylib', 'libraylib.301.dylib', 'libraylib.dylib']
+LINUX_NAMES = ['libraylib.so.3.5.0','libraylib.so.3', 'libraylib.so']
 WINDOWS_NAMES = ['libraylib.dll', 'raylib.dll','32bit/raylib.dll',  '32bit/libraylib.dll']
 
 if platform.system() == "Darwin":
