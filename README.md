@@ -12,13 +12,15 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 We distribute a statically linked binary Raylib library,  install from Pypi.
 
-    pip3 install raylib==3.5.0
+    pip3 install raylib
+
+Or to force latest version:
+
+    pip3 install raylib==3.7.0
 
 Some platforms that should be available:
 
-**Windows 10 (64 bit): Python 3.6 - 3.8**
-
-**MacOS: Python 3.6 - 3.8**
+**Windows 10 (64 bit): Python 3.7 - 3.9**
 
 **Linux (Ubuntu 16.04+): Python 3.6 - 3.9**
 
@@ -37,12 +39,47 @@ Clone this repo including submodules so you get correct version of Raylib.
 
     git clone --recurse-submodules https://github.com/electronstudio/raylib-python-cffi
 
+### Windows
+
+Open Visual C++ command shell.
+
+Fix the symlink that doesnt work on Windows
+
+    cd raylib-python-cffi
+    copy raylib-c\src\raylib.h raylib\raylib.h
+
 Build and install Raylib from the raylib-c directory.
 
     cd raylib-python-cffi/raylib-c
     mkdir build
     cd build
-    ccmake -DWITH_PIC=on -DBUILD_SHARED_LIBS=on -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+    msbuild ALL_BUILD.vxcproj
+    copy raylib\Debug\raylib.lib ..\..
+    cd ..\..
+
+To update the dynamic libs, download the official release, e.g. https://github.com/raysan5/raylib/releases/download/3.7.0/raylib-3.7.0_win64_msvc16.zip and extract `raylib.dll`
+into `raylib/dynamic`.  Delete the files for other platforms, unless you want them in your distribution. 
+
+To build a binary wheel distribution:
+
+    rmdir /Q /S build
+    pip3 install cffi
+    pip3 install wheel
+    python setup.py bdist_wheel
+
+and install it:
+
+    pip3 install dist\raylib-3.5.0-cp37-cp37m-win_amd64.whl
+
+### Linux etc
+
+Build and install Raylib from the raylib-c directory.
+
+    cd raylib-python-cffi/raylib-c
+    mkdir build
+    cd build
+    cmake -DWITH_PIC=on -DBUILD_SHARED_LIBS=on -DCMAKE_BUILD_TYPE=Release ..
     sudo make install
 
 Make a patched version of raylib header.  (Not necessary if you've already got raylib_modifed.h from repo and haven't changed anything.)
@@ -63,8 +100,6 @@ To update the Linux dynamic libs (names will be different on other platfroms):
 
     rm raylib/dynamic/*.so*
     cp -P /usr/local/lib/libraylib.so* raylib/dynamic/
-
-### Distributing
 
 To build a binary wheel distribution:
 
