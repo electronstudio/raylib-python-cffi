@@ -5,6 +5,8 @@ then
     exit
 fi
 
+pyenv update
+
 function build() {
     echo "Building for Python $1"
     pyenv install -s $1

@@ -55,12 +55,12 @@ Build
 
     pip3 install cffi
     cd ..
+    rm -rf build raylib/static/_raylib_cffi.*
     python3 raylib/static/build.py
     
 
 To update the Linux dynamic libs (names will be different on other platfroms):
 
-    cd ../..
     rm raylib/dynamic/*.so*
     cp -P /usr/local/lib/libraylib.so* raylib/dynamic/
 
@@ -68,6 +68,7 @@ To update the Linux dynamic libs (names will be different on other platfroms):
 
 To build a binary wheel distribution:
 
+    pip3 install wheel
     python3 setup.py bdist_wheel
 
 and install it:
@@ -170,6 +171,8 @@ so you dont even know.  Also the static bindings should be faster.  Therefore I 
 
 BUT the dynamic bindings have the big advantage that you don't need to compile anything to install.  You just need a Raylib DLL,
 which we supply for Windows/Mac/Linux.
+
+Currently the DLL is being removed from the pypi packages but still available in the git repo.  Could split into its own pypi package if anyone wants it.
 
 See test_dynamic.py for how to use.
 
