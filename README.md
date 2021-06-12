@@ -8,7 +8,13 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 # Install
 
-## Option 1: Install from Pypi (easiest but currently out of date, Raylib 2.6 and Python 3.6 - 3.8)
+## Option 1: Install from Pypi (easiest but may not be up to date or be available for your platform)
+
+We distribute a statically linked binary Raylib library,  install from Pypi.
+
+    pip3 install raylib
+
+Some platforms that should be available:
 
 **Windows 10 (64 bit): Python 3.6 - 3.8**
 
@@ -16,18 +22,11 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 **Linux (Ubuntu 16.04+): Python 3.6 - 3.8**
 
-We distribute a statically linked Raylib library,  install from Pypi.
+If yours isn't available then pip should attempt to build from source, but this has not been tested.
 
-    pip3 install raylib
+## Option 2: Build from source (Raylib 3.5, all platforms)
 
-## Option 2: Install from github (Raylib 3.5, Python 3.6 - 3.9, Linux, awaiting builds for other platforms)
-    
-The version on Pypi may not always be up to date.  If you want to test the latest version,
-clone the git repo and make a symlink to the `raylib` directory in your current project directory.
-
-## Option 3: Build from source (Raylib 3.5, all platforms)
-
-If you're using a platform we dont have binary builds for yet
+If you're using a platform we don't have binary builds for yet
 then you can either *use the dynamic binding with your own dll* or else you will have to build from source.
 If you do build on a new platform please
 submit your binaries as a PR.
@@ -54,19 +53,32 @@ Make a patched version of raylib header.
 
 Build 
 
-    cd static
     pip3 install cffi
-    python3 build_linux.py
+    cd ..
+    python3 raylib/static/build.py
     
-To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:
 
-    ./build_linux_multi.sh
-    
 To update the Linux dynamic libs (names will be different on other platfroms):
 
     cd ../..
     rm raylib/dynamic/*.so*
     cp -P /usr/local/lib/libraylib.so* raylib/dynamic/
+
+### Distributing
+
+To build a binary wheel distribution:
+
+    python3 setup.py bdist_wheel
+
+and install it:
+
+    pip3 install dist/raylib*.whl
+
+To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:
+
+    ./raylib/static/build_multi.sh
+
+(TODO move the dynamic libs into a separate package rather than include them with every one.)
 
 ### Raspberry Pi
 
@@ -90,9 +102,6 @@ For option 1, then also follow the above instructions, but with these
 modifications:
 
  - With `cmake`, use `cmake -DWITH_PIC=on -DSTATIC=on -DSHARED=on -DPLATFORM='Raspberry Pi' ..`
- - Use `python3 build_rpi_nox.py` instead of `python3 build_linux.py`
- - Use `build_rpi_nox_multi.sh` to build a complete set of libs if you need it
-   (if you're not sure, then you almost certainly don't).
 
 # Use
 
