@@ -12,7 +12,7 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 We distribute a statically linked binary Raylib library,  install from Pypi.
 
-    pip3 install raylib
+    pip3 install raylib==3.5.0
 
 Some platforms that should be available:
 
@@ -20,11 +20,11 @@ Some platforms that should be available:
 
 **MacOS: Python 3.6 - 3.8**
 
-**Linux (Ubuntu 16.04+): Python 3.6 - 3.8**
+**Linux (Ubuntu 16.04+): Python 3.6 - 3.9**
 
-If yours isn't available then pip should attempt to build from source, but this has not been tested.
+If yours isn't available then pip should attempt to build from source, so you will need to have raylib development libs installed.
 
-## Option 2: Build from source (Raylib 3.5, all platforms)
+## Option 2: Build from source
 
 If you're using a platform we don't have binary builds for yet
 then you can either *use the dynamic binding with your own dll* or else you will have to build from source.
@@ -78,6 +78,9 @@ and install it:
 To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:
 
     ./raylib/static/build_multi.sh
+
+(NOTE pypi wont accept Linux packages unless they are built `--plat-name manylinux2014_x86_64` so on linux
+please run `./raylib/static/build_multi_linux.sh` )
 
 (TODO move the dynamic libs into a separate package rather than include them with every one.)
 
