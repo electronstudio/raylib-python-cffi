@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 3.5
+# Python Bindings for Raylib 3.7
 
 New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ctypes.
 

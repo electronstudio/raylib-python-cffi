@@ -26,10 +26,10 @@ def build_windows():
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', '').replace('bool','int'))
     ffibuilder.set_source("raylib.static._raylib_cffi",
                           """
-                          #include "../../raylib/raylib.h"   
+                          #include "../../../raylib/raylib.h"   
                           """,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
-                          libraries=['raylib_static', 'gdi32', 'shell32', 'user32','OpenGL32', 'winmm'],
+                          libraries=['raylib', 'gdi32', 'shell32', 'user32','OpenGL32', 'winmm'],
                           )
     if __name__ == "__main__":
         ffibuilder.compile(verbose=True)
