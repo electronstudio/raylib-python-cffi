@@ -222,5 +222,21 @@ See test_dynamic.py for how to use.
 
  * converting more examples from C to python
  * testing and building on more platforms
- * sorting out binary wheel distribution for Mac/Win and compile-from-source distributtion for Linux
- 
+
+# Performance
+
+For fastest permformance use Pypy rather than standard python.
+
+Every call to C is costly, so it's slightly faster if you use Python data structures and functions when calculating
+in your update loop
+and then only convert them to C data structures when you have to call the C functions for drawing.
+
+## Bunnymark
+
+
+| Library                | Implementation | Bunnies (60 FPS) | Percentage    |
+| -------------          | -------------  | -------------    | ------------- |
+| Raylib 3.7             | C              | 168100           | 100%          |
+| Raylib Python CFFI 3.7 | Pypy 3.7     | 33800              | 20%           |
+| Raylib Python CFFI 3.7 | Python 3.9     | 6800             | 4%            |
+
