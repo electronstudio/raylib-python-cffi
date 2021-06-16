@@ -39,7 +39,7 @@ def build_mac():
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
     ffibuilder.set_source("raylib.static._raylib_cffi",
                           """
-                               #include "./../raylib/raylib.h"   // the C header of the library, supplied by us here
+                               #include "../../raylib/raylib.h"   // the C header of the library, supplied by us here
                           """
                           )
     # Hack to produce static linked lib using static librarylib.a supplied by us
@@ -59,7 +59,7 @@ def build_rpi_nox():
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
     ffibuilder.set_source("raylib.static._raylib_cffi",
                           """
-                               #include "./../raylib/raylib.h"
+                               #include "../../raylib/raylib.h"
                           """,
                           extra_link_args=['/usr/local/lib/libraylib.a',
                                            '/opt/vc/lib/libEGL_static.a', '/opt/vc/lib/libGLESv2_static.a',
