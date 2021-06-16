@@ -1,0 +1,180 @@
+--- raylib.h	2021-06-12 21:09:32.140180958 +0100
++++ raylib_modified.h	2021-06-12 21:22:50.683235186 +0100
+@@ -76,106 +76,7 @@
+ *
+ **********************************************************************************************/
+ 
+-#ifndef RAYLIB_H
+-#define RAYLIB_H
+ 
+-#include <stdarg.h>     // Required for: va_list - Only used by TraceLogCallback
+-
+-#if defined(_WIN32)
+-    // Microsoft attibutes to tell compiler that symbols are imported/exported from a .dll
+-    #if defined(BUILD_LIBTYPE_SHARED)
+-        #define RLAPI __declspec(dllexport)     // We are building raylib as a Win32 shared library (.dll)
+-    #elif defined(USE_LIBTYPE_SHARED)
+-        #define RLAPI __declspec(dllimport)     // We are using raylib as a Win32 shared library (.dll)
+-    #else
+-        #define RLAPI   // We are building or using raylib as a static library
+-    #endif
+-#else
+-    #define RLAPI       // We are building or using raylib as a static library (or Linux shared library)
+-#endif
+-
+-//----------------------------------------------------------------------------------
+-// Some basic Defines
+-//----------------------------------------------------------------------------------
+-#ifndef PI
+-    #define PI 3.14159265358979323846f
+-#endif
+-
+-#define DEG2RAD (PI/180.0f)
+-#define RAD2DEG (180.0f/PI)
+-
+-// Allow custom memory allocators
+-#ifndef RL_MALLOC
+-    #define RL_MALLOC(sz)       malloc(sz)
+-#endif
+-#ifndef RL_CALLOC
+-    #define RL_CALLOC(n,sz)     calloc(n,sz)
+-#endif
+-#ifndef RL_REALLOC
+-    #define RL_REALLOC(ptr,sz)  realloc(ptr,sz)
+-#endif
+-#ifndef RL_FREE
+-    #define RL_FREE(ptr)        free(ptr)
+-#endif
+-
+-// NOTE: MSVC C++ compiler does not support compound literals (C99 feature)
+-// Plain structures in C++ (without constructors) can be initialized from { } initializers.
+-#if defined(__cplusplus)
+-    #define CLITERAL(type)      type
+-#else
+-    #define CLITERAL(type)      (type)
+-#endif
+-
+-// Some Basic Colors
+-// NOTE: Custom raylib color palette for amazing visuals on WHITE background
+-#define LIGHTGRAY  CLITERAL(Color){ 200, 200, 200, 255 }   // Light Gray
+-#define GRAY       CLITERAL(Color){ 130, 130, 130, 255 }   // Gray
+-#define DARKGRAY   CLITERAL(Color){ 80, 80, 80, 255 }      // Dark Gray
+-#define YELLOW     CLITERAL(Color){ 253, 249, 0, 255 }     // Yellow
+-#define GOLD       CLITERAL(Color){ 255, 203, 0, 255 }     // Gold
+-#define ORANGE     CLITERAL(Color){ 255, 161, 0, 255 }     // Orange
+-#define PINK       CLITERAL(Color){ 255, 109, 194, 255 }   // Pink
+-#define RED        CLITERAL(Color){ 230, 41, 55, 255 }     // Red
+-#define MAROON     CLITERAL(Color){ 190, 33, 55, 255 }     // Maroon
+-#define GREEN      CLITERAL(Color){ 0, 228, 48, 255 }      // Green
+-#define LIME       CLITERAL(Color){ 0, 158, 47, 255 }      // Lime
+-#define DARKGREEN  CLITERAL(Color){ 0, 117, 44, 255 }      // Dark Green
+-#define SKYBLUE    CLITERAL(Color){ 102, 191, 255, 255 }   // Sky Blue
+-#define BLUE       CLITERAL(Color){ 0, 121, 241, 255 }     // Blue
+-#define DARKBLUE   CLITERAL(Color){ 0, 82, 172, 255 }      // Dark Blue
+-#define PURPLE     CLITERAL(Color){ 200, 122, 255, 255 }   // Purple
+-#define VIOLET     CLITERAL(Color){ 135, 60, 190, 255 }    // Violet
+-#define DARKPURPLE CLITERAL(Color){ 112, 31, 126, 255 }    // Dark Purple
+-#define BEIGE      CLITERAL(Color){ 211, 176, 131, 255 }   // Beige
+-#define BROWN      CLITERAL(Color){ 127, 106, 79, 255 }    // Brown
+-#define DARKBROWN  CLITERAL(Color){ 76, 63, 47, 255 }      // Dark Brown
+-
+-#define WHITE      CLITERAL(Color){ 255, 255, 255, 255 }   // White
+-#define BLACK      CLITERAL(Color){ 0, 0, 0, 255 }         // Black
+-#define BLANK      CLITERAL(Color){ 0, 0, 0, 0 }           // Blank (Transparent)
+-#define MAGENTA    CLITERAL(Color){ 255, 0, 255, 255 }     // Magenta
+-#define RAYWHITE   CLITERAL(Color){ 245, 245, 245, 255 }   // My own White (raylib logo)
+-
+-// Temporal hacks to avoid breaking old codebases using
+-// deprecated raylib implementation or definitions
+-#define FormatText          TextFormat
+-#define LoadText            LoadFileText
+-#define GetExtension        GetFileExtension
+-#define GetImageData        LoadImageColors
+-#define FILTER_POINT        TEXTURE_FILTER_POINT
+-#define FILTER_BILINEAR     TEXTURE_FILTER_BILINEAR
+-#define MAP_DIFFUSE         MATERIAL_MAP_DIFFUSE
+-#define PIXELFORMAT_UNCOMPRESSED_R8G8B8A8   PIXELFORMAT_PIXELFORMAT_UNCOMPRESSED_R8G8B8A8
+-
+-//----------------------------------------------------------------------------------
+-// Structures Definition
+-//----------------------------------------------------------------------------------
+-// Boolean type
+-#if defined(__STDC__) && __STDC_VERSION__ >= 199901L
+-    #include <stdbool.h>
+-#elif !defined(__cplusplus) && !defined(bool)
+-    typedef enum { false, true } bool;
+-#endif
+ 
+ // Vector2 type
+ typedef struct Vector2 {
+@@ -290,7 +191,6 @@
+     CharInfo *chars;        // Characters info data
+ } Font;
+ 
+-#define SpriteFont Font     // SpriteFont type fallback, defaults to Font
+ 
+ // Camera type, defines a camera position/orientation in 3d space
+ typedef struct Camera3D {
+@@ -723,8 +623,8 @@
+     MATERIAL_MAP_PREFILTER            // NOTE: Uses GL_TEXTURE_CUBE_MAP
+ } MaterialMapIndex;
+ 
+-#define MATERIAL_MAP_DIFFUSE      MATERIAL_MAP_ALBEDO
+-#define MATERIAL_MAP_SPECULAR     MATERIAL_MAP_METALNESS
++#define MATERIAL_MAP_DIFFUSE      0
++#define MATERIAL_MAP_SPECULAR     1
+ 
+ // Shader location index
+ typedef enum {
+@@ -756,8 +656,8 @@
+     SHADER_LOC_MAP_BRDF
+ } ShaderLocationIndex;
+ 
+-#define SHADER_LOC_MAP_DIFFUSE      SHADER_LOC_MAP_ALBEDO
+-#define SHADER_LOC_MAP_SPECULAR     SHADER_LOC_MAP_METALNESS
++#define SHADER_LOC_MAP_DIFFUSE      15
++#define SHADER_LOC_MAP_SPECULAR     16
+ 
+ // Shader uniform data type
+ typedef enum {
+@@ -885,16 +785,7 @@
+ 
+ // Callbacks to hook some internal functions
+ // WARNING: This callbacks are intended for advance users
+-typedef void (*TraceLogCallback)(int logLevel, const char *text, va_list args);  // Logging: Redirect trace log messages
+-typedef unsigned char* (*LoadFileDataCallback)(const char* fileName, unsigned int* bytesRead);      // FileIO: Load binary data
+-typedef bool (*SaveFileDataCallback)(const char *fileName, void *data, unsigned int bytesToWrite);  // FileIO: Save binary data
+-typedef char *(*LoadFileTextCallback)(const char* fileName);                // FileIO: Load text data
+-typedef bool (*SaveFileTextCallback)(const char *fileName, char *text);     // FileIO: Save text data
+-
+ 
+-#if defined(__cplusplus)
+-extern "C" {            // Prevents name mangling of functions
+-#endif
+ 
+ //------------------------------------------------------------------------------------
+ // Global Variables Definition
+@@ -1015,13 +906,7 @@
+ RLAPI void *MemRealloc(void *ptr, int size);                      // Internal memory reallocator
+ RLAPI void MemFree(void *ptr);                                    // Internal memory free
+ 
+-// Set custom callbacks
+-// WARNING: Callbacks setup is intended for advance users
+-RLAPI void SetTraceLogCallback(TraceLogCallback callback);         // Set custom trace log
+-RLAPI void SetLoadFileDataCallback(LoadFileDataCallback callback); // Set custom file binary data loader
+-RLAPI void SetSaveFileDataCallback(SaveFileDataCallback callback); // Set custom file binary data saver
+-RLAPI void SetLoadFileTextCallback(LoadFileTextCallback callback); // Set custom file text data loader
+-RLAPI void SetSaveFileTextCallback(SaveFileTextCallback callback); // Set custom file text data saver
++
+ 
+ // Files management functions
+ RLAPI unsigned char *LoadFileData(const char *fileName, unsigned int *bytesRead);     // Load file data as byte array (read)
+@@ -1512,8 +1397,3 @@
+ RLAPI void SetAudioStreamPitch(AudioStream stream, float pitch);      // Set pitch for audio stream (1.0 is base level)
+ RLAPI void SetAudioStreamBufferSizeDefault(int size);                 // Default size for new audio streams
+ 
+-#if defined(__cplusplus)
+-}
+-#endif
+-
+-#endif // RAYLIB_H
