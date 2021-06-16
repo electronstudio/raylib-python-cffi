@@ -12,11 +12,11 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 We distribute a statically linked binary Raylib library,  install from Pypi.
 
-    pip3 install raylib
-
-Or to force latest version:
-
     pip3 install raylib==3.7.0
+
+Or to have pip try to build the latest version from source:
+
+    pip3 install raylib
 
 Some platforms that should be available:
 
