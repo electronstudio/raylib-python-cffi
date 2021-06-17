@@ -1,12 +1,12 @@
---- raylib.h	2021-06-12 21:09:32.140180958 +0100
+--- not_raylib	2021-06-12 21:09:32.140180958 +0100
 +++ raylib_modified.h	2021-06-12 21:22:50.683235186 +0100
 @@ -76,106 +76,7 @@
  *
  **********************************************************************************************/
- 
+
 -#ifndef RAYLIB_H
 -#define RAYLIB_H
- 
+
 -#include <stdarg.h>     // Required for: va_list - Only used by TraceLogCallback
 -
 -#if defined(_WIN32)
@@ -104,41 +104,41 @@
 -#elif !defined(__cplusplus) && !defined(bool)
 -    typedef enum { false, true } bool;
 -#endif
- 
+
  // Vector2 type
  typedef struct Vector2 {
 @@ -290,7 +191,6 @@
      CharInfo *chars;        // Characters info data
  } Font;
- 
+
 -#define SpriteFont Font     // SpriteFont type fallback, defaults to Font
- 
+
  // Camera type, defines a camera position/orientation in 3d space
  typedef struct Camera3D {
 @@ -723,8 +623,8 @@
      MATERIAL_MAP_PREFILTER            // NOTE: Uses GL_TEXTURE_CUBE_MAP
  } MaterialMapIndex;
- 
+
 -#define MATERIAL_MAP_DIFFUSE      MATERIAL_MAP_ALBEDO
 -#define MATERIAL_MAP_SPECULAR     MATERIAL_MAP_METALNESS
 +#define MATERIAL_MAP_DIFFUSE      0
 +#define MATERIAL_MAP_SPECULAR     1
- 
+
  // Shader location index
  typedef enum {
 @@ -756,8 +656,8 @@
      SHADER_LOC_MAP_BRDF
  } ShaderLocationIndex;
- 
+
 -#define SHADER_LOC_MAP_DIFFUSE      SHADER_LOC_MAP_ALBEDO
 -#define SHADER_LOC_MAP_SPECULAR     SHADER_LOC_MAP_METALNESS
 +#define SHADER_LOC_MAP_DIFFUSE      15
 +#define SHADER_LOC_MAP_SPECULAR     16
- 
+
  // Shader uniform data type
  typedef enum {
 @@ -885,16 +785,7 @@
- 
+
  // Callbacks to hook some internal functions
  // WARNING: This callbacks are intended for advance users
 -typedef void (*TraceLogCallback)(int logLevel, const char *text, va_list args);  // Logging: Redirect trace log messages
@@ -147,17 +147,17 @@
 -typedef char *(*LoadFileTextCallback)(const char* fileName);                // FileIO: Load text data
 -typedef bool (*SaveFileTextCallback)(const char *fileName, char *text);     // FileIO: Save text data
 -
- 
+
 -#if defined(__cplusplus)
 -extern "C" {            // Prevents name mangling of functions
 -#endif
- 
+
  //------------------------------------------------------------------------------------
  // Global Variables Definition
 @@ -1015,13 +906,7 @@
  RLAPI void *MemRealloc(void *ptr, int size);                      // Internal memory reallocator
  RLAPI void MemFree(void *ptr);                                    // Internal memory free
- 
+
 -// Set custom callbacks
 -// WARNING: Callbacks setup is intended for advance users
 -RLAPI void SetTraceLogCallback(TraceLogCallback callback);         // Set custom trace log
@@ -166,13 +166,13 @@
 -RLAPI void SetLoadFileTextCallback(LoadFileTextCallback callback); // Set custom file text data loader
 -RLAPI void SetSaveFileTextCallback(SaveFileTextCallback callback); // Set custom file text data saver
 +
- 
+
  // Files management functions
  RLAPI unsigned char *LoadFileData(const char *fileName, unsigned int *bytesRead);     // Load file data as byte array (read)
 @@ -1512,8 +1397,3 @@
  RLAPI void SetAudioStreamPitch(AudioStream stream, float pitch);      // Set pitch for audio stream (1.0 is base level)
  RLAPI void SetAudioStreamBufferSizeDefault(int size);                 // Default size for new audio streams
- 
+
 -#if defined(__cplusplus)
 -}
 -#endif
