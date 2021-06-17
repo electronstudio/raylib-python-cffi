@@ -10,13 +10,13 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 ## Option 1: Install from Pypi (easiest but may not be up to date or be available for your platform)
 
-We distribute a statically linked binary Raylib library,  install from Pypi.
-
-    pip3 install raylib==3.7.0
-
-Or to have pip try to build the latest version from source:
+We distribute a statically linked binary Raylib library, install from Pypi.
 
     pip3 install raylib==3.7.0.post1
+
+If that doesn't work then try:
+
+    pip3 install raylib==3.7.0
 
 Some platforms that should be available:
 
@@ -24,7 +24,7 @@ Some platforms that should be available:
 
 **Linux (Ubuntu 16.04+): Python 3.6 - 3.9**
 
-If yours isn't available then pip should attempt to build from source, so you will need to have raylib development libs installed.
+If yours isn't available then pip will attempt to build from source, so you will need to have raylib development libs installed.
 
 See here for a Raspberry Pi build: https://github.com/electronstudio/raylib-python-cffi/issues/31#issuecomment-862078330
 
