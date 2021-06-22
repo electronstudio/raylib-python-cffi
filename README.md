@@ -28,6 +28,9 @@ If yours isn't available then pip will attempt to build from source, so you will
 
 See here for a Raspberry Pi build: https://github.com/electronstudio/raylib-python-cffi/issues/31#issuecomment-862078330
 
+If your system already has the Raylib library installed, you can set the environment variable 'USE_EXTERNAL_RAYLIB' and it will
+be used instead.
+
 ## Option 2: Build from source
 
 If you're using a platform we don't have binary builds for yet
@@ -61,7 +64,7 @@ Build and install Raylib from the raylib-c directory.
     cd ..\..
 
 To update the dynamic libs, download the official release, e.g. https://github.com/raysan5/raylib/releases/download/3.7.0/raylib-3.7.0_win64_msvc16.zip and extract `raylib.dll`
-into `raylib/dynamic`.  Delete the files for other platforms, unless you want them in your distribution. 
+into `raylib/dynamic`.  Delete the files for other platforms, unless you want them in your distribution.
 
 To build a binary wheel distribution:
 
@@ -73,7 +76,7 @@ To build a binary wheel distribution:
 and install it:
 
     pip3 install dist\raylib-3.7.0-cp37-cp37m-win_amd64.whl
-    
+
 (Note: your wheel's filename will probably be different than the one here.)
 
 ### Linux etc
@@ -100,13 +103,13 @@ Optional: Make a patched version of raylib header.  (Not necessary if you've alr
     patch  -p0 <raylib_modified.h.patch
 
 
-Build 
+Build
 
     pip3 install cffi
     cd ..
     rm -rf build raylib/static/_raylib_cffi.*
     python3 raylib/static/build.py
-    
+
 
 To update the Linux dynamic libs (names will be different on other platfroms):
 
@@ -261,4 +264,3 @@ You can create a standalone binary using the Nuitka compiler.  For example, here
     pip3 install nuitka
     cd examples/textures
     python3 -m nuitka --onefile --linux-onefile-icon resources/wabbit_alpha.png textures_bunnymark.py
-
