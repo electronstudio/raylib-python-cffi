@@ -252,6 +252,7 @@ and then only convert them to C data structures when you have to call the C func
 | Raylib Python CFFI 3.7 | Pypy 3.7          | 33800            | 20%           |
 | Raylib Python CFFI 3.7 | Python 3.9        | 7700             |  4.5%         |
 | Raylib Python CFFI 3.7 | Python 3.9 Nuitka | 8600             |  5.1%         |
+| Raylib Python CFFI 3.7 Dynamic | Python 3.9 | 6300             |  3.7%         |
 
 # Packaging your app
 
