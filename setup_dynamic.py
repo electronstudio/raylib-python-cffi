@@ -8,14 +8,10 @@ HERE = pathlib.Path(__file__).parent
 # The text of the README file
 README = (HERE / "README.md").read_text()
 
-class BinaryDistribution(Distribution):
-    """Distribution which always forces a binary package with platform name"""
-    def has_ext_modules(foo):
-        return True
 
 # This call to setup() does all the work
 setup(
-    name="raylib",
+    name="raylib-dynamic",
     version="3.7.0.post1",
     description="Python CFFI bindings for Raylib",
     long_description=README,
@@ -32,9 +28,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=["raylib", "raylib.dynamic", "raylib.static"],
+    packages=["raylib", "raylib.dynamic"],
     include_package_data=True,
     install_requires=["cffi>=1.14.5","inflection"],
-    distclass=BinaryDistribution,
-    cffi_modules=["raylib/static/build.py:ffibuilder"]
 )
