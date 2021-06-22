@@ -3,35 +3,41 @@ This is an attempt at a CFFI dynamic (ABI) binding.  It was failing in the exact
 materials of a model.  But now it __seems__ to work
 """
 
+from cffi import FFI
+import itertools
+import os
+import pathlib
 import platform
 
-# Probably unnecessary, just covering all bases in case people add or remove dlls
-MAC_NAMES = ['libraylib.3.5.0.dylib', 'libraylib.301.dylib', 'libraylib.dylib']
-LINUX_NAMES = ['libraylib.so.3.5.0','libraylib.so.3', 'libraylib.so']
-WINDOWS_NAMES = ['libraylib.dll', 'raylib.dll','32bit/raylib.dll',  '32bit/libraylib.dll']
-
-if platform.system() == "Darwin":
-    NAMES_TO_TRY = MAC_NAMES
-elif platform.system() == "Linux":
-    NAMES_TO_TRY = LINUX_NAMES
-elif platform.system() == "Windows":
-    NAMES_TO_TRY = WINDOWS_NAMES
-else:
-    NAMES_TO_TRY = MAC_NAMES + LINUX_NAMES + WINDOWS_NAMES
-
-import pathlib
 MODULE = pathlib.Path(__file__).parent.parent
 
-from cffi import FFI
+def raylib_library_path():
+    '''Return the full path of the raylib shared library
+    If the environment variable "USE_EXTERNAL_RAYLIB" is set (no value required)
+    then the library will be loaded from the system library paths.
+    '''
+    def so_path():
+        return str(MODULE / 'dynamic') if not 'USE_EXTERNAL_RAYLIB' in os.environ else ''
+    def so_name():
+        '''Returns the appropriate for the library on the current platform.'''
+        lib_filenames = {
+            'Windows': 'libraylib.dll',
+            'Linux': 'libraylib.so',
+            'Darwin': 'libraylib.dylib',
+        }
+        if platform.system() not in lib_filenames:
+            raise ValueError('Unrecognised system "{}"'.format(platform.system()))
+        return lib_filenames.get(platform.system())
+
+    return os.path.join(so_path(), so_name())
+
+
 ffi = FFI()
 ffi.cdef(open(MODULE / "raylib_modified.h").read().replace('RLAPI ', ''))
 
-for name in NAMES_TO_TRY:
-    file = str(MODULE)+"/dynamic/"+name
-    try:
-        raylib = ffi.dlopen(file)
-        print("LOADED DYNAMICALLY SHARED LIB "+file)
-        break
-    except Exception as e:
-        print(e)
-
+try:
+    raylib_fname = raylib_library_path()
+    raylib = ffi.dlopen(raylib_fname)
+    print('LOADED DYNAMICALLY SHARED LIB "{}"'.format(raylib_fname))
+except Exception as e:
+    print(e)
