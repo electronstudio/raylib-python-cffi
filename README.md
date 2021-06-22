@@ -28,9 +28,6 @@ If yours isn't available then pip will attempt to build from source, so you will
 
 See here for a Raspberry Pi build: https://github.com/electronstudio/raylib-python-cffi/issues/31#issuecomment-862078330
 
-If your system already has the Raylib library installed, you can set the environment variable 'USE_EXTERNAL_RAYLIB' and it will
-be used instead.
-
 ## Option 2: Build from source
 
 If you're using a platform we don't have binary builds for yet
@@ -219,15 +216,17 @@ pyray.close_window()
 ## raylib.dynamic
 
 In addition to the API static bindings we have CFFI ABI dynamic bindings in order to avoid the need to compile a C extension module.
-There have been some weird failures with dynamic bindings and ctypes bindings before and often the failures are silent
-so you dont even know.  Also the static bindings should be faster.  Therefore I recommend the static ones...
 
-BUT the dynamic bindings have the big advantage that you don't need to compile anything to install.  You just need a Raylib DLL,
-which we supply for Windows/Mac/Linux.
+Currently the github version includes bundled DLLs in `raylib/dynamic` but the pypi version requires a system installed Raylib.
+You can put your own versions in `raylib/dynamic` if you prefer.
 
-Currently the DLL is being removed from the pypi packages but still available in the git repo.  Could split into its own pypi package if anyone wants it.
+If your system already has the Raylib library installed, you can set the environment variable 'USE_EXTERNAL_RAYLIB' and it will
+always be used instead of the bundled DLLs.
 
 See test_dynamic.py for how to use.
+
+(Note There have been some weird failures with dynamic bindings and ctypes bindings before and often the failures are silent
+so you dont even know.  Also the static bindings should be faster.  Therefore I personally recommend the static ones.  But the dynamic bindings have the big advantage that you don't need to compile anything to install.  You just need a Raylib DLL.)
 
 ## richlib
 
