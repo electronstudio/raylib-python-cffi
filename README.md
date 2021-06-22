@@ -72,7 +72,9 @@ To build a binary wheel distribution:
 
 and install it:
 
-    pip3 install dist\raylib-3.5.0-cp37-cp37m-win_amd64.whl
+    pip3 install dist\raylib-3.7.0-cp37-cp37m-win_amd64.whl
+    
+(Note: your wheel's filename will probably be different than the one here.)
 
 ### Linux etc
 
