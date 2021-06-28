@@ -38,7 +38,8 @@ jobs:
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
-      - uses: ilammy/msvc-dev-cmd@v1
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
 
       - name: Build raylib
         run: |
@@ -48,8 +49,8 @@ jobs:
           cmake -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           echo %cd%
           dir
-          msbuild ALL_BUILD.vxcproj
-          copy raylib\Debug\raylib.lib ..\..
+          msbuild raylib.sln /target:raylib /property:Configuration=Release
+          copy raylib\Release\raylib.lib ..\..
           cd ..\..
 
       - name: Build raylib-python-cffi
