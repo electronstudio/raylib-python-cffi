@@ -50,7 +50,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
-          rm raylib/dynamic/*.so* raylib/dynamic/*.dll rm raylib/dynamic/*.dylib rm raylib/dynamic/32bit/*
+          rm raylib/dynamic/*.so* raylib/dynamic/*.dll raylib/dynamic/*.dylib raylib/dynamic/32bit/*
           python setup.py bdist_wheel --plat-name manylinux2014_x86_64
           
       - name: Upload build Artifact wheel
