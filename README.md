@@ -12,10 +12,6 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 We distribute a statically linked binary Raylib library, install from Pypi.
 
-    pip3 install raylib==3.7.0.post1
-
-If that doesn't work then try:
-
     pip3 install raylib==3.7.0
 
 Some platforms that should be available:
@@ -56,8 +52,8 @@ Build and install Raylib from the raylib-c directory.
     mkdir build
     cd build
     cmake -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
-    msbuild ALL_BUILD.vxcproj
-    copy raylib\Debug\raylib.lib ..\..
+    msbuild raylib.sln /target:raylib /property:Configuration=Release
+    copy raylib\Release\raylib.lib ..\..
     cd ..\..
 
 To update the dynamic libs, download the official release, e.g. https://github.com/raysan5/raylib/releases/download/3.7.0/raylib-3.7.0_win64_msvc16.zip and extract `raylib.dll`
