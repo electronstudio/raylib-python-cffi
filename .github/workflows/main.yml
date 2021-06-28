@@ -46,7 +46,14 @@ jobs:
           sudo make install
       - name: Build raylib-python-cffi
         run: |
+          python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
           python setup.py bdist_wheel --plat-name manylinux2014_x86_64
+          
+      - name: Upload buile Artifact wheel
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: wheel
+          path: dist/* 
           
