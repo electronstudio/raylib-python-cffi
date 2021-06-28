@@ -47,6 +47,8 @@ jobs:
           mkdir build
           cd build
           cmake -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          echo %cd%
+          dir
           msbuild ALL_BUILD.vxcproj
           copy raylib\Debug\raylib.lib ..\..
           cd ..\..
