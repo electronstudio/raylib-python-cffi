@@ -19,7 +19,11 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    strategy:
+      # You can use PyPy versions in python-version.
+      # For example, pypy2 and pypy3
+      matrix:
+        python-version: [ 3.6, 3.7, 3.8, 3.9 ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -30,7 +34,7 @@ jobs:
         uses: actions/setup-python@v2.2.2
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: 3.9
+          python-version: ${{ matrix.python-version }}
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
