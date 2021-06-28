@@ -38,7 +38,9 @@ jobs:
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
-      # Runs a set of commands using the runners shell
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
       - name: Build raylib
         run: |
           cd raylib-c
