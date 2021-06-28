@@ -50,6 +50,7 @@ jobs:
           msbuild raylib.sln /target:raylib /property:Configuration=Release
           copy raylib\Release\raylib.lib ..\..
           cd ..\..
+        shell: cmd
 
       - name: Build raylib-python-cffi
         run: |
@@ -61,6 +62,7 @@ jobs:
           del raylib\dynamic\*.dylib >nul 2>&1
           del raylib\dynamic\32bit\* >nul 2>&1
           python setup.py bdist_wheel
+        shell: cmd
           
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v2.2.4
