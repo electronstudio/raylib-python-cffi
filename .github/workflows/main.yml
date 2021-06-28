@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Linux x64 Python 3.9
 
 # Controls when the workflow will run
 on:
@@ -37,10 +37,16 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build raylib
         run: |
+          sudo apt update
           sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
           cd raylib-c
           mkdir build
           cd build
           cmake -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           sudo make install
+      - name: Build raylib-python-cffi
+        run: |
+          pip3 install cffi
+          pip3 install wheel
+          python setup.py bdist_wheel --plat-name manylinux2014_x86_64
           
