@@ -38,9 +38,9 @@ jobs:
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
+      - uses: ilammy/msvc-dev-cmd@v1
 
       - name: Build raylib
-        uses: ilammy/msvc-dev-cmd@v1
         run: |
           cd raylib-c
           mkdir build
