@@ -14,7 +14,7 @@ We distribute a statically linked binary Raylib wheel, install from Pypi.
 
     pip3 install raylib
 
-Some platforms that _should_ be available:  Windows x64, MacOS x64, Linux x64.
+Some platforms that _should_ be available:  Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64.
 
 If yours isn't available then pip will attempt to build from source, so you will need to have raylib development libs installed.
 
