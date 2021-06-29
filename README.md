@@ -10,19 +10,15 @@ New CFFI API static bindings.  Faster, fewer bugs and easier to maintain than ct
 
 ## Option 1: Install from Pypi (easiest but may not be up to date or be available for your platform)
 
-We distribute a statically linked binary Raylib library, install from Pypi.
+We distribute a statically linked binary Raylib wheel, install from Pypi.
 
     pip3 install raylib
 
-Some platforms that should be available:
-
-**Windows 10 (64 bit): Python 3.7 - 3.9**
-
-**Linux (Ubuntu 16.04+): Python 3.6 - 3.9**
+Some platforms that _should_ be available:  Windows x64, MacOS x64, Linux x64.
 
 If yours isn't available then pip will attempt to build from source, so you will need to have raylib development libs installed.
 
-See here for a Raspberry Pi build: https://github.com/electronstudio/raylib-python-cffi/issues/31#issuecomment-862078330
+See here for a Raspberry Pi wheel: https://github.com/electronstudio/raylib-python-cffi/issues/31#issuecomment-862078330
 
 ## Option 2: Build from source
 
@@ -31,7 +27,7 @@ then you can either *use the dynamic binding with your own dll* or else you will
 If you do build on a new platform please
 submit your binaries as a PR.
 
-These instructions have been tested on Ubuntu 20.10 and 16.04.  Mac should be very similar.  Windows is probably different.
+These instructions have been tested on Ubuntu 20.10 and 16.04.  Mac should be very similar.
 
 Clone this repo including submodules so you get correct version of Raylib.
 

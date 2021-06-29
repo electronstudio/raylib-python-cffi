@@ -18,6 +18,8 @@ jobs:
     strategy:
       matrix:
         python-version: [ 3.6, 3.7, 3.8, 3.9 ]
+    env:
+      MACOSX_DEPLOYMENT_TARGET: 10.13
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
