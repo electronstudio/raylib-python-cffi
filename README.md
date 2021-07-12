@@ -16,14 +16,23 @@ We distribute a statically linked binary Raylib wheel, install from Pypi.
 
 Some platforms that _should_ be available:  Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64.
 
-If yours isn't available then pip will attempt to build from source, so you will need to have raylib development libs installed.
+If yours isn't available then pip will attempt to build from source, so you will need to have Raylib development libs installed.
 
 See here for a Raspberry Pi wheel: https://github.com/electronstudio/raylib-python-cffi/issues/31#issuecomment-862078330
 
-## Option 2: Build from source
+## Option 2: Have Pip build from source
 
-If you're using a platform we don't have binary builds for yet
-then you can either *use the dynamic binding with your own dll* or else you will have to build from source.
+Useful if the binaries don't work on your system.
+
+Make sure Raylib is installed and then:
+
+    pip3 install --no-binary raylib --upgrade --force-reinstall raylib
+
+## Option 3: Build from source manually
+
+Useful if the Pip build doesn't work, or you want to contribute to the project, or you want to skip building the
+static lib and just *use the dynamic binding with your own dll*.
+
 If you do build on a new platform please
 submit your binaries as a PR.
 
