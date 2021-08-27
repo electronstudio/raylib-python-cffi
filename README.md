@@ -24,14 +24,17 @@ If yours isn't available then pip will attempt to build from source, so you will
 There are three different ways of using this binding.  You only need to pick one method, but you
 can combine two methods in one program if you want to.
 
-If you are familiar with C coding and the Raylib C library and you want to use an exact copy of 
-the C API, choose raylib.static.
+### If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API
 
-If you prefer a slightly more Pythonistic API and don't mind it might be slightly slower, choose
-raylib.pyray.
+Use [raylib.static](https://electronstudio.github.io/raylib-python-cffi/raylib.html).
 
-If you insist on dynamic bindings and don't care that they are slower and less safe, choose
-raylib.dynamic.
+### If you prefer a slightly more Pythonistic API and don't mind it might be slightly slower
+
+Use [raylib.pyray](https://electronstudio.github.io/raylib-python-cffi/pyray.html).
+
+### If you insist on dynamic bindings and don't care that they are slower and less safe
+
+Use [raylib.dynamic](https://electronstudio.github.io/raylib-python-cffi/dynamic.html).
 
 
 
