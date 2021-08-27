@@ -92,7 +92,12 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Python Bindings for Raylib 3.7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#install">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#how-to-use">How to use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api">If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower">If you prefer a slightly more Pythonistic API and don’t mind it might be slightly slower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#if-you-insist-on-dynamic-bindings-and-don-t-care-that-they-are-slower-and-less-safe">If you insist on dynamic bindings and don’t care that they are slower and less safe</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#help-wanted">Help wanted</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#performance">Performance</a><ul>
@@ -103,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#advert">Advert</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pyray.html">raylib.pyray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raylib.html">raylib.static</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic.html">raylib.dynamic</a></li>
 </ul>
 
             
@@ -190,12 +196,18 @@ original Raylib.  Faster, fewer bugs and easier to maintain than ctypes.</p>
 <h1>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h1>
 <p>There are three different ways of using this binding.  You only need to pick one method, but you
 can combine two methods in one program if you want to.</p>
-<p>If you are familiar with C coding and the Raylib C library and you want to use an exact copy of
-the C API, choose raylib.static.</p>
-<p>If you prefer a slightly more Pythonistic API and don’t mind it might be slightly slower, choose
-raylib.pyray.</p>
-<p>If you insist on dynamic bindings and don’t care that they are slower and less safe, choose
-raylib.dynamic.</p>
+<div class="section" id="if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api">
+<h2>If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API<a class="headerlink" href="#if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api" title="Permalink to this headline">¶</a></h2>
+<p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/raylib.html">raylib.static</a>.</p>
+</div>
+<div class="section" id="if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower">
+<h2>If you prefer a slightly more Pythonistic API and don’t mind it might be slightly slower<a class="headerlink" href="#if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower" title="Permalink to this headline">¶</a></h2>
+<p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/pyray.html">raylib.pyray</a>.</p>
+</div>
+<div class="section" id="if-you-insist-on-dynamic-bindings-and-don-t-care-that-they-are-slower-and-less-safe">
+<h2>If you insist on dynamic bindings and don’t care that they are slower and less safe<a class="headerlink" href="#if-you-insist-on-dynamic-bindings-and-don-t-care-that-they-are-slower-and-less-safe" title="Permalink to this headline">¶</a></h2>
+<p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/dynamic.html">raylib.dynamic</a>.</p>
+</div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="rlzero">
 <h1>RLZero<a class="headerlink" href="#rlzero" title="Permalink to this headline">¶</a></h1>

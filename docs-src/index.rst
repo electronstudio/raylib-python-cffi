@@ -13,6 +13,7 @@ Raylib Python
    README
    pyray
    raylib
+   dynamic
 
 
 * :ref:`search`

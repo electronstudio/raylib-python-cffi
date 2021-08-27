@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('../'))
 # -- Project information -----------------------------------------------------
 
 project = 'Raylib Python'
-copyright = '2022, Richard Smith'
+copyright = '2021, Richard Smith'
 author = 'Richard Smith'
 
 
