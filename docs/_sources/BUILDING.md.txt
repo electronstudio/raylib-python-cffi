@@ -1,3 +1,5 @@
+# Building from source
+
 ## Have Pip build from source
 
 Useful if the binaries don't work on your system.

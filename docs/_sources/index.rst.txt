@@ -14,6 +14,7 @@ Raylib Python
    pyray
    raylib
    dynamic
+   BUILDING
 
 
 * :ref:`search`
