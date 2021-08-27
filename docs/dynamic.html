@@ -1,0 +1,230 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>raylib.dynamic &mdash; Raylib Python  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Raylib Python
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#install">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#rlzero">RLZero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#help-wanted">Help wanted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#performance">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#packaging-your-app">Packaging your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#advert">Advert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyray.html">raylib.pyray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raylib.html">raylib.static</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Raylib Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>raylib.dynamic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/dynamic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="raylib-dynamic">
+<h1>raylib.dynamic<a class="headerlink" href="#raylib-dynamic" title="Permalink to this headline">¶</a></h1>
+<p>CFFI ABI dynamic bindings exist in order to avoid the need to compile a C extension module.</p>
+<p>Currently the github version may include bundled DLLs in <code class="docutils literal notranslate"><span class="pre">raylib/dynamic</span></code> but the pypi version requires a system installed Raylib.
+You can put your own DLLs in <code class="docutils literal notranslate"><span class="pre">raylib/dynamic</span></code> if you prefer.</p>
+<p>If your system already has the Raylib library installed, you can set the environment variable <code class="docutils literal notranslate"><span class="pre">USE_EXTERNAL_RAYLIB</span></code> and it will
+always be used instead of the bundled DLLs.</p>
+<p>See <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py">https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py</a> for how to use.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There have been some weird failures with dynamic bindings and ctypes bindings before and often the
+failures are silent
+so you dont even know.  Also the static bindings should be faster.  Therefore I personally recommend the static ones.
+But the dynamic bindings have the big advantage that you don’t need to compile anything to install.  You just need a Raylib DLL.</p>
+</div>
+<p>API is the same as raylib.static.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Richard Smith.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

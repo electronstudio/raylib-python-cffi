@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Have Pip build from source &mdash; Raylib Python  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Raylib Python
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#install">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#rlzero">RLZero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#help-wanted">Help wanted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#performance">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#packaging-your-app">Packaging your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#advert">Advert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyray.html">raylib.pyray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raylib.html">raylib.static</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Raylib Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Have Pip build from source</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/BUILDING.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="have-pip-build-from-source">
+<h1>Have Pip build from source<a class="headerlink" href="#have-pip-build-from-source" title="Permalink to this headline">¶</a></h1>
+<p>Useful if the binaries don’t work on your system.</p>
+<p>Make sure Raylib is installed and then:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install --no-binary raylib --upgrade --force-reinstall raylib
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-from-source-manually">
+<h1>Build from source manually<a class="headerlink" href="#build-from-source-manually" title="Permalink to this headline">¶</a></h1>
+<p>Useful if the Pip build doesn’t work, or you want to contribute to the project, or you want to skip building the
+static lib and just <em>use the dynamic binding with your own dll</em>.</p>
+<p>If you do build on a new platform please
+submit your binaries as a PR.</p>
+<div class="section" id="windows-manual-build">
+<h2>Windows manual build<a class="headerlink" href="#windows-manual-build" title="Permalink to this headline">¶</a></h2>
+<p>Clone this repo including submodules so you get correct version of Raylib.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/electronstudio/raylib-python-cffi
+</pre></div>
+</div>
+<p>Open Visual C++ command shell.</p>
+<p>Fix the symlink that doesnt work on Windows</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd raylib-python-cffi
+copy raylib-c\src\raylib.h raylib\raylib.h
+</pre></div>
+</div>
+<p>Build and install Raylib from the raylib-c directory.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd raylib-python-cffi/raylib-c
+mkdir build
+cd build
+cmake -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+msbuild raylib.sln /target:raylib /property:Configuration=Release
+copy raylib\Release\raylib.lib ..\..
+cd ..\..
+</pre></div>
+</div>
+<p>To update the dynamic libs, download the official release, e.g. https://github.com/raysan5/raylib/releases/download/3.7.0/raylib-3.7.0_win64_msvc16.zip and extract <code class="docutils literal notranslate"><span class="pre">raylib.dll</span></code>
+into <code class="docutils literal notranslate"><span class="pre">raylib/dynamic</span></code>.  Delete the files for other platforms, unless you want them in your distribution.</p>
+<p>To build a binary wheel distribution:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rmdir /Q /S build
+pip3 install cffi
+pip3 install wheel
+python setup.py bdist_wheel
+</pre></div>
+</div>
+<p>and install it:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install dist\raylib-3.7.0-cp37-cp37m-win_amd64.whl
+</pre></div>
+</div>
+<p>(Note: your wheel’s filename will probably be different than the one here.)</p>
+</div>
+<div class="section" id="linux-etc-manual-build">
+<h2>Linux etc manual build<a class="headerlink" href="#linux-etc-manual-build" title="Permalink to this headline">¶</a></h2>
+<p>These instructions have been tested on Ubuntu 20.10 and 16.04.  Mac should be very similar.</p>
+<p>Clone this repo including submodules so you get correct version of Raylib.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/electronstudio/raylib-python-cffi
+</pre></div>
+</div>
+<p>Build and install Raylib from the raylib-c directory.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+cd raylib-python-cffi/raylib-c
+mkdir build
+cd build
+cmake -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+sudo make install
+</pre></div>
+</div>
+<p>Optional: Build the Raylib shared libs, if you plan to use <code class="docutils literal notranslate"><span class="pre">raylib.dynamic</span></code> binding.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rm -rf *
+cmake -DWITH_PIC=on -DBUILD_SHARED_LIBS=on -DCMAKE_BUILD_TYPE=Release ..
+sudo make install
+</pre></div>
+</div>
+<p>Optional: Make a patched version of raylib header.  (<strong>Not necessary</strong> if you’ve already got
+raylib_modifed.h from repo and haven’t changed anything.)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd ../../raylib
+cp raylib.h raylib_modified.h
+patch  -p0 &lt;raylib_modified.h.patch
+</pre></div>
+</div>
+<p>Build</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install cffi
+cd ..
+rm -rf build raylib/static/_raylib_cffi.*
+python3 raylib/static/build.py
+</pre></div>
+</div>
+<p>To update the Linux dynamic libs (names will be different on other platfroms):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rm raylib/dynamic/*.so*
+cp -P /usr/local/lib/libraylib.so* raylib/dynamic/
+</pre></div>
+</div>
+<p>To build a binary wheel distribution:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install wheel
+python3 setup.py bdist_wheel
+</pre></div>
+</div>
+<p>and install it:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install dist/raylib*.whl
+</pre></div>
+</div>
+<p>To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./raylib/static/build_multi.sh
+</pre></div>
+</div>
+<p>(NOTE pypi wont accept Linux packages unless they are built <code class="docutils literal notranslate"><span class="pre">--plat-name</span> <span class="pre">manylinux2014_x86_64</span></code> so on linux
+please run <code class="docutils literal notranslate"><span class="pre">./raylib/static/build_multi_linux.sh</span></code> )</p>
+<p>(TODO move the dynamic libs into a separate package rather than include them with every one.)</p>
+</div>
+<div class="section" id="raspberry-pi">
+<h2>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permalink to this headline">¶</a></h2>
+<p>The integrated GPU hardware in a Raspberry Pi (“VideoCore”) is rather
+idiosyncratic, resulting in a complex set of software options. Probably the
+most interesting two options for Raylib applications are:</p>
+<ol class="simple">
+<li><p>Use the Broadcom proprietary Open GL ES 2.0 drivers, installed by Raspbian
+into <code class="docutils literal notranslate"><span class="pre">/opt/vc</span></code>. These are 32-bit only, and currently X11 doesn’t use these
+for its acceleration, so this is most suitable for driving the entire HDMI
+output from one application with minimal overhead (no X11).</p></li>
+<li><p>Use the more recent open-source <code class="docutils literal notranslate"><span class="pre">vc4-fkms-v3d</span></code> kernel driver. This can run
+in either 32-bit or 64-bit, and X11 can use these, so using X11 is probably
+the more common choice here.</p></li>
+</ol>
+<p>With option 2, the regular linux install instructions above should probably
+work as-is.</p>
+<p>For option 1, then also follow the above instructions, but with these
+modifications:</p>
+<ul class="simple">
+<li><p>With <code class="docutils literal notranslate"><span class="pre">cmake</span></code>, use <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DWITH_PIC=on</span> <span class="pre">-DSTATIC=on</span> <span class="pre">-DSHARED=on</span> <span class="pre">-DPLATFORM='Raspberry</span> <span class="pre">Pi'</span> <span class="pre">..</span></code></p></li>
+</ul>
+<p>(See <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues/31#issuecomment-862078330">here</a> for a Raspberry Pi wheel)</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Richard Smith.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
