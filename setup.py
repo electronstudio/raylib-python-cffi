@@ -16,7 +16,7 @@ class BinaryDistribution(Distribution):
 # This call to setup() does all the work
 setup(
     name="raylib",
-    version="3.7.0.post2",
+    version="3.7.0.post3",
     description="Python CFFI bindings for Raylib",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -27,6 +27,7 @@ setup(
     classifiers=[
         "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.6",
