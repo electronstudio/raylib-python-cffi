@@ -3,7 +3,7 @@ This shows how to use the CFFI static (API) binding.  It should be fast and code
 C code.
 """
 
-from raylib.static import *
+from raylib import *
 
 InitWindow(800, 450, b"Raylib static texture test")
 SetTargetFPS(60)
