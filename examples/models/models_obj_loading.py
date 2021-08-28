@@ -24,13 +24,13 @@ camera.position = [ 5.0, 5.0, 5.0 ]    # Camera position
 camera.target = [ 0.0, 2.5, 0.0 ]      # Camera looking at point
 camera.up = [ 0.0, 1.0, 0.0 ]          # Camera up vector (rotation towards target)
 camera.fovy = 45.0                                # Camera field-of-view Y
-camera.type = CAMERA_PERSPECTIVE                   # Camera mode type
+camera.projection = CAMERA_PERSPECTIVE                   # Camera mode type
 
 rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)
 
 model = LoadModel(b"resources/models/house.obj")                 # Load OBJ model
 texture = LoadTexture(b"resources/models/house_diffuse.png") # Load model texture
-model.materials.maps[MAP_DIFFUSE].texture = texture                     # Set map diffuse texture
+model.materials.maps[MATERIAL_MAP_DIFFUSE].texture = texture                     # Set map diffuse texture
 position = [ 0.0, 0.0, 0.0 ]                                # Set model position
 
 SetTargetFPS(60)   # Set our game to run at 60 frames-per-second
@@ -54,8 +54,6 @@ while not WindowShouldClose():    # Detect window close button or ESC key
     DrawModel(model, position, 0.2, WHITE)   # Draw 3d model with texture
 
     DrawGrid(10, 1.0)         # Draw a grid
-
-    DrawGizmo(position)        # Draw gizmo
 
     EndMode3D()
 

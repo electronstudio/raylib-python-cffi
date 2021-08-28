@@ -27,7 +27,7 @@ camera.position = [ 5.0, 4.0, 5.0 ]
 camera.target = [ 0.0, 2.0, 0.0 ]
 camera.up = [ 0.0, 1.0, 0.0 ]
 camera.fovy = 45.0
-camera.type = CAMERA_PERSPECTIVE
+camera.projection = CAMERA_PERSPECTIVE
 
 
 bill = LoadTexture(b"resources/billboard.png")     # Our texture billboard
