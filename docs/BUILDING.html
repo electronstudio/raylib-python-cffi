@@ -224,7 +224,11 @@ pip3 install wheel
 python setup.py bdist_wheel
 </pre></div>
 </div>
-<p>and install it:</p>
+<p>Alternatively, if you don’t want the static binaries and just want to use DLLs with raylib.dynamic:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 setup_dynamic.py bdist_wheel
+</pre></div>
+</div>
+<p>Then install it:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install dist\raylib-3.7.0-cp37-cp37m-win_amd64.whl
 </pre></div>
 </div>
@@ -276,7 +280,11 @@ cp -P /usr/local/lib/libraylib.so* raylib/dynamic/
 python3 setup.py bdist_wheel
 </pre></div>
 </div>
-<p>and install it:</p>
+<p>Alternatively, if you don’t want the static binaries and just want to use DLLs with raylib.dynamic:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 setup_dynamic.py bdist_wheel
+</pre></div>
+</div>
+<p>Then install it:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install dist/raylib*.whl
 </pre></div>
 </div>

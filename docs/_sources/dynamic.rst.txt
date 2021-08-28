@@ -3,13 +3,20 @@ raylib.dynamic
 
 CFFI ABI dynamic bindings exist in order to avoid the need to compile a C extension module.
 
+See https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py for how to use.
+
 Currently the github version may include bundled DLLs in ``raylib/dynamic`` but the pypi version requires a system installed Raylib.
 You can put your own DLLs in ``raylib/dynamic`` if you prefer.
 
 If your system already has the Raylib library installed, you can set the environment variable ``USE_EXTERNAL_RAYLIB`` and it will
 always be used instead of the bundled DLLs.
 
-See https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py for how to use.
+If you want to build your own wheel with just raylib.dynamic and not even attempt to compile the static libraries,
+the command is::
+
+    python3 setup_dynamic.py bdist_wheel
+
+
 
 .. warning::
 

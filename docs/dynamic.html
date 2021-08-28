@@ -172,11 +172,16 @@
   <div class="section" id="raylib-dynamic">
 <h1>raylib.dynamic<a class="headerlink" href="#raylib-dynamic" title="Permalink to this headline">¶</a></h1>
 <p>CFFI ABI dynamic bindings exist in order to avoid the need to compile a C extension module.</p>
+<p>See <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py">https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py</a> for how to use.</p>
 <p>Currently the github version may include bundled DLLs in <code class="docutils literal notranslate"><span class="pre">raylib/dynamic</span></code> but the pypi version requires a system installed Raylib.
 You can put your own DLLs in <code class="docutils literal notranslate"><span class="pre">raylib/dynamic</span></code> if you prefer.</p>
 <p>If your system already has the Raylib library installed, you can set the environment variable <code class="docutils literal notranslate"><span class="pre">USE_EXTERNAL_RAYLIB</span></code> and it will
 always be used instead of the bundled DLLs.</p>
-<p>See <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py">https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py</a> for how to use.</p>
+<p>If you want to build your own wheel with just raylib.dynamic and not even attempt to compile the static libraries,
+the command is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup_dynamic</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
+</pre></div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>There have been some weird failures with dynamic bindings and ctypes bindings before and often the

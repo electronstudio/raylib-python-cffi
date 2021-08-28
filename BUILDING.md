@@ -1,3 +1,5 @@
+# Building from source
+
 ## Have Pip build from source
 
 Useful if the binaries don't work on your system.
@@ -49,7 +51,11 @@ To build a binary wheel distribution:
     pip3 install wheel
     python setup.py bdist_wheel
 
-and install it:
+Alternatively, if you don't want the static binaries and just want to use DLLs with raylib.dynamic:
+
+    python3 setup_dynamic.py bdist_wheel
+
+Then install it:
 
     pip3 install dist\raylib-3.7.0-cp37-cp37m-win_amd64.whl
 
@@ -104,7 +110,11 @@ To build a binary wheel distribution:
     pip3 install wheel
     python3 setup.py bdist_wheel
 
-and install it:
+Alternatively, if you don't want the static binaries and just want to use DLLs with raylib.dynamic:
+
+    python3 setup_dynamic.py bdist_wheel
+
+Then install it:
 
     pip3 install dist/raylib*.whl
 
