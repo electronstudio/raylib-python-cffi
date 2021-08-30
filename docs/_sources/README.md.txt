@@ -5,7 +5,12 @@ original Raylib.  Faster, fewer bugs and easier to maintain than ctypes.
 
 [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
 
-# Install
+# License (updated)
+
+The bindings are now under the Eclipse Public License, so you are free to 
+statically link and use in non-free / proprietary / commercial projects!
+
+# Installation
 
 We distribute a statically linked binary Raylib wheel:
 
@@ -79,3 +84,6 @@ You can create a standalone binary using the Nuitka compiler.  For example, here
 # Advert
 
 [RetroWar: 8-bit Party Battle](https://store.steampowered.com/app/664240/RetroWar_8bit_Party_Battle/?git) is out now.  Defeat up to 15 of your friends in a tournament of 80s-inspired retro mini games.
+
+[Coding Games With Pygame Zero & Python](https://github.com/electronstudio/pygame-zero-book) is 
+a book for Python beginners.
