@@ -16,16 +16,16 @@ class BinaryDistribution(Distribution):
 # This call to setup() does all the work
 setup(
     name="raylib",
-    version="3.7.0.post3",
+    version="3.7.0.post4",
     description="Python CFFI bindings for Raylib",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/electronstudio/raylib-python-cffi",
     author="Electron Studio",
     author_email="github@electronstudio.co.uk",
-    license="LGPLv3+",
+    license="EPL-2.0",
     classifiers=[
-        "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
+        "License :: OSI Approved :: Eclipse Public License 2.0 (EPL-2.0)",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.9",
