@@ -9,45 +9,29 @@ BLEND_ALPHA: int
 BLEND_CUSTOM: int
 BLEND_MULTIPLIED: int
 BLEND_SUBTRACT_COLORS: int
-def BeginBlendMode(int_0: int,) -> None:
-        """void BeginBlendMode(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def BeginBlendMode(mode: int,) -> None:
+        """Begin blending mode (alpha, additive, multiplied, subtract, custom)"""
         ...
 def BeginDrawing() -> None:
-        """void BeginDrawing();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Setup canvas (framebuffer) to start drawing"""
         ...
-def BeginMode2D(Camera2D_0: Camera2D,) -> None:
-        """void BeginMode2D(struct Camera2D);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def BeginMode2D(camera: Camera2D,) -> None:
+        """Begin 2D mode with custom camera (2D)"""
         ...
-def BeginMode3D(Camera3D_0: Camera3D,) -> None:
-        """void BeginMode3D(struct Camera3D);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def BeginMode3D(camera: Camera3D,) -> None:
+        """Begin 3D mode with custom camera (3D)"""
         ...
-def BeginScissorMode(int_0: int,int_1: int,int_2: int,int_3: int,) -> None:
-        """void BeginScissorMode(int, int, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def BeginScissorMode(x: int,y: int,width: int,height: int,) -> None:
+        """Begin scissor mode (define screen area for following drawing)"""
         ...
-def BeginShaderMode(Shader_0: Shader,) -> None:
-        """void BeginShaderMode(struct Shader);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def BeginShaderMode(shader: Shader,) -> None:
+        """Begin custom shader drawing"""
         ...
-def BeginTextureMode(RenderTexture_0: RenderTexture,) -> None:
-        """void BeginTextureMode(struct RenderTexture);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def BeginTextureMode(target: RenderTexture,) -> None:
+        """Begin drawing to render texture"""
         ...
-def BeginVrStereoMode(VrStereoConfig_0: VrStereoConfig,) -> None:
-        """void BeginVrStereoMode(struct VrStereoConfig);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def BeginVrStereoMode(config: VrStereoConfig,) -> None:
+        """Begin stereo rendering (requires VR simulator)"""
         ...
 CAMERA_CUSTOM: int
 CAMERA_FIRST_PERSON: int
@@ -62,50 +46,32 @@ CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR: int
 CUBEMAP_LAYOUT_LINE_HORIZONTAL: int
 CUBEMAP_LAYOUT_LINE_VERTICAL: int
 CUBEMAP_LAYOUT_PANORAMA: int
-def ChangeDirectory(str_0: str,) -> bool:
-        """_Bool ChangeDirectory(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ChangeDirectory(dir: str,) -> bool:
+        """Change working directory, return true on success"""
         ...
-def CheckCollisionBoxSphere(BoundingBox_0: BoundingBox,Vector3_1: Vector3,float_2: float,) -> bool:
-        """_Bool CheckCollisionBoxSphere(struct BoundingBox, struct Vector3, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionBoxSphere(box: BoundingBox,center: Vector3,radius: float,) -> bool:
+        """Check collision between box and sphere"""
         ...
-def CheckCollisionBoxes(BoundingBox_0: BoundingBox,BoundingBox_1: BoundingBox,) -> bool:
-        """_Bool CheckCollisionBoxes(struct BoundingBox, struct BoundingBox);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionBoxes(box1: BoundingBox,box2: BoundingBox,) -> bool:
+        """Check collision between two bounding boxes"""
         ...
-def CheckCollisionCircleRec(Vector2_0: Vector2,float_1: float,Rectangle_2: Rectangle,) -> bool:
-        """_Bool CheckCollisionCircleRec(struct Vector2, float, struct Rectangle);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionCircleRec(center: Vector2,radius: float,rec: Rectangle,) -> bool:
+        """Check collision between circle and rectangle"""
         ...
-def CheckCollisionCircles(Vector2_0: Vector2,float_1: float,Vector2_2: Vector2,float_3: float,) -> bool:
-        """_Bool CheckCollisionCircles(struct Vector2, float, struct Vector2, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionCircles(center1: Vector2,radius1: float,center2: Vector2,radius2: float,) -> bool:
+        """Check collision between two circles"""
         ...
-def CheckCollisionLines(Vector2_0: Vector2,Vector2_1: Vector2,Vector2_2: Vector2,Vector2_3: Vector2,Vector2_pointer_4: Any,) -> bool:
-        """_Bool CheckCollisionLines(struct Vector2, struct Vector2, struct Vector2, struct Vector2, struct Vector2 *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionLines(startPos1: Vector2,endPos1: Vector2,startPos2: Vector2,endPos2: Vector2,collisionPoint: Any,) -> bool:
+        """Check the collision between two lines defined by two points each, returns collision point by reference"""
         ...
-def CheckCollisionPointCircle(Vector2_0: Vector2,Vector2_1: Vector2,float_2: float,) -> bool:
-        """_Bool CheckCollisionPointCircle(struct Vector2, struct Vector2, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionPointCircle(point: Vector2,center: Vector2,radius: float,) -> bool:
+        """Check if point is inside circle"""
         ...
-def CheckCollisionPointRec(Vector2_0: Vector2,Rectangle_1: Rectangle,) -> bool:
-        """_Bool CheckCollisionPointRec(struct Vector2, struct Rectangle);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionPointRec(point: Vector2,rec: Rectangle,) -> bool:
+        """Check if point is inside rectangle"""
         ...
-def CheckCollisionPointTriangle(Vector2_0: Vector2,Vector2_1: Vector2,Vector2_2: Vector2,Vector2_3: Vector2,) -> bool:
-        """_Bool CheckCollisionPointTriangle(struct Vector2, struct Vector2, struct Vector2, struct Vector2);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionPointTriangle(point: Vector2,p1: Vector2,p2: Vector2,p3: Vector2,) -> bool:
+        """Check if point is inside a triangle"""
         ...
 def CheckCollisionRayBox(Ray_0: Ray,BoundingBox_1: BoundingBox,) -> bool:
         """_Bool CheckCollisionRayBox(struct Ray, struct BoundingBox);
@@ -122,40 +88,26 @@ def CheckCollisionRaySphereEx(Ray_0: Ray,Vector3_1: Vector3,float_2: float,Vecto
 
 CFFI C function from raylib.static._raylib_cffi.lib"""
         ...
-def CheckCollisionRecs(Rectangle_0: Rectangle,Rectangle_1: Rectangle,) -> bool:
-        """_Bool CheckCollisionRecs(struct Rectangle, struct Rectangle);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionRecs(rec1: Rectangle,rec2: Rectangle,) -> bool:
+        """Check collision between two rectangles"""
         ...
-def CheckCollisionSpheres(Vector3_0: Vector3,float_1: float,Vector3_2: Vector3,float_3: float,) -> bool:
-        """_Bool CheckCollisionSpheres(struct Vector3, float, struct Vector3, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CheckCollisionSpheres(center1: Vector3,radius1: float,center2: Vector3,radius2: float,) -> bool:
+        """Check collision between two spheres"""
         ...
-def ClearBackground(Color_0: Color,) -> None:
-        """void ClearBackground(struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ClearBackground(color: Color,) -> None:
+        """Set background color (framebuffer clear color)"""
         ...
 def ClearDirectoryFiles() -> None:
-        """void ClearDirectoryFiles();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Clear directory files paths buffers (free memory)"""
         ...
 def ClearDroppedFiles() -> None:
-        """void ClearDroppedFiles();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Clear dropped files paths buffer (free memory)"""
         ...
-def ClearWindowState(unsignedint_0: int,) -> None:
-        """void ClearWindowState(unsigned int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ClearWindowState(flags: int,) -> None:
+        """Clear window configuration state flags"""
         ...
 def CloseAudioDevice() -> None:
-        """void CloseAudioDevice();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Close the audio device and context"""
         ...
 def CloseAudioStream(AudioStream_0: AudioStream,) -> None:
         """void CloseAudioStream(struct AudioStream);
@@ -163,524 +115,316 @@ def CloseAudioStream(AudioStream_0: AudioStream,) -> None:
 CFFI C function from raylib.static._raylib_cffi.lib"""
         ...
 def CloseWindow() -> None:
-        """void CloseWindow();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Close window and unload OpenGL context"""
         ...
-def CodepointToUtf8(int_0: int,int_pointer_1: Any,) -> str:
-        """char *CodepointToUtf8(int, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CodepointToUtf8(codepoint: int,byteLength: Any,) -> str:
+        """Encode codepoint into utf8 text (char array length returned as parameter)"""
         ...
-def ColorAlpha(Color_0: Color,float_1: float,) -> Color:
-        """struct Color ColorAlpha(struct Color, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ColorAlpha(color: Color,alpha: float,) -> Color:
+        """Get color with alpha applied, alpha goes from 0.0f to 1.0f"""
         ...
-def ColorAlphaBlend(Color_0: Color,Color_1: Color,Color_2: Color,) -> Color:
-        """struct Color ColorAlphaBlend(struct Color, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ColorAlphaBlend(dst: Color,src: Color,tint: Color,) -> Color:
+        """Get src alpha-blended into dst color with tint"""
         ...
-def ColorFromHSV(float_0: float,float_1: float,float_2: float,) -> Color:
-        """struct Color ColorFromHSV(float, float, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ColorFromHSV(hue: float,saturation: float,value: float,) -> Color:
+        """Get a Color from HSV values, hue [0..360], saturation/value [0..1]"""
         ...
-def ColorFromNormalized(Vector4_0: Vector4,) -> Color:
-        """struct Color ColorFromNormalized(struct Vector4);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ColorFromNormalized(normalized: Vector4,) -> Color:
+        """Get Color from normalized values [0..1]"""
         ...
-def ColorNormalize(Color_0: Color,) -> Vector4:
-        """struct Vector4 ColorNormalize(struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ColorNormalize(color: Color,) -> Vector4:
+        """Get Color normalized as float [0..1]"""
         ...
-def ColorToHSV(Color_0: Color,) -> Vector3:
-        """struct Vector3 ColorToHSV(struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ColorToHSV(color: Color,) -> Vector3:
+        """Get HSV values for a Color, hue [0..360], saturation/value [0..1]"""
         ...
-def ColorToInt(Color_0: Color,) -> int:
-        """int ColorToInt(struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ColorToInt(color: Color,) -> int:
+        """Get hexadecimal value for a Color"""
         ...
-def CompressData(unsignedstr_0: str,int_1: int,int_pointer_2: Any,) -> str:
-        """unsigned char *CompressData(unsigned char *, int, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def CompressData(data: str,dataLength: int,compDataLength: Any,) -> str:
+        """Compress data (DEFLATE algorithm)"""
         ...
-def DecompressData(unsignedstr_0: str,int_1: int,int_pointer_2: Any,) -> str:
-        """unsigned char *DecompressData(unsigned char *, int, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def DecompressData(compData: str,compDataLength: int,dataLength: Any,) -> str:
+        """Decompress data (DEFLATE algorithm)"""
         ...
-def DirectoryExists(str_0: str,) -> bool:
-        """_Bool DirectoryExists(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def DirectoryExists(dirPath: str,) -> bool:
+        """Check if a directory path exists"""
         ...
 def DisableCursor() -> None:
-        """void DisableCursor();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawBillboard(Camera3D_0: Camera3D,Texture_1: Texture,Vector3_2: Vector3,float_3: float,Color_4: Color,) -> None:
-        """void DrawBillboard(struct Camera3D, struct Texture, struct Vector3, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawBillboardRec(Camera3D_0: Camera3D,Texture_1: Texture,Rectangle_2: Rectangle,Vector3_3: Vector3,float_4: float,Color_5: Color,) -> None:
-        """void DrawBillboardRec(struct Camera3D, struct Texture, struct Rectangle, struct Vector3, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawBoundingBox(BoundingBox_0: BoundingBox,Color_1: Color,) -> None:
-        """void DrawBoundingBox(struct BoundingBox, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCircle(int_0: int,int_1: int,float_2: float,Color_3: Color,) -> None:
-        """void DrawCircle(int, int, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCircle3D(Vector3_0: Vector3,float_1: float,Vector3_2: Vector3,float_3: float,Color_4: Color,) -> None:
-        """void DrawCircle3D(struct Vector3, float, struct Vector3, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCircleGradient(int_0: int,int_1: int,float_2: float,Color_3: Color,Color_4: Color,) -> None:
-        """void DrawCircleGradient(int, int, float, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCircleLines(int_0: int,int_1: int,float_2: float,Color_3: Color,) -> None:
-        """void DrawCircleLines(int, int, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCircleSector(Vector2_0: Vector2,float_1: float,float_2: float,float_3: float,int_4: int,Color_5: Color,) -> None:
-        """void DrawCircleSector(struct Vector2, float, float, float, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCircleSectorLines(Vector2_0: Vector2,float_1: float,float_2: float,float_3: float,int_4: int,Color_5: Color,) -> None:
-        """void DrawCircleSectorLines(struct Vector2, float, float, float, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCircleV(Vector2_0: Vector2,float_1: float,Color_2: Color,) -> None:
-        """void DrawCircleV(struct Vector2, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCube(Vector3_0: Vector3,float_1: float,float_2: float,float_3: float,Color_4: Color,) -> None:
-        """void DrawCube(struct Vector3, float, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCubeTexture(Texture_0: Texture,Vector3_1: Vector3,float_2: float,float_3: float,float_4: float,Color_5: Color,) -> None:
-        """void DrawCubeTexture(struct Texture, struct Vector3, float, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCubeV(Vector3_0: Vector3,Vector3_1: Vector3,Color_2: Color,) -> None:
-        """void DrawCubeV(struct Vector3, struct Vector3, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCubeWires(Vector3_0: Vector3,float_1: float,float_2: float,float_3: float,Color_4: Color,) -> None:
-        """void DrawCubeWires(struct Vector3, float, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCubeWiresV(Vector3_0: Vector3,Vector3_1: Vector3,Color_2: Color,) -> None:
-        """void DrawCubeWiresV(struct Vector3, struct Vector3, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCylinder(Vector3_0: Vector3,float_1: float,float_2: float,float_3: float,int_4: int,Color_5: Color,) -> None:
-        """void DrawCylinder(struct Vector3, float, float, float, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawCylinderWires(Vector3_0: Vector3,float_1: float,float_2: float,float_3: float,int_4: int,Color_5: Color,) -> None:
-        """void DrawCylinderWires(struct Vector3, float, float, float, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawEllipse(int_0: int,int_1: int,float_2: float,float_3: float,Color_4: Color,) -> None:
-        """void DrawEllipse(int, int, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawEllipseLines(int_0: int,int_1: int,float_2: float,float_3: float,Color_4: Color,) -> None:
-        """void DrawEllipseLines(int, int, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawFPS(int_0: int,int_1: int,) -> None:
-        """void DrawFPS(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawGrid(int_0: int,float_1: float,) -> None:
-        """void DrawGrid(int, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawLine(int_0: int,int_1: int,int_2: int,int_3: int,Color_4: Color,) -> None:
-        """void DrawLine(int, int, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawLine3D(Vector3_0: Vector3,Vector3_1: Vector3,Color_2: Color,) -> None:
-        """void DrawLine3D(struct Vector3, struct Vector3, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawLineBezier(Vector2_0: Vector2,Vector2_1: Vector2,float_2: float,Color_3: Color,) -> None:
-        """void DrawLineBezier(struct Vector2, struct Vector2, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawLineBezierQuad(Vector2_0: Vector2,Vector2_1: Vector2,Vector2_2: Vector2,float_3: float,Color_4: Color,) -> None:
-        """void DrawLineBezierQuad(struct Vector2, struct Vector2, struct Vector2, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawLineEx(Vector2_0: Vector2,Vector2_1: Vector2,float_2: float,Color_3: Color,) -> None:
-        """void DrawLineEx(struct Vector2, struct Vector2, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawLineStrip(Vector2_pointer_0: Any,int_1: int,Color_2: Color,) -> None:
-        """void DrawLineStrip(struct Vector2 *, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawLineV(Vector2_0: Vector2,Vector2_1: Vector2,Color_2: Color,) -> None:
-        """void DrawLineV(struct Vector2, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawMesh(Mesh_0: Mesh,Material_1: Material,Matrix_2: Matrix,) -> None:
-        """void DrawMesh(struct Mesh, struct Material, struct Matrix);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawMeshInstanced(Mesh_0: Mesh,Material_1: Material,Matrix_pointer_2: Any,int_3: int,) -> None:
-        """void DrawMeshInstanced(struct Mesh, struct Material, struct Matrix *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawModel(Model_0: Model,Vector3_1: Vector3,float_2: float,Color_3: Color,) -> None:
-        """void DrawModel(struct Model, struct Vector3, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawModelEx(Model_0: Model,Vector3_1: Vector3,Vector3_2: Vector3,float_3: float,Vector3_4: Vector3,Color_5: Color,) -> None:
-        """void DrawModelEx(struct Model, struct Vector3, struct Vector3, float, struct Vector3, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawModelWires(Model_0: Model,Vector3_1: Vector3,float_2: float,Color_3: Color,) -> None:
-        """void DrawModelWires(struct Model, struct Vector3, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawModelWiresEx(Model_0: Model,Vector3_1: Vector3,Vector3_2: Vector3,float_3: float,Vector3_4: Vector3,Color_5: Color,) -> None:
-        """void DrawModelWiresEx(struct Model, struct Vector3, struct Vector3, float, struct Vector3, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawPixel(int_0: int,int_1: int,Color_2: Color,) -> None:
-        """void DrawPixel(int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawPixelV(Vector2_0: Vector2,Color_1: Color,) -> None:
-        """void DrawPixelV(struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawPlane(Vector3_0: Vector3,Vector2_1: Vector2,Color_2: Color,) -> None:
-        """void DrawPlane(struct Vector3, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawPoint3D(Vector3_0: Vector3,Color_1: Color,) -> None:
-        """void DrawPoint3D(struct Vector3, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawPoly(Vector2_0: Vector2,int_1: int,float_2: float,float_3: float,Color_4: Color,) -> None:
-        """void DrawPoly(struct Vector2, int, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawPolyLines(Vector2_0: Vector2,int_1: int,float_2: float,float_3: float,Color_4: Color,) -> None:
-        """void DrawPolyLines(struct Vector2, int, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRay(Ray_0: Ray,Color_1: Color,) -> None:
-        """void DrawRay(struct Ray, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangle(int_0: int,int_1: int,int_2: int,int_3: int,Color_4: Color,) -> None:
-        """void DrawRectangle(int, int, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangleGradientEx(Rectangle_0: Rectangle,Color_1: Color,Color_2: Color,Color_3: Color,Color_4: Color,) -> None:
-        """void DrawRectangleGradientEx(struct Rectangle, struct Color, struct Color, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangleGradientH(int_0: int,int_1: int,int_2: int,int_3: int,Color_4: Color,Color_5: Color,) -> None:
-        """void DrawRectangleGradientH(int, int, int, int, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangleGradientV(int_0: int,int_1: int,int_2: int,int_3: int,Color_4: Color,Color_5: Color,) -> None:
-        """void DrawRectangleGradientV(int, int, int, int, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangleLines(int_0: int,int_1: int,int_2: int,int_3: int,Color_4: Color,) -> None:
-        """void DrawRectangleLines(int, int, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangleLinesEx(Rectangle_0: Rectangle,int_1: int,Color_2: Color,) -> None:
-        """void DrawRectangleLinesEx(struct Rectangle, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectanglePro(Rectangle_0: Rectangle,Vector2_1: Vector2,float_2: float,Color_3: Color,) -> None:
-        """void DrawRectanglePro(struct Rectangle, struct Vector2, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangleRec(Rectangle_0: Rectangle,Color_1: Color,) -> None:
-        """void DrawRectangleRec(struct Rectangle, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangleRounded(Rectangle_0: Rectangle,float_1: float,int_2: int,Color_3: Color,) -> None:
-        """void DrawRectangleRounded(struct Rectangle, float, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangleRoundedLines(Rectangle_0: Rectangle,float_1: float,int_2: int,int_3: int,Color_4: Color,) -> None:
-        """void DrawRectangleRoundedLines(struct Rectangle, float, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRectangleV(Vector2_0: Vector2,Vector2_1: Vector2,Color_2: Color,) -> None:
-        """void DrawRectangleV(struct Vector2, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRing(Vector2_0: Vector2,float_1: float,float_2: float,float_3: float,float_4: float,int_5: int,Color_6: Color,) -> None:
-        """void DrawRing(struct Vector2, float, float, float, float, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawRingLines(Vector2_0: Vector2,float_1: float,float_2: float,float_3: float,float_4: float,int_5: int,Color_6: Color,) -> None:
-        """void DrawRingLines(struct Vector2, float, float, float, float, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawSphere(Vector3_0: Vector3,float_1: float,Color_2: Color,) -> None:
-        """void DrawSphere(struct Vector3, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawSphereEx(Vector3_0: Vector3,float_1: float,int_2: int,int_3: int,Color_4: Color,) -> None:
-        """void DrawSphereEx(struct Vector3, float, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawSphereWires(Vector3_0: Vector3,float_1: float,int_2: int,int_3: int,Color_4: Color,) -> None:
-        """void DrawSphereWires(struct Vector3, float, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawText(str_0: str,int_1: int,int_2: int,int_3: int,Color_4: Color,) -> None:
-        """void DrawText(char *, int, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextCodepoint(Font_0: Font,int_1: int,Vector2_2: Vector2,float_3: float,Color_4: Color,) -> None:
-        """void DrawTextCodepoint(struct Font, int, struct Vector2, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextEx(Font_0: Font,str_1: str,Vector2_2: Vector2,float_3: float,float_4: float,Color_5: Color,) -> None:
-        """void DrawTextEx(struct Font, char *, struct Vector2, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextRec(Font_0: Font,str_1: str,Rectangle_2: Rectangle,float_3: float,float_4: float,_Bool_5: bool,Color_6: Color,) -> None:
-        """void DrawTextRec(struct Font, char *, struct Rectangle, float, float, _Bool, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextRecEx(Font_0: Font,str_1: str,Rectangle_2: Rectangle,float_3: float,float_4: float,_Bool_5: bool,Color_6: Color,int_7: int,int_8: int,Color_9: Color,Color_10: Color,) -> None:
-        """void DrawTextRecEx(struct Font, char *, struct Rectangle, float, float, _Bool, struct Color, int, int, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTexture(Texture_0: Texture,int_1: int,int_2: int,Color_3: Color,) -> None:
-        """void DrawTexture(struct Texture, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextureEx(Texture_0: Texture,Vector2_1: Vector2,float_2: float,float_3: float,Color_4: Color,) -> None:
-        """void DrawTextureEx(struct Texture, struct Vector2, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextureNPatch(Texture_0: Texture,NPatchInfo_1: NPatchInfo,Rectangle_2: Rectangle,Vector2_3: Vector2,float_4: float,Color_5: Color,) -> None:
-        """void DrawTextureNPatch(struct Texture, struct NPatchInfo, struct Rectangle, struct Vector2, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTexturePoly(Texture_0: Texture,Vector2_1: Vector2,Vector2_pointer_2: Any,Vector2_pointer_3: Any,int_4: int,Color_5: Color,) -> None:
-        """void DrawTexturePoly(struct Texture, struct Vector2, struct Vector2 *, struct Vector2 *, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTexturePro(Texture_0: Texture,Rectangle_1: Rectangle,Rectangle_2: Rectangle,Vector2_3: Vector2,float_4: float,Color_5: Color,) -> None:
-        """void DrawTexturePro(struct Texture, struct Rectangle, struct Rectangle, struct Vector2, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextureQuad(Texture_0: Texture,Vector2_1: Vector2,Vector2_2: Vector2,Rectangle_3: Rectangle,Color_4: Color,) -> None:
-        """void DrawTextureQuad(struct Texture, struct Vector2, struct Vector2, struct Rectangle, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextureRec(Texture_0: Texture,Rectangle_1: Rectangle,Vector2_2: Vector2,Color_3: Color,) -> None:
-        """void DrawTextureRec(struct Texture, struct Rectangle, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextureTiled(Texture_0: Texture,Rectangle_1: Rectangle,Rectangle_2: Rectangle,Vector2_3: Vector2,float_4: float,float_5: float,Color_6: Color,) -> None:
-        """void DrawTextureTiled(struct Texture, struct Rectangle, struct Rectangle, struct Vector2, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTextureV(Texture_0: Texture,Vector2_1: Vector2,Color_2: Color,) -> None:
-        """void DrawTextureV(struct Texture, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTriangle(Vector2_0: Vector2,Vector2_1: Vector2,Vector2_2: Vector2,Color_3: Color,) -> None:
-        """void DrawTriangle(struct Vector2, struct Vector2, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTriangle3D(Vector3_0: Vector3,Vector3_1: Vector3,Vector3_2: Vector3,Color_3: Color,) -> None:
-        """void DrawTriangle3D(struct Vector3, struct Vector3, struct Vector3, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTriangleFan(Vector2_pointer_0: Any,int_1: int,Color_2: Color,) -> None:
-        """void DrawTriangleFan(struct Vector2 *, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTriangleLines(Vector2_0: Vector2,Vector2_1: Vector2,Vector2_2: Vector2,Color_3: Color,) -> None:
-        """void DrawTriangleLines(struct Vector2, struct Vector2, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTriangleStrip(Vector2_pointer_0: Any,int_1: int,Color_2: Color,) -> None:
-        """void DrawTriangleStrip(struct Vector2 *, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
-        ...
-def DrawTriangleStrip3D(Vector3_pointer_0: Any,int_1: int,Color_2: Color,) -> None:
-        """void DrawTriangleStrip3D(struct Vector3 *, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Disables cursor (lock cursor)"""
+        ...
+def DrawBillboard(camera: Camera3D,texture: Texture,position: Vector3,size: float,tint: Color,) -> None:
+        """Draw a billboard texture"""
+        ...
+def DrawBillboardRec(camera: Camera3D,texture: Texture,source: Rectangle,position: Vector3,size: float,tint: Color,) -> None:
+        """Draw a billboard texture defined by source"""
+        ...
+def DrawBoundingBox(box: BoundingBox,color: Color,) -> None:
+        """Draw bounding box (wires)"""
+        ...
+def DrawCircle(centerX: int,centerY: int,radius: float,color: Color,) -> None:
+        """Draw a color-filled circle"""
+        ...
+def DrawCircle3D(center: Vector3,radius: float,rotationAxis: Vector3,rotationAngle: float,color: Color,) -> None:
+        """Draw a circle in 3D world space"""
+        ...
+def DrawCircleGradient(centerX: int,centerY: int,radius: float,color1: Color,color2: Color,) -> None:
+        """Draw a gradient-filled circle"""
+        ...
+def DrawCircleLines(centerX: int,centerY: int,radius: float,color: Color,) -> None:
+        """Draw circle outline"""
+        ...
+def DrawCircleSector(center: Vector2,radius: float,startAngle: float,endAngle: float,segments: int,color: Color,) -> None:
+        """Draw a piece of a circle"""
+        ...
+def DrawCircleSectorLines(center: Vector2,radius: float,startAngle: float,endAngle: float,segments: int,color: Color,) -> None:
+        """Draw circle sector outline"""
+        ...
+def DrawCircleV(center: Vector2,radius: float,color: Color,) -> None:
+        """Draw a color-filled circle (Vector version)"""
+        ...
+def DrawCube(position: Vector3,width: float,height: float,length: float,color: Color,) -> None:
+        """Draw cube"""
+        ...
+def DrawCubeTexture(texture: Texture,position: Vector3,width: float,height: float,length: float,color: Color,) -> None:
+        """Draw cube textured"""
+        ...
+def DrawCubeV(position: Vector3,size: Vector3,color: Color,) -> None:
+        """Draw cube (Vector version)"""
+        ...
+def DrawCubeWires(position: Vector3,width: float,height: float,length: float,color: Color,) -> None:
+        """Draw cube wires"""
+        ...
+def DrawCubeWiresV(position: Vector3,size: Vector3,color: Color,) -> None:
+        """Draw cube wires (Vector version)"""
+        ...
+def DrawCylinder(position: Vector3,radiusTop: float,radiusBottom: float,height: float,slices: int,color: Color,) -> None:
+        """Draw a cylinder/cone"""
+        ...
+def DrawCylinderWires(position: Vector3,radiusTop: float,radiusBottom: float,height: float,slices: int,color: Color,) -> None:
+        """Draw a cylinder/cone wires"""
+        ...
+def DrawEllipse(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color,) -> None:
+        """Draw ellipse"""
+        ...
+def DrawEllipseLines(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color,) -> None:
+        """Draw ellipse outline"""
+        ...
+def DrawFPS(posX: int,posY: int,) -> None:
+        """Draw current FPS"""
+        ...
+def DrawGrid(slices: int,spacing: float,) -> None:
+        """Draw a grid (centered at (0, 0, 0))"""
+        ...
+def DrawLine(startPosX: int,startPosY: int,endPosX: int,endPosY: int,color: Color,) -> None:
+        """Draw a line"""
+        ...
+def DrawLine3D(startPos: Vector3,endPos: Vector3,color: Color,) -> None:
+        """Draw a line in 3D world space"""
+        ...
+def DrawLineBezier(startPos: Vector2,endPos: Vector2,thick: float,color: Color,) -> None:
+        """Draw a line using cubic-bezier curves in-out"""
+        ...
+def DrawLineBezierQuad(startPos: Vector2,endPos: Vector2,controlPos: Vector2,thick: float,color: Color,) -> None:
+        """raw line using quadratic bezier curves with a control point"""
+        ...
+def DrawLineEx(startPos: Vector2,endPos: Vector2,thick: float,color: Color,) -> None:
+        """Draw a line defining thickness"""
+        ...
+def DrawLineStrip(points: Any,pointsCount: int,color: Color,) -> None:
+        """Draw lines sequence"""
+        ...
+def DrawLineV(startPos: Vector2,endPos: Vector2,color: Color,) -> None:
+        """Draw a line (Vector version)"""
+        ...
+def DrawMesh(mesh: Mesh,material: Material,transform: Matrix,) -> None:
+        """Draw a 3d mesh with material and transform"""
+        ...
+def DrawMeshInstanced(mesh: Mesh,material: Material,transforms: Any,instances: int,) -> None:
+        """Draw multiple mesh instances with material and different transforms"""
+        ...
+def DrawModel(model: Model,position: Vector3,scale: float,tint: Color,) -> None:
+        """Draw a model (with texture if set)"""
+        ...
+def DrawModelEx(model: Model,position: Vector3,rotationAxis: Vector3,rotationAngle: float,scale: Vector3,tint: Color,) -> None:
+        """Draw a model with extended parameters"""
+        ...
+def DrawModelWires(model: Model,position: Vector3,scale: float,tint: Color,) -> None:
+        """Draw a model wires (with texture if set)"""
+        ...
+def DrawModelWiresEx(model: Model,position: Vector3,rotationAxis: Vector3,rotationAngle: float,scale: Vector3,tint: Color,) -> None:
+        """Draw a model wires (with texture if set) with extended parameters"""
+        ...
+def DrawPixel(posX: int,posY: int,color: Color,) -> None:
+        """Draw a pixel"""
+        ...
+def DrawPixelV(position: Vector2,color: Color,) -> None:
+        """Draw a pixel (Vector version)"""
+        ...
+def DrawPlane(centerPos: Vector3,size: Vector2,color: Color,) -> None:
+        """Draw a plane XZ"""
+        ...
+def DrawPoint3D(position: Vector3,color: Color,) -> None:
+        """Draw a point in 3D space, actually a small line"""
+        ...
+def DrawPoly(center: Vector2,sides: int,radius: float,rotation: float,color: Color,) -> None:
+        """Draw a regular polygon (Vector version)"""
+        ...
+def DrawPolyLines(center: Vector2,sides: int,radius: float,rotation: float,color: Color,) -> None:
+        """Draw a polygon outline of n sides"""
+        ...
+def DrawRay(ray: Ray,color: Color,) -> None:
+        """Draw a ray line"""
+        ...
+def DrawRectangle(posX: int,posY: int,width: int,height: int,color: Color,) -> None:
+        """Draw a color-filled rectangle"""
+        ...
+def DrawRectangleGradientEx(rec: Rectangle,col1: Color,col2: Color,col3: Color,col4: Color,) -> None:
+        """Draw a gradient-filled rectangle with custom vertex colors"""
+        ...
+def DrawRectangleGradientH(posX: int,posY: int,width: int,height: int,color1: Color,color2: Color,) -> None:
+        """Draw a horizontal-gradient-filled rectangle"""
+        ...
+def DrawRectangleGradientV(posX: int,posY: int,width: int,height: int,color1: Color,color2: Color,) -> None:
+        """Draw a vertical-gradient-filled rectangle"""
+        ...
+def DrawRectangleLines(posX: int,posY: int,width: int,height: int,color: Color,) -> None:
+        """Draw rectangle outline"""
+        ...
+def DrawRectangleLinesEx(rec: Rectangle,lineThick: int,color: Color,) -> None:
+        """Draw rectangle outline with extended parameters"""
+        ...
+def DrawRectanglePro(rec: Rectangle,origin: Vector2,rotation: float,color: Color,) -> None:
+        """Draw a color-filled rectangle with pro parameters"""
+        ...
+def DrawRectangleRec(rec: Rectangle,color: Color,) -> None:
+        """Draw a color-filled rectangle"""
+        ...
+def DrawRectangleRounded(rec: Rectangle,roundness: float,segments: int,color: Color,) -> None:
+        """Draw rectangle with rounded edges"""
+        ...
+def DrawRectangleRoundedLines(rec: Rectangle,roundness: float,segments: int,lineThick: int,color: Color,) -> None:
+        """Draw rectangle with rounded edges outline"""
+        ...
+def DrawRectangleV(position: Vector2,size: Vector2,color: Color,) -> None:
+        """Draw a color-filled rectangle (Vector version)"""
+        ...
+def DrawRing(center: Vector2,innerRadius: float,outerRadius: float,startAngle: float,endAngle: float,segments: int,color: Color,) -> None:
+        """Draw ring"""
+        ...
+def DrawRingLines(center: Vector2,innerRadius: float,outerRadius: float,startAngle: float,endAngle: float,segments: int,color: Color,) -> None:
+        """Draw ring outline"""
+        ...
+def DrawSphere(centerPos: Vector3,radius: float,color: Color,) -> None:
+        """Draw sphere"""
+        ...
+def DrawSphereEx(centerPos: Vector3,radius: float,rings: int,slices: int,color: Color,) -> None:
+        """Draw sphere with extended parameters"""
+        ...
+def DrawSphereWires(centerPos: Vector3,radius: float,rings: int,slices: int,color: Color,) -> None:
+        """Draw sphere wires"""
+        ...
+def DrawText(text: str,posX: int,posY: int,fontSize: int,color: Color,) -> None:
+        """Draw text (using default font)"""
+        ...
+def DrawTextCodepoint(font: Font,codepoint: int,position: Vector2,fontSize: float,tint: Color,) -> None:
+        """Draw one character (codepoint)"""
+        ...
+def DrawTextEx(font: Font,text: str,position: Vector2,fontSize: float,spacing: float,tint: Color,) -> None:
+        """Draw text using font and additional parameters"""
+        ...
+def DrawTextRec(font: Font,text: str,rec: Rectangle,fontSize: float,spacing: float,wordWrap: bool,tint: Color,) -> None:
+        """Draw text using font inside rectangle limits"""
+        ...
+def DrawTextRecEx(font: Font,text: str,rec: Rectangle,fontSize: float,spacing: float,wordWrap: bool,tint: Color,selectStart: int,selectLength: int,selectTint: Color,selectBackTint: Color,) -> None:
+        """Draw text using font inside rectangle limits with support for text selection"""
+        ...
+def DrawTexture(texture: Texture,posX: int,posY: int,tint: Color,) -> None:
+        """Draw a Texture2D"""
+        ...
+def DrawTextureEx(texture: Texture,position: Vector2,rotation: float,scale: float,tint: Color,) -> None:
+        """Draw a Texture2D with extended parameters"""
+        ...
+def DrawTextureNPatch(texture: Texture,nPatchInfo: NPatchInfo,dest: Rectangle,origin: Vector2,rotation: float,tint: Color,) -> None:
+        """Draws a texture (or part of it) that stretches or shrinks nicely"""
+        ...
+def DrawTexturePoly(texture: Texture,center: Vector2,points: Any,texcoords: Any,pointsCount: int,tint: Color,) -> None:
+        """Draw a textured polygon"""
+        ...
+def DrawTexturePro(texture: Texture,source: Rectangle,dest: Rectangle,origin: Vector2,rotation: float,tint: Color,) -> None:
+        """Draw a part of a texture defined by a rectangle with 'pro' parameters"""
+        ...
+def DrawTextureQuad(texture: Texture,tiling: Vector2,offset: Vector2,quad: Rectangle,tint: Color,) -> None:
+        """Draw texture quad with tiling and offset parameters"""
+        ...
+def DrawTextureRec(texture: Texture,source: Rectangle,position: Vector2,tint: Color,) -> None:
+        """Draw a part of a texture defined by a rectangle"""
+        ...
+def DrawTextureTiled(texture: Texture,source: Rectangle,dest: Rectangle,origin: Vector2,rotation: float,scale: float,tint: Color,) -> None:
+        """Draw part of a texture (defined by a rectangle) with rotation and scale tiled into dest."""
+        ...
+def DrawTextureV(texture: Texture,position: Vector2,tint: Color,) -> None:
+        """Draw a Texture2D with position defined as Vector2"""
+        ...
+def DrawTriangle(v1: Vector2,v2: Vector2,v3: Vector2,color: Color,) -> None:
+        """Draw a color-filled triangle (vertex in counter-clockwise order!)"""
+        ...
+def DrawTriangle3D(v1: Vector3,v2: Vector3,v3: Vector3,color: Color,) -> None:
+        """Draw a color-filled triangle (vertex in counter-clockwise order!)"""
+        ...
+def DrawTriangleFan(points: Any,pointsCount: int,color: Color,) -> None:
+        """Draw a triangle fan defined by points (first vertex is the center)"""
+        ...
+def DrawTriangleLines(v1: Vector2,v2: Vector2,v3: Vector2,color: Color,) -> None:
+        """Draw triangle outline (vertex in counter-clockwise order!)"""
+        ...
+def DrawTriangleStrip(points: Any,pointsCount: int,color: Color,) -> None:
+        """Draw a triangle strip defined by points"""
+        ...
+def DrawTriangleStrip3D(points: Any,pointsCount: int,color: Color,) -> None:
+        """Draw a triangle strip defined by points"""
         ...
 def EnableCursor() -> None:
-        """void EnableCursor();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Enables cursor (unlock cursor)"""
         ...
 def EndBlendMode() -> None:
-        """void EndBlendMode();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """End blending mode (reset to default: alpha blending)"""
         ...
 def EndDrawing() -> None:
-        """void EndDrawing();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """End canvas drawing and swap buffers (double buffering)"""
         ...
 def EndMode2D() -> None:
-        """void EndMode2D();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Ends 2D mode with custom camera"""
         ...
 def EndMode3D() -> None:
-        """void EndMode3D();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Ends 3D mode and returns to default 2D orthographic mode"""
         ...
 def EndScissorMode() -> None:
-        """void EndScissorMode();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """End scissor mode"""
         ...
 def EndShaderMode() -> None:
-        """void EndShaderMode();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """End custom shader drawing (use default shader)"""
         ...
 def EndTextureMode() -> None:
-        """void EndTextureMode();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Ends drawing to render texture"""
         ...
 def EndVrStereoMode() -> None:
-        """void EndVrStereoMode();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """End stereo rendering (requires VR simulator)"""
         ...
-def ExportImage(Image_0: Image,str_1: str,) -> bool:
-        """_Bool ExportImage(struct Image, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ExportImage(image: Image,fileName: str,) -> bool:
+        """Export image data to file, returns true on success"""
         ...
-def ExportImageAsCode(Image_0: Image,str_1: str,) -> bool:
-        """_Bool ExportImageAsCode(struct Image, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ExportImageAsCode(image: Image,fileName: str,) -> bool:
+        """Export image as code file defining an array of bytes, returns true on success"""
         ...
-def ExportMesh(Mesh_0: Mesh,str_1: str,) -> bool:
-        """_Bool ExportMesh(struct Mesh, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ExportMesh(mesh: Mesh,fileName: str,) -> bool:
+        """Export mesh data to file, returns true on success"""
         ...
-def ExportWave(Wave_0: Wave,str_1: str,) -> bool:
-        """_Bool ExportWave(struct Wave, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ExportWave(wave: Wave,fileName: str,) -> bool:
+        """Export wave data to file, returns true on success"""
         ...
-def ExportWaveAsCode(Wave_0: Wave,str_1: str,) -> bool:
-        """_Bool ExportWaveAsCode(struct Wave, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ExportWaveAsCode(wave: Wave,fileName: str,) -> bool:
+        """Export wave sample data to code (.h), returns true on success"""
         ...
 FLAG_FULLSCREEN_MODE: int
 FLAG_INTERLACED_HINT: int
@@ -699,15 +443,11 @@ FLAG_WINDOW_UNFOCUSED: int
 FONT_BITMAP: int
 FONT_DEFAULT: int
 FONT_SDF: int
-def Fade(Color_0: Color,float_1: float,) -> Color:
-        """struct Color Fade(struct Color, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def Fade(color: Color,alpha: float,) -> Color:
+        """Get color with alpha applied, alpha goes from 0.0f to 1.0f"""
         ...
-def FileExists(str_0: str,) -> bool:
-        """_Bool FileExists(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def FileExists(fileName: str,) -> bool:
+        """Check if file exists"""
         ...
 GAMEPAD_AXIS_LEFT_TRIGGER: int
 GAMEPAD_AXIS_LEFT_X: int
@@ -744,135 +484,83 @@ GESTURE_SWIPE_LEFT: int
 GESTURE_SWIPE_RIGHT: int
 GESTURE_SWIPE_UP: int
 GESTURE_TAP: int
-def GenImageCellular(int_0: int,int_1: int,int_2: int,) -> Image:
-        """struct Image GenImageCellular(int, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenImageCellular(width: int,height: int,tileSize: int,) -> Image:
+        """Generate image: cellular algorithm. Bigger tileSize means bigger cells"""
         ...
-def GenImageChecked(int_0: int,int_1: int,int_2: int,int_3: int,Color_4: Color,Color_5: Color,) -> Image:
-        """struct Image GenImageChecked(int, int, int, int, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenImageChecked(width: int,height: int,checksX: int,checksY: int,col1: Color,col2: Color,) -> Image:
+        """Generate image: checked"""
         ...
-def GenImageColor(int_0: int,int_1: int,Color_2: Color,) -> Image:
-        """struct Image GenImageColor(int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenImageColor(width: int,height: int,color: Color,) -> Image:
+        """Generate image: plain color"""
         ...
-def GenImageFontAtlas(CharInfo_pointer_0: Any,Rectangle_pointer_pointer_1: Any,int_2: int,int_3: int,int_4: int,int_5: int,) -> Image:
-        """struct Image GenImageFontAtlas(struct CharInfo *, struct Rectangle * *, int, int, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenImageFontAtlas(chars: Any,recs: Any,charsCount: int,fontSize: int,padding: int,packMethod: int,) -> Image:
+        """Generate image font atlas using chars info"""
         ...
-def GenImageGradientH(int_0: int,int_1: int,Color_2: Color,Color_3: Color,) -> Image:
-        """struct Image GenImageGradientH(int, int, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenImageGradientH(width: int,height: int,left: Color,right: Color,) -> Image:
+        """Generate image: horizontal gradient"""
         ...
-def GenImageGradientRadial(int_0: int,int_1: int,float_2: float,Color_3: Color,Color_4: Color,) -> Image:
-        """struct Image GenImageGradientRadial(int, int, float, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenImageGradientRadial(width: int,height: int,density: float,inner: Color,outer: Color,) -> Image:
+        """Generate image: radial gradient"""
         ...
-def GenImageGradientV(int_0: int,int_1: int,Color_2: Color,Color_3: Color,) -> Image:
-        """struct Image GenImageGradientV(int, int, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenImageGradientV(width: int,height: int,top: Color,bottom: Color,) -> Image:
+        """Generate image: vertical gradient"""
         ...
-def GenImagePerlinNoise(int_0: int,int_1: int,int_2: int,int_3: int,float_4: float,) -> Image:
-        """struct Image GenImagePerlinNoise(int, int, int, int, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenImagePerlinNoise(width: int,height: int,offsetX: int,offsetY: int,scale: float,) -> Image:
+        """Generate image: perlin noise"""
         ...
-def GenImageWhiteNoise(int_0: int,int_1: int,float_2: float,) -> Image:
-        """struct Image GenImageWhiteNoise(int, int, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenImageWhiteNoise(width: int,height: int,factor: float,) -> Image:
+        """Generate image: white noise"""
         ...
-def GenMeshCube(float_0: float,float_1: float,float_2: float,) -> Mesh:
-        """struct Mesh GenMeshCube(float, float, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshCube(width: float,height: float,length: float,) -> Mesh:
+        """Generate cuboid mesh"""
         ...
-def GenMeshCubicmap(Image_0: Image,Vector3_1: Vector3,) -> Mesh:
-        """struct Mesh GenMeshCubicmap(struct Image, struct Vector3);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshCubicmap(cubicmap: Image,cubeSize: Vector3,) -> Mesh:
+        """Generate cubes-based map mesh from image data"""
         ...
-def GenMeshCylinder(float_0: float,float_1: float,int_2: int,) -> Mesh:
-        """struct Mesh GenMeshCylinder(float, float, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshCylinder(radius: float,height: float,slices: int,) -> Mesh:
+        """Generate cylinder mesh"""
         ...
-def GenMeshHeightmap(Image_0: Image,Vector3_1: Vector3,) -> Mesh:
-        """struct Mesh GenMeshHeightmap(struct Image, struct Vector3);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshHeightmap(heightmap: Image,size: Vector3,) -> Mesh:
+        """Generate heightmap mesh from image data"""
         ...
-def GenMeshHemiSphere(float_0: float,int_1: int,int_2: int,) -> Mesh:
-        """struct Mesh GenMeshHemiSphere(float, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshHemiSphere(radius: float,rings: int,slices: int,) -> Mesh:
+        """Generate half-sphere mesh (no bottom cap)"""
         ...
-def GenMeshKnot(float_0: float,float_1: float,int_2: int,int_3: int,) -> Mesh:
-        """struct Mesh GenMeshKnot(float, float, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshKnot(radius: float,size: float,radSeg: int,sides: int,) -> Mesh:
+        """Generate trefoil knot mesh"""
         ...
-def GenMeshPlane(float_0: float,float_1: float,int_2: int,int_3: int,) -> Mesh:
-        """struct Mesh GenMeshPlane(float, float, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshPlane(width: float,length: float,resX: int,resZ: int,) -> Mesh:
+        """Generate plane mesh (with subdivisions)"""
         ...
-def GenMeshPoly(int_0: int,float_1: float,) -> Mesh:
-        """struct Mesh GenMeshPoly(int, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshPoly(sides: int,radius: float,) -> Mesh:
+        """Generate polygonal mesh"""
         ...
-def GenMeshSphere(float_0: float,int_1: int,int_2: int,) -> Mesh:
-        """struct Mesh GenMeshSphere(float, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshSphere(radius: float,rings: int,slices: int,) -> Mesh:
+        """Generate sphere mesh (standard sphere)"""
         ...
-def GenMeshTorus(float_0: float,float_1: float,int_2: int,int_3: int,) -> Mesh:
-        """struct Mesh GenMeshTorus(float, float, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenMeshTorus(radius: float,size: float,radSeg: int,sides: int,) -> Mesh:
+        """Generate torus mesh"""
         ...
-def GenTextureMipmaps(Texture_pointer_0: Any,) -> None:
-        """void GenTextureMipmaps(struct Texture *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GenTextureMipmaps(texture: Any,) -> None:
+        """Generate GPU mipmaps for a texture"""
         ...
-def GetCameraMatrix(Camera3D_0: Camera3D,) -> Matrix:
-        """struct Matrix GetCameraMatrix(struct Camera3D);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetCameraMatrix(camera: Camera3D,) -> Matrix:
+        """Get camera transform matrix (view matrix)"""
         ...
-def GetCameraMatrix2D(Camera2D_0: Camera2D,) -> Matrix:
-        """struct Matrix GetCameraMatrix2D(struct Camera2D);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetCameraMatrix2D(camera: Camera2D,) -> Matrix:
+        """Get camera 2d transform matrix"""
         ...
 def GetCharPressed() -> int:
-        """int GetCharPressed();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get char pressed (unicode), call it multiple times for chars queued"""
         ...
 def GetClipboardText() -> str:
-        """char *GetClipboardText();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get clipboard text content"""
         ...
-def GetCodepoints(str_0: str,int_pointer_1: Any,) -> Any:
-        """int *GetCodepoints(char *, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetCodepoints(text: str,count: Any,) -> Any:
+        """Get all codepoints in a string, codepoints count returned by parameters"""
         ...
-def GetCodepointsCount(str_0: str,) -> int:
-        """int GetCodepointsCount(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetCodepointsCount(text: str,) -> int:
+        """Get total number of characters (codepoints) in a UTF8 encoded string"""
         ...
 def GetCollisionRayGround(Ray_0: Ray,float_1: float,) -> RayHitInfo:
         """struct RayHitInfo GetCollisionRayGround(struct Ray, float);
@@ -894,720 +582,438 @@ def GetCollisionRayTriangle(Ray_0: Ray,Vector3_1: Vector3,Vector3_2: Vector3,Vec
 
 CFFI C function from raylib.static._raylib_cffi.lib"""
         ...
-def GetCollisionRec(Rectangle_0: Rectangle,Rectangle_1: Rectangle,) -> Rectangle:
-        """struct Rectangle GetCollisionRec(struct Rectangle, struct Rectangle);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetCollisionRec(rec1: Rectangle,rec2: Rectangle,) -> Rectangle:
+        """Get collision rectangle for two rectangles collision"""
         ...
-def GetColor(unsignedint_0: int,) -> Color:
-        """struct Color GetColor(unsigned int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetColor(hexValue: int,) -> Color:
+        """Get Color structure from hexadecimal value"""
         ...
 def GetCurrentMonitor() -> int:
-        """int GetCurrentMonitor();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get current connected monitor"""
         ...
-def GetDirectoryFiles(str_0: str,int_pointer_1: Any,) -> str:
-        """char * *GetDirectoryFiles(char *, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetDirectoryFiles(dirPath: str,count: Any,) -> str:
+        """Get filenames in a directory path (memory should be freed)"""
         ...
-def GetDirectoryPath(str_0: str,) -> str:
-        """char *GetDirectoryPath(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetDirectoryPath(filePath: str,) -> str:
+        """Get full path for a given fileName with path (uses static string)"""
         ...
-def GetDroppedFiles(int_pointer_0: Any,) -> str:
-        """char * *GetDroppedFiles(int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetDroppedFiles(count: Any,) -> str:
+        """Get dropped files names (memory should be freed)"""
         ...
 def GetFPS() -> int:
-        """int GetFPS();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get current FPS"""
         ...
-def GetFileExtension(str_0: str,) -> str:
-        """char *GetFileExtension(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetFileExtension(fileName: str,) -> str:
+        """Get pointer to extension for a filename string (includes dot: '.png')"""
         ...
-def GetFileModTime(str_0: str,) -> int:
-        """long GetFileModTime(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetFileModTime(fileName: str,) -> int:
+        """Get file modification time (last write time)"""
         ...
-def GetFileName(str_0: str,) -> str:
-        """char *GetFileName(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetFileName(filePath: str,) -> str:
+        """Get pointer to filename for a path string"""
         ...
-def GetFileNameWithoutExt(str_0: str,) -> str:
-        """char *GetFileNameWithoutExt(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetFileNameWithoutExt(filePath: str,) -> str:
+        """Get filename string without extension (uses static string)"""
         ...
 def GetFontDefault() -> Font:
-        """struct Font GetFontDefault();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get the default Font"""
         ...
 def GetFrameTime() -> float:
-        """float GetFrameTime();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get time in seconds for last frame drawn (delta time)"""
         ...
-def GetGamepadAxisCount(int_0: int,) -> int:
-        """int GetGamepadAxisCount(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetGamepadAxisCount(gamepad: int,) -> int:
+        """Get gamepad axis count for a gamepad"""
         ...
-def GetGamepadAxisMovement(int_0: int,int_1: int,) -> float:
-        """float GetGamepadAxisMovement(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetGamepadAxisMovement(gamepad: int,axis: int,) -> float:
+        """Get axis movement value for a gamepad axis"""
         ...
 def GetGamepadButtonPressed() -> int:
-        """int GetGamepadButtonPressed();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get the last gamepad button pressed"""
         ...
-def GetGamepadName(int_0: int,) -> str:
-        """char *GetGamepadName(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetGamepadName(gamepad: int,) -> str:
+        """Get gamepad internal name id"""
         ...
 def GetGestureDetected() -> int:
-        """int GetGestureDetected();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get latest detected gesture"""
         ...
 def GetGestureDragAngle() -> float:
-        """float GetGestureDragAngle();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get gesture drag angle"""
         ...
 def GetGestureDragVector() -> Vector2:
-        """struct Vector2 GetGestureDragVector();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get gesture drag vector"""
         ...
 def GetGestureHoldDuration() -> float:
-        """float GetGestureHoldDuration();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get gesture hold time in milliseconds"""
         ...
 def GetGesturePinchAngle() -> float:
-        """float GetGesturePinchAngle();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get gesture pinch angle"""
         ...
 def GetGesturePinchVector() -> Vector2:
-        """struct Vector2 GetGesturePinchVector();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get gesture pinch delta"""
         ...
-def GetGlyphIndex(Font_0: Font,int_1: int,) -> int:
-        """int GetGlyphIndex(struct Font, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetGlyphIndex(font: Font,codepoint: int,) -> int:
+        """Get index position for a unicode character on font"""
         ...
-def GetImageAlphaBorder(Image_0: Image,float_1: float,) -> Rectangle:
-        """struct Rectangle GetImageAlphaBorder(struct Image, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetImageAlphaBorder(image: Image,threshold: float,) -> Rectangle:
+        """Get image alpha border rectangle"""
         ...
 def GetKeyPressed() -> int:
-        """int GetKeyPressed();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get key pressed (keycode), call it multiple times for keys queued"""
         ...
 def GetMonitorCount() -> int:
-        """int GetMonitorCount();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get number of connected monitors"""
         ...
-def GetMonitorHeight(int_0: int,) -> int:
-        """int GetMonitorHeight(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMonitorHeight(monitor: int,) -> int:
+        """Get specified monitor height (max available by monitor)"""
         ...
-def GetMonitorName(int_0: int,) -> str:
-        """char *GetMonitorName(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMonitorName(monitor: int,) -> str:
+        """Get the human-readable, UTF-8 encoded name of the primary monitor"""
         ...
-def GetMonitorPhysicalHeight(int_0: int,) -> int:
-        """int GetMonitorPhysicalHeight(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMonitorPhysicalHeight(monitor: int,) -> int:
+        """Get specified monitor physical height in millimetres"""
         ...
-def GetMonitorPhysicalWidth(int_0: int,) -> int:
-        """int GetMonitorPhysicalWidth(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMonitorPhysicalWidth(monitor: int,) -> int:
+        """Get specified monitor physical width in millimetres"""
         ...
-def GetMonitorPosition(int_0: int,) -> Vector2:
-        """struct Vector2 GetMonitorPosition(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMonitorPosition(monitor: int,) -> Vector2:
+        """Get specified monitor position"""
         ...
-def GetMonitorRefreshRate(int_0: int,) -> int:
-        """int GetMonitorRefreshRate(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMonitorRefreshRate(monitor: int,) -> int:
+        """Get specified monitor refresh rate"""
         ...
-def GetMonitorWidth(int_0: int,) -> int:
-        """int GetMonitorWidth(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMonitorWidth(monitor: int,) -> int:
+        """Get specified monitor width (max available by monitor)"""
         ...
 def GetMousePosition() -> Vector2:
-        """struct Vector2 GetMousePosition();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get mouse position XY"""
         ...
-def GetMouseRay(Vector2_0: Vector2,Camera3D_1: Camera3D,) -> Ray:
-        """struct Ray GetMouseRay(struct Vector2, struct Camera3D);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMouseRay(mousePosition: Vector2,camera: Camera3D,) -> Ray:
+        """Get a ray trace from mouse position"""
         ...
 def GetMouseWheelMove() -> float:
-        """float GetMouseWheelMove();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get mouse wheel movement Y"""
         ...
 def GetMouseX() -> int:
-        """int GetMouseX();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get mouse position X"""
         ...
 def GetMouseY() -> int:
-        """int GetMouseY();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get mouse position Y"""
         ...
-def GetMusicTimeLength(Music_0: Music,) -> float:
-        """float GetMusicTimeLength(struct Music);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMusicTimeLength(music: Music,) -> float:
+        """Get music time length (in seconds)"""
         ...
-def GetMusicTimePlayed(Music_0: Music,) -> float:
-        """float GetMusicTimePlayed(struct Music);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetMusicTimePlayed(music: Music,) -> float:
+        """Get current music time played (in seconds)"""
         ...
-def GetNextCodepoint(str_0: str,int_pointer_1: Any,) -> int:
-        """int GetNextCodepoint(char *, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetNextCodepoint(text: str,bytesProcessed: Any,) -> int:
+        """Get next codepoint in a UTF8 encoded string; 0x3f('?') is returned on failure"""
         ...
-def GetPixelColor(void_pointer_0: Any,int_1: int,) -> Color:
-        """struct Color GetPixelColor(void *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetPixelColor(srcPtr: Any,format: int,) -> Color:
+        """Get Color from a source pixel pointer of certain format"""
         ...
-def GetPixelDataSize(int_0: int,int_1: int,int_2: int,) -> int:
-        """int GetPixelDataSize(int, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetPixelDataSize(width: int,height: int,format: int,) -> int:
+        """Get pixel data size in bytes for certain format"""
         ...
-def GetPrevDirectoryPath(str_0: str,) -> str:
-        """char *GetPrevDirectoryPath(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetPrevDirectoryPath(dirPath: str,) -> str:
+        """Get previous directory path for a given path (uses static string)"""
         ...
-def GetRandomValue(int_0: int,int_1: int,) -> int:
-        """int GetRandomValue(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetRandomValue(min: int,max: int,) -> int:
+        """Get a random value between min and max (both included)"""
         ...
 def GetScreenData() -> Image:
-        """struct Image GetScreenData();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get pixel data from screen buffer and return an Image (screenshot)"""
         ...
 def GetScreenHeight() -> int:
-        """int GetScreenHeight();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get current screen height"""
         ...
-def GetScreenToWorld2D(Vector2_0: Vector2,Camera2D_1: Camera2D,) -> Vector2:
-        """struct Vector2 GetScreenToWorld2D(struct Vector2, struct Camera2D);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetScreenToWorld2D(position: Vector2,camera: Camera2D,) -> Vector2:
+        """Get the world space position for a 2d camera screen space position"""
         ...
 def GetScreenWidth() -> int:
-        """int GetScreenWidth();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get current screen width"""
         ...
-def GetShaderLocation(Shader_0: Shader,str_1: str,) -> int:
-        """int GetShaderLocation(struct Shader, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetShaderLocation(shader: Shader,uniformName: str,) -> int:
+        """Get shader uniform location"""
         ...
-def GetShaderLocationAttrib(Shader_0: Shader,str_1: str,) -> int:
-        """int GetShaderLocationAttrib(struct Shader, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetShaderLocationAttrib(shader: Shader,attribName: str,) -> int:
+        """Get shader attribute location"""
         ...
 def GetSoundsPlaying() -> int:
-        """int GetSoundsPlaying();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get number of sounds playing in the multichannel"""
         ...
-def GetTextureData(Texture_0: Texture,) -> Image:
-        """struct Image GetTextureData(struct Texture);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetTextureData(texture: Texture,) -> Image:
+        """Get pixel data from GPU texture and return an Image"""
         ...
 def GetTime() -> float:
-        """double GetTime();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get elapsed time in seconds since InitWindow()"""
         ...
 def GetTouchPointsCount() -> int:
-        """int GetTouchPointsCount();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get touch points count"""
         ...
-def GetTouchPosition(int_0: int,) -> Vector2:
-        """struct Vector2 GetTouchPosition(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetTouchPosition(index: int,) -> Vector2:
+        """Get touch position XY for a touch point index (relative to screen size)"""
         ...
 def GetTouchX() -> int:
-        """int GetTouchX();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get touch position X for touch point 0 (relative to screen size)"""
         ...
 def GetTouchY() -> int:
-        """int GetTouchY();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get touch position Y for touch point 0 (relative to screen size)"""
         ...
 def GetWindowHandle() -> Any:
-        """void *GetWindowHandle();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get native window handle"""
         ...
 def GetWindowPosition() -> Vector2:
-        """struct Vector2 GetWindowPosition();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get window position XY on monitor"""
         ...
 def GetWindowScaleDPI() -> Vector2:
-        """struct Vector2 GetWindowScaleDPI();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get window scale DPI factor"""
         ...
 def GetWorkingDirectory() -> str:
-        """char *GetWorkingDirectory();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Get current working directory (uses static string)"""
         ...
-def GetWorldToScreen(Vector3_0: Vector3,Camera3D_1: Camera3D,) -> Vector2:
-        """struct Vector2 GetWorldToScreen(struct Vector3, struct Camera3D);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetWorldToScreen(position: Vector3,camera: Camera3D,) -> Vector2:
+        """Get the screen space position for a 3d world space position"""
         ...
-def GetWorldToScreen2D(Vector2_0: Vector2,Camera2D_1: Camera2D,) -> Vector2:
-        """struct Vector2 GetWorldToScreen2D(struct Vector2, struct Camera2D);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetWorldToScreen2D(position: Vector2,camera: Camera2D,) -> Vector2:
+        """Get the screen space position for a 2d camera world space position"""
         ...
-def GetWorldToScreenEx(Vector3_0: Vector3,Camera3D_1: Camera3D,int_2: int,int_3: int,) -> Vector2:
-        """struct Vector2 GetWorldToScreenEx(struct Vector3, struct Camera3D, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def GetWorldToScreenEx(position: Vector3,camera: Camera3D,width: int,height: int,) -> Vector2:
+        """Get size position for a 3d world space position"""
         ...
 def HideCursor() -> None:
-        """void HideCursor();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Hides cursor"""
         ...
-def ImageAlphaClear(Image_pointer_0: Any,Color_1: Color,float_2: float,) -> None:
-        """void ImageAlphaClear(struct Image *, struct Color, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageAlphaClear(image: Any,color: Color,threshold: float,) -> None:
+        """Clear alpha channel to desired color"""
         ...
-def ImageAlphaCrop(Image_pointer_0: Any,float_1: float,) -> None:
-        """void ImageAlphaCrop(struct Image *, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageAlphaCrop(image: Any,threshold: float,) -> None:
+        """Crop image depending on alpha value"""
         ...
-def ImageAlphaMask(Image_pointer_0: Any,Image_1: Image,) -> None:
-        """void ImageAlphaMask(struct Image *, struct Image);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageAlphaMask(image: Any,alphaMask: Image,) -> None:
+        """Apply alpha mask to image"""
         ...
-def ImageAlphaPremultiply(Image_pointer_0: Any,) -> None:
-        """void ImageAlphaPremultiply(struct Image *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageAlphaPremultiply(image: Any,) -> None:
+        """Premultiply alpha channel"""
         ...
-def ImageClearBackground(Image_pointer_0: Any,Color_1: Color,) -> None:
-        """void ImageClearBackground(struct Image *, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageClearBackground(dst: Any,color: Color,) -> None:
+        """Clear image background with given color"""
         ...
-def ImageColorBrightness(Image_pointer_0: Any,int_1: int,) -> None:
-        """void ImageColorBrightness(struct Image *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageColorBrightness(image: Any,brightness: int,) -> None:
+        """Modify image color: brightness (-255 to 255)"""
         ...
-def ImageColorContrast(Image_pointer_0: Any,float_1: float,) -> None:
-        """void ImageColorContrast(struct Image *, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageColorContrast(image: Any,contrast: float,) -> None:
+        """Modify image color: contrast (-100 to 100)"""
         ...
-def ImageColorGrayscale(Image_pointer_0: Any,) -> None:
-        """void ImageColorGrayscale(struct Image *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageColorGrayscale(image: Any,) -> None:
+        """Modify image color: grayscale"""
         ...
-def ImageColorInvert(Image_pointer_0: Any,) -> None:
-        """void ImageColorInvert(struct Image *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageColorInvert(image: Any,) -> None:
+        """Modify image color: invert"""
         ...
-def ImageColorReplace(Image_pointer_0: Any,Color_1: Color,Color_2: Color,) -> None:
-        """void ImageColorReplace(struct Image *, struct Color, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageColorReplace(image: Any,color: Color,replace: Color,) -> None:
+        """Modify image color: replace color"""
         ...
-def ImageColorTint(Image_pointer_0: Any,Color_1: Color,) -> None:
-        """void ImageColorTint(struct Image *, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageColorTint(image: Any,color: Color,) -> None:
+        """Modify image color: tint"""
         ...
-def ImageCopy(Image_0: Image,) -> Image:
-        """struct Image ImageCopy(struct Image);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageCopy(image: Image,) -> Image:
+        """Create an image duplicate (useful for transformations)"""
         ...
-def ImageCrop(Image_pointer_0: Any,Rectangle_1: Rectangle,) -> None:
-        """void ImageCrop(struct Image *, struct Rectangle);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageCrop(image: Any,crop: Rectangle,) -> None:
+        """Crop an image to a defined rectangle"""
         ...
-def ImageDither(Image_pointer_0: Any,int_1: int,int_2: int,int_3: int,int_4: int,) -> None:
-        """void ImageDither(struct Image *, int, int, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDither(image: Any,rBpp: int,gBpp: int,bBpp: int,aBpp: int,) -> None:
+        """Dither image data to 16bpp or lower (Floyd-Steinberg dithering)"""
         ...
-def ImageDraw(Image_pointer_0: Any,Image_1: Image,Rectangle_2: Rectangle,Rectangle_3: Rectangle,Color_4: Color,) -> None:
-        """void ImageDraw(struct Image *, struct Image, struct Rectangle, struct Rectangle, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDraw(dst: Any,src: Image,srcRec: Rectangle,dstRec: Rectangle,tint: Color,) -> None:
+        """Draw a source image within a destination image (tint applied to source)"""
         ...
-def ImageDrawCircle(Image_pointer_0: Any,int_1: int,int_2: int,int_3: int,Color_4: Color,) -> None:
-        """void ImageDrawCircle(struct Image *, int, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawCircle(dst: Any,centerX: int,centerY: int,radius: int,color: Color,) -> None:
+        """Draw circle within an image"""
         ...
-def ImageDrawCircleV(Image_pointer_0: Any,Vector2_1: Vector2,int_2: int,Color_3: Color,) -> None:
-        """void ImageDrawCircleV(struct Image *, struct Vector2, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawCircleV(dst: Any,center: Vector2,radius: int,color: Color,) -> None:
+        """Draw circle within an image (Vector version)"""
         ...
-def ImageDrawLine(Image_pointer_0: Any,int_1: int,int_2: int,int_3: int,int_4: int,Color_5: Color,) -> None:
-        """void ImageDrawLine(struct Image *, int, int, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawLine(dst: Any,startPosX: int,startPosY: int,endPosX: int,endPosY: int,color: Color,) -> None:
+        """Draw line within an image"""
         ...
-def ImageDrawLineV(Image_pointer_0: Any,Vector2_1: Vector2,Vector2_2: Vector2,Color_3: Color,) -> None:
-        """void ImageDrawLineV(struct Image *, struct Vector2, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawLineV(dst: Any,start: Vector2,end: Vector2,color: Color,) -> None:
+        """Draw line within an image (Vector version)"""
         ...
-def ImageDrawPixel(Image_pointer_0: Any,int_1: int,int_2: int,Color_3: Color,) -> None:
-        """void ImageDrawPixel(struct Image *, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawPixel(dst: Any,posX: int,posY: int,color: Color,) -> None:
+        """Draw pixel within an image"""
         ...
-def ImageDrawPixelV(Image_pointer_0: Any,Vector2_1: Vector2,Color_2: Color,) -> None:
-        """void ImageDrawPixelV(struct Image *, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawPixelV(dst: Any,position: Vector2,color: Color,) -> None:
+        """Draw pixel within an image (Vector version)"""
         ...
-def ImageDrawRectangle(Image_pointer_0: Any,int_1: int,int_2: int,int_3: int,int_4: int,Color_5: Color,) -> None:
-        """void ImageDrawRectangle(struct Image *, int, int, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawRectangle(dst: Any,posX: int,posY: int,width: int,height: int,color: Color,) -> None:
+        """Draw rectangle within an image"""
         ...
-def ImageDrawRectangleLines(Image_pointer_0: Any,Rectangle_1: Rectangle,int_2: int,Color_3: Color,) -> None:
-        """void ImageDrawRectangleLines(struct Image *, struct Rectangle, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawRectangleLines(dst: Any,rec: Rectangle,thick: int,color: Color,) -> None:
+        """Draw rectangle lines within an image"""
         ...
-def ImageDrawRectangleRec(Image_pointer_0: Any,Rectangle_1: Rectangle,Color_2: Color,) -> None:
-        """void ImageDrawRectangleRec(struct Image *, struct Rectangle, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawRectangleRec(dst: Any,rec: Rectangle,color: Color,) -> None:
+        """Draw rectangle within an image"""
         ...
-def ImageDrawRectangleV(Image_pointer_0: Any,Vector2_1: Vector2,Vector2_2: Vector2,Color_3: Color,) -> None:
-        """void ImageDrawRectangleV(struct Image *, struct Vector2, struct Vector2, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawRectangleV(dst: Any,position: Vector2,size: Vector2,color: Color,) -> None:
+        """Draw rectangle within an image (Vector version)"""
         ...
-def ImageDrawText(Image_pointer_0: Any,str_1: str,int_2: int,int_3: int,int_4: int,Color_5: Color,) -> None:
-        """void ImageDrawText(struct Image *, char *, int, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawText(dst: Any,text: str,posX: int,posY: int,fontSize: int,color: Color,) -> None:
+        """Draw text (using default font) within an image (destination)"""
         ...
-def ImageDrawTextEx(Image_pointer_0: Any,Font_1: Font,str_2: str,Vector2_3: Vector2,float_4: float,float_5: float,Color_6: Color,) -> None:
-        """void ImageDrawTextEx(struct Image *, struct Font, char *, struct Vector2, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageDrawTextEx(dst: Any,font: Font,text: str,position: Vector2,fontSize: float,spacing: float,tint: Color,) -> None:
+        """Draw text (custom sprite font) within an image (destination)"""
         ...
-def ImageFlipHorizontal(Image_pointer_0: Any,) -> None:
-        """void ImageFlipHorizontal(struct Image *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageFlipHorizontal(image: Any,) -> None:
+        """Flip image horizontally"""
         ...
-def ImageFlipVertical(Image_pointer_0: Any,) -> None:
-        """void ImageFlipVertical(struct Image *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageFlipVertical(image: Any,) -> None:
+        """Flip image vertically"""
         ...
-def ImageFormat(Image_pointer_0: Any,int_1: int,) -> None:
-        """void ImageFormat(struct Image *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageFormat(image: Any,newFormat: int,) -> None:
+        """Convert image data to desired format"""
         ...
-def ImageFromImage(Image_0: Image,Rectangle_1: Rectangle,) -> Image:
-        """struct Image ImageFromImage(struct Image, struct Rectangle);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageFromImage(image: Image,rec: Rectangle,) -> Image:
+        """Create an image from another image piece"""
         ...
-def ImageMipmaps(Image_pointer_0: Any,) -> None:
-        """void ImageMipmaps(struct Image *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageMipmaps(image: Any,) -> None:
+        """Compute all mipmap levels for a provided image"""
         ...
-def ImageResize(Image_pointer_0: Any,int_1: int,int_2: int,) -> None:
-        """void ImageResize(struct Image *, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageResize(image: Any,newWidth: int,newHeight: int,) -> None:
+        """Resize image (Bicubic scaling algorithm)"""
         ...
-def ImageResizeCanvas(Image_pointer_0: Any,int_1: int,int_2: int,int_3: int,int_4: int,Color_5: Color,) -> None:
-        """void ImageResizeCanvas(struct Image *, int, int, int, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageResizeCanvas(image: Any,newWidth: int,newHeight: int,offsetX: int,offsetY: int,fill: Color,) -> None:
+        """Resize canvas and fill with color"""
         ...
-def ImageResizeNN(Image_pointer_0: Any,int_1: int,int_2: int,) -> None:
-        """void ImageResizeNN(struct Image *, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageResizeNN(image: Any,newWidth: int,newHeight: int,) -> None:
+        """Resize image (Nearest-Neighbor scaling algorithm)"""
         ...
-def ImageRotateCCW(Image_pointer_0: Any,) -> None:
-        """void ImageRotateCCW(struct Image *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageRotateCCW(image: Any,) -> None:
+        """Rotate image counter-clockwise 90deg"""
         ...
-def ImageRotateCW(Image_pointer_0: Any,) -> None:
-        """void ImageRotateCW(struct Image *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageRotateCW(image: Any,) -> None:
+        """Rotate image clockwise 90deg"""
         ...
-def ImageText(str_0: str,int_1: int,Color_2: Color,) -> Image:
-        """struct Image ImageText(char *, int, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageText(text: str,fontSize: int,color: Color,) -> Image:
+        """Create an image from text (default font)"""
         ...
-def ImageTextEx(Font_0: Font,str_1: str,float_2: float,float_3: float,Color_4: Color,) -> Image:
-        """struct Image ImageTextEx(struct Font, char *, float, float, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageTextEx(font: Font,text: str,fontSize: float,spacing: float,tint: Color,) -> Image:
+        """Create an image from text (custom sprite font)"""
         ...
-def ImageToPOT(Image_pointer_0: Any,Color_1: Color,) -> None:
-        """void ImageToPOT(struct Image *, struct Color);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ImageToPOT(image: Any,fill: Color,) -> None:
+        """Convert image to POT (power-of-two)"""
         ...
 def InitAudioDevice() -> None:
-        """void InitAudioDevice();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Initialize audio device and context"""
         ...
 def InitAudioStream(unsignedint_0: int,unsignedint_1: int,unsignedint_2: int,) -> AudioStream:
         """struct AudioStream InitAudioStream(unsigned int, unsigned int, unsigned int);
 
 CFFI C function from raylib.static._raylib_cffi.lib"""
         ...
-def InitWindow(int_0: int,int_1: int,str_2: str,) -> None:
-        """void InitWindow(int, int, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def InitWindow(width: int,height: int,title: str,) -> None:
+        """Initialize window and OpenGL context"""
         ...
 def IsAudioDeviceReady() -> bool:
-        """_Bool IsAudioDeviceReady();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if audio device has been initialized successfully"""
         ...
-def IsAudioStreamPlaying(AudioStream_0: AudioStream,) -> bool:
-        """_Bool IsAudioStreamPlaying(struct AudioStream);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsAudioStreamPlaying(stream: AudioStream,) -> bool:
+        """Check if audio stream is playing"""
         ...
-def IsAudioStreamProcessed(AudioStream_0: AudioStream,) -> bool:
-        """_Bool IsAudioStreamProcessed(struct AudioStream);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsAudioStreamProcessed(stream: AudioStream,) -> bool:
+        """Check if any audio stream buffers requires refill"""
         ...
 def IsCursorHidden() -> bool:
-        """_Bool IsCursorHidden();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if cursor is not visible"""
         ...
 def IsCursorOnScreen() -> bool:
-        """_Bool IsCursorOnScreen();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if cursor is on the screen"""
         ...
 def IsFileDropped() -> bool:
-        """_Bool IsFileDropped();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if a file has been dropped into window"""
         ...
-def IsFileExtension(str_0: str,str_1: str,) -> bool:
-        """_Bool IsFileExtension(char *, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsFileExtension(fileName: str,ext: str,) -> bool:
+        """Check file extension (including point: .png, .wav)"""
         ...
-def IsGamepadAvailable(int_0: int,) -> bool:
-        """_Bool IsGamepadAvailable(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsGamepadAvailable(gamepad: int,) -> bool:
+        """Check if a gamepad is available"""
         ...
-def IsGamepadButtonDown(int_0: int,int_1: int,) -> bool:
-        """_Bool IsGamepadButtonDown(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsGamepadButtonDown(gamepad: int,button: int,) -> bool:
+        """Check if a gamepad button is being pressed"""
         ...
-def IsGamepadButtonPressed(int_0: int,int_1: int,) -> bool:
-        """_Bool IsGamepadButtonPressed(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsGamepadButtonPressed(gamepad: int,button: int,) -> bool:
+        """Check if a gamepad button has been pressed once"""
         ...
-def IsGamepadButtonReleased(int_0: int,int_1: int,) -> bool:
-        """_Bool IsGamepadButtonReleased(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsGamepadButtonReleased(gamepad: int,button: int,) -> bool:
+        """Check if a gamepad button has been released once"""
         ...
-def IsGamepadButtonUp(int_0: int,int_1: int,) -> bool:
-        """_Bool IsGamepadButtonUp(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsGamepadButtonUp(gamepad: int,button: int,) -> bool:
+        """Check if a gamepad button is NOT being pressed"""
         ...
-def IsGamepadName(int_0: int,str_1: str,) -> bool:
-        """_Bool IsGamepadName(int, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsGamepadName(gamepad: int,name: str,) -> bool:
+        """Check gamepad name (if available)"""
         ...
-def IsGestureDetected(int_0: int,) -> bool:
-        """_Bool IsGestureDetected(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsGestureDetected(gesture: int,) -> bool:
+        """Check if a gesture have been detected"""
         ...
-def IsKeyDown(int_0: int,) -> bool:
-        """_Bool IsKeyDown(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsKeyDown(key: int,) -> bool:
+        """Check if a key is being pressed"""
         ...
-def IsKeyPressed(int_0: int,) -> bool:
-        """_Bool IsKeyPressed(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsKeyPressed(key: int,) -> bool:
+        """Check if a key has been pressed once"""
         ...
-def IsKeyReleased(int_0: int,) -> bool:
-        """_Bool IsKeyReleased(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsKeyReleased(key: int,) -> bool:
+        """Check if a key has been released once"""
         ...
-def IsKeyUp(int_0: int,) -> bool:
-        """_Bool IsKeyUp(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsKeyUp(key: int,) -> bool:
+        """Check if a key is NOT being pressed"""
         ...
-def IsModelAnimationValid(Model_0: Model,ModelAnimation_1: ModelAnimation,) -> bool:
-        """_Bool IsModelAnimationValid(struct Model, struct ModelAnimation);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsModelAnimationValid(model: Model,anim: ModelAnimation,) -> bool:
+        """Check model animation skeleton match"""
         ...
-def IsMouseButtonDown(int_0: int,) -> bool:
-        """_Bool IsMouseButtonDown(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsMouseButtonDown(button: int,) -> bool:
+        """Check if a mouse button is being pressed"""
         ...
-def IsMouseButtonPressed(int_0: int,) -> bool:
-        """_Bool IsMouseButtonPressed(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsMouseButtonPressed(button: int,) -> bool:
+        """Check if a mouse button has been pressed once"""
         ...
-def IsMouseButtonReleased(int_0: int,) -> bool:
-        """_Bool IsMouseButtonReleased(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsMouseButtonReleased(button: int,) -> bool:
+        """Check if a mouse button has been released once"""
         ...
-def IsMouseButtonUp(int_0: int,) -> bool:
-        """_Bool IsMouseButtonUp(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsMouseButtonUp(button: int,) -> bool:
+        """Check if a mouse button is NOT being pressed"""
         ...
 def IsMusicPlaying(Music_0: Music,) -> bool:
         """_Bool IsMusicPlaying(struct Music);
 
 CFFI C function from raylib.static._raylib_cffi.lib"""
         ...
-def IsSoundPlaying(Sound_0: Sound,) -> bool:
-        """_Bool IsSoundPlaying(struct Sound);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsSoundPlaying(sound: Sound,) -> bool:
+        """Check if a sound is currently playing"""
         ...
 def IsWindowFocused() -> bool:
-        """_Bool IsWindowFocused();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if window is currently focused (only PLATFORM_DESKTOP)"""
         ...
 def IsWindowFullscreen() -> bool:
-        """_Bool IsWindowFullscreen();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if window is currently fullscreen"""
         ...
 def IsWindowHidden() -> bool:
-        """_Bool IsWindowHidden();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if window is currently hidden (only PLATFORM_DESKTOP)"""
         ...
 def IsWindowMaximized() -> bool:
-        """_Bool IsWindowMaximized();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if window is currently maximized (only PLATFORM_DESKTOP)"""
         ...
 def IsWindowMinimized() -> bool:
-        """_Bool IsWindowMinimized();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if window is currently minimized (only PLATFORM_DESKTOP)"""
         ...
 def IsWindowReady() -> bool:
-        """_Bool IsWindowReady();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if window has been initialized successfully"""
         ...
 def IsWindowResized() -> bool:
-        """_Bool IsWindowResized();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if window has been resized last frame"""
         ...
-def IsWindowState(unsignedint_0: int,) -> bool:
-        """_Bool IsWindowState(unsigned int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def IsWindowState(flag: int,) -> bool:
+        """Check if one specific window flag is enabled"""
         ...
 KEY_A: int
 KEY_APOSTROPHE: int
@@ -1727,170 +1133,104 @@ LOG_INFO: int
 LOG_NONE: int
 LOG_TRACE: int
 LOG_WARNING: int
-def LoadFileData(str_0: str,unsignedint_pointer_1: Any,) -> str:
-        """unsigned char *LoadFileData(char *, unsigned int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadFileData(fileName: str,bytesRead: Any,) -> str:
+        """Load file data as byte array (read)"""
         ...
-def LoadFileText(str_0: str,) -> str:
-        """char *LoadFileText(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadFileText(fileName: str,) -> str:
+        """Load text data from file (read), returns a ' 0' terminated string"""
         ...
-def LoadFont(str_0: str,) -> Font:
-        """struct Font LoadFont(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadFont(fileName: str,) -> Font:
+        """Load font from file into GPU memory (VRAM)"""
         ...
-def LoadFontData(unsignedstr_0: str,int_1: int,int_2: int,int_pointer_3: Any,int_4: int,int_5: int,) -> Any:
-        """struct CharInfo *LoadFontData(unsigned char *, int, int, int *, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadFontData(fileData: str,dataSize: int,fontSize: int,fontChars: Any,charsCount: int,type: int,) -> Any:
+        """Load font data for further use"""
         ...
-def LoadFontEx(str_0: str,int_1: int,int_pointer_2: Any,int_3: int,) -> Font:
-        """struct Font LoadFontEx(char *, int, int *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadFontEx(fileName: str,fontSize: int,fontChars: Any,charsCount: int,) -> Font:
+        """Load font from file with extended parameters"""
         ...
-def LoadFontFromImage(Image_0: Image,Color_1: Color,int_2: int,) -> Font:
-        """struct Font LoadFontFromImage(struct Image, struct Color, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadFontFromImage(image: Image,key: Color,firstChar: int,) -> Font:
+        """Load font from Image (XNA style)"""
         ...
-def LoadFontFromMemory(str_0: str,unsignedstr_1: str,int_2: int,int_3: int,int_pointer_4: Any,int_5: int,) -> Font:
-        """struct Font LoadFontFromMemory(char *, unsigned char *, int, int, int *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadFontFromMemory(fileType: str,fileData: str,dataSize: int,fontSize: int,fontChars: Any,charsCount: int,) -> Font:
+        """Load font from memory buffer, fileType refers to extension: i.e. '.ttf'"""
         ...
-def LoadImage(str_0: str,) -> Image:
-        """struct Image LoadImage(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadImage(fileName: str,) -> Image:
+        """Load image from file into CPU memory (RAM)"""
         ...
-def LoadImageAnim(str_0: str,int_pointer_1: Any,) -> Image:
-        """struct Image LoadImageAnim(char *, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadImageAnim(fileName: str,frames: Any,) -> Image:
+        """Load image sequence from file (frames appended to image.data)"""
         ...
-def LoadImageColors(Image_0: Image,) -> Any:
-        """struct Color *LoadImageColors(struct Image);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadImageColors(image: Image,) -> Any:
+        """Load color data from image as a Color array (RGBA - 32bit)"""
         ...
-def LoadImageFromMemory(str_0: str,unsignedstr_1: str,int_2: int,) -> Image:
-        """struct Image LoadImageFromMemory(char *, unsigned char *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadImageFromMemory(fileType: str,fileData: str,dataSize: int,) -> Image:
+        """Load image from memory buffer, fileType refers to extension: i.e. '.png'"""
         ...
-def LoadImagePalette(Image_0: Image,int_1: int,int_pointer_2: Any,) -> Any:
-        """struct Color *LoadImagePalette(struct Image, int, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadImagePalette(image: Image,maxPaletteSize: int,colorsCount: Any,) -> Any:
+        """Load colors palette from image as a Color array (RGBA - 32bit)"""
         ...
-def LoadImageRaw(str_0: str,int_1: int,int_2: int,int_3: int,int_4: int,) -> Image:
-        """struct Image LoadImageRaw(char *, int, int, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadImageRaw(fileName: str,width: int,height: int,format: int,headerSize: int,) -> Image:
+        """Load image from RAW file data"""
         ...
 def LoadMaterialDefault() -> Material:
-        """struct Material LoadMaterialDefault();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Load default material (Supports: DIFFUSE, SPECULAR, NORMAL maps)"""
         ...
-def LoadMaterials(str_0: str,int_pointer_1: Any,) -> Any:
-        """struct Material *LoadMaterials(char *, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadMaterials(fileName: str,materialCount: Any,) -> Any:
+        """Load materials from model file"""
         ...
-def LoadModel(str_0: str,) -> Model:
-        """struct Model LoadModel(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadModel(fileName: str,) -> Model:
+        """Load model from files (meshes and materials)"""
         ...
-def LoadModelAnimations(str_0: str,int_pointer_1: Any,) -> Any:
-        """struct ModelAnimation *LoadModelAnimations(char *, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadModelAnimations(fileName: str,animsCount: Any,) -> Any:
+        """Load model animations from file"""
         ...
-def LoadModelFromMesh(Mesh_0: Mesh,) -> Model:
-        """struct Model LoadModelFromMesh(struct Mesh);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadModelFromMesh(mesh: Mesh,) -> Model:
+        """Load model from generated mesh (default material)"""
         ...
-def LoadMusicStream(str_0: str,) -> Music:
-        """struct Music LoadMusicStream(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadMusicStream(fileName: str,) -> Music:
+        """Load music stream from file"""
         ...
-def LoadMusicStreamFromMemory(str_0: str,unsignedstr_1: str,int_2: int,) -> Music:
-        """struct Music LoadMusicStreamFromMemory(char *, unsigned char *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadMusicStreamFromMemory(fileType: str,data: str,dataSize: int,) -> Music:
+        """Load music stream from data"""
         ...
-def LoadRenderTexture(int_0: int,int_1: int,) -> RenderTexture:
-        """struct RenderTexture LoadRenderTexture(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadRenderTexture(width: int,height: int,) -> RenderTexture:
+        """Load texture for rendering (framebuffer)"""
         ...
-def LoadShader(str_0: str,str_1: str,) -> Shader:
-        """struct Shader LoadShader(char *, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadShader(vsFileName: str,fsFileName: str,) -> Shader:
+        """Load shader from files and bind default locations"""
         ...
-def LoadShaderFromMemory(str_0: str,str_1: str,) -> Shader:
-        """struct Shader LoadShaderFromMemory(char *, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadShaderFromMemory(vsCode: str,fsCode: str,) -> Shader:
+        """Load shader from code strings and bind default locations"""
         ...
-def LoadSound(str_0: str,) -> Sound:
-        """struct Sound LoadSound(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadSound(fileName: str,) -> Sound:
+        """Load sound from file"""
         ...
-def LoadSoundFromWave(Wave_0: Wave,) -> Sound:
-        """struct Sound LoadSoundFromWave(struct Wave);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadSoundFromWave(wave: Wave,) -> Sound:
+        """Load sound from wave data"""
         ...
-def LoadStorageValue(unsignedint_0: int,) -> int:
-        """int LoadStorageValue(unsigned int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadStorageValue(position: int,) -> int:
+        """Load integer value from storage file (from defined position)"""
         ...
-def LoadTexture(str_0: str,) -> Texture:
-        """struct Texture LoadTexture(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadTexture(fileName: str,) -> Texture:
+        """Load texture from file into GPU memory (VRAM)"""
         ...
-def LoadTextureCubemap(Image_0: Image,int_1: int,) -> Texture:
-        """struct Texture LoadTextureCubemap(struct Image, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadTextureCubemap(image: Image,layout: int,) -> Texture:
+        """Load cubemap from image, multiple image cubemap layouts supported"""
         ...
-def LoadTextureFromImage(Image_0: Image,) -> Texture:
-        """struct Texture LoadTextureFromImage(struct Image);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadTextureFromImage(image: Image,) -> Texture:
+        """Load texture from image data"""
         ...
-def LoadVrStereoConfig(VrDeviceInfo_0: VrDeviceInfo,) -> VrStereoConfig:
-        """struct VrStereoConfig LoadVrStereoConfig(struct VrDeviceInfo);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadVrStereoConfig(device: VrDeviceInfo,) -> VrStereoConfig:
+        """Load VR stereo config for VR simulator device parameters"""
         ...
-def LoadWave(str_0: str,) -> Wave:
-        """struct Wave LoadWave(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadWave(fileName: str,) -> Wave:
+        """Load wave data from file"""
         ...
-def LoadWaveFromMemory(str_0: str,unsignedstr_1: str,int_2: int,) -> Wave:
-        """struct Wave LoadWaveFromMemory(char *, unsigned char *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadWaveFromMemory(fileType: str,fileData: str,dataSize: int,) -> Wave:
+        """Load wave from memory buffer, fileType refers to extension: i.e. '.wav'"""
         ...
-def LoadWaveSamples(Wave_0: Wave,) -> Any:
-        """float *LoadWaveSamples(struct Wave);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def LoadWaveSamples(wave: Wave,) -> Any:
+        """Load samples data from wave as a floats array"""
         ...
 MATERIAL_MAP_ALBEDO: int
 MATERIAL_MAP_BRDG: int
@@ -1920,62 +1260,42 @@ MOUSE_LEFT_BUTTON: int
 MOUSE_MIDDLE_BUTTON: int
 MOUSE_RIGHT_BUTTON: int
 def MaximizeWindow() -> None:
-        """void MaximizeWindow();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Set window state: maximized, if resizable (only PLATFORM_DESKTOP)"""
         ...
-def MeasureText(str_0: str,int_1: int,) -> int:
-        """int MeasureText(char *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def MeasureText(text: str,fontSize: int,) -> int:
+        """Measure string width for default font"""
         ...
-def MeasureTextEx(Font_0: Font,str_1: str,float_2: float,float_3: float,) -> Vector2:
-        """struct Vector2 MeasureTextEx(struct Font, char *, float, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def MeasureTextEx(font: Font,text: str,fontSize: float,spacing: float,) -> Vector2:
+        """Measure string size for Font"""
         ...
-def MemAlloc(int_0: int,) -> Any:
-        """void *MemAlloc(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def MemAlloc(size: int,) -> Any:
+        """Internal memory allocator"""
         ...
-def MemFree(void_pointer_0: Any,) -> None:
-        """void MemFree(void *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def MemFree(ptr: Any,) -> None:
+        """Internal memory free"""
         ...
-def MemRealloc(void_pointer_0: Any,int_1: int,) -> Any:
-        """void *MemRealloc(void *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def MemRealloc(ptr: Any,size: int,) -> Any:
+        """Internal memory reallocator"""
         ...
-def MeshBinormals(Mesh_pointer_0: Any,) -> None:
-        """void MeshBinormals(struct Mesh *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def MeshBinormals(mesh: Any,) -> None:
+        """Compute mesh binormals"""
         ...
 def MeshBoundingBox(Mesh_0: Mesh,) -> BoundingBox:
         """struct BoundingBox MeshBoundingBox(struct Mesh);
 
 CFFI C function from raylib.static._raylib_cffi.lib"""
         ...
-def MeshTangents(Mesh_pointer_0: Any,) -> None:
-        """void MeshTangents(struct Mesh *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def MeshTangents(mesh: Any,) -> None:
+        """Compute mesh tangents"""
         ...
 def MinimizeWindow() -> None:
-        """void MinimizeWindow();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Set window state: minimized, if resizable (only PLATFORM_DESKTOP)"""
         ...
 NPATCH_NINE_PATCH: int
 NPATCH_THREE_PATCH_HORIZONTAL: int
 NPATCH_THREE_PATCH_VERTICAL: int
-def OpenURL(str_0: str,) -> None:
-        """void OpenURL(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def OpenURL(url: str,) -> None:
+        """Open URL with default system browser (if available)"""
         ...
 PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA: int
 PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA: int
@@ -1998,60 +1318,38 @@ PIXELFORMAT_UNCOMPRESSED_R5G5B5A1: int
 PIXELFORMAT_UNCOMPRESSED_R5G6B5: int
 PIXELFORMAT_UNCOMPRESSED_R8G8B8: int
 PIXELFORMAT_UNCOMPRESSED_R8G8B8A8: int
-def PauseAudioStream(AudioStream_0: AudioStream,) -> None:
-        """void PauseAudioStream(struct AudioStream);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def PauseAudioStream(stream: AudioStream,) -> None:
+        """Pause audio stream"""
         ...
-def PauseMusicStream(Music_0: Music,) -> None:
-        """void PauseMusicStream(struct Music);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def PauseMusicStream(music: Music,) -> None:
+        """Pause music playing"""
         ...
-def PauseSound(Sound_0: Sound,) -> None:
-        """void PauseSound(struct Sound);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def PauseSound(sound: Sound,) -> None:
+        """Pause a sound"""
         ...
-def PlayAudioStream(AudioStream_0: AudioStream,) -> None:
-        """void PlayAudioStream(struct AudioStream);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def PlayAudioStream(stream: AudioStream,) -> None:
+        """Play audio stream"""
         ...
-def PlayMusicStream(Music_0: Music,) -> None:
-        """void PlayMusicStream(struct Music);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def PlayMusicStream(music: Music,) -> None:
+        """Start music playing"""
         ...
-def PlaySound(Sound_0: Sound,) -> None:
-        """void PlaySound(struct Sound);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def PlaySound(sound: Sound,) -> None:
+        """Play a sound"""
         ...
-def PlaySoundMulti(Sound_0: Sound,) -> None:
-        """void PlaySoundMulti(struct Sound);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def PlaySoundMulti(sound: Sound,) -> None:
+        """Play a sound (using multichannel buffer pool)"""
         ...
 def RestoreWindow() -> None:
-        """void RestoreWindow();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Set window state: not minimized/maximized (only PLATFORM_DESKTOP)"""
         ...
-def ResumeAudioStream(AudioStream_0: AudioStream,) -> None:
-        """void ResumeAudioStream(struct AudioStream);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ResumeAudioStream(stream: AudioStream,) -> None:
+        """Resume audio stream"""
         ...
-def ResumeMusicStream(Music_0: Music,) -> None:
-        """void ResumeMusicStream(struct Music);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ResumeMusicStream(music: Music,) -> None:
+        """Resume playing paused music"""
         ...
-def ResumeSound(Sound_0: Sound,) -> None:
-        """void ResumeSound(struct Sound);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def ResumeSound(sound: Sound,) -> None:
+        """Resume a paused sound"""
         ...
 SHADER_LOC_COLOR_AMBIENT: int
 SHADER_LOC_COLOR_DIFFUSE: int
@@ -2090,250 +1388,152 @@ SHADER_UNIFORM_SAMPLER2D: int
 SHADER_UNIFORM_VEC2: int
 SHADER_UNIFORM_VEC3: int
 SHADER_UNIFORM_VEC4: int
-def SaveFileData(str_0: str,void_pointer_1: Any,unsignedint_2: int,) -> bool:
-        """_Bool SaveFileData(char *, void *, unsigned int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SaveFileData(fileName: str,data: Any,bytesToWrite: int,) -> bool:
+        """Save data to file from byte array (write), returns true on success"""
         ...
-def SaveFileText(str_0: str,str_1: str,) -> bool:
-        """_Bool SaveFileText(char *, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SaveFileText(fileName: str,text: str,) -> bool:
+        """Save text data to file (write), string must be ' 0' terminated, returns true on success"""
         ...
-def SaveStorageValue(unsignedint_0: int,int_1: int,) -> bool:
-        """_Bool SaveStorageValue(unsigned int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SaveStorageValue(position: int,value: int,) -> bool:
+        """Save integer value to storage file (to defined position), returns true on success"""
         ...
-def SetAudioStreamBufferSizeDefault(int_0: int,) -> None:
-        """void SetAudioStreamBufferSizeDefault(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetAudioStreamBufferSizeDefault(size: int,) -> None:
+        """Default size for new audio streams"""
         ...
-def SetAudioStreamPitch(AudioStream_0: AudioStream,float_1: float,) -> None:
-        """void SetAudioStreamPitch(struct AudioStream, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetAudioStreamPitch(stream: AudioStream,pitch: float,) -> None:
+        """Set pitch for audio stream (1.0 is base level)"""
         ...
-def SetAudioStreamVolume(AudioStream_0: AudioStream,float_1: float,) -> None:
-        """void SetAudioStreamVolume(struct AudioStream, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetAudioStreamVolume(stream: AudioStream,volume: float,) -> None:
+        """Set volume for audio stream (1.0 is max level)"""
         ...
-def SetCameraAltControl(int_0: int,) -> None:
-        """void SetCameraAltControl(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetCameraAltControl(keyAlt: int,) -> None:
+        """Set camera alt key to combine with mouse movement (free camera)"""
         ...
-def SetCameraMode(Camera3D_0: Camera3D,int_1: int,) -> None:
-        """void SetCameraMode(struct Camera3D, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetCameraMode(camera: Camera3D,mode: int,) -> None:
+        """Set camera mode (multiple camera modes available)"""
         ...
-def SetCameraMoveControls(int_0: int,int_1: int,int_2: int,int_3: int,int_4: int,int_5: int,) -> None:
-        """void SetCameraMoveControls(int, int, int, int, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetCameraMoveControls(keyFront: int,keyBack: int,keyRight: int,keyLeft: int,keyUp: int,keyDown: int,) -> None:
+        """Set camera move controls (1st person and 3rd person cameras)"""
         ...
-def SetCameraPanControl(int_0: int,) -> None:
-        """void SetCameraPanControl(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetCameraPanControl(keyPan: int,) -> None:
+        """Set camera pan key to combine with mouse movement (free camera)"""
         ...
-def SetCameraSmoothZoomControl(int_0: int,) -> None:
-        """void SetCameraSmoothZoomControl(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetCameraSmoothZoomControl(keySmoothZoom: int,) -> None:
+        """Set camera smooth zoom key to combine with mouse (free camera)"""
         ...
-def SetClipboardText(str_0: str,) -> None:
-        """void SetClipboardText(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetClipboardText(text: str,) -> None:
+        """Set clipboard text content"""
         ...
-def SetConfigFlags(unsignedint_0: int,) -> None:
-        """void SetConfigFlags(unsigned int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetConfigFlags(flags: int,) -> None:
+        """Setup init configuration flags (view FLAGS)"""
         ...
-def SetExitKey(int_0: int,) -> None:
-        """void SetExitKey(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetExitKey(key: int,) -> None:
+        """Set a custom key to exit program (default is ESC)"""
         ...
-def SetGamepadMappings(str_0: str,) -> int:
-        """int SetGamepadMappings(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetGamepadMappings(mappings: str,) -> int:
+        """Set internal gamepad mappings (SDL_GameControllerDB)"""
         ...
-def SetGesturesEnabled(unsignedint_0: int,) -> None:
-        """void SetGesturesEnabled(unsigned int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetGesturesEnabled(flags: int,) -> None:
+        """Enable a set of gestures using flags"""
         ...
-def SetMasterVolume(float_0: float,) -> None:
-        """void SetMasterVolume(float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetMasterVolume(volume: float,) -> None:
+        """Set master volume (listener)"""
         ...
-def SetMaterialTexture(Material_pointer_0: Any,int_1: int,Texture_2: Texture,) -> None:
-        """void SetMaterialTexture(struct Material *, int, struct Texture);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetMaterialTexture(material: Any,mapType: int,texture: Texture,) -> None:
+        """Set texture for a material map type (MATERIAL_MAP_DIFFUSE, MATERIAL_MAP_SPECULAR...)"""
         ...
-def SetModelMeshMaterial(Model_pointer_0: Any,int_1: int,int_2: int,) -> None:
-        """void SetModelMeshMaterial(struct Model *, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetModelMeshMaterial(model: Any,meshId: int,materialId: int,) -> None:
+        """Set material for a mesh"""
         ...
-def SetMouseCursor(int_0: int,) -> None:
-        """void SetMouseCursor(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetMouseCursor(cursor: int,) -> None:
+        """Set mouse cursor"""
         ...
-def SetMouseOffset(int_0: int,int_1: int,) -> None:
-        """void SetMouseOffset(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetMouseOffset(offsetX: int,offsetY: int,) -> None:
+        """Set mouse offset"""
         ...
-def SetMousePosition(int_0: int,int_1: int,) -> None:
-        """void SetMousePosition(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetMousePosition(x: int,y: int,) -> None:
+        """Set mouse position XY"""
         ...
-def SetMouseScale(float_0: float,float_1: float,) -> None:
-        """void SetMouseScale(float, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetMouseScale(scaleX: float,scaleY: float,) -> None:
+        """Set mouse scaling"""
         ...
-def SetMusicPitch(Music_0: Music,float_1: float,) -> None:
-        """void SetMusicPitch(struct Music, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetMusicPitch(music: Music,pitch: float,) -> None:
+        """Set pitch for a music (1.0 is base level)"""
         ...
-def SetMusicVolume(Music_0: Music,float_1: float,) -> None:
-        """void SetMusicVolume(struct Music, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetMusicVolume(music: Music,volume: float,) -> None:
+        """Set volume for music (1.0 is max level)"""
         ...
-def SetPixelColor(void_pointer_0: Any,Color_1: Color,int_2: int,) -> None:
-        """void SetPixelColor(void *, struct Color, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetPixelColor(dstPtr: Any,color: Color,format: int,) -> None:
+        """Set color formatted into destination pixel pointer"""
         ...
-def SetShaderValue(Shader_0: Shader,int_1: int,void_pointer_2: Any,int_3: int,) -> None:
-        """void SetShaderValue(struct Shader, int, void *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetShaderValue(shader: Shader,locIndex: int,value: Any,uniformType: int,) -> None:
+        """Set shader uniform value"""
         ...
-def SetShaderValueMatrix(Shader_0: Shader,int_1: int,Matrix_2: Matrix,) -> None:
-        """void SetShaderValueMatrix(struct Shader, int, struct Matrix);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetShaderValueMatrix(shader: Shader,locIndex: int,mat: Matrix,) -> None:
+        """Set shader uniform value (matrix 4x4)"""
         ...
-def SetShaderValueTexture(Shader_0: Shader,int_1: int,Texture_2: Texture,) -> None:
-        """void SetShaderValueTexture(struct Shader, int, struct Texture);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetShaderValueTexture(shader: Shader,locIndex: int,texture: Texture,) -> None:
+        """Set shader uniform value for texture (sampler2d)"""
         ...
-def SetShaderValueV(Shader_0: Shader,int_1: int,void_pointer_2: Any,int_3: int,int_4: int,) -> None:
-        """void SetShaderValueV(struct Shader, int, void *, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetShaderValueV(shader: Shader,locIndex: int,value: Any,uniformType: int,count: int,) -> None:
+        """Set shader uniform value vector"""
         ...
-def SetShapesTexture(Texture_0: Texture,Rectangle_1: Rectangle,) -> None:
-        """void SetShapesTexture(struct Texture, struct Rectangle);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetShapesTexture(texture: Texture,source: Rectangle,) -> None:
+        """Set texture and rectangle to be used on shapes drawing"""
         ...
-def SetSoundPitch(Sound_0: Sound,float_1: float,) -> None:
-        """void SetSoundPitch(struct Sound, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetSoundPitch(sound: Sound,pitch: float,) -> None:
+        """Set pitch for a sound (1.0 is base level)"""
         ...
-def SetSoundVolume(Sound_0: Sound,float_1: float,) -> None:
-        """void SetSoundVolume(struct Sound, float);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetSoundVolume(sound: Sound,volume: float,) -> None:
+        """Set volume for a sound (1.0 is max level)"""
         ...
-def SetTargetFPS(int_0: int,) -> None:
-        """void SetTargetFPS(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetTargetFPS(fps: int,) -> None:
+        """Set target FPS (maximum)"""
         ...
-def SetTextureFilter(Texture_0: Texture,int_1: int,) -> None:
-        """void SetTextureFilter(struct Texture, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetTextureFilter(texture: Texture,filter: int,) -> None:
+        """Set texture scaling filter mode"""
         ...
-def SetTextureWrap(Texture_0: Texture,int_1: int,) -> None:
-        """void SetTextureWrap(struct Texture, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetTextureWrap(texture: Texture,wrap: int,) -> None:
+        """Set texture wrapping mode"""
         ...
-def SetTraceLogLevel(int_0: int,) -> None:
-        """void SetTraceLogLevel(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetTraceLogLevel(logLevel: int,) -> None:
+        """Set the current threshold (minimum) log level"""
         ...
-def SetWindowIcon(Image_0: Image,) -> None:
-        """void SetWindowIcon(struct Image);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetWindowIcon(image: Image,) -> None:
+        """Set icon for window (only PLATFORM_DESKTOP)"""
         ...
-def SetWindowMinSize(int_0: int,int_1: int,) -> None:
-        """void SetWindowMinSize(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetWindowMinSize(width: int,height: int,) -> None:
+        """Set window minimum dimensions (for FLAG_WINDOW_RESIZABLE)"""
         ...
-def SetWindowMonitor(int_0: int,) -> None:
-        """void SetWindowMonitor(int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetWindowMonitor(monitor: int,) -> None:
+        """Set monitor for the current window (fullscreen mode)"""
         ...
-def SetWindowPosition(int_0: int,int_1: int,) -> None:
-        """void SetWindowPosition(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetWindowPosition(x: int,y: int,) -> None:
+        """Set window position on screen (only PLATFORM_DESKTOP)"""
         ...
-def SetWindowSize(int_0: int,int_1: int,) -> None:
-        """void SetWindowSize(int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetWindowSize(width: int,height: int,) -> None:
+        """Set window dimensions"""
         ...
-def SetWindowState(unsignedint_0: int,) -> None:
-        """void SetWindowState(unsigned int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetWindowState(flags: int,) -> None:
+        """Set window configuration state using flags"""
         ...
-def SetWindowTitle(str_0: str,) -> None:
-        """void SetWindowTitle(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def SetWindowTitle(title: str,) -> None:
+        """Set title for window (only PLATFORM_DESKTOP)"""
         ...
 def ShowCursor() -> None:
-        """void ShowCursor();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Shows cursor"""
         ...
-def StopAudioStream(AudioStream_0: AudioStream,) -> None:
-        """void StopAudioStream(struct AudioStream);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def StopAudioStream(stream: AudioStream,) -> None:
+        """Stop audio stream"""
         ...
-def StopMusicStream(Music_0: Music,) -> None:
-        """void StopMusicStream(struct Music);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def StopMusicStream(music: Music,) -> None:
+        """Stop music playing"""
         ...
-def StopSound(Sound_0: Sound,) -> None:
-        """void StopSound(struct Sound);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def StopSound(sound: Sound,) -> None:
+        """Stop playing a sound"""
         ...
 def StopSoundMulti() -> None:
-        """void StopSoundMulti();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Stop any sound playing (using multichannel buffer pool)"""
         ...
 TEXTURE_FILTER_ANISOTROPIC_16X: int
 TEXTURE_FILTER_ANISOTROPIC_4X: int
@@ -2345,266 +1545,164 @@ TEXTURE_WRAP_CLAMP: int
 TEXTURE_WRAP_MIRROR_CLAMP: int
 TEXTURE_WRAP_MIRROR_REPEAT: int
 TEXTURE_WRAP_REPEAT: int
-def TakeScreenshot(str_0: str,) -> None:
-        """void TakeScreenshot(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TakeScreenshot(fileName: str,) -> None:
+        """Takes a screenshot of current screen (filename extension defines format)"""
         ...
-def TextAppend(str_0: str,str_1: str,int_pointer_2: Any,) -> None:
-        """void TextAppend(char *, char *, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextAppend(text: str,append: str,position: Any,) -> None:
+        """Append text at specific position and move cursor!"""
         ...
-def TextCopy(str_0: str,str_1: str,) -> int:
-        """int TextCopy(char *, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextCopy(dst: str,src: str,) -> int:
+        """Copy one string to another, returns bytes copied"""
         ...
-def TextFindIndex(str_0: str,str_1: str,) -> int:
-        """int TextFindIndex(char *, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextFindIndex(text: str,find: str,) -> int:
+        """Find first text occurrence within a string"""
         ...
 def TextFormat(*args) -> str:
         """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""
         ...
-def TextInsert(str_0: str,str_1: str,int_2: int,) -> str:
-        """char *TextInsert(char *, char *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextInsert(text: str,insert: str,position: int,) -> str:
+        """Insert text in a position (memory must be freed!)"""
         ...
-def TextIsEqual(str_0: str,str_1: str,) -> bool:
-        """_Bool TextIsEqual(char *, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextIsEqual(text1: str,text2: str,) -> bool:
+        """Check if two text string are equal"""
         ...
-def TextJoin(str_pointer_0: str,int_1: int,str_2: str,) -> str:
-        """char *TextJoin(char * *, int, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextJoin(textList: str,count: int,delimiter: str,) -> str:
+        """Join text strings with delimiter"""
         ...
-def TextLength(str_0: str,) -> int:
-        """unsigned int TextLength(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextLength(text: str,) -> int:
+        """Get text length, checks for ' 0' ending"""
         ...
-def TextReplace(str_0: str,str_1: str,str_2: str,) -> str:
-        """char *TextReplace(char *, char *, char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextReplace(text: str,replace: str,by: str,) -> str:
+        """Replace text string (memory must be freed!)"""
         ...
-def TextSplit(str_0: str,char_1: str,int_pointer_2: Any,) -> str:
-        """char * *TextSplit(char *, char, int *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextSplit(text: str,delimiter: str,count: Any,) -> str:
+        """Split text into multiple strings"""
         ...
-def TextSubtext(str_0: str,int_1: int,int_2: int,) -> str:
-        """char *TextSubtext(char *, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextSubtext(text: str,position: int,length: int,) -> str:
+        """Get a piece of a text string"""
         ...
-def TextToInteger(str_0: str,) -> int:
-        """int TextToInteger(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextToInteger(text: str,) -> int:
+        """Get integer value from text (negative values not supported)"""
         ...
-def TextToLower(str_0: str,) -> str:
-        """char *TextToLower(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextToLower(text: str,) -> str:
+        """Get lower case version of provided string"""
         ...
-def TextToPascal(str_0: str,) -> str:
-        """char *TextToPascal(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextToPascal(text: str,) -> str:
+        """Get Pascal case notation version of provided string"""
         ...
-def TextToUpper(str_0: str,) -> str:
-        """char *TextToUpper(char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextToUpper(text: str,) -> str:
+        """Get upper case version of provided string"""
         ...
-def TextToUtf8(int_pointer_0: Any,int_1: int,) -> str:
-        """char *TextToUtf8(int *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def TextToUtf8(codepoints: Any,length: int,) -> str:
+        """Encode text codepoint into utf8 text (memory must be freed!)"""
         ...
 def ToggleFullscreen() -> None:
-        """void ToggleFullscreen();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Toggle window state: fullscreen/windowed (only PLATFORM_DESKTOP)"""
         ...
 def TraceLog(*args) -> None:
         """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""
         ...
-def UnloadFileData(unsignedstr_0: str,) -> None:
-        """void UnloadFileData(unsigned char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadFileData(data: str,) -> None:
+        """Unload file data allocated by LoadFileData()"""
         ...
-def UnloadFileText(unsignedstr_0: str,) -> None:
-        """void UnloadFileText(unsigned char *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadFileText(text: str,) -> None:
+        """Unload file text data allocated by LoadFileText()"""
         ...
-def UnloadFont(Font_0: Font,) -> None:
-        """void UnloadFont(struct Font);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadFont(font: Font,) -> None:
+        """Unload Font from GPU memory (VRAM)"""
         ...
-def UnloadFontData(CharInfo_pointer_0: Any,int_1: int,) -> None:
-        """void UnloadFontData(struct CharInfo *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadFontData(chars: Any,charsCount: int,) -> None:
+        """Unload font chars info data (RAM)"""
         ...
-def UnloadImage(Image_0: Image,) -> None:
-        """void UnloadImage(struct Image);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadImage(image: Image,) -> None:
+        """Unload image from CPU memory (RAM)"""
         ...
-def UnloadImageColors(Color_pointer_0: Any,) -> None:
-        """void UnloadImageColors(struct Color *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadImageColors(colors: Any,) -> None:
+        """Unload color data loaded with LoadImageColors()"""
         ...
-def UnloadImagePalette(Color_pointer_0: Any,) -> None:
-        """void UnloadImagePalette(struct Color *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadImagePalette(colors: Any,) -> None:
+        """Unload colors palette loaded with LoadImagePalette()"""
         ...
-def UnloadMaterial(Material_0: Material,) -> None:
-        """void UnloadMaterial(struct Material);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadMaterial(material: Material,) -> None:
+        """Unload material from GPU memory (VRAM)"""
         ...
-def UnloadMesh(Mesh_0: Mesh,) -> None:
-        """void UnloadMesh(struct Mesh);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadMesh(mesh: Mesh,) -> None:
+        """Unload mesh data from CPU and GPU"""
         ...
-def UnloadModel(Model_0: Model,) -> None:
-        """void UnloadModel(struct Model);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadModel(model: Model,) -> None:
+        """Unload model (including meshes) from memory (RAM and/or VRAM)"""
         ...
-def UnloadModelAnimation(ModelAnimation_0: ModelAnimation,) -> None:
-        """void UnloadModelAnimation(struct ModelAnimation);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadModelAnimation(anim: ModelAnimation,) -> None:
+        """Unload animation data"""
         ...
-def UnloadModelAnimations(ModelAnimation_pointer_0: Any,unsignedint_1: int,) -> None:
-        """void UnloadModelAnimations(struct ModelAnimation *, unsigned int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadModelAnimations(animations: Any,count: int,) -> None:
+        """Unload animation array data"""
         ...
-def UnloadModelKeepMeshes(Model_0: Model,) -> None:
-        """void UnloadModelKeepMeshes(struct Model);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadModelKeepMeshes(model: Model,) -> None:
+        """Unload model (but not meshes) from memory (RAM and/or VRAM)"""
         ...
-def UnloadMusicStream(Music_0: Music,) -> None:
-        """void UnloadMusicStream(struct Music);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadMusicStream(music: Music,) -> None:
+        """Unload music stream"""
         ...
-def UnloadRenderTexture(RenderTexture_0: RenderTexture,) -> None:
-        """void UnloadRenderTexture(struct RenderTexture);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadRenderTexture(target: RenderTexture,) -> None:
+        """Unload render texture from GPU memory (VRAM)"""
         ...
-def UnloadShader(Shader_0: Shader,) -> None:
-        """void UnloadShader(struct Shader);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadShader(shader: Shader,) -> None:
+        """Unload shader from GPU memory (VRAM)"""
         ...
-def UnloadSound(Sound_0: Sound,) -> None:
-        """void UnloadSound(struct Sound);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadSound(sound: Sound,) -> None:
+        """Unload sound"""
         ...
-def UnloadTexture(Texture_0: Texture,) -> None:
-        """void UnloadTexture(struct Texture);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadTexture(texture: Texture,) -> None:
+        """Unload texture from GPU memory (VRAM)"""
         ...
-def UnloadVrStereoConfig(VrStereoConfig_0: VrStereoConfig,) -> None:
-        """void UnloadVrStereoConfig(struct VrStereoConfig);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadVrStereoConfig(config: VrStereoConfig,) -> None:
+        """Unload VR stereo config"""
         ...
-def UnloadWave(Wave_0: Wave,) -> None:
-        """void UnloadWave(struct Wave);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadWave(wave: Wave,) -> None:
+        """Unload wave data"""
         ...
-def UnloadWaveSamples(float_pointer_0: Any,) -> None:
-        """void UnloadWaveSamples(float *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UnloadWaveSamples(samples: Any,) -> None:
+        """Unload samples data loaded with LoadWaveSamples()"""
         ...
-def UpdateAudioStream(AudioStream_0: AudioStream,void_pointer_1: Any,int_2: int,) -> None:
-        """void UpdateAudioStream(struct AudioStream, void *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UpdateAudioStream(stream: AudioStream,data: Any,samplesCount: int,) -> None:
+        """Update audio stream buffers with data"""
         ...
-def UpdateCamera(Camera3D_pointer_0: Any,) -> None:
-        """void UpdateCamera(struct Camera3D *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UpdateCamera(camera: Any,) -> None:
+        """Update camera position for selected mode"""
         ...
-def UpdateMeshBuffer(Mesh_0: Mesh,int_1: int,void_pointer_2: Any,int_3: int,int_4: int,) -> None:
-        """void UpdateMeshBuffer(struct Mesh, int, void *, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UpdateMeshBuffer(mesh: Mesh,index: int,data: Any,dataSize: int,offset: int,) -> None:
+        """Update mesh vertex data in GPU for a specific buffer index"""
         ...
-def UpdateModelAnimation(Model_0: Model,ModelAnimation_1: ModelAnimation,int_2: int,) -> None:
-        """void UpdateModelAnimation(struct Model, struct ModelAnimation, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UpdateModelAnimation(model: Model,anim: ModelAnimation,frame: int,) -> None:
+        """Update model animation pose"""
         ...
-def UpdateMusicStream(Music_0: Music,) -> None:
-        """void UpdateMusicStream(struct Music);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UpdateMusicStream(music: Music,) -> None:
+        """Updates buffers for music streaming"""
         ...
-def UpdateSound(Sound_0: Sound,void_pointer_1: Any,int_2: int,) -> None:
-        """void UpdateSound(struct Sound, void *, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UpdateSound(sound: Sound,data: Any,samplesCount: int,) -> None:
+        """Update sound buffer with new data"""
         ...
-def UpdateTexture(Texture_0: Texture,void_pointer_1: Any,) -> None:
-        """void UpdateTexture(struct Texture, void *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UpdateTexture(texture: Texture,pixels: Any,) -> None:
+        """Update GPU texture with new data"""
         ...
-def UpdateTextureRec(Texture_0: Texture,Rectangle_1: Rectangle,void_pointer_2: Any,) -> None:
-        """void UpdateTextureRec(struct Texture, struct Rectangle, void *);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UpdateTextureRec(texture: Texture,rec: Rectangle,pixels: Any,) -> None:
+        """Update GPU texture rectangle with new data"""
         ...
-def UploadMesh(Mesh_pointer_0: Any,_Bool_1: bool,) -> None:
-        """void UploadMesh(struct Mesh *, _Bool);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def UploadMesh(mesh: Any,dynamic: bool,) -> None:
+        """Upload mesh vertex data in GPU and provide VAO/VBO ids"""
         ...
-def WaveCopy(Wave_0: Wave,) -> Wave:
-        """struct Wave WaveCopy(struct Wave);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def WaveCopy(wave: Wave,) -> Wave:
+        """Copy a wave to a new wave"""
         ...
-def WaveCrop(Wave_pointer_0: Any,int_1: int,int_2: int,) -> None:
-        """void WaveCrop(struct Wave *, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def WaveCrop(wave: Any,initSample: int,finalSample: int,) -> None:
+        """Crop a wave to defined samples range"""
         ...
-def WaveFormat(Wave_pointer_0: Any,int_1: int,int_2: int,int_3: int,) -> None:
-        """void WaveFormat(struct Wave *, int, int, int);
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+def WaveFormat(wave: Any,sampleRate: int,sampleSize: int,channels: int,) -> None:
+        """Convert wave data to desired format"""
         ...
 def WindowShouldClose() -> bool:
-        """_Bool WindowShouldClose();
-
-CFFI C function from raylib.static._raylib_cffi.lib"""
+        """Check if KEY_ESCAPE pressed or Close icon pressed"""
         ...
 AudioStream: struct
 BlendMode: int

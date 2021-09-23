@@ -15,13 +15,12 @@
 from raylib.static import rl, ffi
 
 from inspect import ismethod, getmembers, isbuiltin
-import inflection, sys
+import inflection, sys, json
 
-print("""from typing import Any
+f = open("raylib_api.json", "r")
+js = json.load(f)
 
-class struct: ...
 
-""")
 
 
 def ctype_to_python_type(t):
@@ -47,22 +46,38 @@ def ctype_to_python_type(t):
         return t
 
 
+print("""from typing import Any
+
+class struct: ...
+
+""")
+
 for name, attr in getmembers(rl):
     uname = name
     if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>":
-
+        json_array = [x for x in js['functions'] if x['name'] == name]
+        json_object = {}
+        if len(json_array) > 0:
+            json_object = json_array[0]
         sig = ""
         for i, arg in enumerate(ffi.typeof(attr).args):
             param_name = arg.cname.replace("struct", "").replace("char *", "str").replace("*",
                                                                                           "_pointer").replace(
-                " ", "")
+                " ", "")+"_"+str(i)
+            if 'params' in json_object:
+                p = json_object['params']
+                param_name = list(p)[i]
             param_type = ctype_to_python_type(arg.cname)
-            sig += f"{param_name}_{i}: {param_type},"
+            sig += f"{param_name}: {param_type},"
 
         return_type = ffi.typeof(attr).result.cname
+        description = attr.__doc__
+
+        if 'description' in json_object:
+            description = json_object['description']
 
         print(
-            f'def {uname}({sig}) -> {ctype_to_python_type(return_type)}:\n        """{attr.__doc__}"""\n        ...')
+            f'def {uname}({sig}) -> {ctype_to_python_type(return_type)}:\n        """{description}"""\n        ...')
 
     elif str(type(attr)) == "<class '_cffi_backend._CDataBase'>":
         return_type = ffi.typeof(attr).result.cname

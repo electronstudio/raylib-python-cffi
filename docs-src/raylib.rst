@@ -38,7 +38,7 @@ However, here is a list of available functions:
 Functions API reference
 -----------------------
 
-.. automodule:: raylib.static.rl
+.. autoapimodule:: raylib.static
     :members:
     :undoc-members:
 
