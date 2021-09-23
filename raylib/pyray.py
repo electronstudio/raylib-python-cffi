@@ -31,7 +31,7 @@ def makefunc(a):
             if type(arg) == str:
                 encoded = arg.encode('utf-8')
                 modified_args.append(encoded)
-            elif c_arg.kind == 'pointer':
+            elif c_arg.kind == 'pointer' and str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>":
                 modified_args.append(ffi.addressof(arg))
             else:
                 modified_args.append(arg)

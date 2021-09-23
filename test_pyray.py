@@ -10,6 +10,9 @@ pyray = PyRay()
 pyray.init_window(800, 450, "Raylib texture test")
 pyray.set_target_fps(60)
 
+image = pyray.gen_image_color(800, 400, (0,0,0,255) )
+texture = pyray.load_texture_from_image(image)
+pyray.update_texture(texture, image.data)
 
 camera = pyray.Camera3D([18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45.0, 0)
 image = pyray.load_image("examples/models/resources/heightmap.png")
