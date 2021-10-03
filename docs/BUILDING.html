@@ -53,6 +53,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#build-from-source-manually">Build from source manually</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#windows-manual-build">Windows manual build</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#linux-manual-build">Linux manual build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macos-manual-build">Macos manual build</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raspberry-pi">Raspberry Pi</a></li>
 </ul>
 </li>
@@ -104,6 +105,8 @@ dynamic binding with your own dll</em>.</p>
 <p>If the Pip build doesn’t work, please submit a bug. (And if you have
 fixed it, a PR.)</p>
 </div>
+<p>Manual instructions follow, but see also how we actually build the wheels
+at <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/.github/workflows/build.yml">https://github.com/electronstudio/raylib-python-cffi/blob/master/.github/workflows/build.yml</a></p>
 <div class="section" id="windows-manual-build">
 <h3>Windows manual build<a class="headerlink" href="#windows-manual-build" title="Permalink to this headline"></a></h3>
 <p>Clone this repo including submodules so you get correct version of
@@ -152,8 +155,7 @@ here.)</p>
 </div>
 <div class="section" id="linux-manual-build">
 <h3>Linux manual build<a class="headerlink" href="#linux-manual-build" title="Permalink to this headline"></a></h3>
-<p>These instructions have been tested on Ubuntu 20.10 and 16.04. Mac
-should be very similar.</p>
+<p>These instructions have been tested on Ubuntu 20.10 and 16.04.</p>
 <p>Clone this repo including submodules so you get correct version of
 Raylib.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">electronstudio</span><span class="o">/</span><span class="n">raylib</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">cffi</span>
@@ -174,6 +176,7 @@ Raylib.</p>
 <code class="docutils literal notranslate"><span class="pre">raylib.dynamic</span></code> binding.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">*</span>
 <span class="n">cmake</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DBUILD_SHARED_LIBS</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">make</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -234,7 +237,30 @@ use DLLs with raylib.dynamic:</p>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>move the dynamic libs into a separate package rather than include
-them with every one.)</p>
+them with every one.</p>
+</div>
+</div>
+<div class="section" id="macos-manual-build">
+<h3>Macos manual build<a class="headerlink" href="#macos-manual-build" title="Permalink to this headline"></a></h3>
+<p>These instructions have been tested on Macos 10.14.</p>
+<p>Clone this repo including submodules so you get correct version of
+Raylib.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">electronstudio</span><span class="o">/</span><span class="n">raylib</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">cffi</span>
+</pre></div>
+</div>
+<p>Build Raylib from the raylib-c directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">cffi</span><span class="o">/</span><span class="n">raylib</span><span class="o">-</span><span class="n">c</span><span class="o">/</span><span class="n">src</span>
+<span class="n">make</span>
+<span class="n">cd</span> <span class="o">../..</span>
+</pre></div>
+</div>
+<p>Build and install module.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">cffi</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span> <span class="n">raylib</span><span class="o">/</span><span class="n">static</span><span class="o">/</span><span class="n">_raylib_cffi</span><span class="o">.*</span>
+<span class="n">python3</span> <span class="n">raylib</span><span class="o">/</span><span class="n">static</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">py</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">wheel</span>
+<span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="raspberry-pi">
