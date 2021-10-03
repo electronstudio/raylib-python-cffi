@@ -6,16 +6,16 @@ from setuptools.dist import Distribution
 HERE = pathlib.Path(__file__).parent
 
 # The text of the README file
-README = (HERE / "README.md").read_text()
+README = (HERE / "README.rst").read_text()
 
 
 # This call to setup() does all the work
 setup(
-    name="raylib-dynamic",
+    name="raylib_dynamic",
     version="3.7.0.post6",
     description="Python CFFI bindings for Raylib DLL version",
     long_description=README,
-    long_description_content_type="text/markdown",
+    long_description_content_type="text/x-rst",
     url="https://github.com/electronstudio/raylib-python-cffi",
     author="Electron Studio",
     author_email="github@electronstudio.co.uk",
