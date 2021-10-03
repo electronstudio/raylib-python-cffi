@@ -28,7 +28,7 @@ author = 'Richard Smith'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary', 'myst_parser', 'autoapi.extension', "sphinx_rtd_theme"]
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary', 'myst_parser', 'autoapi.extension', "sphinx_rtd_theme",  'sphinx.ext.todo']
 
 autoapi_dirs = ['../raylib']
 
@@ -61,3 +61,5 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
 
 pygments_style = 'sphinx'
+
+todo_include_todos = True
