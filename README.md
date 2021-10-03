@@ -14,7 +14,11 @@ statically link and use in non-free / proprietary / commercial projects!
 
 We distribute a statically linked binary Raylib wheel:
 
-    pip3 install raylib
+    python3 -m pip pip3 install raylib
+
+Problems may be caused by out of date pip:
+
+    python3 -m pip install --upgrade pip
 
 Some platforms that _should_ be available:  Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64.
 
