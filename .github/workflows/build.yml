@@ -14,7 +14,7 @@ on:
 
 jobs:
   build-mac:
-    runs-on: macos-10.15
+    runs-on: macos-11
     strategy:
       matrix:
         python-version: [ '3.6', '3.7', '3.8', '3.9', '3.10.0-rc.2' ]
