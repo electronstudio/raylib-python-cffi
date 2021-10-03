@@ -23,6 +23,9 @@ dynamic binding with your own dll*.
    If the Pip build doesn’t work, please submit a bug. (And if you have
    fixed it, a PR.)
 
+Manual instructions follow, but see also how we actually build the wheels
+at https://github.com/electronstudio/raylib-python-cffi/blob/master/.github/workflows/build.yml
+
 Windows manual build
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -87,8 +90,7 @@ here.)
 Linux manual build
 ~~~~~~~~~~~~~~~~~~~~~~
 
-These instructions have been tested on Ubuntu 20.10 and 16.04. Mac
-should be very similar.
+These instructions have been tested on Ubuntu 20.10 and 16.04.
 
 Clone this repo including submodules so you get correct version of
 Raylib.
@@ -115,6 +117,7 @@ Build and install Raylib from the raylib-c directory.
 
       rm -rf *
       cmake -DWITH_PIC=on -DBUILD_SHARED_LIBS=on -DCMAKE_BUILD_TYPE=Release ..
+      make
       sudo make install
 
 ::
@@ -182,6 +185,41 @@ To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:
 .. TODO::
    move the dynamic libs into a separate package rather than include
    them with every one.
+
+
+
+Macos manual build
+~~~~~~~~~~~~~~~~~~~~~~
+
+These instructions have been tested on Macos 10.14.
+
+Clone this repo including submodules so you get correct version of
+Raylib.
+
+::
+
+   git clone --recurse-submodules https://github.com/electronstudio/raylib-python-cffi
+
+Build and install Raylib from the raylib-c directory.
+
+::
+
+   cd raylib-python-cffi/raylib-c/src
+   make
+   cd ../..
+
+
+Build and install module.
+
+::
+
+   pip3 install cffi
+   rm -rf build raylib/static/_raylib_cffi.*
+   python3 raylib/static/build.py
+   pip3 install wheel
+   python3 setup.py install
+
+
 
 Raspberry Pi
 ~~~~~~~~~~~~
