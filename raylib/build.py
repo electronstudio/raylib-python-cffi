@@ -25,9 +25,9 @@ ffibuilder = FFI()
 def build_linux():
     print("BUILDING FOR LINUX")
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
-    ffibuilder.set_source("raylib.static._raylib_cffi",
+    ffibuilder.set_source("raylib._raylib_cffi",
                           """
-                               #include "../../raylib/raylib.h"
+                               #include "../raylib/raylib.h"
                           """,
                           extra_link_args=['/usr/local/lib/libraylib.a','-lm', '-lpthread', '-lGLU', '-lGL',  '-lrt', '-lm', '-ldl', '-lX11', '-lpthread'],
                           libraries=['GL','m','pthread', 'dl', 'rt', 'X11']
@@ -38,9 +38,9 @@ def build_linux():
 def build_windows():
     print("BUILDING FOR WINDOWS")
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', '').replace('bool','int'))
-    ffibuilder.set_source("raylib.static._raylib_cffi",
+    ffibuilder.set_source("raylib._raylib_cffi",
                           """
-                          #include "../../../raylib/raylib.h"   
+                          #include "../../raylib/raylib.h"   
                           """,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           libraries=['raylib', 'gdi32', 'shell32', 'user32','OpenGL32', 'winmm'],
@@ -51,9 +51,9 @@ def build_windows():
 def build_mac():
     print("BUILDING FOR MAC")
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
-    ffibuilder.set_source("raylib.static._raylib_cffi",
+    ffibuilder.set_source("raylib._raylib_cffi",
                           """
-                               #include "../../raylib/raylib.h"   // the C header of the library, supplied by us here
+                               #include "../raylib/raylib.h"   // the C header of the library, supplied by us here
                           """,
                           extra_link_args=['-lraylib', '-framework', 'OpenGL', '-framework', 'Cocoa', '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework', 'CoreVideo'],
                           )
@@ -65,9 +65,9 @@ def build_mac():
 def build_rpi_nox():
     print("BUILDING FOR RASPBERRY PI")
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
-    ffibuilder.set_source("raylib.static._raylib_cffi",
+    ffibuilder.set_source("raylib._raylib_cffi",
                           """
-                               #include "../../raylib/raylib.h"
+                               #include "../raylib/raylib.h"
                           """,
                           extra_link_args=['/usr/local/lib/libraylib.a',
                                            '/opt/vc/lib/libEGL_static.a', '/opt/vc/lib/libGLESv2_static.a',

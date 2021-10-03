@@ -23,7 +23,7 @@ import os
 import pathlib
 import platform
 
-MODULE = pathlib.Path(__file__).parent.parent
+MODULE = pathlib.Path(__file__).parent
 
 def raylib_library_path():
     '''Return the full path of the raylib shared library
@@ -31,7 +31,7 @@ def raylib_library_path():
     then the library will be loaded from the system library paths.
     '''
     def so_path():
-        return str(MODULE / 'dynamic') if not 'USE_EXTERNAL_RAYLIB' in os.environ else ''
+        return str(MODULE) if not 'USE_EXTERNAL_RAYLIB' in os.environ else ''
     def so_name():
         '''Returns the appropriate for the library on the current platform.'''
         lib_filenames = {

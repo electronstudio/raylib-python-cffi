@@ -1,6 +1,6 @@
 # Dont use C data structures when we can avoid it.  Makes Pypy slightly faster.
 
-from raylib.static import *
+from raylib import *
 import random
 
 MAX_BUNNIES      =  500000

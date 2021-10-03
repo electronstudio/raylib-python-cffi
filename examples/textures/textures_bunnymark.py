@@ -9,7 +9,7 @@
 # *
 # ********************************************************************************************/
 
-from raylib.static import *
+from raylib import *
 MAX_BUNNIES      =  500000
 
 # This is the maximum amount of elements (quads) per batch

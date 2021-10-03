@@ -1,0 +1,13 @@
+include raylib/*.pyi
+include raylib/*.pyd
+exclude raylib/*.a
+include raylib/*.h
+include raylib/*.pyi
+exclude raylib/*.c
+exclude raylib/*.o
+include raylib/*.dylib
+include raylib/*.dll
+include raylib/*.so
+include raylib/32bit/*.dylib
+include raylib/32bit/*.dll
+include raylib/32bit/*.so

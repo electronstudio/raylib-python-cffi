@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from raylib.static import rl, ffi
+from raylib import rl, ffi
 from raylib.colors import *
 import math
 

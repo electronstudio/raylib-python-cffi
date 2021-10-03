@@ -33,9 +33,9 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=["raylib", "raylib.dynamic", "raylib.static"],
+    packages=["raylib"],
     include_package_data=True,
     install_requires=["cffi>=1.14.5","inflection"],
     distclass=BinaryDistribution,
-    cffi_modules=["raylib/static/build.py:ffibuilder"]
+    cffi_modules=["raylib/build.py:ffibuilder"]
 )

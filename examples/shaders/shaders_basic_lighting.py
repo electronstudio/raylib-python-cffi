@@ -30,7 +30,7 @@
 #<<<<<<< HEAD
 #<<<<<<< HEAD
 #<<<<<<< HEAD
-from raylib.static import rl, ffi
+from raylib import rl, ffi
 #=======
 #from raylib.dynamic import raylib as rl, ffi
 #>>>>>>> ffe4403 (complete fog example)

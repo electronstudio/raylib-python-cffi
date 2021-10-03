@@ -1,6 +1,6 @@
 # just a few functions from raymath
 #from raylib.dynamic import raylib as rl, ffi
-from raylib.static import rl, ffi
+from raylib import rl, ffi
 import math
 
 #<<<<<<< HEAD

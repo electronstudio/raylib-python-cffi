@@ -1,8 +1,10 @@
 """
-This shows how to use the CFFI dynamic (ABI) binding.  Note that is slower and more likely to run into silent errors and segfaults.
-But it doesnt require any C compiler to build.
+This shows how to use the CFFI static (API) binding.  It should be fast and code be as close as possible to original
+C code.
 """
-from raylib.dynamic import ffi, raylib as rl
+
+import raylib as rl
+from raylib import ffi
 from raylib.colors import *
 
 rl.InitWindow(800, 450, b"Raylib dynamic binding test")
@@ -30,8 +32,3 @@ while not rl.WindowShouldClose():
     rl.DrawText(b"This mesh should be textured", 190, 200, 20, VIOLET)
     rl.EndDrawing()
 rl.CloseWindow()
-
-"""
-Previously this failed to work in the same place the ctypes binding fails, accessing
-materials of a model.  I though it was because Python can't dynamically tell the difference between a pointer and an array.
-"""

@@ -12,7 +12,7 @@
 #
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
-from .static import rl, ffi
+from raylib import rl, ffi
 from .colors import *
 from inspect import ismethod,getmembers,isbuiltin
 import inflection

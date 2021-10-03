@@ -1,5 +1,3 @@
-__version__ = "3.7.0.post6"
-
 #  Copyright (c) 2021 Richard Smith and others
 #
 #  This program and the accompanying materials are made available under the
@@ -14,5 +12,11 @@ __version__ = "3.7.0.post6"
 #
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
-from raylib.static import *
+from ._raylib_cffi import ffi, lib as rl
+from raylib._raylib_cffi.lib import *
+from raylib.colors import *
+import cffi
+import sys
 from raylib.pyray import PyRay
+
+print("RAYLIB STATIC LOADED", file=sys.stderr)
