@@ -55,7 +55,7 @@ def build_mac():
                           """
                                #include "../../raylib/raylib.h"   // the C header of the library, supplied by us here
                           """,
-                          extra_link_args=['raylib-c/src/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa', '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework', 'CoreVideo'],
+                          extra_link_args=['-lraylib', '-framework', 'OpenGL', '-framework', 'Cocoa', '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework', 'CoreVideo'],
                           )
 
     if __name__ == "__main__":

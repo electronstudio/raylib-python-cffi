@@ -200,12 +200,13 @@ Raylib.
 
    git clone --recurse-submodules https://github.com/electronstudio/raylib-python-cffi
 
-Build Raylib from the raylib-c directory.
+Build and install Raylib from the raylib-c directory.
 
 ::
 
    cd raylib-python-cffi/raylib-c/src
    make
+   sudo cp libraylib.a  /usr/local/lib/libraylib.a
    cd ../..
 
 

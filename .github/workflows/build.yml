@@ -40,6 +40,7 @@ jobs:
           cd raylib-c
           cd src
           make -j2
+          sudo cp libraylib.a  /usr/local/lib/libraylib.a
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
