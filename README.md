@@ -27,24 +27,26 @@ using homebrew, apt, etc.
 
 [If it doesn't work, build from source](BUILDING.md)
 
+There is now a separate dynamic version of this binding:
+
+    python3 -m pip install raylib_dynamic
+
+[Read this before using raylib_dynamic](https://electronstudio.github.io/raylib-python-cffi/dynamic.html)
 
 
 # How to use
 
-There are three different ways of using this binding.  You only need to pick one method, but you
+There are two different ways of using this binding.  You only need to pick one method, but you
 can combine two methods in one program if you want to.
 
 ### If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API
 
-Use [raylib.static](https://electronstudio.github.io/raylib-python-cffi/raylib.html).
+Use [the C API](https://electronstudio.github.io/raylib-python-cffi/raylib.html).
 
 ### If you prefer a slightly more Pythonistic API and don't mind it might be slightly slower
 
-Use [raylib.pyray](https://electronstudio.github.io/raylib-python-cffi/pyray.html).
+Use [the Python API](https://electronstudio.github.io/raylib-python-cffi/pyray.html).
 
-### If you insist on dynamic bindings and don't care that they are slower and less safe
-
-Use [raylib.dynamic](https://electronstudio.github.io/raylib-python-cffi/dynamic.html).
 
 
 

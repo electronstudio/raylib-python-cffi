@@ -51,7 +51,7 @@ ffi.cdef(open(MODULE / "raylib_modified.h").read().replace('RLAPI ', ''))
 
 try:
     raylib_fname = raylib_library_path()
-    raylib = ffi.dlopen(raylib_fname)
+    rl = ffi.dlopen(raylib_fname)
     print('LOADED DYNAMICALLY SHARED LIB "{}"'.format(raylib_fname))
 except Exception as e:
     print(e)

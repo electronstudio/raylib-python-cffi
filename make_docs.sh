@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 pip3 install sphinx-autoapi myst_parser sphinx_rtd_theme
 python3 create_stub_pyray.py > raylib/pyray.pyi

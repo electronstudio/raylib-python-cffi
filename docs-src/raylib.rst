@@ -1,14 +1,14 @@
-raylib.static
+C API
 =============
 
-The goal of raylib.static is make usage as similar to the original C as CFFI will allow.  The `example programs <https://github.com/electronstudio/raylib-python-cffi/tree/master/examples>`_
+The goal of the C API is make usage as similar to the original C as CFFI will allow.  The `example programs <https://github.com/electronstudio/raylib-python-cffi/tree/master/examples>`_
 are very, very similar to the C originals.
 
 Example program:
 
 .. code-block::
 
-    from raylib.static import *
+    from raylib import *
 
     InitWindow(800, 450, b"Hello Raylib")
     SetTargetFPS(60)
@@ -27,18 +27,30 @@ Example program:
         EndDrawing()
     CloseWindow()
 
+If you want to be more portable you can prefix the functions like this:
+
+.. code-block::
+
+    from raylib import ffi, rl, colors
+
+    rl.InitWindow(800, 450, b"Hello Raylib")
+    rl.SetTargetFPS(60)
+
+    ...
+
+
 See also https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py
 
-Also useful to read whenever you need to convert stuff between C and Python: https://cffi.readthedocs.io
+.. note:: Whenever you need to convert stuff between C and Python see https://cffi.readthedocs.io
 
-Your **primary reference** should always be `the official Raylib docs <https://www.raylib.com/cheatsheet/cheatsheet.html>`_
+.. important:: Your **primary reference** should always be `the official Raylib docs <https://www.raylib.com/cheatsheet/cheatsheet.html>`_
 
 However, here is a list of available functions:
 
 Functions API reference
 -----------------------
 
-.. autoapimodule:: raylib.static
+.. autoapimodule:: raylib
     :members:
     :undoc-members:
 

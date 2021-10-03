@@ -59,8 +59,7 @@ Build and install Raylib from the raylib-c directory.
 
 To update the dynamic libs, download the official release,
 e.g. https://github.com/raysan5/raylib/releases/download/3.7.0/raylib-3.7.0_win64_msvc16.zip
-and extract ``raylib.dll`` into ``raylib/dynamic``. Delete the files for
-other platforms, unless you want them in your distribution.
+and extract ``raylib.dll`` into ``dynamic/raylib``.
 
 To build a binary wheel distribution:
 
@@ -111,7 +110,7 @@ Build and install Raylib from the raylib-c directory.
    sudo make install
 
 .. note:: Optional: Build the Raylib shared libs, if you plan to use
-   ``raylib.dynamic`` binding.
+   ``raylib_dynamic`` binding.
 
    ::
 
@@ -148,8 +147,8 @@ Build
 
     ::
 
-       rm raylib/dynamic/*.so*
-       cp -P /usr/local/lib/libraylib.so* raylib/dynamic/
+       rm dynamic/raylib/*.so*
+       cp -P /usr/local/lib/libraylib.so* dynamic/raylib/
 
 To build a binary wheel distribution:
 
@@ -158,12 +157,6 @@ To build a binary wheel distribution:
    pip3 install wheel
    python3 setup.py bdist_wheel
 
-Alternatively, if you don’t want the static binaries and just want to
-use DLLs with raylib.dynamic:
-
-::
-
-   python3 setup_dynamic.py bdist_wheel
 
 Then install it:
 
@@ -183,8 +176,8 @@ To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:
    ``./raylib/static/build_multi_linux.sh`` )
 
 .. TODO::
-   move the dynamic libs into a separate package rather than include
-   them with every one.
+   Separate the instructions for preparing the dynamic module
+   from the instructions for building the static module!
 
 
 
@@ -200,12 +193,13 @@ Raylib.
 
    git clone --recurse-submodules https://github.com/electronstudio/raylib-python-cffi
 
-Build Raylib from the raylib-c directory.
+Build and install Raylib from the raylib-c directory.
 
 ::
 
    cd raylib-python-cffi/raylib-c/src
    make
+   sudo cp libraylib.a  /usr/local/lib/libraylib.a
    cd ../..
 
 

@@ -77,17 +77,17 @@ class PyRay:
     def check_collision_ray_box(self, Ray_0: Ray, BoundingBox_1: BoundingBox) -> bool:
         """_Bool CheckCollisionRayBox(struct Ray, struct BoundingBox);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def check_collision_ray_sphere(self, Ray_0: Ray, Vector3_1: Vector3, float_2: float) -> bool:
         """_Bool CheckCollisionRaySphere(struct Ray, struct Vector3, float);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def check_collision_ray_sphere_ex(self, Ray_0: Ray, Vector3_1: Vector3, float_2: float, Vector3_pointer_3: Any) -> bool:
         """_Bool CheckCollisionRaySphereEx(struct Ray, struct Vector3, float, struct Vector3 *);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def check_collision_recs(self, rec1: Rectangle, rec2: Rectangle) -> bool:
         """Check collision between two rectangles"""
@@ -113,7 +113,7 @@ CFFI C function from raylib.static._raylib_cffi.lib"""
     def close_audio_stream(self, AudioStream_0: AudioStream) -> None:
         """void CloseAudioStream(struct AudioStream);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def close_window(self) -> None:
         """Close window and unload OpenGL context"""
@@ -566,22 +566,22 @@ CFFI C function from raylib.static._raylib_cffi.lib"""
     def get_collision_ray_ground(self, Ray_0: Ray, float_1: float) -> RayHitInfo:
         """struct RayHitInfo GetCollisionRayGround(struct Ray, float);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def get_collision_ray_mesh(self, Ray_0: Ray, Mesh_1: Mesh, Matrix_2: Matrix) -> RayHitInfo:
         """struct RayHitInfo GetCollisionRayMesh(struct Ray, struct Mesh, struct Matrix);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def get_collision_ray_model(self, Ray_0: Ray, Model_1: Model) -> RayHitInfo:
         """struct RayHitInfo GetCollisionRayModel(struct Ray, struct Model);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def get_collision_ray_triangle(self, Ray_0: Ray, Vector3_1: Vector3, Vector3_2: Vector3, Vector3_3: Vector3) -> RayHitInfo:
         """struct RayHitInfo GetCollisionRayTriangle(struct Ray, struct Vector3, struct Vector3, struct Vector3);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def get_collision_rec(self, rec1: Rectangle, rec2: Rectangle) -> Rectangle:
         """Get collision rectangle for two rectangles collision"""
@@ -910,7 +910,7 @@ CFFI C function from raylib.static._raylib_cffi.lib"""
     def init_audio_stream(self, unsignedint_0: int, unsignedint_1: int, unsignedint_2: int) -> AudioStream:
         """struct AudioStream InitAudioStream(unsigned int, unsigned int, unsigned int);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def init_window(self, width: int, height: int, title: str) -> None:
         """Initialize window and OpenGL context"""
@@ -987,7 +987,7 @@ CFFI C function from raylib.static._raylib_cffi.lib"""
     def is_music_playing(self, Music_0: Music) -> bool:
         """_Bool IsMusicPlaying(struct Music);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def is_sound_playing(self, sound: Sound) -> bool:
         """Check if a sound is currently playing"""
@@ -1284,7 +1284,7 @@ CFFI C function from raylib.static._raylib_cffi.lib"""
     def mesh_bounding_box(self, Mesh_0: Mesh) -> BoundingBox:
         """struct BoundingBox MeshBoundingBox(struct Mesh);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
     def mesh_tangents(self, mesh: Any) -> None:
         """Compute mesh tangents"""

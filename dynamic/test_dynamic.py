@@ -2,14 +2,14 @@
 This shows how to use the CFFI dynamic (ABI) binding.  Note that is slower and more likely to run into silent errors and segfaults.
 But it doesnt require any C compiler to build.
 """
-from raylib import ffi, raylib as rl
+from raylib import ffi, rl
 from raylib.colors import *
 
 rl.InitWindow(800, 450, b"Raylib dynamic binding test")
 rl.SetTargetFPS(60)
 
 camera = ffi.new("struct Camera3D *", [[18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45.0, 0])
-image = rl.LoadImage(b"examples/models/resources/heightmap.png")
+image = rl.LoadImage(b"../examples/models/resources/heightmap.png")
 texture = rl.LoadTextureFromImage(image)
 mesh = rl.GenMeshHeightmap(image, [16, 8, 16])
 model = rl.LoadModelFromMesh(mesh)

@@ -47,7 +47,7 @@ def makeStructHelper(struct):
 for name, attr in getmembers(rl):
     #print(name, attr)
     uname = inflection.underscore(name).replace('3_d','_3d').replace('2_d','_2d')
-    if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>":
+    if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>" or str(type(attr)) == "<class '_cffi_backend._CDataBase'>":
         #print(attr.__call__)
         #print(attr.__doc__)
         #print(attr.__text_signature__)

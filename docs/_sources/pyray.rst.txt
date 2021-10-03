@@ -1,5 +1,5 @@
-raylib.pyray
-============
+Python API
+==============
 
 .. comment::
 
@@ -10,7 +10,7 @@ raylib.pyray
    autoapi/raylib/pyray/index
 
 
-This is a wrapper around the static bindings.
+This is a wrapper around the C API with some syntactic sugar.
 
 The API is *still the same as Raylib*, so you should still reply on `the official Raylib docs <https://www.raylib.com/cheatsheet/cheatsheet.html>`_, except:
 

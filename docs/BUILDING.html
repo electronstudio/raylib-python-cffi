@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building from source &mdash; Raylib Python  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Building from source &mdash; Raylib Python  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="raylib.dynamic" href="dynamic.html" /> 
+    <link rel="prev" title="Dynamic Bindings" href="dynamic.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -34,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 3.7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#license-updated">License (updated)</a></li>
@@ -45,9 +48,9 @@
 <li class="toctree-l1"><a class="reference internal" href="README.html#performance">Performance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#packaging-your-app">Packaging your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#advert">Advert</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pyray.html">raylib.pyray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raylib.html">raylib.static</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic.html">raylib.dynamic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyray.html">Python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raylib.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic.html">Dynamic Bindings</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Building from source</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#have-pip-build-from-source">Have Pip build from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#build-from-source-manually">Build from source manually</a><ul>
@@ -85,17 +88,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="building-from-source">
+  <section id="building-from-source">
 <h1>Building from source<a class="headerlink" href="#building-from-source" title="Permalink to this headline"></a></h1>
-<div class="section" id="have-pip-build-from-source">
+<section id="have-pip-build-from-source">
 <h2>Have Pip build from source<a class="headerlink" href="#have-pip-build-from-source" title="Permalink to this headline"></a></h2>
 <p>Useful if the binaries don’t work on your system.</p>
 <p>Make sure Raylib is installed and then:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">raylib</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">raylib</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="build-from-source-manually">
+</section>
+<section id="build-from-source-manually">
 <h2>Build from source manually<a class="headerlink" href="#build-from-source-manually" title="Permalink to this headline"></a></h2>
 <p>Useful if the Pip build doesn’t work, or you want to contribute to the
 project, or you want to skip building the static lib and just <em>use the
@@ -107,7 +110,7 @@ fixed it, a PR.)</p>
 </div>
 <p>Manual instructions follow, but see also how we actually build the wheels
 at <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/.github/workflows/build.yml">https://github.com/electronstudio/raylib-python-cffi/blob/master/.github/workflows/build.yml</a></p>
-<div class="section" id="windows-manual-build">
+<section id="windows-manual-build">
 <h3>Windows manual build<a class="headerlink" href="#windows-manual-build" title="Permalink to this headline"></a></h3>
 <p>Clone this repo including submodules so you get correct version of
 Raylib.</p>
@@ -132,8 +135,7 @@ Raylib.</p>
 </div>
 <p>To update the dynamic libs, download the official release,
 e.g. <a class="reference external" href="https://github.com/raysan5/raylib/releases/download/3.7.0/raylib-3.7.0_win64_msvc16.zip">https://github.com/raysan5/raylib/releases/download/3.7.0/raylib-3.7.0_win64_msvc16.zip</a>
-and extract <code class="docutils literal notranslate"><span class="pre">raylib.dll</span></code> into <code class="docutils literal notranslate"><span class="pre">raylib/dynamic</span></code>. Delete the files for
-other platforms, unless you want them in your distribution.</p>
+and extract <code class="docutils literal notranslate"><span class="pre">raylib.dll</span></code> into <code class="docutils literal notranslate"><span class="pre">dynamic/raylib</span></code>.</p>
 <p>To build a binary wheel distribution:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rmdir</span> <span class="o">/</span><span class="n">Q</span> <span class="o">/</span><span class="n">S</span> <span class="n">build</span>
 <span class="n">pip3</span> <span class="n">install</span> <span class="n">cffi</span>
@@ -147,13 +149,13 @@ use DLLs with raylib.dynamic:</p>
 </pre></div>
 </div>
 <p>Then install it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">dist</span>\<span class="n">raylib</span><span class="o">-</span><span class="mf">3.7</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">cp37</span><span class="o">-</span><span class="n">cp37m</span><span class="o">-</span><span class="n">win_amd64</span><span class="o">.</span><span class="n">whl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">dist</span>\<span class="n">raylib</span><span class="o">-</span><span class="mf">3.7.0</span><span class="o">-</span><span class="n">cp37</span><span class="o">-</span><span class="n">cp37m</span><span class="o">-</span><span class="n">win_amd64</span><span class="o">.</span><span class="n">whl</span>
 </pre></div>
 </div>
 <p>(Note: your wheel’s filename will probably be different than the one
 here.)</p>
-</div>
-<div class="section" id="linux-manual-build">
+</section>
+<section id="linux-manual-build">
 <h3>Linux manual build<a class="headerlink" href="#linux-manual-build" title="Permalink to this headline"></a></h3>
 <p>These instructions have been tested on Ubuntu 20.10 and 16.04.</p>
 <p>Clone this repo including submodules so you get correct version of
@@ -173,7 +175,7 @@ Raylib.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Optional: Build the Raylib shared libs, if you plan to use
-<code class="docutils literal notranslate"><span class="pre">raylib.dynamic</span></code> binding.</p>
+<code class="docutils literal notranslate"><span class="pre">raylib_dynamic</span></code> binding.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">*</span>
 <span class="n">cmake</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DBUILD_SHARED_LIBS</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
 <span class="n">make</span>
@@ -205,19 +207,14 @@ anything.)</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>(Optional) To update the Linux dynamic libs (names will be different on other platfroms):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">raylib</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/*.</span><span class="n">so</span><span class="o">*</span>
-<span class="n">cp</span> <span class="o">-</span><span class="n">P</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libraylib</span><span class="o">.</span><span class="n">so</span><span class="o">*</span> <span class="n">raylib</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">dynamic</span><span class="o">/</span><span class="n">raylib</span><span class="o">/*.</span><span class="n">so</span><span class="o">*</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">P</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libraylib</span><span class="o">.</span><span class="n">so</span><span class="o">*</span> <span class="n">dynamic</span><span class="o">/</span><span class="n">raylib</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
 <p>To build a binary wheel distribution:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">wheel</span>
 <span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
-</pre></div>
-</div>
-<p>Alternatively, if you don’t want the static binaries and just want to
-use DLLs with raylib.dynamic:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup_dynamic</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
 </pre></div>
 </div>
 <p>Then install it:</p>
@@ -236,11 +233,11 @@ use DLLs with raylib.dynamic:</p>
 </div>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
-<p>move the dynamic libs into a separate package rather than include
-them with every one.</p>
+<p>Separate the instructions for preparing the dynamic module
+from the instructions for building the static module!</p>
 </div>
-</div>
-<div class="section" id="macos-manual-build">
+</section>
+<section id="macos-manual-build">
 <h3>Macos manual build<a class="headerlink" href="#macos-manual-build" title="Permalink to this headline"></a></h3>
 <p>These instructions have been tested on Macos 10.14.</p>
 <p>Clone this repo including submodules so you get correct version of
@@ -248,9 +245,10 @@ Raylib.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">electronstudio</span><span class="o">/</span><span class="n">raylib</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">cffi</span>
 </pre></div>
 </div>
-<p>Build Raylib from the raylib-c directory.</p>
+<p>Build and install Raylib from the raylib-c directory.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">cffi</span><span class="o">/</span><span class="n">raylib</span><span class="o">-</span><span class="n">c</span><span class="o">/</span><span class="n">src</span>
 <span class="n">make</span>
+<span class="n">sudo</span> <span class="n">cp</span> <span class="n">libraylib</span><span class="o">.</span><span class="n">a</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libraylib</span><span class="o">.</span><span class="n">a</span>
 <span class="n">cd</span> <span class="o">../..</span>
 </pre></div>
 </div>
@@ -262,8 +260,8 @@ Raylib.</p>
 <span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="raspberry-pi">
+</section>
+<section id="raspberry-pi">
 <h3>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permalink to this headline"></a></h3>
 <p>The integrated GPU hardware in a Raspberry Pi (“VideoCore”) is rather
 idiosyncratic, resulting in a complex set of software options. Probably
@@ -289,15 +287,15 @@ modifications:</p>
 <p>(See
 <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues/31#issuecomment-862078330">here</a>
 for a Raspberry Pi wheel)</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dynamic.html" class="btn btn-neutral float-left" title="raylib.dynamic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dynamic.html" class="btn btn-neutral float-left" title="Dynamic Bindings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

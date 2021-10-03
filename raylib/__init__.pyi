@@ -76,17 +76,17 @@ def CheckCollisionPointTriangle(point: Vector2,p1: Vector2,p2: Vector2,p3: Vecto
 def CheckCollisionRayBox(Ray_0: Ray,BoundingBox_1: BoundingBox,) -> bool:
         """_Bool CheckCollisionRayBox(struct Ray, struct BoundingBox);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def CheckCollisionRaySphere(Ray_0: Ray,Vector3_1: Vector3,float_2: float,) -> bool:
         """_Bool CheckCollisionRaySphere(struct Ray, struct Vector3, float);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def CheckCollisionRaySphereEx(Ray_0: Ray,Vector3_1: Vector3,float_2: float,Vector3_pointer_3: Any,) -> bool:
         """_Bool CheckCollisionRaySphereEx(struct Ray, struct Vector3, float, struct Vector3 *);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def CheckCollisionRecs(rec1: Rectangle,rec2: Rectangle,) -> bool:
         """Check collision between two rectangles"""
@@ -112,7 +112,7 @@ def CloseAudioDevice() -> None:
 def CloseAudioStream(AudioStream_0: AudioStream,) -> None:
         """void CloseAudioStream(struct AudioStream);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def CloseWindow() -> None:
         """Close window and unload OpenGL context"""
@@ -565,22 +565,22 @@ def GetCodepointsCount(text: str,) -> int:
 def GetCollisionRayGround(Ray_0: Ray,float_1: float,) -> RayHitInfo:
         """struct RayHitInfo GetCollisionRayGround(struct Ray, float);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def GetCollisionRayMesh(Ray_0: Ray,Mesh_1: Mesh,Matrix_2: Matrix,) -> RayHitInfo:
         """struct RayHitInfo GetCollisionRayMesh(struct Ray, struct Mesh, struct Matrix);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def GetCollisionRayModel(Ray_0: Ray,Model_1: Model,) -> RayHitInfo:
         """struct RayHitInfo GetCollisionRayModel(struct Ray, struct Model);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def GetCollisionRayTriangle(Ray_0: Ray,Vector3_1: Vector3,Vector3_2: Vector3,Vector3_3: Vector3,) -> RayHitInfo:
         """struct RayHitInfo GetCollisionRayTriangle(struct Ray, struct Vector3, struct Vector3, struct Vector3);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def GetCollisionRec(rec1: Rectangle,rec2: Rectangle,) -> Rectangle:
         """Get collision rectangle for two rectangles collision"""
@@ -909,7 +909,7 @@ def InitAudioDevice() -> None:
 def InitAudioStream(unsignedint_0: int,unsignedint_1: int,unsignedint_2: int,) -> AudioStream:
         """struct AudioStream InitAudioStream(unsigned int, unsigned int, unsigned int);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def InitWindow(width: int,height: int,title: str,) -> None:
         """Initialize window and OpenGL context"""
@@ -986,7 +986,7 @@ def IsMouseButtonUp(button: int,) -> bool:
 def IsMusicPlaying(Music_0: Music,) -> bool:
         """_Bool IsMusicPlaying(struct Music);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def IsSoundPlaying(sound: Sound,) -> bool:
         """Check if a sound is currently playing"""
@@ -1283,7 +1283,7 @@ def MeshBinormals(mesh: Any,) -> None:
 def MeshBoundingBox(Mesh_0: Mesh,) -> BoundingBox:
         """struct BoundingBox MeshBoundingBox(struct Mesh);
 
-CFFI C function from raylib.static._raylib_cffi.lib"""
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def MeshTangents(mesh: Any,) -> None:
         """Compute mesh tangents"""
