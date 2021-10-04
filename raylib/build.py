@@ -15,6 +15,8 @@
 # Assumes raylib, GL, etc are all already installed as system libraries.  We dont distribute them.
 # Raylib must be installed and compiled with:  cmake -DWITH_PIC=ON -DSHARED=ON -DSTATIC=ON ..
 
+# We use /usr/local/lib/libraylib.a to ensure we link to static version
+
 from cffi import FFI
 import os
 import platform
@@ -27,7 +29,7 @@ def build_linux():
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
-                               #include "../../raylib/raylib.h"
+                               #include "raylib.h"
                           """,
                           extra_link_args=['/usr/local/lib/libraylib.a','-lm', '-lpthread', '-lGLU', '-lGL',  '-lrt', '-lm', '-ldl', '-lX11', '-lpthread'],
                           libraries=['GL','m','pthread', 'dl', 'rt', 'X11']
@@ -55,7 +57,7 @@ def build_mac():
                           """
                                #include "../../raylib/raylib.h"   // the C header of the library, supplied by us here
                           """,
-                          extra_link_args=['-lraylib', '-framework', 'OpenGL', '-framework', 'Cocoa', '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework', 'CoreVideo'],
+                          extra_link_args=['/usr/local/lib/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa', '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework', 'CoreVideo'],
                           )
 
     if __name__ == "__main__":

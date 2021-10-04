@@ -22,6 +22,7 @@ import itertools
 import os
 import pathlib
 import platform
+from .version import __version__
 
 MODULE = pathlib.Path(__file__).parent
 
@@ -52,6 +53,6 @@ ffi.cdef(open(MODULE / "raylib_modified.h").read().replace('RLAPI ', ''))
 try:
     raylib_fname = raylib_library_path()
     rl = ffi.dlopen(raylib_fname)
-    print('LOADED DYNAMICALLY SHARED LIB "{}"'.format(raylib_fname))
+    print('LOADED DYNAMICALLY SHARED LIB {} {}'.format(__version__, raylib_fname))
 except Exception as e:
     print(e)

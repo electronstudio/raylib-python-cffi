@@ -18,5 +18,7 @@ from raylib.colors import *
 import cffi
 import sys
 from raylib.pyray import PyRay
+from .version import  __version__
 
-print("RAYLIB STATIC LOADED", file=sys.stderr)
+print("RAYLIB STATIC "+__version__+" LOADED", file=sys.stderr)
+

@@ -1,6 +1,7 @@
 import pathlib
 from setuptools import setup
 from setuptools.dist import Distribution
+from version import __version__
 
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
@@ -16,7 +17,7 @@ class BinaryDistribution(Distribution):
 # This call to setup() does all the work
 setup(
     name="raylib",
-    version="3.7.0.post6",
+    version=__version__,
     description="Python CFFI bindings for Raylib",
     long_description=README,
     long_description_content_type="text/markdown",

@@ -12,20 +12,20 @@ statically link and use in non-free / proprietary / commercial projects!
 
 # Installation
 
-We distribute a statically linked binary Raylib wheel:
-
     python3 -m pip install raylib
 
-Problems may be caused by out of date pip:
+If it doesn't work, first make sure you have latest pip installed:
 
     python3 -m pip install --upgrade pip
 
-Some platforms that _should_ be available:  Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64.
+On most platforms it should install a binary wheel (Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64).
 
 If yours isn't available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g. 
 using homebrew, apt, etc.
 
-[If it doesn't work, build from source](BUILDING.md)
+[If it doesn't work, you can build manually.](BUILDING.md)
+
+## Dynamic binding version
 
 There is now a separate dynamic version of this binding:
 
@@ -36,8 +36,7 @@ There is now a separate dynamic version of this binding:
 
 # How to use
 
-There are two different ways of using this binding.  You only need to pick one method, but you
-can combine two methods in one program if you want to.
+There are two APIs, you can use either or both:
 
 ### If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API
 
@@ -63,7 +62,7 @@ Work in progress:
 
 # Performance
 
-For fastest permformance use Pypy rather than standard python.
+For fastest performance use Pypy rather than standard python.
 
 Every call to C is costly, so it's slightly faster if you use Python data structures and functions when calculating
 in your update loop
