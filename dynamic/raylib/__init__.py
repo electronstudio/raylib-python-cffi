@@ -24,6 +24,7 @@ import pathlib
 import platform
 from .version import __version__
 
+
 MODULE = pathlib.Path(__file__).parent
 
 def raylib_library_path():
@@ -56,3 +57,5 @@ try:
     print('LOADED DYNAMICALLY SHARED LIB {} {}'.format(__version__, raylib_fname))
 except Exception as e:
     print(e)
+
+from .pyray import PyRay

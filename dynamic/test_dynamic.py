@@ -2,8 +2,8 @@
 This shows how to use the CFFI dynamic (ABI) binding.  Note that is slower and more likely to run into silent errors and segfaults.
 But it doesnt require any C compiler to build.
 """
-from raylib import ffi, rl
-from raylib.colors import *
+
+from raylib import ffi, rl, colors
 
 rl.InitWindow(800, 450, b"Raylib dynamic binding test")
 rl.SetTargetFPS(60)
@@ -22,12 +22,12 @@ rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)
 while not rl.WindowShouldClose():
     rl.UpdateCamera(camera)
     rl.BeginDrawing()
-    rl.ClearBackground(RAYWHITE)
+    rl.ClearBackground(colors.RAYWHITE)
     rl.BeginMode3D(camera[0])
-    rl.DrawModel(model, (-8.0, 0.0, -8.0), 1.0, RED)
+    rl.DrawModel(model, (-8.0, 0.0, -8.0), 1.0, colors.RED)
     rl.DrawGrid(20, 1.0)
     rl.EndMode3D()
-    rl.DrawText(b"This mesh should be textured", 190, 200, 20, VIOLET)
+    rl.DrawText(b"This mesh should be textured", 190, 200, 20, colors.VIOLET)
     rl.EndDrawing()
 rl.CloseWindow()
 
