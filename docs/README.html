@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Bindings for Raylib 3.7 &mdash; Raylib Python  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Python Bindings for Raylib 3.7 &mdash; Raylib Python  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -38,11 +35,14 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Python Bindings for Raylib 3.7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#license-updated">License (updated)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-binding-version">Dynamic binding version</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="#how-to-use">How to use</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api">If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower">If you prefer a slightly more Pythonistic API and don’t mind it might be slightly slower</a></li>
@@ -86,69 +86,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section class="tex2jax_ignore mathjax_ignore" id="python-bindings-for-raylib-3-7">
+  <div class="tex2jax_ignore mathjax_ignore section" id="python-bindings-for-raylib-3-7">
 <h1>Python Bindings for Raylib 3.7<a class="headerlink" href="#python-bindings-for-raylib-3-7" title="Permalink to this headline"></a></h1>
 <p>New CFFI API static bindings.  Automatically generated to be as close as possible to
 original Raylib.  Faster, fewer bugs and easier to maintain than ctypes.</p>
 <p><a class="reference external" href="http://electronstudio.github.io/raylib-python-cffi">Full documentation</a></p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="license-updated">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="license-updated">
 <h1>License (updated)<a class="headerlink" href="#license-updated" title="Permalink to this headline"></a></h1>
 <p>The bindings are now under the Eclipse Public License, so you are free to
 statically link and use in non-free / proprietary / commercial projects!</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="installation">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
-<p>We distribute a statically linked binary Raylib wheel:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install raylib
 </pre></div>
 </div>
-<p>Problems may be caused by out of date pip:</p>
+<p>If it doesn’t work, first make sure you have latest pip installed:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install --upgrade pip
 </pre></div>
 </div>
-<p>Some platforms that <em>should</em> be available:  Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64.</p>
+<p>On most platforms it should install a binary wheel (Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64).</p>
 <p>If yours isn’t available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g.
 using homebrew, apt, etc.</p>
-<p><a class="reference internal" href="BUILDING.html"><span class="doc std std-doc">If it doesn’t work, build from source</span></a></p>
+<p><a class="reference internal" href="BUILDING.html"><span class="doc std std-doc">If it doesn’t work, you can build manually.</span></a></p>
+<div class="section" id="dynamic-binding-version">
+<h2>Dynamic binding version<a class="headerlink" href="#dynamic-binding-version" title="Permalink to this headline"></a></h2>
 <p>There is now a separate dynamic version of this binding:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install raylib_dynamic
 </pre></div>
 </div>
 <p><a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/dynamic.html">Read this before using raylib_dynamic</a></p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="how-to-use">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="how-to-use">
 <h1>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline"></a></h1>
-<p>There are two different ways of using this binding.  You only need to pick one method, but you
-can combine two methods in one program if you want to.</p>
-<section id="if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api">
+<p>There are two APIs, you can use either or both:</p>
+<div class="section" id="if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api">
 <h2>If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API<a class="headerlink" href="#if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api" title="Permalink to this headline"></a></h2>
 <p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/raylib.html">the C API</a>.</p>
-</section>
-<section id="if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower">
+</div>
+<div class="section" id="if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower">
 <h2>If you prefer a slightly more Pythonistic API and don’t mind it might be slightly slower<a class="headerlink" href="#if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower" title="Permalink to this headline"></a></h2>
 <p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/pyray.html">the Python API</a>.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="rlzero">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="rlzero">
 <h1>RLZero<a class="headerlink" href="#rlzero" title="Permalink to this headline"></a></h1>
 <p>Work in progress:</p>
 <p><a class="reference external" href="https://github.com/electronstudio/rlzero">A simplified API for Raylib for use in education and to enable beginners to create 3d games</a></p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="help-wanted">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="help-wanted">
 <h1>Help wanted<a class="headerlink" href="#help-wanted" title="Permalink to this headline"></a></h1>
 <ul class="simple">
 <li><p>converting more examples from C to python</p></li>
 <li><p>testing and building on more platforms</p></li>
 </ul>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="performance">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="performance">
 <h1>Performance<a class="headerlink" href="#performance" title="Permalink to this headline"></a></h1>
-<p>For fastest permformance use Pypy rather than standard python.</p>
+<p>For fastest performance use Pypy rather than standard python.</p>
 <p>Every call to C is costly, so it’s slightly faster if you use Python data structures and functions when calculating
 in your update loop
 and then only convert them to C data structures when you have to call the C functions for drawing.</p>
-<section id="bunnymark">
+<div class="section" id="bunnymark">
 <h2>Bunnymark<a class="headerlink" href="#bunnymark" title="Permalink to this headline"></a></h2>
 <table class="colwidths-auto docutils align-default">
 <thead>
@@ -186,9 +187,9 @@ and then only convert them to C data structures when you have to call the C func
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="packaging-your-app">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="packaging-your-app">
 <h1>Packaging your app<a class="headerlink" href="#packaging-your-app" title="Permalink to this headline"></a></h1>
 <p>You can create a standalone binary using the Nuitka compiler.  For example, here is how to package Bunnymark:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install nuitka
@@ -196,13 +197,13 @@ cd examples/textures
 python3 -m nuitka --onefile --linux-onefile-icon resources/wabbit_alpha.png textures_bunnymark.py
 </pre></div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="advert">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="advert">
 <h1>Advert<a class="headerlink" href="#advert" title="Permalink to this headline"></a></h1>
 <p><a class="reference external" href="https://store.steampowered.com/app/664240/RetroWar_8bit_Party_Battle/?git">RetroWar: 8-bit Party Battle</a> is out now.  Defeat up to 15 of your friends in a tournament of 80s-inspired retro mini games.</p>
 <p><a class="reference external" href="https://github.com/electronstudio/pygame-zero-book">Coding Games With Pygame Zero &amp; Python</a> is
 a book for Python beginners.</p>
-</section>
+</div>
 
 
            </div>

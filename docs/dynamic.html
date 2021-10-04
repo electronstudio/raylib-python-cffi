@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dynamic Bindings &mdash; Raylib Python  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Dynamic Bindings &mdash; Raylib Python  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -38,7 +35,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 3.7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#license-updated">License (updated)</a></li>
@@ -79,7 +76,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="dynamic-bindings">
+  <div class="section" id="dynamic-bindings">
 <h1>Dynamic Bindings<a class="headerlink" href="#dynamic-bindings" title="Permalink to this headline"></a></h1>
 <p>CFFI ABI dynamic bindings avoid the need to compile a C extension module.  They now been moved to a separate module:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">raylib_dynamic</span>
@@ -101,7 +98,7 @@ But the dynamic bindings have the advantage that you don’t need to compile any
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">raylib</span> <span class="kn">import</span> <span class="n">rl</span>
 </pre></div>
 </div>
-<p>Then you access the functions with <code class="docutils literal notranslate"><span class="pre">rl.</span></code> prefix.  See</p>
+<p>Then you access the functions with <code class="docutils literal notranslate"><span class="pre">rl.</span></code> prefix.</p>
 <p>See <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/dynamic/test_dynamic.py">https://github.com/electronstudio/raylib-python-cffi/blob/master/dynamic/test_dynamic.py</a> for an example.</p>
 <p>If you use the <code class="docutils literal notranslate"><span class="pre">rl.</span></code> prefix then code will work on both static and dynamic bindings.</p>
 <div class="admonition warning">
@@ -113,7 +110,7 @@ But the dynamic bindings have the advantage that you don’t need to compile any
 <p>If your system already has the Raylib library installed, you can set the environment variable <code class="docutils literal notranslate"><span class="pre">USE_EXTERNAL_RAYLIB</span></code> and it will
 always be used instead of the bundled DLLs.</p>
 </div>
-</section>
+</div>
 
 
            </div>

@@ -21,7 +21,7 @@ Instead you have to do::
 
     from raylib import rl
 
-Then you access the functions with ``rl.`` prefix.  See
+Then you access the functions with ``rl.`` prefix.
 
 See https://github.com/electronstudio/raylib-python-cffi/blob/master/dynamic/test_dynamic.py for an example.
 

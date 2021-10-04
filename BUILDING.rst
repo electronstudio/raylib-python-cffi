@@ -15,9 +15,8 @@ Make sure Raylib is installed and then:
 Build from source manually
 --------------------------
 
-Useful if the Pip build doesn’t work, or you want to contribute to the
-project, or you want to skip building the static lib and just *use the
-dynamic binding with your own dll*.
+Useful if the Pip build doesn’t work and you want to debug it, or you want to contribute to the
+project.
 
 .. attention::
    If the Pip build doesn’t work, please submit a bug. (And if you have
@@ -140,8 +139,8 @@ Build
 ::
 
    pip3 install cffi
-   rm -rf build raylib/static/_raylib_cffi.*
-   python3 raylib/static/build.py
+   rm -rf build raylib/_raylib_cffi.*
+   python3 raylib/build.py
 
 ..  note:: (Optional) To update the Linux dynamic libs (names will be different on other platfroms):
 
@@ -168,12 +167,12 @@ To build a complete set of libs for Python 3.6, 3.7, 3.8 and 3.9:
 
 ::
 
-   ./raylib/static/build_multi.sh
+   ./raylib/build_multi.sh
 
 .. warning::
    pypi wont accept Linux packages unless they are built
    ``--plat-name manylinux2014_x86_64`` so on linux please run
-   ``./raylib/static/build_multi_linux.sh`` )
+   ``./raylib/build_multi_linux.sh`` )
 
 .. TODO::
    Separate the instructions for preparing the dynamic module
@@ -208,8 +207,8 @@ Build and install module.
 ::
 
    pip3 install cffi
-   rm -rf build raylib/static/_raylib_cffi.*
-   python3 raylib/static/build.py
+   rm -rf build raylib/_raylib_cffi.*
+   python3 raylib/build.py
    pip3 install wheel
    python3 setup.py install
 

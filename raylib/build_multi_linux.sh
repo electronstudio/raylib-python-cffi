@@ -13,7 +13,7 @@ function build() {
     pyenv global $1
     pip3 install cffi
     pip3 install wheel
-    rm -rf raylib/static/_raylib_cffi.* build
+    rm -rf raylib/_raylib_cffi.* build
     python setup.py bdist_wheel --plat-name manylinux2014_x86_64
 }
 
