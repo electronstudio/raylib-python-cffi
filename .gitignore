@@ -4,6 +4,8 @@ __pycache__/
 
 
 # Distribution / packaging
+docs-src/_build
+.idea/
 .Python
 build/
 develop-eggs/
