@@ -48,9 +48,16 @@ def build_linux():
 def build_windows():
     print("BUILDING FOR WINDOWS")
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', '').replace('bool','int'))
+    ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', '').replace('bool','int'))
+    ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', '').replace('bool','int'))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
-                          #include "raylib.h"   
+                               #include "raylib.h"
+                               #define RAYGUI_IMPLEMENTATION
+                               #define RAYGUI_SUPPORT_RICONS
+                               #include "raygui.h"
+                               #define PHYSAC_IMPLEMENTATION
+                               #include "physac.h" 
                           """,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           libraries=['raylib', 'gdi32', 'shell32', 'user32','OpenGL32', 'winmm'],
