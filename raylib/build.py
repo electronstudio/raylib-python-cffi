@@ -27,9 +27,16 @@ ffibuilder = FFI()
 def build_linux():
     print("BUILDING FOR LINUX")
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
+    ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', ''))
+    ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', ''))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
                                #include "raylib.h"
+                               #define RAYGUI_IMPLEMENTATION
+                               #define RAYGUI_SUPPORT_RICONS
+                               #include "../raylib-c/src/extras/raygui.h"
+                               #define PHYSAC_IMPLEMENTATION
+                               #include "../raylib-c/src/extras/physac.h"
                           """,
                           extra_link_args=['/usr/local/lib/libraylib.a','-lm', '-lpthread', '-lGLU', '-lGL',  '-lrt', '-lm', '-ldl', '-lX11', '-lpthread'],
                           libraries=['GL','m','pthread', 'dl', 'rt', 'X11']

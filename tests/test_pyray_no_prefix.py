@@ -23,8 +23,8 @@ set_camera_mode(camera, CAMERA_ORBITAL)
 
 pos = get_mouse_position()
 ray = get_mouse_ray(pos, camera)
-rayhit = get_collision_ray_ground(ray, 0)
-print(str(rayhit.position.x))
+#rayhit = get_ray_collision_ground(ray, 0)
+#print(str(rayhit.position.x))
 
 while not window_should_close():
     update_camera(camera)
@@ -39,7 +39,7 @@ while not window_should_close():
 
     pos = get_mouse_position()
     ray = get_mouse_ray(pos, camera)
-    rayhit = get_collision_ray_ground(ray, 0)
+    #rayhit = get_ray_collision_ground(ray, 0)
     #print(str(rayhit.position.x))
 
 close_window()
