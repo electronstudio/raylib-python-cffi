@@ -87,6 +87,9 @@ jobs:
           cmake -DINCLUDE_EVERYTHING=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
+      - name: Build raygui
+        run: |
+          ./build_raygui.sh
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip

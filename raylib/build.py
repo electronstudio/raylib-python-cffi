@@ -27,15 +27,19 @@ ffibuilder = FFI()
 def build_linux():
     print("BUILDING FOR LINUX")
     ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
+    ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', '').replace('RAYGUI_CLITERAL',''))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
-                               #include "raylib.h"
+                               #include "../../raylib/raylib.h"
+                               #include "../../raylib/raygui.h"
                           """,
-                          extra_link_args=['/usr/local/lib/libraylib.a','-lm', '-lpthread', '-lGLU', '-lGL',  '-lrt', '-lm', '-ldl', '-lX11', '-lpthread'],
+                          extra_link_args=['/usr/local/lib/libraylib.a','raygui-c/raygui.a','-lm', '-lpthread', '-lGLU', '-lGL',  '-lrt', '-lm', '-ldl', '-lX11', '-lpthread'],
                           libraries=['GL','m','pthread', 'dl', 'rt', 'X11']
                           )
     if __name__ == "__main__":
         ffibuilder.compile(verbose=True)
+
+
 
 def build_windows():
     print("BUILDING FOR WINDOWS")
@@ -88,6 +92,7 @@ if platform.system()=="Darwin":
 elif platform.system()=="Linux":
     if "x86" in platform.machine():
         build_linux()
+
     elif "arm" in platform.machine():
         build_rpi_nox()
 elif platform.system()=="Windows":
