@@ -34,12 +34,13 @@ def build_linux():
                                #include "raylib.h"
                                #define RAYGUI_IMPLEMENTATION
                                #define RAYGUI_SUPPORT_RICONS
-                               #include "../raylib-c/src/extras/raygui.h"
+                               #include "raygui.h"
                                #define PHYSAC_IMPLEMENTATION
-                               #include "../raylib-c/src/extras/physac.h"
+                               #include "physac.h"
                           """,
                           extra_link_args=['/usr/local/lib/libraylib.a','-lm', '-lpthread', '-lGLU', '-lGL',  '-lrt', '-lm', '-ldl', '-lX11', '-lpthread'],
-                          libraries=['GL','m','pthread', 'dl', 'rt', 'X11']
+                          libraries=['GL','m','pthread', 'dl', 'rt', 'X11'],
+                          include_dirs=['raylib']
                           )
     if __name__ == "__main__":
         ffibuilder.compile(verbose=True)
