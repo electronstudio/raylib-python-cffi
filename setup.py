@@ -34,7 +34,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=["raylib"],
+    packages=["raylib", "pyray"],
     include_package_data=True,
     install_requires=["cffi>=1.14.5","inflection"],
     distclass=BinaryDistribution,

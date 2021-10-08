@@ -44,9 +44,9 @@ def ctype_to_python_type(t):
 
 print("""from typing import Any
 
-class PyRay:
-    def pointer(self, struct):
-        return ffi.addressof(struct)
+
+def pointer(struct):
+    ...
 """)
 
 
@@ -69,7 +69,7 @@ for name, attr in getmembers(rl):
                 param_name = list(p)[i]
 
             param_type = ctype_to_python_type(arg.cname)
-            sig += f", {param_name}: {param_type}"
+            sig += f"{param_name}: {param_type},"
 
         return_type = ffi.typeof(attr).result.cname
 
@@ -79,15 +79,15 @@ for name, attr in getmembers(rl):
             description = json_object['description']
 
         print(
-            f'    def {uname}(self{sig}) -> {ctype_to_python_type(return_type)}:\n        """{description}"""\n        ...')
+            f'def {uname}({sig}) -> {ctype_to_python_type(return_type)}:\n        """{description}"""\n        ...')
 
     elif str(type(attr)) == "<class '_cffi_backend._CDataBase'>":
         return_type = ffi.typeof(attr).result.cname
         print(
-            f'    def {uname}(self, *args) -> {ctype_to_python_type(return_type)}:\n        """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""\n        ...')
+            f'def {uname}(*args) -> {ctype_to_python_type(return_type)}:\n        """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""\n        ...')
     else:
         #print("*****", str(type(attr)))
-        print(f"    {name}: {str(type(attr))[8:-2]}")  # this isolates the type
+        print(f"{name}: {str(type(attr))[8:-2]}")  # this isolates the type
 
 for struct in ffi.list_types()[0]:
     print("processing", struct, file=sys.stderr)
@@ -99,18 +99,18 @@ for struct in ffi.list_types()[0]:
         if ffi.typeof(struct).fields is None:
             print("weird empty struct, skipping", file=sys.stderr)
             break
-        print(f"    class {struct}:")
-        print(f'        """ comment """')
+        print(f"class {struct}:")
+        print(f'    """ struct """')
         sig = ""
         for arg in ffi.typeof(struct).fields:
             sig += ", " + arg[0]
-        print(f"        def __init__(self{sig}):")
+        print(f"    def __init__(self{sig}):")
 
         for arg in ffi.typeof(struct).fields:
-            print(f"            self.{arg[0]}={arg[0]}")
+            print(f"        self.{arg[0]}={arg[0]}")
 
     elif ffi.typeof(struct).kind == "enum":
-        print(f"    {struct}: int")
+        print(f"{struct}: int")
     else:
         print("ERROR UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
 

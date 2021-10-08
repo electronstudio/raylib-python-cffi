@@ -2,10 +2,7 @@
 This shows how to use the Pyray wrapper around the static binding.
 """
 
-import raylib
-
-
-pr = raylib.PyRay()
+import pyray as pr
 
 pr.init_window(800, 450, "Raylib texture test")
 pr.set_target_fps(60)

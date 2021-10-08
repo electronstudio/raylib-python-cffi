@@ -1,22 +1,34 @@
 # Python Bindings for Raylib 3.7
 
 New CFFI API static bindings.  Automatically generated to be as close as possible to 
-original Raylib.  Faster, fewer bugs and easier to maintain than ctypes.
+original Raylib.  Faster, fewer bugs and easier to maintain than ctypes.  Commercial-friendly license.
+Docstrings and auto-completion.
 
 [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
 
-# License (updated)
+# Quickstart
 
-The bindings are now under the Eclipse Public License, so you are free to 
-statically link and use in non-free / proprietary / commercial projects!
+`pip3 install raylib`
+
+    from pyray import *
+    init_window(800, 450, "Hello")
+    while not window_should_close():
+        begin_drawing()
+        clear_background(WHITE)
+        draw_text("Hello world", 190, 200, 20, VIOLET)
+        end_drawing()
+    close_window()
+
 
 # Installation
 
-    python3 -m pip install raylib
-
-If it doesn't work, first make sure you have latest pip installed:
+First make sure you have latest pip installed:
 
     python3 -m pip install --upgrade pip
+
+Then install
+
+    python3 -m pip install raylib
 
 On most platforms it should install a binary wheel (Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64).
 
@@ -51,18 +63,23 @@ Use [the Python API](https://electronstudio.github.io/raylib-python-cffi/pyray.h
 
 # RLZero
 
-Work in progress:
+A related library (that is a work in progress!):
 
 [A simplified API for Raylib for use in education and to enable beginners to create 3d games](https://github.com/electronstudio/rlzero)
 
 # Help wanted
 
- * converting more examples from C to python
- * testing and building on more platforms
+ * Converting more examples from C to Python
+ * Testing on more platforms
+
+# License (updated)
+
+The bindings are now under the Eclipse Public License, so you are free to
+statically link and use in non-free / proprietary / commercial projects!
 
 # Performance
 
-For fastest performance use Pypy rather than standard python.
+For fastest performance use Pypy rather than standard Python.
 
 Every call to C is costly, so it's slightly faster if you use Python data structures and functions when calculating
 in your update loop

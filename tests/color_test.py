@@ -1,5 +1,5 @@
-from raylib.pyray import PyRay
-pyray = PyRay()
+import pyray
+
 pyray.init_window(800, 400, 'demo')
 
 

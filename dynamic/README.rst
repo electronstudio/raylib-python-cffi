@@ -27,9 +27,9 @@ See https://github.com/electronstudio/raylib-python-cffi/blob/master/dynamic/tes
 
 If you use the ``rl.`` prefix then code will work on both static and dynamic bindings.
 
-.. warning::
+.. tip::
 
-   If you access functions via ``raylib.pyray`` then there is no difference at all, but be warned this hasn't been tested.
+   If you access functions via ``import pyray`` then there is no difference at all, but be warned this hasn't been tested much.
 
 
 .. important::
