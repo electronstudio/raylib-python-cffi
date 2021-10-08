@@ -27,7 +27,7 @@ Example program:
         EndDrawing()
     CloseWindow()
 
-If you want to be more portable you can prefix the functions like this:
+If you want to be more portable (i.e. same code will work with dynamic bindings) you can prefix the functions like this:
 
 .. code-block::
 
@@ -39,7 +39,7 @@ If you want to be more portable you can prefix the functions like this:
     ...
 
 
-See also https://github.com/electronstudio/raylib-python-cffi/blob/master/test_static.py
+See also https://github.com/electronstudio/raylib-python-cffi/blob/master/tests/test_static.py
 
 .. note:: Whenever you need to convert stuff between C and Python see https://cffi.readthedocs.io
 

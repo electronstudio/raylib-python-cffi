@@ -30,7 +30,7 @@ author = 'Richard Smith'
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary', 'myst_parser', 'autoapi.extension', "sphinx_rtd_theme",  'sphinx.ext.todo']
 
-autoapi_dirs = ['../raylib']
+autoapi_dirs = ['../raylib', '../pyray']
 
 autoapi_file_patterns = ['*.pyi', '*.py']
 

@@ -7,7 +7,7 @@ Python API
    toctree::
    :maxdepth: 1
 
-   autoapi/raylib/pyray/index
+   autoapi/pyray/index
 
 
 This is a wrapper around the C API with some syntactic sugar.
@@ -24,9 +24,7 @@ Example program:
 
 ..  code-block::
 
-    import raylib
-
-    pr = raylib.PyRay()
+    import pyray as pr
 
     pr.init_window(800, 450, "Hello Pyray")
     pr.set_target_fps(60)
@@ -45,12 +43,24 @@ Example program:
         pr.end_drawing()
     pr.close_window()
 
+..  tip:: New in 3.7.0.post9:
 
-See also https://github.com/electronstudio/raylib-python-cffi/blob/master/test_pyray.py
+    You can also now import the functions with no prefix:
+
+    ..  code-block::
+
+        from pyray import *
+
+        init_window(800, 450, "Raylib texture test")
+        ...
+
+    You don't need to use the PyRay() class anymore.
+
+See also https://github.com/electronstudio/raylib-python-cffi/blob/master/tests/test_pyray.py
 
 API reference
 -------------
 
-.. autoapimodule:: raylib.pyray
+.. autoapimodule:: pyray
     :members:
     :undoc-members:
