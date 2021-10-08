@@ -84,7 +84,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DINCLUDE_EVERYTHING=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
       - name: Build raylib-python-cffi
@@ -131,7 +131,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DINCLUDE_EVERYTHING=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           msbuild raylib.sln /target:raylib /property:Configuration=Release
           copy raylib\Release\raylib.lib ..\..
           cd ..\..
