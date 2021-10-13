@@ -22,12 +22,44 @@ import os
 import platform
 import sys
 
+
 ffibuilder = FFI()
+
+def mangle(file):
+    result = ""
+    skip = False
+    for line in open(file):
+        line = line.strip().replace("va_list", "void *")+"\n"
+        if skip:
+            if line.startswith("#endif"):
+                skip = False
+            continue
+        if line.startswith("#if defined(__cplusplus)"):
+            skip = True
+            continue
+        if line.startswith("#endif // RAYGUI_H"):
+            break
+        if line.__contains__("GetTouchEvent"):
+            continue
+        if line.startswith("#"):
+            continue
+        if line.startswith("RLAPI"):
+            line = line.replace('RLAPI ', '')
+        if line.startswith("RAYGUIDEF"):
+            line = line.replace('RAYGUIDEF ', '')
+        if line.startswith("PHYSACDEF"):
+            line = line.replace('PHYSACDEF ', '')
+        result += line
+        print(line)
+    return result
+
 
 def build_linux():
     print("BUILDING FOR LINUX")
-    ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
+    ffibuilder.cdef(mangle("raylib/raylib.h"))
+    #ffibuilder.cdef(mangle("raylib/raygui.h"))
     ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', ''))
+    #ffibuilder.cdef(mangle("raylib/physac.h"))
     ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', ''))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
@@ -47,7 +79,7 @@ def build_linux():
 
 def build_windows():
     print("BUILDING FOR WINDOWS")
-    ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', '').replace('bool','int'))
+    ffibuilder.cdef(mangle("raylib/raylib.h"))
     ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', '').replace('bool','int'))
     ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', '').replace('bool','int'))
     ffibuilder.set_source("raylib._raylib_cffi",
@@ -82,7 +114,7 @@ def build_mac():
 
 def build_rpi_nox():
     print("BUILDING FOR RASPBERRY PI")
-    ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
+    ffibuilder.cdef(mangle("raylib/raylib.h"))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
                                #include "../../raylib/raylib.h"
