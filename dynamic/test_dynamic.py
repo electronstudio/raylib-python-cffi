@@ -14,7 +14,7 @@ texture = rl.LoadTextureFromImage(image)
 mesh = rl.GenMeshHeightmap(image, [16, 8, 16])
 model = rl.LoadModelFromMesh(mesh)
 print(model.materials)  # SHOULD BE A pointer to a 'struct Material' but some is NULL pointer to 'Material' ?
-model.materials.maps[rl.MATERIAL_MAP_DIFFUSE].texture = texture
+model.materials.maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 
 rl.UnloadImage(image)
 rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)

@@ -27,7 +27,7 @@ texture = LoadTextureFromImage(image)                # Convert image to texture 
 mesh = GenMeshHeightmap(image, ( 16, 8, 16 ))    # Generate heightmap mesh (RAM and VRAM)
 model = LoadModelFromMesh(mesh)                         # Load model from generated mesh
 
-model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture        # Set map diffuse texture
+model.materials[0].maps[MATERIAL_MAP_ALBEDO].texture = texture        # Set map diffuse texture
 mapPosition = ( -8.0, 0.0, -8.0 )                # Define model position
 
 UnloadImage(image)                     # Unload heightmap image from RAM, already uploaded to VRAM

@@ -13,7 +13,7 @@ image = LoadImage(b"examples/models/resources/heightmap.png")
 texture = LoadTextureFromImage(image)
 mesh = GenMeshHeightmap(image, (16, 8, 16))
 model = LoadModelFromMesh(mesh)
-model.materials.maps[MATERIAL_MAP_DIFFUSE].texture = texture
+model.materials.maps[MATERIAL_MAP_ALBEDO].texture = texture
 
 UnloadImage(image)
 SetCameraMode(camera[0], CAMERA_ORBITAL)

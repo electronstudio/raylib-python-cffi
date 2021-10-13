@@ -1,13 +1,15 @@
 import pathlib
 from setuptools import setup
 from setuptools.dist import Distribution
-from version import __version__
+
 
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
 
 # The text of the README file
 README = (HERE / "README.md").read_text()
+VERSION = (HERE / "version.py").read_text().split()[-1].strip("\"'")
+
 
 class BinaryDistribution(Distribution):
     """Distribution which always forces a binary package with platform name"""
@@ -17,7 +19,7 @@ class BinaryDistribution(Distribution):
 # This call to setup() does all the work
 setup(
     name="raylib",
-    version=__version__,
+    version=VERSION,
     description="Python CFFI bindings for Raylib",
     long_description=README,
     long_description_content_type="text/markdown",

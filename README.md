@@ -45,6 +45,12 @@ There is now a separate dynamic version of this binding:
 
 [Read this before using raylib_dynamic](https://electronstudio.github.io/raylib-python-cffi/dynamic.html)
 
+## Beta testing
+
+You can install an alpha or beta version by specifying the version number like this:
+
+    python3 -m pip install raylib==4.0a3
+
 
 # How to use
 

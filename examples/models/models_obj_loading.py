@@ -30,7 +30,7 @@ rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)
 
 model = LoadModel(b"resources/models/house.obj")                 # Load OBJ model
 texture = LoadTexture(b"resources/models/house_diffuse.png") # Load model texture
-model.materials.maps[MATERIAL_MAP_DIFFUSE].texture = texture                     # Set map diffuse texture
+model.materials.maps[MATERIAL_MAP_ALBEDO].texture = texture                     # Set map diffuse texture
 position = [ 0.0, 0.0, 0.0 ]                                # Set model position
 
 SetTargetFPS(60)   # Set our game to run at 60 frames-per-second

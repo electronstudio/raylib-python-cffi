@@ -30,7 +30,7 @@ model = LoadModelFromMesh(mesh)
 
 # NOTE: By default each cube is mapped to one part of texture atlas
 texture = LoadTexture(b"resources/cubicmap_atlas.png")    # Load map texture
-model.materials[0].maps[MATERIAL_MAP_DIFFUSE ].texture = texture                 # Set map diffuse texture
+model.materials[0].maps[MATERIAL_MAP_ALBEDO ].texture = texture                 # Set map diffuse texture
 
 mapPosition = [ -16.0, 0.0, -8.0 ]          # Set model position
 

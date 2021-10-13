@@ -22,14 +22,14 @@ import os
 import platform
 import sys
 
-
 ffibuilder = FFI()
+
 
 def mangle(file):
     result = ""
     skip = False
     for line in open(file):
-        line = line.strip().replace("va_list", "void *")+"\n"
+        line = line.strip().replace("va_list", "void *") + "\n"
         if skip:
             if line.startswith("#endif"):
                 skip = False
@@ -50,16 +50,14 @@ def mangle(file):
         if line.startswith("PHYSACDEF"):
             line = line.replace('PHYSACDEF ', '')
         result += line
-        print(line)
+        # print(line)
     return result
 
 
 def build_linux():
     print("BUILDING FOR LINUX")
-    ffibuilder.cdef(mangle("raylib/raylib.h"))
-    #ffibuilder.cdef(mangle("raylib/raygui.h"))
+    ffibuilder.cdef(mangle("/usr/local/include/raylib.h"))
     ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', ''))
-    #ffibuilder.cdef(mangle("raylib/physac.h"))
     ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', ''))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
@@ -70,18 +68,20 @@ def build_linux():
                                #define PHYSAC_IMPLEMENTATION
                                #include "physac.h"
                           """,
-                          extra_link_args=['/usr/local/lib/libraylib.a','-lm', '-lpthread', '-lGLU', '-lGL',  '-lrt', '-lm', '-ldl', '-lX11', '-lpthread'],
-                          libraries=['GL','m','pthread', 'dl', 'rt', 'X11'],
+                          extra_link_args=['/usr/local/lib/libraylib.a', '-lm', '-lpthread', '-lGLU', '-lGL', '-lrt',
+                                           '-lm', '-ldl', '-lX11', '-lpthread'],
+                          libraries=['GL', 'm', 'pthread', 'dl', 'rt', 'X11'],
                           include_dirs=['raylib']
                           )
     if __name__ == "__main__":
         ffibuilder.compile(verbose=True)
 
+
 def build_windows():
     print("BUILDING FOR WINDOWS")
-    ffibuilder.cdef(mangle("raylib/raylib.h"))
-    ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', '').replace('bool','int'))
-    ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', '').replace('bool','int'))
+    ffibuilder.cdef(mangle("raylib/raylib.h").replace('bool', 'int'))
+    ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', '').replace('bool', 'int'))
+    ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', '').replace('bool', 'int'))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
                                #include "raylib.h"
@@ -92,20 +92,31 @@ def build_windows():
                                #include "physac.h" 
                           """,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
-                          libraries=['raylib', 'gdi32', 'shell32', 'user32','OpenGL32', 'winmm'],
+                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
                           include_dirs=['raylib'],
                           )
     if __name__ == "__main__":
         ffibuilder.compile(verbose=True)
 
+
 def build_mac():
     print("BUILDING FOR MAC")
-    ffibuilder.cdef(open("raylib/raylib_modified.h").read().replace('RLAPI ', ''))
+    ffibuilder.cdef(mangle("/usr/local/include/raylib.h"))
+    ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', ''))
+    ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', ''))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
-                               #include "../../raylib/raylib.h"   // the C header of the library, supplied by us here
+                               #include "raylib.h"
+                               #define RAYGUI_IMPLEMENTATION
+                               #define RAYGUI_SUPPORT_RICONS
+                               #include "raygui.h"
+                               #define PHYSAC_IMPLEMENTATION
+                               #include "physac.h"
                           """,
-                          extra_link_args=['/usr/local/lib/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa', '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework', 'CoreVideo'],
+                          extra_link_args=['/usr/local/lib/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa',
+                                           '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
+                                           'CoreVideo'],
+                          include_dirs=['raylib'],
                           )
 
     if __name__ == "__main__":
@@ -114,31 +125,37 @@ def build_mac():
 
 def build_rpi_nox():
     print("BUILDING FOR RASPBERRY PI")
-    ffibuilder.cdef(mangle("raylib/raylib.h"))
+    ffibuilder.cdef(mangle("/usr/local/include/raylib.h"))
+    ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', ''))
+    ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', ''))
     ffibuilder.set_source("raylib._raylib_cffi",
                           """
-                               #include "../../raylib/raylib.h"
+                            #include "raylib.h"
+                            #define RAYGUI_IMPLEMENTATION
+                            #define RAYGUI_SUPPORT_RICONS
+                            #include "raygui.h"
+                            #define PHYSAC_IMPLEMENTATION
+                            #include "physac.h"
                           """,
                           extra_link_args=['/usr/local/lib/libraylib.a',
                                            '/opt/vc/lib/libEGL_static.a', '/opt/vc/lib/libGLESv2_static.a',
                                            '-L/opt/vc/lib', '-lvcos', '-lbcm_host', '-lbrcmEGL', '-lbrcmGLESv2',
                                            '-lm', '-lpthread', '-lrt'],
+                          include_dirs=['raylib'],
                           )
-
 
     if __name__ == "__main__":
         ffibuilder.compile(verbose=True)
 
 
-
-if platform.system()=="Darwin":
+if platform.system() == "Darwin":
     build_mac()
-elif platform.system()=="Linux":
+elif platform.system() == "Linux":
     if "x86" in platform.machine():
         build_linux()
     elif "arm" in platform.machine():
         build_rpi_nox()
-elif platform.system()=="Windows":
+elif platform.system() == "Windows":
     build_windows()
 else:
     print("WARNING: UKKNOWN PLATFORM - trying Linux build")

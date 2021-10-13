@@ -6,3 +6,5 @@ include raylib/*.h
 include raylib/*.pyi
 exclude raylib/*.c
 exclude raylib/*.o
+include version.py
+
