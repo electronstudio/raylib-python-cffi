@@ -79,7 +79,7 @@ def build_linux():
 
 def build_windows():
     print("BUILDING FOR WINDOWS")
-    ffibuilder.cdef(mangle("raylib/raylib.h").replace('bool', 'int'))
+    ffibuilder.cdef(mangle("raylib/raylib.h"))
     ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', '').replace('bool', 'int'))
     ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', '').replace('bool', 'int'))
     ffibuilder.set_source("raylib._raylib_cffi",
