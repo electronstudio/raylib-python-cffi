@@ -21,8 +21,29 @@ from cffi import FFI
 import os
 import platform
 import sys
+import subprocess
 
 ffibuilder = FFI()
+
+
+def get_the_include_path():
+    return subprocess.run(['pkg-config', '--variable=includedir', 'raylib'], stdout=subprocess.PIPE).stdout.decode(
+        'utf-8').strip()
+
+
+def get_the_lib_path():
+    return subprocess.run(['pkg-config', '--variable=libdir', 'raylib'], stdout=subprocess.PIPE).stdout.decode(
+        'utf-8').strip()
+
+
+ffi_includes = """
+#include "raylib.h"
+#define RAYGUI_IMPLEMENTATION
+#define RAYGUI_SUPPORT_RICONS
+#include "raygui.h"
+#define PHYSAC_IMPLEMENTATION
+#include "physac.h"
+"""
 
 
 def mangle(file):
@@ -39,8 +60,6 @@ def mangle(file):
             continue
         if line.startswith("#endif // RAYGUI_H"):
             break
-        if line.__contains__("GetTouchEvent"):
-            continue
         if line.startswith("#"):
             continue
         if line.startswith("RLAPI"):
@@ -56,19 +75,12 @@ def mangle(file):
 
 def build_linux():
     print("BUILDING FOR LINUX")
-    ffibuilder.cdef(mangle("/usr/local/include/raylib.h"))
+    ffibuilder.cdef(mangle(get_the_include_path() + "/raylib.h"))
     ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', ''))
     ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', ''))
-    ffibuilder.set_source("raylib._raylib_cffi",
-                          """
-                               #include "raylib.h"
-                               #define RAYGUI_IMPLEMENTATION
-                               #define RAYGUI_SUPPORT_RICONS
-                               #include "raygui.h"
-                               #define PHYSAC_IMPLEMENTATION
-                               #include "physac.h"
-                          """,
-                          extra_link_args=['/usr/local/lib/libraylib.a', '-lm', '-lpthread', '-lGLU', '-lGL', '-lrt',
+    ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
+                          extra_link_args=[get_the_lib_path() + '/libraylib.a', '-lm', '-lpthread', '-lGLU', '-lGL',
+                                           '-lrt',
                                            '-lm', '-ldl', '-lX11', '-lpthread'],
                           libraries=['GL', 'm', 'pthread', 'dl', 'rt', 'X11'],
                           include_dirs=['raylib']
@@ -82,15 +94,7 @@ def build_windows():
     ffibuilder.cdef(mangle("raylib/raylib.h"))
     ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', '').replace('bool', 'int'))
     ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', '').replace('bool', 'int'))
-    ffibuilder.set_source("raylib._raylib_cffi",
-                          """
-                               #include "raylib.h"
-                               #define RAYGUI_IMPLEMENTATION
-                               #define RAYGUI_SUPPORT_RICONS
-                               #include "raygui.h"
-                               #define PHYSAC_IMPLEMENTATION
-                               #include "physac.h" 
-                          """,
+    ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
                           include_dirs=['raylib'],
@@ -101,19 +105,11 @@ def build_windows():
 
 def build_mac():
     print("BUILDING FOR MAC")
-    ffibuilder.cdef(mangle("/usr/local/include/raylib.h"))
+    ffibuilder.cdef(mangle(get_the_include_path() + "/raylib.h"))
     ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', ''))
     ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', ''))
-    ffibuilder.set_source("raylib._raylib_cffi",
-                          """
-                               #include "raylib.h"
-                               #define RAYGUI_IMPLEMENTATION
-                               #define RAYGUI_SUPPORT_RICONS
-                               #include "raygui.h"
-                               #define PHYSAC_IMPLEMENTATION
-                               #include "physac.h"
-                          """,
-                          extra_link_args=['/usr/local/lib/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa',
+    ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
+                          extra_link_args=[get_the_lib_path() + '/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa',
                                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
                                            'CoreVideo'],
                           include_dirs=['raylib'],
@@ -125,19 +121,11 @@ def build_mac():
 
 def build_rpi_nox():
     print("BUILDING FOR RASPBERRY PI")
-    ffibuilder.cdef(mangle("/usr/local/include/raylib.h"))
+    ffibuilder.cdef(mangle(get_the_include_path() + "/raylib.h"))
     ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', ''))
     ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', ''))
-    ffibuilder.set_source("raylib._raylib_cffi",
-                          """
-                            #include "raylib.h"
-                            #define RAYGUI_IMPLEMENTATION
-                            #define RAYGUI_SUPPORT_RICONS
-                            #include "raygui.h"
-                            #define PHYSAC_IMPLEMENTATION
-                            #include "physac.h"
-                          """,
-                          extra_link_args=['/usr/local/lib/libraylib.a',
+    ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
+                          extra_link_args=[get_the_lib_path() + '/libraylib.a',
                                            '/opt/vc/lib/libEGL_static.a', '/opt/vc/lib/libGLESv2_static.a',
                                            '-L/opt/vc/lib', '-lvcos', '-lbcm_host', '-lbrcmEGL', '-lbrcmGLESv2',
                                            '-lm', '-lpthread', '-lrt'],
