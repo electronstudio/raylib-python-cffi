@@ -11,3 +11,4 @@ include raylib/*.so
 include raylib/32bit/*.dylib
 include raylib/32bit/*.dll
 include raylib/32bit/*.so
+include version.py
