@@ -35,7 +35,7 @@ On most platforms it should install a binary wheel (Windows 10 x64, MacOS 10.15 
 If yours isn't available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g. 
 using homebrew, apt, etc.
 
-[If it doesn't work, you can build manually.](BUILDING.md)
+[If it doesn't work, you can build manually.](BUILDING.rst)
 
 ## Dynamic binding version
 
