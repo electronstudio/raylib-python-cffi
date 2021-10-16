@@ -46,7 +46,7 @@ def pre_process_header(filename):
     file = open(filename, "r")
     filetext = "".join([line for line in file if '#include' not in line])
     command = ['gcc', '-CC', '-P', '-undef', '-nostdinc', '-DRL_MATRIX_TYPE',
-               #'-DRL_QUATERNION_TYPE','-DRL_VECTOR4_TYPE','-DRL_VECTOR3_TYPE','-DRL_VECTOR2_TYPE'
+               '-DRL_QUATERNION_TYPE','-DRL_VECTOR4_TYPE','-DRL_VECTOR3_TYPE','-DRL_VECTOR2_TYPE'
                '-DRLAPI=', '-DPHYSACDEF=', '-DRAYGUIDEF=',
                '-dDI', '-E', '-']
     filetext2 = subprocess.run(command, text=True, input=filetext, stdout=subprocess.PIPE).stdout
@@ -108,7 +108,7 @@ def build_unix():
         raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
 
     if not os.path.isfile(rlgl_h):
-        raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
+        raise Exception("ERROR: " + rlgl_h + " not found.  Please install Raylib.")
 
     #if not os.path.isfile(raymath_h):
     #    raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
