@@ -45,11 +45,15 @@ def pre_process_header(filename):
     print("Pre-processing " + filename)
     file = open(filename, "r")
     filetext = "".join([line for line in file if '#include' not in line])
-    command = ['gcc', '-CC', '-P', '-undef', '-nostdinc', '-DRLAPI=', '-DPHYSACDEF=', '-DRAYGUIDEF=',
+    command = ['gcc', '-CC', '-P', '-undef', '-nostdinc', '-DRL_MATRIX_TYPE',
+               #'-DRL_QUATERNION_TYPE','-DRL_VECTOR4_TYPE','-DRL_VECTOR3_TYPE','-DRL_VECTOR2_TYPE'
+               '-DRLAPI=', '-DPHYSACDEF=', '-DRAYGUIDEF=',
                '-dDI', '-E', '-']
     filetext2 = subprocess.run(command, text=True, input=filetext, stdout=subprocess.PIPE).stdout
     filetext3 = filetext2.replace("va_list", "void *")
     filetext4 = "\n".join([line for line in filetext3.splitlines() if not line.startswith("#")])
+    file = open("raylib/"+os.path.basename(filename)+".modified", "w")
+    file.write(filetext4)
     # print(r)
     return filetext4
 
@@ -65,31 +69,31 @@ def check_header_exists(file):
     return True
 
 
-def mangle(file):
-    result = ""
-    skip = False
-    for line in open(file):
-        line = line.strip().replace("va_list", "void *") + "\n"
-        if skip:
-            if line.startswith("#endif"):
-                skip = False
-            continue
-        if line.startswith("#if defined(__cplusplus)"):
-            skip = True
-            continue
-        if line.startswith("#endif // RAYGUI_H"):
-            break
-        if line.startswith("#"):
-            continue
-        if line.startswith("RLAPI"):
-            line = line.replace('RLAPI ', '')
-        if line.startswith("RAYGUIDEF"):
-            line = line.replace('RAYGUIDEF ', '')
-        if line.startswith("PHYSACDEF"):
-            line = line.replace('PHYSACDEF ', '')
-        result += line
-        # print(line)
-    return result
+# def mangle(file):
+#     result = ""
+#     skip = False
+#     for line in open(file):
+#         line = line.strip().replace("va_list", "void *") + "\n"
+#         if skip:
+#             if line.startswith("#endif"):
+#                 skip = False
+#             continue
+#         if line.startswith("#if defined(__cplusplus)"):
+#             skip = True
+#             continue
+#         if line.startswith("#endif // RAYGUI_H"):
+#             break
+#         if line.startswith("#"):
+#             continue
+#         if line.startswith("RLAPI"):
+#             line = line.replace('RLAPI ', '')
+#         if line.startswith("RAYGUIDEF"):
+#             line = line.replace('RAYGUIDEF ', '')
+#         if line.startswith("PHYSACDEF"):
+#             line = line.replace('PHYSACDEF ', '')
+#         result += line
+#         # print(line)
+#     return result
 
 
 def build_unix():
@@ -97,12 +101,21 @@ def build_unix():
         raise Exception("ERROR: raylib not found by pkg-config.  Please install pkg-config and Raylib.")
 
     raylib_h = get_the_include_path() + "/raylib.h"
+    rlgl_h = get_the_include_path() + "/rlgl.h"
+    #raymath_h = get_the_include_path() + "/raymath.h"
 
     if not os.path.isfile(raylib_h):
         raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
 
+    if not os.path.isfile(rlgl_h):
+        raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
+
+    #if not os.path.isfile(raymath_h):
+    #    raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
+
     ffi_includes = """
     #include "raylib.h"
+    #include "rlgl.h"
     """
 
     raygui_h = get_the_include_path() + "/raygui.h"
@@ -121,6 +134,10 @@ def build_unix():
         """
 
     ffibuilder.cdef(pre_process_header(raylib_h))
+    ffibuilder.cdef(pre_process_header(rlgl_h))
+    #ffibuilder.cdef(pre_process_header(raymath_h))
+    #print("******************************\n\n\n")
+    #print(pre_process_header(rlgl_h))
     if os.path.isfile(raygui_h):
         ffibuilder.cdef(pre_process_header(raygui_h))
     if os.path.isfile(physac_h):
@@ -132,30 +149,30 @@ def build_unix():
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
                            'CoreVideo']
         libraries = []
-    elif platform.system() == "Linux":
-        if "x86" in platform.machine():
-            print("BUILDING FOR LINUX")
-            extra_link_args = [get_the_lib_path() + '/libraylib.a', '-lm', '-lpthread', '-lGLU', '-lGL',
-                               '-lrt', '-lm', '-ldl', '-lX11', '-lpthread']
-            libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11']
-        elif "arm" in platform.machine():
+    else:  #platform.system() == "Linux":
+        if "arm" in platform.machine():
             print("BUILDING FOR RASPBERRY PI")
             extra_link_args = [get_the_lib_path() + '/libraylib.a',
                                '/opt/vc/lib/libEGL_static.a', '/opt/vc/lib/libGLESv2_static.a',
                                '-L/opt/vc/lib', '-lvcos', '-lbcm_host', '-lbrcmEGL', '-lbrcmGLESv2',
                                '-lm', '-lpthread', '-lrt']
             libraries = []
+        else: #"x86" in platform.machine():
+            print("BUILDING FOR LINUX")
+            extra_link_args = [get_the_lib_path() + '/libraylib.a', '-lm', '-lpthread', '-lGLU', '-lGL',
+                               '-lrt', '-lm', '-ldl', '-lX11', '-lpthread']
+            libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11']
 
     ffibuilder.set_source("raylib._raylib_cffi", ffi_includes, extra_link_args=extra_link_args,
-                          libraries=libraries,
-                          include_dirs=['raylib'])
+                          libraries=libraries)
 
 
 def build_windows():
     print("BUILDING FOR WINDOWS")
-    ffibuilder.cdef(mangle("raylib/raylib.h"))
-    ffibuilder.cdef(open("raylib/raygui_modified.h").read().replace('RAYGUIDEF ', ''))
-    ffibuilder.cdef(open("raylib/physac_modified.h").read().replace('PHYSACDEF ', ''))
+    ffibuilder.cdef(open("raylib/raylib.h.modified").read())
+    ffibuilder.cdef(open("raylib/rlgl.h.modified").read())
+    ffibuilder.cdef(open("raylib/raygui.h.modified").read())
+    ffibuilder.cdef(open("raylib/physac.h.modified").read())
     ffibuilder.set_source("raylib._raylib_cffi", """
     #include "raylib.h"
     #define RAYGUI_IMPLEMENTATION
