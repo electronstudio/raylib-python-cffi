@@ -175,6 +175,7 @@ def build_windows():
     ffibuilder.cdef(open("raylib/physac.h.modified").read())
     ffibuilder.set_source("raylib._raylib_cffi", """
     #include "raylib.h"
+    #include "rlgl.h"
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
     #include "raygui.h"

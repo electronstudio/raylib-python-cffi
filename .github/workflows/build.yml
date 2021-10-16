@@ -43,6 +43,8 @@ jobs:
           cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
+          sudo cp ../src/extras/* /usr/local/include/
+
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
@@ -89,6 +91,7 @@ jobs:
           cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
+          sudo cp ../src/extras/* /usr/local/include/
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
