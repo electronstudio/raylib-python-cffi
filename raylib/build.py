@@ -65,8 +65,31 @@ def check_header_exists(file):
     return True
 
 
-def mangle(string):
-    return string
+def mangle(file):
+    result = ""
+    skip = False
+    for line in open(file):
+        line = line.strip().replace("va_list", "void *") + "\n"
+        if skip:
+            if line.startswith("#endif"):
+                skip = False
+            continue
+        if line.startswith("#if defined(__cplusplus)"):
+            skip = True
+            continue
+        if line.startswith("#endif // RAYGUI_H"):
+            break
+        if line.startswith("#"):
+            continue
+        if line.startswith("RLAPI"):
+            line = line.replace('RLAPI ', '')
+        if line.startswith("RAYGUIDEF"):
+            line = line.replace('RAYGUIDEF ', '')
+        if line.startswith("PHYSACDEF"):
+            line = line.replace('PHYSACDEF ', '')
+        result += line
+        # print(line)
+    return result
 
 
 def build_unix():
