@@ -4,7 +4,7 @@ Building from source
 Have Pip build from source
 --------------------------
 
-Useful if the binaries don’t work on your system.
+Useful if the binaries don’t work on your system, or you want to use a newer version of Raylib.
 
 Make sure Raylib is installed and then:
 
@@ -122,17 +122,6 @@ Build and install Raylib from the raylib-c directory.
 
    cd ../..
 
-
-..  note:: Optional: Make a patched version of raylib header. (**Not necessary** if
-    you’ve already got raylib_modifed.h from repo and haven’t changed
-    anything.)
-
-    ::
-
-       cd raylib
-       cp raylib.h raylib_modified.h
-       patch  -p0 <raylib_modified.h.patch
-       cd ..
 
 Build
 
