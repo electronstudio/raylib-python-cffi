@@ -184,7 +184,7 @@ def build_windows():
     """,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
-                          include_dirs=['raylib'],
+                          include_dirs=['../../../raylib-c/src'],
                           )
 
 
