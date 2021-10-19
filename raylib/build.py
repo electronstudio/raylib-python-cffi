@@ -170,11 +170,17 @@ def build_unix():
 def build_windows():
     print("BUILDING FOR WINDOWS")
     ffibuilder.cdef(open("raylib/raylib.h.modified").read())
-    #ffibuilder.cdef(open("raylib/rlgl.h.modified").read())
-    #ffibuilder.cdef(open("raylib/raygui.h.modified").read())
-    #ffibuilder.cdef(open("raylib/physac.h.modified").read())
+    ffibuilder.cdef(open("raylib/rlgl.h.modified").read())
+    ffibuilder.cdef(open("raylib/raygui.h.modified").read())
+    ffibuilder.cdef(open("raylib/physac.h.modified").read())
     ffibuilder.set_source("raylib._raylib_cffi", """
-    #include "raylib.h"  
+    #include "raylib.h"
+    #include "rlgl.h"  
+    #define RAYGUI_IMPLEMENTATION
+    #define RAYGUI_SUPPORT_RICONS
+    #include "extras/raygui.h"
+    #define PHYSAC_IMPLEMENTATION
+    #include "extras/physac.h"  
     """,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
