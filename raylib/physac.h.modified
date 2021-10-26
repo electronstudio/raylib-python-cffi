@@ -16,16 +16,9 @@
 *       If not defined, the library is in header only mode and can be included in other headers
 *       or source files without problems. But only ONE file should hold the implementation.
 *
-*   #define PHYSAC_STATIC (defined by default)
-*       The generated implementation will stay private inside implementation file and all
-*       internal symbols and functions will only be visible inside that file.
-*
 *   #define PHYSAC_DEBUG
 *       Show debug traces log messages about physic bodies creation/destruction, physic system errors,
-*       some calculations results and NULL reference exceptions
-*
-*   #define PHYSAC_DEFINE_VECTOR2_TYPE
-*       Forces library to define struct Vector2 data type (float x; float y)
+*       some calculations results and NULL reference exceptions.
 *
 *   #define PHYSAC_AVOID_TIMMING_SYSTEM
 *       Disables internal timming system, used by UpdatePhysics() to launch timmed physic steps,
@@ -141,28 +134,28 @@ typedef struct PhysicsManifoldData {
 // Module Functions Declaration
 //----------------------------------------------------------------------------------
 // Physics system management
-extern /* Functions visible from other files*/ void InitPhysics(void); // Initializes physics system
-extern /* Functions visible from other files*/ void UpdatePhysics(void); // Update physics system
-extern /* Functions visible from other files*/ void ResetPhysics(void); // Reset physics system (global variables)
-extern /* Functions visible from other files*/ void ClosePhysics(void); // Close physics system and unload used memory
-extern /* Functions visible from other files*/ void SetPhysicsTimeStep(double delta); // Sets physics fixed time step in milliseconds. 1.666666 by default
-extern /* Functions visible from other files*/ void SetPhysicsGravity(float x, float y); // Sets physics global gravity force
+ void InitPhysics(void); // Initializes physics system
+ void UpdatePhysics(void); // Update physics system
+ void ResetPhysics(void); // Reset physics system (global variables)
+ void ClosePhysics(void); // Close physics system and unload used memory
+ void SetPhysicsTimeStep(double delta); // Sets physics fixed time step in milliseconds. 1.666666 by default
+ void SetPhysicsGravity(float x, float y); // Sets physics global gravity force
 // Physic body creation/destroy
-extern /* Functions visible from other files*/ PhysicsBody CreatePhysicsBodyCircle(Vector2 pos, float radius, float density); // Creates a new circle physics body with generic parameters
-extern /* Functions visible from other files*/ PhysicsBody CreatePhysicsBodyRectangle(Vector2 pos, float width, float height, float density); // Creates a new rectangle physics body with generic parameters
-extern /* Functions visible from other files*/ PhysicsBody CreatePhysicsBodyPolygon(Vector2 pos, float radius, int sides, float density); // Creates a new polygon physics body with generic parameters
-extern /* Functions visible from other files*/ void DestroyPhysicsBody(PhysicsBody body); // Destroy a physics body
+ PhysicsBody CreatePhysicsBodyCircle(Vector2 pos, float radius, float density); // Creates a new circle physics body with generic parameters
+ PhysicsBody CreatePhysicsBodyRectangle(Vector2 pos, float width, float height, float density); // Creates a new rectangle physics body with generic parameters
+ PhysicsBody CreatePhysicsBodyPolygon(Vector2 pos, float radius, int sides, float density); // Creates a new polygon physics body with generic parameters
+ void DestroyPhysicsBody(PhysicsBody body); // Destroy a physics body
 // Physic body forces
-extern /* Functions visible from other files*/ void PhysicsAddForce(PhysicsBody body, Vector2 force); // Adds a force to a physics body
-extern /* Functions visible from other files*/ void PhysicsAddTorque(PhysicsBody body, float amount); // Adds an angular force to a physics body
-extern /* Functions visible from other files*/ void PhysicsShatter(PhysicsBody body, Vector2 position, float force); // Shatters a polygon shape physics body to little physics bodies with explosion force
-extern /* Functions visible from other files*/ void SetPhysicsBodyRotation(PhysicsBody body, float radians); // Sets physics body shape transform based on radians parameter
+ void PhysicsAddForce(PhysicsBody body, Vector2 force); // Adds a force to a physics body
+ void PhysicsAddTorque(PhysicsBody body, float amount); // Adds an angular force to a physics body
+ void PhysicsShatter(PhysicsBody body, Vector2 position, float force); // Shatters a polygon shape physics body to little physics bodies with explosion force
+ void SetPhysicsBodyRotation(PhysicsBody body, float radians); // Sets physics body shape transform based on radians parameter
 // Query physics info
-extern /* Functions visible from other files*/ PhysicsBody GetPhysicsBody(int index); // Returns a physics body of the bodies pool at a specific index
-extern /* Functions visible from other files*/ int GetPhysicsBodiesCount(void); // Returns the current amount of created physics bodies
-extern /* Functions visible from other files*/ int GetPhysicsShapeType(int index); // Returns the physics body shape type (PHYSICS_CIRCLE or PHYSICS_POLYGON)
-extern /* Functions visible from other files*/ int GetPhysicsShapeVerticesCount(int index); // Returns the amount of vertices of a physics body shape
-extern /* Functions visible from other files*/ Vector2 GetPhysicsShapeVertex(PhysicsBody body, int vertex); // Returns transformed position of a body shape (body position + vertex transformed position)
+ PhysicsBody GetPhysicsBody(int index); // Returns a physics body of the bodies pool at a specific index
+ int GetPhysicsBodiesCount(void); // Returns the current amount of created physics bodies
+ int GetPhysicsShapeType(int index); // Returns the physics body shape type (PHYSICS_CIRCLE or PHYSICS_POLYGON)
+ int GetPhysicsShapeVerticesCount(int index); // Returns the amount of vertices of a physics body shape
+ Vector2 GetPhysicsShapeVertex(PhysicsBody body, int vertex); // Returns transformed position of a body shape (body position + vertex transformed position)
 /***********************************************************************************
 *
 *   PHYSAC IMPLEMENTATION

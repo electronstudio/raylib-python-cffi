@@ -24,6 +24,7 @@
 *   #define GRAPHICS_API_OPENGL_11
 *   #define GRAPHICS_API_OPENGL_21
 *   #define GRAPHICS_API_OPENGL_33
+*   #define GRAPHICS_API_OPENGL_43
 *   #define GRAPHICS_API_OPENGL_ES2
 *       Use selected OpenGL graphics backend, should be supported by platform
 *       Those preprocessor defines are only used on rlgl module, if OpenGL version is
@@ -40,6 +41,9 @@
 *
 *   #define RLGL_SHOW_GL_DETAILS_INFO
 *       Show OpenGL extensions and capabilities detailed logs on init
+*
+*   #define RLGL_ENABLE_OPENGL_DEBUG_CONTEXT
+*       Enable debug context (only available on OpenGL 4.3)
 *
 *   rlgl capabilities could be customized just defining some internal
 *   values before library inclusion (default values listed):
@@ -108,6 +112,7 @@
 // Security check in case multiple GRAPHICS_API_OPENGL_* defined
 // OpenGL 2.1 uses most of OpenGL 3.3 Core functionality
 // WARNING: Specific parts are checked with #if defines
+// OpenGL 4.3 uses OpenGL 3.3 Core functionality
 // Support framebuffer objects by default
 // NOTE: Some driver implementation do not support it, despite they should
 //----------------------------------------------------------------------------------
@@ -123,6 +128,8 @@
 // Matrix modes (equivalent to OpenGL)
 // Primitive assembly draw modes
 // GL equivalent data types
+// Buffer usage hint
+// GL Shader type
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
 //----------------------------------------------------------------------------------
@@ -130,6 +137,7 @@ typedef enum {
     OPENGL_11 = 1,
     OPENGL_21,
     OPENGL_33,
+    OPENGL_43,
     OPENGL_ES_20
 } rlGlVersion;
 typedef enum {
@@ -415,7 +423,7 @@ typedef enum {
  unsigned int rlLoadTextureDepth(int width, int height, bool useRenderBuffer); // Load depth texture/renderbuffer (to be attached to fbo)
  unsigned int rlLoadTextureCubemap(void *data, int size, int format); // Load texture cubemap
  void rlUpdateTexture(unsigned int id, int offsetX, int offsetY, int width, int height, int format, const void *data); // Update GPU texture with new data
- void rlGetGlTextureFormats(int format, unsigned int *glInternalFormat, unsigned int *glFormat, unsigned int *glType); // Get OpenGL internal formats
+ void rlGetGlTextureFormats(int format, int *glInternalFormat, int *glFormat, int *glType); // Get OpenGL internal formats
  const char *rlGetPixelFormatName(unsigned int format); // Get name string for pixel format
  void rlUnloadTexture(unsigned int id); // Unload texture from GPU memory
  void rlGenTextureMipmaps(unsigned int id, int width, int height, int format, int *mipmaps); // Generate mipmap data for selected texture
@@ -428,7 +436,7 @@ typedef enum {
  void rlUnloadFramebuffer(unsigned int id); // Delete framebuffer from GPU
 // Shaders management
  unsigned int rlLoadShaderCode(const char *vsCode, const char *fsCode); // Load shader from code strings
- unsigned int rlCompileShader(const char *shaderCode, int type); // Compile custom shader and return shader id (type: GL_VERTEX_SHADER, GL_FRAGMENT_SHADER)
+ unsigned int rlCompileShader(const char *shaderCode, int type); // Compile custom shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER)
  unsigned int rlLoadShaderProgram(unsigned int vShaderId, unsigned int fShaderId); // Load custom shader program
  void rlUnloadShaderProgram(unsigned int id); // Unload shader program
  int rlGetLocationUniform(unsigned int shaderId, const char *uniformName); // Get shader location uniform

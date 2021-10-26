@@ -17,7 +17,7 @@ from raylib import rl, ffi
 from inspect import ismethod, getmembers, isbuiltin
 import inflection, sys, json
 
-f = open("raylib_api.json", "r")
+f = open("raylib.json", "r")
 js = json.load(f)
 
 
