@@ -1,9 +1,9 @@
 include raylib/*.so
 include raylib/*.pyi
+include pyray/*.pyi
 include raylib/*.pyd
 exclude raylib/*.a
 include raylib/*.h
-include raylib/*.pyi
 exclude raylib/*.c
 exclude raylib/*.o
 include version.py
