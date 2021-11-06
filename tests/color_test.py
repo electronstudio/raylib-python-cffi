@@ -8,6 +8,10 @@ red = pyray.get_color(0xFF0000FF)
 green = pyray.get_color(0x00FF00FF)
 blue = pyray.get_color(0x0000FFFF)
 
+red = pyray.Color(255, 0, 0)
+print(red.r)
+red.a=255
+
 while not pyray.window_should_close():
     pyray.begin_drawing()
     pyray.clear_background(white)
