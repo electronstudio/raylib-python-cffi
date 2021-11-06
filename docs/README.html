@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Bindings for Raylib 3.7 &mdash; Raylib Python  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Python Bindings for Raylib 4.0-dev &mdash; Raylib Python  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -37,10 +37,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Bindings for Raylib 3.7</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Bindings for Raylib 4.0-dev</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#quickstart">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dynamic-binding-version">Dynamic binding version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#beta-testing">Beta testing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#how-to-use">How to use</a><ul>
@@ -77,7 +78,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Python Bindings for Raylib 3.7</li>
+      <li>Python Bindings for Raylib 4.0-dev</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/README.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -87,11 +88,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="tex2jax_ignore mathjax_ignore section" id="python-bindings-for-raylib-3-7">
-<h1>Python Bindings for Raylib 3.7<a class="headerlink" href="#python-bindings-for-raylib-3-7" title="Permalink to this headline"></a></h1>
-<p>New CFFI API static bindings.  Automatically generated to be as close as possible to
-original Raylib.  Faster, fewer bugs and easier to maintain than ctypes.  Commercial-friendly license.
-Docstrings and auto-completion.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="python-bindings-for-raylib-4-0-dev">
+<h1>Python Bindings for Raylib 4.0-dev<a class="headerlink" href="#python-bindings-for-raylib-4-0-dev" title="Permalink to this headline"></a></h1>
+<p>New CFFI API static bindings.</p>
+<ul class="simple">
+<li><p>Automatically generated to be as close as possible to
+original Raylib.</p></li>
+<li><p>Faster, fewer bugs and easier to maintain than ctypes.</p></li>
+<li><p>Commercial-friendly license.</p></li>
+<li><p>Docstrings and auto-completion.</p></li>
+<li><p><strong>Now includes extra libraries: raygui, rlgl and physac</strong></p></li>
+</ul>
 <p><a class="reference external" href="http://electronstudio.github.io/raylib-python-cffi">Full documentation</a></p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="quickstart">
@@ -110,7 +117,7 @@ close_window()
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
-<p>First make sure you have latest pip installed:</p>
+<p>First make sure you have the latest pip installed:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install --upgrade pip
 </pre></div>
 </div>
@@ -129,6 +136,13 @@ using homebrew, apt, etc.</p>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/dynamic.html">Read this before using raylib_dynamic</a></p>
+</div>
+<div class="section" id="beta-testing">
+<h2>Beta testing<a class="headerlink" href="#beta-testing" title="Permalink to this headline"></a></h2>
+<p>You can install an alpha or beta version by specifying the version number like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install raylib==4.0a6
+</pre></div>
+</div>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="how-to-use">

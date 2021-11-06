@@ -1,8 +1,12 @@
-# Python Bindings for Raylib 3.7
+# Python Bindings for Raylib 4.0-dev
 
-New CFFI API static bindings.  Automatically generated to be as close as possible to 
-original Raylib.  Faster, fewer bugs and easier to maintain than ctypes.  Commercial-friendly license.
-Docstrings and auto-completion.
+New CFFI API static bindings.
+* Automatically generated to be as close as possible to 
+original Raylib.
+* Faster, fewer bugs and easier to maintain than ctypes.
+* Commercial-friendly license.
+* Docstrings and auto-completion.
+* **Now includes extra libraries: raygui, rlgl and physac**
 
 [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
 
@@ -22,7 +26,7 @@ Docstrings and auto-completion.
 
 # Installation
 
-First make sure you have latest pip installed:
+First make sure you have the latest pip installed:
 
     python3 -m pip install --upgrade pip
 
@@ -35,7 +39,7 @@ On most platforms it should install a binary wheel (Windows 10 x64, MacOS 10.15 
 If yours isn't available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g. 
 using homebrew, apt, etc.
 
-[If it doesn't work, you can build manually.](BUILDING.md)
+[If it doesn't work, you can build manually.](BUILDING.rst)
 
 ## Dynamic binding version
 
@@ -44,6 +48,12 @@ There is now a separate dynamic version of this binding:
     python3 -m pip install raylib_dynamic
 
 [Read this before using raylib_dynamic](https://electronstudio.github.io/raylib-python-cffi/dynamic.html)
+
+## Beta testing
+
+You can install an alpha or beta version by specifying the version number like this:
+
+    python3 -m pip install raylib==4.0a6
 
 
 # How to use

@@ -4,7 +4,7 @@ Building from source
 Have Pip build from source
 --------------------------
 
-Useful if the binaries don’t work on your system.
+Useful if the binaries don’t work on your system, or you want to use a newer version of Raylib.
 
 Make sure Raylib is installed and then:
 
@@ -56,9 +56,7 @@ Build and install Raylib from the raylib-c directory.
    copy raylib\Release\raylib.lib ..\..
    cd ..\..
 
-To update the dynamic libs, download the official release,
-e.g. https://github.com/raysan5/raylib/releases/download/3.7.0/raylib-3.7.0_win64_msvc16.zip
-and extract ``raylib.dll`` into ``dynamic/raylib``.
+
 
 To build a binary wheel distribution:
 
@@ -69,12 +67,10 @@ To build a binary wheel distribution:
    pip3 install wheel
    python setup.py bdist_wheel
 
-Alternatively, if you don’t want the static binaries and just want to
-use DLLs with raylib.dynamic:
+.. TODO::
+   There's a hardcoded path (to the raylib header files) in `raylib/build.py` you will probably need to edit.
+   Would be useful if some Windows user could figure out how to auto detect this.
 
-::
-
-   python3 setup_dynamic.py bdist_wheel
 
 Then install it:
 
@@ -88,8 +84,6 @@ here.)
 Linux manual build
 ~~~~~~~~~~~~~~~~~~~~~~
 
-These instructions have been tested on Ubuntu 20.10 and 16.04.
-
 Clone this repo including submodules so you get correct version of
 Raylib.
 
@@ -98,6 +92,10 @@ Raylib.
    git clone --recurse-submodules https://github.com/electronstudio/raylib-python-cffi
 
 Build and install Raylib from the raylib-c directory.
+
+.. note::
+   You can instead use a different version of Raylib you installed from elsewhere, and it should still
+   work!
 
 ::
 
@@ -123,17 +121,6 @@ Build and install Raylib from the raylib-c directory.
    cd ../..
 
 
-..  note:: Optional: Make a patched version of raylib header. (**Not necessary** if
-    you’ve already got raylib_modifed.h from repo and haven’t changed
-    anything.)
-
-    ::
-
-       cd raylib
-       cp raylib.h raylib_modified.h
-       patch  -p0 <raylib_modified.h.patch
-       cd ..
-
 Build
 
 ::
@@ -142,7 +129,7 @@ Build
    rm -rf build raylib/_raylib_cffi.*
    python3 raylib/build.py
 
-..  note:: (Optional) To update the Linux dynamic libs (names will be different on other platfroms):
+..  note:: (Optional) To update the Linux dynamic libs (names will be different on other platforms):
 
     ::
 
@@ -196,10 +183,13 @@ Build and install Raylib from the raylib-c directory.
 
 ::
 
-   cd raylib-python-cffi/raylib-c/src
-   make
-   sudo cp libraylib.a  /usr/local/lib/libraylib.a
-   cd ../..
+    cd raylib-python-cffi/raylib-c/
+    mkdir build
+    cd build
+    cmake -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+    make
+    sudo make install
+    cd ../..
 
 
 Build and install module.

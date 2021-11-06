@@ -51,7 +51,7 @@ There is now a separate dynamic version of this binding:
 
 ## Beta testing
 
-You can install an alpha or beta version by specifying the version number like this:
+You can install an alpha or beta version by specifying the exact version number like this:
 
     python3 -m pip install raylib==4.0a6
 
