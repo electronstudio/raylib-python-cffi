@@ -52,6 +52,14 @@ MAGENTA    =( 255, 0, 255, 255 )
 RAYWHITE   =( 245, 245, 245, 255 )
 
 
+# I'm concerned that we are doing a lot of string comparisons on every function call to detect types.
+# Quickest way would probably be isinstance(result, ffi._backend._CDataBase) but that class name varies
+# depending on if binding is static/dynamic
+# (and possibly also different on pypy implementations?).
+# which makes me reluctant to rely on it.
+# Another possibility is ffi.typeof() but that will throw an exception if you give it a type that isn't a ctype
+# Another way to improve performance might be to special-case simple types before doing the string comparisons
+
 def makefunc(a):
     #print("makefunc ",a, ffi.typeof(a).args)
     def func(*args):
@@ -65,7 +73,12 @@ def makefunc(a):
                 modified_args.append(ffi.addressof(arg))
             else:
                 modified_args.append(arg)
-        return a(*modified_args)
+        result = a(*modified_args)
+        if result is None:
+            return
+        if str(type(result)) == "<class '_cffi_backend._CDataBase'>" and str(result).startswith("<cdata 'char *'"):
+            result = ffi.string(result).decode('utf-8')
+        return result
     return func
 
 def makeStructHelper(struct):
