@@ -77,7 +77,10 @@ def makefunc(a):
         if result is None:
             return
         if str(type(result)) == "<class '_cffi_backend._CDataBase'>" and str(result).startswith("<cdata 'char *'"):
-            result = ffi.string(result).decode('utf-8')
+            if str(result) == "<cdata 'char *' NULL>":
+                result = ""
+            else:
+                result = ffi.string(result).decode('utf-8')
         return result
     return func
 
