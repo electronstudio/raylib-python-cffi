@@ -13,7 +13,6 @@
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
 from raylib import rl, ffi
-
 from inspect import ismethod,getmembers,isbuiltin
 import inflection
 
@@ -60,31 +59,60 @@ RAYWHITE   =( 245, 245, 245, 255 )
 # Another possibility is ffi.typeof() but that will throw an exception if you give it a type that isn't a ctype
 # Another way to improve performance might be to special-case simple types before doing the string comparisons
 
-def makefunc(a):
+## simple value converters
+# will fail if fed wrong arguments
+
+def as_is(value):
+    return value
+
+def to_bytes(value):
+    if type(value) is bytes: return value
+    else: return value.encode('utf-8', 'ignore')
+    
+def to_str(value):
+    return ffi.string(value).decode('utf-8')
+
+def to_pointer(value):
+    return ffi.addressof(value)
+
+
+def makeFunc(c_func):
     #print("makefunc ",a, ffi.typeof(a).args)
+    
+    # based on ctypes of arguments of the c function
+    # we build a list of converters to call on python function arguments
+    converters = []
+    for c_arg_type in ffi.typeof(c_func).args:
+        if c_arg_type is ffi.typeof('char *'):
+            converters.append(to_bytes)
+        elif c_arg_type.kind == 'pointer':
+            converters.append(to_pointer)
+        else:
+            converters.append(as_is)
+    
+    # not sure if this would bring any speedup
+    #converters = tuple(converters) 
+    
+    resultConverter = None
+    c_result_type = ffi.typeof(c_func).result
+    if c_result_type is ffi.typeof('char *'):
+        resultConverter = to_str
+    elif c_result_type:
+        resultConverter = as_is
+    
+    # use a closure to bring converters into c function call
     def func(*args):
-        modified_args = []
-        for (c_arg, arg) in zip(ffi.typeof(a).args, args):
-            #print(arg, c_arg.kind)
-            if type(arg) == str:
-                encoded = arg.encode('utf-8')
-                modified_args.append(encoded)
-            elif c_arg.kind == 'pointer' and str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>":
-                modified_args.append(ffi.addressof(arg))
-            else:
-                modified_args.append(arg)
-        result = a(*modified_args)
-        if result is None:
+        nonlocal converters, resultConverter
+        
+        result = c_func(* (convert(arg) for (arg, convert) in zip(args, converters) ) )
+        
+        if result is None or resultConverter is None:
             return
-        if str(type(result)) == "<class '_cffi_backend._CDataBase'>" and str(result).startswith("<cdata 'char *'"):
-            if str(result) == "<cdata 'char *' NULL>":
-                result = ""
-            else:
-                result = ffi.string(result).decode('utf-8')
-        return result
+        return resultConverter(result)
+    
     return func
 
-def makeStructHelper(struct):
+def makeStruct(struct):
     def func(*args):
         return ffi.new(f"struct {struct} *", args)[0]
     return func
@@ -99,7 +127,7 @@ for name, attr in getmembers(rl):
         #print(attr.__text_signature__)
         #print(dir(attr))
         #print(dir(attr.__repr__))
-        f = makefunc(attr)
+        f = makeFunc(attr)
         setattr(current_module, uname, f)
         #def wrap(*args):
         #    print("call to ",attr)
@@ -108,6 +136,5 @@ for name, attr in getmembers(rl):
         setattr(current_module, name, attr)
 
 for struct in ffi.list_types()[0]:
-    f = makeStructHelper(struct)
+    f = makeStruct(struct)
     setattr(current_module, struct, f)
-
