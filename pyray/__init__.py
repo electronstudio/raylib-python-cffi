@@ -92,17 +92,17 @@ def makeFunc(c_func):
     
     # based on ctypes of arguments of the c function
     # we build a list of converters to call on python function arguments
-    converters = []
+    argConverters = []
     for c_arg_type in ffi.typeof(c_func).args:
         if c_arg_type is ffi.typeof('char *'):
-            converters.append(to_bytes)
+            argConverters.append(to_bytes)
         elif c_arg_type.kind == 'pointer':
-            converters.append(to_pointer)
+            argConverters.append(to_pointer)
         else:
-            converters.append(None) # None = leave as is
+            argConverters.append(None) # None = leave as is
     
     # not sure if this would bring any speedup
-    #converters = tuple(converters) 
+    #argConverters = tuple(argConverters) 
     
     resultConverter = None
     c_result_type = ffi.typeof(c_func).result
@@ -113,9 +113,9 @@ def makeFunc(c_func):
     
     # use a closure to bring converters into c function call
     def func(*args):
-        nonlocal converters, resultConverter
+        nonlocal argConverters, resultConverter
         
-        result = c_func(* (convert(arg) if convert else arg for (arg, convert) in zip(args, converters) ) )
+        result = c_func(* (convert(arg) if convert else arg for (arg, convert) in zip(args, argConverters) ) )
         
         if result is None:
             return
