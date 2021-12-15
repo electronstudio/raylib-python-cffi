@@ -62,9 +62,6 @@ RAYWHITE   =( 245, 245, 245, 255 )
 ## simple value converters
 # will fail if fed wrong arguments
 
-def as_is(value):
-    return value
-
 def to_bytes(value):
     if type(value) is bytes: return value
     else: return value.encode('utf-8', 'ignore')
@@ -88,7 +85,7 @@ def makeFunc(c_func):
         elif c_arg_type.kind == 'pointer':
             converters.append(to_pointer)
         else:
-            converters.append(as_is)
+            converters.append(None) # None = leave as is
     
     # not sure if this would bring any speedup
     #converters = tuple(converters) 
@@ -98,17 +95,19 @@ def makeFunc(c_func):
     if c_result_type is ffi.typeof('char *'):
         resultConverter = to_str
     elif c_result_type:
-        resultConverter = as_is
+        resultConverter = None # None = leave as is
     
     # use a closure to bring converters into c function call
     def func(*args):
         nonlocal converters, resultConverter
         
-        result = c_func(* (convert(arg) for (arg, convert) in zip(args, converters) ) )
+        result = c_func(* (convert(arg) if convert else arg for (arg, convert) in zip(args, converters) ) )
         
-        if result is None or resultConverter is None:
+        if result is None:
             return
-        return resultConverter(result)
+        if resultConverter:
+            return resultConverter(result)
+        return result
     
     return func
 
