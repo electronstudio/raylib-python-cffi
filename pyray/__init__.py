@@ -70,11 +70,13 @@ def to_str(value):
     return ffi.string(value).decode('utf-8')
 
 def to_pointer(value):
-    return ffi.addressof(value)
+    if str(type(value)) == "<class '_cffi_backend.__CDataOwn'>":
+        return ffi.addressof(value)
+    return value
 
 
 def makeFunc(c_func):
-    #print("makefunc ",a, ffi.typeof(a).args)
+    #print("makefunc ", c_func, ffi.typeof(c_func).args)
     
     # based on ctypes of arguments of the c function
     # we build a list of converters to call on python function arguments
