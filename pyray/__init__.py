@@ -59,6 +59,16 @@ RAYWHITE   =( 245, 245, 245, 255 )
 # Another possibility is ffi.typeof() but that will throw an exception if you give it a type that isn't a ctype
 # Another way to improve performance might be to special-case simple types before doing the string comparisons
 
+
+# C_POINTER : used to determine whether to use ffi.addressof
+# NOTE : I put C_POINTER assignment in a function so temp variable gets deallocated after use
+# + if there's a cleaner way to get the type _cffi_backend.__CDataOwn, feel free to correct this
+def initPointerDefinition():
+    temp = ffi.new('struct Vector3 *', (0,0,0))[0]
+    global C_POINTER
+    C_POINTER = type(temp)
+    #print(C_POINTER)
+
 ## simple value converters
 # will fail if fed wrong arguments
 
@@ -69,8 +79,10 @@ def to_bytes(value):
 def to_str(value):
     return ffi.string(value).decode('utf-8')
 
+
+initPointerDefinition()
 def to_pointer(value):
-    if str(type(value)) == "<class '_cffi_backend.__CDataOwn'>":
+    if type(value) is C_POINTER:
         return ffi.addressof(value)
     return value
 
