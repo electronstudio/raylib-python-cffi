@@ -75,8 +75,9 @@ def initPointerDefinition():
 def to_bytes(value):
     if type(value) is bytes: return value
     else: return value.encode('utf-8', 'ignore')
-    
+
 def to_str(value):
+    if value == ffi.NULL: return ""
     return ffi.string(value).decode('utf-8')
 
 
