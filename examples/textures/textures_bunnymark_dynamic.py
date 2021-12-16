@@ -49,7 +49,7 @@ rl.SetTargetFPS(60);               # Set our game to run at 60 frames-per-second
 while not rl.WindowShouldClose():    #// Detect window close button or ESC key
     #// Update
     #//----------------------------------------------------------------------------------
-    if rl.IsMouseButtonDown(rl.MOUSE_LEFT_BUTTON):
+    if rl.IsMouseButtonDown(rl.MOUSE_BUTTON_LEFT):
         #// Create more bunnies
         for i in range(0, 100):
             if bunniesCount < MAX_BUNNIES:
