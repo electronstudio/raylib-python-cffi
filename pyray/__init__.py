@@ -19,10 +19,6 @@ import inflection
 current_module = __import__(__name__)
 
 
-
-def pointer(self, struct):
-    return ffi.addressof(struct)
-
 LIGHTGRAY  =( 200, 200, 200, 255 )
 GRAY       =( 130, 130, 130, 255 )
 DARKGRAY   =( 80, 80, 80, 255 )
@@ -77,12 +73,13 @@ def to_bytes(value):
     else: return value.encode('utf-8', 'ignore')
 
 def to_str(value):
-    if value == ffi.NULL: return ""
+    if value == ffi.NULL: return ''
     return ffi.string(value).decode('utf-8')
 
 
 initPointerDefinition()
 def to_pointer(value):
+    #print(value)
     if type(value) is C_POINTER:
         return ffi.addressof(value)
     return value
@@ -105,12 +102,11 @@ def makeFunc(c_func):
     # not sure if this would bring any speedup
     #argConverters = tuple(argConverters) 
     
-    resultConverter = None
+    # convert the function's returned value
+    resultConverter = None # None = leave as is
     c_result_type = ffi.typeof(c_func).result
     if c_result_type is ffi.typeof('char *'):
         resultConverter = to_str
-    elif c_result_type:
-        resultConverter = None # None = leave as is
     
     # use a closure to bring converters into c function call
     def func(*args):
@@ -152,3 +148,15 @@ for name, attr in getmembers(rl):
 for struct in ffi.list_types()[0]:
     f = makeStruct(struct)
     setattr(current_module, struct, f)
+
+#################
+## manual wrapping for edge cases
+
+# passing argument to be initialized in function is not supported in Python
+def load_model_animations(animpath):
+	count = ffi.new("unsigned int *", 0)
+	result = rl.LoadModelAnimations(to_bytes(animpath), count)
+	count = count[0]
+	#print(count)
+	return [result[i] for i in range(count)]
+
