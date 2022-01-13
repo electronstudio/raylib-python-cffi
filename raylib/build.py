@@ -150,18 +150,10 @@ def build_unix():
                            'CoreVideo']
         libraries = []
     else:  #platform.system() == "Linux":
-        if "arm" in platform.machine():
-            print("BUILDING FOR RASPBERRY PI")
-            extra_link_args = [get_the_lib_path() + '/libraylib.a',
-                               '/opt/vc/lib/libEGL_static.a', '/opt/vc/lib/libGLESv2_static.a',
-                               '-L/opt/vc/lib', '-lvcos', '-lbcm_host', '-lbrcmEGL', '-lbrcmGLESv2',
-                               '-lm', '-lpthread', '-lrt']
-            libraries = []
-        else: #"x86" in platform.machine():
-            print("BUILDING FOR LINUX")
-            extra_link_args = [get_the_lib_path() + '/libraylib.a', '-lm', '-lpthread', '-lGLU', '-lGL',
-                               '-lrt', '-lm', '-ldl', '-lX11', '-lpthread']
-            libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11']
+        print("BUILDING FOR LINUX")
+        extra_link_args = [get_the_lib_path() + '/libraylib.a', '-lm', '-lpthread', '-lGL',
+                           '-lrt', '-lm', '-ldl', '-lX11', '-lpthread']
+        libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11']
 
     ffibuilder.set_source("raylib._raylib_cffi", ffi_includes, extra_link_args=extra_link_args,
                           libraries=libraries)
