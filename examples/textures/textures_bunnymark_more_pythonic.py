@@ -45,7 +45,7 @@ SetTargetFPS(60);               # Set our game to run at 60 frames-per-second
 while not WindowShouldClose():    #// Detect window close button or ESC key
     #// Update
     #//----------------------------------------------------------------------------------
-    if IsMouseButtonDown(MOUSE_LEFT_BUTTON):
+    if IsMouseButtonDown(MOUSE_BUTTON_LEFT):
         #// Create more bunnies
         for i in range(0, 100):
             if bunniesCount < MAX_BUNNIES:
@@ -89,11 +89,11 @@ while not WindowShouldClose():    #// Detect window close button or ESC key
 
     DrawRectangle(0, 0, screenWidth, 40, BLACK)
     text = f"bunnies {bunniesCount}"
-    DrawText(text.encode('utf-8'), 120, 10, 20, GREEN)
+    DrawText(text.encode('utf-8'), 120, 20, 20, GREEN)
     text = f"batched draw calls: { 1 + int(bunniesCount/MAX_BATCH_ELEMENTS)}"
-    DrawText(text.encode('utf-8'), 320, 10, 20, MAROON)
+    DrawText(text.encode('utf-8'), 320, 20, 20, MAROON)
 
-    DrawFPS(10, 10)
+    DrawFPS(10, 20)
 
     EndDrawing()
     #//----------------------------------------------------------------------------------
