@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 rm raylib pyray examples
-ln -s ../raylib
-ln -s ../pyray
+ln -s ../dynamic/raylib
+ln -s ../dynamic/pyray
 ln -s ../examples
-for FILE in *.py
+for FILE in test_*.py
 do
   if python3 $FILE; then
       echo $FILE returned true
