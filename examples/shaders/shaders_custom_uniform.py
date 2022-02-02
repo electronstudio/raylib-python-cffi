@@ -1,11 +1,6 @@
-#!/usr/bin/env python3
-#<<<<<<< HEAD
-#<<<<<<< HEAD
-
-#=======
 # /*******************************************************************************************
 # *
-# *   raylib [shaders] example - basic lighting
+# *   raylib [shaders] example - custom uniform
 # *
 # *   NOTE: This example requires raylib OpenGL 3.3 or ES2 versions for shaders support,
 #     *         OpenGL 1.1 does not support shaders, recompile raylib to OpenGL 3.3 version.
@@ -30,12 +25,9 @@
 # *
 # *
 # ********************************************************************************************/
-#>>>>>>> 2e2e575 (added shaders custom uniform)
-#=======#
-#
-#>>>>>>> 1775ffc4b093c881ee44a8027b4143add066d738
 
-from raylib.dynamic import raylib as rl, ffi
+
+import raylib as rl
 from raylib.colors import *
 import math
 
@@ -49,9 +41,9 @@ screenWidth = 800;
 screenHeight = 450;
 
 rl.SetConfigFlags(rl.FLAG_MSAA_4X_HINT| rl.FLAG_WINDOW_RESIZABLE);  # Enable Multi Sampling Anti Aliasing 4x (if available)
-rl.InitWindow(screenWidth, screenHeight, b"raylib [shaders] example - basic lighting")
+rl.InitWindow(screenWidth, screenHeight, b"raylib [shaders] example - custom uniform")
 
-camera = ffi.new('struct Camera3D *', [
+camera = rl.ffi.new('struct Camera3D *', [
     [2, 12, 6],
     [0, .5, 0],
     [0, 1, 0],
@@ -63,7 +55,7 @@ model = rl.LoadModel(b"resources/models/barracks.obj")                  # // Loa
 texture = rl.LoadTexture(b"resources/models/barracks_diffuse.png")      # // Load model texture (diffuse map)
 
 #// Assign texture to default model material
-model.materials[0].maps[rl.MAP_DIFFUSE].texture = texture
+model.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 #// NOTE: Defining 0 (NULL) for vertex shader forces usage of internal default vertex shader
 shader = rl.LoadShader(b"", b"resources/shaders/glsl330/swirl.fs")
 swirlCenterLoc = rl.GetShaderLocation(shader, b"center")
@@ -71,7 +63,7 @@ angle = 6.282;
 
 
 
-swirl = ffi.new("struct Vector2 *", [0,0])
+swirl = rl.ffi.new("struct Vector2 *", [0,0])
 
 target = rl.LoadRenderTexture(screenWidth, screenHeight)
 
@@ -90,7 +82,7 @@ while not rl.WindowShouldClose():            #// Detect window close button or E
 
     swirl.x = rl.GetMouseX()
     swirl.y = screenHeight - rl.GetMouseY()
-    rl.SetShaderValue(shader, swirlCenterLoc, swirl, rl.UNIFORM_VEC2);
+    rl.SetShaderValue(shader, swirlCenterLoc, swirl, rl.SHADER_UNIFORM_VEC2);
     #//----------------------------------------------------------------------------------
 
     #// Draw

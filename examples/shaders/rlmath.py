@@ -1,15 +1,9 @@
 # just a few functions from raymath
-#from raylib.dynamic import raylib as rl, ffi
-from raylib import rl, ffi
+
+import raylib as rl
 import math
 
-#<<<<<<< HEAD
-#<<<<<<< HEAD
-#<<<<<<< HEAD
-#=======
-#>>>>>>> 2e2e575 (added shaders custom uniform)
-#=======
-#>>>>>>> 1775ffc4b093c881ee44a8027b4143add066d738
+
 PI = 3.14159265358979323846
 DEG2RAD = (PI/180.0)
 RAD2DEG = (180.0/PI)
@@ -27,16 +21,9 @@ def Lerp(start: float, end: float, amount: float):
 def Vector2Zero():
     return ffi.new("struct Vector2 *",[ 0, 0])
 
-#<<<<<<< HEAD
-#<<<<<<< HEAD
-#=======
-#>>>>>>> ffe4403 (complete fog example)
-#=======
-#>>>>>>> 2e2e575 (added shaders custom uniform)
-#=======
-#>>>>>>> 1775ffc4b093c881ee44a8027b4143add066d738
+
 def Vector3Zero():
-    return ffi.new("struct Vector3 *",[ 0, 0, 0])
+    return rl.ffi.new("struct Vector3 *",[ 0, 0, 0])
     
 def MatrixRotateX(angle):
     result = MatrixIdentity();
@@ -68,7 +55,7 @@ def MatrixRotateY(angle):
 
 
 def MatrixIdentity():
-    result = ffi.new("struct Matrix *",[ 1.0, 0.0, 0.0, 0.0,0.0, 1.0, 0.0, 0.0,    0.0, 0.0, 1.0, 0.0,   0.0, 0.0, 0.0, 1.0 ])
+    result = rl.ffi.new("struct Matrix *",[ 1.0, 0.0, 0.0, 0.0,0.0, 1.0, 0.0, 0.0,    0.0, 0.0, 1.0, 0.0,   0.0, 0.0, 0.0, 1.0 ])
     return result
 
 
@@ -88,7 +75,7 @@ def MatrixRotateZ(angle):
 
 
 def MatrixMultiply(left,  right):
-    result = ffi.new("struct Matrix *")
+    result = rl.ffi.new("struct Matrix *")
     result.m0 = left.m0*right.m0 + left.m1*right.m4 + left.m2*right.m8 + left.m3*right.m12;
     result.m1 = left.m0*right.m1 + left.m1*right.m5 + left.m2*right.m9 + left.m3*right.m13;
     result.m2 = left.m0*right.m2 + left.m1*right.m6 + left.m2*right.m10 + left.m3*right.m14;

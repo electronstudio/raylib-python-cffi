@@ -27,19 +27,10 @@
 # *
 # ********************************************************************************************/
 
-#<<<<<<< HEAD
-#<<<<<<< HEAD
-#<<<<<<< HEAD
-from raylib import rl, ffi
-#=======
-#from raylib.dynamic import raylib as rl, ffi
-#>>>>>>> ffe4403 (complete fog example)
-#=======
-#from raylib.static import rl, ffi
-#>>>>>>> 10b63b9 (added shaders_texture_waves.py)
-#=======
-#from raylib.static import rl, ffi
-#>>>>>>> 1775ffc4b093c881ee44a8027b4143add066d738
+
+import raylib as rl
+
+
 from raylib.colors import *
 from dataclasses import dataclass
 from enum import Enum
@@ -60,7 +51,7 @@ screenHeight = 720;
 rl.SetConfigFlags(rl.FLAG_MSAA_4X_HINT| rl.FLAG_WINDOW_RESIZABLE);  # Enable Multi Sampling Anti Aliasing 4x (if available)
 rl.InitWindow(screenWidth, screenHeight, b"raylib [shaders] example - basic lighting")
 
-camera = ffi.new('struct Camera3D *', [
+camera = rl.ffi.new('struct Camera3D *', [
     [2, 2, 6],
     [0, .5, 0],
     [0, 1, 0],
@@ -77,9 +68,9 @@ modelC = rl.LoadModelFromMesh(rl.GenMeshSphere(0.5, 32, 32))
 texture = rl.LoadTexture(b"resources/texel_checker.png")
 
 #// Assign texture to default model material
-modelA.materials[0].maps[rl.MAP_DIFFUSE].texture = texture
-modelB.materials[0].maps[rl.MAP_DIFFUSE].texture = texture
-modelC.materials[0].maps[rl.MAP_DIFFUSE].texture = texture
+modelA.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
+modelB.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
+modelC.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 
 angle = 6.282;
 
@@ -137,8 +128,8 @@ while not rl.WindowShouldClose():            #// Detect window close button or E
     #// Rotate the torus
 #    modelA.transform = MatrixMultiply(modelA.transform, MatrixRotateX(-0.025)[0])[0]
 #    modelA.transform = MatrixMultiply(modelA.transform, MatrixRotateZ(0.012)[0])[0]
-    modelA.transform = ffi.cast('Matrix *', MatrixMultiply(modelA.transform, MatrixRotateX(-0.025)))[0]
-    modelA.transform = ffi.cast('Matrix *', MatrixMultiply(modelA.transform, MatrixRotateZ(0.012)))[0]
+    modelA.transform = rl.ffi.cast('Matrix *', MatrixMultiply(modelA.transform, MatrixRotateX(-0.025)))[0]
+    modelA.transform = rl.ffi.cast('Matrix *', MatrixMultiply(modelA.transform, MatrixRotateZ(0.012)))[0]
 
     if (rl.IsKeyPressed(rl.KEY_F)):
         rl.ToggleFullscreen()

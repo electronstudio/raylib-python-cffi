@@ -1,4 +1,4 @@
-from raylib.dynamic import raylib as rl, ffi
+import raylib as rl
 
 
 class LightSystem:
@@ -11,13 +11,13 @@ class LightSystem:
                             b"resources/shaders/fogLight.fs");
 
         #// Get some shader loactions
-        self.shader.locs[rl.LOC_MATRIX_MODEL] = rl.GetShaderLocation(self.shader, b"matModel");
-        self.shader.locs[rl.LOC_VECTOR_VIEW] = rl.GetShaderLocation(self.shader, b"viewPos");
+        self.shader.locs[rl.SHADER_LOC_MATRIX_MODEL] = rl.GetShaderLocation(self.shader, b"matModel");
+        self.shader.locs[rl.SHADER_LOC_VECTOR_VIEW] = rl.GetShaderLocation(self.shader, b"viewPos");
 
         #// ambient light level
         self.ambientLoc = rl.GetShaderLocation(self.shader, b"ambient");
-        v = ffi.new("struct Vector4 *", ambient)
-        rl.SetShaderValue(self.shader, self.ambientLoc, v, rl.UNIFORM_VEC4);
+        v = rl.ffi.new("struct Vector4 *", ambient)
+        rl.SetShaderValue(self.shader, self.ambientLoc, v, rl.SHADER_UNIFORM_VEC4);
 
         for light in ls:
             self.add(light)
@@ -29,7 +29,7 @@ class LightSystem:
             raise Exception("Too many lights")
 
     def update(self, cameraPos):
-        rl.SetShaderValue(self.shader, self.shader.locs[rl.LOC_VECTOR_VIEW], ffi.new("struct Vector3 *",cameraPos), rl.UNIFORM_VEC3)
+        rl.SetShaderValue(self.shader, self.shader.locs[rl.SHADER_LOC_VECTOR_VIEW], rl.ffi.new("struct Vector3 *",cameraPos), rl.SHADER_UNIFORM_VEC3)
         for light in self.lights:
             light.UpdateLightValues()
 
@@ -49,7 +49,7 @@ class Light:
     def __init__(self, type,  position,  target, color):
         self.enabled = True
         self.type = type
-        self.position = ffi.new("struct Vector3 *",position)
+        self.position = rl.ffi.new("struct Vector3 *",position)
         self.target = target
         self.color = color
 
@@ -80,20 +80,20 @@ class Light:
     #// NOTE: Light shader locations should be available
     def UpdateLightValues(self):
         #// Send to shader light enabled state and type
-        rl.SetShaderValue(self.shader, self.enabledLoc, ffi.new("int *",self.enabled), rl.UNIFORM_INT)
-        rl.SetShaderValue(self.shader, self.typeLoc, ffi.new("int *",self.type), rl.UNIFORM_INT)
+        rl.SetShaderValue(self.shader, self.enabledLoc, rl.ffi.new("int *",self.enabled), rl.SHADER_UNIFORM_INT)
+        rl.SetShaderValue(self.shader, self.typeLoc, rl.ffi.new("int *",self.type), rl.SHADER_UNIFORM_INT)
 
         #// Send to shader light position values
         position = [ self.position.x, self.position.y, self.position.z]
-        rl.SetShaderValue(self.shader, self.posLoc, ffi.new("struct Vector3 *",position), rl.UNIFORM_VEC3)
+        rl.SetShaderValue(self.shader, self.posLoc, rl.ffi.new("struct Vector3 *",position), rl.SHADER_UNIFORM_VEC3)
 
         #// Send to shader light target position values
         target =[  self.target.x, self.target.y, self.target.z ]
-        rl.SetShaderValue(self.shader, self.targetLoc, ffi.new("struct Vector3 *",target), rl.UNIFORM_VEC3)
+        rl.SetShaderValue(self.shader, self.targetLoc, rl.ffi.new("struct Vector3 *",target), rl.SHADER_UNIFORM_VEC3)
 
         #// Send to shader light color values
         color = [self.color[0]/255.0, self.color[1]/255.0,  self.color[2]/255.0, self.color[3]/255.0]
-        rl.SetShaderValue(self.shader, self.colorLoc, ffi.new("struct Vector4 *",color), rl.UNIFORM_VEC4)
+        rl.SetShaderValue(self.shader, self.colorLoc, rl.ffi.new("struct Vector4 *",color), rl.SHADER_UNIFORM_VEC4)
 
 
 
