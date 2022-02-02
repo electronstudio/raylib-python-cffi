@@ -3,7 +3,7 @@
 raylib [core] example - Input Gestures Detection
 
 """
-from raylib.pyray import PyRay
+import pyray
 from raylib.colors import (
     RAYWHITE,
     LIGHTGRAY,
@@ -13,7 +13,6 @@ from raylib.colors import (
 )
 
 
-pyray = PyRay()
 
 # Initialization
 MAX_GESTURE_STRINGS = 20

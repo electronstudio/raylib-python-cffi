@@ -9,7 +9,7 @@ python3 flow-field
 
 import sys, math, time, random
 import glm
-from raylib.dynamic import raylib as rl, ffi
+from raylib import rl, ffi
 from raylib.colors import *
 
 CTM = lambda: round(time.time() * 1000)

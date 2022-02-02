@@ -3,7 +3,7 @@
 raylib [core] example - Mouse input
 
 """
-from raylib.pyray import PyRay
+import pyray
 from raylib.colors import (
     RAYWHITE,
     DARKGRAY,
@@ -13,7 +13,6 @@ from raylib.colors import (
 )
 
 
-pyray = PyRay()
 
 
 # Initialization
@@ -34,11 +33,11 @@ while not pyray.window_should_close():  # Detect window close button or ESC key
     # Update
     ball_position = pyray.get_mouse_position()
 
-    if pyray.is_mouse_button_pressed(pyray.MOUSE_LEFT_BUTTON):
+    if pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_LEFT):
         ball_color = MAROON
-    elif pyray.is_mouse_button_pressed(pyray.MOUSE_MIDDLE_BUTTON):
+    elif pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_MIDDLE):
         ball_color = LIME
-    elif pyray.is_mouse_button_pressed(pyray.MOUSE_RIGHT_BUTTON):
+    elif pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_RIGHT):
         ball_color = DARKBLUE
 
     # Draw

@@ -5,7 +5,7 @@ raylib [core] example - 2d camera platformer
 """
 from math import sqrt
 
-from raylib.pyray import PyRay
+import pyray
 from raylib.colors import (
     DARKGRAY,
     RED,
@@ -15,7 +15,6 @@ from raylib.colors import (
 )
 
 
-pyray = PyRay()
 
 # Initialization
 global g_evening_out, g_even_out_target

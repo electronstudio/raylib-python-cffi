@@ -3,7 +3,8 @@
 raylib [core] example - 2d camera
 
 """
-from raylib.pyray import PyRay
+import pyray
+
 from raylib.colors import (
     RAYWHITE,
     DARKGRAY,
@@ -15,7 +16,7 @@ from raylib.colors import (
 )
 
 
-pyray = PyRay()
+
 
 # Initialization
 MAX_BUILDINGS = 100

@@ -3,7 +3,7 @@
 raylib [core] example - Keyboard input
 
 """
-from raylib.pyray import PyRay
+import pyray
 from raylib.colors import (
     RAYWHITE,
     DARKGRAY,
@@ -11,7 +11,6 @@ from raylib.colors import (
 )
 
 
-pyray = PyRay()
 
 
 # Initialization

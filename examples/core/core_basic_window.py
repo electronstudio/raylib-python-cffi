@@ -3,14 +3,14 @@
 raylib [core] example - Basic window
 
 """
-from raylib.pyray import PyRay
+import pyray
 from raylib.colors import (
     RAYWHITE,
     LIGHTGRAY,
 )
 
 
-pyray = PyRay()
+
 
 
 # Initialization

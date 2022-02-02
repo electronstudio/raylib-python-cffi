@@ -1,6 +1,6 @@
 from math import sin, cos
 import glm
-from raylib.dynamic import raylib as rl, ffi
+from raylib import rl, ffi
 
 
 class CameraFly:

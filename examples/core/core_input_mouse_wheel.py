@@ -3,7 +3,7 @@
 raylib [core] example - Mouse wheel input
 
 """
-from raylib.pyray import PyRay
+import pyray
 from raylib.colors import (
     RAYWHITE,
     GRAY,
@@ -12,7 +12,7 @@ from raylib.colors import (
 )
 
 
-pyray = PyRay()
+
 
 
 # Initialization
@@ -38,6 +38,8 @@ while not pyray.window_should_close():  # Detect window close button or ESC key
 
     pyray.clear_background(RAYWHITE)
 
+    # TODO
+    # FIXME
     pyray.draw_rectangle(
         SCREEN_WIDTH // 2 - 40, box_position_y, 80, 80, MAROON)
 
