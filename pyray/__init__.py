@@ -65,14 +65,19 @@ def makefunc(a):
     def func(*args):
         modified_args = []
         for (c_arg, arg) in zip(ffi.typeof(a).args, args):
-            #print(arg, c_arg.kind)
-            if type(arg) == str:
-                encoded = arg.encode('utf-8')
-                modified_args.append(encoded)
-            elif c_arg.kind == 'pointer' and str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>":
-                modified_args.append(ffi.addressof(arg))
-            else:
-                modified_args.append(arg)
+            #print("arg:",str(arg), "c_arg.kind:", c_arg.kind, "c_arg:", c_arg, "type(arg):",str(type(arg)))
+            if c_arg.kind == 'pointer':
+                if type(arg) == str:
+                    arg = arg.encode('utf-8')
+                elif type(arg) is bool:
+                    arg = ffi.new("bool *", arg)
+                elif type(arg) is int:
+                    arg = ffi.new("int *", arg)
+                elif type(arg) is float:
+                    arg = ffi.new("float *", arg)
+                elif str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>" and "*" not in str(arg):
+                    arg = ffi.addressof(arg)
+            modified_args.append(arg)
         result = a(*modified_args)
         if result is None:
             return
