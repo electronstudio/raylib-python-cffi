@@ -123,7 +123,7 @@ def camera_test():
         rl.BeginMode3D(cam[0])
 
         # NOTE(pebaz): For whatever reason, this can solve a percentage of artifacts
-        rl.DrawGizmo([100000000, 100000000, 100000000])
+        #rl.DrawGizmo([100000000, 100000000, 100000000])
 
         rl.DrawGrid(32, 1)
 

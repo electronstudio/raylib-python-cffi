@@ -8,7 +8,7 @@ python3 flow-field
 """
 
 import sys, math, time, random
-import glm
+import glm # Note package is PyGLM, not glm.
 from raylib import rl, ffi
 from raylib.colors import *
 
@@ -28,7 +28,7 @@ rl.SetTargetFPS(60)
 #rl.DisableCursor()
 
 canvas = rl.LoadRenderTexture(rl.GetScreenWidth(), rl.GetScreenHeight())
-rl.SetTextureWrap(canvas.texture, rl.WRAP_MIRROR_REPEAT)
+rl.SetTextureWrap(canvas.texture, rl.TEXTURE_WRAP_MIRROR_REPEAT)
 
 def random_point_in_circle(center, radius):
     a = random.random() * 2 * math.pi

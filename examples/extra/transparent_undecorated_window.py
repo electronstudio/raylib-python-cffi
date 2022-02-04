@@ -1,8 +1,11 @@
 """
+FIXME this example is broken with Raylib 4.0
+
 Requirements:
 - raylib
 - pytweening
 - pyglm
+- screeninfo
 
 Windows-Only Requirements:
 - win32gui
@@ -18,7 +21,7 @@ import sys, time
 import glm
 import pytweening as tween
 import screeninfo
-from raylib.dynamic import raylib as rl, ffi
+from raylib import rl, ffi
 from raylib.colors import *
 
 

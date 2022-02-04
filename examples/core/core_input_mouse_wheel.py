@@ -31,17 +31,14 @@ pyray.set_target_fps(60)  # Set our game to run at 60 frames-per-second
 # Main game loop
 while not pyray.window_should_close():  # Detect window close button or ESC key
     # Update
-    box_position_y -= (pyray.get_mouse_wheel_move() * scroll_speed)
+    box_position_y -= int(pyray.get_mouse_wheel_move() * scroll_speed)
 
     # Draw
     pyray.begin_drawing()
 
     pyray.clear_background(RAYWHITE)
 
-    # TODO
-    # FIXME
-    pyray.draw_rectangle(
-        SCREEN_WIDTH // 2 - 40, box_position_y, 80, 80, MAROON)
+    pyray.draw_rectangle(SCREEN_WIDTH // 2 - 40, box_position_y, 80, 80, MAROON)
 
     pyray.draw_text('User mouse wheel to move the cube up and down!',
                     10, 10, 20, GRAY)
