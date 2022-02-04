@@ -37,10 +37,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 4.0-dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 4.0.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#help-wanted">Help wanted</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#license-updated">License (updated)</a></li>
@@ -428,6 +429,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiButton">GuiButton</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiCheckBox">GuiCheckBox</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiCheckBoxProperty">GuiCheckBoxProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiCheckIconPixel">GuiCheckIconPixel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiClearIconPixel">GuiClearIconPixel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiColorBarAlpha">GuiColorBarAlpha</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiColorBarHue">GuiColorBarHue</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiColorPanel">GuiColorPanel</a></li>
@@ -440,19 +443,21 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiControlState">GuiControlState</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiDefaultProperty">GuiDefaultProperty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiDisable">GuiDisable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiDrawIcon">GuiDrawIcon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiDropdownBox">GuiDropdownBox</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiDropdownBoxProperty">GuiDropdownBoxProperty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiDummyRec">GuiDummyRec</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiEnable">GuiEnable</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiFade">GuiFade</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiGetFont">GuiGetFont</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiGetIconData">GuiGetIconData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiGetIcons">GuiGetIcons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiGetState">GuiGetState</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiGetStyle">GuiGetStyle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiGrid">GuiGrid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiGroupBox">GuiGroupBox</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiIconText">GuiIconText</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiImageButton">GuiImageButton</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiImageButtonEx">GuiImageButtonEx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiIsLocked">GuiIsLocked</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiLabel">GuiLabel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiLabelButton">GuiLabelButton</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiLine">GuiLine</a></li>
@@ -471,6 +476,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiScrollBarSide">GuiScrollBarSide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiScrollPanel">GuiScrollPanel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiSetFont">GuiSetFont</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiSetIconData">GuiSetIconData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.GuiSetIconPixel">GuiSetIconPixel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiSetState">GuiSetState</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiSetStyle">GuiSetStyle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.GuiSlider">GuiSlider</a></li>
@@ -1160,6 +1167,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlActiveDrawBuffers">rlActiveDrawBuffers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlActiveTextureSlot">rlActiveTextureSlot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlBegin">rlBegin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlBindImageTexture">rlBindImageTexture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlBindShaderBuffer">rlBindShaderBuffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlBlendMode">rlBlendMode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlCheckErrors">rlCheckErrors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlCheckRenderBatchLimit">rlCheckRenderBatchLimit</a></li>
@@ -1169,6 +1178,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlColor4f">rlColor4f</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlColor4ub">rlColor4ub</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlCompileShader">rlCompileShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlComputeShaderDispatch">rlComputeShaderDispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlCopyBuffersElements">rlCopyBuffersElements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlDisableBackfaceCulling">rlDisableBackfaceCulling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlDisableColorBlend">rlDisableColorBlend</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlDisableDepthMask">rlDisableDepthMask</a></li>
@@ -1227,18 +1238,21 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGetMatrixTransform">rlGetMatrixTransform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGetMatrixViewOffsetStereo">rlGetMatrixViewOffsetStereo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGetPixelFormatName">rlGetPixelFormatName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlGetShaderBufferSize">rlGetShaderBufferSize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGetShaderIdDefault">rlGetShaderIdDefault</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGetShaderLocsDefault">rlGetShaderLocsDefault</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGetTextureIdDefault">rlGetTextureIdDefault</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGetVersion">rlGetVersion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGlVersion">rlGlVersion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlIsStereoRenderEnabled">rlIsStereoRenderEnabled</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadComputeShaderProgram">rlLoadComputeShaderProgram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadDrawCube">rlLoadDrawCube</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadDrawQuad">rlLoadDrawQuad</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadExtensions">rlLoadExtensions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadFramebuffer">rlLoadFramebuffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadIdentity">rlLoadIdentity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadRenderBatch">rlLoadRenderBatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadShaderBuffer">rlLoadShaderBuffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadShaderCode">rlLoadShaderCode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadShaderProgram">rlLoadShaderProgram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadTexture">rlLoadTexture</a></li>
@@ -1255,6 +1269,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlPopMatrix">rlPopMatrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlPushMatrix">rlPushMatrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlReadScreenPixels">rlReadScreenPixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlReadShaderBufferElements">rlReadShaderBufferElements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlReadTexturePixels">rlReadTexturePixels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlRenderBatch">rlRenderBatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlRotatef">rlRotatef</a></li>
@@ -1286,10 +1301,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlTranslatef">rlTranslatef</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadFramebuffer">rlUnloadFramebuffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadRenderBatch">rlUnloadRenderBatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadShaderBuffer">rlUnloadShaderBuffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadShaderProgram">rlUnloadShaderProgram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadTexture">rlUnloadTexture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadVertexArray">rlUnloadVertexArray</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadVertexBuffer">rlUnloadVertexBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlUpdateShaderBufferElements">rlUpdateShaderBufferElements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUpdateTexture">rlUpdateTexture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUpdateVertexBuffer">rlUpdateVertexBuffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlVertex2f">rlVertex2f</a></li>
@@ -3535,6 +3552,20 @@ are very, very similar to the C originals.</p>
 <dd></dd></dl>
 
 <dl class="py function">
+<dt id="raylib.GuiCheckIconPixel">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiCheckIconPixel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiCheckIconPixel" title="Permalink to this definition"></a></dt>
+<dd><p>_Bool GuiCheckIconPixel(int, int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="raylib.GuiClearIconPixel">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiClearIconPixel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiClearIconPixel" title="Permalink to this definition"></a></dt>
+<dd><p>void GuiClearIconPixel(int, int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="raylib.GuiColorBarAlpha">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiColorBarAlpha</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">float_1</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiColorBarAlpha" title="Permalink to this definition"></a></dt>
 <dd><p>float GuiColorBarAlpha(struct Rectangle, float);</p>
@@ -3607,6 +3638,13 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="raylib.GuiDrawIcon">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiDrawIcon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">Color_4</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Color" title="raylib.Color">Color</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiDrawIcon" title="Permalink to this definition"></a></dt>
+<dd><p>void GuiDrawIcon(int, int, int, int, struct Color);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="raylib.GuiDropdownBox">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiDropdownBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">_Bool_3</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiDropdownBox" title="Permalink to this definition"></a></dt>
 <dd><p>_Bool GuiDropdownBox(struct Rectangle, char <a href="#id19"><span class="problematic" id="id20">*</span></a>, int <a href="#id21"><span class="problematic" id="id22">*</span></a>, _Bool);</p>
@@ -3647,6 +3685,20 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="raylib.GuiGetIconData">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiGetIconData</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiGetIconData" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned int <a href="#id25"><span class="problematic" id="id26">*</span></a>GuiGetIconData(int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="raylib.GuiGetIcons">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiGetIcons</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiGetIcons" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned int <a href="#id27"><span class="problematic" id="id28">*</span></a>GuiGetIcons();</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="raylib.GuiGetState">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiGetState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiGetState" title="Permalink to this definition"></a></dt>
 <dd><p>int GuiGetState();</p>
@@ -3670,28 +3722,21 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.GuiGroupBox">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiGroupBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiGroupBox" title="Permalink to this definition"></a></dt>
-<dd><p>void GuiGroupBox(struct Rectangle, char <a href="#id25"><span class="problematic" id="id26">*</span></a>);</p>
+<dd><p>void GuiGroupBox(struct Rectangle, char <a href="#id29"><span class="problematic" id="id30">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.GuiIconText">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiIconText</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiIconText" title="Permalink to this definition"></a></dt>
-<dd><p>char <a href="#id27"><span class="problematic" id="id28">*</span></a>GuiIconText(int, char <a href="#id29"><span class="problematic" id="id30">*</span></a>);</p>
+<dd><p>char <a href="#id31"><span class="problematic" id="id32">*</span></a>GuiIconText(int, char <a href="#id33"><span class="problematic" id="id34">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="raylib.GuiImageButton">
-<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiImageButton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">Texture_2</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Texture" title="raylib.Texture">Texture</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiImageButton" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiImageButton(struct Rectangle, char <a href="#id31"><span class="problematic" id="id32">*</span></a>, struct Texture);</p>
-<p>CFFI C function from raylib._raylib_cffi.lib</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="raylib.GuiImageButtonEx">
-<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiImageButtonEx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">Texture_2</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Texture" title="raylib.Texture">Texture</a></span></em>, <em class="sig-param"><span class="n">Rectangle_3</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiImageButtonEx" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiImageButtonEx(struct Rectangle, char <a href="#id33"><span class="problematic" id="id34">*</span></a>, struct Texture, struct Rectangle);</p>
+<dt id="raylib.GuiIsLocked">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiIsLocked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiIsLocked" title="Permalink to this definition"></a></dt>
+<dd><p>_Bool GuiIsLocked();</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -3814,6 +3859,20 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="raylib.GuiSetIconData">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiSetIconData</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiSetIconData" title="Permalink to this definition"></a></dt>
+<dd><p>void GuiSetIconData(int, unsigned int <a href="#id65"><span class="problematic" id="id66">*</span></a>);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="raylib.GuiSetIconPixel">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiSetIconPixel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiSetIconPixel" title="Permalink to this definition"></a></dt>
+<dd><p>void GuiSetIconPixel(int, int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="raylib.GuiSetState">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiSetState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiSetState" title="Permalink to this definition"></a></dt>
 <dd><p>void GuiSetState(int);</p>
@@ -3830,14 +3889,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.GuiSlider">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiSlider</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_2</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">float_3</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">float_4</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">float_5</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiSlider" title="Permalink to this definition"></a></dt>
-<dd><p>float GuiSlider(struct Rectangle, char <a href="#id65"><span class="problematic" id="id66">*</span></a>, char <a href="#id67"><span class="problematic" id="id68">*</span></a>, float, float, float);</p>
+<dd><p>float GuiSlider(struct Rectangle, char <a href="#id67"><span class="problematic" id="id68">*</span></a>, char <a href="#id69"><span class="problematic" id="id70">*</span></a>, float, float, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.GuiSliderBar">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiSliderBar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_2</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">float_3</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">float_4</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">float_5</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiSliderBar" title="Permalink to this definition"></a></dt>
-<dd><p>float GuiSliderBar(struct Rectangle, char <a href="#id69"><span class="problematic" id="id70">*</span></a>, char <a href="#id71"><span class="problematic" id="id72">*</span></a>, float, float, float);</p>
+<dd><p>float GuiSliderBar(struct Rectangle, char <a href="#id71"><span class="problematic" id="id72">*</span></a>, char <a href="#id73"><span class="problematic" id="id74">*</span></a>, float, float, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -3849,7 +3908,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.GuiSpinner">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiSpinner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_5</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiSpinner" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiSpinner(struct Rectangle, char <a href="#id73"><span class="problematic" id="id74">*</span></a>, int <a href="#id75"><span class="problematic" id="id76">*</span></a>, int, int, _Bool);</p>
+<dd><p>_Bool GuiSpinner(struct Rectangle, char <a href="#id75"><span class="problematic" id="id76">*</span></a>, int <a href="#id77"><span class="problematic" id="id78">*</span></a>, int, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -3861,7 +3920,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.GuiStatusBar">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiStatusBar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiStatusBar" title="Permalink to this definition"></a></dt>
-<dd><p>void GuiStatusBar(struct Rectangle, char <a href="#id77"><span class="problematic" id="id78">*</span></a>);</p>
+<dd><p>void GuiStatusBar(struct Rectangle, char <a href="#id79"><span class="problematic" id="id80">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -3878,14 +3937,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.GuiTextBox">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiTextBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_3</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiTextBox" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiTextBox(struct Rectangle, char <a href="#id79"><span class="problematic" id="id80">*</span></a>, int, _Bool);</p>
+<dd><p>_Bool GuiTextBox(struct Rectangle, char <a href="#id81"><span class="problematic" id="id82">*</span></a>, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.GuiTextBoxMulti">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiTextBoxMulti</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_3</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiTextBoxMulti" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiTextBoxMulti(struct Rectangle, char <a href="#id81"><span class="problematic" id="id82">*</span></a>, int, _Bool);</p>
+<dd><p>_Bool GuiTextBoxMulti(struct Rectangle, char <a href="#id83"><span class="problematic" id="id84">*</span></a>, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -3897,21 +3956,21 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.GuiTextInputBox">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiTextInputBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_2</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_3</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_4</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiTextInputBox" title="Permalink to this definition"></a></dt>
-<dd><p>int GuiTextInputBox(struct Rectangle, char <a href="#id83"><span class="problematic" id="id84">*</span></a>, char <a href="#id85"><span class="problematic" id="id86">*</span></a>, char <a href="#id87"><span class="problematic" id="id88">*</span></a>, char <a href="#id89"><span class="problematic" id="id90">*</span></a>);</p>
+<dd><p>int GuiTextInputBox(struct Rectangle, char <a href="#id85"><span class="problematic" id="id86">*</span></a>, char <a href="#id87"><span class="problematic" id="id88">*</span></a>, char <a href="#id89"><span class="problematic" id="id90">*</span></a>, char <a href="#id91"><span class="problematic" id="id92">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.GuiToggle">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiToggle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">_Bool_2</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiToggle" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiToggle(struct Rectangle, char <a href="#id91"><span class="problematic" id="id92">*</span></a>, _Bool);</p>
+<dd><p>_Bool GuiToggle(struct Rectangle, char <a href="#id93"><span class="problematic" id="id94">*</span></a>, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.GuiToggleGroup">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiToggleGroup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiToggleGroup" title="Permalink to this definition"></a></dt>
-<dd><p>int GuiToggleGroup(struct Rectangle, char <a href="#id93"><span class="problematic" id="id94">*</span></a>, int);</p>
+<dd><p>int GuiToggleGroup(struct Rectangle, char <a href="#id95"><span class="problematic" id="id96">*</span></a>, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -3930,14 +3989,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.GuiValueBox">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiValueBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_5</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiValueBox" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiValueBox(struct Rectangle, char <a href="#id95"><span class="problematic" id="id96">*</span></a>, int <a href="#id97"><span class="problematic" id="id98">*</span></a>, int, int, _Bool);</p>
+<dd><p>_Bool GuiValueBox(struct Rectangle, char <a href="#id97"><span class="problematic" id="id98">*</span></a>, int <a href="#id99"><span class="problematic" id="id100">*</span></a>, int, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.GuiWindowBox">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">GuiWindowBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Rectangle" title="raylib.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.GuiWindowBox" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiWindowBox(struct Rectangle, char <a href="#id99"><span class="problematic" id="id100">*</span></a>);</p>
+<dd><p>_Bool GuiWindowBox(struct Rectangle, char <a href="#id101"><span class="problematic" id="id102">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -5709,14 +5768,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.PhysicsAddForce">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">PhysicsAddForce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">PhysicsBodyData_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">Vector2_1</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Vector2" title="raylib.Vector2">Vector2</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.PhysicsAddForce" title="Permalink to this definition"></a></dt>
-<dd><p>void PhysicsAddForce(struct PhysicsBodyData <a href="#id101"><span class="problematic" id="id102">*</span></a>, struct Vector2);</p>
+<dd><p>void PhysicsAddForce(struct PhysicsBodyData <a href="#id103"><span class="problematic" id="id104">*</span></a>, struct Vector2);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.PhysicsAddTorque">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">PhysicsAddTorque</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">PhysicsBodyData_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">float_1</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.PhysicsAddTorque" title="Permalink to this definition"></a></dt>
-<dd><p>void PhysicsAddTorque(struct PhysicsBodyData <a href="#id103"><span class="problematic" id="id104">*</span></a>, float);</p>
+<dd><p>void PhysicsAddTorque(struct PhysicsBodyData <a href="#id105"><span class="problematic" id="id106">*</span></a>, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -5743,7 +5802,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.PhysicsShatter">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">PhysicsShatter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">PhysicsBodyData_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">Vector2_1</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#raylib.Vector2" title="raylib.Vector2">Vector2</a></span></em>, <em class="sig-param"><span class="n">float_2</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.PhysicsShatter" title="Permalink to this definition"></a></dt>
-<dd><p>void PhysicsShatter(struct PhysicsBodyData <a href="#id105"><span class="problematic" id="id106">*</span></a>, struct Vector2, float);</p>
+<dd><p>void PhysicsShatter(struct PhysicsBodyData <a href="#id107"><span class="problematic" id="id108">*</span></a>, struct Vector2, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -6789,7 +6848,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.SetPhysicsBodyRotation">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">SetPhysicsBodyRotation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">PhysicsBodyData_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">float_1</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.SetPhysicsBodyRotation" title="Permalink to this definition"></a></dt>
-<dd><p>void SetPhysicsBodyRotation(struct PhysicsBodyData <a href="#id107"><span class="problematic" id="id108">*</span></a>, float);</p>
+<dd><p>void SetPhysicsBodyRotation(struct PhysicsBodyData <a href="#id109"><span class="problematic" id="id110">*</span></a>, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7555,6 +7614,20 @@ are very, very similar to the C originals.</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
+<dl class="py function">
+<dt id="raylib.rlBindImageTexture">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlBindImageTexture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlBindImageTexture" title="Permalink to this definition"></a></dt>
+<dd><p>void rlBindImageTexture(unsigned int, unsigned int, unsigned int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="raylib.rlBindShaderBuffer">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlBindShaderBuffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_1</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlBindShaderBuffer" title="Permalink to this definition"></a></dt>
+<dd><p>void rlBindShaderBuffer(unsigned int, unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
 <dl class="py data">
 <dt id="raylib.rlBlendMode">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlBlendMode</code><a class="headerlink" href="#raylib.rlBlendMode" title="Permalink to this definition"></a></dt>
@@ -7612,7 +7685,21 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlCompileShader">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlCompileShader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">str_0</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlCompileShader" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlCompileShader(char <a href="#id109"><span class="problematic" id="id110">*</span></a>, int);</p>
+<dd><p>unsigned int rlCompileShader(char <a href="#id111"><span class="problematic" id="id112">*</span></a>, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="raylib.rlComputeShaderDispatch">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlComputeShaderDispatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlComputeShaderDispatch" title="Permalink to this definition"></a></dt>
+<dd><p>void rlComputeShaderDispatch(unsigned int, unsigned int, unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="raylib.rlCopyBuffersElements">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlCopyBuffersElements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_4</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlCopyBuffersElements" title="Permalink to this definition"></a></dt>
+<dd><p>void rlCopyBuffersElements(unsigned int, unsigned int, unsigned long long, unsigned long long, unsigned long long);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7736,7 +7823,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlDrawRenderBatch">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlDrawRenderBatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rlRenderBatch_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlDrawRenderBatch" title="Permalink to this definition"></a></dt>
-<dd><p>void rlDrawRenderBatch(struct rlRenderBatch <a href="#id111"><span class="problematic" id="id112">*</span></a>);</p>
+<dd><p>void rlDrawRenderBatch(struct rlRenderBatch <a href="#id113"><span class="problematic" id="id114">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7757,14 +7844,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlDrawVertexArrayElements">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlDrawVertexArrayElements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlDrawVertexArrayElements" title="Permalink to this definition"></a></dt>
-<dd><p>void rlDrawVertexArrayElements(int, int, void <a href="#id113"><span class="problematic" id="id114">*</span></a>);</p>
+<dd><p>void rlDrawVertexArrayElements(int, int, void <a href="#id115"><span class="problematic" id="id116">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.rlDrawVertexArrayElementsInstanced">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlDrawVertexArrayElementsInstanced</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlDrawVertexArrayElementsInstanced" title="Permalink to this definition"></a></dt>
-<dd><p>void rlDrawVertexArrayElementsInstanced(int, int, void <a href="#id115"><span class="problematic" id="id116">*</span></a>, int);</p>
+<dd><p>void rlDrawVertexArrayElementsInstanced(int, int, void <a href="#id117"><span class="problematic" id="id118">*</span></a>, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7928,7 +8015,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlGenTextureMipmaps">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlGenTextureMipmaps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_pointer_4</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlGenTextureMipmaps" title="Permalink to this definition"></a></dt>
-<dd><p>void rlGenTextureMipmaps(unsigned int, int, int, int, int <a href="#id117"><span class="problematic" id="id118">*</span></a>);</p>
+<dd><p>void rlGenTextureMipmaps(unsigned int, int, int, int, int <a href="#id119"><span class="problematic" id="id120">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7949,7 +8036,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlGetGlTextureFormats">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlGetGlTextureFormats</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_pointer_3</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlGetGlTextureFormats" title="Permalink to this definition"></a></dt>
-<dd><p>void rlGetGlTextureFormats(int, int <a href="#id119"><span class="problematic" id="id120">*</span></a>, int <a href="#id121"><span class="problematic" id="id122">*</span></a>, int <a href="#id123"><span class="problematic" id="id124">*</span></a>);</p>
+<dd><p>void rlGetGlTextureFormats(int, int <a href="#id121"><span class="problematic" id="id122">*</span></a>, int <a href="#id123"><span class="problematic" id="id124">*</span></a>, int <a href="#id125"><span class="problematic" id="id126">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7963,14 +8050,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlGetLocationAttrib">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlGetLocationAttrib</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlGetLocationAttrib" title="Permalink to this definition"></a></dt>
-<dd><p>int rlGetLocationAttrib(unsigned int, char <a href="#id125"><span class="problematic" id="id126">*</span></a>);</p>
+<dd><p>int rlGetLocationAttrib(unsigned int, char <a href="#id127"><span class="problematic" id="id128">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.rlGetLocationUniform">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlGetLocationUniform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlGetLocationUniform" title="Permalink to this definition"></a></dt>
-<dd><p>int rlGetLocationUniform(unsigned int, char <a href="#id127"><span class="problematic" id="id128">*</span></a>);</p>
+<dd><p>int rlGetLocationUniform(unsigned int, char <a href="#id129"><span class="problematic" id="id130">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8012,7 +8099,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlGetPixelFormatName">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlGetPixelFormatName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlGetPixelFormatName" title="Permalink to this definition"></a></dt>
-<dd><p>char <a href="#id129"><span class="problematic" id="id130">*</span></a>rlGetPixelFormatName(unsigned int);</p>
+<dd><p>char <a href="#id131"><span class="problematic" id="id132">*</span></a>rlGetPixelFormatName(unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="raylib.rlGetShaderBufferSize">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlGetShaderBufferSize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlGetShaderBufferSize" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned long long rlGetShaderBufferSize(unsigned int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8026,7 +8120,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlGetShaderLocsDefault">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlGetShaderLocsDefault</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlGetShaderLocsDefault" title="Permalink to this definition"></a></dt>
-<dd><p>int <a href="#id131"><span class="problematic" id="id132">*</span></a>rlGetShaderLocsDefault();</p>
+<dd><p>int <a href="#id133"><span class="problematic" id="id134">*</span></a>rlGetShaderLocsDefault();</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8057,6 +8151,13 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="raylib.rlLoadComputeShaderProgram">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlLoadComputeShaderProgram</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlLoadComputeShaderProgram" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned int rlLoadComputeShaderProgram(unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="raylib.rlLoadDrawCube">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlLoadDrawCube</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlLoadDrawCube" title="Permalink to this definition"></a></dt>
 <dd><p>void rlLoadDrawCube();</p>
@@ -8073,7 +8174,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlLoadExtensions">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlLoadExtensions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlLoadExtensions" title="Permalink to this definition"></a></dt>
-<dd><p>void rlLoadExtensions(void <a href="#id133"><span class="problematic" id="id134">*</span></a>);</p>
+<dd><p>void rlLoadExtensions(void <a href="#id135"><span class="problematic" id="id136">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8099,9 +8200,16 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="raylib.rlLoadShaderBuffer">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlLoadShaderBuffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedlonglong_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlLoadShaderBuffer" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned int rlLoadShaderBuffer(unsigned long long, void <a href="#id137"><span class="problematic" id="id138">*</span></a>, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="raylib.rlLoadShaderCode">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlLoadShaderCode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">str_0</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlLoadShaderCode" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadShaderCode(char <a href="#id135"><span class="problematic" id="id136">*</span></a>, char <a href="#id137"><span class="problematic" id="id138">*</span></a>);</p>
+<dd><p>unsigned int rlLoadShaderCode(char <a href="#id139"><span class="problematic" id="id140">*</span></a>, char <a href="#id141"><span class="problematic" id="id142">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8115,14 +8223,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlLoadTexture">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlLoadTexture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlLoadTexture" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadTexture(void <a href="#id139"><span class="problematic" id="id140">*</span></a>, int, int, int, int);</p>
+<dd><p>unsigned int rlLoadTexture(void <a href="#id143"><span class="problematic" id="id144">*</span></a>, int, int, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.rlLoadTextureCubemap">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlLoadTextureCubemap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlLoadTextureCubemap" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadTextureCubemap(void <a href="#id141"><span class="problematic" id="id142">*</span></a>, int, int);</p>
+<dd><p>unsigned int rlLoadTextureCubemap(void <a href="#id145"><span class="problematic" id="id146">*</span></a>, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8143,14 +8251,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlLoadVertexBuffer">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlLoadVertexBuffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_2</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlLoadVertexBuffer" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadVertexBuffer(void <a href="#id143"><span class="problematic" id="id144">*</span></a>, int, _Bool);</p>
+<dd><p>unsigned int rlLoadVertexBuffer(void <a href="#id147"><span class="problematic" id="id148">*</span></a>, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.rlLoadVertexBufferElement">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlLoadVertexBufferElement</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_2</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlLoadVertexBufferElement" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadVertexBufferElement(void <a href="#id145"><span class="problematic" id="id146">*</span></a>, int, _Bool);</p>
+<dd><p>unsigned int rlLoadVertexBufferElement(void <a href="#id149"><span class="problematic" id="id150">*</span></a>, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8164,7 +8272,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlMultMatrixf">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlMultMatrixf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">float_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlMultMatrixf" title="Permalink to this definition"></a></dt>
-<dd><p>void rlMultMatrixf(float <a href="#id147"><span class="problematic" id="id148">*</span></a>);</p>
+<dd><p>void rlMultMatrixf(float <a href="#id151"><span class="problematic" id="id152">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8204,14 +8312,21 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlReadScreenPixels">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlReadScreenPixels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlReadScreenPixels" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned char <a href="#id149"><span class="problematic" id="id150">*</span></a>rlReadScreenPixels(int, int);</p>
+<dd><p>unsigned char <a href="#id153"><span class="problematic" id="id154">*</span></a>rlReadScreenPixels(int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="raylib.rlReadShaderBufferElements">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlReadShaderBufferElements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlReadShaderBufferElements" title="Permalink to this definition"></a></dt>
+<dd><p>void rlReadShaderBufferElements(unsigned int, void <a href="#id155"><span class="problematic" id="id156">*</span></a>, unsigned long long, unsigned long long);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.rlReadTexturePixels">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlReadTexturePixels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlReadTexturePixels" title="Permalink to this definition"></a></dt>
-<dd><p>void <a href="#id151"><span class="problematic" id="id152">*</span></a>rlReadTexturePixels(unsigned int, int, int, int);</p>
+<dd><p>void <a href="#id157"><span class="problematic" id="id158">*</span></a>rlReadTexturePixels(unsigned int, int, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8293,14 +8408,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlSetRenderBatchActive">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlSetRenderBatchActive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rlRenderBatch_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlSetRenderBatchActive" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetRenderBatchActive(struct rlRenderBatch <a href="#id153"><span class="problematic" id="id154">*</span></a>);</p>
+<dd><p>void rlSetRenderBatchActive(struct rlRenderBatch <a href="#id159"><span class="problematic" id="id160">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.rlSetShader">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlSetShader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlSetShader" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetShader(unsigned int, int <a href="#id155"><span class="problematic" id="id156">*</span></a>);</p>
+<dd><p>void rlSetShader(unsigned int, int <a href="#id161"><span class="problematic" id="id162">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8314,7 +8429,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlSetUniform">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlSetUniform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlSetUniform" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetUniform(int, void <a href="#id157"><span class="problematic" id="id158">*</span></a>, int, int);</p>
+<dd><p>void rlSetUniform(int, void <a href="#id163"><span class="problematic" id="id164">*</span></a>, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8335,14 +8450,14 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt id="raylib.rlSetVertexAttribute">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlSetVertexAttribute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_3</span><span class="p">:</span> <span class="n">bool</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_5</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlSetVertexAttribute" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetVertexAttribute(unsigned int, int, int, _Bool, int, void <a href="#id159"><span class="problematic" id="id160">*</span></a>);</p>
+<dd><p>void rlSetVertexAttribute(unsigned int, int, int, _Bool, int, void <a href="#id165"><span class="problematic" id="id166">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.rlSetVertexAttributeDefault">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlSetVertexAttributeDefault</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlSetVertexAttributeDefault" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetVertexAttributeDefault(int, void <a href="#id161"><span class="problematic" id="id162">*</span></a>, int, int);</p>
+<dd><p>void rlSetVertexAttributeDefault(int, void <a href="#id167"><span class="problematic" id="id168">*</span></a>, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8414,6 +8529,13 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="raylib.rlUnloadShaderBuffer">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlUnloadShaderBuffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlUnloadShaderBuffer" title="Permalink to this definition"></a></dt>
+<dd><p>void rlUnloadShaderBuffer(unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="raylib.rlUnloadShaderProgram">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlUnloadShaderProgram</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlUnloadShaderProgram" title="Permalink to this definition"></a></dt>
 <dd><p>void rlUnloadShaderProgram(unsigned int);</p>
@@ -8442,16 +8564,23 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="raylib.rlUpdateShaderBufferElements">
+<code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlUpdateShaderBufferElements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlUpdateShaderBufferElements" title="Permalink to this definition"></a></dt>
+<dd><p>void rlUpdateShaderBufferElements(unsigned int, void <a href="#id169"><span class="problematic" id="id170">*</span></a>, unsigned long long, unsigned long long);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="raylib.rlUpdateTexture">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlUpdateTexture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_5</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_6</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlUpdateTexture" title="Permalink to this definition"></a></dt>
-<dd><p>void rlUpdateTexture(unsigned int, int, int, int, int, int, void <a href="#id163"><span class="problematic" id="id164">*</span></a>);</p>
+<dd><p>void rlUpdateTexture(unsigned int, int, int, int, int, int, void <a href="#id171"><span class="problematic" id="id172">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="raylib.rlUpdateVertexBuffer">
 <code class="sig-prename descclassname">raylib.</code><code class="sig-name descname">rlUpdateVertexBuffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#raylib.rlUpdateVertexBuffer" title="Permalink to this definition"></a></dt>
-<dd><p>void rlUpdateVertexBuffer(unsigned int, void <a href="#id165"><span class="problematic" id="id166">*</span></a>, int, int);</p>
+<dd><p>void rlUpdateVertexBuffer(unsigned int, void <a href="#id173"><span class="problematic" id="id174">*</span></a>, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 

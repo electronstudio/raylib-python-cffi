@@ -4,16 +4,30 @@ Building from source
 Have Pip build from source
 --------------------------
 
-Useful if the binaries don’t work on your system, or you want to use a newer version of Raylib.
+This is useful if the binaries don’t work on your system, or you want to use a newer version of Raylib.
 
-Make sure Raylib is installed and then:
+First make sure Raylib is installed.  On Linux/Mac it must include the pkg-config files.  Best way to ensure this
+is to compile and install Raylib using CMake: https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake
+
+::
+
+      cd raylib-4.0.0
+      mkdir build
+      cd build
+      cmake  -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+      make
+      sudo make install
+
+
+
+Then ask Pip to build from source:
 
 ::
 
    pip3 install --no-binary raylib --upgrade --force-reinstall raylib
 
-Build from source manually
---------------------------
+Or, Build from source manually
+------------------------------
 
 Useful if the Pip build doesn’t work and you want to debug it, or you want to contribute to the
 project.
@@ -22,7 +36,7 @@ project.
    If the Pip build doesn’t work, please submit a bug. (And if you have
    fixed it, a PR.)
 
-Manual instructions follow, but see also how we actually build the wheels
+Manual instructions follow, but may be outdated, so see also how we actually build the wheels
 at https://github.com/electronstudio/raylib-python-cffi/blob/master/.github/workflows/build.yml
 
 Windows manual build
@@ -206,6 +220,10 @@ Build and install module.
 
 Raspberry Pi
 ~~~~~~~~~~~~
+
+Latest info: https://github.com/electronstudio/raylib-python-cffi/issues/55#issuecomment-1012629701
+
+Old possibly out of date info that was written for RPi3 and Raylib 3 follows.
 
 The integrated GPU hardware in a Raspberry Pi (“VideoCore”) is rather
 idiosyncratic, resulting in a complex set of software options. Probably

@@ -895,6 +895,16 @@ def gui_check_box(Rectangle_0: Rectangle,str_1: str,_Bool_2: bool,) -> bool:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def gui_check_icon_pixel(int_0: int,int_1: int,int_2: int,) -> bool:
+        """_Bool GuiCheckIconPixel(int, int, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def gui_clear_icon_pixel(int_0: int,int_1: int,int_2: int,) -> None:
+        """void GuiClearIconPixel(int, int, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def gui_color_bar_alpha(Rectangle_0: Rectangle,float_1: float,) -> float:
         """float GuiColorBarAlpha(struct Rectangle, float);
 
@@ -925,6 +935,11 @@ def gui_disable() -> None:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def gui_draw_icon(int_0: int,int_1: int,int_2: int,int_3: int,Color_4: Color,) -> None:
+        """void GuiDrawIcon(int, int, int, int, struct Color);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def gui_dropdown_box(Rectangle_0: Rectangle,str_1: str,int_pointer_2: Any,_Bool_3: bool,) -> bool:
         """_Bool GuiDropdownBox(struct Rectangle, char *, int *, _Bool);
 
@@ -947,6 +962,16 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def gui_get_font() -> Font:
         """struct Font GuiGetFont();
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def gui_get_icon_data(int_0: int,) -> Any:
+        """unsigned int *GuiGetIconData(int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def gui_get_icons() -> Any:
+        """unsigned int *GuiGetIcons();
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -975,13 +1000,8 @@ def gui_icon_text(int_0: int,str_1: str,) -> str:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def gui_image_button(Rectangle_0: Rectangle,str_1: str,Texture_2: Texture,) -> bool:
-        """_Bool GuiImageButton(struct Rectangle, char *, struct Texture);
-
-CFFI C function from raylib._raylib_cffi.lib"""
-        ...
-def gui_image_button_ex(Rectangle_0: Rectangle,str_1: str,Texture_2: Texture,Rectangle_3: Rectangle,) -> bool:
-        """_Bool GuiImageButtonEx(struct Rectangle, char *, struct Texture, struct Rectangle);
+def gui_is_locked() -> bool:
+        """_Bool GuiIsLocked();
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -1052,6 +1072,16 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def gui_set_font(Font_0: Font,) -> None:
         """void GuiSetFont(struct Font);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def gui_set_icon_data(int_0: int,unsignedint_pointer_1: Any,) -> None:
+        """void GuiSetIconData(int, unsigned int *);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def gui_set_icon_pixel(int_0: int,int_1: int,int_2: int,) -> None:
+        """void GuiSetIconPixel(int, int, int);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -2286,6 +2316,16 @@ def rl_begin(int_0: int,) -> None:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def rl_bind_image_texture(unsignedint_0: int,unsignedint_1: int,unsignedint_2: int,int_3: int,) -> None:
+        """void rlBindImageTexture(unsigned int, unsigned int, unsigned int, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rl_bind_shader_buffer(unsignedint_0: int,unsignedint_1: int,) -> None:
+        """void rlBindShaderBuffer(unsigned int, unsigned int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def rl_check_errors() -> None:
         """void rlCheckErrors();
 
@@ -2323,6 +2363,16 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def rl_compile_shader(str_0: str,int_1: int,) -> int:
         """unsigned int rlCompileShader(char *, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rl_compute_shader_dispatch(unsignedint_0: int,unsignedint_1: int,unsignedint_2: int,) -> None:
+        """void rlComputeShaderDispatch(unsigned int, unsigned int, unsigned int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rl_copy_buffers_elements(unsignedint_0: int,unsignedint_1: int,unsignedlonglong_2: int,unsignedlonglong_3: int,unsignedlonglong_4: int,) -> None:
+        """void rlCopyBuffersElements(unsigned int, unsigned int, unsigned long long, unsigned long long, unsigned long long);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -2601,6 +2651,11 @@ def rl_get_pixel_format_name(unsignedint_0: int,) -> str:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def rl_get_shader_buffer_size(unsignedint_0: int,) -> int:
+        """unsigned long long rlGetShaderBufferSize(unsigned int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def rl_get_shader_id_default() -> int:
         """unsigned int rlGetShaderIdDefault();
 
@@ -2623,6 +2678,11 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def rl_is_stereo_render_enabled() -> bool:
         """_Bool rlIsStereoRenderEnabled();
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rl_load_compute_shader_program(unsignedint_0: int,) -> int:
+        """unsigned int rlLoadComputeShaderProgram(unsigned int);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -2653,6 +2713,11 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def rl_load_render_batch(int_0: int,int_1: int,) -> rlRenderBatch:
         """struct rlRenderBatch rlLoadRenderBatch(int, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rl_load_shader_buffer(unsignedlonglong_0: int,void_pointer_1: Any,int_2: int,) -> int:
+        """unsigned int rlLoadShaderBuffer(unsigned long long, void *, int);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -2728,6 +2793,11 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def rl_read_screen_pixels(int_0: int,int_1: int,) -> str:
         """unsigned char *rlReadScreenPixels(int, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rl_read_shader_buffer_elements(unsignedint_0: int,void_pointer_1: Any,unsignedlonglong_2: int,unsignedlonglong_3: int,) -> None:
+        """void rlReadShaderBufferElements(unsigned int, void *, unsigned long long, unsigned long long);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -2856,6 +2926,11 @@ def rl_unload_render_batch(rlRenderBatch_0: rlRenderBatch,) -> None:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def rl_unload_shader_buffer(unsignedint_0: int,) -> None:
+        """void rlUnloadShaderBuffer(unsigned int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def rl_unload_shader_program(unsignedint_0: int,) -> None:
         """void rlUnloadShaderProgram(unsigned int);
 
@@ -2873,6 +2948,11 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def rl_unload_vertex_buffer(unsignedint_0: int,) -> None:
         """void rlUnloadVertexBuffer(unsigned int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rl_update_shader_buffer_elements(unsignedint_0: int,void_pointer_1: Any,unsignedlonglong_2: int,unsignedlonglong_3: int,) -> None:
+        """void rlUpdateShaderBufferElements(unsigned int, void *, unsigned long long, unsigned long long);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...

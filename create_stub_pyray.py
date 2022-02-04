@@ -27,6 +27,8 @@ def ctype_to_python_type(t):
         return 'None'
     elif t == "long":
         return "int"
+    elif t == "unsigned long long":
+        return "int"
     elif t == "double":
         return "float"
     elif "char *" in t:

@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="C API" href="raylib.html" />
-    <link rel="prev" title="Python Bindings for Raylib 4.0-dev" href="README.html" /> 
+    <link rel="prev" title="Python Bindings for Raylib 4.0.0" href="README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,10 +37,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 4.0-dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 4.0.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#help-wanted">Help wanted</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#license-updated">License (updated)</a></li>
@@ -855,24 +856,28 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.get_world_to_screen_ex">get_world_to_screen_ex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_button">gui_button</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_check_box">gui_check_box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_check_icon_pixel">gui_check_icon_pixel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_clear_icon_pixel">gui_clear_icon_pixel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_color_bar_alpha">gui_color_bar_alpha</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_color_bar_hue">gui_color_bar_hue</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_color_panel">gui_color_panel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_color_picker">gui_color_picker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_combo_box">gui_combo_box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_disable">gui_disable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_draw_icon">gui_draw_icon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_dropdown_box">gui_dropdown_box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_dummy_rec">gui_dummy_rec</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_enable">gui_enable</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_fade">gui_fade</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_get_font">gui_get_font</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_get_icon_data">gui_get_icon_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_get_icons">gui_get_icons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_get_state">gui_get_state</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_get_style">gui_get_style</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_grid">gui_grid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_group_box">gui_group_box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_icon_text">gui_icon_text</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_image_button">gui_image_button</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_image_button_ex">gui_image_button_ex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_is_locked">gui_is_locked</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_label">gui_label</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_label_button">gui_label_button</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_line">gui_line</a></li>
@@ -887,6 +892,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_scroll_bar">gui_scroll_bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_scroll_panel">gui_scroll_panel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_set_font">gui_set_font</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_set_icon_data">gui_set_icon_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.gui_set_icon_pixel">gui_set_icon_pixel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_set_state">gui_set_state</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_set_style">gui_set_style</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.gui_slider">gui_slider</a></li>
@@ -1042,6 +1049,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_active_draw_buffers">rl_active_draw_buffers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_active_texture_slot">rl_active_texture_slot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_begin">rl_begin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_bind_image_texture">rl_bind_image_texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_bind_shader_buffer">rl_bind_shader_buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_check_errors">rl_check_errors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_check_render_batch_limit">rl_check_render_batch_limit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_clear_color">rl_clear_color</a></li>
@@ -1050,6 +1059,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_color4f">rl_color4f</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_color4ub">rl_color4ub</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_compile_shader">rl_compile_shader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_compute_shader_dispatch">rl_compute_shader_dispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_copy_buffers_elements">rl_copy_buffers_elements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_disable_backface_culling">rl_disable_backface_culling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_disable_color_blend">rl_disable_color_blend</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_disable_depth_mask">rl_disable_depth_mask</a></li>
@@ -1105,17 +1116,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_get_matrix_transform">rl_get_matrix_transform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_get_matrix_view_offset_stereo">rl_get_matrix_view_offset_stereo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_get_pixel_format_name">rl_get_pixel_format_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_get_shader_buffer_size">rl_get_shader_buffer_size</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_get_shader_id_default">rl_get_shader_id_default</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_get_shader_locs_default">rl_get_shader_locs_default</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_get_texture_id_default">rl_get_texture_id_default</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_get_version">rl_get_version</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_is_stereo_render_enabled">rl_is_stereo_render_enabled</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_compute_shader_program">rl_load_compute_shader_program</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_draw_cube">rl_load_draw_cube</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_draw_quad">rl_load_draw_quad</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_extensions">rl_load_extensions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_framebuffer">rl_load_framebuffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_identity">rl_load_identity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_render_batch">rl_load_render_batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_shader_buffer">rl_load_shader_buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_shader_code">rl_load_shader_code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_shader_program">rl_load_shader_program</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_load_texture">rl_load_texture</a></li>
@@ -1131,6 +1145,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_pop_matrix">rl_pop_matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_push_matrix">rl_push_matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_read_screen_pixels">rl_read_screen_pixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_read_shader_buffer_elements">rl_read_shader_buffer_elements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_read_texture_pixels">rl_read_texture_pixels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_rotatef">rl_rotatef</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_scalef">rl_scalef</a></li>
@@ -1156,10 +1171,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_translatef">rl_translatef</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_unload_framebuffer">rl_unload_framebuffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_unload_render_batch">rl_unload_render_batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_unload_shader_buffer">rl_unload_shader_buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_unload_shader_program">rl_unload_shader_program</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_unload_texture">rl_unload_texture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_unload_vertex_array">rl_unload_vertex_array</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_unload_vertex_buffer">rl_unload_vertex_buffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.rl_update_shader_buffer_elements">rl_update_shader_buffer_elements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_update_texture">rl_update_texture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_update_vertex_buffer">rl_update_vertex_buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_vertex2f">rl_vertex2f</a></li>
@@ -5702,6 +5719,20 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="pyray.gui_check_icon_pixel">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_check_icon_pixel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_check_icon_pixel" title="Permalink to this definition"></a></dt>
+<dd><p>_Bool GuiCheckIconPixel(int, int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyray.gui_clear_icon_pixel">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_clear_icon_pixel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_clear_icon_pixel" title="Permalink to this definition"></a></dt>
+<dd><p>void GuiClearIconPixel(int, int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pyray.gui_color_bar_alpha">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_color_bar_alpha</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">float_1</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_color_bar_alpha" title="Permalink to this definition"></a></dt>
 <dd><p>float GuiColorBarAlpha(struct Rectangle, float);</p>
@@ -5744,6 +5775,13 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="pyray.gui_draw_icon">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_draw_icon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">Color_4</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Color" title="pyray.Color">Color</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_draw_icon" title="Permalink to this definition"></a></dt>
+<dd><p>void GuiDrawIcon(int, int, int, int, struct Color);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pyray.gui_dropdown_box">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_dropdown_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">_Bool_3</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_dropdown_box" title="Permalink to this definition"></a></dt>
 <dd><p>_Bool GuiDropdownBox(struct Rectangle, char <a href="#id19"><span class="problematic" id="id20">*</span></a>, int <a href="#id21"><span class="problematic" id="id22">*</span></a>, _Bool);</p>
@@ -5779,6 +5817,20 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="pyray.gui_get_icon_data">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_get_icon_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_get_icon_data" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned int <a href="#id25"><span class="problematic" id="id26">*</span></a>GuiGetIconData(int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyray.gui_get_icons">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_get_icons</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_get_icons" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned int <a href="#id27"><span class="problematic" id="id28">*</span></a>GuiGetIcons();</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pyray.gui_get_state">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_get_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_get_state" title="Permalink to this definition"></a></dt>
 <dd><p>int GuiGetState();</p>
@@ -5802,28 +5854,21 @@
 <dl class="py function">
 <dt id="pyray.gui_group_box">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_group_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_group_box" title="Permalink to this definition"></a></dt>
-<dd><p>void GuiGroupBox(struct Rectangle, char <a href="#id25"><span class="problematic" id="id26">*</span></a>);</p>
+<dd><p>void GuiGroupBox(struct Rectangle, char <a href="#id29"><span class="problematic" id="id30">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_icon_text">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_icon_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_icon_text" title="Permalink to this definition"></a></dt>
-<dd><p>char <a href="#id27"><span class="problematic" id="id28">*</span></a>GuiIconText(int, char <a href="#id29"><span class="problematic" id="id30">*</span></a>);</p>
+<dd><p>char <a href="#id31"><span class="problematic" id="id32">*</span></a>GuiIconText(int, char <a href="#id33"><span class="problematic" id="id34">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pyray.gui_image_button">
-<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_image_button</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">Texture_2</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Texture" title="pyray.Texture">Texture</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_image_button" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiImageButton(struct Rectangle, char <a href="#id31"><span class="problematic" id="id32">*</span></a>, struct Texture);</p>
-<p>CFFI C function from raylib._raylib_cffi.lib</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="pyray.gui_image_button_ex">
-<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_image_button_ex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">Texture_2</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Texture" title="pyray.Texture">Texture</a></span></em>, <em class="sig-param"><span class="n">Rectangle_3</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_image_button_ex" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiImageButtonEx(struct Rectangle, char <a href="#id33"><span class="problematic" id="id34">*</span></a>, struct Texture, struct Rectangle);</p>
+<dt id="pyray.gui_is_locked">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_is_locked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_is_locked" title="Permalink to this definition"></a></dt>
+<dd><p>_Bool GuiIsLocked();</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -5926,6 +5971,20 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="pyray.gui_set_icon_data">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_set_icon_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_set_icon_data" title="Permalink to this definition"></a></dt>
+<dd><p>void GuiSetIconData(int, unsigned int <a href="#id65"><span class="problematic" id="id66">*</span></a>);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyray.gui_set_icon_pixel">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_set_icon_pixel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_set_icon_pixel" title="Permalink to this definition"></a></dt>
+<dd><p>void GuiSetIconPixel(int, int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pyray.gui_set_state">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_set_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_set_state" title="Permalink to this definition"></a></dt>
 <dd><p>void GuiSetState(int);</p>
@@ -5942,63 +6001,63 @@
 <dl class="py function">
 <dt id="pyray.gui_slider">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_slider</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_2</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">float_3</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">float_4</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">float_5</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_slider" title="Permalink to this definition"></a></dt>
-<dd><p>float GuiSlider(struct Rectangle, char <a href="#id65"><span class="problematic" id="id66">*</span></a>, char <a href="#id67"><span class="problematic" id="id68">*</span></a>, float, float, float);</p>
+<dd><p>float GuiSlider(struct Rectangle, char <a href="#id67"><span class="problematic" id="id68">*</span></a>, char <a href="#id69"><span class="problematic" id="id70">*</span></a>, float, float, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_slider_bar">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_slider_bar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_2</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">float_3</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">float_4</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">float_5</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_slider_bar" title="Permalink to this definition"></a></dt>
-<dd><p>float GuiSliderBar(struct Rectangle, char <a href="#id69"><span class="problematic" id="id70">*</span></a>, char <a href="#id71"><span class="problematic" id="id72">*</span></a>, float, float, float);</p>
+<dd><p>float GuiSliderBar(struct Rectangle, char <a href="#id71"><span class="problematic" id="id72">*</span></a>, char <a href="#id73"><span class="problematic" id="id74">*</span></a>, float, float, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_spinner">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_spinner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_5</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_spinner" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiSpinner(struct Rectangle, char <a href="#id73"><span class="problematic" id="id74">*</span></a>, int <a href="#id75"><span class="problematic" id="id76">*</span></a>, int, int, _Bool);</p>
+<dd><p>_Bool GuiSpinner(struct Rectangle, char <a href="#id75"><span class="problematic" id="id76">*</span></a>, int <a href="#id77"><span class="problematic" id="id78">*</span></a>, int, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_status_bar">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_status_bar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_status_bar" title="Permalink to this definition"></a></dt>
-<dd><p>void GuiStatusBar(struct Rectangle, char <a href="#id77"><span class="problematic" id="id78">*</span></a>);</p>
+<dd><p>void GuiStatusBar(struct Rectangle, char <a href="#id79"><span class="problematic" id="id80">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_text_box">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_text_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_3</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_text_box" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiTextBox(struct Rectangle, char <a href="#id79"><span class="problematic" id="id80">*</span></a>, int, _Bool);</p>
+<dd><p>_Bool GuiTextBox(struct Rectangle, char <a href="#id81"><span class="problematic" id="id82">*</span></a>, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_text_box_multi">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_text_box_multi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_3</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_text_box_multi" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiTextBoxMulti(struct Rectangle, char <a href="#id81"><span class="problematic" id="id82">*</span></a>, int, _Bool);</p>
+<dd><p>_Bool GuiTextBoxMulti(struct Rectangle, char <a href="#id83"><span class="problematic" id="id84">*</span></a>, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_text_input_box">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_text_input_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_2</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_3</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_4</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_text_input_box" title="Permalink to this definition"></a></dt>
-<dd><p>int GuiTextInputBox(struct Rectangle, char <a href="#id83"><span class="problematic" id="id84">*</span></a>, char <a href="#id85"><span class="problematic" id="id86">*</span></a>, char <a href="#id87"><span class="problematic" id="id88">*</span></a>, char <a href="#id89"><span class="problematic" id="id90">*</span></a>);</p>
+<dd><p>int GuiTextInputBox(struct Rectangle, char <a href="#id85"><span class="problematic" id="id86">*</span></a>, char <a href="#id87"><span class="problematic" id="id88">*</span></a>, char <a href="#id89"><span class="problematic" id="id90">*</span></a>, char <a href="#id91"><span class="problematic" id="id92">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_toggle">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_toggle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">_Bool_2</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_toggle" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiToggle(struct Rectangle, char <a href="#id91"><span class="problematic" id="id92">*</span></a>, _Bool);</p>
+<dd><p>_Bool GuiToggle(struct Rectangle, char <a href="#id93"><span class="problematic" id="id94">*</span></a>, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_toggle_group">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_toggle_group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_toggle_group" title="Permalink to this definition"></a></dt>
-<dd><p>int GuiToggleGroup(struct Rectangle, char <a href="#id93"><span class="problematic" id="id94">*</span></a>, int);</p>
+<dd><p>int GuiToggleGroup(struct Rectangle, char <a href="#id95"><span class="problematic" id="id96">*</span></a>, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -6012,14 +6071,14 @@
 <dl class="py function">
 <dt id="pyray.gui_value_box">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_value_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_5</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_value_box" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiValueBox(struct Rectangle, char <a href="#id95"><span class="problematic" id="id96">*</span></a>, int <a href="#id97"><span class="problematic" id="id98">*</span></a>, int, int, _Bool);</p>
+<dd><p>_Bool GuiValueBox(struct Rectangle, char <a href="#id97"><span class="problematic" id="id98">*</span></a>, int <a href="#id99"><span class="problematic" id="id100">*</span></a>, int, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.gui_window_box">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">gui_window_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Rectangle_0</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Rectangle" title="pyray.Rectangle">Rectangle</a></span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.gui_window_box" title="Permalink to this definition"></a></dt>
-<dd><p>_Bool GuiWindowBox(struct Rectangle, char <a href="#id99"><span class="problematic" id="id100">*</span></a>);</p>
+<dd><p>_Bool GuiWindowBox(struct Rectangle, char <a href="#id101"><span class="problematic" id="id102">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -6771,21 +6830,21 @@
 <dl class="py function">
 <dt id="pyray.physics_add_force">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">physics_add_force</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">PhysicsBodyData_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">Vector2_1</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Vector2" title="pyray.Vector2">Vector2</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.physics_add_force" title="Permalink to this definition"></a></dt>
-<dd><p>void PhysicsAddForce(struct PhysicsBodyData <a href="#id101"><span class="problematic" id="id102">*</span></a>, struct Vector2);</p>
+<dd><p>void PhysicsAddForce(struct PhysicsBodyData <a href="#id103"><span class="problematic" id="id104">*</span></a>, struct Vector2);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.physics_add_torque">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">physics_add_torque</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">PhysicsBodyData_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">float_1</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.physics_add_torque" title="Permalink to this definition"></a></dt>
-<dd><p>void PhysicsAddTorque(struct PhysicsBodyData <a href="#id103"><span class="problematic" id="id104">*</span></a>, float);</p>
+<dd><p>void PhysicsAddTorque(struct PhysicsBodyData <a href="#id105"><span class="problematic" id="id106">*</span></a>, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.physics_shatter">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">physics_shatter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">PhysicsBodyData_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">Vector2_1</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#pyray.Vector2" title="pyray.Vector2">Vector2</a></span></em>, <em class="sig-param"><span class="n">float_2</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.physics_shatter" title="Permalink to this definition"></a></dt>
-<dd><p>void PhysicsShatter(struct PhysicsBodyData <a href="#id105"><span class="problematic" id="id106">*</span></a>, struct Vector2, float);</p>
+<dd><p>void PhysicsShatter(struct PhysicsBodyData <a href="#id107"><span class="problematic" id="id108">*</span></a>, struct Vector2, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -6877,6 +6936,20 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="pyray.rl_bind_image_texture">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_bind_image_texture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_bind_image_texture" title="Permalink to this definition"></a></dt>
+<dd><p>void rlBindImageTexture(unsigned int, unsigned int, unsigned int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyray.rl_bind_shader_buffer">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_bind_shader_buffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_1</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_bind_shader_buffer" title="Permalink to this definition"></a></dt>
+<dd><p>void rlBindShaderBuffer(unsigned int, unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pyray.rl_check_errors">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_check_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_check_errors" title="Permalink to this definition"></a></dt>
 <dd><p>void rlCheckErrors();</p>
@@ -6928,7 +7001,21 @@
 <dl class="py function">
 <dt id="pyray.rl_compile_shader">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_compile_shader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">str_0</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_compile_shader" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlCompileShader(char <a href="#id107"><span class="problematic" id="id108">*</span></a>, int);</p>
+<dd><p>unsigned int rlCompileShader(char <a href="#id109"><span class="problematic" id="id110">*</span></a>, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyray.rl_compute_shader_dispatch">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_compute_shader_dispatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_compute_shader_dispatch" title="Permalink to this definition"></a></dt>
+<dd><p>void rlComputeShaderDispatch(unsigned int, unsigned int, unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyray.rl_copy_buffers_elements">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_copy_buffers_elements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedint_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_4</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_copy_buffers_elements" title="Permalink to this definition"></a></dt>
+<dd><p>void rlCopyBuffersElements(unsigned int, unsigned int, unsigned long long, unsigned long long, unsigned long long);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7047,7 +7134,7 @@
 <dl class="py function">
 <dt id="pyray.rl_draw_render_batch">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_draw_render_batch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rlRenderBatch_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_draw_render_batch" title="Permalink to this definition"></a></dt>
-<dd><p>void rlDrawRenderBatch(struct rlRenderBatch <a href="#id109"><span class="problematic" id="id110">*</span></a>);</p>
+<dd><p>void rlDrawRenderBatch(struct rlRenderBatch <a href="#id111"><span class="problematic" id="id112">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7068,14 +7155,14 @@
 <dl class="py function">
 <dt id="pyray.rl_draw_vertex_array_elements">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_draw_vertex_array_elements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_draw_vertex_array_elements" title="Permalink to this definition"></a></dt>
-<dd><p>void rlDrawVertexArrayElements(int, int, void <a href="#id111"><span class="problematic" id="id112">*</span></a>);</p>
+<dd><p>void rlDrawVertexArrayElements(int, int, void <a href="#id113"><span class="problematic" id="id114">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.rl_draw_vertex_array_elements_instanced">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_draw_vertex_array_elements_instanced</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_draw_vertex_array_elements_instanced" title="Permalink to this definition"></a></dt>
-<dd><p>void rlDrawVertexArrayElementsInstanced(int, int, void <a href="#id113"><span class="problematic" id="id114">*</span></a>, int);</p>
+<dd><p>void rlDrawVertexArrayElementsInstanced(int, int, void <a href="#id115"><span class="problematic" id="id116">*</span></a>, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7229,7 +7316,7 @@
 <dl class="py function">
 <dt id="pyray.rl_gen_texture_mipmaps">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_gen_texture_mipmaps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_pointer_4</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_gen_texture_mipmaps" title="Permalink to this definition"></a></dt>
-<dd><p>void rlGenTextureMipmaps(unsigned int, int, int, int, int <a href="#id115"><span class="problematic" id="id116">*</span></a>);</p>
+<dd><p>void rlGenTextureMipmaps(unsigned int, int, int, int, int <a href="#id117"><span class="problematic" id="id118">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7250,7 +7337,7 @@
 <dl class="py function">
 <dt id="pyray.rl_get_gl_texture_formats">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_get_gl_texture_formats</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_pointer_2</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_pointer_3</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_get_gl_texture_formats" title="Permalink to this definition"></a></dt>
-<dd><p>void rlGetGlTextureFormats(int, int <a href="#id117"><span class="problematic" id="id118">*</span></a>, int <a href="#id119"><span class="problematic" id="id120">*</span></a>, int <a href="#id121"><span class="problematic" id="id122">*</span></a>);</p>
+<dd><p>void rlGetGlTextureFormats(int, int <a href="#id119"><span class="problematic" id="id120">*</span></a>, int <a href="#id121"><span class="problematic" id="id122">*</span></a>, int <a href="#id123"><span class="problematic" id="id124">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7264,14 +7351,14 @@
 <dl class="py function">
 <dt id="pyray.rl_get_location_attrib">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_get_location_attrib</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_get_location_attrib" title="Permalink to this definition"></a></dt>
-<dd><p>int rlGetLocationAttrib(unsigned int, char <a href="#id123"><span class="problematic" id="id124">*</span></a>);</p>
+<dd><p>int rlGetLocationAttrib(unsigned int, char <a href="#id125"><span class="problematic" id="id126">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.rl_get_location_uniform">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_get_location_uniform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_get_location_uniform" title="Permalink to this definition"></a></dt>
-<dd><p>int rlGetLocationUniform(unsigned int, char <a href="#id125"><span class="problematic" id="id126">*</span></a>);</p>
+<dd><p>int rlGetLocationUniform(unsigned int, char <a href="#id127"><span class="problematic" id="id128">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7313,7 +7400,14 @@
 <dl class="py function">
 <dt id="pyray.rl_get_pixel_format_name">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_get_pixel_format_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_get_pixel_format_name" title="Permalink to this definition"></a></dt>
-<dd><p>char <a href="#id127"><span class="problematic" id="id128">*</span></a>rlGetPixelFormatName(unsigned int);</p>
+<dd><p>char <a href="#id129"><span class="problematic" id="id130">*</span></a>rlGetPixelFormatName(unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyray.rl_get_shader_buffer_size">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_get_shader_buffer_size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_get_shader_buffer_size" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned long long rlGetShaderBufferSize(unsigned int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7327,7 +7421,7 @@
 <dl class="py function">
 <dt id="pyray.rl_get_shader_locs_default">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_get_shader_locs_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_get_shader_locs_default" title="Permalink to this definition"></a></dt>
-<dd><p>int <a href="#id129"><span class="problematic" id="id130">*</span></a>rlGetShaderLocsDefault();</p>
+<dd><p>int <a href="#id131"><span class="problematic" id="id132">*</span></a>rlGetShaderLocsDefault();</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7353,6 +7447,13 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="pyray.rl_load_compute_shader_program">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_load_compute_shader_program</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_load_compute_shader_program" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned int rlLoadComputeShaderProgram(unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pyray.rl_load_draw_cube">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_load_draw_cube</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_load_draw_cube" title="Permalink to this definition"></a></dt>
 <dd><p>void rlLoadDrawCube();</p>
@@ -7369,7 +7470,7 @@
 <dl class="py function">
 <dt id="pyray.rl_load_extensions">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_load_extensions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_load_extensions" title="Permalink to this definition"></a></dt>
-<dd><p>void rlLoadExtensions(void <a href="#id131"><span class="problematic" id="id132">*</span></a>);</p>
+<dd><p>void rlLoadExtensions(void <a href="#id133"><span class="problematic" id="id134">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7395,9 +7496,16 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="pyray.rl_load_shader_buffer">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_load_shader_buffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedlonglong_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_load_shader_buffer" title="Permalink to this definition"></a></dt>
+<dd><p>unsigned int rlLoadShaderBuffer(unsigned long long, void <a href="#id135"><span class="problematic" id="id136">*</span></a>, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pyray.rl_load_shader_code">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_load_shader_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">str_0</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">str_1</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_load_shader_code" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadShaderCode(char <a href="#id133"><span class="problematic" id="id134">*</span></a>, char <a href="#id135"><span class="problematic" id="id136">*</span></a>);</p>
+<dd><p>unsigned int rlLoadShaderCode(char <a href="#id137"><span class="problematic" id="id138">*</span></a>, char <a href="#id139"><span class="problematic" id="id140">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7411,14 +7519,14 @@
 <dl class="py function">
 <dt id="pyray.rl_load_texture">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_load_texture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_load_texture" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadTexture(void <a href="#id137"><span class="problematic" id="id138">*</span></a>, int, int, int, int);</p>
+<dd><p>unsigned int rlLoadTexture(void <a href="#id141"><span class="problematic" id="id142">*</span></a>, int, int, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.rl_load_texture_cubemap">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_load_texture_cubemap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_load_texture_cubemap" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadTextureCubemap(void <a href="#id139"><span class="problematic" id="id140">*</span></a>, int, int);</p>
+<dd><p>unsigned int rlLoadTextureCubemap(void <a href="#id143"><span class="problematic" id="id144">*</span></a>, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7439,14 +7547,14 @@
 <dl class="py function">
 <dt id="pyray.rl_load_vertex_buffer">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_load_vertex_buffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_2</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_load_vertex_buffer" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadVertexBuffer(void <a href="#id141"><span class="problematic" id="id142">*</span></a>, int, _Bool);</p>
+<dd><p>unsigned int rlLoadVertexBuffer(void <a href="#id145"><span class="problematic" id="id146">*</span></a>, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.rl_load_vertex_buffer_element">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_load_vertex_buffer_element</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">void_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_2</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_load_vertex_buffer_element" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned int rlLoadVertexBufferElement(void <a href="#id143"><span class="problematic" id="id144">*</span></a>, int, _Bool);</p>
+<dd><p>unsigned int rlLoadVertexBufferElement(void <a href="#id147"><span class="problematic" id="id148">*</span></a>, int, _Bool);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7460,7 +7568,7 @@
 <dl class="py function">
 <dt id="pyray.rl_mult_matrixf">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_mult_matrixf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">float_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_mult_matrixf" title="Permalink to this definition"></a></dt>
-<dd><p>void rlMultMatrixf(float <a href="#id145"><span class="problematic" id="id146">*</span></a>);</p>
+<dd><p>void rlMultMatrixf(float <a href="#id149"><span class="problematic" id="id150">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7495,14 +7603,21 @@
 <dl class="py function">
 <dt id="pyray.rl_read_screen_pixels">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_read_screen_pixels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_read_screen_pixels" title="Permalink to this definition"></a></dt>
-<dd><p>unsigned char <a href="#id147"><span class="problematic" id="id148">*</span></a>rlReadScreenPixels(int, int);</p>
+<dd><p>unsigned char <a href="#id151"><span class="problematic" id="id152">*</span></a>rlReadScreenPixels(int, int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyray.rl_read_shader_buffer_elements">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_read_shader_buffer_elements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_read_shader_buffer_elements" title="Permalink to this definition"></a></dt>
+<dd><p>void rlReadShaderBufferElements(unsigned int, void <a href="#id153"><span class="problematic" id="id154">*</span></a>, unsigned long long, unsigned long long);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.rl_read_texture_pixels">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_read_texture_pixels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_read_texture_pixels" title="Permalink to this definition"></a></dt>
-<dd><p>void <a href="#id149"><span class="problematic" id="id150">*</span></a>rlReadTexturePixels(unsigned int, int, int, int);</p>
+<dd><p>void <a href="#id155"><span class="problematic" id="id156">*</span></a>rlReadTexturePixels(unsigned int, int, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7579,14 +7694,14 @@
 <dl class="py function">
 <dt id="pyray.rl_set_render_batch_active">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_set_render_batch_active</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rlRenderBatch_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_set_render_batch_active" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetRenderBatchActive(struct rlRenderBatch <a href="#id151"><span class="problematic" id="id152">*</span></a>);</p>
+<dd><p>void rlSetRenderBatchActive(struct rlRenderBatch <a href="#id157"><span class="problematic" id="id158">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.rl_set_shader">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_set_shader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_set_shader" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetShader(unsigned int, int <a href="#id153"><span class="problematic" id="id154">*</span></a>);</p>
+<dd><p>void rlSetShader(unsigned int, int <a href="#id159"><span class="problematic" id="id160">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7600,7 +7715,7 @@
 <dl class="py function">
 <dt id="pyray.rl_set_uniform">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_set_uniform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_set_uniform" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetUniform(int, void <a href="#id155"><span class="problematic" id="id156">*</span></a>, int, int);</p>
+<dd><p>void rlSetUniform(int, void <a href="#id161"><span class="problematic" id="id162">*</span></a>, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7621,14 +7736,14 @@
 <dl class="py function">
 <dt id="pyray.rl_set_vertex_attribute">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_set_vertex_attribute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">_Bool_3</span><span class="p">:</span> <span class="n">bool</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_5</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_set_vertex_attribute" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetVertexAttribute(unsigned int, int, int, _Bool, int, void <a href="#id157"><span class="problematic" id="id158">*</span></a>);</p>
+<dd><p>void rlSetVertexAttribute(unsigned int, int, int, _Bool, int, void <a href="#id163"><span class="problematic" id="id164">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.rl_set_vertex_attribute_default">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_set_vertex_attribute_default</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">int_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_set_vertex_attribute_default" title="Permalink to this definition"></a></dt>
-<dd><p>void rlSetVertexAttributeDefault(int, void <a href="#id159"><span class="problematic" id="id160">*</span></a>, int, int);</p>
+<dd><p>void rlSetVertexAttributeDefault(int, void <a href="#id165"><span class="problematic" id="id166">*</span></a>, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7675,6 +7790,13 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="pyray.rl_unload_shader_buffer">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_unload_shader_buffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_unload_shader_buffer" title="Permalink to this definition"></a></dt>
+<dd><p>void rlUnloadShaderBuffer(unsigned int);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pyray.rl_unload_shader_program">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_unload_shader_program</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_unload_shader_program" title="Permalink to this definition"></a></dt>
 <dd><p>void rlUnloadShaderProgram(unsigned int);</p>
@@ -7703,16 +7825,23 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="pyray.rl_update_shader_buffer_elements">
+<code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_update_shader_buffer_elements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">unsignedlonglong_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_update_shader_buffer_elements" title="Permalink to this definition"></a></dt>
+<dd><p>void rlUpdateShaderBufferElements(unsigned int, void <a href="#id167"><span class="problematic" id="id168">*</span></a>, unsigned long long, unsigned long long);</p>
+<p>CFFI C function from raylib._raylib_cffi.lib</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pyray.rl_update_texture">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_update_texture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_1</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_4</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_5</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_6</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_update_texture" title="Permalink to this definition"></a></dt>
-<dd><p>void rlUpdateTexture(unsigned int, int, int, int, int, int, void <a href="#id161"><span class="problematic" id="id162">*</span></a>);</p>
+<dd><p>void rlUpdateTexture(unsigned int, int, int, int, int, int, void <a href="#id169"><span class="problematic" id="id170">*</span></a>);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="pyray.rl_update_vertex_buffer">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">rl_update_vertex_buffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unsignedint_0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">void_pointer_1</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">int_2</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">int_3</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.rl_update_vertex_buffer" title="Permalink to this definition"></a></dt>
-<dd><p>void rlUpdateVertexBuffer(unsigned int, void <a href="#id163"><span class="problematic" id="id164">*</span></a>, int, int);</p>
+<dd><p>void rlUpdateVertexBuffer(unsigned int, void <a href="#id171"><span class="problematic" id="id172">*</span></a>, int, int);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -7929,7 +8058,7 @@
 <dl class="py function">
 <dt id="pyray.set_physics_body_rotation">
 <code class="sig-prename descclassname">pyray.</code><code class="sig-name descname">set_physics_body_rotation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">PhysicsBodyData_pointer_0</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">float_1</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.set_physics_body_rotation" title="Permalink to this definition"></a></dt>
-<dd><p>void SetPhysicsBodyRotation(struct PhysicsBodyData <a href="#id165"><span class="problematic" id="id166">*</span></a>, float);</p>
+<dd><p>void SetPhysicsBodyRotation(struct PhysicsBodyData <a href="#id173"><span class="problematic" id="id174">*</span></a>, float);</p>
 <p>CFFI C function from raylib._raylib_cffi.lib</p>
 </dd></dl>
 
@@ -8471,7 +8600,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="README.html" class="btn btn-neutral float-left" title="Python Bindings for Raylib 4.0-dev" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="README.html" class="btn btn-neutral float-left" title="Python Bindings for Raylib 4.0.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="raylib.html" class="btn btn-neutral float-right" title="C API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 4.0-dev
+# Python Bindings for Raylib 4.0.0
 
 New CFFI API static bindings.
 * Automatically generated to be as close as possible to 
@@ -51,7 +51,7 @@ There is now a separate dynamic version of this binding:
 
 ## Beta testing
 
-You can install an alpha or beta version by specifying the version number like this:
+You can install an alpha or beta version by specifying the exact version number like this:
 
     python3 -m pip install raylib==4.0a6
 
@@ -68,8 +68,11 @@ Use [the C API](https://electronstudio.github.io/raylib-python-cffi/raylib.html)
 
 Use [the Python API](https://electronstudio.github.io/raylib-python-cffi/pyray.html).
 
+# App showcase
 
+[Tanki](https://github.com/pkulev/tanki)
 
+Add your app here!
 
 # RLZero
 

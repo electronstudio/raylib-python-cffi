@@ -36,10 +36,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 4.0-dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 4.0.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#help-wanted">Help wanted</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#license-updated">License (updated)</a></li>
@@ -51,7 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dynamic.html">Dynamic Bindings</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Building from source</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#have-pip-build-from-source">Have Pip build from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#build-from-source-manually">Build from source manually</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#or-build-from-source-manually">Or, Build from source manually</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#windows-manual-build">Windows manual build</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#linux-manual-build">Linux manual build</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#macos-manual-build">Macos manual build</a></li>
@@ -90,14 +91,24 @@
 <h1>Building from source<a class="headerlink" href="#building-from-source" title="Permalink to this headline"></a></h1>
 <div class="section" id="have-pip-build-from-source">
 <h2>Have Pip build from source<a class="headerlink" href="#have-pip-build-from-source" title="Permalink to this headline"></a></h2>
-<p>Useful if the binaries don’t work on your system, or you want to use a newer version of Raylib.</p>
-<p>Make sure Raylib is installed and then:</p>
+<p>This is useful if the binaries don’t work on your system, or you want to use a newer version of Raylib.</p>
+<p>First make sure Raylib is installed.  On Linux/Mac it must include the pkg-config files.  Best way to ensure this
+is to compile and install Raylib using CMake: <a class="reference external" href="https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake">https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span>  <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Then ask Pip to build from source:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">raylib</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">raylib</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="build-from-source-manually">
-<h2>Build from source manually<a class="headerlink" href="#build-from-source-manually" title="Permalink to this headline"></a></h2>
+<div class="section" id="or-build-from-source-manually">
+<h2>Or, Build from source manually<a class="headerlink" href="#or-build-from-source-manually" title="Permalink to this headline"></a></h2>
 <p>Useful if the Pip build doesn’t work and you want to debug it, or you want to contribute to the
 project.</p>
 <div class="admonition attention">
@@ -105,7 +116,7 @@ project.</p>
 <p>If the Pip build doesn’t work, please submit a bug. (And if you have
 fixed it, a PR.)</p>
 </div>
-<p>Manual instructions follow, but see also how we actually build the wheels
+<p>Manual instructions follow, but may be outdated, so see also how we actually build the wheels
 at <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/.github/workflows/build.yml">https://github.com/electronstudio/raylib-python-cffi/blob/master/.github/workflows/build.yml</a></p>
 <div class="section" id="windows-manual-build">
 <h3>Windows manual build<a class="headerlink" href="#windows-manual-build" title="Permalink to this headline"></a></h3>
@@ -252,6 +263,8 @@ Raylib.</p>
 </div>
 <div class="section" id="raspberry-pi">
 <h3>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permalink to this headline"></a></h3>
+<p>Latest info: <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues/55#issuecomment-1012629701">https://github.com/electronstudio/raylib-python-cffi/issues/55#issuecomment-1012629701</a></p>
+<p>Old possibly out of date info that was written for RPi3 and Raylib 3 follows.</p>
 <p>The integrated GPU hardware in a Raspberry Pi (“VideoCore”) is rather
 idiosyncratic, resulting in a complex set of software options. Probably
 the most interesting two options for Raylib applications are:</p>
