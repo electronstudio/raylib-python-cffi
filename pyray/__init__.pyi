@@ -4,26 +4,6 @@ from typing import Any
 def pointer(struct):
     ...
 
-ARROWS_SIZE: int
-ARROWS_VISIBLE: int
-ARROW_PADDING: int
-BACKGROUND_COLOR: int
-BASE_COLOR_DISABLED: int
-BASE_COLOR_FOCUSED: int
-BASE_COLOR_NORMAL: int
-BASE_COLOR_PRESSED: int
-BLEND_ADDITIVE: int
-BLEND_ADD_COLORS: int
-BLEND_ALPHA: int
-BLEND_CUSTOM: int
-BLEND_MULTIPLIED: int
-BLEND_SUBTRACT_COLORS: int
-BORDER_COLOR_DISABLED: int
-BORDER_COLOR_FOCUSED: int
-BORDER_COLOR_NORMAL: int
-BORDER_COLOR_PRESSED: int
-BORDER_WIDTH: int
-BUTTON: int
 def begin_blend_mode(mode: int,) -> None:
         """Begin blending mode (alpha, additive, multiplied, subtract, custom)"""
         ...
@@ -48,28 +28,6 @@ def begin_texture_mode(target: RenderTexture,) -> None:
 def begin_vr_stereo_mode(config: VrStereoConfig,) -> None:
         """Begin stereo rendering (requires VR simulator)"""
         ...
-CAMERA_CUSTOM: int
-CAMERA_FIRST_PERSON: int
-CAMERA_FREE: int
-CAMERA_ORBITAL: int
-CAMERA_ORTHOGRAPHIC: int
-CAMERA_PERSPECTIVE: int
-CAMERA_THIRD_PERSON: int
-CHECKBOX: int
-CHECK_PADDING: int
-COLORPICKER: int
-COLOR_SELECTED_BG: int
-COLOR_SELECTED_FG: int
-COLOR_SELECTOR_SIZE: int
-COMBOBOX: int
-COMBO_BUTTON_PADDING: int
-COMBO_BUTTON_WIDTH: int
-CUBEMAP_LAYOUT_AUTO_DETECT: int
-CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE: int
-CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR: int
-CUBEMAP_LAYOUT_LINE_HORIZONTAL: int
-CUBEMAP_LAYOUT_LINE_VERTICAL: int
-CUBEMAP_LAYOUT_PANORAMA: int
 def change_directory(dir: str,) -> bool:
         """Change working directory, return true on success"""
         ...
@@ -171,9 +129,6 @@ def create_physics_body_rectangle(Vector2_0: Vector2,float_1: float,float_2: flo
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-DEFAULT: int
-DROPDOWNBOX: int
-DROPDOWN_ITEMS_PADDING: int
 def decode_data_base64(data: str,outputLength: Any,) -> str:
         """Decode Base64 string data"""
         ...
@@ -482,72 +437,12 @@ def export_wave(wave: Wave,fileName: str,) -> bool:
 def export_wave_as_code(wave: Wave,fileName: str,) -> bool:
         """Export wave sample data to code (.h), returns true on success"""
         ...
-FLAG_FULLSCREEN_MODE: int
-FLAG_INTERLACED_HINT: int
-FLAG_MSAA_4X_HINT: int
-FLAG_VSYNC_HINT: int
-FLAG_WINDOW_ALWAYS_RUN: int
-FLAG_WINDOW_HIDDEN: int
-FLAG_WINDOW_HIGHDPI: int
-FLAG_WINDOW_MAXIMIZED: int
-FLAG_WINDOW_MINIMIZED: int
-FLAG_WINDOW_RESIZABLE: int
-FLAG_WINDOW_TOPMOST: int
-FLAG_WINDOW_TRANSPARENT: int
-FLAG_WINDOW_UNDECORATED: int
-FLAG_WINDOW_UNFOCUSED: int
-FONT_BITMAP: int
-FONT_DEFAULT: int
-FONT_SDF: int
 def fade(color: Color,alpha: float,) -> Color:
         """Get color with alpha applied, alpha goes from 0.0f to 1.0f"""
         ...
 def file_exists(fileName: str,) -> bool:
         """Check if file exists"""
         ...
-GAMEPAD_AXIS_LEFT_TRIGGER: int
-GAMEPAD_AXIS_LEFT_X: int
-GAMEPAD_AXIS_LEFT_Y: int
-GAMEPAD_AXIS_RIGHT_TRIGGER: int
-GAMEPAD_AXIS_RIGHT_X: int
-GAMEPAD_AXIS_RIGHT_Y: int
-GAMEPAD_BUTTON_LEFT_FACE_DOWN: int
-GAMEPAD_BUTTON_LEFT_FACE_LEFT: int
-GAMEPAD_BUTTON_LEFT_FACE_RIGHT: int
-GAMEPAD_BUTTON_LEFT_FACE_UP: int
-GAMEPAD_BUTTON_LEFT_THUMB: int
-GAMEPAD_BUTTON_LEFT_TRIGGER_1: int
-GAMEPAD_BUTTON_LEFT_TRIGGER_2: int
-GAMEPAD_BUTTON_MIDDLE: int
-GAMEPAD_BUTTON_MIDDLE_LEFT: int
-GAMEPAD_BUTTON_MIDDLE_RIGHT: int
-GAMEPAD_BUTTON_RIGHT_FACE_DOWN: int
-GAMEPAD_BUTTON_RIGHT_FACE_LEFT: int
-GAMEPAD_BUTTON_RIGHT_FACE_RIGHT: int
-GAMEPAD_BUTTON_RIGHT_FACE_UP: int
-GAMEPAD_BUTTON_RIGHT_THUMB: int
-GAMEPAD_BUTTON_RIGHT_TRIGGER_1: int
-GAMEPAD_BUTTON_RIGHT_TRIGGER_2: int
-GAMEPAD_BUTTON_UNKNOWN: int
-GESTURE_DOUBLETAP: int
-GESTURE_DRAG: int
-GESTURE_HOLD: int
-GESTURE_NONE: int
-GESTURE_PINCH_IN: int
-GESTURE_PINCH_OUT: int
-GESTURE_SWIPE_DOWN: int
-GESTURE_SWIPE_LEFT: int
-GESTURE_SWIPE_RIGHT: int
-GESTURE_SWIPE_UP: int
-GESTURE_TAP: int
-GROUP_PADDING: int
-GUI_STATE_DISABLED: int
-GUI_STATE_FOCUSED: int
-GUI_STATE_NORMAL: int
-GUI_STATE_PRESSED: int
-GUI_TEXT_ALIGN_CENTER: int
-GUI_TEXT_ALIGN_LEFT: int
-GUI_TEXT_ALIGN_RIGHT: int
 def gen_image_cellular(width: int,height: int,tileSize: int,) -> Image:
         """Generate image: cellular algorithm, bigger tileSize means bigger cells"""
         ...
@@ -1155,10 +1050,6 @@ def gui_window_box(Rectangle_0: Rectangle,str_1: str,) -> bool:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-HUEBAR_PADDING: int
-HUEBAR_SELECTOR_HEIGHT: int
-HUEBAR_SELECTOR_OVERFLOW: int
-HUEBAR_WIDTH: int
 def hide_cursor() -> None:
         """Hides cursor"""
         ...
@@ -1389,129 +1280,6 @@ def is_window_resized() -> bool:
 def is_window_state(flag: int,) -> bool:
         """Check if one specific window flag is enabled"""
         ...
-KEY_A: int
-KEY_APOSTROPHE: int
-KEY_B: int
-KEY_BACK: int
-KEY_BACKSLASH: int
-KEY_BACKSPACE: int
-KEY_C: int
-KEY_CAPS_LOCK: int
-KEY_COMMA: int
-KEY_D: int
-KEY_DELETE: int
-KEY_DOWN: int
-KEY_E: int
-KEY_EIGHT: int
-KEY_END: int
-KEY_ENTER: int
-KEY_EQUAL: int
-KEY_ESCAPE: int
-KEY_F: int
-KEY_F1: int
-KEY_F10: int
-KEY_F11: int
-KEY_F12: int
-KEY_F2: int
-KEY_F3: int
-KEY_F4: int
-KEY_F5: int
-KEY_F6: int
-KEY_F7: int
-KEY_F8: int
-KEY_F9: int
-KEY_FIVE: int
-KEY_FOUR: int
-KEY_G: int
-KEY_GRAVE: int
-KEY_H: int
-KEY_HOME: int
-KEY_I: int
-KEY_INSERT: int
-KEY_J: int
-KEY_K: int
-KEY_KB_MENU: int
-KEY_KP_0: int
-KEY_KP_1: int
-KEY_KP_2: int
-KEY_KP_3: int
-KEY_KP_4: int
-KEY_KP_5: int
-KEY_KP_6: int
-KEY_KP_7: int
-KEY_KP_8: int
-KEY_KP_9: int
-KEY_KP_ADD: int
-KEY_KP_DECIMAL: int
-KEY_KP_DIVIDE: int
-KEY_KP_ENTER: int
-KEY_KP_EQUAL: int
-KEY_KP_MULTIPLY: int
-KEY_KP_SUBTRACT: int
-KEY_L: int
-KEY_LEFT: int
-KEY_LEFT_ALT: int
-KEY_LEFT_BRACKET: int
-KEY_LEFT_CONTROL: int
-KEY_LEFT_SHIFT: int
-KEY_LEFT_SUPER: int
-KEY_M: int
-KEY_MENU: int
-KEY_MINUS: int
-KEY_N: int
-KEY_NINE: int
-KEY_NULL: int
-KEY_NUM_LOCK: int
-KEY_O: int
-KEY_ONE: int
-KEY_P: int
-KEY_PAGE_DOWN: int
-KEY_PAGE_UP: int
-KEY_PAUSE: int
-KEY_PERIOD: int
-KEY_PRINT_SCREEN: int
-KEY_Q: int
-KEY_R: int
-KEY_RIGHT: int
-KEY_RIGHT_ALT: int
-KEY_RIGHT_BRACKET: int
-KEY_RIGHT_CONTROL: int
-KEY_RIGHT_SHIFT: int
-KEY_RIGHT_SUPER: int
-KEY_S: int
-KEY_SCROLL_LOCK: int
-KEY_SEMICOLON: int
-KEY_SEVEN: int
-KEY_SIX: int
-KEY_SLASH: int
-KEY_SPACE: int
-KEY_T: int
-KEY_TAB: int
-KEY_THREE: int
-KEY_TWO: int
-KEY_U: int
-KEY_UP: int
-KEY_V: int
-KEY_VOLUME_DOWN: int
-KEY_VOLUME_UP: int
-KEY_W: int
-KEY_X: int
-KEY_Y: int
-KEY_Z: int
-KEY_ZERO: int
-LABEL: int
-LINE_COLOR: int
-LISTVIEW: int
-LIST_ITEMS_HEIGHT: int
-LIST_ITEMS_PADDING: int
-LOG_ALL: int
-LOG_DEBUG: int
-LOG_ERROR: int
-LOG_FATAL: int
-LOG_INFO: int
-LOG_NONE: int
-LOG_TRACE: int
-LOG_WARNING: int
 def load_audio_stream(sampleRate: int,sampleSize: int,channels: int,) -> AudioStream:
         """Load audio stream (to stream raw audio pcm data)"""
         ...
@@ -1623,35 +1391,6 @@ def load_wave_from_memory(fileType: str,fileData: str,dataSize: int,) -> Wave:
 def load_wave_samples(wave: Wave,) -> Any:
         """Load samples data from wave as a floats array"""
         ...
-MATERIAL_MAP_ALBEDO: int
-MATERIAL_MAP_BRDF: int
-MATERIAL_MAP_CUBEMAP: int
-MATERIAL_MAP_EMISSION: int
-MATERIAL_MAP_HEIGHT: int
-MATERIAL_MAP_IRRADIANCE: int
-MATERIAL_MAP_METALNESS: int
-MATERIAL_MAP_NORMAL: int
-MATERIAL_MAP_OCCLUSION: int
-MATERIAL_MAP_PREFILTER: int
-MATERIAL_MAP_ROUGHNESS: int
-MOUSE_BUTTON_BACK: int
-MOUSE_BUTTON_EXTRA: int
-MOUSE_BUTTON_FORWARD: int
-MOUSE_BUTTON_LEFT: int
-MOUSE_BUTTON_MIDDLE: int
-MOUSE_BUTTON_RIGHT: int
-MOUSE_BUTTON_SIDE: int
-MOUSE_CURSOR_ARROW: int
-MOUSE_CURSOR_CROSSHAIR: int
-MOUSE_CURSOR_DEFAULT: int
-MOUSE_CURSOR_IBEAM: int
-MOUSE_CURSOR_NOT_ALLOWED: int
-MOUSE_CURSOR_POINTING_HAND: int
-MOUSE_CURSOR_RESIZE_ALL: int
-MOUSE_CURSOR_RESIZE_EW: int
-MOUSE_CURSOR_RESIZE_NESW: int
-MOUSE_CURSOR_RESIZE_NS: int
-MOUSE_CURSOR_RESIZE_NWSE: int
 def maximize_window() -> None:
         """Set window state: maximized, if resizable (only PLATFORM_DESKTOP)"""
         ...
@@ -1673,42 +1412,9 @@ def mem_realloc(ptr: Any,size: int,) -> Any:
 def minimize_window() -> None:
         """Set window state: minimized, if resizable (only PLATFORM_DESKTOP)"""
         ...
-NPATCH_NINE_PATCH: int
-NPATCH_THREE_PATCH_HORIZONTAL: int
-NPATCH_THREE_PATCH_VERTICAL: int
-OPENGL_11: int
-OPENGL_21: int
-OPENGL_33: int
-OPENGL_43: int
-OPENGL_ES_20: int
 def open_url(url: str,) -> None:
         """Open URL with default system browser (if available)"""
         ...
-PHYSICS_CIRCLE: int
-PHYSICS_POLYGON: int
-PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA: int
-PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA: int
-PIXELFORMAT_COMPRESSED_DXT1_RGB: int
-PIXELFORMAT_COMPRESSED_DXT1_RGBA: int
-PIXELFORMAT_COMPRESSED_DXT3_RGBA: int
-PIXELFORMAT_COMPRESSED_DXT5_RGBA: int
-PIXELFORMAT_COMPRESSED_ETC1_RGB: int
-PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA: int
-PIXELFORMAT_COMPRESSED_ETC2_RGB: int
-PIXELFORMAT_COMPRESSED_PVRT_RGB: int
-PIXELFORMAT_COMPRESSED_PVRT_RGBA: int
-PIXELFORMAT_UNCOMPRESSED_GRAYSCALE: int
-PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA: int
-PIXELFORMAT_UNCOMPRESSED_R32: int
-PIXELFORMAT_UNCOMPRESSED_R32G32B32: int
-PIXELFORMAT_UNCOMPRESSED_R32G32B32A32: int
-PIXELFORMAT_UNCOMPRESSED_R4G4B4A4: int
-PIXELFORMAT_UNCOMPRESSED_R5G5B5A1: int
-PIXELFORMAT_UNCOMPRESSED_R5G6B5: int
-PIXELFORMAT_UNCOMPRESSED_R8G8B8: int
-PIXELFORMAT_UNCOMPRESSED_R8G8B8A8: int
-PROGRESSBAR: int
-PROGRESS_PADDING: int
 def pause_audio_stream(stream: AudioStream,) -> None:
         """Pause audio stream"""
         ...
@@ -1748,105 +1454,6 @@ def play_sound_multi(sound: Sound,) -> None:
 def poll_input_events() -> None:
         """Register all input events"""
         ...
-RESERVED: int
-RL_ATTACHMENT_COLOR_CHANNEL0: int
-RL_ATTACHMENT_COLOR_CHANNEL1: int
-RL_ATTACHMENT_COLOR_CHANNEL2: int
-RL_ATTACHMENT_COLOR_CHANNEL3: int
-RL_ATTACHMENT_COLOR_CHANNEL4: int
-RL_ATTACHMENT_COLOR_CHANNEL5: int
-RL_ATTACHMENT_COLOR_CHANNEL6: int
-RL_ATTACHMENT_COLOR_CHANNEL7: int
-RL_ATTACHMENT_CUBEMAP_NEGATIVE_X: int
-RL_ATTACHMENT_CUBEMAP_NEGATIVE_Y: int
-RL_ATTACHMENT_CUBEMAP_NEGATIVE_Z: int
-RL_ATTACHMENT_CUBEMAP_POSITIVE_X: int
-RL_ATTACHMENT_CUBEMAP_POSITIVE_Y: int
-RL_ATTACHMENT_CUBEMAP_POSITIVE_Z: int
-RL_ATTACHMENT_DEPTH: int
-RL_ATTACHMENT_RENDERBUFFER: int
-RL_ATTACHMENT_STENCIL: int
-RL_ATTACHMENT_TEXTURE2D: int
-RL_BLEND_ADDITIVE: int
-RL_BLEND_ADD_COLORS: int
-RL_BLEND_ALPHA: int
-RL_BLEND_CUSTOM: int
-RL_BLEND_MULTIPLIED: int
-RL_BLEND_SUBTRACT_COLORS: int
-RL_LOG_ALL: int
-RL_LOG_DEBUG: int
-RL_LOG_ERROR: int
-RL_LOG_FATAL: int
-RL_LOG_INFO: int
-RL_LOG_NONE: int
-RL_LOG_TRACE: int
-RL_LOG_WARNING: int
-RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA: int
-RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA: int
-RL_PIXELFORMAT_COMPRESSED_DXT1_RGB: int
-RL_PIXELFORMAT_COMPRESSED_DXT1_RGBA: int
-RL_PIXELFORMAT_COMPRESSED_DXT3_RGBA: int
-RL_PIXELFORMAT_COMPRESSED_DXT5_RGBA: int
-RL_PIXELFORMAT_COMPRESSED_ETC1_RGB: int
-RL_PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA: int
-RL_PIXELFORMAT_COMPRESSED_ETC2_RGB: int
-RL_PIXELFORMAT_COMPRESSED_PVRT_RGB: int
-RL_PIXELFORMAT_COMPRESSED_PVRT_RGBA: int
-RL_PIXELFORMAT_UNCOMPRESSED_GRAYSCALE: int
-RL_PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA: int
-RL_PIXELFORMAT_UNCOMPRESSED_R32: int
-RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32: int
-RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32A32: int
-RL_PIXELFORMAT_UNCOMPRESSED_R4G4B4A4: int
-RL_PIXELFORMAT_UNCOMPRESSED_R5G5B5A1: int
-RL_PIXELFORMAT_UNCOMPRESSED_R5G6B5: int
-RL_PIXELFORMAT_UNCOMPRESSED_R8G8B8: int
-RL_PIXELFORMAT_UNCOMPRESSED_R8G8B8A8: int
-RL_SHADER_ATTRIB_FLOAT: int
-RL_SHADER_ATTRIB_VEC2: int
-RL_SHADER_ATTRIB_VEC3: int
-RL_SHADER_ATTRIB_VEC4: int
-RL_SHADER_LOC_COLOR_AMBIENT: int
-RL_SHADER_LOC_COLOR_DIFFUSE: int
-RL_SHADER_LOC_COLOR_SPECULAR: int
-RL_SHADER_LOC_MAP_ALBEDO: int
-RL_SHADER_LOC_MAP_BRDF: int
-RL_SHADER_LOC_MAP_CUBEMAP: int
-RL_SHADER_LOC_MAP_EMISSION: int
-RL_SHADER_LOC_MAP_HEIGHT: int
-RL_SHADER_LOC_MAP_IRRADIANCE: int
-RL_SHADER_LOC_MAP_METALNESS: int
-RL_SHADER_LOC_MAP_NORMAL: int
-RL_SHADER_LOC_MAP_OCCLUSION: int
-RL_SHADER_LOC_MAP_PREFILTER: int
-RL_SHADER_LOC_MAP_ROUGHNESS: int
-RL_SHADER_LOC_MATRIX_MODEL: int
-RL_SHADER_LOC_MATRIX_MVP: int
-RL_SHADER_LOC_MATRIX_NORMAL: int
-RL_SHADER_LOC_MATRIX_PROJECTION: int
-RL_SHADER_LOC_MATRIX_VIEW: int
-RL_SHADER_LOC_VECTOR_VIEW: int
-RL_SHADER_LOC_VERTEX_COLOR: int
-RL_SHADER_LOC_VERTEX_NORMAL: int
-RL_SHADER_LOC_VERTEX_POSITION: int
-RL_SHADER_LOC_VERTEX_TANGENT: int
-RL_SHADER_LOC_VERTEX_TEXCOORD01: int
-RL_SHADER_LOC_VERTEX_TEXCOORD02: int
-RL_SHADER_UNIFORM_FLOAT: int
-RL_SHADER_UNIFORM_INT: int
-RL_SHADER_UNIFORM_IVEC2: int
-RL_SHADER_UNIFORM_IVEC3: int
-RL_SHADER_UNIFORM_IVEC4: int
-RL_SHADER_UNIFORM_SAMPLER2D: int
-RL_SHADER_UNIFORM_VEC2: int
-RL_SHADER_UNIFORM_VEC3: int
-RL_SHADER_UNIFORM_VEC4: int
-RL_TEXTURE_FILTER_ANISOTROPIC_16X: int
-RL_TEXTURE_FILTER_ANISOTROPIC_4X: int
-RL_TEXTURE_FILTER_ANISOTROPIC_8X: int
-RL_TEXTURE_FILTER_BILINEAR: int
-RL_TEXTURE_FILTER_POINT: int
-RL_TEXTURE_FILTER_TRILINEAR: int
 def reset_physics() -> None:
         """void ResetPhysics();
 
@@ -1864,61 +1471,6 @@ def resume_music_stream(music: Music,) -> None:
 def resume_sound(sound: Sound,) -> None:
         """Resume a paused sound"""
         ...
-SCROLLBAR: int
-SCROLLBAR_LEFT_SIDE: int
-SCROLLBAR_RIGHT_SIDE: int
-SCROLLBAR_SIDE: int
-SCROLLBAR_WIDTH: int
-SCROLL_PADDING: int
-SCROLL_SLIDER_PADDING: int
-SCROLL_SLIDER_SIZE: int
-SCROLL_SPEED: int
-SHADER_ATTRIB_FLOAT: int
-SHADER_ATTRIB_VEC2: int
-SHADER_ATTRIB_VEC3: int
-SHADER_ATTRIB_VEC4: int
-SHADER_LOC_COLOR_AMBIENT: int
-SHADER_LOC_COLOR_DIFFUSE: int
-SHADER_LOC_COLOR_SPECULAR: int
-SHADER_LOC_MAP_ALBEDO: int
-SHADER_LOC_MAP_BRDF: int
-SHADER_LOC_MAP_CUBEMAP: int
-SHADER_LOC_MAP_EMISSION: int
-SHADER_LOC_MAP_HEIGHT: int
-SHADER_LOC_MAP_IRRADIANCE: int
-SHADER_LOC_MAP_METALNESS: int
-SHADER_LOC_MAP_NORMAL: int
-SHADER_LOC_MAP_OCCLUSION: int
-SHADER_LOC_MAP_PREFILTER: int
-SHADER_LOC_MAP_ROUGHNESS: int
-SHADER_LOC_MATRIX_MODEL: int
-SHADER_LOC_MATRIX_MVP: int
-SHADER_LOC_MATRIX_NORMAL: int
-SHADER_LOC_MATRIX_PROJECTION: int
-SHADER_LOC_MATRIX_VIEW: int
-SHADER_LOC_VECTOR_VIEW: int
-SHADER_LOC_VERTEX_COLOR: int
-SHADER_LOC_VERTEX_NORMAL: int
-SHADER_LOC_VERTEX_POSITION: int
-SHADER_LOC_VERTEX_TANGENT: int
-SHADER_LOC_VERTEX_TEXCOORD01: int
-SHADER_LOC_VERTEX_TEXCOORD02: int
-SHADER_UNIFORM_FLOAT: int
-SHADER_UNIFORM_INT: int
-SHADER_UNIFORM_IVEC2: int
-SHADER_UNIFORM_IVEC3: int
-SHADER_UNIFORM_IVEC4: int
-SHADER_UNIFORM_SAMPLER2D: int
-SHADER_UNIFORM_VEC2: int
-SHADER_UNIFORM_VEC3: int
-SHADER_UNIFORM_VEC4: int
-SLIDER: int
-SLIDER_PADDING: int
-SLIDER_WIDTH: int
-SPINNER: int
-SPIN_BUTTON_PADDING: int
-SPIN_BUTTON_WIDTH: int
-STATUSBAR: int
 def save_file_data(fileName: str,data: Any,bytesToWrite: int,) -> bool:
         """Save data to file from byte array (write), returns true on success"""
         ...
@@ -2105,28 +1657,6 @@ def stop_sound_multi() -> None:
 def swap_screen_buffer() -> None:
         """Swap back buffer with front buffer (screen drawing)"""
         ...
-TEXTBOX: int
-TEXTURE_FILTER_ANISOTROPIC_16X: int
-TEXTURE_FILTER_ANISOTROPIC_4X: int
-TEXTURE_FILTER_ANISOTROPIC_8X: int
-TEXTURE_FILTER_BILINEAR: int
-TEXTURE_FILTER_POINT: int
-TEXTURE_FILTER_TRILINEAR: int
-TEXTURE_WRAP_CLAMP: int
-TEXTURE_WRAP_MIRROR_CLAMP: int
-TEXTURE_WRAP_MIRROR_REPEAT: int
-TEXTURE_WRAP_REPEAT: int
-TEXT_ALIGNMENT: int
-TEXT_COLOR_DISABLED: int
-TEXT_COLOR_FOCUSED: int
-TEXT_COLOR_NORMAL: int
-TEXT_COLOR_PRESSED: int
-TEXT_INNER_PADDING: int
-TEXT_LINES_PADDING: int
-TEXT_PADDING: int
-TEXT_SIZE: int
-TEXT_SPACING: int
-TOGGLE: int
 def take_screenshot(fileName: str,) -> None:
         """Takes a screenshot of current screen (filename extension defines format)"""
         ...
@@ -2285,7 +1815,6 @@ def update_texture_rec(texture: Texture,rec: Rectangle,pixels: Any,) -> None:
 def upload_mesh(mesh: Any,dynamic: bool,) -> None:
         """Upload mesh vertex data in GPU and provide VAO/VBO ids"""
         ...
-VALUEBOX: int
 def wait_time(ms: float,) -> None:
         """Wait for some milliseconds (halt program execution)"""
         ...
@@ -3003,7 +2532,6 @@ class AudioStream:
         self.sampleRate=sampleRate
         self.sampleSize=sampleSize
         self.channels=channels
-BlendMode: int
 class BoneInfo:
     """ struct """
     def __init__(self, name, parent):
@@ -3037,8 +2565,6 @@ class Camera3D:
         self.up=up
         self.fovy=fovy
         self.projection=projection
-CameraMode: int
-CameraProjection: int
 class Color:
     """ struct """
     def __init__(self, r, g, b, a):
@@ -3046,8 +2572,6 @@ class Color:
         self.g=g
         self.b=b
         self.a=a
-ConfigFlags: int
-CubemapLayout: int
 class Font:
     """ struct """
     def __init__(self, baseSize, glyphCount, glyphPadding, texture, recs, glyphs):
@@ -3057,10 +2581,6 @@ class Font:
         self.texture=texture
         self.recs=recs
         self.glyphs=glyphs
-FontType: int
-GamepadAxis: int
-GamepadButton: int
-Gesture: int
 class GlyphInfo:
     """ struct """
     def __init__(self, value, offsetX, offsetY, advanceX, image):
@@ -3069,29 +2589,12 @@ class GlyphInfo:
         self.offsetY=offsetY
         self.advanceX=advanceX
         self.image=image
-GuiCheckBoxProperty: int
-GuiColorPickerProperty: int
-GuiComboBoxProperty: int
-GuiControl: int
-GuiControlProperty: int
-GuiControlState: int
-GuiDefaultProperty: int
-GuiDropdownBoxProperty: int
-GuiListViewProperty: int
-GuiProgressBarProperty: int
-GuiScrollBarProperty: int
-GuiScrollBarSide: int
-GuiSliderProperty: int
-GuiSpinnerProperty: int
 class GuiStyleProp:
     """ struct """
     def __init__(self, controlId, propertyId, propertyValue):
         self.controlId=controlId
         self.propertyId=propertyId
         self.propertyValue=propertyValue
-GuiTextAlignment: int
-GuiTextBoxProperty: int
-GuiToggleProperty: int
 class Image:
     """ struct """
     def __init__(self, data, width, height, mipmaps, format):
@@ -3100,7 +2603,6 @@ class Image:
         self.height=height
         self.mipmaps=mipmaps
         self.format=format
-KeyboardKey: int
 class Material:
     """ struct """
     def __init__(self, shader, maps, params):
@@ -3113,7 +2615,6 @@ class MaterialMap:
         self.texture=texture
         self.color=color
         self.value=value
-MaterialMapIndex: int
 class Matrix:
     """ struct """
     def __init__(self, m0, m4, m8, m12, m1, m5, m9, m13, m2, m6, m10, m14, m3, m7, m11, m15):
@@ -3177,8 +2678,6 @@ class ModelAnimation:
         self.frameCount=frameCount
         self.bones=bones
         self.framePoses=framePoses
-MouseButton: int
-MouseCursor: int
 class Music:
     """ struct """
     def __init__(self, stream, frameCount, looping, ctxType, ctxData):
@@ -3196,7 +2695,6 @@ class NPatchInfo:
         self.right=right
         self.bottom=bottom
         self.layout=layout
-NPatchLayout: int
 class PhysicsBodyData:
     """ struct """
     def __init__(self, id, enabled, position, velocity, force, angularVelocity, torque, orient, inertia, inverseInertia, mass, inverseMass, staticFriction, dynamicFriction, restitution, useGravity, isGrounded, freezeOrient, shape):
@@ -3240,14 +2738,12 @@ class PhysicsShape:
         self.vertexData=vertexData
         self.radius=radius
         self.transform=transform
-PhysicsShapeType: int
 class PhysicsVertexData:
     """ struct """
     def __init__(self, vertexCount, positions, normals):
         self.vertexCount=vertexCount
         self.positions=positions
         self.normals=normals
-PixelFormat: int
 class Quaternion:
     """ struct """
     def __init__(self, x, y, z, w):
@@ -3291,9 +2787,6 @@ class Shader:
     def __init__(self, id, locs):
         self.id=id
         self.locs=locs
-ShaderAttributeDataType: int
-ShaderLocationIndex: int
-ShaderUniformDataType: int
 class Sound:
     """ struct """
     def __init__(self, stream, frameCount):
@@ -3323,9 +2816,6 @@ class TextureCubemap:
         self.height=height
         self.mipmaps=mipmaps
         self.format=format
-TextureFilter: int
-TextureWrap: int
-TraceLogLevel: int
 class Transform:
     """ struct """
     def __init__(self, translation, rotation, scale):
@@ -3382,3 +2872,338 @@ class Wave:
         self.sampleSize=sampleSize
         self.channels=channels
         self.data=data
+from enum import IntEnum
+
+class ConfigFlags(IntEnum):
+    FLAG_VSYNC_HINT = 64
+    FLAG_FULLSCREEN_MODE = 2
+    FLAG_WINDOW_RESIZABLE = 4
+    FLAG_WINDOW_UNDECORATED = 8
+    FLAG_WINDOW_HIDDEN = 128
+    FLAG_WINDOW_MINIMIZED = 512
+    FLAG_WINDOW_MAXIMIZED = 1024
+    FLAG_WINDOW_UNFOCUSED = 2048
+    FLAG_WINDOW_TOPMOST = 4096
+    FLAG_WINDOW_ALWAYS_RUN = 256
+    FLAG_WINDOW_TRANSPARENT = 16
+    FLAG_WINDOW_HIGHDPI = 8192
+    FLAG_MSAA_4X_HINT = 32
+    FLAG_INTERLACED_HINT = 65536
+
+class TraceLogLevel(IntEnum):
+    LOG_ALL = 0
+    LOG_TRACE = 1
+    LOG_DEBUG = 2
+    LOG_INFO = 3
+    LOG_WARNING = 4
+    LOG_ERROR = 5
+    LOG_FATAL = 6
+    LOG_NONE = 7
+
+class KeyboardKey(IntEnum):
+    KEY_NULL = 0
+    KEY_APOSTROPHE = 39
+    KEY_COMMA = 44
+    KEY_MINUS = 45
+    KEY_PERIOD = 46
+    KEY_SLASH = 47
+    KEY_ZERO = 48
+    KEY_ONE = 49
+    KEY_TWO = 50
+    KEY_THREE = 51
+    KEY_FOUR = 52
+    KEY_FIVE = 53
+    KEY_SIX = 54
+    KEY_SEVEN = 55
+    KEY_EIGHT = 56
+    KEY_NINE = 57
+    KEY_SEMICOLON = 59
+    KEY_EQUAL = 61
+    KEY_A = 65
+    KEY_B = 66
+    KEY_C = 67
+    KEY_D = 68
+    KEY_E = 69
+    KEY_F = 70
+    KEY_G = 71
+    KEY_H = 72
+    KEY_I = 73
+    KEY_J = 74
+    KEY_K = 75
+    KEY_L = 76
+    KEY_M = 77
+    KEY_N = 78
+    KEY_O = 79
+    KEY_P = 80
+    KEY_Q = 81
+    KEY_R = 82
+    KEY_S = 83
+    KEY_T = 84
+    KEY_U = 85
+    KEY_V = 86
+    KEY_W = 87
+    KEY_X = 88
+    KEY_Y = 89
+    KEY_Z = 90
+    KEY_LEFT_BRACKET = 91
+    KEY_BACKSLASH = 92
+    KEY_RIGHT_BRACKET = 93
+    KEY_GRAVE = 96
+    KEY_SPACE = 32
+    KEY_ESCAPE = 256
+    KEY_ENTER = 257
+    KEY_TAB = 258
+    KEY_BACKSPACE = 259
+    KEY_INSERT = 260
+    KEY_DELETE = 261
+    KEY_RIGHT = 262
+    KEY_LEFT = 263
+    KEY_DOWN = 264
+    KEY_UP = 265
+    KEY_PAGE_UP = 266
+    KEY_PAGE_DOWN = 267
+    KEY_HOME = 268
+    KEY_END = 269
+    KEY_CAPS_LOCK = 280
+    KEY_SCROLL_LOCK = 281
+    KEY_NUM_LOCK = 282
+    KEY_PRINT_SCREEN = 283
+    KEY_PAUSE = 284
+    KEY_F1 = 290
+    KEY_F2 = 291
+    KEY_F3 = 292
+    KEY_F4 = 293
+    KEY_F5 = 294
+    KEY_F6 = 295
+    KEY_F7 = 296
+    KEY_F8 = 297
+    KEY_F9 = 298
+    KEY_F10 = 299
+    KEY_F11 = 300
+    KEY_F12 = 301
+    KEY_LEFT_SHIFT = 340
+    KEY_LEFT_CONTROL = 341
+    KEY_LEFT_ALT = 342
+    KEY_LEFT_SUPER = 343
+    KEY_RIGHT_SHIFT = 344
+    KEY_RIGHT_CONTROL = 345
+    KEY_RIGHT_ALT = 346
+    KEY_RIGHT_SUPER = 347
+    KEY_KB_MENU = 348
+    KEY_KP_0 = 320
+    KEY_KP_1 = 321
+    KEY_KP_2 = 322
+    KEY_KP_3 = 323
+    KEY_KP_4 = 324
+    KEY_KP_5 = 325
+    KEY_KP_6 = 326
+    KEY_KP_7 = 327
+    KEY_KP_8 = 328
+    KEY_KP_9 = 329
+    KEY_KP_DECIMAL = 330
+    KEY_KP_DIVIDE = 331
+    KEY_KP_MULTIPLY = 332
+    KEY_KP_SUBTRACT = 333
+    KEY_KP_ADD = 334
+    KEY_KP_ENTER = 335
+    KEY_KP_EQUAL = 336
+    KEY_BACK = 4
+    KEY_MENU = 82
+    KEY_VOLUME_UP = 24
+    KEY_VOLUME_DOWN = 25
+
+class MouseButton(IntEnum):
+    MOUSE_BUTTON_LEFT = 0
+    MOUSE_BUTTON_RIGHT = 1
+    MOUSE_BUTTON_MIDDLE = 2
+    MOUSE_BUTTON_SIDE = 3
+    MOUSE_BUTTON_EXTRA = 4
+    MOUSE_BUTTON_FORWARD = 5
+    MOUSE_BUTTON_BACK = 6
+
+class MouseCursor(IntEnum):
+    MOUSE_CURSOR_DEFAULT = 0
+    MOUSE_CURSOR_ARROW = 1
+    MOUSE_CURSOR_IBEAM = 2
+    MOUSE_CURSOR_CROSSHAIR = 3
+    MOUSE_CURSOR_POINTING_HAND = 4
+    MOUSE_CURSOR_RESIZE_EW = 5
+    MOUSE_CURSOR_RESIZE_NS = 6
+    MOUSE_CURSOR_RESIZE_NWSE = 7
+    MOUSE_CURSOR_RESIZE_NESW = 8
+    MOUSE_CURSOR_RESIZE_ALL = 9
+    MOUSE_CURSOR_NOT_ALLOWED = 10
+
+class GamepadButton(IntEnum):
+    GAMEPAD_BUTTON_UNKNOWN = 0
+    GAMEPAD_BUTTON_LEFT_FACE_UP = 1
+    GAMEPAD_BUTTON_LEFT_FACE_RIGHT = 2
+    GAMEPAD_BUTTON_LEFT_FACE_DOWN = 3
+    GAMEPAD_BUTTON_LEFT_FACE_LEFT = 4
+    GAMEPAD_BUTTON_RIGHT_FACE_UP = 5
+    GAMEPAD_BUTTON_RIGHT_FACE_RIGHT = 6
+    GAMEPAD_BUTTON_RIGHT_FACE_DOWN = 7
+    GAMEPAD_BUTTON_RIGHT_FACE_LEFT = 8
+    GAMEPAD_BUTTON_LEFT_TRIGGER_1 = 9
+    GAMEPAD_BUTTON_LEFT_TRIGGER_2 = 10
+    GAMEPAD_BUTTON_RIGHT_TRIGGER_1 = 11
+    GAMEPAD_BUTTON_RIGHT_TRIGGER_2 = 12
+    GAMEPAD_BUTTON_MIDDLE_LEFT = 13
+    GAMEPAD_BUTTON_MIDDLE = 14
+    GAMEPAD_BUTTON_MIDDLE_RIGHT = 15
+    GAMEPAD_BUTTON_LEFT_THUMB = 16
+    GAMEPAD_BUTTON_RIGHT_THUMB = 17
+
+class GamepadAxis(IntEnum):
+    GAMEPAD_AXIS_LEFT_X = 0
+    GAMEPAD_AXIS_LEFT_Y = 1
+    GAMEPAD_AXIS_RIGHT_X = 2
+    GAMEPAD_AXIS_RIGHT_Y = 3
+    GAMEPAD_AXIS_LEFT_TRIGGER = 4
+    GAMEPAD_AXIS_RIGHT_TRIGGER = 5
+
+class MaterialMapIndex(IntEnum):
+    MATERIAL_MAP_ALBEDO = 0
+    MATERIAL_MAP_METALNESS = 1
+    MATERIAL_MAP_NORMAL = 2
+    MATERIAL_MAP_ROUGHNESS = 3
+    MATERIAL_MAP_OCCLUSION = 4
+    MATERIAL_MAP_EMISSION = 5
+    MATERIAL_MAP_HEIGHT = 6
+    MATERIAL_MAP_CUBEMAP = 7
+    MATERIAL_MAP_IRRADIANCE = 8
+    MATERIAL_MAP_PREFILTER = 9
+    MATERIAL_MAP_BRDF = 10
+
+class ShaderLocationIndex(IntEnum):
+    SHADER_LOC_VERTEX_POSITION = 0
+    SHADER_LOC_VERTEX_TEXCOORD01 = 1
+    SHADER_LOC_VERTEX_TEXCOORD02 = 2
+    SHADER_LOC_VERTEX_NORMAL = 3
+    SHADER_LOC_VERTEX_TANGENT = 4
+    SHADER_LOC_VERTEX_COLOR = 5
+    SHADER_LOC_MATRIX_MVP = 6
+    SHADER_LOC_MATRIX_VIEW = 7
+    SHADER_LOC_MATRIX_PROJECTION = 8
+    SHADER_LOC_MATRIX_MODEL = 9
+    SHADER_LOC_MATRIX_NORMAL = 10
+    SHADER_LOC_VECTOR_VIEW = 11
+    SHADER_LOC_COLOR_DIFFUSE = 12
+    SHADER_LOC_COLOR_SPECULAR = 13
+    SHADER_LOC_COLOR_AMBIENT = 14
+    SHADER_LOC_MAP_ALBEDO = 15
+    SHADER_LOC_MAP_METALNESS = 16
+    SHADER_LOC_MAP_NORMAL = 17
+    SHADER_LOC_MAP_ROUGHNESS = 18
+    SHADER_LOC_MAP_OCCLUSION = 19
+    SHADER_LOC_MAP_EMISSION = 20
+    SHADER_LOC_MAP_HEIGHT = 21
+    SHADER_LOC_MAP_CUBEMAP = 22
+    SHADER_LOC_MAP_IRRADIANCE = 23
+    SHADER_LOC_MAP_PREFILTER = 24
+    SHADER_LOC_MAP_BRDF = 25
+
+class ShaderUniformDataType(IntEnum):
+    SHADER_UNIFORM_FLOAT = 0
+    SHADER_UNIFORM_VEC2 = 1
+    SHADER_UNIFORM_VEC3 = 2
+    SHADER_UNIFORM_VEC4 = 3
+    SHADER_UNIFORM_INT = 4
+    SHADER_UNIFORM_IVEC2 = 5
+    SHADER_UNIFORM_IVEC3 = 6
+    SHADER_UNIFORM_IVEC4 = 7
+    SHADER_UNIFORM_SAMPLER2D = 8
+
+class ShaderAttributeDataType(IntEnum):
+    SHADER_ATTRIB_FLOAT = 0
+    SHADER_ATTRIB_VEC2 = 1
+    SHADER_ATTRIB_VEC3 = 2
+    SHADER_ATTRIB_VEC4 = 3
+
+class PixelFormat(IntEnum):
+    PIXELFORMAT_UNCOMPRESSED_GRAYSCALE = 1
+    PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA = 2
+    PIXELFORMAT_UNCOMPRESSED_R5G6B5 = 3
+    PIXELFORMAT_UNCOMPRESSED_R8G8B8 = 4
+    PIXELFORMAT_UNCOMPRESSED_R5G5B5A1 = 5
+    PIXELFORMAT_UNCOMPRESSED_R4G4B4A4 = 6
+    PIXELFORMAT_UNCOMPRESSED_R8G8B8A8 = 7
+    PIXELFORMAT_UNCOMPRESSED_R32 = 8
+    PIXELFORMAT_UNCOMPRESSED_R32G32B32 = 9
+    PIXELFORMAT_UNCOMPRESSED_R32G32B32A32 = 10
+    PIXELFORMAT_COMPRESSED_DXT1_RGB = 11
+    PIXELFORMAT_COMPRESSED_DXT1_RGBA = 12
+    PIXELFORMAT_COMPRESSED_DXT3_RGBA = 13
+    PIXELFORMAT_COMPRESSED_DXT5_RGBA = 14
+    PIXELFORMAT_COMPRESSED_ETC1_RGB = 15
+    PIXELFORMAT_COMPRESSED_ETC2_RGB = 16
+    PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA = 17
+    PIXELFORMAT_COMPRESSED_PVRT_RGB = 18
+    PIXELFORMAT_COMPRESSED_PVRT_RGBA = 19
+    PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA = 20
+    PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA = 21
+
+class TextureFilter(IntEnum):
+    TEXTURE_FILTER_POINT = 0
+    TEXTURE_FILTER_BILINEAR = 1
+    TEXTURE_FILTER_TRILINEAR = 2
+    TEXTURE_FILTER_ANISOTROPIC_4X = 3
+    TEXTURE_FILTER_ANISOTROPIC_8X = 4
+    TEXTURE_FILTER_ANISOTROPIC_16X = 5
+
+class TextureWrap(IntEnum):
+    TEXTURE_WRAP_REPEAT = 0
+    TEXTURE_WRAP_CLAMP = 1
+    TEXTURE_WRAP_MIRROR_REPEAT = 2
+    TEXTURE_WRAP_MIRROR_CLAMP = 3
+
+class CubemapLayout(IntEnum):
+    CUBEMAP_LAYOUT_AUTO_DETECT = 0
+    CUBEMAP_LAYOUT_LINE_VERTICAL = 1
+    CUBEMAP_LAYOUT_LINE_HORIZONTAL = 2
+    CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR = 3
+    CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE = 4
+    CUBEMAP_LAYOUT_PANORAMA = 5
+
+class FontType(IntEnum):
+    FONT_DEFAULT = 0
+    FONT_BITMAP = 1
+    FONT_SDF = 2
+
+class BlendMode(IntEnum):
+    BLEND_ALPHA = 0
+    BLEND_ADDITIVE = 1
+    BLEND_MULTIPLIED = 2
+    BLEND_ADD_COLORS = 3
+    BLEND_SUBTRACT_COLORS = 4
+    BLEND_CUSTOM = 5
+
+class Gesture(IntEnum):
+    GESTURE_NONE = 0
+    GESTURE_TAP = 1
+    GESTURE_DOUBLETAP = 2
+    GESTURE_HOLD = 4
+    GESTURE_DRAG = 8
+    GESTURE_SWIPE_RIGHT = 16
+    GESTURE_SWIPE_LEFT = 32
+    GESTURE_SWIPE_UP = 64
+    GESTURE_SWIPE_DOWN = 128
+    GESTURE_PINCH_IN = 256
+    GESTURE_PINCH_OUT = 512
+
+class CameraMode(IntEnum):
+    CAMERA_CUSTOM = 0
+    CAMERA_FREE = 1
+    CAMERA_ORBITAL = 2
+    CAMERA_FIRST_PERSON = 3
+    CAMERA_THIRD_PERSON = 4
+
+class CameraProjection(IntEnum):
+    CAMERA_PERSPECTIVE = 0
+    CAMERA_ORTHOGRAPHIC = 1
+
+class NPatchLayout(IntEnum):
+    NPATCH_NINE_PATCH = 0
+    NPATCH_THREE_PATCH_VERTICAL = 1
+    NPATCH_THREE_PATCH_HORIZONTAL = 2
+

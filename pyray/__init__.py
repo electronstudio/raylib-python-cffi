@@ -116,3 +116,5 @@ for struct in ffi.list_types()[0]:
     f = makeStructHelper(struct)
     setattr(current_module, struct, f)
 
+# overwrite ffi enums with our own
+from raylib.enums import *

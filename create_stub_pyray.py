@@ -89,7 +89,9 @@ for name, attr in getmembers(rl):
             f'def {uname}(*args) -> {ctype_to_python_type(return_type)}:\n        """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""\n        ...')
     else:
         #print("*****", str(type(attr)))
-        print(f"{name}: {str(type(attr))[8:-2]}")  # this isolates the type
+        t = str(type(attr))[8:-2] # this isolates the type
+        if t != "int":
+            print(f"{name}: {t}")
 
 for struct in ffi.list_types()[0]:
     print("processing", struct, file=sys.stderr)
@@ -111,8 +113,8 @@ for struct in ffi.list_types()[0]:
         for arg in ffi.typeof(struct).fields:
             print(f"        self.{arg[0]}={arg[0]}")
 
-    elif ffi.typeof(struct).kind == "enum":
-        print(f"{struct}: int")
+    #elif ffi.typeof(struct).kind == "enum":
+    #    print(f"{struct}: int")
     else:
         print("ERROR UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
 
