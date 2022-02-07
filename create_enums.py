@@ -17,15 +17,20 @@ from raylib import rl, ffi
 from inspect import ismethod, getmembers, isbuiltin
 import inflection, sys, json
 
-f = open("raylib.json", "r")
-js = json.load(f)
+def process(filename):
+    f = open(filename, "r")
+    js = json.load(f)
+
+    for e in js['enums']:
+        if e['name'] and e['values']:
+            print ("class "+e['name']+"("+"IntEnum):")
+            for value in e['values']:
+                print("    "+value['name']+" = "+str(value['value']))
+            print("")
 
 print("""from enum import IntEnum
 """)
 
-for e in js['enums']:
-    print ("class "+e['name']+"("+"IntEnum):")
-    for value in e['values']:
-        print("    "+value['name']+" = "+str(value['value']))
-    print("")
+process("raylib.json")
+process("raygui.json")
 

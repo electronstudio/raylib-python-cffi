@@ -19,6 +19,9 @@ exitWindow = False
 
 pr.set_target_fps(60)
 
+if pr.GuiSliderProperty.SLIDER_WIDTH.value != pr.SLIDER_WIDTH:
+    raise Exception('enums not working')
+
 
 while not exitWindow and not pr.window_should_close():
 

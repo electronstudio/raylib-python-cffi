@@ -8,7 +8,7 @@ gcc raylib-c/parser/raylib_parser.c
 python3 raylib/build.py
 
 python3 create_enums.py > raylib/enums.py
-
+python3 create_enums.py > dynamic/raylib/enums.py
 
 pip3 install sphinx-autoapi myst_parser sphinx_rtd_theme
 python3 create_stub_pyray.py > pyray/__init__.pyi

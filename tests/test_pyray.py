@@ -16,7 +16,7 @@ image = pr.load_image("examples/models/resources/heightmap.png")
 texture = pr.load_texture_from_image(image)
 mesh = pr.gen_mesh_heightmap(image, (16, 8, 16))
 model = pr.load_model_from_mesh(mesh)
-model.materials.maps[pr.MATERIAL_MAP_ALBEDO].texture = texture
+model.materials.maps[pr.MaterialMapIndex.MATERIAL_MAP_ALBEDO].texture = texture
 
 pr.unload_image(image)
 pr.set_camera_mode(camera, pr.CAMERA_ORBITAL)
