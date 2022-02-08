@@ -69,7 +69,7 @@ for name, attr in getmembers(rl):
             if 'params' in json_object:
                 p = json_object['params']
                 #print("param_name: ", param_name, "i", i, "params: ",p,file=sys.stderr)
-                param_name = list(p)[i]
+                param_name = list(p)[i]['name']
             param_type = ctype_to_python_type(arg.cname)
             sig += f"{param_name}: {param_type},"
 

@@ -68,7 +68,7 @@ for name, attr in getmembers(rl):
                 " ", "")+"_"+str(i)
             if 'params' in json_object:
                 p = json_object['params']
-                param_name = list(p)[i]
+                param_name = list(p)[i]['name']
 
             param_type = ctype_to_python_type(arg.cname)
             sig += f"{param_name}: {param_type},"
@@ -101,7 +101,7 @@ for struct in ffi.list_types()[0]:
     #     json_object = json_array[0]
     if ffi.typeof(struct).kind == "struct":
         if ffi.typeof(struct).fields is None:
-            print("weird empty struct, skipping", file=sys.stderr)
+            print("weird empty struct, skipping "+struct, file=sys.stderr)
             break
         print(f"class {struct}:")
         print(f'    """ struct """')

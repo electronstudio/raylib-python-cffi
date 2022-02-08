@@ -1,6 +1,6 @@
 /**********************************************************************************************
 *
-*   raylib v4.0 - A simple and easy-to-use library to enjoy videogames programming (www.raylib.com)
+*   raylib v4.1-dev - A simple and easy-to-use library to enjoy videogames programming (www.raylib.com)
 *
 *   FEATURES:
 *       - NO external dependencies, all required libraries included with raylib
@@ -56,7 +56,7 @@
 *   raylib is licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software:
 *
-*   Copyright (c) 2013-2021 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2013-2022 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -641,7 +641,7 @@ typedef enum {
 // NOTE 1: Filtering considers mipmaps if available in the texture
 // NOTE 2: Filter is accordingly set for minification and magnification
 typedef enum {
-    TEXTURE_FILTER_POINT = 0, // No filter, just pixel aproximation
+    TEXTURE_FILTER_POINT = 0, // No filter, just pixel approximation
     TEXTURE_FILTER_BILINEAR, // Linear filtering
     TEXTURE_FILTER_TRILINEAR, // Trilinear filtering (linear with mipmaps)
     TEXTURE_FILTER_ANISOTROPIC_4X, // Anisotropic filtering 4x
@@ -677,7 +677,7 @@ typedef enum {
     BLEND_MULTIPLIED, // Blend textures multiplying colors
     BLEND_ADD_COLORS, // Blend textures adding colors (alternative)
     BLEND_SUBTRACT_COLORS, // Blend textures subtracting colors (alternative)
-    BLEND_CUSTOM // Belnd textures using custom src/dst factors (use rlSetBlendMode())
+    BLEND_CUSTOM // Blend textures using custom src/dst factors (use rlSetBlendMode())
 } BlendMode;
 // Gesture
 // NOTE: It could be used as flags to enable only some gestures
@@ -739,7 +739,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  bool IsWindowFocused(void); // Check if window is currently focused (only PLATFORM_DESKTOP)
  bool IsWindowResized(void); // Check if window has been resized last frame
  bool IsWindowState(unsigned int flag); // Check if one specific window flag is enabled
- void SetWindowState(unsigned int flags); // Set window configuration state using flags
+ void SetWindowState(unsigned int flags); // Set window configuration state using flags (only PLATFORM_DESKTOP)
  void ClearWindowState(unsigned int flags); // Clear window configuration state flags
  void ToggleFullscreen(void); // Toggle window state: fullscreen/windowed (only PLATFORM_DESKTOP)
  void MaximizeWindow(void); // Set window state: maximized, if resizable (only PLATFORM_DESKTOP)
@@ -751,9 +751,12 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void SetWindowMonitor(int monitor); // Set monitor for the current window (fullscreen mode)
  void SetWindowMinSize(int width, int height); // Set window minimum dimensions (for FLAG_WINDOW_RESIZABLE)
  void SetWindowSize(int width, int height); // Set window dimensions
+ void SetWindowOpacity(float opacity); // Set window opacity [0.0f..1.0f] (only PLATFORM_DESKTOP)
  void *GetWindowHandle(void); // Get native window handle
  int GetScreenWidth(void); // Get current screen width
  int GetScreenHeight(void); // Get current screen height
+ int GetRenderWidth(void); // Get current render width (it considers HiDPI)
+ int GetRenderHeight(void); // Get current render height (it considers HiDPI)
  int GetMonitorCount(void); // Get number of connected monitors
  int GetCurrentMonitor(void); // Get current connected monitor
  Vector2 GetMonitorPosition(int monitor); // Get specified monitor position
@@ -852,13 +855,15 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  bool SaveFileText(const char *fileName, char *text); // Save text data to file (write), string must be '\0' terminated, returns true on success
  bool FileExists(const char *fileName); // Check if file exists
  bool DirectoryExists(const char *dirPath); // Check if a directory path exists
- bool IsFileExtension(const char *fileName, const char *ext);// Check file extension (including point: .png, .wav)
+ bool IsFileExtension(const char *fileName, const char *ext); // Check file extension (including point: .png, .wav)
+ int GetFileLength(const char *fileName); // Get file length in bytes (NOTE: GetFileSize() conflicts with windows.h)
  const char *GetFileExtension(const char *fileName); // Get pointer to extension for a filename string (includes dot: '.png')
  const char *GetFileName(const char *filePath); // Get pointer to filename for a path string
  const char *GetFileNameWithoutExt(const char *filePath); // Get filename string without extension (uses static string)
  const char *GetDirectoryPath(const char *filePath); // Get full path for a given fileName with path (uses static string)
  const char *GetPrevDirectoryPath(const char *dirPath); // Get previous directory path for a given path (uses static string)
  const char *GetWorkingDirectory(void); // Get current working directory (uses static string)
+ const char *GetApplicationDirectory(void); // Get the directory if the running application (uses static string)
  char **GetDirectoryFiles(const char *dirPath, int *count); // Get filenames in a directory path (memory should be freed)
  void ClearDirectoryFiles(void); // Clear directory files paths buffers (free memory)
  bool ChangeDirectory(const char *dir); // Change working directory, return true on success
@@ -1106,19 +1111,21 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
 // Font loading/unloading functions
  Font GetFontDefault(void); // Get the default Font
  Font LoadFont(const char *fileName); // Load font from file into GPU memory (VRAM)
- Font LoadFontEx(const char *fileName, int fontSize, int *fontChars, int glyphCount); // Load font from file with extended parameters
+ Font LoadFontEx(const char *fileName, int fontSize, int *fontChars, int glyphCount); // Load font from file with extended parameters, use NULL for fontChars and 0 for glyphCount to load the default character set
  Font LoadFontFromImage(Image image, Color key, int firstChar); // Load font from Image (XNA style)
  Font LoadFontFromMemory(const char *fileType, const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount); // Load font from memory buffer, fileType refers to extension: i.e. '.ttf'
  GlyphInfo *LoadFontData(const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount, int type); // Load font data for further use
  Image GenImageFontAtlas(const GlyphInfo *chars, Rectangle **recs, int glyphCount, int fontSize, int padding, int packMethod); // Generate image font atlas using chars info
  void UnloadFontData(GlyphInfo *chars, int glyphCount); // Unload font chars info data (RAM)
- void UnloadFont(Font font); // Unload Font from GPU memory (VRAM)
+ void UnloadFont(Font font); // Unload font from GPU memory (VRAM)
+ bool ExportFontAsCode(Font font, const char *fileName); // Export font as code file, returns true on success
 // Text drawing functions
  void DrawFPS(int posX, int posY); // Draw current FPS
  void DrawText(const char *text, int posX, int posY, int fontSize, Color color); // Draw text (using default font)
  void DrawTextEx(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint); // Draw text using font and additional parameters
  void DrawTextPro(Font font, const char *text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint); // Draw text using Font and pro parameters (rotation)
  void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float fontSize, Color tint); // Draw one character (codepoint)
+ void DrawTextCodepoints(Font font, int *codepoints, int count, Vector2 position, float fontSize, float spacing, Color tint); // Draw multiple character (codepoint)
 // Text font info functions
  int MeasureText(const char *text, int fontSize); // Measure string width for default font
  Vector2 MeasureTextEx(Font font, const char *text, float fontSize, float spacing); // Measure string size for Font
@@ -1265,10 +1272,11 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  bool IsSoundPlaying(Sound sound); // Check if a sound is currently playing
  void SetSoundVolume(Sound sound, float volume); // Set volume for a sound (1.0 is max level)
  void SetSoundPitch(Sound sound, float pitch); // Set pitch for a sound (1.0 is base level)
- void WaveFormat(Wave *wave, int sampleRate, int sampleSize, int channels); // Convert wave data to desired format
+ void SetSoundPan(Sound sound, float pan); // Set pan for a sound (0.5 is center)
  Wave WaveCopy(Wave wave); // Copy a wave to a new wave
  void WaveCrop(Wave *wave, int initSample, int finalSample); // Crop a wave to defined samples range
- float *LoadWaveSamples(Wave wave); // Load samples data from wave as a floats array
+ void WaveFormat(Wave *wave, int sampleRate, int sampleSize, int channels); // Convert wave data to desired format
+ float *LoadWaveSamples(Wave wave); // Load samples data from wave as a 32bit float data array
  void UnloadWaveSamples(float *samples); // Unload samples data loaded with LoadWaveSamples()
 // Music management functions
  Music LoadMusicStream(const char *fileName); // Load music stream from file
@@ -1283,6 +1291,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void SeekMusicStream(Music music, float position); // Seek music to a position (in seconds)
  void SetMusicVolume(Music music, float volume); // Set volume for music (1.0 is max level)
  void SetMusicPitch(Music music, float pitch); // Set pitch for a music (1.0 is base level)
+ void SetMusicPan(Music music, float pan); // Set pan for a music (0.5 is center)
  float GetMusicTimeLength(Music music); // Get music time length (in seconds)
  float GetMusicTimePlayed(Music music); // Get current music time played (in seconds)
 // AudioStream management functions
@@ -1297,4 +1306,5 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void StopAudioStream(AudioStream stream); // Stop audio stream
  void SetAudioStreamVolume(AudioStream stream, float volume); // Set volume for audio stream (1.0 is max level)
  void SetAudioStreamPitch(AudioStream stream, float pitch); // Set pitch for audio stream (1.0 is base level)
+ void SetAudioStreamPan(AudioStream stream, float pan); // Set pan for audio stream (0.5 is centered)
  void SetAudioStreamBufferSizeDefault(int size); // Default size for new audio streams

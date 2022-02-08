@@ -385,6 +385,9 @@ def DrawText(text: str,posX: int,posY: int,fontSize: int,color: Color,) -> None:
 def DrawTextCodepoint(font: Font,codepoint: int,position: Vector2,fontSize: float,tint: Color,) -> None:
         """Draw one character (codepoint)"""
         ...
+def DrawTextCodepoints(font: Font,codepoints: Any,count: int,position: Vector2,fontSize: float,spacing: float,tint: Color,) -> None:
+        """Draw multiple character (codepoint)"""
+        ...
 def DrawTextEx(font: Font,text: str,position: Vector2,fontSize: float,spacing: float,tint: Color,) -> None:
         """Draw text using font and additional parameters"""
         ...
@@ -465,6 +468,9 @@ def EndTextureMode() -> None:
         ...
 def EndVrStereoMode() -> None:
         """End stereo rendering (requires VR simulator)"""
+        ...
+def ExportFontAsCode(font: Font,fileName: str,) -> bool:
+        """Export font as code file, returns true on success"""
         ...
 def ExportImage(image: Image,fileName: str,) -> bool:
         """Export image data to file, returns true on success"""
@@ -613,6 +619,9 @@ def GenMeshTorus(radius: float,size: float,radSeg: int,sides: int,) -> Mesh:
 def GenTextureMipmaps(texture: Any,) -> None:
         """Generate GPU mipmaps for a texture"""
         ...
+def GetApplicationDirectory() -> str:
+        """Get the directory if the running application (uses static string)"""
+        ...
 def GetCameraMatrix(camera: Camera3D,) -> Matrix:
         """Get camera transform matrix (view matrix)"""
         ...
@@ -654,6 +663,9 @@ def GetFPS() -> int:
         ...
 def GetFileExtension(fileName: str,) -> str:
         """Get pointer to extension for a filename string (includes dot: '.png')"""
+        ...
+def GetFileLength(fileName: str,) -> int:
+        """Get file length in bytes (NOTE: GetFileSize() conflicts with windows.h)"""
         ...
 def GetFileModTime(fileName: str,) -> int:
         """Get file modification time (last write time)"""
@@ -826,6 +838,12 @@ def GetRayCollisionSphere(ray: Ray,center: Vector3,radius: float,) -> RayCollisi
         ...
 def GetRayCollisionTriangle(ray: Ray,p1: Vector3,p2: Vector3,p3: Vector3,) -> RayCollision:
         """Get collision info between ray and triangle"""
+        ...
+def GetRenderHeight() -> int:
+        """Get current render height (it considers HiDPI)"""
+        ...
+def GetRenderWidth() -> int:
+        """Get current render width (it considers HiDPI)"""
         ...
 def GetScreenHeight() -> int:
         """Get current screen height"""
@@ -1521,7 +1539,7 @@ def LoadFileData(fileName: str,bytesRead: Any,) -> str:
         """Load file data as byte array (read)"""
         ...
 def LoadFileText(fileName: str,) -> str:
-        """Load text data from file (read), returns a ' 0' terminated string"""
+        """Load text data from file (read), returns a '\0' terminated string"""
         ...
 def LoadFont(fileName: str,) -> Font:
         """Load font from file into GPU memory (VRAM)"""
@@ -1530,7 +1548,7 @@ def LoadFontData(fileData: str,dataSize: int,fontSize: int,fontChars: Any,glyphC
         """Load font data for further use"""
         ...
 def LoadFontEx(fileName: str,fontSize: int,fontChars: Any,glyphCount: int,) -> Font:
-        """Load font from file with extended parameters"""
+        """Load font from file with extended parameters, use NULL for fontChars and 0 for glyphCount to load the default character set"""
         ...
 def LoadFontFromImage(image: Image,key: Color,firstChar: int,) -> Font:
         """Load font from Image (XNA style)"""
@@ -1620,7 +1638,7 @@ def LoadWaveFromMemory(fileType: str,fileData: str,dataSize: int,) -> Wave:
         """Load wave from memory buffer, fileType refers to extension: i.e. '.wav'"""
         ...
 def LoadWaveSamples(wave: Wave,) -> Any:
-        """Load samples data from wave as a floats array"""
+        """Load samples data from wave as a 32bit float data array"""
         ...
 MATERIAL_MAP_ALBEDO: int
 MATERIAL_MAP_BRDF: int
@@ -1922,7 +1940,7 @@ def SaveFileData(fileName: str,data: Any,bytesToWrite: int,) -> bool:
         """Save data to file from byte array (write), returns true on success"""
         ...
 def SaveFileText(fileName: str,text: str,) -> bool:
-        """Save text data to file (write), string must be ' 0' terminated, returns true on success"""
+        """Save text data to file (write), string must be '\0' terminated, returns true on success"""
         ...
 def SaveStorageValue(position: int,value: int,) -> bool:
         """Save integer value to storage file (to defined position), returns true on success"""
@@ -1932,6 +1950,9 @@ def SeekMusicStream(music: Music,position: float,) -> None:
         ...
 def SetAudioStreamBufferSizeDefault(size: int,) -> None:
         """Default size for new audio streams"""
+        ...
+def SetAudioStreamPan(stream: AudioStream,pan: float,) -> None:
+        """Set pan for audio stream (0.5 is centered)"""
         ...
 def SetAudioStreamPitch(stream: AudioStream,pitch: float,) -> None:
         """Set pitch for audio stream (1.0 is base level)"""
@@ -1996,6 +2017,9 @@ def SetMousePosition(x: int,y: int,) -> None:
 def SetMouseScale(scaleX: float,scaleY: float,) -> None:
         """Set mouse scaling"""
         ...
+def SetMusicPan(music: Music,pan: float,) -> None:
+        """Set pan for a music (0.5 is center)"""
+        ...
 def SetMusicPitch(music: Music,pitch: float,) -> None:
         """Set pitch for a music (1.0 is base level)"""
         ...
@@ -2044,6 +2068,9 @@ def SetShaderValueV(shader: Shader,locIndex: int,value: Any,uniformType: int,cou
 def SetShapesTexture(texture: Texture,source: Rectangle,) -> None:
         """Set texture and rectangle to be used on shapes drawing"""
         ...
+def SetSoundPan(sound: Sound,pan: float,) -> None:
+        """Set pan for a sound (0.5 is center)"""
+        ...
 def SetSoundPitch(sound: Sound,pitch: float,) -> None:
         """Set pitch for a sound (1.0 is base level)"""
         ...
@@ -2074,6 +2101,9 @@ def SetWindowMinSize(width: int,height: int,) -> None:
 def SetWindowMonitor(monitor: int,) -> None:
         """Set monitor for the current window (fullscreen mode)"""
         ...
+def SetWindowOpacity(opacity: float,) -> None:
+        """Set window opacity [0.0f..1.0f] (only PLATFORM_DESKTOP)"""
+        ...
 def SetWindowPosition(x: int,y: int,) -> None:
         """Set window position on screen (only PLATFORM_DESKTOP)"""
         ...
@@ -2081,7 +2111,7 @@ def SetWindowSize(width: int,height: int,) -> None:
         """Set window dimensions"""
         ...
 def SetWindowState(flags: int,) -> None:
-        """Set window configuration state using flags"""
+        """Set window configuration state using flags (only PLATFORM_DESKTOP)"""
         ...
 def SetWindowTitle(title: str,) -> None:
         """Set title for window (only PLATFORM_DESKTOP)"""
@@ -2154,7 +2184,7 @@ def TextJoin(textList: str,count: int,delimiter: str,) -> str:
         """Join text strings with delimiter"""
         ...
 def TextLength(text: str,) -> int:
-        """Get text length, checks for ' 0' ending"""
+        """Get text length, checks for '\0' ending"""
         ...
 def TextReplace(text: str,replace: str,by: str,) -> str:
         """Replace text string (WARNING: memory must be freed!)"""
@@ -2196,7 +2226,7 @@ def UnloadFileText(text: str,) -> None:
         """Unload file text data allocated by LoadFileText()"""
         ...
 def UnloadFont(font: Font,) -> None:
-        """Unload Font from GPU memory (VRAM)"""
+        """Unload font from GPU memory (VRAM)"""
         ...
 def UnloadFontData(chars: Any,glyphCount: int,) -> None:
         """Unload font chars info data (RAM)"""
