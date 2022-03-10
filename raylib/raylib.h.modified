@@ -677,6 +677,7 @@ typedef enum {
     BLEND_MULTIPLIED, // Blend textures multiplying colors
     BLEND_ADD_COLORS, // Blend textures adding colors (alternative)
     BLEND_SUBTRACT_COLORS, // Blend textures subtracting colors (alternative)
+    BLEND_ALPHA_PREMUL, // Blend premultiplied textures considering alpha
     BLEND_CUSTOM // Blend textures using custom src/dst factors (use rlSetBlendMode())
 } BlendMode;
 // Gesture
@@ -872,10 +873,10 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void ClearDroppedFiles(void); // Clear dropped files paths buffer (free memory)
  long GetFileModTime(const char *fileName); // Get file modification time (last write time)
 // Compression/Encoding functionality
- unsigned char *CompressData(unsigned char *data, int dataLength, int *compDataLength); // Compress data (DEFLATE algorithm)
- unsigned char *DecompressData(unsigned char *compData, int compDataLength, int *dataLength); // Decompress data (DEFLATE algorithm)
+ unsigned char *CompressData(const unsigned char *data, int dataLength, int *compDataLength); // Compress data (DEFLATE algorithm)
+ unsigned char *DecompressData(const unsigned char *compData, int compDataLength, int *dataLength); // Decompress data (DEFLATE algorithm)
  char *EncodeDataBase64(const unsigned char *data, int dataLength, int *outputLength); // Encode data to Base64 string
- unsigned char *DecodeDataBase64(unsigned char *data, int *outputLength); // Decode Base64 string data
+ unsigned char *DecodeDataBase64(const unsigned char *data, int *outputLength); // Decode Base64 string data
 // Persistent storage management
  bool SaveStorageValue(unsigned int position, int value); // Save integer value to storage file (to defined position), returns true on success
  int LoadStorageValue(unsigned int position); // Load integer value from storage file (from defined position)
@@ -1125,7 +1126,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void DrawTextEx(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint); // Draw text using font and additional parameters
  void DrawTextPro(Font font, const char *text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint); // Draw text using Font and pro parameters (rotation)
  void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float fontSize, Color tint); // Draw one character (codepoint)
- void DrawTextCodepoints(Font font, int *codepoints, int count, Vector2 position, float fontSize, float spacing, Color tint); // Draw multiple character (codepoint)
+ void DrawTextCodepoints(Font font, const int *codepoints, int count, Vector2 position, float fontSize, float spacing, Color tint); // Draw multiple character (codepoint)
 // Text font info functions
  int MeasureText(const char *text, int fontSize); // Measure string width for default font
  Vector2 MeasureTextEx(Font font, const char *text, float fontSize, float spacing); // Measure string size for Font
@@ -1138,7 +1139,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  int GetCodepointCount(const char *text); // Get total number of codepoints in a UTF-8 encoded string
  int GetCodepoint(const char *text, int *bytesProcessed); // Get next codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure
  const char *CodepointToUTF8(int codepoint, int *byteSize); // Encode one codepoint into UTF-8 byte array (array length returned as parameter)
- char *TextCodepointsToUTF8(int *codepoints, int length); // Encode text as codepoints array into UTF-8 text string (WARNING: memory must be freed!)
+ char *TextCodepointsToUTF8(const int *codepoints, int length); // Encode text as codepoints array into UTF-8 text string (WARNING: memory must be freed!)
 // Text strings management functions (no UTF-8 strings, only byte chars)
 // NOTE: Some strings allocate memory internally for returned strings, just be careful!
  int TextCopy(char *dst, const char *src); // Copy one string to another, returns bytes copied
@@ -1201,10 +1202,10 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void DrawBillboardPro(Camera camera, Texture2D texture, Rectangle source, Vector3 position, Vector3 up, Vector2 size, Vector2 origin, float rotation, Color tint); // Draw a billboard texture defined by source and rotation
 // Mesh management functions
  void UploadMesh(Mesh *mesh, bool dynamic); // Upload mesh vertex data in GPU and provide VAO/VBO ids
- void UpdateMeshBuffer(Mesh mesh, int index, void *data, int dataSize, int offset); // Update mesh vertex data in GPU for a specific buffer index
+ void UpdateMeshBuffer(Mesh mesh, int index, const void *data, int dataSize, int offset); // Update mesh vertex data in GPU for a specific buffer index
  void UnloadMesh(Mesh mesh); // Unload mesh data from CPU and GPU
  void DrawMesh(Mesh mesh, Material material, Matrix transform); // Draw a 3d mesh with material and transform
- void DrawMeshInstanced(Mesh mesh, Material material, Matrix *transforms, int instances); // Draw multiple mesh instances with material and different transforms
+ void DrawMeshInstanced(Mesh mesh, Material material, const Matrix *transforms, int instances); // Draw multiple mesh instances with material and different transforms
  bool ExportMesh(Mesh mesh, const char *fileName); // Export mesh data to file, returns true on success
  BoundingBox GetMeshBoundingBox(Mesh mesh); // Compute mesh bounding box limits
  void GenMeshTangents(Mesh *mesh); // Compute mesh tangents
@@ -1231,7 +1232,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  ModelAnimation *LoadModelAnimations(const char *fileName, unsigned int *animCount); // Load model animations from file
  void UpdateModelAnimation(Model model, ModelAnimation anim, int frame); // Update model animation pose
  void UnloadModelAnimation(ModelAnimation anim); // Unload animation data
- void UnloadModelAnimations(ModelAnimation* animations, unsigned int count); // Unload animation array data
+ void UnloadModelAnimations(ModelAnimation *animations, unsigned int count); // Unload animation array data
  bool IsModelAnimationValid(Model model, ModelAnimation anim); // Check model animation skeleton match
 // Collision detection functions
  bool CheckCollisionSpheres(Vector3 center1, float radius1, Vector3 center2, float radius2); // Check collision between two spheres
@@ -1280,7 +1281,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void UnloadWaveSamples(float *samples); // Unload samples data loaded with LoadWaveSamples()
 // Music management functions
  Music LoadMusicStream(const char *fileName); // Load music stream from file
- Music LoadMusicStreamFromMemory(const char *fileType, unsigned char *data, int dataSize); // Load music stream from data
+ Music LoadMusicStreamFromMemory(const char *fileType, const unsigned char *data, int dataSize); // Load music stream from data
  void UnloadMusicStream(Music music); // Unload music stream
  void PlayMusicStream(Music music); // Start music playing
  bool IsMusicStreamPlaying(Music music); // Check if music is playing

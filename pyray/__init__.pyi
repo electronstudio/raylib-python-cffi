@@ -2525,6 +2525,11 @@ def rl_update_vertex_buffer(unsignedint_0: int,void_pointer_1: Any,int_2: int,in
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def rl_update_vertex_buffer_elements(unsignedint_0: int,void_pointer_1: Any,int_2: int,int_3: int,) -> None:
+        """void rlUpdateVertexBufferElements(unsigned int, void *, int, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def rl_vertex2f(float_0: float,float_1: float,) -> None:
         """void rlVertex2f(float, float);
 
@@ -3206,7 +3211,8 @@ class BlendMode(IntEnum):
     BLEND_MULTIPLIED = 2
     BLEND_ADD_COLORS = 3
     BLEND_SUBTRACT_COLORS = 4
-    BLEND_CUSTOM = 5
+    BLEND_ALPHA_PREMUL = 5
+    BLEND_CUSTOM = 6
 
 class Gesture(IntEnum):
     GESTURE_NONE = 0

@@ -302,7 +302,8 @@ class BlendMode(IntEnum):
     BLEND_MULTIPLIED = 2
     BLEND_ADD_COLORS = 3
     BLEND_SUBTRACT_COLORS = 4
-    BLEND_CUSTOM = 5
+    BLEND_ALPHA_PREMUL = 5
+    BLEND_CUSTOM = 6
 
 class Gesture(IntEnum):
     GESTURE_NONE = 0

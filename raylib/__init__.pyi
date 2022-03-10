@@ -14,6 +14,7 @@ BASE_COLOR_PRESSED: int
 BLEND_ADDITIVE: int
 BLEND_ADD_COLORS: int
 BLEND_ALPHA: int
+BLEND_ALPHA_PREMUL: int
 BLEND_CUSTOM: int
 BLEND_MULTIPLIED: int
 BLEND_SUBTRACT_COLORS: int
@@ -1787,6 +1788,7 @@ RL_ATTACHMENT_TEXTURE2D: int
 RL_BLEND_ADDITIVE: int
 RL_BLEND_ADD_COLORS: int
 RL_BLEND_ALPHA: int
+RL_BLEND_ALPHA_PREMUL: int
 RL_BLEND_CUSTOM: int
 RL_BLEND_MULTIPLIED: int
 RL_BLEND_SUBTRACT_COLORS: int
@@ -2992,6 +2994,11 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def rlUpdateVertexBuffer(unsignedint_0: int,void_pointer_1: Any,int_2: int,int_3: int,) -> None:
         """void rlUpdateVertexBuffer(unsigned int, void *, int, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rlUpdateVertexBufferElements(unsignedint_0: int,void_pointer_1: Any,int_2: int,int_3: int,) -> None:
+        """void rlUpdateVertexBufferElements(unsigned int, void *, int, int);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...

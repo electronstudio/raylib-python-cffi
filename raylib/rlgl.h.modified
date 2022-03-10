@@ -249,6 +249,7 @@ typedef enum {
     RL_BLEND_MULTIPLIED, // Blend textures multiplying colors
     RL_BLEND_ADD_COLORS, // Blend textures adding colors (alternative)
     RL_BLEND_SUBTRACT_COLORS, // Blend textures subtracting colors (alternative)
+    RL_BLEND_ALPHA_PREMUL, // Blend premultiplied textures considering alpha
     RL_BLEND_CUSTOM // Blend textures using custom src/dst factors (use rlSetBlendFactors())
 } rlBlendMode;
 // Shader location point type
@@ -406,22 +407,23 @@ typedef enum {
 //------------------------------------------------------------------------------------------------------------------------
 // Vertex buffers management
  unsigned int rlLoadVertexArray(void); // Load vertex array (vao) if supported
- unsigned int rlLoadVertexBuffer(void *buffer, int size, bool dynamic); // Load a vertex buffer attribute
- unsigned int rlLoadVertexBufferElement(void *buffer, int size, bool dynamic); // Load a new attributes element buffer
- void rlUpdateVertexBuffer(unsigned int bufferId, void *data, int dataSize, int offset); // Update GPU buffer with new data
+ unsigned int rlLoadVertexBuffer(const void *buffer, int size, bool dynamic); // Load a vertex buffer attribute
+ unsigned int rlLoadVertexBufferElement(const void *buffer, int size, bool dynamic); // Load a new attributes element buffer
+ void rlUpdateVertexBuffer(unsigned int bufferId, const void *data, int dataSize, int offset); // Update GPU buffer with new data
+ void rlUpdateVertexBufferElements(unsigned int id, const void *data, int dataSize, int offset); // Update vertex buffer elements with new data
  void rlUnloadVertexArray(unsigned int vaoId);
  void rlUnloadVertexBuffer(unsigned int vboId);
- void rlSetVertexAttribute(unsigned int index, int compSize, int type, bool normalized, int stride, void *pointer);
+ void rlSetVertexAttribute(unsigned int index, int compSize, int type, bool normalized, int stride, const void *pointer);
  void rlSetVertexAttributeDivisor(unsigned int index, int divisor);
  void rlSetVertexAttributeDefault(int locIndex, const void *value, int attribType, int count); // Set vertex attribute default value
  void rlDrawVertexArray(int offset, int count);
- void rlDrawVertexArrayElements(int offset, int count, void *buffer);
+ void rlDrawVertexArrayElements(int offset, int count, const void *buffer);
  void rlDrawVertexArrayInstanced(int offset, int count, int instances);
- void rlDrawVertexArrayElementsInstanced(int offset, int count, void *buffer, int instances);
+ void rlDrawVertexArrayElementsInstanced(int offset, int count, const void *buffer, int instances);
 // Textures management
- unsigned int rlLoadTexture(void *data, int width, int height, int format, int mipmapCount); // Load texture in GPU
+ unsigned int rlLoadTexture(const void *data, int width, int height, int format, int mipmapCount); // Load texture in GPU
  unsigned int rlLoadTextureDepth(int width, int height, bool useRenderBuffer); // Load depth texture/renderbuffer (to be attached to fbo)
- unsigned int rlLoadTextureCubemap(void *data, int size, int format); // Load texture cubemap
+ unsigned int rlLoadTextureCubemap(const void *data, int size, int format); // Load texture cubemap
  void rlUpdateTexture(unsigned int id, int offsetX, int offsetY, int width, int height, int format, const void *data); // Update GPU texture with new data
  void rlGetGlTextureFormats(int format, int *glInternalFormat, int *glFormat, int *glType); // Get OpenGL internal formats
  const char *rlGetPixelFormatName(unsigned int format); // Get name string for pixel format
