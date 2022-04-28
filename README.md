@@ -71,6 +71,7 @@ Use [the Python API](https://electronstudio.github.io/raylib-python-cffi/pyray.h
 # App showcase
 
 [Tanki](https://github.com/pkulev/tanki)
+[Alloy Bloxel Editor](https://pebaz.itch.io/alloy-bloxel-editor)
 
 Add your app here!
 
