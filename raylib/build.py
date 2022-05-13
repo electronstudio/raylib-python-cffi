@@ -155,7 +155,10 @@ def build_unix():
                            '-lrt', '-lm', '-ldl', '-lX11', '-lpthread']
         libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11']
 
-    ffibuilder.set_source("raylib._raylib_cffi", ffi_includes, extra_link_args=extra_link_args,
+    ffibuilder.set_source("raylib._raylib_cffi",
+                          ffi_includes,
+                          include_dirs=[get_the_include_path()],
+                          extra_link_args=extra_link_args,
                           libraries=libraries)
 
 
