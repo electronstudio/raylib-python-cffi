@@ -157,7 +157,7 @@ def build_unix():
 
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
-                          include_dirs=[get_the_include_path()],
+                          # include_dirs=[get_the_include_path()],
                           extra_link_args=extra_link_args,
                           libraries=libraries)
 
