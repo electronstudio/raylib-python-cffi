@@ -33,8 +33,8 @@
 *
 *   OPTIONAL DEPENDENCIES (included):
 *       [rcore] msf_gif (Miles Fogle) for GIF recording
-*       [rcore] sinfl (Micha Mettke) for DEFLATE decompression algorythm
-*       [rcore] sdefl (Micha Mettke) for DEFLATE compression algorythm
+*       [rcore] sinfl (Micha Mettke) for DEFLATE decompression algorithm
+*       [rcore] sdefl (Micha Mettke) for DEFLATE compression algorithm
 *       [rtextures] stb_image (Sean Barret) for images loading (BMP, TGA, PNG, JPEG, HDR...)
 *       [rtextures] stb_image_write (Sean Barret) for image writing (BMP, TGA, PNG, JPG)
 *       [rtextures] stb_image_resize (Sean Barret) for image resizing algorithms
@@ -210,7 +210,7 @@ typedef struct Mesh {
     // Vertex attributes data
     float *vertices; // Vertex position (XYZ - 3 components per vertex) (shader-location = 0)
     float *texcoords; // Vertex texture coordinates (UV - 2 components per vertex) (shader-location = 1)
-    float *texcoords2; // Vertex second texture coordinates (useful for lightmaps) (shader-location = 5)
+    float *texcoords2; // Vertex texture second coordinates (UV - 2 components per vertex) (shader-location = 5)
     float *normals; // Vertex normals (XYZ - 3 components per vertex) (shader-location = 2)
     float *tangents; // Vertex tangents (XYZW - 4 components per vertex) (shader-location = 4)
     unsigned char *colors; // Vertex colors (RGBA - 4 components per vertex) (shader-location = 3)
@@ -297,10 +297,14 @@ typedef struct Wave {
     unsigned int channels; // Number of channels (1-mono, 2-stereo, ...)
     void *data; // Buffer data pointer
 } Wave;
+// Opaque structs declaration
+// NOTE: Actual structs are defined internally in raudio module
 typedef struct rAudioBuffer rAudioBuffer;
+typedef struct rAudioProcessor rAudioProcessor;
 // AudioStream, custom audio stream
 typedef struct AudioStream {
     rAudioBuffer *buffer; // Pointer to internal data used by the audio system
+    rAudioProcessor *processor; // Pointer to internal data processor, useful for audio effects
     unsigned int sampleRate; // Frequency (samples per second)
     unsigned int sampleSize; // Bit depth (bits per sample): 8, 16, 32 (24 not supported)
     unsigned int channels; // Number of channels (1-mono, 2-stereo, ...)
@@ -771,6 +775,8 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  const char *GetMonitorName(int monitor); // Get the human-readable, UTF-8 encoded name of the primary monitor
  void SetClipboardText(const char *text); // Set clipboard text content
  const char *GetClipboardText(void); // Get clipboard text content
+ void EnableEventWaiting(void); // Enable waiting for events on EndDrawing(), no automatic event polling
+ void DisableEventWaiting(void); // Disable waiting for events on EndDrawing(), automatic events polling
 // Custom frame control functions
 // NOTE: Those functions are intended for advance users that want full control over the frame processing
 // By default EndDrawing() does this job: draws everything + SwapScreenBuffer() + manage frame timming + PollInputEvents()
@@ -851,6 +857,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  unsigned char *LoadFileData(const char *fileName, unsigned int *bytesRead); // Load file data as byte array (read)
  void UnloadFileData(unsigned char *data); // Unload file data allocated by LoadFileData()
  bool SaveFileData(const char *fileName, void *data, unsigned int bytesToWrite); // Save data to file from byte array (write), returns true on success
+ bool ExportDataAsCode(const char *data, unsigned int size, const char *fileName); // Export data to code (.h), returns true on success
  char *LoadFileText(const char *fileName); // Load text data from file (read), returns a '\0' terminated string
  void UnloadFileText(char *text); // Unload file text data allocated by LoadFileText()
  bool SaveFileText(const char *fileName, char *text); // Save text data to file (write), string must be '\0' terminated, returns true on success
@@ -865,18 +872,18 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  const char *GetPrevDirectoryPath(const char *dirPath); // Get previous directory path for a given path (uses static string)
  const char *GetWorkingDirectory(void); // Get current working directory (uses static string)
  const char *GetApplicationDirectory(void); // Get the directory if the running application (uses static string)
- char **GetDirectoryFiles(const char *dirPath, int *count); // Get filenames in a directory path (memory should be freed)
+ char **GetDirectoryFiles(const char *dirPath, int *count); // Get filenames in a directory path (memory must be freed)
  void ClearDirectoryFiles(void); // Clear directory files paths buffers (free memory)
  bool ChangeDirectory(const char *dir); // Change working directory, return true on success
  bool IsFileDropped(void); // Check if a file has been dropped into window
- char **GetDroppedFiles(int *count); // Get dropped files names (memory should be freed)
+ char **GetDroppedFiles(int *count); // Get dropped files names (memory must be freed)
  void ClearDroppedFiles(void); // Clear dropped files paths buffer (free memory)
  long GetFileModTime(const char *fileName); // Get file modification time (last write time)
 // Compression/Encoding functionality
- unsigned char *CompressData(const unsigned char *data, int dataLength, int *compDataLength); // Compress data (DEFLATE algorithm)
- unsigned char *DecompressData(const unsigned char *compData, int compDataLength, int *dataLength); // Decompress data (DEFLATE algorithm)
- char *EncodeDataBase64(const unsigned char *data, int dataLength, int *outputLength); // Encode data to Base64 string
- unsigned char *DecodeDataBase64(const unsigned char *data, int *outputLength); // Decode Base64 string data
+ unsigned char *CompressData(const unsigned char *data, int dataSize, int *compDataSize); // Compress data (DEFLATE algorithm), memory must be MemFree()
+ unsigned char *DecompressData(const unsigned char *compData, int compDataSize, int *dataSize); // Decompress data (DEFLATE algorithm), memory must be MemFree()
+ char *EncodeDataBase64(const unsigned char *data, int dataSize, int *outputSize); // Encode data to Base64 string, memory must be MemFree()
+ unsigned char *DecodeDataBase64(const unsigned char *data, int *outputSize); // Decode Base64 string data, memory must be MemFree()
 // Persistent storage management
  bool SaveStorageValue(unsigned int position, int value); // Save integer value to storage file (to defined position), returns true on success
  int LoadStorageValue(unsigned int position); // Load integer value from storage file (from defined position)
@@ -1240,13 +1247,13 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  bool CheckCollisionBoxSphere(BoundingBox box, Vector3 center, float radius); // Check collision between box and sphere
  RayCollision GetRayCollisionSphere(Ray ray, Vector3 center, float radius); // Get collision info between ray and sphere
  RayCollision GetRayCollisionBox(Ray ray, BoundingBox box); // Get collision info between ray and box
- RayCollision GetRayCollisionModel(Ray ray, Model model); // Get collision info between ray and model
  RayCollision GetRayCollisionMesh(Ray ray, Mesh mesh, Matrix transform); // Get collision info between ray and mesh
  RayCollision GetRayCollisionTriangle(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3); // Get collision info between ray and triangle
  RayCollision GetRayCollisionQuad(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4); // Get collision info between ray and quad
 //------------------------------------------------------------------------------------
 // Audio Loading and Playing Functions (Module: audio)
 //------------------------------------------------------------------------------------
+typedef void (*AudioCallback)(void *bufferData, unsigned int frames);
 // Audio device management functions
  void InitAudioDevice(void); // Initialize audio device and context
  void CloseAudioDevice(void); // Close the audio device and context
@@ -1309,3 +1316,6 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void SetAudioStreamPitch(AudioStream stream, float pitch); // Set pitch for audio stream (1.0 is base level)
  void SetAudioStreamPan(AudioStream stream, float pan); // Set pan for audio stream (0.5 is centered)
  void SetAudioStreamBufferSizeDefault(int size); // Default size for new audio streams
+ void SetAudioStreamCallback(AudioStream stream, AudioCallback callback); // Audio thread callback to request new data
+ void AttachAudioStreamProcessor(AudioStream stream, AudioCallback processor);
+ void DetachAudioStreamProcessor(AudioStream stream, AudioCallback processor);

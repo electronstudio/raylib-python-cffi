@@ -389,7 +389,9 @@ typedef enum {
  void rlglClose(void); // De-inititialize rlgl (buffers, shaders, textures)
  void rlLoadExtensions(void *loader); // Load OpenGL extensions (loader function required)
  int rlGetVersion(void); // Get current OpenGL version
+ void rlSetFramebufferWidth(int width); // Set current framebuffer width
  int rlGetFramebufferWidth(void); // Get default framebuffer width
+ void rlSetFramebufferHeight(int height); // Set current framebuffer height
  int rlGetFramebufferHeight(void); // Get default framebuffer height
  unsigned int rlGetTextureIdDefault(void); // Get default texture id
  unsigned int rlGetShaderIdDefault(void); // Get default shader id
