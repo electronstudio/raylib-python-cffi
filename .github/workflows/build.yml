@@ -14,7 +14,7 @@ on:
 
 jobs:
   build-mac:
-    runs-on: macos-11
+    runs-on: macos-10.15
     strategy:
       matrix:
         python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11.0-alpha - 3.11.0',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
@@ -58,6 +58,42 @@ jobs:
           name: wheel
           path: dist/*
 
+  build-mac12-test:
+    runs-on: macos-12
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11.0-alpha - 3.11.0' ]
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
+          python-version: ${{ matrix.python-version }}
+          # The target architecture (x86, x64) of the Python interpreter.
+          architecture: x64
+
+      # Runs a set of commands using the runners shell
+      - name: Build raylib
+        run: |
+          cd raylib-c
+          mkdir build
+          cd build
+          cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          make -j2
+          sudo make install
+          sudo cp ../src/extras/* /usr/local/include/
+
+      - name: Build raylib-python-cffi
+        run: |
+          python -m pip install --upgrade pip
+          pip3 install cffi
+          pip3 install wheel
+          python setup.py bdist_wheel
 
   build-linux:
     runs-on: ubuntu-18.04
