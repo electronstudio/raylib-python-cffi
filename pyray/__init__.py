@@ -75,7 +75,9 @@ def makefunc(a):
                     arg = ffi.new("int *", arg)
                 elif type(arg) is float:
                     arg = ffi.new("float *", arg)
-                elif str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>" and "*" not in str(arg):
+                elif str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>" and "*" not in str(arg): #CPython
+                    arg = ffi.addressof(arg)
+                elif str(type(arg)) == "<class '_cffi_backend._CDataBase'>" and "*" not in str(arg): #Pypy
                     arg = ffi.addressof(arg)
             modified_args.append(arg)
         result = a(*modified_args)
