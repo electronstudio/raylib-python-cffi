@@ -34,6 +34,7 @@ while not pyray.window_should_close():
     if pyray.is_file_dropped():
         droppedFiles_pointer = pyray.get_dropped_files(count_pointer)
         count = count_pointer[0]
+        # This isn't actually necessary unless you want a Python array:
         droppedFiles = pyray.ffi.unpack(droppedFiles_pointer, count)
 
     pyray.begin_drawing()
@@ -51,6 +52,8 @@ while not pyray.window_should_close():
         else:
             pyray.draw_rectangle(0, 85 + 40*i, screenWidth, 40, pyray.fade(LIGHTGRAY, 0.3))
         filename = pyray.ffi.string(droppedFiles[i]).decode('utf-8')
+        # This alternative works too if you don't have a Python array:
+        # filename = pyray.ffi.string(droppedFiles_pointer[i]).decode('utf-8')
         pyray.draw_text(filename, 120, 100 + 40*i, 10, GRAY)
 
     pyray.draw_text("Drop new files...", 100, 110 + 40*count, 20, DARKGRAY);
