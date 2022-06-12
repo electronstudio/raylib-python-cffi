@@ -1,15 +1,6 @@
 Python API
 ==============
 
-.. comment::
-
-   Link to API reference:
-   toctree::
-   :maxdepth: 1
-
-   autoapi/pyray/index
-
-
 This is a wrapper around the C API with some syntactic sugar.
 
 The API is *still the same as Raylib*, so you should still reply on `the official Raylib docs <https://www.raylib.com/cheatsheet/cheatsheet.html>`_, except:

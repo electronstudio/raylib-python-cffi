@@ -1,6 +1,6 @@
 /**********************************************************************************************
 *
-*   raylib v4.1-dev - A simple and easy-to-use library to enjoy videogames programming (www.raylib.com)
+*   raylib v4.2-dev - A simple and easy-to-use library to enjoy videogames programming (www.raylib.com)
 *
 *   FEATURES:
 *       - NO external dependencies, all required libraries included with raylib
@@ -346,6 +346,11 @@ typedef struct VrStereoConfig {
     float scale[2]; // VR distortion scale
     float scaleIn[2]; // VR distortion scale in
 } VrStereoConfig;
+// File path list
+typedef struct FilePathList {
+    unsigned int count; // Filepaths entries count
+    char **paths; // Filepaths entries
+} FilePathList;
 //----------------------------------------------------------------------------------
 // Enumerators Definition
 //----------------------------------------------------------------------------------
@@ -365,6 +370,7 @@ typedef enum {
     FLAG_WINDOW_ALWAYS_RUN = 0x00000100, // Set to allow windows running while minimized
     FLAG_WINDOW_TRANSPARENT = 0x00000010, // Set to allow transparent framebuffer
     FLAG_WINDOW_HIGHDPI = 0x00002000, // Set to support HighDPI
+    FLAG_WINDOW_MOUSE_PASSTHROUGH = 0x00004000, // Set to support mouse passthrough, only supported when FLAG_WINDOW_UNDECORATED
     FLAG_MSAA_4X_HINT = 0x00000020, // Set to try enabling MSAA 4X
     FLAG_INTERLACED_HINT = 0x00010000 // Set to try enabling interlaced video format (for V3D)
 } ConfigFlags;
@@ -681,7 +687,7 @@ typedef enum {
     BLEND_MULTIPLIED, // Blend textures multiplying colors
     BLEND_ADD_COLORS, // Blend textures adding colors (alternative)
     BLEND_SUBTRACT_COLORS, // Blend textures subtracting colors (alternative)
-    BLEND_ALPHA_PREMUL, // Blend premultiplied textures considering alpha
+    BLEND_ALPHA_PREMULTIPLY, // Blend premultiplied textures considering alpha
     BLEND_CUSTOM // Blend textures using custom src/dst factors (use rlSetBlendMode())
 } BlendMode;
 // Gesture
@@ -765,8 +771,8 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  int GetMonitorCount(void); // Get number of connected monitors
  int GetCurrentMonitor(void); // Get current connected monitor
  Vector2 GetMonitorPosition(int monitor); // Get specified monitor position
- int GetMonitorWidth(int monitor); // Get specified monitor width (max available by monitor)
- int GetMonitorHeight(int monitor); // Get specified monitor height (max available by monitor)
+ int GetMonitorWidth(int monitor); // Get specified monitor width (current video mode used by monitor)
+ int GetMonitorHeight(int monitor); // Get specified monitor height (current video mode used by monitor)
  int GetMonitorPhysicalWidth(int monitor); // Get specified monitor physical width in millimetres
  int GetMonitorPhysicalHeight(int monitor); // Get specified monitor physical height in millimetres
  int GetMonitorRefreshRate(int monitor); // Get specified monitor refresh rate
@@ -783,7 +789,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
 // To avoid that behaviour and control frame processes manually, enable in config.h: SUPPORT_CUSTOM_FRAME_CONTROL
  void SwapScreenBuffer(void); // Swap back buffer with front buffer (screen drawing)
  void PollInputEvents(void); // Register all input events
- void WaitTime(float ms); // Wait for some milliseconds (halt program execution)
+ void WaitTime(double seconds); // Wait for some time (halt program execution)
 // Cursor-related functions
  void ShowCursor(void); // Shows cursor
  void HideCursor(void); // Hides cursor
@@ -828,9 +834,9 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  Matrix GetCameraMatrix(Camera camera); // Get camera transform matrix (view matrix)
  Matrix GetCameraMatrix2D(Camera2D camera); // Get camera 2d transform matrix
  Vector2 GetWorldToScreen(Vector3 position, Camera camera); // Get the screen space position for a 3d world space position
+ Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera); // Get the world space position for a 2d camera screen space position
  Vector2 GetWorldToScreenEx(Vector3 position, Camera camera, int width, int height); // Get size position for a 3d world space position
  Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera); // Get the screen space position for a 2d camera world space position
- Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera); // Get the world space position for a 2d camera screen space position
 // Timing-related functions
  void SetTargetFPS(int fps); // Set target FPS (maximum)
  int GetFPS(void); // Get current FPS
@@ -872,12 +878,14 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  const char *GetPrevDirectoryPath(const char *dirPath); // Get previous directory path for a given path (uses static string)
  const char *GetWorkingDirectory(void); // Get current working directory (uses static string)
  const char *GetApplicationDirectory(void); // Get the directory if the running application (uses static string)
- char **GetDirectoryFiles(const char *dirPath, int *count); // Get filenames in a directory path (memory must be freed)
- void ClearDirectoryFiles(void); // Clear directory files paths buffers (free memory)
  bool ChangeDirectory(const char *dir); // Change working directory, return true on success
+ bool IsPathFile(const char *path); // Check if a given path is a file or a directory
+ FilePathList LoadDirectoryFiles(const char *dirPath); // Load directory filepaths
+ FilePathList LoadDirectoryFilesEx(const char *basePath, const char *filter, bool scanSubdirs); // Load directory filepaths with extension filtering and recursive directory scan
+ void UnloadDirectoryFiles(FilePathList files); // Unload filepaths
  bool IsFileDropped(void); // Check if a file has been dropped into window
- char **GetDroppedFiles(int *count); // Get dropped files names (memory must be freed)
- void ClearDroppedFiles(void); // Clear dropped files paths buffer (free memory)
+ FilePathList LoadDroppedFiles(void); // Load dropped filepaths
+ void UnloadDroppedFiles(FilePathList files); // Unload dropped filepaths
  long GetFileModTime(const char *fileName); // Get file modification time (last write time)
 // Compression/Encoding functionality
  unsigned char *CompressData(const unsigned char *data, int dataSize, int *compDataSize); // Compress data (DEFLATE algorithm), memory must be MemFree()

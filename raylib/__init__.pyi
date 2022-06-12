@@ -6,6 +6,9 @@ class struct: ...
 ARROWS_SIZE: int
 ARROWS_VISIBLE: int
 ARROW_PADDING: int
+def AttachAudioStreamProcessor(stream: AudioStream,processor: Any,) -> None:
+        """"""
+        ...
 BACKGROUND_COLOR: int
 BASE_COLOR_DISABLED: int
 BASE_COLOR_FOCUSED: int
@@ -14,7 +17,7 @@ BASE_COLOR_PRESSED: int
 BLEND_ADDITIVE: int
 BLEND_ADD_COLORS: int
 BLEND_ALPHA: int
-BLEND_ALPHA_PREMUL: int
+BLEND_ALPHA_PREMULTIPLY: int
 BLEND_CUSTOM: int
 BLEND_MULTIPLIED: int
 BLEND_SUBTRACT_COLORS: int
@@ -58,11 +61,9 @@ CAMERA_THIRD_PERSON: int
 CHECKBOX: int
 CHECK_PADDING: int
 COLORPICKER: int
-COLOR_SELECTED_BG: int
-COLOR_SELECTED_FG: int
 COLOR_SELECTOR_SIZE: int
 COMBOBOX: int
-COMBO_BUTTON_PADDING: int
+COMBO_BUTTON_SPACING: int
 COMBO_BUTTON_WIDTH: int
 CUBEMAP_LAYOUT_AUTO_DETECT: int
 CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE: int
@@ -109,12 +110,6 @@ def CheckCollisionSpheres(center1: Vector3,radius1: float,center2: Vector3,radiu
 def ClearBackground(color: Color,) -> None:
         """Set background color (framebuffer clear color)"""
         ...
-def ClearDirectoryFiles() -> None:
-        """Clear directory files paths buffers (free memory)"""
-        ...
-def ClearDroppedFiles() -> None:
-        """Clear dropped files paths buffer (free memory)"""
-        ...
 def ClearWindowState(flags: int,) -> None:
         """Clear window configuration state flags"""
         ...
@@ -153,8 +148,8 @@ def ColorToHSV(color: Color,) -> Vector3:
 def ColorToInt(color: Color,) -> int:
         """Get hexadecimal value for a Color"""
         ...
-def CompressData(data: str,dataLength: int,compDataLength: Any,) -> str:
-        """Compress data (DEFLATE algorithm)"""
+def CompressData(data: str,dataSize: int,compDataSize: Any,) -> str:
+        """Compress data (DEFLATE algorithm), memory must be MemFree()"""
         ...
 def CreatePhysicsBodyCircle(Vector2_0: Vector2,float_1: float,float_2: float,) -> Any:
         """struct PhysicsBodyData *CreatePhysicsBodyCircle(struct Vector2, float, float);
@@ -173,23 +168,29 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 DEFAULT: int
 DROPDOWNBOX: int
-DROPDOWN_ITEMS_PADDING: int
-def DecodeDataBase64(data: str,outputLength: Any,) -> str:
-        """Decode Base64 string data"""
+DROPDOWN_ITEMS_SPACING: int
+def DecodeDataBase64(data: str,outputSize: Any,) -> str:
+        """Decode Base64 string data, memory must be MemFree()"""
         ...
-def DecompressData(compData: str,compDataLength: int,dataLength: Any,) -> str:
-        """Decompress data (DEFLATE algorithm)"""
+def DecompressData(compData: str,compDataSize: int,dataSize: Any,) -> str:
+        """Decompress data (DEFLATE algorithm), memory must be MemFree()"""
         ...
 def DestroyPhysicsBody(PhysicsBodyData_pointer_0: Any,) -> None:
         """void DestroyPhysicsBody(struct PhysicsBodyData *);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def DetachAudioStreamProcessor(stream: AudioStream,processor: Any,) -> None:
+        """"""
+        ...
 def DirectoryExists(dirPath: str,) -> bool:
         """Check if a directory path exists"""
         ...
 def DisableCursor() -> None:
         """Disables cursor (lock cursor)"""
+        ...
+def DisableEventWaiting() -> None:
+        """Disable waiting for events on EndDrawing(), automatic events polling"""
         ...
 def DrawBillboard(camera: Camera3D,texture: Texture,position: Vector3,size: float,tint: Color,) -> None:
         """Draw a billboard texture"""
@@ -443,8 +444,11 @@ def DrawTriangleStrip3D(points: Any,pointCount: int,color: Color,) -> None:
 def EnableCursor() -> None:
         """Enables cursor (unlock cursor)"""
         ...
-def EncodeDataBase64(data: str,dataLength: int,outputLength: Any,) -> str:
-        """Encode data to Base64 string"""
+def EnableEventWaiting() -> None:
+        """Enable waiting for events on EndDrawing(), no automatic event polling"""
+        ...
+def EncodeDataBase64(data: str,dataSize: int,outputSize: Any,) -> str:
+        """Encode data to Base64 string, memory must be MemFree()"""
         ...
 def EndBlendMode() -> None:
         """End blending mode (reset to default: alpha blending)"""
@@ -469,6 +473,9 @@ def EndTextureMode() -> None:
         ...
 def EndVrStereoMode() -> None:
         """End stereo rendering (requires VR simulator)"""
+        ...
+def ExportDataAsCode(data: str,size: int,fileName: str,) -> bool:
+        """Export data to code (.h), returns true on success"""
         ...
 def ExportFontAsCode(font: Font,fileName: str,) -> bool:
         """Export font as code file, returns true on success"""
@@ -497,6 +504,7 @@ FLAG_WINDOW_HIDDEN: int
 FLAG_WINDOW_HIGHDPI: int
 FLAG_WINDOW_MAXIMIZED: int
 FLAG_WINDOW_MINIMIZED: int
+FLAG_WINDOW_MOUSE_PASSTHROUGH: int
 FLAG_WINDOW_RESIZABLE: int
 FLAG_WINDOW_TOPMOST: int
 FLAG_WINDOW_TRANSPARENT: int
@@ -547,13 +555,6 @@ GESTURE_SWIPE_RIGHT: int
 GESTURE_SWIPE_UP: int
 GESTURE_TAP: int
 GROUP_PADDING: int
-GUI_STATE_DISABLED: int
-GUI_STATE_FOCUSED: int
-GUI_STATE_NORMAL: int
-GUI_STATE_PRESSED: int
-GUI_TEXT_ALIGN_CENTER: int
-GUI_TEXT_ALIGN_LEFT: int
-GUI_TEXT_ALIGN_RIGHT: int
 def GenImageCellular(width: int,height: int,tileSize: int,) -> Image:
         """Generate image: cellular algorithm, bigger tileSize means bigger cells"""
         ...
@@ -650,14 +651,8 @@ def GetColor(hexValue: int,) -> Color:
 def GetCurrentMonitor() -> int:
         """Get current connected monitor"""
         ...
-def GetDirectoryFiles(dirPath: str,count: Any,) -> str:
-        """Get filenames in a directory path (memory should be freed)"""
-        ...
 def GetDirectoryPath(filePath: str,) -> str:
         """Get full path for a given fileName with path (uses static string)"""
-        ...
-def GetDroppedFiles(count: Any,) -> str:
-        """Get dropped files names (memory should be freed)"""
         ...
 def GetFPS() -> int:
         """Get current FPS"""
@@ -741,7 +736,7 @@ def GetMonitorCount() -> int:
         """Get number of connected monitors"""
         ...
 def GetMonitorHeight(monitor: int,) -> int:
-        """Get specified monitor height (max available by monitor)"""
+        """Get specified monitor height (current video mode used by monitor)"""
         ...
 def GetMonitorName(monitor: int,) -> str:
         """Get the human-readable, UTF-8 encoded name of the primary monitor"""
@@ -759,7 +754,7 @@ def GetMonitorRefreshRate(monitor: int,) -> int:
         """Get specified monitor refresh rate"""
         ...
 def GetMonitorWidth(monitor: int,) -> int:
-        """Get specified monitor width (max available by monitor)"""
+        """Get specified monitor width (current video mode used by monitor)"""
         ...
 def GetMouseDelta() -> Vector2:
         """Get mouse delta between frames"""
@@ -827,9 +822,6 @@ def GetRayCollisionBox(ray: Ray,box: BoundingBox,) -> RayCollision:
         ...
 def GetRayCollisionMesh(ray: Ray,mesh: Mesh,transform: Matrix,) -> RayCollision:
         """Get collision info between ray and mesh"""
-        ...
-def GetRayCollisionModel(ray: Ray,model: Model,) -> RayCollision:
-        """Get collision info between ray and model"""
         ...
 def GetRayCollisionQuad(ray: Ray,p1: Vector3,p2: Vector3,p3: Vector3,p4: Vector3,) -> RayCollision:
         """Get collision info between ray and quad"""
@@ -923,23 +915,23 @@ def GuiClearIconPixel(int_0: int,int_1: int,int_2: int,) -> None:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def GuiColorBarAlpha(Rectangle_0: Rectangle,float_1: float,) -> float:
-        """float GuiColorBarAlpha(struct Rectangle, float);
+def GuiColorBarAlpha(Rectangle_0: Rectangle,str_1: str,float_2: float,) -> float:
+        """float GuiColorBarAlpha(struct Rectangle, char *, float);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def GuiColorBarHue(Rectangle_0: Rectangle,float_1: float,) -> float:
-        """float GuiColorBarHue(struct Rectangle, float);
+def GuiColorBarHue(Rectangle_0: Rectangle,str_1: str,float_2: float,) -> float:
+        """float GuiColorBarHue(struct Rectangle, char *, float);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def GuiColorPanel(Rectangle_0: Rectangle,Color_1: Color,) -> Color:
-        """struct Color GuiColorPanel(struct Rectangle, struct Color);
+def GuiColorPanel(Rectangle_0: Rectangle,str_1: str,Color_2: Color,) -> Color:
+        """struct Color GuiColorPanel(struct Rectangle, char *, struct Color);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def GuiColorPicker(Rectangle_0: Rectangle,Color_1: Color,) -> Color:
-        """struct Color GuiColorPicker(struct Rectangle, struct Color);
+def GuiColorPicker(Rectangle_0: Rectangle,str_1: str,Color_2: Color,) -> Color:
+        """struct Color GuiColorPicker(struct Rectangle, char *, struct Color);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -1003,8 +995,8 @@ def GuiGetStyle(int_0: int,int_1: int,) -> int:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def GuiGrid(Rectangle_0: Rectangle,float_1: float,int_2: int,) -> Vector2:
-        """struct Vector2 GuiGrid(struct Rectangle, float, int);
+def GuiGrid(Rectangle_0: Rectangle,str_1: str,float_2: float,int_3: int,) -> Vector2:
+        """struct Vector2 GuiGrid(struct Rectangle, char *, float, int);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -1068,8 +1060,8 @@ def GuiMessageBox(Rectangle_0: Rectangle,str_1: str,str_2: str,str_3: str,) -> i
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def GuiPanel(Rectangle_0: Rectangle,) -> None:
-        """void GuiPanel(struct Rectangle);
+def GuiPanel(Rectangle_0: Rectangle,str_1: str,) -> None:
+        """void GuiPanel(struct Rectangle, char *);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -1078,13 +1070,8 @@ def GuiProgressBar(Rectangle_0: Rectangle,str_1: str,str_2: str,float_3: float,f
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def GuiScrollBar(Rectangle_0: Rectangle,int_1: int,int_2: int,int_3: int,) -> int:
-        """int GuiScrollBar(struct Rectangle, int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
-        ...
-def GuiScrollPanel(Rectangle_0: Rectangle,Rectangle_1: Rectangle,Vector2_pointer_2: Any,) -> Rectangle:
-        """struct Rectangle GuiScrollPanel(struct Rectangle, struct Rectangle, struct Vector2 *);
+def GuiScrollPanel(Rectangle_0: Rectangle,str_1: str,Rectangle_2: Rectangle,Vector2_pointer_3: Any,) -> Rectangle:
+        """struct Rectangle GuiScrollPanel(struct Rectangle, char *, struct Rectangle, struct Vector2 *);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -1100,6 +1087,11 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def GuiSetIconPixel(int_0: int,int_1: int,int_2: int,) -> None:
         """void GuiSetIconPixel(int, int, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def GuiSetIconScale(unsignedint_0: int,) -> None:
+        """void GuiSetIconScale(unsigned int);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -1143,8 +1135,8 @@ def GuiTextBoxMulti(Rectangle_0: Rectangle,str_1: str,int_2: int,_Bool_3: bool,)
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def GuiTextInputBox(Rectangle_0: Rectangle,str_1: str,str_2: str,str_3: str,str_4: str,) -> int:
-        """int GuiTextInputBox(struct Rectangle, char *, char *, char *, char *);
+def GuiTextInputBox(Rectangle_0: Rectangle,str_1: str,str_2: str,str_3: str,str_4: str,int_5: int,int_pointer_6: Any,) -> int:
+        """int GuiTextInputBox(struct Rectangle, char *, char *, char *, char *, int, int *);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -1180,6 +1172,262 @@ HUEBAR_WIDTH: int
 def HideCursor() -> None:
         """Hides cursor"""
         ...
+ICON_1UP: int
+ICON_206: int
+ICON_207: int
+ICON_208: int
+ICON_209: int
+ICON_210: int
+ICON_211: int
+ICON_212: int
+ICON_213: int
+ICON_214: int
+ICON_215: int
+ICON_216: int
+ICON_217: int
+ICON_218: int
+ICON_219: int
+ICON_220: int
+ICON_221: int
+ICON_222: int
+ICON_223: int
+ICON_224: int
+ICON_225: int
+ICON_226: int
+ICON_227: int
+ICON_228: int
+ICON_229: int
+ICON_230: int
+ICON_231: int
+ICON_232: int
+ICON_233: int
+ICON_234: int
+ICON_235: int
+ICON_236: int
+ICON_237: int
+ICON_238: int
+ICON_239: int
+ICON_240: int
+ICON_241: int
+ICON_242: int
+ICON_243: int
+ICON_244: int
+ICON_245: int
+ICON_246: int
+ICON_247: int
+ICON_248: int
+ICON_249: int
+ICON_250: int
+ICON_251: int
+ICON_252: int
+ICON_253: int
+ICON_254: int
+ICON_255: int
+ICON_ALARM: int
+ICON_ALPHA_CLEAR: int
+ICON_ALPHA_MULTIPLY: int
+ICON_ARROW_DOWN: int
+ICON_ARROW_DOWN_FILL: int
+ICON_ARROW_LEFT: int
+ICON_ARROW_LEFT_FILL: int
+ICON_ARROW_RIGHT: int
+ICON_ARROW_RIGHT_FILL: int
+ICON_ARROW_UP: int
+ICON_ARROW_UP_FILL: int
+ICON_AUDIO: int
+ICON_BIN: int
+ICON_BOX: int
+ICON_BOX_BOTTOM: int
+ICON_BOX_BOTTOM_LEFT: int
+ICON_BOX_BOTTOM_RIGHT: int
+ICON_BOX_CENTER: int
+ICON_BOX_CIRCLE_MASK: int
+ICON_BOX_CONCENTRIC: int
+ICON_BOX_CORNERS_BIG: int
+ICON_BOX_CORNERS_SMALL: int
+ICON_BOX_DOTS_BIG: int
+ICON_BOX_DOTS_SMALL: int
+ICON_BOX_GRID: int
+ICON_BOX_GRID_BIG: int
+ICON_BOX_LEFT: int
+ICON_BOX_MULTISIZE: int
+ICON_BOX_RIGHT: int
+ICON_BOX_TOP: int
+ICON_BOX_TOP_LEFT: int
+ICON_BOX_TOP_RIGHT: int
+ICON_BRUSH_CLASSIC: int
+ICON_BRUSH_PAINTER: int
+ICON_CAMERA: int
+ICON_CLOCK: int
+ICON_COIN: int
+ICON_COLOR_BUCKET: int
+ICON_COLOR_PICKER: int
+ICON_CORNER: int
+ICON_CRACK: int
+ICON_CRACK_POINTS: int
+ICON_CROP: int
+ICON_CROP_ALPHA: int
+ICON_CROSS: int
+ICON_CROSSLINE: int
+ICON_CROSS_SMALL: int
+ICON_CUBE: int
+ICON_CUBE_FACE_BACK: int
+ICON_CUBE_FACE_BOTTOM: int
+ICON_CUBE_FACE_FRONT: int
+ICON_CUBE_FACE_LEFT: int
+ICON_CUBE_FACE_RIGHT: int
+ICON_CUBE_FACE_TOP: int
+ICON_CURSOR_CLASSIC: int
+ICON_CURSOR_HAND: int
+ICON_CURSOR_MOVE: int
+ICON_CURSOR_MOVE_FILL: int
+ICON_CURSOR_POINTER: int
+ICON_CURSOR_SCALE: int
+ICON_CURSOR_SCALE_FILL: int
+ICON_CURSOR_SCALE_LEFT: int
+ICON_CURSOR_SCALE_LEFT_FILL: int
+ICON_CURSOR_SCALE_RIGHT: int
+ICON_CURSOR_SCALE_RIGHT_FILL: int
+ICON_DEMON: int
+ICON_DITHERING: int
+ICON_DOOR: int
+ICON_EMPTYBOX: int
+ICON_EMPTYBOX_SMALL: int
+ICON_EXIT: int
+ICON_EXPLOSION: int
+ICON_EYE_OFF: int
+ICON_EYE_ON: int
+ICON_FILETYPE_ALPHA: int
+ICON_FILETYPE_AUDIO: int
+ICON_FILETYPE_BINARY: int
+ICON_FILETYPE_HOME: int
+ICON_FILETYPE_IMAGE: int
+ICON_FILETYPE_INFO: int
+ICON_FILETYPE_PLAY: int
+ICON_FILETYPE_TEXT: int
+ICON_FILETYPE_VIDEO: int
+ICON_FILE_ADD: int
+ICON_FILE_COPY: int
+ICON_FILE_CUT: int
+ICON_FILE_DELETE: int
+ICON_FILE_EXPORT: int
+ICON_FILE_NEW: int
+ICON_FILE_OPEN: int
+ICON_FILE_PASTE: int
+ICON_FILE_SAVE: int
+ICON_FILE_SAVE_CLASSIC: int
+ICON_FILTER: int
+ICON_FILTER_BILINEAR: int
+ICON_FILTER_POINT: int
+ICON_FILTER_TOP: int
+ICON_FOLDER_ADD: int
+ICON_FOLDER_FILE_OPEN: int
+ICON_FOLDER_OPEN: int
+ICON_FOLDER_SAVE: int
+ICON_FOUR_BOXES: int
+ICON_FX: int
+ICON_GEAR: int
+ICON_GEAR_BIG: int
+ICON_GEAR_EX: int
+ICON_GRID: int
+ICON_GRID_FILL: int
+ICON_HAND_POINTER: int
+ICON_HEART: int
+ICON_HELP: int
+ICON_HEX: int
+ICON_HIDPI: int
+ICON_HOUSE: int
+ICON_INFO: int
+ICON_KEY: int
+ICON_LASER: int
+ICON_LAYERS: int
+ICON_LAYERS_VISIBLE: int
+ICON_LENS: int
+ICON_LENS_BIG: int
+ICON_LIFE_BARS: int
+ICON_LINK: int
+ICON_LINK_BOXES: int
+ICON_LINK_BROKE: int
+ICON_LINK_MULTI: int
+ICON_LINK_NET: int
+ICON_LOCK_CLOSE: int
+ICON_LOCK_OPEN: int
+ICON_MAGNET: int
+ICON_MAILBOX: int
+ICON_MIPMAPS: int
+ICON_MODE_2D: int
+ICON_MODE_3D: int
+ICON_MONITOR: int
+ICON_MUTATE: int
+ICON_MUTATE_FILL: int
+ICON_NONE: int
+ICON_NOTEBOOK: int
+ICON_OK_TICK: int
+ICON_PENCIL: int
+ICON_PENCIL_BIG: int
+ICON_PHOTO_CAMERA: int
+ICON_PHOTO_CAMERA_FLASH: int
+ICON_PLAYER: int
+ICON_PLAYER_JUMP: int
+ICON_PLAYER_NEXT: int
+ICON_PLAYER_PAUSE: int
+ICON_PLAYER_PLAY: int
+ICON_PLAYER_PLAY_BACK: int
+ICON_PLAYER_PREVIOUS: int
+ICON_PLAYER_RECORD: int
+ICON_PLAYER_STOP: int
+ICON_POT: int
+ICON_PRINTER: int
+ICON_REDO: int
+ICON_REDO_FILL: int
+ICON_REPEAT: int
+ICON_REPEAT_FILL: int
+ICON_REREDO: int
+ICON_REREDO_FILL: int
+ICON_RESIZE: int
+ICON_ROTATE: int
+ICON_ROTATE_FILL: int
+ICON_RUBBER: int
+ICON_SCALE: int
+ICON_SHIELD: int
+ICON_SHUFFLE: int
+ICON_SHUFFLE_FILL: int
+ICON_SPECIAL: int
+ICON_SQUARE_TOGGLE: int
+ICON_STAR: int
+ICON_SUITCASE: int
+ICON_SUITCASE_ZIP: int
+ICON_SYMMETRY: int
+ICON_SYMMETRY_HORIZONTAL: int
+ICON_SYMMETRY_VERTICAL: int
+ICON_TARGET: int
+ICON_TARGET_BIG: int
+ICON_TARGET_BIG_FILL: int
+ICON_TARGET_MOVE: int
+ICON_TARGET_MOVE_FILL: int
+ICON_TARGET_POINT: int
+ICON_TARGET_SMALL: int
+ICON_TARGET_SMALL_FILL: int
+ICON_TEXT_A: int
+ICON_TEXT_NOTES: int
+ICON_TEXT_POPUP: int
+ICON_TEXT_T: int
+ICON_TOOLS: int
+ICON_UNDO: int
+ICON_UNDO_FILL: int
+ICON_VERTICAL_BARS: int
+ICON_VERTICAL_BARS_FILL: int
+ICON_WATER_DROP: int
+ICON_WAVE: int
+ICON_WAVE_SINUS: int
+ICON_WAVE_SQUARE: int
+ICON_WAVE_TRIANGULAR: int
+ICON_WINDOW: int
+ICON_ZOOM_ALL: int
+ICON_ZOOM_BIG: int
+ICON_ZOOM_CENTER: int
+ICON_ZOOM_MEDIUM: int
+ICON_ZOOM_SMALL: int
 def ImageAlphaClear(image: Any,color: Color,threshold: float,) -> None:
         """Clear alpha channel to desired color"""
         ...
@@ -1380,6 +1628,9 @@ def IsMouseButtonUp(button: int,) -> bool:
 def IsMusicStreamPlaying(music: Music,) -> bool:
         """Check if music is playing"""
         ...
+def IsPathFile(path: str,) -> bool:
+        """Check if a given path is a file or a directory"""
+        ...
 def IsSoundPlaying(sound: Sound,) -> bool:
         """Check if a sound is currently playing"""
         ...
@@ -1521,7 +1772,7 @@ LABEL: int
 LINE_COLOR: int
 LISTVIEW: int
 LIST_ITEMS_HEIGHT: int
-LIST_ITEMS_PADDING: int
+LIST_ITEMS_SPACING: int
 LOG_ALL: int
 LOG_DEBUG: int
 LOG_ERROR: int
@@ -1535,6 +1786,15 @@ def LoadAudioStream(sampleRate: int,sampleSize: int,channels: int,) -> AudioStre
         ...
 def LoadCodepoints(text: str,count: Any,) -> Any:
         """Load all codepoints from a UTF-8 text string, codepoints count returned by parameter"""
+        ...
+def LoadDirectoryFiles(dirPath: str,) -> FilePathList:
+        """Load directory filepaths"""
+        ...
+def LoadDirectoryFilesEx(basePath: str,filter: str,scanSubdirs: bool,) -> FilePathList:
+        """Load directory filepaths with extension filtering and recursive directory scan"""
+        ...
+def LoadDroppedFiles() -> FilePathList:
+        """Load dropped filepaths"""
         ...
 def LoadFileData(fileName: str,bytesRead: Any,) -> str:
         """Load file data as byte array (read)"""
@@ -1788,7 +2048,7 @@ RL_ATTACHMENT_TEXTURE2D: int
 RL_BLEND_ADDITIVE: int
 RL_BLEND_ADD_COLORS: int
 RL_BLEND_ALPHA: int
-RL_BLEND_ALPHA_PREMUL: int
+RL_BLEND_ALPHA_PREMULTIPLY: int
 RL_BLEND_CUSTOM: int
 RL_BLEND_MULTIPLIED: int
 RL_BLEND_SUBTRACT_COLORS: int
@@ -1884,8 +2144,6 @@ def ResumeSound(sound: Sound,) -> None:
         """Resume a paused sound"""
         ...
 SCROLLBAR: int
-SCROLLBAR_LEFT_SIDE: int
-SCROLLBAR_RIGHT_SIDE: int
 SCROLLBAR_SIDE: int
 SCROLLBAR_WIDTH: int
 SCROLL_PADDING: int
@@ -1935,8 +2193,12 @@ SLIDER: int
 SLIDER_PADDING: int
 SLIDER_WIDTH: int
 SPINNER: int
-SPIN_BUTTON_PADDING: int
+SPIN_BUTTON_SPACING: int
 SPIN_BUTTON_WIDTH: int
+STATE_DISABLED: int
+STATE_FOCUSED: int
+STATE_NORMAL: int
+STATE_PRESSED: int
 STATUSBAR: int
 def SaveFileData(fileName: str,data: Any,bytesToWrite: int,) -> bool:
         """Save data to file from byte array (write), returns true on success"""
@@ -1952,6 +2214,9 @@ def SeekMusicStream(music: Music,position: float,) -> None:
         ...
 def SetAudioStreamBufferSizeDefault(size: int,) -> None:
         """Default size for new audio streams"""
+        ...
+def SetAudioStreamCallback(stream: AudioStream,callback: Any,) -> None:
+        """Audio thread callback to request new data"""
         ...
 def SetAudioStreamPan(stream: AudioStream,pan: float,) -> None:
         """Set pan for audio stream (0.5 is centered)"""
@@ -2148,12 +2413,15 @@ TEXTURE_WRAP_MIRROR_CLAMP: int
 TEXTURE_WRAP_MIRROR_REPEAT: int
 TEXTURE_WRAP_REPEAT: int
 TEXT_ALIGNMENT: int
+TEXT_ALIGN_CENTER: int
+TEXT_ALIGN_LEFT: int
+TEXT_ALIGN_RIGHT: int
 TEXT_COLOR_DISABLED: int
 TEXT_COLOR_FOCUSED: int
 TEXT_COLOR_NORMAL: int
 TEXT_COLOR_PRESSED: int
 TEXT_INNER_PADDING: int
-TEXT_LINES_PADDING: int
+TEXT_LINES_SPACING: int
 TEXT_PADDING: int
 TEXT_SIZE: int
 TEXT_SPACING: int
@@ -2220,6 +2488,12 @@ def UnloadAudioStream(stream: AudioStream,) -> None:
         ...
 def UnloadCodepoints(codepoints: Any,) -> None:
         """Unload codepoints data from memory"""
+        ...
+def UnloadDirectoryFiles(files: FilePathList,) -> None:
+        """Unload filepaths"""
+        ...
+def UnloadDroppedFiles(files: FilePathList,) -> None:
+        """Unload dropped filepaths"""
         ...
 def UnloadFileData(data: str,) -> None:
         """Unload file data allocated by LoadFileData()"""
@@ -2317,8 +2591,8 @@ def UploadMesh(mesh: Any,dynamic: bool,) -> None:
         """Upload mesh vertex data in GPU and provide VAO/VBO ids"""
         ...
 VALUEBOX: int
-def WaitTime(ms: float,) -> None:
-        """Wait for some milliseconds (halt program execution)"""
+def WaitTime(seconds: float,) -> None:
+        """Wait for some time (halt program execution)"""
         ...
 def WaveCopy(wave: Wave,) -> Wave:
         """Copy a wave to a new wave"""
@@ -2862,6 +3136,16 @@ def rlSetBlendMode(int_0: int,) -> None:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def rlSetFramebufferHeight(int_0: int,) -> None:
+        """void rlSetFramebufferHeight(int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rlSetFramebufferWidth(int_0: int,) -> None:
+        """void rlSetFramebufferWidth(int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def rlSetLineWidth(float_0: float,) -> None:
         """void rlSetLineWidth(float);
 
@@ -3044,6 +3328,7 @@ CameraProjection: int
 Color: struct
 ConfigFlags: int
 CubemapLayout: int
+FilePathList: struct
 Font: struct
 FontType: int
 GamepadAxis: int
@@ -3055,15 +3340,15 @@ GuiColorPickerProperty: int
 GuiComboBoxProperty: int
 GuiControl: int
 GuiControlProperty: int
-GuiControlState: int
 GuiDefaultProperty: int
 GuiDropdownBoxProperty: int
+GuiIconName: int
 GuiListViewProperty: int
 GuiProgressBarProperty: int
 GuiScrollBarProperty: int
-GuiScrollBarSide: int
 GuiSliderProperty: int
 GuiSpinnerProperty: int
+GuiState: int
 GuiStyleProp: struct
 GuiTextAlignment: int
 GuiTextBoxProperty: int
@@ -3114,6 +3399,7 @@ VrDeviceInfo: struct
 VrStereoConfig: struct
 Wave: struct
 rAudioBuffer: struct
+rAudioProcessor: struct
 rlBlendMode: int
 rlDrawCall: struct
 rlFramebufferAttachTextureType: int

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 gcc raylib-c/parser/raylib_parser.c
-./a.out -i raylib-c/src/extras/raygui.h -o raygui.json -f JSON
-./a.out -i raylib-c/src/extras/physac.h -o physac.json -f JSON
+./a.out -i raygui/src/raygui.h -o raygui.json -f JSON
+./a.out -i physac/src/physac.h -o physac.json -f JSON
 ./a.out -i raylib-c/src/raylib.h -o raylib.json -f JSON
 
 python3 raylib/build.py

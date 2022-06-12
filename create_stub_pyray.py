@@ -102,7 +102,7 @@ for struct in ffi.list_types()[0]:
     if ffi.typeof(struct).kind == "struct":
         if ffi.typeof(struct).fields is None:
             print("weird empty struct, skipping "+struct, file=sys.stderr)
-            break
+            continue
         print(f"class {struct}:")
         print(f'    """ struct """')
         sig = ""

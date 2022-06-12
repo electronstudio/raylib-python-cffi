@@ -4,6 +4,9 @@ from typing import Any
 def pointer(struct):
     ...
 
+def attach_audio_stream_processor(stream: AudioStream,processor: Any,) -> None:
+        """"""
+        ...
 def begin_blend_mode(mode: int,) -> None:
         """Begin blending mode (alpha, additive, multiplied, subtract, custom)"""
         ...
@@ -67,12 +70,6 @@ def check_collision_spheres(center1: Vector3,radius1: float,center2: Vector3,rad
 def clear_background(color: Color,) -> None:
         """Set background color (framebuffer clear color)"""
         ...
-def clear_directory_files() -> None:
-        """Clear directory files paths buffers (free memory)"""
-        ...
-def clear_dropped_files() -> None:
-        """Clear dropped files paths buffer (free memory)"""
-        ...
 def clear_window_state(flags: int,) -> None:
         """Clear window configuration state flags"""
         ...
@@ -111,8 +108,8 @@ def color_to_hsv(color: Color,) -> Vector3:
 def color_to_int(color: Color,) -> int:
         """Get hexadecimal value for a Color"""
         ...
-def compress_data(data: str,dataLength: int,compDataLength: Any,) -> str:
-        """Compress data (DEFLATE algorithm)"""
+def compress_data(data: str,dataSize: int,compDataSize: Any,) -> str:
+        """Compress data (DEFLATE algorithm), memory must be MemFree()"""
         ...
 def create_physics_body_circle(Vector2_0: Vector2,float_1: float,float_2: float,) -> Any:
         """struct PhysicsBodyData *CreatePhysicsBodyCircle(struct Vector2, float, float);
@@ -129,22 +126,28 @@ def create_physics_body_rectangle(Vector2_0: Vector2,float_1: float,float_2: flo
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def decode_data_base64(data: str,outputLength: Any,) -> str:
-        """Decode Base64 string data"""
+def decode_data_base64(data: str,outputSize: Any,) -> str:
+        """Decode Base64 string data, memory must be MemFree()"""
         ...
-def decompress_data(compData: str,compDataLength: int,dataLength: Any,) -> str:
-        """Decompress data (DEFLATE algorithm)"""
+def decompress_data(compData: str,compDataSize: int,dataSize: Any,) -> str:
+        """Decompress data (DEFLATE algorithm), memory must be MemFree()"""
         ...
 def destroy_physics_body(PhysicsBodyData_pointer_0: Any,) -> None:
         """void DestroyPhysicsBody(struct PhysicsBodyData *);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def detach_audio_stream_processor(stream: AudioStream,processor: Any,) -> None:
+        """"""
+        ...
 def directory_exists(dirPath: str,) -> bool:
         """Check if a directory path exists"""
         ...
 def disable_cursor() -> None:
         """Disables cursor (lock cursor)"""
+        ...
+def disable_event_waiting() -> None:
+        """Disable waiting for events on EndDrawing(), automatic events polling"""
         ...
 def draw_billboard(camera: Camera3D,texture: Texture,position: Vector3,size: float,tint: Color,) -> None:
         """Draw a billboard texture"""
@@ -398,8 +401,11 @@ def draw_triangle_strip_3d(points: Any,pointCount: int,color: Color,) -> None:
 def enable_cursor() -> None:
         """Enables cursor (unlock cursor)"""
         ...
-def encode_data_base64(data: str,dataLength: int,outputLength: Any,) -> str:
-        """Encode data to Base64 string"""
+def enable_event_waiting() -> None:
+        """Enable waiting for events on EndDrawing(), no automatic event polling"""
+        ...
+def encode_data_base64(data: str,dataSize: int,outputSize: Any,) -> str:
+        """Encode data to Base64 string, memory must be MemFree()"""
         ...
 def end_blend_mode() -> None:
         """End blending mode (reset to default: alpha blending)"""
@@ -424,6 +430,9 @@ def end_texture_mode() -> None:
         ...
 def end_vr_stereo_mode() -> None:
         """End stereo rendering (requires VR simulator)"""
+        ...
+def export_data_as_code(data: str,size: int,fileName: str,) -> bool:
+        """Export data to code (.h), returns true on success"""
         ...
 def export_font_as_code(font: Font,fileName: str,) -> bool:
         """Export font as code file, returns true on success"""
@@ -545,14 +554,8 @@ def get_color(hexValue: int,) -> Color:
 def get_current_monitor() -> int:
         """Get current connected monitor"""
         ...
-def get_directory_files(dirPath: str,count: Any,) -> str:
-        """Get filenames in a directory path (memory should be freed)"""
-        ...
 def get_directory_path(filePath: str,) -> str:
         """Get full path for a given fileName with path (uses static string)"""
-        ...
-def get_dropped_files(count: Any,) -> str:
-        """Get dropped files names (memory should be freed)"""
         ...
 def get_fps() -> int:
         """Get current FPS"""
@@ -636,7 +639,7 @@ def get_monitor_count() -> int:
         """Get number of connected monitors"""
         ...
 def get_monitor_height(monitor: int,) -> int:
-        """Get specified monitor height (max available by monitor)"""
+        """Get specified monitor height (current video mode used by monitor)"""
         ...
 def get_monitor_name(monitor: int,) -> str:
         """Get the human-readable, UTF-8 encoded name of the primary monitor"""
@@ -654,7 +657,7 @@ def get_monitor_refresh_rate(monitor: int,) -> int:
         """Get specified monitor refresh rate"""
         ...
 def get_monitor_width(monitor: int,) -> int:
-        """Get specified monitor width (max available by monitor)"""
+        """Get specified monitor width (current video mode used by monitor)"""
         ...
 def get_mouse_delta() -> Vector2:
         """Get mouse delta between frames"""
@@ -722,9 +725,6 @@ def get_ray_collision_box(ray: Ray,box: BoundingBox,) -> RayCollision:
         ...
 def get_ray_collision_mesh(ray: Ray,mesh: Mesh,transform: Matrix,) -> RayCollision:
         """Get collision info between ray and mesh"""
-        ...
-def get_ray_collision_model(ray: Ray,model: Model,) -> RayCollision:
-        """Get collision info between ray and model"""
         ...
 def get_ray_collision_quad(ray: Ray,p1: Vector3,p2: Vector3,p3: Vector3,p4: Vector3,) -> RayCollision:
         """Get collision info between ray and quad"""
@@ -818,23 +818,23 @@ def gui_clear_icon_pixel(int_0: int,int_1: int,int_2: int,) -> None:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def gui_color_bar_alpha(Rectangle_0: Rectangle,float_1: float,) -> float:
-        """float GuiColorBarAlpha(struct Rectangle, float);
+def gui_color_bar_alpha(Rectangle_0: Rectangle,str_1: str,float_2: float,) -> float:
+        """float GuiColorBarAlpha(struct Rectangle, char *, float);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def gui_color_bar_hue(Rectangle_0: Rectangle,float_1: float,) -> float:
-        """float GuiColorBarHue(struct Rectangle, float);
+def gui_color_bar_hue(Rectangle_0: Rectangle,str_1: str,float_2: float,) -> float:
+        """float GuiColorBarHue(struct Rectangle, char *, float);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def gui_color_panel(Rectangle_0: Rectangle,Color_1: Color,) -> Color:
-        """struct Color GuiColorPanel(struct Rectangle, struct Color);
+def gui_color_panel(Rectangle_0: Rectangle,str_1: str,Color_2: Color,) -> Color:
+        """struct Color GuiColorPanel(struct Rectangle, char *, struct Color);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def gui_color_picker(Rectangle_0: Rectangle,Color_1: Color,) -> Color:
-        """struct Color GuiColorPicker(struct Rectangle, struct Color);
+def gui_color_picker(Rectangle_0: Rectangle,str_1: str,Color_2: Color,) -> Color:
+        """struct Color GuiColorPicker(struct Rectangle, char *, struct Color);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -898,8 +898,8 @@ def gui_get_style(int_0: int,int_1: int,) -> int:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def gui_grid(Rectangle_0: Rectangle,float_1: float,int_2: int,) -> Vector2:
-        """struct Vector2 GuiGrid(struct Rectangle, float, int);
+def gui_grid(Rectangle_0: Rectangle,str_1: str,float_2: float,int_3: int,) -> Vector2:
+        """struct Vector2 GuiGrid(struct Rectangle, char *, float, int);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -963,8 +963,8 @@ def gui_message_box(Rectangle_0: Rectangle,str_1: str,str_2: str,str_3: str,) ->
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def gui_panel(Rectangle_0: Rectangle,) -> None:
-        """void GuiPanel(struct Rectangle);
+def gui_panel(Rectangle_0: Rectangle,str_1: str,) -> None:
+        """void GuiPanel(struct Rectangle, char *);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -973,13 +973,8 @@ def gui_progress_bar(Rectangle_0: Rectangle,str_1: str,str_2: str,float_3: float
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def gui_scroll_bar(Rectangle_0: Rectangle,int_1: int,int_2: int,int_3: int,) -> int:
-        """int GuiScrollBar(struct Rectangle, int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
-        ...
-def gui_scroll_panel(Rectangle_0: Rectangle,Rectangle_1: Rectangle,Vector2_pointer_2: Any,) -> Rectangle:
-        """struct Rectangle GuiScrollPanel(struct Rectangle, struct Rectangle, struct Vector2 *);
+def gui_scroll_panel(Rectangle_0: Rectangle,str_1: str,Rectangle_2: Rectangle,Vector2_pointer_3: Any,) -> Rectangle:
+        """struct Rectangle GuiScrollPanel(struct Rectangle, char *, struct Rectangle, struct Vector2 *);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -995,6 +990,11 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def gui_set_icon_pixel(int_0: int,int_1: int,int_2: int,) -> None:
         """void GuiSetIconPixel(int, int, int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def gui_set_icon_scale(unsignedint_0: int,) -> None:
+        """void GuiSetIconScale(unsigned int);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -1038,8 +1038,8 @@ def gui_text_box_multi(Rectangle_0: Rectangle,str_1: str,int_2: int,_Bool_3: boo
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def gui_text_input_box(Rectangle_0: Rectangle,str_1: str,str_2: str,str_3: str,str_4: str,) -> int:
-        """int GuiTextInputBox(struct Rectangle, char *, char *, char *, char *);
+def gui_text_input_box(Rectangle_0: Rectangle,str_1: str,str_2: str,str_3: str,str_4: str,int_5: int,int_pointer_6: Any,) -> int:
+        """int GuiTextInputBox(struct Rectangle, char *, char *, char *, char *, int, int *);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
@@ -1271,6 +1271,9 @@ def is_mouse_button_up(button: int,) -> bool:
 def is_music_stream_playing(music: Music,) -> bool:
         """Check if music is playing"""
         ...
+def is_path_file(path: str,) -> bool:
+        """Check if a given path is a file or a directory"""
+        ...
 def is_sound_playing(sound: Sound,) -> bool:
         """Check if a sound is currently playing"""
         ...
@@ -1303,6 +1306,15 @@ def load_audio_stream(sampleRate: int,sampleSize: int,channels: int,) -> AudioSt
         ...
 def load_codepoints(text: str,count: Any,) -> Any:
         """Load all codepoints from a UTF-8 text string, codepoints count returned by parameter"""
+        ...
+def load_directory_files(dirPath: str,) -> FilePathList:
+        """Load directory filepaths"""
+        ...
+def load_directory_files_ex(basePath: str,filter: str,scanSubdirs: bool,) -> FilePathList:
+        """Load directory filepaths with extension filtering and recursive directory scan"""
+        ...
+def load_dropped_files() -> FilePathList:
+        """Load dropped filepaths"""
         ...
 def load_file_data(fileName: str,bytesRead: Any,) -> str:
         """Load file data as byte array (read)"""
@@ -1503,6 +1515,9 @@ def seek_music_stream(music: Music,position: float,) -> None:
         ...
 def set_audio_stream_buffer_size_default(size: int,) -> None:
         """Default size for new audio streams"""
+        ...
+def set_audio_stream_callback(stream: AudioStream,callback: Any,) -> None:
+        """Audio thread callback to request new data"""
         ...
 def set_audio_stream_pan(stream: AudioStream,pan: float,) -> None:
         """Set pan for audio stream (0.5 is centered)"""
@@ -1750,6 +1765,12 @@ def unload_audio_stream(stream: AudioStream,) -> None:
 def unload_codepoints(codepoints: Any,) -> None:
         """Unload codepoints data from memory"""
         ...
+def unload_directory_files(files: FilePathList,) -> None:
+        """Unload filepaths"""
+        ...
+def unload_dropped_files(files: FilePathList,) -> None:
+        """Unload dropped filepaths"""
+        ...
 def unload_file_data(data: str,) -> None:
         """Unload file data allocated by LoadFileData()"""
         ...
@@ -1845,8 +1866,8 @@ def update_texture_rec(texture: Texture,rec: Rectangle,pixels: Any,) -> None:
 def upload_mesh(mesh: Any,dynamic: bool,) -> None:
         """Upload mesh vertex data in GPU and provide VAO/VBO ids"""
         ...
-def wait_time(ms: float,) -> None:
-        """Wait for some milliseconds (halt program execution)"""
+def wait_time(seconds: float,) -> None:
+        """Wait for some time (halt program execution)"""
         ...
 def wave_copy(wave: Wave,) -> Wave:
         """Copy a wave to a new wave"""
@@ -2390,6 +2411,16 @@ def rl_set_blend_mode(int_0: int,) -> None:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
+def rl_set_framebuffer_height(int_0: int,) -> None:
+        """void rlSetFramebufferHeight(int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def rl_set_framebuffer_width(int_0: int,) -> None:
+        """void rlSetFramebufferWidth(int);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def rl_set_line_width(float_0: float,) -> None:
         """void rlSetLineWidth(float);
 
@@ -2562,8 +2593,9 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 class AudioStream:
     """ struct """
-    def __init__(self, buffer, sampleRate, sampleSize, channels):
+    def __init__(self, buffer, processor, sampleRate, sampleSize, channels):
         self.buffer=buffer
+        self.processor=processor
         self.sampleRate=sampleRate
         self.sampleSize=sampleSize
         self.channels=channels
@@ -2607,6 +2639,11 @@ class Color:
         self.g=g
         self.b=b
         self.a=a
+class FilePathList:
+    """ struct """
+    def __init__(self, count, paths):
+        self.count=count
+        self.paths=paths
 class Font:
     """ struct """
     def __init__(self, baseSize, glyphCount, glyphPadding, texture, recs, glyphs):
@@ -2907,6 +2944,32 @@ class Wave:
         self.sampleSize=sampleSize
         self.channels=channels
         self.data=data
+class rlDrawCall:
+    """ struct """
+    def __init__(self, mode, vertexCount, vertexAlignment, textureId):
+        self.mode=mode
+        self.vertexCount=vertexCount
+        self.vertexAlignment=vertexAlignment
+        self.textureId=textureId
+class rlRenderBatch:
+    """ struct """
+    def __init__(self, bufferCount, currentBuffer, vertexBuffer, draws, drawCounter, currentDepth):
+        self.bufferCount=bufferCount
+        self.currentBuffer=currentBuffer
+        self.vertexBuffer=vertexBuffer
+        self.draws=draws
+        self.drawCounter=drawCounter
+        self.currentDepth=currentDepth
+class rlVertexBuffer:
+    """ struct """
+    def __init__(self, elementCount, vertices, texcoords, colors, indices, vaoId, vboId):
+        self.elementCount=elementCount
+        self.vertices=vertices
+        self.texcoords=texcoords
+        self.colors=colors
+        self.indices=indices
+        self.vaoId=vaoId
+        self.vboId=vboId
 from enum import IntEnum
 
 class ConfigFlags(IntEnum):
@@ -2922,6 +2985,7 @@ class ConfigFlags(IntEnum):
     FLAG_WINDOW_ALWAYS_RUN = 256
     FLAG_WINDOW_TRANSPARENT = 16
     FLAG_WINDOW_HIGHDPI = 8192
+    FLAG_WINDOW_MOUSE_PASSTHROUGH = 16384
     FLAG_MSAA_4X_HINT = 32
     FLAG_INTERLACED_HINT = 65536
 
@@ -3211,7 +3275,7 @@ class BlendMode(IntEnum):
     BLEND_MULTIPLIED = 2
     BLEND_ADD_COLORS = 3
     BLEND_SUBTRACT_COLORS = 4
-    BLEND_ALPHA_PREMUL = 5
+    BLEND_ALPHA_PREMULTIPLY = 5
     BLEND_CUSTOM = 6
 
 class Gesture(IntEnum):
@@ -3243,16 +3307,16 @@ class NPatchLayout(IntEnum):
     NPATCH_THREE_PATCH_VERTICAL = 1
     NPATCH_THREE_PATCH_HORIZONTAL = 2
 
-class GuiControlState(IntEnum):
-    GUI_STATE_NORMAL = 0
-    GUI_STATE_FOCUSED = 1
-    GUI_STATE_PRESSED = 2
-    GUI_STATE_DISABLED = 3
+class GuiState(IntEnum):
+    STATE_NORMAL = 0
+    STATE_FOCUSED = 1
+    STATE_PRESSED = 2
+    STATE_DISABLED = 3
 
 class GuiTextAlignment(IntEnum):
-    GUI_TEXT_ALIGN_LEFT = 0
-    GUI_TEXT_ALIGN_CENTER = 1
-    GUI_TEXT_ALIGN_RIGHT = 2
+    TEXT_ALIGN_LEFT = 0
+    TEXT_ALIGN_CENTER = 1
+    TEXT_ALIGN_RIGHT = 2
 
 class GuiControl(IntEnum):
     DEFAULT = 0
@@ -3306,27 +3370,6 @@ class GuiSliderProperty(IntEnum):
 class GuiProgressBarProperty(IntEnum):
     PROGRESS_PADDING = 16
 
-class GuiCheckBoxProperty(IntEnum):
-    CHECK_PADDING = 16
-
-class GuiComboBoxProperty(IntEnum):
-    COMBO_BUTTON_WIDTH = 16
-    COMBO_BUTTON_PADDING = 17
-
-class GuiDropdownBoxProperty(IntEnum):
-    ARROW_PADDING = 16
-    DROPDOWN_ITEMS_PADDING = 17
-
-class GuiTextBoxProperty(IntEnum):
-    TEXT_INNER_PADDING = 16
-    TEXT_LINES_PADDING = 17
-    COLOR_SELECTED_FG = 18
-    COLOR_SELECTED_BG = 19
-
-class GuiSpinnerProperty(IntEnum):
-    SPIN_BUTTON_WIDTH = 16
-    SPIN_BUTTON_PADDING = 17
-
 class GuiScrollBarProperty(IntEnum):
     ARROWS_SIZE = 16
     ARROWS_VISIBLE = 17
@@ -3335,13 +3378,28 @@ class GuiScrollBarProperty(IntEnum):
     SCROLL_PADDING = 20
     SCROLL_SPEED = 21
 
-class GuiScrollBarSide(IntEnum):
-    SCROLLBAR_LEFT_SIDE = 0
-    SCROLLBAR_RIGHT_SIDE = 1
+class GuiCheckBoxProperty(IntEnum):
+    CHECK_PADDING = 16
+
+class GuiComboBoxProperty(IntEnum):
+    COMBO_BUTTON_WIDTH = 16
+    COMBO_BUTTON_SPACING = 17
+
+class GuiDropdownBoxProperty(IntEnum):
+    ARROW_PADDING = 16
+    DROPDOWN_ITEMS_SPACING = 17
+
+class GuiTextBoxProperty(IntEnum):
+    TEXT_INNER_PADDING = 16
+    TEXT_LINES_SPACING = 17
+
+class GuiSpinnerProperty(IntEnum):
+    SPIN_BUTTON_WIDTH = 16
+    SPIN_BUTTON_SPACING = 17
 
 class GuiListViewProperty(IntEnum):
     LIST_ITEMS_HEIGHT = 16
-    LIST_ITEMS_PADDING = 17
+    LIST_ITEMS_SPACING = 17
     SCROLLBAR_WIDTH = 18
     SCROLLBAR_SIDE = 19
 
@@ -3352,261 +3410,261 @@ class GuiColorPickerProperty(IntEnum):
     HUEBAR_SELECTOR_HEIGHT = 19
     HUEBAR_SELECTOR_OVERFLOW = 20
 
-class guiIconName(IntEnum):
-    RICON_NONE = 0
-    RICON_FOLDER_FILE_OPEN = 1
-    RICON_FILE_SAVE_CLASSIC = 2
-    RICON_FOLDER_OPEN = 3
-    RICON_FOLDER_SAVE = 4
-    RICON_FILE_OPEN = 5
-    RICON_FILE_SAVE = 6
-    RICON_FILE_EXPORT = 7
-    RICON_FILE_NEW = 8
-    RICON_FILE_DELETE = 9
-    RICON_FILETYPE_TEXT = 10
-    RICON_FILETYPE_AUDIO = 11
-    RICON_FILETYPE_IMAGE = 12
-    RICON_FILETYPE_PLAY = 13
-    RICON_FILETYPE_VIDEO = 14
-    RICON_FILETYPE_INFO = 15
-    RICON_FILE_COPY = 16
-    RICON_FILE_CUT = 17
-    RICON_FILE_PASTE = 18
-    RICON_CURSOR_HAND = 19
-    RICON_CURSOR_POINTER = 20
-    RICON_CURSOR_CLASSIC = 21
-    RICON_PENCIL = 22
-    RICON_PENCIL_BIG = 23
-    RICON_BRUSH_CLASSIC = 24
-    RICON_BRUSH_PAINTER = 25
-    RICON_WATER_DROP = 26
-    RICON_COLOR_PICKER = 27
-    RICON_RUBBER = 28
-    RICON_COLOR_BUCKET = 29
-    RICON_TEXT_T = 30
-    RICON_TEXT_A = 31
-    RICON_SCALE = 32
-    RICON_RESIZE = 33
-    RICON_FILTER_POINT = 34
-    RICON_FILTER_BILINEAR = 35
-    RICON_CROP = 36
-    RICON_CROP_ALPHA = 37
-    RICON_SQUARE_TOGGLE = 38
-    RICON_SYMMETRY = 39
-    RICON_SYMMETRY_HORIZONTAL = 40
-    RICON_SYMMETRY_VERTICAL = 41
-    RICON_LENS = 42
-    RICON_LENS_BIG = 43
-    RICON_EYE_ON = 44
-    RICON_EYE_OFF = 45
-    RICON_FILTER_TOP = 46
-    RICON_FILTER = 47
-    RICON_TARGET_POINT = 48
-    RICON_TARGET_SMALL = 49
-    RICON_TARGET_BIG = 50
-    RICON_TARGET_MOVE = 51
-    RICON_CURSOR_MOVE = 52
-    RICON_CURSOR_SCALE = 53
-    RICON_CURSOR_SCALE_RIGHT = 54
-    RICON_CURSOR_SCALE_LEFT = 55
-    RICON_UNDO = 56
-    RICON_REDO = 57
-    RICON_REREDO = 58
-    RICON_MUTATE = 59
-    RICON_ROTATE = 60
-    RICON_REPEAT = 61
-    RICON_SHUFFLE = 62
-    RICON_EMPTYBOX = 63
-    RICON_TARGET = 64
-    RICON_TARGET_SMALL_FILL = 65
-    RICON_TARGET_BIG_FILL = 66
-    RICON_TARGET_MOVE_FILL = 67
-    RICON_CURSOR_MOVE_FILL = 68
-    RICON_CURSOR_SCALE_FILL = 69
-    RICON_CURSOR_SCALE_RIGHT_FILL = 70
-    RICON_CURSOR_SCALE_LEFT_FILL = 71
-    RICON_UNDO_FILL = 72
-    RICON_REDO_FILL = 73
-    RICON_REREDO_FILL = 74
-    RICON_MUTATE_FILL = 75
-    RICON_ROTATE_FILL = 76
-    RICON_REPEAT_FILL = 77
-    RICON_SHUFFLE_FILL = 78
-    RICON_EMPTYBOX_SMALL = 79
-    RICON_BOX = 80
-    RICON_BOX_TOP = 81
-    RICON_BOX_TOP_RIGHT = 82
-    RICON_BOX_RIGHT = 83
-    RICON_BOX_BOTTOM_RIGHT = 84
-    RICON_BOX_BOTTOM = 85
-    RICON_BOX_BOTTOM_LEFT = 86
-    RICON_BOX_LEFT = 87
-    RICON_BOX_TOP_LEFT = 88
-    RICON_BOX_CENTER = 89
-    RICON_BOX_CIRCLE_MASK = 90
-    RICON_POT = 91
-    RICON_ALPHA_MULTIPLY = 92
-    RICON_ALPHA_CLEAR = 93
-    RICON_DITHERING = 94
-    RICON_MIPMAPS = 95
-    RICON_BOX_GRID = 96
-    RICON_GRID = 97
-    RICON_BOX_CORNERS_SMALL = 98
-    RICON_BOX_CORNERS_BIG = 99
-    RICON_FOUR_BOXES = 100
-    RICON_GRID_FILL = 101
-    RICON_BOX_MULTISIZE = 102
-    RICON_ZOOM_SMALL = 103
-    RICON_ZOOM_MEDIUM = 104
-    RICON_ZOOM_BIG = 105
-    RICON_ZOOM_ALL = 106
-    RICON_ZOOM_CENTER = 107
-    RICON_BOX_DOTS_SMALL = 108
-    RICON_BOX_DOTS_BIG = 109
-    RICON_BOX_CONCENTRIC = 110
-    RICON_BOX_GRID_BIG = 111
-    RICON_OK_TICK = 112
-    RICON_CROSS = 113
-    RICON_ARROW_LEFT = 114
-    RICON_ARROW_RIGHT = 115
-    RICON_ARROW_DOWN = 116
-    RICON_ARROW_UP = 117
-    RICON_ARROW_LEFT_FILL = 118
-    RICON_ARROW_RIGHT_FILL = 119
-    RICON_ARROW_DOWN_FILL = 120
-    RICON_ARROW_UP_FILL = 121
-    RICON_AUDIO = 122
-    RICON_FX = 123
-    RICON_WAVE = 124
-    RICON_WAVE_SINUS = 125
-    RICON_WAVE_SQUARE = 126
-    RICON_WAVE_TRIANGULAR = 127
-    RICON_CROSS_SMALL = 128
-    RICON_PLAYER_PREVIOUS = 129
-    RICON_PLAYER_PLAY_BACK = 130
-    RICON_PLAYER_PLAY = 131
-    RICON_PLAYER_PAUSE = 132
-    RICON_PLAYER_STOP = 133
-    RICON_PLAYER_NEXT = 134
-    RICON_PLAYER_RECORD = 135
-    RICON_MAGNET = 136
-    RICON_LOCK_CLOSE = 137
-    RICON_LOCK_OPEN = 138
-    RICON_CLOCK = 139
-    RICON_TOOLS = 140
-    RICON_GEAR = 141
-    RICON_GEAR_BIG = 142
-    RICON_BIN = 143
-    RICON_HAND_POINTER = 144
-    RICON_LASER = 145
-    RICON_COIN = 146
-    RICON_EXPLOSION = 147
-    RICON_1UP = 148
-    RICON_PLAYER = 149
-    RICON_PLAYER_JUMP = 150
-    RICON_KEY = 151
-    RICON_DEMON = 152
-    RICON_TEXT_POPUP = 153
-    RICON_GEAR_EX = 154
-    RICON_CRACK = 155
-    RICON_CRACK_POINTS = 156
-    RICON_STAR = 157
-    RICON_DOOR = 158
-    RICON_EXIT = 159
-    RICON_MODE_2D = 160
-    RICON_MODE_3D = 161
-    RICON_CUBE = 162
-    RICON_CUBE_FACE_TOP = 163
-    RICON_CUBE_FACE_LEFT = 164
-    RICON_CUBE_FACE_FRONT = 165
-    RICON_CUBE_FACE_BOTTOM = 166
-    RICON_CUBE_FACE_RIGHT = 167
-    RICON_CUBE_FACE_BACK = 168
-    RICON_CAMERA = 169
-    RICON_SPECIAL = 170
-    RICON_LINK_NET = 171
-    RICON_LINK_BOXES = 172
-    RICON_LINK_MULTI = 173
-    RICON_LINK = 174
-    RICON_LINK_BROKE = 175
-    RICON_TEXT_NOTES = 176
-    RICON_NOTEBOOK = 177
-    RICON_SUITCASE = 178
-    RICON_SUITCASE_ZIP = 179
-    RICON_MAILBOX = 180
-    RICON_MONITOR = 181
-    RICON_PRINTER = 182
-    RICON_PHOTO_CAMERA = 183
-    RICON_PHOTO_CAMERA_FLASH = 184
-    RICON_HOUSE = 185
-    RICON_HEART = 186
-    RICON_CORNER = 187
-    RICON_VERTICAL_BARS = 188
-    RICON_VERTICAL_BARS_FILL = 189
-    RICON_LIFE_BARS = 190
-    RICON_INFO = 191
-    RICON_CROSSLINE = 192
-    RICON_HELP = 193
-    RICON_FILETYPE_ALPHA = 194
-    RICON_FILETYPE_HOME = 195
-    RICON_LAYERS_VISIBLE = 196
-    RICON_LAYERS = 197
-    RICON_WINDOW = 198
-    RICON_HIDPI = 199
-    RICON_200 = 200
-    RICON_201 = 201
-    RICON_202 = 202
-    RICON_203 = 203
-    RICON_204 = 204
-    RICON_205 = 205
-    RICON_206 = 206
-    RICON_207 = 207
-    RICON_208 = 208
-    RICON_209 = 209
-    RICON_210 = 210
-    RICON_211 = 211
-    RICON_212 = 212
-    RICON_213 = 213
-    RICON_214 = 214
-    RICON_215 = 215
-    RICON_216 = 216
-    RICON_217 = 217
-    RICON_218 = 218
-    RICON_219 = 219
-    RICON_220 = 220
-    RICON_221 = 221
-    RICON_222 = 222
-    RICON_223 = 223
-    RICON_224 = 224
-    RICON_225 = 225
-    RICON_226 = 226
-    RICON_227 = 227
-    RICON_228 = 228
-    RICON_229 = 229
-    RICON_230 = 230
-    RICON_231 = 231
-    RICON_232 = 232
-    RICON_233 = 233
-    RICON_234 = 234
-    RICON_235 = 235
-    RICON_236 = 236
-    RICON_237 = 237
-    RICON_238 = 238
-    RICON_239 = 239
-    RICON_240 = 240
-    RICON_241 = 241
-    RICON_242 = 242
-    RICON_243 = 243
-    RICON_244 = 244
-    RICON_245 = 245
-    RICON_246 = 246
-    RICON_247 = 247
-    RICON_248 = 248
-    RICON_249 = 249
-    RICON_250 = 250
-    RICON_251 = 251
-    RICON_252 = 252
-    RICON_253 = 253
-    RICON_254 = 254
-    RICON_255 = 255
+class GuiIconName(IntEnum):
+    ICON_NONE = 0
+    ICON_FOLDER_FILE_OPEN = 1
+    ICON_FILE_SAVE_CLASSIC = 2
+    ICON_FOLDER_OPEN = 3
+    ICON_FOLDER_SAVE = 4
+    ICON_FILE_OPEN = 5
+    ICON_FILE_SAVE = 6
+    ICON_FILE_EXPORT = 7
+    ICON_FILE_ADD = 8
+    ICON_FILE_DELETE = 9
+    ICON_FILETYPE_TEXT = 10
+    ICON_FILETYPE_AUDIO = 11
+    ICON_FILETYPE_IMAGE = 12
+    ICON_FILETYPE_PLAY = 13
+    ICON_FILETYPE_VIDEO = 14
+    ICON_FILETYPE_INFO = 15
+    ICON_FILE_COPY = 16
+    ICON_FILE_CUT = 17
+    ICON_FILE_PASTE = 18
+    ICON_CURSOR_HAND = 19
+    ICON_CURSOR_POINTER = 20
+    ICON_CURSOR_CLASSIC = 21
+    ICON_PENCIL = 22
+    ICON_PENCIL_BIG = 23
+    ICON_BRUSH_CLASSIC = 24
+    ICON_BRUSH_PAINTER = 25
+    ICON_WATER_DROP = 26
+    ICON_COLOR_PICKER = 27
+    ICON_RUBBER = 28
+    ICON_COLOR_BUCKET = 29
+    ICON_TEXT_T = 30
+    ICON_TEXT_A = 31
+    ICON_SCALE = 32
+    ICON_RESIZE = 33
+    ICON_FILTER_POINT = 34
+    ICON_FILTER_BILINEAR = 35
+    ICON_CROP = 36
+    ICON_CROP_ALPHA = 37
+    ICON_SQUARE_TOGGLE = 38
+    ICON_SYMMETRY = 39
+    ICON_SYMMETRY_HORIZONTAL = 40
+    ICON_SYMMETRY_VERTICAL = 41
+    ICON_LENS = 42
+    ICON_LENS_BIG = 43
+    ICON_EYE_ON = 44
+    ICON_EYE_OFF = 45
+    ICON_FILTER_TOP = 46
+    ICON_FILTER = 47
+    ICON_TARGET_POINT = 48
+    ICON_TARGET_SMALL = 49
+    ICON_TARGET_BIG = 50
+    ICON_TARGET_MOVE = 51
+    ICON_CURSOR_MOVE = 52
+    ICON_CURSOR_SCALE = 53
+    ICON_CURSOR_SCALE_RIGHT = 54
+    ICON_CURSOR_SCALE_LEFT = 55
+    ICON_UNDO = 56
+    ICON_REDO = 57
+    ICON_REREDO = 58
+    ICON_MUTATE = 59
+    ICON_ROTATE = 60
+    ICON_REPEAT = 61
+    ICON_SHUFFLE = 62
+    ICON_EMPTYBOX = 63
+    ICON_TARGET = 64
+    ICON_TARGET_SMALL_FILL = 65
+    ICON_TARGET_BIG_FILL = 66
+    ICON_TARGET_MOVE_FILL = 67
+    ICON_CURSOR_MOVE_FILL = 68
+    ICON_CURSOR_SCALE_FILL = 69
+    ICON_CURSOR_SCALE_RIGHT_FILL = 70
+    ICON_CURSOR_SCALE_LEFT_FILL = 71
+    ICON_UNDO_FILL = 72
+    ICON_REDO_FILL = 73
+    ICON_REREDO_FILL = 74
+    ICON_MUTATE_FILL = 75
+    ICON_ROTATE_FILL = 76
+    ICON_REPEAT_FILL = 77
+    ICON_SHUFFLE_FILL = 78
+    ICON_EMPTYBOX_SMALL = 79
+    ICON_BOX = 80
+    ICON_BOX_TOP = 81
+    ICON_BOX_TOP_RIGHT = 82
+    ICON_BOX_RIGHT = 83
+    ICON_BOX_BOTTOM_RIGHT = 84
+    ICON_BOX_BOTTOM = 85
+    ICON_BOX_BOTTOM_LEFT = 86
+    ICON_BOX_LEFT = 87
+    ICON_BOX_TOP_LEFT = 88
+    ICON_BOX_CENTER = 89
+    ICON_BOX_CIRCLE_MASK = 90
+    ICON_POT = 91
+    ICON_ALPHA_MULTIPLY = 92
+    ICON_ALPHA_CLEAR = 93
+    ICON_DITHERING = 94
+    ICON_MIPMAPS = 95
+    ICON_BOX_GRID = 96
+    ICON_GRID = 97
+    ICON_BOX_CORNERS_SMALL = 98
+    ICON_BOX_CORNERS_BIG = 99
+    ICON_FOUR_BOXES = 100
+    ICON_GRID_FILL = 101
+    ICON_BOX_MULTISIZE = 102
+    ICON_ZOOM_SMALL = 103
+    ICON_ZOOM_MEDIUM = 104
+    ICON_ZOOM_BIG = 105
+    ICON_ZOOM_ALL = 106
+    ICON_ZOOM_CENTER = 107
+    ICON_BOX_DOTS_SMALL = 108
+    ICON_BOX_DOTS_BIG = 109
+    ICON_BOX_CONCENTRIC = 110
+    ICON_BOX_GRID_BIG = 111
+    ICON_OK_TICK = 112
+    ICON_CROSS = 113
+    ICON_ARROW_LEFT = 114
+    ICON_ARROW_RIGHT = 115
+    ICON_ARROW_DOWN = 116
+    ICON_ARROW_UP = 117
+    ICON_ARROW_LEFT_FILL = 118
+    ICON_ARROW_RIGHT_FILL = 119
+    ICON_ARROW_DOWN_FILL = 120
+    ICON_ARROW_UP_FILL = 121
+    ICON_AUDIO = 122
+    ICON_FX = 123
+    ICON_WAVE = 124
+    ICON_WAVE_SINUS = 125
+    ICON_WAVE_SQUARE = 126
+    ICON_WAVE_TRIANGULAR = 127
+    ICON_CROSS_SMALL = 128
+    ICON_PLAYER_PREVIOUS = 129
+    ICON_PLAYER_PLAY_BACK = 130
+    ICON_PLAYER_PLAY = 131
+    ICON_PLAYER_PAUSE = 132
+    ICON_PLAYER_STOP = 133
+    ICON_PLAYER_NEXT = 134
+    ICON_PLAYER_RECORD = 135
+    ICON_MAGNET = 136
+    ICON_LOCK_CLOSE = 137
+    ICON_LOCK_OPEN = 138
+    ICON_CLOCK = 139
+    ICON_TOOLS = 140
+    ICON_GEAR = 141
+    ICON_GEAR_BIG = 142
+    ICON_BIN = 143
+    ICON_HAND_POINTER = 144
+    ICON_LASER = 145
+    ICON_COIN = 146
+    ICON_EXPLOSION = 147
+    ICON_1UP = 148
+    ICON_PLAYER = 149
+    ICON_PLAYER_JUMP = 150
+    ICON_KEY = 151
+    ICON_DEMON = 152
+    ICON_TEXT_POPUP = 153
+    ICON_GEAR_EX = 154
+    ICON_CRACK = 155
+    ICON_CRACK_POINTS = 156
+    ICON_STAR = 157
+    ICON_DOOR = 158
+    ICON_EXIT = 159
+    ICON_MODE_2D = 160
+    ICON_MODE_3D = 161
+    ICON_CUBE = 162
+    ICON_CUBE_FACE_TOP = 163
+    ICON_CUBE_FACE_LEFT = 164
+    ICON_CUBE_FACE_FRONT = 165
+    ICON_CUBE_FACE_BOTTOM = 166
+    ICON_CUBE_FACE_RIGHT = 167
+    ICON_CUBE_FACE_BACK = 168
+    ICON_CAMERA = 169
+    ICON_SPECIAL = 170
+    ICON_LINK_NET = 171
+    ICON_LINK_BOXES = 172
+    ICON_LINK_MULTI = 173
+    ICON_LINK = 174
+    ICON_LINK_BROKE = 175
+    ICON_TEXT_NOTES = 176
+    ICON_NOTEBOOK = 177
+    ICON_SUITCASE = 178
+    ICON_SUITCASE_ZIP = 179
+    ICON_MAILBOX = 180
+    ICON_MONITOR = 181
+    ICON_PRINTER = 182
+    ICON_PHOTO_CAMERA = 183
+    ICON_PHOTO_CAMERA_FLASH = 184
+    ICON_HOUSE = 185
+    ICON_HEART = 186
+    ICON_CORNER = 187
+    ICON_VERTICAL_BARS = 188
+    ICON_VERTICAL_BARS_FILL = 189
+    ICON_LIFE_BARS = 190
+    ICON_INFO = 191
+    ICON_CROSSLINE = 192
+    ICON_HELP = 193
+    ICON_FILETYPE_ALPHA = 194
+    ICON_FILETYPE_HOME = 195
+    ICON_LAYERS_VISIBLE = 196
+    ICON_LAYERS = 197
+    ICON_WINDOW = 198
+    ICON_HIDPI = 199
+    ICON_FILETYPE_BINARY = 200
+    ICON_HEX = 201
+    ICON_SHIELD = 202
+    ICON_FILE_NEW = 203
+    ICON_FOLDER_ADD = 204
+    ICON_ALARM = 205
+    ICON_206 = 206
+    ICON_207 = 207
+    ICON_208 = 208
+    ICON_209 = 209
+    ICON_210 = 210
+    ICON_211 = 211
+    ICON_212 = 212
+    ICON_213 = 213
+    ICON_214 = 214
+    ICON_215 = 215
+    ICON_216 = 216
+    ICON_217 = 217
+    ICON_218 = 218
+    ICON_219 = 219
+    ICON_220 = 220
+    ICON_221 = 221
+    ICON_222 = 222
+    ICON_223 = 223
+    ICON_224 = 224
+    ICON_225 = 225
+    ICON_226 = 226
+    ICON_227 = 227
+    ICON_228 = 228
+    ICON_229 = 229
+    ICON_230 = 230
+    ICON_231 = 231
+    ICON_232 = 232
+    ICON_233 = 233
+    ICON_234 = 234
+    ICON_235 = 235
+    ICON_236 = 236
+    ICON_237 = 237
+    ICON_238 = 238
+    ICON_239 = 239
+    ICON_240 = 240
+    ICON_241 = 241
+    ICON_242 = 242
+    ICON_243 = 243
+    ICON_244 = 244
+    ICON_245 = 245
+    ICON_246 = 246
+    ICON_247 = 247
+    ICON_248 = 248
+    ICON_249 = 249
+    ICON_250 = 250
+    ICON_251 = 251
+    ICON_252 = 252
+    ICON_253 = 253
+    ICON_254 = 254
+    ICON_255 = 255
 
