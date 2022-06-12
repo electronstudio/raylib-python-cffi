@@ -173,13 +173,15 @@ def build_windows():
     #include "rlgl.h"  
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
-    #include "extras/raygui.h"
+    #include "raygui.h"
     #define PHYSAC_IMPLEMENTATION
-    #include "extras/physac.h"  
+    #include "physac.h"  
     """,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
-                          include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src'],
+                          include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
+                                        'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',
+                                        'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\physac\\src'],
                           )
 
 
