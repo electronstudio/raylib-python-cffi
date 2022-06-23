@@ -62,18 +62,11 @@ typedef struct float16 {
 // Module Functions Definition - Utils math
 //----------------------------------------------------------------------------------
 // Clamp float value
-inline /* Functions may be inlined or external definition used*/ float Clamp(float value, float min, float max);
-//{
-//    float result = (value < min)? min : value;
-//
-//    if (result > max) result = max;
-//
-//    return result;
-//}
-// Calculate linear interpolation between two floats
+inline /* Functions may be inlined or external definition used*/ float Clamp(float value, float min, float max);// Calculate linear interpolation between two floats
 inline /* Functions may be inlined or external definition used*/ float Lerp(float start, float end, float amount);// Normalize input value within input range
 inline /* Functions may be inlined or external definition used*/ float Normalize(float value, float start, float end);// Remap input value within input range to output range
-inline /* Functions may be inlined or external definition used*/ float Remap(float value, float inputStart, float inputEnd, float outputStart, float outputEnd);// Check whether two given floats are almost equal
+inline /* Functions may be inlined or external definition used*/ float Remap(float value, float inputStart, float inputEnd, float outputStart, float outputEnd);// Wrap input value from min to max
+inline /* Functions may be inlined or external definition used*/ float Wrap(float value, float min, float max);// Check whether two given floats are almost equal
 inline /* Functions may be inlined or external definition used*/ int FloatEquals(float x, float y);//----------------------------------------------------------------------------------
 // Module Functions Definition - Vector2 math
 //----------------------------------------------------------------------------------

@@ -348,6 +348,7 @@ typedef struct VrStereoConfig {
 } VrStereoConfig;
 // File path list
 typedef struct FilePathList {
+    unsigned int capacity; // Filepaths max entries
     unsigned int count; // Filepaths entries count
     char **paths; // Filepaths entries
 } FilePathList;
@@ -930,7 +931,8 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void SetMousePosition(int x, int y); // Set mouse position XY
  void SetMouseOffset(int offsetX, int offsetY); // Set mouse offset
  void SetMouseScale(float scaleX, float scaleY); // Set mouse scaling
- float GetMouseWheelMove(void); // Get mouse wheel movement Y
+ float GetMouseWheelMove(void); // Get mouse wheel movement for X or Y, whichever is larger
+ Vector2 GetMouseWheelMoveV(void); // Get mouse wheel movement for both X and Y
  void SetMouseCursor(int cursor); // Set mouse cursor
 // Input-related functions: touch
  int GetTouchX(void); // Get touch position X for touch point 0 (relative to screen size)

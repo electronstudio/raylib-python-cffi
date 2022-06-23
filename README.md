@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 4.0.0
+# Python Bindings for Raylib 4.2
 
 New CFFI API static bindings.
 * Automatically generated to be as close as possible to 
@@ -6,7 +6,7 @@ original Raylib.
 * Faster, fewer bugs and easier to maintain than ctypes.
 * Commercial-friendly license.
 * Docstrings and auto-completion.
-* **Now includes extra libraries: raygui, rlgl and physac**
+* **Now includes extra libraries: raymath, raygui, rlgl and physac**
 
 [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
 
@@ -71,6 +71,7 @@ Use [the Python API](https://electronstudio.github.io/raylib-python-cffi/pyray.h
 # App showcase
 
 [Tanki](https://github.com/pkulev/tanki)
+
 [Alloy Bloxel Editor](https://pebaz.itch.io/alloy-bloxel-editor)
 
 Add your app here!
