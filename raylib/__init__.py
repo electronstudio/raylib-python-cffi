@@ -15,9 +15,9 @@
 from ._raylib_cffi import ffi, lib as rl
 from raylib._raylib_cffi.lib import *
 from raylib.colors import *
+from raylib.defines import *
 import cffi
 import sys
-#from raylib.pyray import PyRay
 from .version import  __version__
 
 print("RAYLIB STATIC "+__version__+" LOADED", file=sys.stderr)
