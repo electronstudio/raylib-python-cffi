@@ -41,7 +41,6 @@ jobs:
           cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
-          sudo cp ../src/extras/* /usr/local/include/
 
       - name: Copy extras
         run: |
@@ -89,7 +88,6 @@ jobs:
           cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
-          sudo cp ../src/extras/* /usr/local/include/
       - name: Copy extras
         run: |
           sudo cp physac/src/physac.h /usr/local/include/
@@ -133,7 +131,6 @@ jobs:
           cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
-          sudo cp ../src/extras/* /usr/local/include/
       - name: Copy extras
         run: |
           sudo cp physac/src/physac.h /usr/local/include/
