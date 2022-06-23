@@ -16,6 +16,7 @@
 # Raylib must be installed and compiled with:  cmake -DWITH_PIC=ON -DSHARED=ON -DSTATIC=ON ..
 
 # We use /usr/local/lib/libraylib.a to ensure we link to static version
+import re
 
 from cffi import FFI
 import os
@@ -41,21 +42,23 @@ def get_the_lib_path():
                           stdout=subprocess.PIPE).stdout.strip()
 
 
-def pre_process_header(filename):
+def pre_process_header(filename, remove_function_bodies=False):
     print("Pre-processing " + filename)
     file = open(filename, "r")
     filetext = "".join([line for line in file if '#include' not in line])
     command = ['gcc', '-CC', '-P', '-undef', '-nostdinc', '-DRL_MATRIX_TYPE',
                '-DRL_QUATERNION_TYPE','-DRL_VECTOR4_TYPE','-DRL_VECTOR3_TYPE','-DRL_VECTOR2_TYPE',
-               '-DRLAPI=', '-DPHYSACDEF=', '-DRAYGUIDEF=',
+               '-DRLAPI=', '-DPHYSACDEF=', '-DRAYGUIDEF=','-DRMAPI=',
                '-dDI', '-E', '-']
-    filetext2 = subprocess.run(command, text=True, input=filetext, stdout=subprocess.PIPE).stdout
-    filetext3 = filetext2.replace("va_list", "void *")
-    filetext4 = "\n".join([line for line in filetext3.splitlines() if not line.startswith("#")])
+    filetext = subprocess.run(command, text=True, input=filetext, stdout=subprocess.PIPE).stdout
+    filetext = filetext.replace("va_list", "void *")
+    if remove_function_bodies:
+        filetext = re.sub('\n{\n(.|\n)*?\n}\n', ';', filetext)
+    filetext = "\n".join([line for line in filetext.splitlines() if not line.startswith("#")])
     file = open("raylib/"+os.path.basename(filename)+".modified", "w")
-    file.write(filetext4)
+    file.write(filetext)
     # print(r)
-    return filetext4
+    return filetext
 
 
 def check_header_exists(file):
@@ -102,7 +105,7 @@ def build_unix():
 
     raylib_h = get_the_include_path() + "/raylib.h"
     rlgl_h = get_the_include_path() + "/rlgl.h"
-    #raymath_h = get_the_include_path() + "/raymath.h"
+    raymath_h = get_the_include_path() + "/raymath.h"
 
     if not os.path.isfile(raylib_h):
         raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
@@ -110,12 +113,13 @@ def build_unix():
     if not os.path.isfile(rlgl_h):
         raise Exception("ERROR: " + rlgl_h + " not found.  Please install Raylib.")
 
-    #if not os.path.isfile(raymath_h):
-    #    raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
+    if not os.path.isfile(raymath_h):
+        raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
 
     ffi_includes = """
     #include "raylib.h"
     #include "rlgl.h"
+    #include "raymath.h"
     """
 
     raygui_h = get_the_include_path() + "/raygui.h"
@@ -135,9 +139,8 @@ def build_unix():
 
     ffibuilder.cdef(pre_process_header(raylib_h))
     ffibuilder.cdef(pre_process_header(rlgl_h))
-    #ffibuilder.cdef(pre_process_header(raymath_h))
-    #print("******************************\n\n\n")
-    #print(pre_process_header(rlgl_h))
+    ffibuilder.cdef(pre_process_header(raymath_h, True))
+
     if os.path.isfile(raygui_h):
         ffibuilder.cdef(pre_process_header(raygui_h))
     if os.path.isfile(physac_h):
@@ -168,9 +171,11 @@ def build_windows():
     ffibuilder.cdef(open("raylib/rlgl.h.modified").read().replace("bool", "int"))
     ffibuilder.cdef(open("raylib/raygui.h.modified").read().replace("bool", "int"))
     ffibuilder.cdef(open("raylib/physac.h.modified").read().replace("bool", "int"))
+    ffibuilder.cdef(open("raylib/raymath.h.modified").read().replace("bool", "int"))
     ffibuilder.set_source("raylib._raylib_cffi", """
     #include "raylib.h"
-    #include "rlgl.h"  
+    #include "rlgl.h" 
+    #include "raymath.h"
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
     #include "raygui.h"

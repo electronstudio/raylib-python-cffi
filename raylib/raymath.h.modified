@@ -1,0 +1,210 @@
+/**********************************************************************************************
+*
+*   raymath v1.5 - Math functions to work with Vector2, Vector3, Matrix and Quaternions
+*
+*   CONFIGURATION:
+*
+*   #define RAYMATH_IMPLEMENTATION
+*       Generates the implementation of the library into the included file.
+*       If not defined, the library is in header only mode and can be included in other headers
+*       or source files without problems. But only ONE file should hold the implementation.
+*
+*   #define RAYMATH_STATIC_INLINE
+*       This may use up lots of memory.
+*
+*   CONVENTIONS:
+*
+*     - Functions are always self-contained, no function use another raymath function inside,
+*       required code is directly re-implemented inside
+*     - Functions input parameters are always received by value (2 unavoidable exceptions)
+*     - Functions use always a "result" variable for return
+*     - Functions are always defined inline
+*     - Angles are always in radians (DEG2RAD/RAD2DEG macros provided for convenience)
+*
+*
+*   LICENSE: zlib/libpng
+*
+*   Copyright (c) 2015-2022 Ramon Santamaria (@raysan5)
+*
+*   This software is provided "as-is", without any express or implied warranty. In no event
+*   will the authors be held liable for any damages arising from the use of this software.
+*
+*   Permission is granted to anyone to use this software for any purpose, including commercial
+*   applications, and to alter it and redistribute it freely, subject to the following restrictions:
+*
+*     1. The origin of this software must not be misrepresented; you must not claim that you
+*     wrote the original software. If you use this software in a product, an acknowledgment
+*     in the product documentation would be appreciated but is not required.
+*
+*     2. Altered source versions must be plainly marked as such, and must not be misrepresented
+*     as being the original software.
+*
+*     3. This notice may not be removed or altered from any source distribution.
+*
+**********************************************************************************************/
+// Function specifiers definition
+//----------------------------------------------------------------------------------
+// Defines and Macros
+//----------------------------------------------------------------------------------
+// Get float vector for Matrix
+// Get float vector for Vector3
+//----------------------------------------------------------------------------------
+// Types and Structures Definition
+//----------------------------------------------------------------------------------
+// NOTE: Helper types to be used instead of array return types for *ToFloat functions
+typedef struct float3 {
+    float v[3];
+} float3;
+typedef struct float16 {
+    float v[16];
+} float16;
+//----------------------------------------------------------------------------------
+// Module Functions Definition - Utils math
+//----------------------------------------------------------------------------------
+// Clamp float value
+inline /* Functions may be inlined or external definition used*/ float Clamp(float value, float min, float max);
+//{
+//    float result = (value < min)? min : value;
+//
+//    if (result > max) result = max;
+//
+//    return result;
+//}
+// Calculate linear interpolation between two floats
+inline /* Functions may be inlined or external definition used*/ float Lerp(float start, float end, float amount);// Normalize input value within input range
+inline /* Functions may be inlined or external definition used*/ float Normalize(float value, float start, float end);// Remap input value within input range to output range
+inline /* Functions may be inlined or external definition used*/ float Remap(float value, float inputStart, float inputEnd, float outputStart, float outputEnd);// Check whether two given floats are almost equal
+inline /* Functions may be inlined or external definition used*/ int FloatEquals(float x, float y);//----------------------------------------------------------------------------------
+// Module Functions Definition - Vector2 math
+//----------------------------------------------------------------------------------
+// Vector with components value 0.0f
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Zero(void);// Vector with components value 1.0f
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2One(void);// Add two vectors (v1 + v2)
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Add(Vector2 v1, Vector2 v2);// Add vector and float value
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2AddValue(Vector2 v, float add);// Subtract two vectors (v1 - v2)
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Subtract(Vector2 v1, Vector2 v2);// Subtract vector by float value
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2SubtractValue(Vector2 v, float sub);// Calculate vector length
+inline /* Functions may be inlined or external definition used*/ float Vector2Length(Vector2 v);// Calculate vector square length
+inline /* Functions may be inlined or external definition used*/ float Vector2LengthSqr(Vector2 v);// Calculate two vectors dot product
+inline /* Functions may be inlined or external definition used*/ float Vector2DotProduct(Vector2 v1, Vector2 v2);// Calculate distance between two vectors
+inline /* Functions may be inlined or external definition used*/ float Vector2Distance(Vector2 v1, Vector2 v2);// Calculate square distance between two vectors
+inline /* Functions may be inlined or external definition used*/ float Vector2DistanceSqr(Vector2 v1, Vector2 v2);// Calculate angle from two vectors
+inline /* Functions may be inlined or external definition used*/ float Vector2Angle(Vector2 v1, Vector2 v2);// Scale vector (multiply by value)
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Scale(Vector2 v, float scale);// Multiply vector by vector
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Multiply(Vector2 v1, Vector2 v2);// Negate vector
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Negate(Vector2 v);// Divide vector by vector
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Divide(Vector2 v1, Vector2 v2);// Normalize provided vector
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Normalize(Vector2 v);// Transforms a Vector2 by a given Matrix
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Transform(Vector2 v, Matrix mat);// Calculate linear interpolation between two vectors
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Lerp(Vector2 v1, Vector2 v2, float amount);// Calculate reflected vector to normal
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Reflect(Vector2 v, Vector2 normal);// Rotate vector by angle
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Rotate(Vector2 v, float angle);// Move Vector towards target
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2MoveTowards(Vector2 v, Vector2 target, float maxDistance);// Invert the given vector
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Invert(Vector2 v);// Clamp the components of the vector between
+// min and max values specified by the given vectors
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Clamp(Vector2 v, Vector2 min, Vector2 max);// Clamp the magnitude of the vector between two min and max values
+inline /* Functions may be inlined or external definition used*/ Vector2 Vector2ClampValue(Vector2 v, float min, float max);// Check whether two given vectors are almost equal
+inline /* Functions may be inlined or external definition used*/ int Vector2Equals(Vector2 p, Vector2 q);//----------------------------------------------------------------------------------
+// Module Functions Definition - Vector3 math
+//----------------------------------------------------------------------------------
+// Vector with components value 0.0f
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Zero(void);// Vector with components value 1.0f
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3One(void);// Add two vectors
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Add(Vector3 v1, Vector3 v2);// Add vector and float value
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3AddValue(Vector3 v, float add);// Subtract two vectors
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Subtract(Vector3 v1, Vector3 v2);// Subtract vector by float value
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3SubtractValue(Vector3 v, float sub);// Multiply vector by scalar
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Scale(Vector3 v, float scalar);// Multiply vector by vector
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Multiply(Vector3 v1, Vector3 v2);// Calculate two vectors cross product
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3CrossProduct(Vector3 v1, Vector3 v2);// Calculate one vector perpendicular vector
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Perpendicular(Vector3 v);// Calculate vector length
+inline /* Functions may be inlined or external definition used*/ float Vector3Length(const Vector3 v);// Calculate vector square length
+inline /* Functions may be inlined or external definition used*/ float Vector3LengthSqr(const Vector3 v);// Calculate two vectors dot product
+inline /* Functions may be inlined or external definition used*/ float Vector3DotProduct(Vector3 v1, Vector3 v2);// Calculate distance between two vectors
+inline /* Functions may be inlined or external definition used*/ float Vector3Distance(Vector3 v1, Vector3 v2);// Calculate square distance between two vectors
+inline /* Functions may be inlined or external definition used*/ float Vector3DistanceSqr(Vector3 v1, Vector3 v2);// Calculate angle between two vectors
+inline /* Functions may be inlined or external definition used*/ float Vector3Angle(Vector3 v1, Vector3 v2);// Negate provided vector (invert direction)
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Negate(Vector3 v);// Divide vector by vector
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Divide(Vector3 v1, Vector3 v2);// Normalize provided vector
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Normalize(Vector3 v);// Orthonormalize provided vectors
+// Makes vectors normalized and orthogonal to each other
+// Gram-Schmidt function implementation
+inline /* Functions may be inlined or external definition used*/ void Vector3OrthoNormalize(Vector3 *v1, Vector3 *v2);// Transforms a Vector3 by a given Matrix
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Transform(Vector3 v, Matrix mat);// Transform a vector by quaternion rotation
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3RotateByQuaternion(Vector3 v, Quaternion q);// Calculate linear interpolation between two vectors
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Lerp(Vector3 v1, Vector3 v2, float amount);// Calculate reflected vector to normal
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Reflect(Vector3 v, Vector3 normal);// Get min value for each pair of components
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Min(Vector3 v1, Vector3 v2);// Get max value for each pair of components
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Max(Vector3 v1, Vector3 v2);// Compute barycenter coordinates (u, v, w) for point p with respect to triangle (a, b, c)
+// NOTE: Assumes P is on the plane of the triangle
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Barycenter(Vector3 p, Vector3 a, Vector3 b, Vector3 c);// Projects a Vector3 from screen space into object space
+// NOTE: We are avoiding calling other raymath functions despite available
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Unproject(Vector3 source, Matrix projection, Matrix view);// Get Vector3 as float array
+inline /* Functions may be inlined or external definition used*/ float3 Vector3ToFloatV(Vector3 v);// Invert the given vector
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Invert(Vector3 v);// Clamp the components of the vector between
+// min and max values specified by the given vectors
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Clamp(Vector3 v, Vector3 min, Vector3 max);// Clamp the magnitude of the vector between two values
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3ClampValue(Vector3 v, float min, float max);// Check whether two given vectors are almost equal
+inline /* Functions may be inlined or external definition used*/ int Vector3Equals(Vector3 p, Vector3 q);// Compute the direction of a refracted ray where v specifies the
+// normalized direction of the incoming ray, n specifies the
+// normalized normal vector of the interface of two optical media,
+// and r specifies the ratio of the refractive index of the medium
+// from where the ray comes to the refractive index of the medium
+// on the other side of the surface
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Refract(Vector3 v, Vector3 n, float r);//----------------------------------------------------------------------------------
+// Module Functions Definition - Matrix math
+//----------------------------------------------------------------------------------
+// Compute matrix determinant
+inline /* Functions may be inlined or external definition used*/ float MatrixDeterminant(Matrix mat);// Get the trace of the matrix (sum of the values along the diagonal)
+inline /* Functions may be inlined or external definition used*/ float MatrixTrace(Matrix mat);// Transposes provided matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixTranspose(Matrix mat);// Invert provided matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixInvert(Matrix mat);// Get identity matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixIdentity(void);// Add two matrices
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixAdd(Matrix left, Matrix right);// Subtract two matrices (left - right)
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixSubtract(Matrix left, Matrix right);// Get two matrix multiplication
+// NOTE: When multiplying matrices... the order matters!
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixMultiply(Matrix left, Matrix right);// Get translation matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixTranslate(float x, float y, float z);// Create rotation matrix from axis and angle
+// NOTE: Angle should be provided in radians
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotate(Vector3 axis, float angle);// Get x-rotation matrix (angle in radians)
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateX(float angle);// Get y-rotation matrix (angle in radians)
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateY(float angle);// Get z-rotation matrix (angle in radians)
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateZ(float angle);// Get xyz-rotation matrix (angles in radians)
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateXYZ(Vector3 ang);// Get zyx-rotation matrix (angles in radians)
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateZYX(Vector3 ang);// Get scaling matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixScale(float x, float y, float z);// Get perspective projection matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixFrustum(double left, double right, double bottom, double top, double near, double far);// Get perspective projection matrix
+// NOTE: Angle should be provided in radians
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixPerspective(double fovy, double aspect, double near, double far);// Get orthographic projection matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixOrtho(double left, double right, double bottom, double top, double near, double far);// Get camera look-at matrix (view matrix)
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixLookAt(Vector3 eye, Vector3 target, Vector3 up);// Get float array of matrix data
+inline /* Functions may be inlined or external definition used*/ float16 MatrixToFloatV(Matrix mat);//----------------------------------------------------------------------------------
+// Module Functions Definition - Quaternion math
+//----------------------------------------------------------------------------------
+// Add two quaternions
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionAdd(Quaternion q1, Quaternion q2);// Add quaternion and float value
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionAddValue(Quaternion q, float add);// Subtract two quaternions
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionSubtract(Quaternion q1, Quaternion q2);// Subtract quaternion and float value
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionSubtractValue(Quaternion q, float sub);// Get identity quaternion
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionIdentity(void);// Computes the length of a quaternion
+inline /* Functions may be inlined or external definition used*/ float QuaternionLength(Quaternion q);// Normalize provided quaternion
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionNormalize(Quaternion q);// Invert provided quaternion
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionInvert(Quaternion q);// Calculate two quaternion multiplication
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionMultiply(Quaternion q1, Quaternion q2);// Scale quaternion by float value
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionScale(Quaternion q, float mul);// Divide two quaternions
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionDivide(Quaternion q1, Quaternion q2);// Calculate linear interpolation between two quaternions
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionLerp(Quaternion q1, Quaternion q2, float amount);// Calculate slerp-optimized interpolation between two quaternions
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionNlerp(Quaternion q1, Quaternion q2, float amount);// Calculates spherical linear interpolation between two quaternions
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionSlerp(Quaternion q1, Quaternion q2, float amount);// Calculate quaternion based on the rotation from one vector to another
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionFromVector3ToVector3(Vector3 from, Vector3 to);// Get a quaternion for a given rotation matrix
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionFromMatrix(Matrix mat);// Get a matrix for a given quaternion
+inline /* Functions may be inlined or external definition used*/ Matrix QuaternionToMatrix(Quaternion q);// Get rotation quaternion for an angle and axis
+// NOTE: angle must be provided in radians
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionFromAxisAngle(Vector3 axis, float angle);// Get the rotation angle and axis for a given quaternion
+inline /* Functions may be inlined or external definition used*/ void QuaternionToAxisAngle(Quaternion q, Vector3 *outAxis, float *outAngle);// Get the quaternion equivalent to Euler angles
+// NOTE: Rotation order is ZYX
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionFromEuler(float pitch, float yaw, float roll);// Get the Euler angles equivalent to quaternion (roll, pitch, yaw)
+// NOTE: Angles are returned in a Vector3 struct in radians
+inline /* Functions may be inlined or external definition used*/ Vector3 QuaternionToEuler(Quaternion q);// Transform a quaternion given a transformation matrix
+inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionTransform(Quaternion q, Matrix mat);// Check whether two given quaternions are almost equal
+inline /* Functions may be inlined or external definition used*/ int QuaternionEquals(Quaternion p, Quaternion q);

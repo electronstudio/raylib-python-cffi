@@ -67,6 +67,11 @@ def check_collision_recs(rec1: Rectangle,rec2: Rectangle,) -> bool:
 def check_collision_spheres(center1: Vector3,radius1: float,center2: Vector3,radius2: float,) -> bool:
         """Check collision between two spheres"""
         ...
+def clamp(float_0: float,float_1: float,float_2: float,) -> float:
+        """float Clamp(float, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def clear_background(color: Color,) -> None:
         """Set background color (framebuffer clear color)"""
         ...
@@ -457,6 +462,11 @@ def fade(color: Color,alpha: float,) -> Color:
         ...
 def file_exists(fileName: str,) -> bool:
         """Check if file exists"""
+        ...
+def float_equals(float_0: float,float_1: float,) -> int:
+        """int FloatEquals(float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def gen_image_cellular(width: int,height: int,tileSize: int,) -> Image:
         """Generate image: cellular algorithm, bigger tileSize means bigger cells"""
@@ -1301,6 +1311,11 @@ def is_window_resized() -> bool:
 def is_window_state(flag: int,) -> bool:
         """Check if one specific window flag is enabled"""
         ...
+def lerp(float_0: float,float_1: float,float_2: float,) -> float:
+        """float Lerp(float, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def load_audio_stream(sampleRate: int,sampleSize: int,channels: int,) -> AudioStream:
         """Load audio stream (to stream raw audio pcm data)"""
         ...
@@ -1421,6 +1436,111 @@ def load_wave_from_memory(fileType: str,fileData: str,dataSize: int,) -> Wave:
 def load_wave_samples(wave: Wave,) -> Any:
         """Load samples data from wave as a 32bit float data array"""
         ...
+def matrix_add(Matrix_0: Matrix,Matrix_1: Matrix,) -> Matrix:
+        """struct Matrix MatrixAdd(struct Matrix, struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_determinant(Matrix_0: Matrix,) -> float:
+        """float MatrixDeterminant(struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_frustum(double_0: float,double_1: float,double_2: float,double_3: float,double_4: float,double_5: float,) -> Matrix:
+        """struct Matrix MatrixFrustum(double, double, double, double, double, double);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_identity() -> Matrix:
+        """struct Matrix MatrixIdentity();
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_invert(Matrix_0: Matrix,) -> Matrix:
+        """struct Matrix MatrixInvert(struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_look_at(Vector3_0: Vector3,Vector3_1: Vector3,Vector3_2: Vector3,) -> Matrix:
+        """struct Matrix MatrixLookAt(struct Vector3, struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_multiply(Matrix_0: Matrix,Matrix_1: Matrix,) -> Matrix:
+        """struct Matrix MatrixMultiply(struct Matrix, struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_ortho(double_0: float,double_1: float,double_2: float,double_3: float,double_4: float,double_5: float,) -> Matrix:
+        """struct Matrix MatrixOrtho(double, double, double, double, double, double);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_perspective(double_0: float,double_1: float,double_2: float,double_3: float,) -> Matrix:
+        """struct Matrix MatrixPerspective(double, double, double, double);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_rotate(Vector3_0: Vector3,float_1: float,) -> Matrix:
+        """struct Matrix MatrixRotate(struct Vector3, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_rotate_x(float_0: float,) -> Matrix:
+        """struct Matrix MatrixRotateX(float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_rotate_xyz(Vector3_0: Vector3,) -> Matrix:
+        """struct Matrix MatrixRotateXYZ(struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_rotate_y(float_0: float,) -> Matrix:
+        """struct Matrix MatrixRotateY(float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_rotate_z(float_0: float,) -> Matrix:
+        """struct Matrix MatrixRotateZ(float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_rotate_zyx(Vector3_0: Vector3,) -> Matrix:
+        """struct Matrix MatrixRotateZYX(struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_scale(float_0: float,float_1: float,float_2: float,) -> Matrix:
+        """struct Matrix MatrixScale(float, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_subtract(Matrix_0: Matrix,Matrix_1: Matrix,) -> Matrix:
+        """struct Matrix MatrixSubtract(struct Matrix, struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_to_float_v(Matrix_0: Matrix,) -> float16:
+        """struct float16 MatrixToFloatV(struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_trace(Matrix_0: Matrix,) -> float:
+        """float MatrixTrace(struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_translate(float_0: float,float_1: float,float_2: float,) -> Matrix:
+        """struct Matrix MatrixTranslate(float, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def matrix_transpose(Matrix_0: Matrix,) -> Matrix:
+        """struct Matrix MatrixTranspose(struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def maximize_window() -> None:
         """Set window state: maximized, if resizable (only PLATFORM_DESKTOP)"""
         ...
@@ -1441,6 +1561,11 @@ def mem_realloc(ptr: Any,size: int,) -> Any:
         ...
 def minimize_window() -> None:
         """Set window state: minimized, if resizable (only PLATFORM_DESKTOP)"""
+        ...
+def normalize(float_0: float,float_1: float,float_2: float,) -> float:
+        """float Normalize(float, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def open_url(url: str,) -> None:
         """Open URL with default system browser (if available)"""
@@ -1483,6 +1608,126 @@ def play_sound_multi(sound: Sound,) -> None:
         ...
 def poll_input_events() -> None:
         """Register all input events"""
+        ...
+def quaternion_add(Vector4_0: Vector4,Vector4_1: Vector4,) -> Vector4:
+        """struct Vector4 QuaternionAdd(struct Vector4, struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_add_value(Vector4_0: Vector4,float_1: float,) -> Vector4:
+        """struct Vector4 QuaternionAddValue(struct Vector4, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_divide(Vector4_0: Vector4,Vector4_1: Vector4,) -> Vector4:
+        """struct Vector4 QuaternionDivide(struct Vector4, struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_equals(Vector4_0: Vector4,Vector4_1: Vector4,) -> int:
+        """int QuaternionEquals(struct Vector4, struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_from_axis_angle(Vector3_0: Vector3,float_1: float,) -> Vector4:
+        """struct Vector4 QuaternionFromAxisAngle(struct Vector3, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_from_euler(float_0: float,float_1: float,float_2: float,) -> Vector4:
+        """struct Vector4 QuaternionFromEuler(float, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_from_matrix(Matrix_0: Matrix,) -> Vector4:
+        """struct Vector4 QuaternionFromMatrix(struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_from_vector3_to_vector3(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector4:
+        """struct Vector4 QuaternionFromVector3ToVector3(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_identity() -> Vector4:
+        """struct Vector4 QuaternionIdentity();
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_invert(Vector4_0: Vector4,) -> Vector4:
+        """struct Vector4 QuaternionInvert(struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_length(Vector4_0: Vector4,) -> float:
+        """float QuaternionLength(struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_lerp(Vector4_0: Vector4,Vector4_1: Vector4,float_2: float,) -> Vector4:
+        """struct Vector4 QuaternionLerp(struct Vector4, struct Vector4, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_multiply(Vector4_0: Vector4,Vector4_1: Vector4,) -> Vector4:
+        """struct Vector4 QuaternionMultiply(struct Vector4, struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_nlerp(Vector4_0: Vector4,Vector4_1: Vector4,float_2: float,) -> Vector4:
+        """struct Vector4 QuaternionNlerp(struct Vector4, struct Vector4, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_normalize(Vector4_0: Vector4,) -> Vector4:
+        """struct Vector4 QuaternionNormalize(struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_scale(Vector4_0: Vector4,float_1: float,) -> Vector4:
+        """struct Vector4 QuaternionScale(struct Vector4, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_slerp(Vector4_0: Vector4,Vector4_1: Vector4,float_2: float,) -> Vector4:
+        """struct Vector4 QuaternionSlerp(struct Vector4, struct Vector4, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_subtract(Vector4_0: Vector4,Vector4_1: Vector4,) -> Vector4:
+        """struct Vector4 QuaternionSubtract(struct Vector4, struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_subtract_value(Vector4_0: Vector4,float_1: float,) -> Vector4:
+        """struct Vector4 QuaternionSubtractValue(struct Vector4, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_to_axis_angle(Vector4_0: Vector4,Vector3_pointer_1: Any,float_pointer_2: Any,) -> None:
+        """void QuaternionToAxisAngle(struct Vector4, struct Vector3 *, float *);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_to_euler(Vector4_0: Vector4,) -> Vector3:
+        """struct Vector3 QuaternionToEuler(struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_to_matrix(Vector4_0: Vector4,) -> Matrix:
+        """struct Matrix QuaternionToMatrix(struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def quaternion_transform(Vector4_0: Vector4,Matrix_1: Matrix,) -> Vector4:
+        """struct Vector4 QuaternionTransform(struct Vector4, struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def remap(float_0: float,float_1: float,float_2: float,float_3: float,float_4: float,) -> float:
+        """float Remap(float, float, float, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def reset_physics() -> None:
         """void ResetPhysics();
@@ -1865,6 +2110,306 @@ def update_texture_rec(texture: Texture,rec: Rectangle,pixels: Any,) -> None:
         ...
 def upload_mesh(mesh: Any,dynamic: bool,) -> None:
         """Upload mesh vertex data in GPU and provide VAO/VBO ids"""
+        ...
+def vector2_add(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
+        """struct Vector2 Vector2Add(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_add_value(Vector2_0: Vector2,float_1: float,) -> Vector2:
+        """struct Vector2 Vector2AddValue(struct Vector2, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_angle(Vector2_0: Vector2,Vector2_1: Vector2,) -> float:
+        """float Vector2Angle(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_clamp(Vector2_0: Vector2,Vector2_1: Vector2,Vector2_2: Vector2,) -> Vector2:
+        """struct Vector2 Vector2Clamp(struct Vector2, struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_clamp_value(Vector2_0: Vector2,float_1: float,float_2: float,) -> Vector2:
+        """struct Vector2 Vector2ClampValue(struct Vector2, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector_2distance(Vector2_0: Vector2,Vector2_1: Vector2,) -> float:
+        """float Vector2Distance(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector_2distance_sqr(Vector2_0: Vector2,Vector2_1: Vector2,) -> float:
+        """float Vector2DistanceSqr(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector_2divide(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
+        """struct Vector2 Vector2Divide(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector_2dot_product(Vector2_0: Vector2,Vector2_1: Vector2,) -> float:
+        """float Vector2DotProduct(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_equals(Vector2_0: Vector2,Vector2_1: Vector2,) -> int:
+        """int Vector2Equals(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_invert(Vector2_0: Vector2,) -> Vector2:
+        """struct Vector2 Vector2Invert(struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_length(Vector2_0: Vector2,) -> float:
+        """float Vector2Length(struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_length_sqr(Vector2_0: Vector2,) -> float:
+        """float Vector2LengthSqr(struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_lerp(Vector2_0: Vector2,Vector2_1: Vector2,float_2: float,) -> Vector2:
+        """struct Vector2 Vector2Lerp(struct Vector2, struct Vector2, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_move_towards(Vector2_0: Vector2,Vector2_1: Vector2,float_2: float,) -> Vector2:
+        """struct Vector2 Vector2MoveTowards(struct Vector2, struct Vector2, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_multiply(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
+        """struct Vector2 Vector2Multiply(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_negate(Vector2_0: Vector2,) -> Vector2:
+        """struct Vector2 Vector2Negate(struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_normalize(Vector2_0: Vector2,) -> Vector2:
+        """struct Vector2 Vector2Normalize(struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_one() -> Vector2:
+        """struct Vector2 Vector2One();
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_reflect(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
+        """struct Vector2 Vector2Reflect(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_rotate(Vector2_0: Vector2,float_1: float,) -> Vector2:
+        """struct Vector2 Vector2Rotate(struct Vector2, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_scale(Vector2_0: Vector2,float_1: float,) -> Vector2:
+        """struct Vector2 Vector2Scale(struct Vector2, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_subtract(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
+        """struct Vector2 Vector2Subtract(struct Vector2, struct Vector2);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_subtract_value(Vector2_0: Vector2,float_1: float,) -> Vector2:
+        """struct Vector2 Vector2SubtractValue(struct Vector2, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_transform(Vector2_0: Vector2,Matrix_1: Matrix,) -> Vector2:
+        """struct Vector2 Vector2Transform(struct Vector2, struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector2_zero() -> Vector2:
+        """struct Vector2 Vector2Zero();
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_add(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Add(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_add_value(Vector3_0: Vector3,float_1: float,) -> Vector3:
+        """struct Vector3 Vector3AddValue(struct Vector3, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_angle(Vector3_0: Vector3,Vector3_1: Vector3,) -> float:
+        """float Vector3Angle(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_barycenter(Vector3_0: Vector3,Vector3_1: Vector3,Vector3_2: Vector3,Vector3_3: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Barycenter(struct Vector3, struct Vector3, struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_clamp(Vector3_0: Vector3,Vector3_1: Vector3,Vector3_2: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Clamp(struct Vector3, struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_clamp_value(Vector3_0: Vector3,float_1: float,float_2: float,) -> Vector3:
+        """struct Vector3 Vector3ClampValue(struct Vector3, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_cross_product(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
+        """struct Vector3 Vector3CrossProduct(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector_3distance(Vector3_0: Vector3,Vector3_1: Vector3,) -> float:
+        """float Vector3Distance(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector_3distance_sqr(Vector3_0: Vector3,Vector3_1: Vector3,) -> float:
+        """float Vector3DistanceSqr(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector_3divide(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Divide(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector_3dot_product(Vector3_0: Vector3,Vector3_1: Vector3,) -> float:
+        """float Vector3DotProduct(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_equals(Vector3_0: Vector3,Vector3_1: Vector3,) -> int:
+        """int Vector3Equals(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_invert(Vector3_0: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Invert(struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_length(Vector3_0: Vector3,) -> float:
+        """float Vector3Length(struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_length_sqr(Vector3_0: Vector3,) -> float:
+        """float Vector3LengthSqr(struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_lerp(Vector3_0: Vector3,Vector3_1: Vector3,float_2: float,) -> Vector3:
+        """struct Vector3 Vector3Lerp(struct Vector3, struct Vector3, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_max(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Max(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_min(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Min(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_multiply(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Multiply(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_negate(Vector3_0: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Negate(struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_normalize(Vector3_0: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Normalize(struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_one() -> Vector3:
+        """struct Vector3 Vector3One();
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_ortho_normalize(Vector3_pointer_0: Any,Vector3_pointer_1: Any,) -> None:
+        """void Vector3OrthoNormalize(struct Vector3 *, struct Vector3 *);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_perpendicular(Vector3_0: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Perpendicular(struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_reflect(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Reflect(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_refract(Vector3_0: Vector3,Vector3_1: Vector3,float_2: float,) -> Vector3:
+        """struct Vector3 Vector3Refract(struct Vector3, struct Vector3, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_rotate_by_quaternion(Vector3_0: Vector3,Vector4_1: Vector4,) -> Vector3:
+        """struct Vector3 Vector3RotateByQuaternion(struct Vector3, struct Vector4);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_scale(Vector3_0: Vector3,float_1: float,) -> Vector3:
+        """struct Vector3 Vector3Scale(struct Vector3, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_subtract(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
+        """struct Vector3 Vector3Subtract(struct Vector3, struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_subtract_value(Vector3_0: Vector3,float_1: float,) -> Vector3:
+        """struct Vector3 Vector3SubtractValue(struct Vector3, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_to_float_v(Vector3_0: Vector3,) -> float3:
+        """struct float3 Vector3ToFloatV(struct Vector3);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_transform(Vector3_0: Vector3,Matrix_1: Matrix,) -> Vector3:
+        """struct Vector3 Vector3Transform(struct Vector3, struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_unproject(Vector3_0: Vector3,Matrix_1: Matrix,Matrix_2: Matrix,) -> Vector3:
+        """struct Vector3 Vector3Unproject(struct Vector3, struct Matrix, struct Matrix);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def vector3_zero() -> Vector3:
+        """struct Vector3 Vector3Zero();
+
+CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def wait_time(seconds: float,) -> None:
         """Wait for some time (halt program execution)"""
@@ -2944,6 +3489,14 @@ class Wave:
         self.sampleSize=sampleSize
         self.channels=channels
         self.data=data
+class float16:
+    """ struct """
+    def __init__(self, v):
+        self.v=v
+class float3:
+    """ struct """
+    def __init__(self, v):
+        self.v=v
 class rlDrawCall:
     """ struct """
     def __init__(self, mode, vertexCount, vertexAlignment, textureId):
