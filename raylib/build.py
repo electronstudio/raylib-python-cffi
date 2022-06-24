@@ -155,8 +155,8 @@ def build_unix():
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
         extra_link_args = [get_the_lib_path() + '/libraylib.a', '-lm', '-lpthread', '-lGL',
-                           '-lrt', '-lm', '-ldl', '-lX11', '-lpthread']
-        libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11']
+                           '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
+        libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic']
 
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
