@@ -41,6 +41,8 @@ using homebrew, apt, etc.
 
 [If it doesn't work, you can build manually.](BUILDING.rst)
 
+[Using on Rasperry Pi](RPI.rst)
+
 ## Dynamic binding version
 
 There is now a separate dynamic version of this binding:

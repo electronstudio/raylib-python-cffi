@@ -15,6 +15,7 @@ Raylib Python
    raylib
    dynamic
    BUILDING
+   RPI
 
 
 * :ref:`search`

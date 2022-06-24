@@ -221,33 +221,4 @@ Build and install module.
 Raspberry Pi
 ~~~~~~~~~~~~
 
-Latest info: https://github.com/electronstudio/raylib-python-cffi/issues/55#issuecomment-1012629701
 
-Old possibly out of date info that was written for RPi3 and Raylib 3 follows.
-
-The integrated GPU hardware in a Raspberry Pi (“VideoCore”) is rather
-idiosyncratic, resulting in a complex set of software options. Probably
-the most interesting two options for Raylib applications are:
-
-1. Use the Broadcom proprietary Open GL ES 2.0 drivers, installed by
-   Raspbian into ``/opt/vc``. These are 32-bit only, and currently X11
-   doesn’t use these for its acceleration, so this is most suitable for
-   driving the entire HDMI output from one application with minimal
-   overhead (no X11).
-
-2. Use the more recent open-source ``vc4-fkms-v3d`` kernel driver. This
-   can run in either 32-bit or 64-bit, and X11 can use these, so using
-   X11 is probably the more common choice here.
-
-With option 2, the regular linux install instructions above should
-probably work as-is.
-
-For option 1, then also follow the above instructions, but with these
-modifications:
-
--  With ``cmake``, use
-   ``cmake -DWITH_PIC=on -DSTATIC=on -DSHARED=on -DPLATFORM='Raspberry Pi' ..``
-
-(See
-`here <https://github.com/electronstudio/raylib-python-cffi/issues/31#issuecomment-862078330>`__
-for a Raspberry Pi wheel)
