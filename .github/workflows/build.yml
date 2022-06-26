@@ -77,7 +77,7 @@ jobs:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
           python-version: ${{ matrix.python-version }}
           # The target architecture (x86, x64) of the Python interpreter.
-          architecture: universal2
+          architecture: x64
 
       # Runs a set of commands using the runners shell
       - name: Build raylib
@@ -85,7 +85,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake CMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake CMAKE_OSX_ARCHITECTURES="arm64" -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
       - name: Copy extras
