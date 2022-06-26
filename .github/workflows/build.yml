@@ -149,6 +149,23 @@ jobs:
           path: dist/*
 
 
+  build-rpi:
+    runs-on: rpi
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+
+      - name: Build raylib-python-cffi
+        run: |
+          python setup.py bdist_wheel
+
+      - name: Upload build Artifact wheel
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: wheel
+          path: dist/*
+
   build-windows:
     # The type of runner that the job will run on
     runs-on: windows-2019
