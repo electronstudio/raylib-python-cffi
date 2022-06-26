@@ -85,7 +85,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake CMAKE_OSX_ARCHITECTURES="arm64" -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DCMAKE_OSX_ARCHITECTURES="arm64" -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
       - name: Copy extras
