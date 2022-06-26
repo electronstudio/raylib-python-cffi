@@ -158,7 +158,7 @@ jobs:
 
       - name: Build raylib-python-cffi
         run: |
-          python setup.py bdist_wheel
+          python3 setup.py bdist_wheel
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v2.2.4
