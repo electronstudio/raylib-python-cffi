@@ -38,7 +38,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
 
@@ -83,7 +83,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DCMAKE_OSX_ARCHITECTURES="arm64" -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DBUILD_EXAMPLES=off -DCMAKE_OSX_ARCHITECTURES="arm64" -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
       - name: Copy extras
@@ -138,7 +138,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
       - name: Copy extras
@@ -206,7 +206,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           msbuild raylib.sln /target:raylib /property:Configuration=Release
           copy raylib\Release\raylib.lib ..\..
           cd ..\..
@@ -254,7 +254,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
       - name: Copy extras
