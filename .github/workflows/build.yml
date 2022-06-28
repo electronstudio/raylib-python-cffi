@@ -114,7 +114,7 @@ jobs:
     runs-on: macos-11
     strategy:
       matrix:
-        python-version: [ '3.9.13' ]
+        python-version: [ '3.10.5' ]
         # Requires universal2 build of python, which we get if we ask for 3.10.5 x86! Pypy not available in universal2
     steps:
       - uses: actions/checkout@v2
