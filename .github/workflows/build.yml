@@ -18,6 +18,8 @@ jobs:
     strategy:
       matrix:
         python-version: [ '3.7', 'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
+    env:
+      MACOSX_DEPLOYMENT_TARGET: 10.14
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -52,7 +54,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
-          python setup.py bdist_wheel --plat-name macosx_10_15_x86_64 --py-limited-api=cp37 
+          python setup.py bdist_wheel --plat-name macosx_10_14_x86_64 --py-limited-api=cp37 
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v2.2.4
@@ -100,7 +102,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
-          python setup.py bdist_wheel --plat-name macosx_12_0_arm64 --py-limited-api=cp310
+          python setup.py bdist_wheel --plat-name macosx_12_0_arm64 --py-limited-api=cp37
 
 
       - name: Upload build Artifact wheel
@@ -129,7 +131,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
-      # Only build raylib for arm64 (although we could make a fat universal2 binary by asking for x86_64 as well)
+      #  build raylib for arm64 and x86_64 as well
       - name: Build raylib
         run: |
           cd raylib-c
@@ -143,16 +145,13 @@ jobs:
           sudo cp physac/src/physac.h /usr/local/include/
           sudo cp raygui/src/raygui.h /usr/local/include/
 
-      # Name defaults to universal2 and it technically is, but it wont run on x86_64 because we didnt build raylib for that
-      # so symbols are missing.  So we override name to arm64.  Why don't we make a working universal2 wheel?  Because
-      # I'd rather have a separate x86_64 that I can test, and I want it to work on 10_15 but I'm not sure a 'macosx_10_15_universal2' is valid
-      # given that there is no SDK for universal until macosx_11_0
+
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
-          python setup.py bdist_wheel --plat-name macosx_11_0_arm64 --py-limited-api=cp39
+          python setup.py bdist_wheel --plat-name macosx_11_0_arm64 --py-limited-api=cp37
 
 
       - name: Upload build Artifact wheel
