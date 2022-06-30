@@ -13,7 +13,7 @@ CFFI ABI dynamic bindings avoid the need to compile a C extension module.  They 
    Therefore I personally recommend the static ones.
    But the dynamic bindings have the advantage that you don't need to compile anything to install.  You just need a Raylib DLL.
 
-API is exactly the same as the static one documented here.  (Therefore you can't have both modules installed at once.)  The only difference is you can't do::
+The API is exactly the same as the static one documented here.  (Therefore you can't have both modules installed at once.)  The only difference is you can't do::
 
     from raylib import *
 
@@ -31,6 +31,9 @@ If you use the ``rl.`` prefix then code will work on both static and dynamic bin
 
    If you access functions via ``import pyray`` then there is no difference at all, but be warned this hasn't been tested much.
 
+.. note::
+
+   Standard Raylib DLLs do not include additional libraries like Raygui, Physac, etc.  So these functions won't work.
 
 .. important::
 

@@ -776,7 +776,10 @@ def GetMouseRay(mousePosition: Vector2,camera: Camera3D,) -> Ray:
         """Get a ray trace from mouse position"""
         ...
 def GetMouseWheelMove() -> float:
-        """Get mouse wheel movement Y"""
+        """Get mouse wheel movement for X or Y, whichever is larger"""
+        ...
+def GetMouseWheelMoveV() -> Vector2:
+        """Get mouse wheel movement for both X and Y"""
         ...
 def GetMouseX() -> int:
         """Get mouse position X"""
@@ -3151,6 +3154,11 @@ def WaveFormat(wave: Any,sampleRate: int,sampleSize: int,channels: int,) -> None
 def WindowShouldClose() -> bool:
         """Check if KEY_ESCAPE pressed or Close icon pressed"""
         ...
+def Wrap(float_0: float,float_1: float,float_2: float,) -> float:
+        """float Wrap(float, float, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
 def rlActiveDrawBuffers(int_0: int,) -> None:
         """void rlActiveDrawBuffers(int);
 
@@ -3451,8 +3459,8 @@ def rlGetFramebufferWidth() -> int:
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
-def rlGetGlTextureFormats(int_0: int,int_pointer_1: Any,int_pointer_2: Any,int_pointer_3: Any,) -> None:
-        """void rlGetGlTextureFormats(int, int *, int *, int *);
+def rlGetGlTextureFormats(int_0: int,unsignedint_pointer_1: Any,unsignedint_pointer_2: Any,unsignedint_pointer_3: Any,) -> None:
+        """void rlGetGlTextureFormats(int, unsigned int *, unsigned int *, unsigned int *);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...

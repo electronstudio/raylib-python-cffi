@@ -52,7 +52,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
-          python setup.py bdist_wheel --plat-name macosx_10_14_x86_64 --py-limited-api=cp37 
+          python setup.py bdist_wheel --plat-name macosx_10_15_x86_64 --py-limited-api=cp37 
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v2.2.4

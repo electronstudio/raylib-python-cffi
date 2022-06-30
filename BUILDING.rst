@@ -9,9 +9,11 @@ This is useful if the binaries don’t work on your system, or you want to use a
 First make sure Raylib is installed.  On Linux/Mac it must include the pkg-config files.  Best way to ensure this
 is to compile and install Raylib using CMake: https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake
 
+Requirements for build: cmake, pkg-config.
+
 ::
 
-      cd raylib-4.0.0
+      cd raylib-4.2.0
       mkdir build
       cd build
       cmake  -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
@@ -113,7 +115,7 @@ Build and install Raylib from the raylib-c directory.
 
 ::
 
-   sudo apt install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+   sudo apt install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev pkg-config cmake
    cd raylib-python-cffi/raylib-c
    mkdir build
    cd build
@@ -135,7 +137,7 @@ Build and install Raylib from the raylib-c directory.
    cd ../..
 
 
-Build
+Build the Python library:
 
 ::
 
@@ -215,10 +217,5 @@ Build and install module.
    python3 raylib/build.py
    pip3 install wheel
    python3 setup.py install
-
-
-
-Raspberry Pi
-~~~~~~~~~~~~
 
 
