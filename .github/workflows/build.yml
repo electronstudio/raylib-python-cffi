@@ -216,6 +216,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Build raylib
+        run: |
+          cd raylib-c
+          mkdir build
+          cd build
+          cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+          make -j2
+          make install
+      - name: Copy extras
+        run: |
+          cp physac/src/physac.h /usr/local/include/
+          cp raygui/src/raygui.h /usr/local/include/
 
       - name: Build raylib-python-cffi
         run: |
