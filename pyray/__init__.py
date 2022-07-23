@@ -57,6 +57,8 @@ def makefunc(a):
                     arg = ffi.addressof(arg)
                 elif str(type(arg)) == "<class '_cffi_backend._CDataBase'>" and "*" not in str(arg): #Pypy
                     arg = ffi.addressof(arg)
+                elif arg is None:
+                    arg = ffi.NULL
             modified_args.append(arg)
         result = a(*modified_args)
         if result is None:
