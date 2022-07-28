@@ -11,16 +11,16 @@ from raylib.colors import (
 )
 
 # Initialization
-SCREEN_WIDTH: int = 800
-SCREEN_HEIGHT: int = 450
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 450
 
 init_window(SCREEN_WIDTH, SCREEN_HEIGHT, 'raylib [core] example - random values')
 
 # set_random_seed()   // Set a custom random seed if desired, by default: "time(NULL)"
 
-randValue: int = get_random_value(-8, 5)  # Get a random integer number between -8 and 5 (both included)
+randValue = get_random_value(-8, 5)  # Get a random integer number between -8 and 5 (both included)
 
-framesCounter: int = 0  # Variable used to count frames
+framesCounter = 0  # Variable used to count frames
 
 set_target_fps(60)  # Set our game to run at 60 frames-per-second
 
