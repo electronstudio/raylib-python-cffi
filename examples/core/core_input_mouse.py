@@ -3,55 +3,77 @@
 raylib [core] example - Mouse input
 
 """
-import pyray
+from pyray import *
 from raylib.colors import (
     RAYWHITE,
     DARKGRAY,
     MAROON,
-    DARKBLUE,
     LIME,
+    DARKBLUE,
+    PURPLE,
+    YELLOW,
+    ORANGE,
+    BEIGE,
 )
-
-
-
+from raylib import (
+    MOUSE_BUTTON_LEFT,
+    MOUSE_BUTTON_MIDDLE,
+    MOUSE_BUTTON_RIGHT,
+    MOUSE_BUTTON_SIDE,
+    MOUSE_BUTTON_EXTRA,
+    MOUSE_BUTTON_FORWARD,
+    MOUSE_BUTTON_BACK
+)
 
 # Initialization
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 450
 
-pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT,
-                  'raylib [core] example - mouse input')
+init_window(SCREEN_WIDTH, SCREEN_HEIGHT,
+            'raylib [core] example - mouse input')
 
-ball_position = pyray.Vector2(-100, -100)
+ball_position = Vector2(-100, -100)
 ball_color = DARKBLUE
 
-pyray.set_target_fps(60)  # Set our game to run at 60 frames-per-second
-
+set_target_fps(60)  # Set our game to run at 60 frames-per-second
 
 # Main game loop
-while not pyray.window_should_close():  # Detect window close button or ESC key
+while not window_should_close():  # Detect window close button or ESC key
     # Update
-    ball_position = pyray.get_mouse_position()
+    ball_position = get_mouse_position()
 
-    if pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_LEFT):
+    if is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
         ball_color = MAROON
-    elif pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_MIDDLE):
+        print("MOUSE_BUTTON_LEFT")
+    elif is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
         ball_color = LIME
-    elif pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_RIGHT):
+        print("MOUSE_BUTTON_MIDDLE")
+    elif is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
         ball_color = DARKBLUE
-
+        print("MOUSE_BUTTON_RIGHT")
+    elif is_mouse_button_pressed(MOUSE_BUTTON_SIDE):
+        ball_color = PURPLE
+        print("MOUSE_BUTTON_SIDE")
+    elif is_mouse_button_pressed(MOUSE_BUTTON_EXTRA):
+        ball_color = YELLOW
+        print("MOUSE_BUTTON_EXTRA")
+    elif is_mouse_button_pressed(MOUSE_BUTTON_FORWARD):
+        ball_color = ORANGE
+        print("MOUSE_BUTTON_FORWARD")
+    elif is_mouse_button_pressed(MOUSE_BUTTON_BACK):
+        ball_color = BEIGE
+        print("MOUSE_BUTTON_BACK")
     # Draw
-    pyray.begin_drawing()
+    begin_drawing()
 
-    pyray.clear_background(RAYWHITE)
-    pyray.draw_circle_v(ball_position, 40, ball_color)
-    pyray.draw_text(
+    clear_background(RAYWHITE)
+    draw_circle_v(ball_position, 40, ball_color)
+    draw_text(
         'move ball with mouse and click mouse button to change color',
         10, 10, 20, DARKGRAY
     )
 
-    pyray.end_drawing()
-
+    end_drawing()
 
 # De-Initialization
-pyray.close_window()  # Close window and OpenGL context
+close_window()  # Close window and OpenGL context
