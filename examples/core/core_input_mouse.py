@@ -44,25 +44,18 @@ while not window_should_close():  # Detect window close button or ESC key
 
     if is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
         ball_color = MAROON
-        print("MOUSE_BUTTON_LEFT")
     elif is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
         ball_color = LIME
-        print("MOUSE_BUTTON_MIDDLE")
     elif is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
         ball_color = DARKBLUE
-        print("MOUSE_BUTTON_RIGHT")
     elif is_mouse_button_pressed(MOUSE_BUTTON_SIDE):
         ball_color = PURPLE
-        print("MOUSE_BUTTON_SIDE")
     elif is_mouse_button_pressed(MOUSE_BUTTON_EXTRA):
         ball_color = YELLOW
-        print("MOUSE_BUTTON_EXTRA")
     elif is_mouse_button_pressed(MOUSE_BUTTON_FORWARD):
         ball_color = ORANGE
-        print("MOUSE_BUTTON_FORWARD")
     elif is_mouse_button_pressed(MOUSE_BUTTON_BACK):
         ball_color = BEIGE
-        print("MOUSE_BUTTON_BACK")
     # Draw
     begin_drawing()
 
