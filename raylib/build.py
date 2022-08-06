@@ -41,6 +41,9 @@ def get_the_lib_path():
     return subprocess.run(['pkg-config', '--variable=libdir', 'raylib'], text=True,
                           stdout=subprocess.PIPE).stdout.strip()
 
+def get_lib_flags():
+    return subprocess.run(['pkg-config', '--libs', 'raylib'], text=True,
+                          stdout=subprocess.PIPE).stdout.strip().split()
 
 def pre_process_header(filename, remove_function_bodies=False):
     print("Pre-processing " + filename)
@@ -154,7 +157,7 @@ def build_unix():
         libraries = []
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
-        extra_link_args = [get_the_lib_path() + '/libraylib.a', '-lm', '-lpthread', '-lGL',
+        extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
                            '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
         libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic']
 
