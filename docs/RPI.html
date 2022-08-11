@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dynamic Bindings &mdash; Raylib Python  documentation</title>
+  <title>Raspberry Pi &mdash; Raylib Python  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -19,8 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Building from source" href="BUILDING.html" />
-    <link rel="prev" title="C API" href="raylib.html" /> 
+    <link rel="prev" title="Building from source" href="BUILDING.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,9 +52,9 @@
 <li class="toctree-l1"><a class="reference internal" href="README.html#advert">Advert</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pyray.html">Python API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raylib.html">C API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Dynamic Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic.html">Dynamic Bindings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BUILDING.html">Building from source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RPI.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Raspberry Pi</a></li>
 </ul>
 
         </div>
@@ -72,9 +71,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Dynamic Bindings</li>
+      <li>Raspberry Pi</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/dynamic.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/RPI.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -82,43 +81,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="dynamic-bindings">
-<h1>Dynamic Bindings<a class="headerlink" href="#dynamic-bindings" title="Permalink to this headline"></a></h1>
-<p>CFFI ABI dynamic bindings avoid the need to compile a C extension module.  They now been moved to a separate module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">raylib_dynamic</span>
+  <section id="raspberry-pi">
+<h1>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permalink to this headline"></a></h1>
+<p>Please use Raspberry Pi OS Bullseye.  Older OSes are not tested.</p>
+<p>We have published a binary wheel using Raylib in X11 mode.  This <em>should</em> install and work on Bullseye
+with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">raylib</span><span class="o">==</span><span class="mf">4.2.0.0</span><span class="o">.</span><span class="n">dev1</span>
 </pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>There have been some weird failures with dynamic bindings and ctypes bindings before and often the
-failures are silent
-so you don’t even know something has gone wrong and you don’t get proper stacktraces.  Also the static bindings are faster.
-Therefore I personally recommend the static ones.
-But the dynamic bindings have the advantage that you don’t need to compile anything to install.  You just need a Raylib DLL.</p>
-</div>
-<p>The API is exactly the same as the static one documented here.  (Therefore you can’t have both modules installed at once.)  The only difference is you can’t do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">raylib</span> <span class="kn">import</span> <span class="o">*</span>
+<p>If it doesn’t work, or we haven’t published a binary wheel for the latest version,
+or if you want to use Raylib in <code class="docutils literal notranslate"><span class="pre">PLATFORM_DRM</span></code> mode, you will need to compile your own raylib
+and have pip compile the wheel.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">raysan5</span><span class="o">/</span><span class="n">raylib</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">raylib</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DPLATFORM</span><span class="o">=</span><span class="s2">&quot;DRM&quot;</span> <span class="o">-</span><span class="n">DINCLUDE_EVERYTHING</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">raylib</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">raylib</span><span class="o">==</span><span class="mf">4.2.0.0</span><span class="o">.</span><span class="n">dev2</span>
 </pre></div>
 </div>
-<p>Instead you have to do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">raylib</span> <span class="kn">import</span> <span class="n">rl</span>
-</pre></div>
-</div>
-<p>Then you access the functions with <code class="docutils literal notranslate"><span class="pre">rl.</span></code> prefix.</p>
-<p>See <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/dynamic/test_dynamic.py">https://github.com/electronstudio/raylib-python-cffi/blob/master/dynamic/test_dynamic.py</a> for an example.</p>
-<p>If you use the <code class="docutils literal notranslate"><span class="pre">rl.</span></code> prefix then code will work on both static and dynamic bindings.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you access functions via <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pyray</span></code> then there is no difference at all, but be warned this hasn’t been tested much.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Standard Raylib DLLs do not include additional libraries like Raygui, Physac, etc.  So these functions won’t work.</p>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>If your system already has the Raylib library installed, you can set the environment variable <code class="docutils literal notranslate"><span class="pre">USE_EXTERNAL_RAYLIB</span></code> and it will
-always be used instead of the bundled DLLs.</p>
+<p>(or newer version)</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The Broadcom proprietary Open GL ES 2.0 drivers (installed by Raspbian into <code class="docutils literal notranslate"><span class="pre">/opt/vc</span></code> and compiled in Raylib
+with <code class="docutils literal notranslate"><span class="pre">PLATFORM_RPI</span></code>) do not work with Bullseye and have not been tested with the bindings.  They will probably
+require additional linker arguments to be added to <code class="docutils literal notranslate"><span class="pre">build.py</span></code>.  Suggest you use <code class="docutils literal notranslate"><span class="pre">PLATFORM_DRM</span></code> instead.</p>
 </div>
 </section>
 
@@ -126,8 +115,7 @@ always be used instead of the bundled DLLs.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="raylib.html" class="btn btn-neutral float-left" title="C API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="BUILDING.html" class="btn btn-neutral float-right" title="Building from source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="BUILDING.html" class="btn btn-neutral float-left" title="Building from source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

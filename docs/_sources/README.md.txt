@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 4.0.0
+# Python Bindings for Raylib 4.2
 
 New CFFI API static bindings.
 * Automatically generated to be as close as possible to 
@@ -6,7 +6,7 @@ original Raylib.
 * Faster, fewer bugs and easier to maintain than ctypes.
 * Commercial-friendly license.
 * Docstrings and auto-completion.
-* **Now includes extra libraries: raygui, rlgl and physac**
+* **Now includes extra libraries: raymath, raygui, rlgl and physac**
 
 [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
 
@@ -39,7 +39,9 @@ On most platforms it should install a binary wheel (Windows 10 x64, MacOS 10.15 
 If yours isn't available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g. 
 using homebrew, apt, etc.
 
-[If it doesn't work, you can build manually.](BUILDING.rst)
+## Raspberry Pi
+
+[Using on Rasperry Pi](RPI.rst)
 
 ## Dynamic binding version
 
@@ -47,13 +49,23 @@ There is now a separate dynamic version of this binding:
 
     python3 -m pip install raylib_dynamic
 
-[Read this before using raylib_dynamic](https://electronstudio.github.io/raylib-python-cffi/dynamic.html)
+It works on some systems where the static version doesn't, [but be sure to read these caveats before using it](https://electronstudio.github.io/raylib-python-cffi/dynamic.html)
 
 ## Beta testing
 
+If you find a bug, it may be fixed in the [latest dev release](https://github.com/electronstudio/raylib-python-cffi/releases).
 You can install an alpha or beta version by specifying the exact version number like this:
 
-    python3 -m pip install raylib==4.0a6
+    python3 -m pip install raylib==4.2.0.0.dev4
+
+## Problems?
+
+If it doesn't work, [try to build manually.](BUILDING.rst).  If that works then [submit an issue](https://github.com/electronstudio/raylib-python-cffi/issues)
+to let us know what you did.
+
+If you need help you can try asking [on Discord](https://discord.gg/raylib).
+
+If it still doesn't work, [submit an issue](https://github.com/electronstudio/raylib-python-cffi/issues).
 
 
 # How to use
@@ -71,6 +83,8 @@ Use [the Python API](https://electronstudio.github.io/raylib-python-cffi/pyray.h
 # App showcase
 
 [Tanki](https://github.com/pkulev/tanki)
+
+[Alloy Bloxel Editor](https://pebaz.itch.io/alloy-bloxel-editor)
 
 Add your app here!
 
