@@ -3,13 +3,25 @@ Python API
 
 This is a wrapper around the C API with some syntactic sugar.
 
-The API is *still the same as Raylib*, so you should still reply on `the official Raylib docs <https://www.raylib.com/cheatsheet/cheatsheet.html>`_, except:
+The API is *still the same as Raylib*, so you should still reply on:
+
+* `the C Raylib docs <https://www.raylib.com/cheatsheet/cheatsheet.html>`_
+
+* `the C Raylib examples <https://github.com/electronstudio/raylib-python-cffi/tree/master/examples>`_
+
+* `the C Raylib header file <https://github.com/raysan5/raylib/blob/master/src/raylib.h>`_
+
+
+The *differences* are:
 
 * the function names are in **snake_case**.
 
 * Some string and pointer conversions are handled automatically.
 
 * There are some helper functions to create structures.
+
+Examples
+--------
 
 Example program:
 
@@ -45,9 +57,10 @@ Example program:
         init_window(800, 450, "Raylib texture test")
         ...
 
-    You don't need to use the PyRay() class anymore.
+    (You don't need to use the PyRay() class anymore.)
 
-See also https://github.com/electronstudio/raylib-python-cffi/blob/master/tests/test_pyray.py
+`See all examples here <https://github.com/electronstudio/raylib-python-cffi/tree/master/examples>`_
+
 
 API reference
 -------------

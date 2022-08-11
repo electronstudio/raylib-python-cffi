@@ -14,7 +14,10 @@
 
 from raylib import rl, ffi
 from raylib.colors import *
-from raylib.defines import *
+try:
+    from raylib.defines import *
+except AttributeError:
+    print("sorry deprecated enums dont work on dynamic version")
 
 
 from inspect import ismethod,getmembers,isbuiltin

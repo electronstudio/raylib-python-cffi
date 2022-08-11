@@ -124,7 +124,8 @@ inline /* Functions may be inlined or external definition used*/ Vector3 Vector3
 // Gram-Schmidt function implementation
 inline /* Functions may be inlined or external definition used*/ void Vector3OrthoNormalize(Vector3 *v1, Vector3 *v2);// Transforms a Vector3 by a given Matrix
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Transform(Vector3 v, Matrix mat);// Transform a vector by quaternion rotation
-inline /* Functions may be inlined or external definition used*/ Vector3 Vector3RotateByQuaternion(Vector3 v, Quaternion q);// Calculate linear interpolation between two vectors
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3RotateByQuaternion(Vector3 v, Quaternion q);// Rotates a vector around an axis
+inline /* Functions may be inlined or external definition used*/ Vector3 Vector3RotateByAxisAngle(Vector3 v, Vector3 axis, float angle);// Calculate linear interpolation between two vectors
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Lerp(Vector3 v1, Vector3 v2, float amount);// Calculate reflected vector to normal
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Reflect(Vector3 v, Vector3 normal);// Get min value for each pair of components
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Min(Vector3 v1, Vector3 v2);// Get max value for each pair of components
@@ -159,15 +160,20 @@ inline /* Functions may be inlined or external definition used*/ Matrix MatrixSu
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixMultiply(Matrix left, Matrix right);// Get translation matrix
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixTranslate(float x, float y, float z);// Create rotation matrix from axis and angle
 // NOTE: Angle should be provided in radians
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotate(Vector3 axis, float angle);// Get x-rotation matrix (angle in radians)
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateX(float angle);// Get y-rotation matrix (angle in radians)
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateY(float angle);// Get z-rotation matrix (angle in radians)
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateZ(float angle);// Get xyz-rotation matrix (angles in radians)
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateXYZ(Vector3 ang);// Get zyx-rotation matrix (angles in radians)
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateZYX(Vector3 ang);// Get scaling matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotate(Vector3 axis, float angle);// Get x-rotation matrix
+// NOTE: Angle must be provided in radians
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateX(float angle);// Get y-rotation matrix
+// NOTE: Angle must be provided in radians
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateY(float angle);// Get z-rotation matrix
+// NOTE: Angle must be provided in radians
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateZ(float angle);// Get xyz-rotation matrix
+// NOTE: Angle must be provided in radians
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateXYZ(Vector3 angle);// Get zyx-rotation matrix
+// NOTE: Angle must be provided in radians
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateZYX(Vector3 angle);// Get scaling matrix
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixScale(float x, float y, float z);// Get perspective projection matrix
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixFrustum(double left, double right, double bottom, double top, double near, double far);// Get perspective projection matrix
-// NOTE: Angle should be provided in radians
+// NOTE: Fovy angle must be provided in radians
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixPerspective(double fovy, double aspect, double near, double far);// Get orthographic projection matrix
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixOrtho(double left, double right, double bottom, double top, double near, double far);// Get camera look-at matrix (view matrix)
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixLookAt(Vector3 eye, Vector3 target, Vector3 up);// Get float array of matrix data
@@ -192,7 +198,7 @@ inline /* Functions may be inlined or external definition used*/ Quaternion Quat
 inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionFromVector3ToVector3(Vector3 from, Vector3 to);// Get a quaternion for a given rotation matrix
 inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionFromMatrix(Matrix mat);// Get a matrix for a given quaternion
 inline /* Functions may be inlined or external definition used*/ Matrix QuaternionToMatrix(Quaternion q);// Get rotation quaternion for an angle and axis
-// NOTE: angle must be provided in radians
+// NOTE: Angle must be provided in radians
 inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionFromAxisAngle(Vector3 axis, float angle);// Get the rotation angle and axis for a given quaternion
 inline /* Functions may be inlined or external definition used*/ void QuaternionToAxisAngle(Quaternion q, Vector3 *outAxis, float *outAngle);// Get the quaternion equivalent to Euler angles
 // NOTE: Rotation order is ZYX

@@ -7,7 +7,7 @@ ARROWS_SIZE: int
 ARROWS_VISIBLE: int
 ARROW_PADDING: int
 def AttachAudioStreamProcessor(stream: AudioStream,processor: Any,) -> None:
-        """"""
+        """Attach audio stream processor to stream"""
         ...
 BACKGROUND_COLOR: int
 BASE_COLOR_DISABLED: int
@@ -186,7 +186,7 @@ def DestroyPhysicsBody(PhysicsBodyData_pointer_0: Any,) -> None:
 CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def DetachAudioStreamProcessor(stream: AudioStream,processor: Any,) -> None:
-        """"""
+        """Detach audio stream processor from stream"""
         ...
 def DirectoryExists(dirPath: str,) -> bool:
         """Check if a directory path exists"""
@@ -588,9 +588,6 @@ def GenImageGradientV(width: int,height: int,top: Color,bottom: Color,) -> Image
         ...
 def GenImageWhiteNoise(width: int,height: int,factor: float,) -> Image:
         """Generate image: white noise"""
-        ...
-def GenMeshBinormals(mesh: Any,) -> None:
-        """Compute mesh binormals"""
         ...
 def GenMeshCone(radius: float,height: float,slices: int,) -> Mesh:
         """Generate cone/pyramid mesh"""
@@ -1895,9 +1892,6 @@ def LoadSound(fileName: str,) -> Sound:
 def LoadSoundFromWave(wave: Wave,) -> Sound:
         """Load sound from wave data"""
         ...
-def LoadStorageValue(position: int,) -> int:
-        """Load integer value from storage file (from defined position)"""
-        ...
 def LoadTexture(fileName: str,) -> Texture:
         """Load texture from file into GPU memory (VRAM)"""
         ...
@@ -2453,9 +2447,6 @@ def SaveFileData(fileName: str,data: Any,bytesToWrite: int,) -> bool:
         ...
 def SaveFileText(fileName: str,text: str,) -> bool:
         """Save text data to file (write), string must be '\0' terminated, returns true on success"""
-        ...
-def SaveStorageValue(position: int,value: int,) -> bool:
-        """Save integer value to storage file (to defined position), returns true on success"""
         ...
 def SeekMusicStream(music: Music,position: float,) -> None:
         """Seek music to a position (in seconds)"""
@@ -3096,6 +3087,11 @@ CFFI C function from raylib._raylib_cffi.lib"""
         ...
 def Vector3Refract(Vector3_0: Vector3,Vector3_1: Vector3,float_2: float,) -> Vector3:
         """struct Vector3 Vector3Refract(struct Vector3, struct Vector3, float);
+
+CFFI C function from raylib._raylib_cffi.lib"""
+        ...
+def Vector3RotateByAxisAngle(Vector3_0: Vector3,Vector3_1: Vector3,float_2: float,) -> Vector3:
+        """struct Vector3 Vector3RotateByAxisAngle(struct Vector3, struct Vector3, float);
 
 CFFI C function from raylib._raylib_cffi.lib"""
         ...

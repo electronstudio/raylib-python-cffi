@@ -1,7 +1,8 @@
 C API
 =============
 
-The goal of the C API is make usage as similar to the original C as CFFI will allow.  The `example programs <https://github.com/electronstudio/raylib-python-cffi/tree/master/examples>`_
+The goal of the C API is make usage as similar to the original C as CFFI will allow.
+So the `example programs <https://github.com/electronstudio/raylib-python-cffi/tree/master/examples>`_
 are very, very similar to the C originals.
 
 Example program:
@@ -39,11 +40,16 @@ If you want to be more portable (i.e. same code will work with dynamic bindings)
     ...
 
 
-See also https://github.com/electronstudio/raylib-python-cffi/blob/master/tests/test_static.py
 
 .. note:: Whenever you need to convert stuff between C and Python see https://cffi.readthedocs.io
 
-.. important:: Your **primary reference** should always be `the official Raylib docs <https://www.raylib.com/cheatsheet/cheatsheet.html>`_
+.. important:: Your **primary reference** should always be
+
+   * `the C Raylib docs <https://www.raylib.com/cheatsheet/cheatsheet.html>`_
+
+   * `the C Raylib examples <https://github.com/electronstudio/raylib-python-cffi/tree/master/examples>`_
+
+   * `the C Raylib header file <https://github.com/raysan5/raylib/blob/master/src/raylib.h>`_
 
 However, here is a list of available functions:
 
