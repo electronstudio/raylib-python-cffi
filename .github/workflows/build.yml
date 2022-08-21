@@ -83,7 +83,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DBUILD_EXAMPLES=off -DCMAKE_OSX_ARCHITECTURES="arm64" -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DBUILD_EXAMPLES=off -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"  -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
       - name: Copy extras
@@ -91,8 +91,7 @@ jobs:
           sudo cp physac/src/physac.h /usr/local/include/
           sudo cp raygui/src/raygui.h /usr/local/include/
 
-      # Name defaults to universal2 and it technically is, but it wont run on x86_64 because we didnt build raylib for that
-      # so symbols are missing.  So we override name to arm64.  Why don't we make a working universal2 wheel?  Because
+      # Name defaults to universal2 and it technically is, but we override name to arm64.  Why don't we make a working universal2 wheel?  Because
       # I'd rather have a separate x86_64 that I can test, and I want it to work on 10_15 but I'm not sure a 'macosx_10_15_universal2' is valid
       # given that there is no SDK for universal until macosx_11_0
       - name: Build raylib-python-cffi
