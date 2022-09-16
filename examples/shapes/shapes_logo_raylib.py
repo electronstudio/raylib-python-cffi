@@ -1,6 +1,6 @@
 """
 
-raylib [core] example - Logo Raylib
+raylib [shapes] example - Logo Raylib
 
 """
 from pyray import *
