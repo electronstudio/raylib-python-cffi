@@ -30,7 +30,6 @@
 
 import raylib as rl
 
-
 from raylib.colors import *
 from dataclasses import dataclass
 from enum import Enum
@@ -43,12 +42,13 @@ from rlmath import *
 # lighting system
 from light_system import *
 
-#// Initialization
-#//--------------------------------------------------------------------------------------
-screenWidth = 1200;
-screenHeight = 720;
+# Initialization
+# --------------------------------------------------------------------------------------
+screenWidth = 1200
+screenHeight = 720
 
-rl.SetConfigFlags(rl.FLAG_MSAA_4X_HINT| rl.FLAG_WINDOW_RESIZABLE);  # Enable Multi Sampling Anti Aliasing 4x (if available)
+rl.SetConfigFlags(
+    rl.FLAG_MSAA_4X_HINT | rl.FLAG_WINDOW_RESIZABLE);  # Enable Multi Sampling Anti Aliasing 4x (if available)
 rl.InitWindow(screenWidth, screenHeight, b"raylib [shaders] example - basic lighting")
 
 camera = rl.ffi.new('struct Camera3D *', [
@@ -59,100 +59,97 @@ camera = rl.ffi.new('struct Camera3D *', [
     rl.CAMERA_PERSPECTIVE
 ])
 
-#// Load models
+# Load models
 modelA = rl.LoadModelFromMesh(rl.GenMeshTorus(0.4, 1.0, 16, 32))
 modelB = rl.LoadModelFromMesh(rl.GenMeshCube(1.0, 1.0, 1.0))
 modelC = rl.LoadModelFromMesh(rl.GenMeshSphere(0.5, 32, 32))
 
-#// Load models texture
+# Load models texture
 texture = rl.LoadTexture(b"resources/texel_checker.png")
 
-#// Assign texture to default model material
+# Assign texture to default model material
 modelA.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 modelB.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 modelC.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 
-angle = 6.282;
+angle = 6.282
 
-#// Using 4 point lights, white, red, green and blue
+# Using 4 point lights, white, red, green and blue
 
-lights0 = Light(LIGHT_POINT,  [ 4, 2, 4 ], Vector3Zero(), WHITE)
-lights1 = Light(LIGHT_POINT, [4, 2, 4 ], Vector3Zero(), RED)
-lights2 = Light(LIGHT_POINT, [ 0, 4, 2 ], Vector3Zero(), GREEN)
-lights3 = Light(LIGHT_POINT, [ 0, 4, 2 ], Vector3Zero(), BLUE)
+lights0 = Light(LIGHT_POINT, [4, 2, 4], Vector3Zero(), WHITE)
+lights1 = Light(LIGHT_POINT, [4, 2, 4], Vector3Zero(), RED)
+lights2 = Light(LIGHT_POINT, [0, 4, 2], Vector3Zero(), GREEN)
+lights3 = Light(LIGHT_POINT, [0, 4, 2], Vector3Zero(), BLUE)
 
-lightSystem = LightSystem([ 0.2, 0.2, 0.2, 1.0 ], lights0, lights1, lights2, lights3)
+lightSystem = LightSystem([0.2, 0.2, 0.2, 1.0], lights0, lights1, lights2, lights3)
 fogD = rl.GetShaderLocation(lightSystem.shader, b'FogDensity')
 fogDensity = 0.0
 
-#// All models use the same shader - which lights them
+# All models use the same shader - which lights them
 modelA.materials[0].shader = lightSystem.shader
 modelB.materials[0].shader = lightSystem.shader
 modelC.materials[0].shader = lightSystem.shader
 
 rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)  # Set an orbital camera mode
 
-rl.SetTargetFPS(60)                      # // Set our game to run at 60 frames-per-second
-#//--------------------------------------------------------------------------------------
+rl.SetTargetFPS(60)  # // Set our game to run at 60 frames-per-second
+# --------------------------------------------------------------------------------------
 
-#// Main game loop
-while not rl.WindowShouldClose():            #// Detect window close button or ESC key
-    #// Update
-    #//----------------------------------------------------------------------------------
+# Main game loop
+while not rl.WindowShouldClose():  # Detect window close button or ESC key
+    # Update
+    # ----------------------------------------------------------------------------------
     if rl.IsKeyPressed(rl.KEY_W):  lights0.enabled = not lights0.enabled
     if rl.IsKeyPressed(rl.KEY_R):  lights1.enabled = not lights1.enabled
     if rl.IsKeyPressed(rl.KEY_G):  lights2.enabled = not lights2.enabled
     if rl.IsKeyPressed(rl.KEY_B):  lights3.enabled = not lights3.enabled
 
-    rl.UpdateCamera(camera)              #// Update camera
+    rl.UpdateCamera(camera)  # Update camera
 
-    #// Make the lights do differing orbits
+    # Make the lights do differing orbits
     angle -= 0.02
-    lights0.position.x = math.cos(angle)*4.0
-    lights0.position.z = math.sin(angle)*4.0
-    lights1.position.x = math.cos(-angle*0.6)*4.0
-    lights1.position.z = math.sin(-angle*0.6)*4.0
-    lights2.position.y = math.cos(angle*0.2)*4.0
-    lights2.position.z = math.sin(angle*0.2)*4.0
-    lights3.position.y = math.cos(-angle*0.35)*4.0
-    lights3.position.z = math.sin(-angle*0.35)*4.0
+    lights0.position.x = math.cos(angle) * 4.0
+    lights0.position.z = math.sin(angle) * 4.0
+    lights1.position.x = math.cos(-angle * 0.6) * 4.0
+    lights1.position.z = math.sin(-angle * 0.6) * 4.0
+    lights2.position.y = math.cos(angle * 0.2) * 4.0
+    lights2.position.z = math.sin(angle * 0.2) * 4.0
+    lights3.position.y = math.cos(-angle * 0.35) * 4.0
+    lights3.position.z = math.sin(-angle * 0.35) * 4.0
 
-    #// Update the light shader with the camera view position
+    # Update the light shader with the camera view position
 
     lightSystem.update(camera.position)
 
-
-# ffi.cast('wchar_t', x)
-#    modelA.transform = ffi.cast('Matrix *', MatrixRotateY(angle*1.7))[0]
-#    modelA.transform = MatrixRotateY(angle*1.7)
-    #// Rotate the torus
-#    modelA.transform = MatrixMultiply(modelA.transform, MatrixRotateX(-0.025)[0])[0]
-#    modelA.transform = MatrixMultiply(modelA.transform, MatrixRotateZ(0.012)[0])[0]
+    # ffi.cast('wchar_t', x)
+    #    modelA.transform = ffi.cast('Matrix *', MatrixRotateY(angle*1.7))[0]
+    #    modelA.transform = MatrixRotateY(angle*1.7)
+    # Rotate the torus
+    #    modelA.transform = MatrixMultiply(modelA.transform, MatrixRotateX(-0.025)[0])[0]
+    #    modelA.transform = MatrixMultiply(modelA.transform, MatrixRotateZ(0.012)[0])[0]
     modelA.transform = rl.ffi.cast('Matrix *', MatrixMultiply(modelA.transform, MatrixRotateX(-0.025)))[0]
     modelA.transform = rl.ffi.cast('Matrix *', MatrixMultiply(modelA.transform, MatrixRotateZ(0.012)))[0]
 
     if (rl.IsKeyPressed(rl.KEY_F)):
         rl.ToggleFullscreen()
 
+    # ----------------------------------------------------------------------------------
 
-    #//----------------------------------------------------------------------------------
-
-    #// Draw
-    #//----------------------------------------------------------------------------------
+    # Draw
+    # ----------------------------------------------------------------------------------
     rl.BeginDrawing()
 
     rl.ClearBackground(RAYWHITE)
 
     rl.BeginMode3D(camera[0])
 
-    #// Draw the three models
-    rl.DrawModel(modelA, [0,0,0], 1.0, WHITE)
-    rl.DrawModel(modelB, [-1.6,0,0], 1.0, WHITE)
-    rl.DrawModel(modelC, [ 1.6,0,0], 1.0, WHITE)
+    # Draw the three models
+    rl.DrawModel(modelA, [0, 0, 0], 1.0, WHITE)
+    rl.DrawModel(modelB, [-1.6, 0, 0], 1.0, WHITE)
+    rl.DrawModel(modelC, [1.6, 0, 0], 1.0, WHITE)
 
-    #// Draw markers to show where the lights are
+    # Draw markers to show where the lights are
     lightSystem.draw()
-
 
     rl.DrawGrid(10, 1.0)
 
@@ -163,17 +160,17 @@ while not rl.WindowShouldClose():            #// Detect window close button or E
     rl.DrawText(b"Keys RGB & W toggle lights", 10, 30, 20, DARKGRAY)
 
     rl.EndDrawing()
-#//----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 
 
-#// De-Initialization
-#//--------------------------------------------------------------------------------------
-rl.UnloadModel(modelA) #        // Unload the modelA
-rl.UnloadModel(modelB) #        // Unload the modelB
-rl.UnloadModel(modelC) #        // Unload the modelC
+# De-Initialization
+# --------------------------------------------------------------------------------------
+rl.UnloadModel(modelA)  # Unload the modelA
+rl.UnloadModel(modelB)  # Unload the modelB
+rl.UnloadModel(modelC)  # Unload the modelC
 
-rl.UnloadTexture(texture)     #// Unload the texture
+rl.UnloadTexture(texture)  # Unload the texture
 
 rl.UnloadShader(lightSystem.shader)
 
-rl.CloseWindow()              #// Close window and OpenGL context
+rl.CloseWindow()  # Close window and OpenGL context
