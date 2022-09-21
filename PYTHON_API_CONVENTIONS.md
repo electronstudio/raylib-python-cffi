@@ -182,6 +182,7 @@ def main():
     close_window()  # Close window and OpenGL context
     # ----------------------------------------------------------------------------------
 
+
 # execute the main function 
 if __name__ == '__main__':
     main()
