@@ -151,6 +151,8 @@ def main():
     screenHeight = 450
 
     init_window(screenWidth, screenHeight, "raylib [core] example - basic window")
+
+    # TODO: Load resources / Initialize variables at this point
     
     set_target_fps(60)  # Set our game to run at 60 frames-per-second
     # ------------------------------------------------------------------------------------
@@ -159,7 +161,7 @@ def main():
     while not window_should_close():  # Detect window close button or ESC key
         # Update
         # ----------------------------------------------------------------------------------
-        # TODO: Update your variables here
+        # TODO: Update variables / Implement example logic at this point
         # ----------------------------------------------------------------------------------
 
         # Draw
@@ -174,6 +176,9 @@ def main():
 
     # De-Initialization
     # ----------------------------------------------------------------------------------
+
+    # TODO: Unload all loaded resources at this point
+
     close_window()  # Close window and OpenGL context
     # ----------------------------------------------------------------------------------
 
