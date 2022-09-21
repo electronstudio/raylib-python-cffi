@@ -85,7 +85,7 @@ resources/common/gui.png
 ```python
 """
 
-raylib [raylib module] example - name
+raylib [raylib module] example - name of the example
 
 """
 
