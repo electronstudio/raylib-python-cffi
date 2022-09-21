@@ -81,7 +81,7 @@ resources/common/gui.png
 ```
 
 ## Example Conventions For Python API
- - examples **should have** the following structure
+ - examples ***should*** have the following structure
 ```python
 """
 
