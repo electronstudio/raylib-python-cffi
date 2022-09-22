@@ -1,30 +1,30 @@
 ## Python API Coding Style Conventions
 
-Here is a list with some of the code conventions used by raylib in python:
+Here is a list with some code conventions used by raylib in python:
 
-Code element | Convention | Example
---- | :---: | ---
-Variables | lowerCase | `screenWidth = 0`, `targetFrameTime = 0.016`
-Local variables | lowerCase | ` playerPosition = Vector2(0, 0)`
-Global variables | lowerCase | `windowReady = False`
-Constants | lowerCase | `maxValue = 8`
-float values | always x.x | `gravity = 10.0`
-Operators | value1 * value2 | `product = value * 6`
-Operators | value1 / value2 | `division = value / 4`
-Operators | value1 + value2 | `sum = value + 10`
-Operators | value1 - value2 | `res = value - 5`
-Class | TitleCase | `class TextureFormat`
-Enum Class members | ALL_CAPS | `PIXELFORMAT_UNCOMPRESSED_R8G8B8`
-Class members | lowerCase | `texture.width`, `color.r`
-Functions | lowerCase & wordSeparationBy_ | `init_window()`, `window_should_close()`
-Functions params | lowerCase | `width`, `height`
-Ternary Operator | result1 if (condition) else result2 | `print("yes" if (value == 0) else "no")`
+| Code element       |             Convention              | Example                                      |
+|--------------------|:-----------------------------------:|----------------------------------------------|
+| Variables          |              lowerCase              | `screenWidth = 0`, `targetFrameTime = 0.016` |
+| Local variables    |              lowerCase              | ` playerPosition = Vector2(0, 0)`            |
+| Global variables   |              lowerCase              | `windowReady = False`                        |
+| Constants          |              lowerCase              | `maxValue = 8`                               |
+| float values       |             always x.x              | `gravity = 10.0`                             |
+| Operators          |           value1 * value2           | `product = value * 6`                        |
+| Operators          |           value1 / value2           | `division = value / 4`                       |
+| Operators          |           value1 + value2           | `sum = value + 10`                           |
+| Operators          |           value1 - value2           | `res = value - 5`                            |
+| Class              |              TitleCase              | `class TextureFormat`                        |
+| Enum Class members |              ALL_CAPS               | `PIXELFORMAT_UNCOMPRESSED_R8G8B8`            |
+| Class members      |              lowerCase              | `texture.width`, `color.r`                   |
+| Functions          |    lowerCase & wordSeparationBy_    | `init_window()`, `window_should_close()`     |
+| Functions params   |              lowerCase              | `width`, `height`                            |
+| Ternary Operator   | result1 if (condition) else result2 | `print("yes" if (value == 0) else "no")`     |
 
 Some other conventions to follow:
  - **ALWAYS** initialize all defined variables.
  - **use TABS / 4 spaces**.
  - Avoid trailing spaces, please, avoid them
- - Avoid using **semi-colon** as you can
+ - Avoid using **semicolon** as you can
  - Control flow statements always are followed **by a space**:
 ```python
 if condition : value = 0
@@ -36,7 +36,7 @@ for i in range(NUM_VALUES): print(i)
 ```
  - All conditions checks are **always between parenthesis** but not boolean values:
 ```python
-if value > 1 and value < 50 and valueActive:
+if value > 1 and value1 < 50 and valueActive:
     #Do something here!
 ```
 
