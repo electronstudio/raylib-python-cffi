@@ -23,7 +23,7 @@ def main():
     screenWidth = 800
     screenHeight = 450
 
-    init_window(screenWidth, screenHeight, 'raylib [shapes] example - raylib logo using shapes')
+    init_window(screenWidth, screenHeight, "raylib [shapes] example - raylib logo using shapes")
 
     set_target_fps(60)  # Set our game to run at 60 frames-per-second
     # ----------------------------------------------------------------------------------
