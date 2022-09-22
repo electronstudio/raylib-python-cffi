@@ -25,7 +25,7 @@ def main():
     screenWidth = 800
     screenHeight = 450
 
-    init_window(screenWidth, screenHeight, b"raylib [shapes] example - draw rectangle rounded")
+    init_window(screenWidth, screenHeight, "raylib [shapes] example - draw rectangle rounded")
 
     roundness = 0.2
     width = 200
