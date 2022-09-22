@@ -86,7 +86,7 @@ resources/common/gui.png
 ```python
 """
 
-raylib [raylib module] example - name of the example
+raylib [raylib module] example - Name Of The Example
 
 """
 
@@ -121,7 +121,7 @@ def main():
     # Do something here!
     # ----------------------------------------------------------------------------------
 
-# execute the main function 
+# Execute the main function 
 if __name__ == '__main__':
     main()
 ```
@@ -184,7 +184,7 @@ def main():
     # ----------------------------------------------------------------------------------
 
 
-# execute the main function 
+# Execute the main function 
 if __name__ == '__main__':
     main()
 
