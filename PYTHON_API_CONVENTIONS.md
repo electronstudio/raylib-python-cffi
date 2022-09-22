@@ -9,7 +9,7 @@ Here is a list with some code conventions used by raylib in python:
 | Global variables    |              lowerCase              | `windowReady = False`                        |
 | Constants variables |              lowerCase              | `maxValue = 8`                               |
 | Constants values    |              ALL_CAPS               | `MAX_BUILDINGS = 5`                          |
-| string values       |             always ""               | `output = "Hello"`, `"welcom"`               |
+| string values       |             always ""               | `output = "Hello"`, `"welcome"`              |
 | float values        |             always x.x              | `gravity = 10.0`                             |
 | Operators           |           value1 * value2           | `product = value * 6`                        |
 | Operators           |           value1 / value2           | `division = value / 4`                       |
