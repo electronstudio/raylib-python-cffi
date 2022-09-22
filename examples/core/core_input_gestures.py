@@ -60,7 +60,7 @@ def main():
         current_gesture = get_gesture_detected()
         touch_position = get_touch_position(0)
 
-        if check_collision_point_rec(touch_position, touch_area) and current_gesture != Gesture.GESTURE_NONE :
+        if check_collision_point_rec(touch_position, touch_area) and current_gesture != Gesture.GESTURE_NONE:
             if current_gesture != last_gesture:
                 gesture_strings.append(GESTURE_LABELS[current_gesture])
 
@@ -77,8 +77,7 @@ def main():
 
         draw_rectangle_rec(touch_area, GRAY)
         draw_rectangle(225, 15, screenWidth - 240, screenHeight - 30, RAYWHITE)
-        draw_text("GESTURES TEST AREA", screenWidth - 270, screenHeight - 40, 20, fade(GRAY, 0.5)
-        )
+        draw_text("GESTURES TEST AREA", screenWidth - 270, screenHeight - 40, 20, fade(GRAY, 0.5))
 
         for i, val in enumerate(gesture_strings):
             if i % 2 == 0:
