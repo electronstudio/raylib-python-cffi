@@ -27,10 +27,10 @@ from raylib import (
 def main():
     # Initialization
     # --------------------------------------------------------------------------------------
-    SCREEN_WIDTH = 800
-    SCREEN_HEIGHT = 450
+    screenWidth = 800
+    screenHeight = 450
 
-    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - window should close")
+    init_window(screenWidth, screenHeight, "raylib [core] example - window should close")
 
     set_exit_key(KEY_NULL)  # Disable KEY_ESCAPE to close window, X-button still works
 
@@ -49,10 +49,8 @@ def main():
             exitWindowRequested = True
 
         if exitWindowRequested:
-
             # A request for close window has been issued, we can save data before closing
             # or just show a message asking for confirmation
-
             if is_key_pressed(KEY_Y):
                 exitWindow = True
             elif is_key_pressed(KEY_N):
@@ -66,8 +64,7 @@ def main():
         clear_background(RAYWHITE)
 
         if exitWindowRequested:
-
-            draw_rectangle(0, 100, SCREEN_WIDTH, 200, BLACK)
+            draw_rectangle(0, 100, screenWidth, 200, BLACK)
             draw_text("Are you sure you want to exit program? [Y/N]", 40, 180, 30, WHITE)
 
         else:
