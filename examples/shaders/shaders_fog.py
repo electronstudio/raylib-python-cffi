@@ -37,10 +37,10 @@ model.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 model2.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 model3.materials[0].maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 
-light = Light(LIGHT_POINT,  [ 0, 4, 0 ], Vector3Zero(), WHITE)
-lightSystem = LightSystem([ 0.2, 0.2, 0.2, 1.0 ], light)
+light = Light(LIGHT_POINT, [0, 4, 0], Vector3Zero(), WHITE)
+lightSystem = LightSystem([0.2, 0.2, 0.2, 1.0], light)
 
-fog_color = rl.ffi.new('float[]', [0.2,0.2,1.0,1.0])
+fog_color = rl.ffi.new('float[]', [0.2, 0.2, 1.0, 1.0])
 fogC = rl.GetShaderLocation(lightSystem.shader, b'fogColor')
 rl.SetShaderValue(lightSystem.shader, fogC, fog_color, rl.SHADER_UNIFORM_VEC4);
 
@@ -55,20 +55,19 @@ model2.materials[0].shader = lightSystem.shader
 model3.materials[0].shader = lightSystem.shader
 
 rl.SetTargetFPS(60)
-a=0.0
+a = 0.0
 while not rl.WindowShouldClose():
-    
-    a+=0.01
-    camera.position.x = math.sin(a)*6
-    camera.position.z = math.cos(a)*6 
+
+    a += 0.01
+    camera.position.x = math.sin(a) * 6
+    camera.position.z = math.cos(a) * 6
     rl.UpdateCamera(camera)
 
     lightSystem.update(camera.position)
 
-    
-    model.transform = rl.ffi.cast("Matrix *",MatrixMultiply(model.transform, MatrixRotateX(-0.025)))[0]
-    model.transform = rl.ffi.cast("Matrix *",MatrixMultiply(model.transform, MatrixRotateZ(0.012)))[0]
-    
+    model.transform = rl.ffi.cast("Matrix *", MatrixMultiply(model.transform, MatrixRotateX(-0.025)))[0]
+    model.transform = rl.ffi.cast("Matrix *", MatrixMultiply(model.transform, MatrixRotateZ(0.012)))[0]
+
     if rl.IsKeyDown(rl.KEY_UP):
         fogDensity = min(fogDensity + 0.001, 1)
 
@@ -84,18 +83,16 @@ while not rl.WindowShouldClose():
     if rl.IsKeyDown(rl.KEY_SPACE):
         rl.ClearBackground(BLACK)
 
-    
     rl.BeginMode3D(camera[0])
     rl.DrawModel(model, [0] * 3, 1, WHITE)
     rl.DrawModel(model2, [-2.6, 0, 0], 1, WHITE)
-    rl.DrawModel(model3, [ 2.6, 0, 0], 1, WHITE)
+    rl.DrawModel(model3, [2.6, 0, 0], 1, WHITE)
 
     for i in range(-20, 20, 2):
         rl.DrawModel(model, [i, 0, 2], 1, WHITE)
 
-
-    #Raylib removed this function
-    #rl.DrawGizmo([1000, 1000, 1000])
+    # Raylib removed this function
+    # rl.DrawGizmo([1000, 1000, 1000])
 
     rl.EndMode3D()
 
@@ -110,4 +107,3 @@ rl.UnloadModel(model3)
 rl.UnloadTexture(texture)
 rl.UnloadShader(lightSystem.shader)
 rl.CloseWindow()
-
