@@ -5,7 +5,9 @@ screenHeight = 450
 
 InitWindow(screenWidth, screenHeight, b"raylib [textures] example - image loading")
 
-image = LoadImage(b"resources/raylib_logo.png")
+
+
+image = LoadImage(b"examples/textures/resources/raylib_logo.jpg")
 texture = LoadTextureFromImage(image)
 
 UnloadImage(image)
@@ -22,6 +24,8 @@ while not WindowShouldClose():
 
     EndDrawing()
 
-UnloadTexture(texture)
 
+
+
+UnloadTexture(texture)     
 CloseWindow()               
