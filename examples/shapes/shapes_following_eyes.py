@@ -7,13 +7,6 @@ raylib [shapes] example - Following Eyes
 # Import
 # ------------------------------------------------------------------------------------
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    BROWN,
-    BLACK,
-    LIGHTGRAY,
-    DARKGREEN,
-)
 from math import (
     atan2,
     cos,
@@ -43,7 +36,7 @@ def main():
     angle = 0.0
     dx, dy, dxx, dyy = 0.0, 0.0, 0.0, 0.0
 
-    set_target_fps(60)
+    set_target_fps(60)  # Set our game to run at 60 frames-per-second
     # ----------------------------------------------------------------------------------
 
     # Main game loop
