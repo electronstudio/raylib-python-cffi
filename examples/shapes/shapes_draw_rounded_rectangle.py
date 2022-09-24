@@ -22,10 +22,10 @@ from raylib.colors import (
 def main():
     # Initialization
     # ------------------------------------------------------------------------------------
-    screenWidth = 800
-    screenHeight = 450
+    SCREEN_WIDTH = 800
+    SCREEN_HEIGHT = 450
 
-    init_window(screenWidth, screenHeight, "raylib [shapes] example - draw rectangle rounded")
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [shapes] example - draw rectangle rounded")
 
     roundness = 0.2
     width = 200
@@ -33,9 +33,9 @@ def main():
     segments = 0
     lineThick = 1
 
-    drawRect = False
-    drawRoundedRect = True
-    drawRoundedLines = False
+    draw_rect = False
+    draw_rounded_rect = True
+    draw_rounded_lines = False
 
     set_target_fps(60)  # Set our game to run at 60 frames-per-second
     # ------------------------------------------------------------------------------------
@@ -56,11 +56,11 @@ def main():
         draw_line(560, 0, 560, get_screen_height(), fade(LIGHTGRAY, 0.6))
         draw_rectangle(560, 0, get_screen_width() - 500, get_screen_height(), fade(LIGHTGRAY, 0.3))
 
-        if drawRect:
+        if draw_rect:
             draw_rectangle_rec(rec, fade(GOLD, 0.6))
-        if drawRoundedRect:
+        if draw_rounded_rect:
             draw_rectangle_rounded(rec, roundness, segments, fade(MAROON, 0.2))
-        if drawRoundedLines:
+        if draw_rounded_lines:
             draw_rectangle_rounded_lines(rec, roundness, segments, lineThick, fade(MAROON, 0.4))
 
         # Draw GUI controls
@@ -71,9 +71,9 @@ def main():
         lineThick = int(gui_slider_bar(Rectangle(640, 170, 105, 20), "Thickness", 0, lineThick, 0, 20))
         segments = int(gui_slider_bar(Rectangle(640, 240, 105, 20), "Segments", 0, segments, 0, 60))
 
-        drawRoundedRect = gui_check_box(Rectangle(640, 320, 20, 20), "DrawRoundedRect", drawRoundedRect)
-        drawRoundedLines = gui_check_box(Rectangle(640, 350, 20, 20), "DrawRoundedLines", drawRoundedLines)
-        drawRect = gui_check_box(Rectangle(640, 380, 20, 20), "DrawRect", drawRect)
+        draw_rounded_rect = gui_check_box(Rectangle(640, 320, 20, 20), "DrawRoundedRect", draw_rounded_rect)
+        draw_rounded_lines = gui_check_box(Rectangle(640, 350, 20, 20), "DrawRoundedLines", draw_rounded_lines)
+        draw_rect = gui_check_box(Rectangle(640, 380, 20, 20), "DrawRect", draw_rect)
         # ------------------------------------------------------------------------------
 
         draw_text(text_format("MODE: %s" % "MANUAL" if segments >= 4 else "AUTO"), 640, 280, 10, MAROON if segments >= 4 else DARKGRAY)
