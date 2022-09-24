@@ -84,7 +84,8 @@ def main():
             # Process of sending data is costly, and it could happen that GPU data has not been completely
             # processed for drawing while new data is tried to be sent (updating current in-use buffers)
             # it could generate a stall and consequently a frame drop, limiting the number of drawn bunnies
-            draw_texture(tex_bunny, int(bunnies[i].position.x), int(bunnies[i].position.y), bunnies[i].color)
+            # draw_texture(tex_bunny, int(bunnies[i].position.x), int(bunnies[i].position.y), bunnies[i].color)
+            draw_texture_v(tex_bunny, bunnies[i].position, bunnies[i].color)  # more efficient drawing
 
         draw_rectangle(0, 0, SCREEN_WIDTH, 40, BLACK)
         text = f"bunnies {bunnies_count}"
