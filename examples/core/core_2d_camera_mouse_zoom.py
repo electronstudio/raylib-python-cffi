@@ -1,5 +1,7 @@
 """
+
 raylib [core] example - 2D Camera Mouse Zoom
+
 """
 
 # Import
