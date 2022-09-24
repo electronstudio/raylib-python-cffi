@@ -88,10 +88,9 @@ def main():
             draw_texture_v(tex_bunny, bunnies[i].position, bunnies[i].color)  # more efficient drawing
 
         draw_rectangle(0, 0, SCREEN_WIDTH, 40, BLACK)
-        text = f"bunnies {bunnies_count}"
-        draw_text(text.encode('utf-8'), 120, 10, 20, GREEN)
-        text = f"batched draw calls: {1 + int(bunnies_count / MAX_BATCH_ELEMENTS)}"
-        draw_text(text.encode('utf-8'), 320, 10, 20, MAROON)
+
+        draw_text(f"bunnies {bunnies_count}", 120, 10, 20, GREEN)
+        draw_text(f"batched draw calls: {1 + int(bunnies_count / MAX_BATCH_ELEMENTS)}", 320, 10, 20, MAROON)
 
         draw_fps(10, 10)
 
