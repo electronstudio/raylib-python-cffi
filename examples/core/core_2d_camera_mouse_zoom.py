@@ -1,67 +1,81 @@
 """
-raylib [core] example - 2d camera mouse zoom
+raylib [core] example - 2D Camera Mouse Zoom
 """
 
-import pyray
+# Import
+# ------------------------------------------------------------------------------------
+from pyray import *
+# ------------------------------------------------------------------------------------
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 450
+# ------------------------------------------------------------------------------------
+# Program main entry point
+# ------------------------------------------------------------------------------------
+def main():
+    # Initialization
+    # ----------------------------------------------------------------------------------
+    screenWidth = 800
+    screenHeight = 450
 
-pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - 2d camera mouse zoom")
+    init_window(screenWidth, screenHeight, "raylib [core] example - 2d camera mouse zoom")
 
-pyray.set_target_fps(60)
+    camera = Camera2D()
+    camera.zoom = 1.0
 
-camera = pyray.Camera2D()
+    set_target_fps(60)  # Set our game to run at 60 frames-per-second
+    # ----------------------------------------------------------------------------------
 
-camera = pyray.Camera2D()
-camera.zoom = 1.0
+    # Main game loop
+    while not window_should_close():  # Detect window close button or ESC key
+        # Update
+        # ----------------------------------------------------------------------------------
+        if is_mouse_button_down(MouseButton.MOUSE_BUTTON_RIGHT):
+            delta = get_mouse_delta()
+            delta = vector2_scale(delta, -1.0 / camera.zoom)
+            camera.target = vector2_add(camera.target, delta)
 
-pyray.set_target_fps(60); 
+        # zoom based on mouse wheel
+        wheel = get_mouse_wheel_move()
+        if wheel != 0:
 
-# main game loop
-while not pyray.window_should_close():   
-    # update
-    if pyray.is_mouse_button_down(pyray.MOUSE_BUTTON_RIGHT):
-        delta = pyray.get_mouse_delta()
-        delta = pyray.vector2_scale(delta, -1.0 / camera.zoom)
-        camera.target = pyray.vector2_add(camera.target, delta)
+            mouseWorldPos = get_screen_to_world_2d(get_mouse_position(), camera)
 
-    # zoom based on mouse wheel
-    wheel = pyray.get_mouse_wheel_move()
-    if wheel != 0:
+            camera.offset = get_mouse_position()
 
-        mouseWorldPos = pyray.get_screen_to_world_2d(pyray.get_mouse_position(), camera)
-        
-        camera.offset = pyray.get_mouse_position()
+            camera.target = mouseWorldPos
 
-        camera.target = mouseWorldPos
+            zoomIncrement = 0.125
 
-        ZOOM_INCREMENT = 0.125
+            camera.zoom += wheel * zoomIncrement
+            if camera.zoom < zoomIncrement: camera.zoom = zoomIncrement
 
-        camera.zoom += (wheel*ZOOM_INCREMENT)
-        if (camera.zoom < ZOOM_INCREMENT): camera.zoom = ZOOM_INCREMENT
+        # Draw
+        # ----------------------------------------------------------------------------------
+        begin_drawing()
 
+        clear_background(BLACK)
 
-    # draw
-    pyray.begin_drawing()
-    pyray.clear_background(pyray.BLACK)
+        begin_mode_2d(camera)
 
-    pyray.begin_mode_2d(camera)
+        rl_push_matrix()
+        rl_translatef(0, 25*50, 0)
+        rl_rotatef(90, 1, 0, 0)
+        draw_grid(100, 50)
+        rl_pop_matrix()
 
-    pyray.rl_push_matrix()
-    pyray.rl_translatef(0, 25*50, 0)
-    pyray.rl_rotatef(90, 1, 0, 0)
-    pyray.draw_grid(100, 50)
-    pyray.rl_pop_matrix()
+        draw_circle(100, 100, 50, YELLOW)
 
-    pyray.draw_circle(100, 100, 50, pyray.YELLOW)
-            
-    pyray.end_mode_2d()
+        end_mode_2d()
 
-    pyray.draw_text("Mouse right button drag to move, mouse wheel to zoom", 10, 10, 20, pyray.WHITE);
-    
-    pyray.end_drawing()
+        draw_text("Mouse right button drag to move, mouse wheel to zoom", 10, 10, 20, WHITE);
 
-# de-Initialization
-pyray.close_window()   
+        end_drawing()
+        # ----------------------------------------------------------------------------------
 
+        # De-Initialization
+        # ----------------------------------------------------------------------------------
+        close_window()  # Close window and OpenGL context
+        # ----------------------------------------------------------------------------------
+
+    # Execute the main function
+    if __name__ == '__main__':
+        main()
