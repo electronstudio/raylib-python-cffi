@@ -8,7 +8,7 @@ Here is a list with some code conventions used by raylib in python:
 | Local variables     |              lowerCase              | ` playerPosition = Vector2(0, 0)`            |
 | Global variables    |              lowerCase              | `windowReady = False`                        |
 | Constants variables |              lowerCase              | `maxValue = 8`                               |
-| Constants values    |              ALL_CAPS               | `MAX_BUILDINGS = 5`                          |
+| Constants values    |              ALL_CAPS               | `MAX_BUILDINGS = 5`[^1]                      |
 | string values       |             always ""               | `output = "Hello"`, `"welcome"`              |
 | float values        |             always x.x              | `gravity = 10.0`                             |
 | Operators           |           value1 * value2           | `product = value * 6`                        |
@@ -21,6 +21,7 @@ Here is a list with some code conventions used by raylib in python:
 | Functions           |    lowerCase & wordSeparationBy_    | `init_window()`, `window_should_close()`     |
 | Functions params    |              lowerCase              | `width`, `height`                            |
 | Ternary Operator    | result1 if (condition) else result2 | `print("yes" if (value == 0) else "no")`     |
+[^1]: like `macro definitions` of value in C
 
 Some other conventions to follow:
  - **ALWAYS** initialize all defined variables.
