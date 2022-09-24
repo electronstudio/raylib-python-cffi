@@ -1,6 +1,6 @@
 """
 
-raylib [shapes] example - Lines Bezier
+raylib [shapes] example - Cubic-bezier lines
 
 """
 

@@ -1,6 +1,6 @@
 """
 
-raylib [shapes] example - Logo Raylib
+raylib [shapes] example - Draw Raylib Logo using basic shapes
 
 """
 
@@ -20,10 +20,10 @@ from raylib.colors import (
 def main():
     # Initialization
     # ----------------------------------------------------------------------------------
-    screenWidth = 800
-    screenHeight = 450
+    SCREEN_WIDTH = 800
+    SCREEN_HEIGHT = 450
 
-    init_window(screenWidth, screenHeight, "raylib [shapes] example - raylib logo using shapes")
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [shapes] example - raylib logo using shapes")
 
     set_target_fps(60)  # Set our game to run at 60 frames-per-second
     # ----------------------------------------------------------------------------------
@@ -41,9 +41,9 @@ def main():
 
         clear_background(RAYWHITE)
 
-        draw_rectangle(int(screenWidth/2 - 128), int(screenHeight/2 - 128), 256, 256, BLACK)
-        draw_rectangle(int(screenWidth/2 - 112), int(screenHeight/2 - 112), 224, 224, RAYWHITE)
-        draw_text("raylib", int(screenWidth/2 - 44), int(screenHeight/2 + 48), 50, BLACK)
+        draw_rectangle(int(SCREEN_WIDTH/2 - 128), int(SCREEN_HEIGHT/2 - 128), 256, 256, BLACK)
+        draw_rectangle(int(SCREEN_WIDTH/2 - 112), int(SCREEN_HEIGHT/2 - 112), 224, 224, RAYWHITE)
+        draw_text("raylib", int(SCREEN_WIDTH/2 - 44), int(SCREEN_HEIGHT/2 + 48), 50, BLACK)
 
         draw_text("this is NOT a texture!", 350, 370, 10, GRAY)
 
