@@ -20,7 +20,7 @@ Here is a list with some code conventions used by raylib in python:
 | Class members       |              lowerCase              | `texture.width`, `color.r`                |
 | Functions           |    lowerCase & wordSeparationBy_    | `init_window()`, `update_camera_center()` |
 | Functions params    |              lowerCase              | `width`, `height`                         |
-| Ternary Operator    | result1 if (condition) else result2 | `print("yes" if (value == 0) else "no")`  |
+| Ternary Operator    | result1 if condition else result2 | `print("yes" if value == 0 else "no")`  |
 [^1] like `macro definitions` of value in C
 
 Some other conventions to follow:
