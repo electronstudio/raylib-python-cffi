@@ -142,10 +142,6 @@ raylib [core] example - Basic Window
 # Import
 # ------------------------------------------------------------------------------------
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    LIGHTGRAY,
-)
 # ------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------
@@ -154,10 +150,10 @@ from raylib.colors import (
 def main():
     # Initialization
     # ------------------------------------------------------------------------------------
-    screenWidth = 800
-    screenHeight = 450
+    SCREEN_WIDTH = 800
+    SCREEN_HEIGHT = 450
 
-    init_window(screenWidth, screenHeight, "raylib [core] example - basic window")
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - basic window")
 
     # TODO: Load resources / Initialize variables at this point
     
