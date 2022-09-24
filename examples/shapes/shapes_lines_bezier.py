@@ -14,21 +14,20 @@ from raylib.colors import (
 )
 # ------------------------------------------------------------------------------------
 
-
 # ------------------------------------------------------------------------------------
 # Program main entry point
 # ------------------------------------------------------------------------------------
 def main():
     # Initialization
     # ------------------------------------------------------------------------------------
-    screenWidth = 800
-    screenHeight = 450
+    SCREEN_WIDTH = 800
+    SCREEN_HEIGHT = 450
 
     set_config_flags(ConfigFlags.FLAG_MSAA_4X_HINT)
-    init_window(screenWidth, screenHeight, "raylib [shapes] example - cubic-bezier lines")
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [shapes] example - cubic-bezier lines")
 
     start = Vector2(0, 0)
-    end = Vector2(screenWidth, screenHeight)
+    end = Vector2(SCREEN_WIDTH, SCREEN_HEIGHT)
 
     set_target_fps(60)  # Set our game to run at 60 frames-per-second
     # -------------------------------------------------------------------------------------
