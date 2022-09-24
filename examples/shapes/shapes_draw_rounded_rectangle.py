@@ -1,6 +1,6 @@
 """
 
-raylib [shapes] example - Draw Rounded Rectangle (with gui options)
+raylib [shapes] example - Draw Rounded Rectangle
 
 """
 

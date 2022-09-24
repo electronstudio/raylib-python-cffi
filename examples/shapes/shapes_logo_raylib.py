@@ -1,6 +1,6 @@
 """
 
-raylib [shapes] example - Draw Raylib Logo using basic shapes
+raylib [shapes] example - Raylib Logo
 
 """
 
