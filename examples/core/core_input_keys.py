@@ -15,12 +15,12 @@ from pyray import *
 def main():
     # Initialization
     # ----------------------------------------------------------------------------------
-    screenWidth = 800
-    screenHeight = 450
+    SCREEN_WIDTH = 800
+    SCREEN_HEIGHT = 450
 
-    init_window(screenWidth, screenHeight, "raylib [core] example - keyboard input")
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - keyboard input")
 
-    ball_position = Vector2(screenWidth / 2, screenHeight / 2)
+    ball_position = Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     set_target_fps(60)  # Set our game to run at 60 frames-per-second
     # ----------------------------------------------------------------------------------
