@@ -18,7 +18,7 @@ def main():
     SCREEN_WIDTH = 800
     SCREEN_HEIGHT = 450
 
-    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, 'raylib [core] example - random values')
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - random values")
 
     # set_random_seed()   # Set a custom random seed if desired, by default: "time(NULL)"
 
@@ -60,7 +60,7 @@ def main():
     # ----------------------------------------------------------------------------------
 
 
-# execute the main function
+# Execute the main function
 if __name__ == '__main__':
     main()
 

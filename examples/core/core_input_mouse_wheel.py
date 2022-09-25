@@ -53,7 +53,7 @@ def main():
     # ----------------------------------------------------------------------------------
 
 
-# execute the main function
+# Execute the main function
 if __name__ == '__main__':
     main()
 
