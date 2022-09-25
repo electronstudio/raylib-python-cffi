@@ -7,13 +7,11 @@ raylib [core] example - Input Gestures Detection
 # Import
 # ------------------------------------------------------------------------------------
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    LIGHTGRAY,
-    DARKGRAY,
-    MAROON,
-    GRAY,
-)
+# ------------------------------------------------------------------------------------
+
+# Definitions
+# ------------------------------------------------------------------------------------
+MAX_GESTURE_STRINGS = 20
 # ------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------
@@ -22,14 +20,13 @@ from raylib.colors import (
 def main():
     # Initialization
     # ----------------------------------------------------------------------------------
-    MAX_GESTURE_STRINGS = 20
-    screenWidth = 800
-    screenHeight = 450
+    SCREEN_WIDTH = 800
+    SCREEN_HEIGHT = 450
 
-    init_window(screenWidth, screenHeight, "raylib [core] example - input gestures")
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - input gestures")
 
     touch_position = Vector2(0, 0)
-    touch_area = Rectangle(220, 10, screenWidth - 230, screenHeight - 20)
+    touch_area = Rectangle(220, 10, SCREEN_WIDTH - 230, SCREEN_HEIGHT - 20)
 
     gesture_strings = []
 
@@ -37,16 +34,16 @@ def main():
     last_gesture = Gesture.GESTURE_NONE
 
     GESTURE_LABELS = {
-        Gesture.GESTURE_TAP: 'GESTURE TAP',
-        Gesture.GESTURE_DOUBLETAP: 'GESTURE DOUBLETAP',
-        Gesture.GESTURE_HOLD: 'GESTURE HOLD',
-        Gesture.GESTURE_DRAG: 'GESTURE DRAG',
-        Gesture.GESTURE_SWIPE_RIGHT: 'GESTURE SWIPE RIGHT',
-        Gesture.GESTURE_SWIPE_LEFT: 'GESTURE SWIPE LEFT',
-        Gesture.GESTURE_SWIPE_UP: 'GESTURE SWIPE UP',
-        Gesture.GESTURE_SWIPE_DOWN: 'GESTURE SWIPE DOWN',
-        Gesture.GESTURE_PINCH_IN: 'GESTURE PINCH IN',
-        Gesture.GESTURE_PINCH_OUT: 'GESTURE PINCH OUT',
+        Gesture.GESTURE_TAP: "GESTURE TAP",
+        Gesture.GESTURE_DOUBLETAP: "GESTURE DOUBLETAP",
+        Gesture.GESTURE_HOLD: "GESTURE HOLD",
+        Gesture.GESTURE_DRAG: "GESTURE DRAG",
+        Gesture.GESTURE_SWIPE_RIGHT: "GESTURE SWIPE RIGHT",
+        Gesture.GESTURE_SWIPE_LEFT: "GESTURE SWIPE LEFT",
+        Gesture.GESTURE_SWIPE_UP: "GESTURE SWIPE UP",
+        Gesture.GESTURE_SWIPE_DOWN: "GESTURE SWIPE DOWN",
+        Gesture.GESTURE_PINCH_IN: "GESTURE PINCH IN",
+        Gesture.GESTURE_PINCH_OUT: "GESTURE PINCH OUT",
     }
 
     set_target_fps(60)  # Set our game to run at 60 frames-per-second
@@ -76,8 +73,8 @@ def main():
         clear_background(RAYWHITE)
 
         draw_rectangle_rec(touch_area, GRAY)
-        draw_rectangle(225, 15, screenWidth - 240, screenHeight - 30, RAYWHITE)
-        draw_text("GESTURES TEST AREA", screenWidth - 270, screenHeight - 40, 20, fade(GRAY, 0.5))
+        draw_rectangle(225, 15, SCREEN_WIDTH - 240, SCREEN_HEIGHT - 30, RAYWHITE)
+        draw_text("GESTURES TEST AREA", SCREEN_WIDTH - 270, SCREEN_HEIGHT - 40, 20, fade(GRAY, 0.5))
 
         for i, val in enumerate(gesture_strings):
             if i % 2 == 0:
@@ -90,8 +87,8 @@ def main():
             else:
                 draw_text(val, 35, 36 + 20 * i, 10, MAROON)
 
-        draw_rectangle_lines(10, 29, 200, screenHeight - 50, GRAY)
-        draw_text('DETECTED GESTURES', 50, 15, 10, GRAY)
+        draw_rectangle_lines(10, 29, 200, SCREEN_HEIGHT - 50, GRAY)
+        draw_text("DETECTED GESTURES", 50, 15, 10, GRAY)
 
         if current_gesture != Gesture.GESTURE_NONE:
             draw_circle_v(touch_position, 30, MAROON)
