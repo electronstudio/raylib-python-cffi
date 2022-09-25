@@ -7,11 +7,6 @@ raylib [core] example - Keyboard input
 # Import
 # ------------------------------------------------------------------------------------
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    DARKGRAY,
-    MAROON,
-)
 # ------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------
@@ -34,14 +29,10 @@ def main():
     while not window_should_close():  # Detect window close button or ESC key
         # Update
         # ----------------------------------------------------------------------------------
-        if is_key_down(KeyboardKey.KEY_RIGHT):
-            ball_position.x += 2
-        if is_key_down(KeyboardKey.KEY_LEFT):
-            ball_position.x -= 2
-        if is_key_down(KeyboardKey.KEY_UP):
-            ball_position.y -= 2
-        if is_key_down(KeyboardKey.KEY_DOWN):
-            ball_position.y += 2
+        if is_key_down(KeyboardKey.KEY_RIGHT): ball_position.x += 2
+        if is_key_down(KeyboardKey.KEY_LEFT): ball_position.x -= 2
+        if is_key_down(KeyboardKey.KEY_UP): ball_position.y -= 2
+        if is_key_down(KeyboardKey.KEY_DOWN): ball_position.y += 2
         # ----------------------------------------------------------------------------------
 
         # Draw
@@ -49,7 +40,9 @@ def main():
         begin_drawing()
 
         clear_background(RAYWHITE)
+
         draw_text("move the ball with arrow keys", 10, 10, 20, DARKGRAY)
+
         draw_circle_v(ball_position, 50, MAROON)
 
         end_drawing()
