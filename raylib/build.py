@@ -170,11 +170,11 @@ def build_unix():
 
 def build_windows():
     print("BUILDING FOR WINDOWS")
-    ffibuilder.cdef(open("raylib/raylib.h.modified").read().replace("bool", "int"))
-    ffibuilder.cdef(open("raylib/rlgl.h.modified").read().replace("bool", "int"))
-    ffibuilder.cdef(open("raylib/raygui.h.modified").read().replace("bool", "int"))
-    ffibuilder.cdef(open("raylib/physac.h.modified").read().replace("bool", "int"))
-    ffibuilder.cdef(open("raylib/raymath.h.modified").read().replace("bool", "int"))
+    ffibuilder.cdef(open("raylib/raylib.h.modified").read())
+    ffibuilder.cdef(open("raylib/rlgl.h.modified").read())
+    ffibuilder.cdef(open("raylib/raygui.h.modified").read())
+    ffibuilder.cdef(open("raylib/physac.h.modified").read())
+    ffibuilder.cdef(open("raylib/raymath.h.modified").read())
     ffibuilder.set_source("raylib._raylib_cffi", """
     #include "raylib.h"
     #include "rlgl.h" 

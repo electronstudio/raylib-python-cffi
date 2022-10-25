@@ -43,7 +43,7 @@ def makefunc(a):
     def func(*args):
         modified_args = []
         for (c_arg, arg) in zip(ffi.typeof(a).args, args):
-            # print("arg:",str(arg), "c_arg.kind:", c_arg.kind, "c_arg:", c_arg, "type(arg):",str(type(arg)))
+            #print("arg:",str(arg), "c_arg.kind:", c_arg.kind, "c_arg:", c_arg, "type(arg):",str(type(arg)))
             if c_arg.kind == 'pointer':
                 if type(arg) == str:
                     arg = arg.encode('utf-8')
@@ -53,6 +53,8 @@ def makefunc(a):
                     arg = ffi.new("int *", arg)
                 elif type(arg) is float:
                     arg = ffi.new("float *", arg)
+                elif type(arg) is list  and str(c_arg) == "<ctype 'char * *'>":
+                    arg = [ffi.new("char[]", x.encode('utf-8')) for x in arg]
                 elif str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>" and "*" not in str(arg):  # CPython
                     arg = ffi.addressof(arg)
                 elif str(type(arg)) == "<class '_cffi_backend._CDataBase'>" and "*" not in str(arg):  # Pypy
