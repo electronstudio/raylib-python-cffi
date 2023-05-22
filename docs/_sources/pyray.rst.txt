@@ -33,10 +33,9 @@ Example program:
     pr.set_target_fps(60)
 
     camera = pr.Camera3D([18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45.0, 0)
-    pr.set_camera_mode(camera, pr.CAMERA_ORBITAL)
 
     while not pr.window_should_close():
-        pr.update_camera(camera)
+        pr.update_camera(camera, pr.CAMERA_ORBITAL)
         pr.begin_drawing()
         pr.clear_background(pr.RAYWHITE)
         pr.begin_mode_3d(camera)

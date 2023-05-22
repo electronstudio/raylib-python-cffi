@@ -1776,10 +1776,9 @@
 <span class="n">pr</span><span class="o">.</span><span class="n">set_target_fps</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 
 <span class="n">camera</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">Camera3D</span><span class="p">([</span><span class="mf">18.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="mf">45.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">pr</span><span class="o">.</span><span class="n">set_camera_mode</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">pr</span><span class="o">.</span><span class="n">CAMERA_ORBITAL</span><span class="p">)</span>
 
 <span class="k">while</span> <span class="ow">not</span> <span class="n">pr</span><span class="o">.</span><span class="n">window_should_close</span><span class="p">():</span>
-    <span class="n">pr</span><span class="o">.</span><span class="n">update_camera</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+    <span class="n">pr</span><span class="o">.</span><span class="n">update_camera</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">pr</span><span class="o">.</span><span class="n">CAMERA_ORBITAL</span><span class="p">)</span>
     <span class="n">pr</span><span class="o">.</span><span class="n">begin_drawing</span><span class="p">()</span>
     <span class="n">pr</span><span class="o">.</span><span class="n">clear_background</span><span class="p">(</span><span class="n">pr</span><span class="o">.</span><span class="n">RAYWHITE</span><span class="p">)</span>
     <span class="n">pr</span><span class="o">.</span><span class="n">begin_mode_3d</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
