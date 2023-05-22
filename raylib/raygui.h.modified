@@ -1,22 +1,36 @@
 /*******************************************************************************************
 *
-*   raygui v3.2 - A simple and easy-to-use immediate-mode gui library
+*   raygui v3.5 - A simple and easy-to-use immediate-mode gui library
 *
 *   DESCRIPTION:
+*       raygui is a tools-dev-focused immediate-mode-gui library based on raylib but also
+*       available as a standalone library, as long as input and drawing functions are provided.
+* 
+*   FEATURES:
+*       - Immediate-mode gui, minimal retained data
+*       - +25 controls provided (basic and advanced)
+*       - Styling system for colors, font and metrics
+*       - Icons supported, embeds a complete 1-bit icons pack
+*       - Standalone usage mode option (custom graphics backends)
+*       - Multiple tools provided for raygui development
+* 
+*   POSSIBLE IMPROVEMENTS:
+*       - Allow some controls to work in exclusive mode: GuiSlider(), GuiScrollBar()
+*       - Better standalone mode API for easy plug of custom backends
+* 
+*   LIMITATIONS:
+*       - No auto-layout mechanism provided, up to the user to define controls position and size
+*       - Standalone mode requires library modification and some user work to plug another backend
 *
-*   raygui is a tools-dev-focused immediate-mode-gui library based on raylib but also
-*   available as a standalone library, as long as input and drawing functions are provided.
-*
-*   Controls provided:
-*
-*   # Container/separators Controls
+*   CONTROLS PROVIDED:
+*     # Container/separators Controls
 *       - WindowBox     --> StatusBar, Panel
 *       - GroupBox      --> Line
 *       - Line
 *       - Panel         --> StatusBar
 *       - ScrollPanel   --> StatusBar
 *
-*   # Basic Controls
+*     # Basic Controls
 *       - Label
 *       - Button
 *       - LabelButton   --> Label
@@ -26,7 +40,6 @@
 *       - ComboBox
 *       - DropdownBox
 *       - TextBox
-*       - TextBoxMulti
 *       - ValueBox      --> TextBox
 *       - Spinner       --> Button, ValueBox
 *       - Slider
@@ -36,81 +49,94 @@
 *       - DummyRec
 *       - Grid
 *
-*   # Advance Controls
+*     # Advance Controls
 *       - ListView
 *       - ColorPicker   --> ColorPanel, ColorBarHue
 *       - MessageBox    --> Window, Label, Button
 *       - TextInputBox  --> Window, Label, TextBox, Button
 *
-*   It also provides a set of functions for styling the controls based on its properties (size, color).
+*     It also provides a set of functions for styling the controls based on its properties (size, color).
 *
 *
 *   RAYGUI STYLE (guiStyle):
+*       raygui uses a global data array for all gui style properties (allocated on data segment by default),
+*       when a new style is loaded, it is loaded over the global style... but a default gui style could always be
+*       recovered with GuiLoadStyleDefault() function, that overwrites the current style to the default one
 *
-*   raygui uses a global data array for all gui style properties (allocated on data segment by default),
-*   when a new style is loaded, it is loaded over the global style... but a default gui style could always be
-*   recovered with GuiLoadStyleDefault() function, that overwrites the current style to the default one
+*       The global style array size is fixed and depends on the number of controls and properties:
 *
-*   The global style array size is fixed and depends on the number of controls and properties:
+*           static unsigned int guiStyle[RAYGUI_MAX_CONTROLS*(RAYGUI_MAX_PROPS_BASE + RAYGUI_MAX_PROPS_EXTENDED)];
 *
-*       static unsigned int guiStyle[RAYGUI_MAX_CONTROLS*(RAYGUI_MAX_PROPS_BASE + RAYGUI_MAX_PROPS_EXTENDED)];
+*       guiStyle size is by default: 16*(16 + 8) = 384*4 = 1536 bytes = 1.5 KB
 *
-*   guiStyle size is by default: 16*(16 + 8) = 384*4 = 1536 bytes = 1.5 KB
+*       Note that the first set of BASE properties (by default guiStyle[0..15]) belong to the generic style
+*       used for all controls, when any of those base values is set, it is automatically populated to all
+*       controls, so, specific control values overwriting generic style should be set after base values.
 *
-*   Note that the first set of BASE properties (by default guiStyle[0..15]) belong to the generic style
-*   used for all controls, when any of those base values is set, it is automatically populated to all
-*   controls, so, specific control values overwriting generic style should be set after base values.
+*       After the first BASE set we have the EXTENDED properties (by default guiStyle[16..23]), those
+*       properties are actually common to all controls and can not be overwritten individually (like BASE ones)
+*       Some of those properties are: TEXT_SIZE, TEXT_SPACING, LINE_COLOR, BACKGROUND_COLOR
 *
-*   After the first BASE set we have the EXTENDED properties (by default guiStyle[16..23]), those
-*   properties are actually common to all controls and can not be overwritten individually (like BASE ones)
-*   Some of those properties are: TEXT_SIZE, TEXT_SPACING, LINE_COLOR, BACKGROUND_COLOR
+*       Custom control properties can be defined using the EXTENDED properties for each independent control.
 *
-*   Custom control properties can be defined using the EXTENDED properties for each independent control.
-*
-*   TOOL: rGuiStyler is a visual tool to customize raygui style.
+*       TOOL: rGuiStyler is a visual tool to customize raygui style: github.com/raysan5/rguistyler
 *
 *
 *   RAYGUI ICONS (guiIcons):
+*       raygui could use a global array containing icons data (allocated on data segment by default),
+*       a custom icons set could be loaded over this array using GuiLoadIcons(), but loaded icons set
+*       must be same RAYGUI_ICON_SIZE and no more than RAYGUI_ICON_MAX_ICONS will be loaded
 *
-*   raygui could use a global array containing icons data (allocated on data segment by default),
-*   a custom icons set could be loaded over this array using GuiLoadIcons(), but loaded icons set
-*   must be same RAYGUI_ICON_SIZE and no more than RAYGUI_ICON_MAX_ICONS will be loaded
+*       Every icon is codified in binary form, using 1 bit per pixel, so, every 16x16 icon
+*       requires 8 integers (16*16/32) to be stored in memory.
 *
-*   Every icon is codified in binary form, using 1 bit per pixel, so, every 16x16 icon
-*   requires 8 integers (16*16/32) to be stored in memory.
+*       When the icon is draw, actually one quad per pixel is drawn if the bit for that pixel is set.
 *
-*   When the icon is draw, actually one quad per pixel is drawn if the bit for that pixel is set.
+*       The global icons array size is fixed and depends on the number of icons and size:
 *
-*   The global icons array size is fixed and depends on the number of icons and size:
+*           static unsigned int guiIcons[RAYGUI_ICON_MAX_ICONS*RAYGUI_ICON_DATA_ELEMENTS];
 *
-*       static unsigned int guiIcons[RAYGUI_ICON_MAX_ICONS*RAYGUI_ICON_DATA_ELEMENTS];
+*       guiIcons size is by default: 256*(16*16/32) = 2048*4 = 8192 bytes = 8 KB
 *
-*   guiIcons size is by default: 256*(16*16/32) = 2048*4 = 8192 bytes = 8 KB
+*       TOOL: rGuiIcons is a visual tool to customize/create raygui icons: github.com/raysan5/rguiicons
 *
-*   TOOL: rGuiIcons is a visual tool to customize raygui icons.
+*   RAYGUI LAYOUT:
+*       raygui currently does not provide an auto-layout mechanism like other libraries,
+*       layouts must be defined manually on controls drawing, providing the right bounds Rectangle for it.
 *
-*
+*       TOOL: rGuiLayout is a visual tool to create raygui layouts: github.com/raysan5/rguilayout
+* 
 *   CONFIGURATION:
+*       #define RAYGUI_IMPLEMENTATION
+*           Generates the implementation of the library into the included file.
+*           If not defined, the library is in header only mode and can be included in other headers
+*           or source files without problems. But only ONE file should hold the implementation.
 *
-*   #define RAYGUI_IMPLEMENTATION
-*       Generates the implementation of the library into the included file.
-*       If not defined, the library is in header only mode and can be included in other headers
-*       or source files without problems. But only ONE file should hold the implementation.
+*       #define RAYGUI_STANDALONE
+*           Avoid raylib.h header inclusion in this file. Data types defined on raylib are defined
+*           internally in the library and input management and drawing functions must be provided by
+*           the user (check library implementation for further details).
 *
-*   #define RAYGUI_STANDALONE
-*       Avoid raylib.h header inclusion in this file. Data types defined on raylib are defined
-*       internally in the library and input management and drawing functions must be provided by
-*       the user (check library implementation for further details).
+*       #define RAYGUI_NO_ICONS
+*           Avoid including embedded ricons data (256 icons, 16x16 pixels, 1-bit per pixel, 2KB)
 *
-*   #define RAYGUI_NO_ICONS
-*       Avoid including embedded ricons data (256 icons, 16x16 pixels, 1-bit per pixel, 2KB)
-*
-*   #define RAYGUI_CUSTOM_ICONS
-*       Includes custom ricons.h header defining a set of custom icons,
-*       this file can be generated using rGuiIcons tool
+*       #define RAYGUI_CUSTOM_ICONS
+*           Includes custom ricons.h header defining a set of custom icons,
+*           this file can be generated using rGuiIcons tool
 *
 *
 *   VERSIONS HISTORY:
+*       3.5 (20-Apr-2023) ADDED: GuiTabBar(), based on GuiToggle()
+*                         ADDED: Helper functions to split text in separate lines
+*                         ADDED: Multiple new icons, useful for code editing tools
+*                         REMOVED: Unneeded icon editing functions
+*                         REMOVED: GuiTextBoxMulti(), very limited and broken
+*                         REMOVED: MeasureTextEx() dependency, logic directly implemented
+*                         REMOVED: DrawTextEx() dependency, logic directly implemented
+*                         REVIEWED: GuiScrollBar(), improve mouse-click behaviour
+*                         REVIEWED: Library header info, more info, better organized
+*                         REDESIGNED: GuiTextBox() to support cursor movement
+*                         REDESIGNED: GuiDrawText() to divide drawing by lines
 *       3.2 (22-May-2022) RENAMED: Some enum values, for unification, avoiding prefixes
 *                         REMOVED: GuiScrollBar(), only internal
 *                         REDESIGNED: GuiPanel() to support text parameter
@@ -158,9 +184,13 @@
 *       0.9 (07-Mar-2016) Reviewed and tested by Albert Martos, Ian Eito, Sergio Martinez and Ramon Santamaria.
 *       0.8 (27-Aug-2015) Initial release. Implemented by Kevin Gato, Daniel Nicolás and Ramon Santamaria.
 *
+*   DEPENDENCIES:
+*       raylib 4.5          Inputs reading (keyboard/mouse), shapes drawing, font loading and text drawing
+* 
+*       By default raygui depends on raylib mostly for the inputs and the drawing functionality but that dependency can be disabled
+*       with the config flag RAYGUI_STANDALONE. In that case is up to the user to provide another backend to cover library needs.
 *
 *   CONTRIBUTORS:
-*
 *       Ramon Santamaria:   Supervision, review, redesign, update and maintenance
 *       Vlad Adrian:        Complete rewrite of GuiTextBox() to support extended features (2019)
 *       Sergio Martinez:    Review, testing (2015) and redesign of multiple controls (2018)
@@ -174,7 +204,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2014-2022 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2014-2023 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -320,6 +350,9 @@ typedef enum {
 typedef enum {
     TEXT_INNER_PADDING = 16, // TextBox/TextBoxMulti/ValueBox/Spinner inner text padding
     TEXT_LINES_SPACING, // TextBoxMulti lines separation
+    TEXT_ALIGNMENT_VERTICAL, // TextBoxMulti vertical alignment: 0-CENTERED, 1-UP, 2-DOWN
+    TEXT_MULTILINE, // TextBox supports multiple lines
+    TEXT_WRAP_MODE // TextBox wrap mode for multiline: 0-NO_WRAP, 1-CHAR_WRAP, 2-WORD_WRAP
 } GuiTextBoxProperty;
 // Spinner
 typedef enum {
@@ -368,6 +401,7 @@ typedef enum {
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiGroupBox(Rectangle bounds, const char *text); // Group Box control with text name
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLine(Rectangle bounds, const char *text); // Line separator control, could contain text
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiPanel(Rectangle bounds, const char *text); // Panel control, useful to group controls
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiTabBar(Rectangle bounds, const char **text, int count, int *active); // Tab Bar control, returns TAB to be closed or -1
 /* Functions defined as 'extern' by default (implicit specifiers)*/ Rectangle GuiScrollPanel(Rectangle bounds, const char *text, Rectangle content, Vector2 *scroll); // Scroll Panel control
 // Basic controls set
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLabel(Rectangle bounds, const char *text); // Label control, shows text
@@ -381,7 +415,6 @@ typedef enum {
 /* Functions defined as 'extern' by default (implicit specifiers)*/ bool GuiSpinner(Rectangle bounds, const char *text, int *value, int minValue, int maxValue, bool editMode); // Spinner control, returns selected value
 /* Functions defined as 'extern' by default (implicit specifiers)*/ bool GuiValueBox(Rectangle bounds, const char *text, int *value, int minValue, int maxValue, bool editMode); // Value Box control, updates input text with numbers
 /* Functions defined as 'extern' by default (implicit specifiers)*/ bool GuiTextBox(Rectangle bounds, char *text, int textSize, bool editMode); // Text Box control, updates input text
-/* Functions defined as 'extern' by default (implicit specifiers)*/ bool GuiTextBoxMulti(Rectangle bounds, char *text, int textSize, bool editMode); // Text Box control with multiple lines
 /* Functions defined as 'extern' by default (implicit specifiers)*/ float GuiSlider(Rectangle bounds, const char *textLeft, const char *textRight, float value, float minValue, float maxValue); // Slider control, returns selected value
 /* Functions defined as 'extern' by default (implicit specifiers)*/ float GuiSliderBar(Rectangle bounds, const char *textLeft, const char *textRight, float value, float minValue, float maxValue); // Slider Bar control, returns selected value
 /* Functions defined as 'extern' by default (implicit specifiers)*/ float GuiProgressBar(Rectangle bounds, const char *textLeft, const char *textRight, float value, float minValue, float maxValue); // Progress Bar control, shows current progress value
@@ -400,16 +433,16 @@ typedef enum {
 // Styles loading functions
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLoadStyle(const char *fileName); // Load style file over global style variable (.rgs)
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLoadStyleDefault(void); // Load style default over global style
+// Tooltips management functions
+/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiEnableTooltip(void); // Enable gui tooltips (global state)
+/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiDisableTooltip(void); // Disable gui tooltips (global state)
+/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetTooltip(const char *tooltip); // Set tooltip string
 // Icons functionality
 /* Functions defined as 'extern' by default (implicit specifiers)*/ const char *GuiIconText(int iconId, const char *text); // Get text with icon id prepended (if supported)
-/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiDrawIcon(int iconId, int posX, int posY, int pixelSize, Color color);
-/* Functions defined as 'extern' by default (implicit specifiers)*/ unsigned int *GuiGetIcons(void); // Get full icons data pointer
-/* Functions defined as 'extern' by default (implicit specifiers)*/ unsigned int *GuiGetIconData(int iconId); // Get icon bit data
-/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetIconData(int iconId, unsigned int *data); // Set icon bit data
-/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetIconScale(unsigned int scale); // Set icon scale (1 by default)
-/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetIconPixel(int iconId, int x, int y); // Set icon pixel value
-/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiClearIconPixel(int iconId, int x, int y); // Clear icon pixel value
-/* Functions defined as 'extern' by default (implicit specifiers)*/ bool GuiCheckIconPixel(int iconId, int x, int y); // Check icon pixel value
+/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetIconScale(int scale); // Set default icon drawing size
+/* Functions defined as 'extern' by default (implicit specifiers)*/ unsigned int *GuiGetIcons(void); // Get raygui icons data pointer
+/* Functions defined as 'extern' by default (implicit specifiers)*/ char **GuiLoadIcons(const char *fileName, bool loadIconsName); // Load raygui icons file (.rgi) into internal icons data
+/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiDrawIcon(int iconId, int posX, int posY, int pixelSize, Color color); // Draw icon using pixel size at specified position
 //----------------------------------------------------------------------------------
 // Icons enumeration
 //----------------------------------------------------------------------------------
@@ -620,19 +653,19 @@ typedef enum {
     ICON_FILE_NEW = 203,
     ICON_FOLDER_ADD = 204,
     ICON_ALARM = 205,
-    ICON_206 = 206,
-    ICON_207 = 207,
-    ICON_208 = 208,
-    ICON_209 = 209,
-    ICON_210 = 210,
-    ICON_211 = 211,
-    ICON_212 = 212,
-    ICON_213 = 213,
-    ICON_214 = 214,
-    ICON_215 = 215,
-    ICON_216 = 216,
-    ICON_217 = 217,
-    ICON_218 = 218,
+    ICON_CPU = 206,
+    ICON_ROM = 207,
+    ICON_STEP_OVER = 208,
+    ICON_STEP_INTO = 209,
+    ICON_STEP_OUT = 210,
+    ICON_RESTART = 211,
+    ICON_BREAKPOINT_ON = 212,
+    ICON_BREAKPOINT_OFF = 213,
+    ICON_BURGER_MENU = 214,
+    ICON_CASE_SENSITIVE = 215,
+    ICON_REG_EXP = 216,
+    ICON_FOLDER = 217,
+    ICON_FILE = 218,
     ICON_219 = 219,
     ICON_220 = 220,
     ICON_221 = 221,

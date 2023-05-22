@@ -33,8 +33,6 @@ camera.projection = CAMERA_PERSPECTIVE
 bill = LoadTexture(b"resources/billboard.png")     # Our texture billboard
 billPosition = [ 0.0, 2.0, 0.0 ]                 # Position where draw billboard
 
-SetCameraMode(camera, CAMERA_ORBITAL)  # Set an orbital camera mode
-
 SetTargetFPS(60)                       # Set our game to run at 60 frames-per-second
 #--------------------------------------------------------------------------------------
 
@@ -42,7 +40,7 @@ SetTargetFPS(60)                       # Set our game to run at 60 frames-per-se
 while not WindowShouldClose()  :          # Detect window close button or ESC key
     # Update
     #----------------------------------------------------------------------------------
-    UpdateCamera(cameraPtr)              # Update camera
+    UpdateCamera(cameraPtr, CAMERA_ORBITAL)              # Update camera
     #----------------------------------------------------------------------------------
 
     # Draw

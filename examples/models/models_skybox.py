@@ -42,12 +42,10 @@ skybox.materials[0].maps[rl.MAP_CUBEMAP].texture = rl.GenTextureCubemap(shdrCube
 rl.UnloadTexture(texHDR)
 rl.UnloadShader(shdrCubemap)
 
-rl.SetCameraMode(camera[0], rl.CAMERA_FIRST_PERSON)
-
 rl.SetTargetFPS(60)
 
 while not rl.WindowShouldClose():
-	rl.UpdateCamera(camera)
+	rl.UpdateCamera(camera, rl.CAMERA_FIRST_PERSON)
 	rl.BeginDrawing()
 	rl.ClearBackground(RAYWHITE)
 	rl.BeginMode3D(camera[0])

@@ -1,15 +1,15 @@
 /**********************************************************************************************
 *
-*   rlgl v4.0 - A multi-OpenGL abstraction layer with an immediate-mode style API
+*   rlgl v4.5 - A multi-OpenGL abstraction layer with an immediate-mode style API
 *
 *   An abstraction layer for multiple OpenGL versions (1.1, 2.1, 3.3 Core, 4.3 Core, ES 2.0)
 *   that provides a pseudo-OpenGL 1.1 immediate-mode style API (rlVertex, rlTranslate, rlRotate...)
 *
-*   When chosing an OpenGL backend different than OpenGL 1.1, some internal buffer are
+*   When choosing an OpenGL backend different than OpenGL 1.1, some internal buffer are
 *   initialized on rlglInit() to accumulate vertex data.
 *
 *   When an internal state change is required all the stored vertex data is renderer in batch,
-*   additioanlly, rlDrawRenderBatchActive() could be called to force flushing of the batch.
+*   additionally, rlDrawRenderBatchActive() could be called to force flushing of the batch.
 *
 *   Some additional resources are also loaded for convenience, here the complete list:
 *      - Default batch (RLGL.defaultBatch): RenderBatch system to accumulate vertex data
@@ -61,12 +61,11 @@
 *   When loading a shader, the following vertex attribute and uniform
 *   location names are tried to be set automatically:
 *
-*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_POSITION     "vertexPosition"    // Binded by default to shader location: 0
-*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_TEXCOORD     "vertexTexCoord"    // Binded by default to shader location: 1
-*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_NORMAL       "vertexNormal"      // Binded by default to shader location: 2
-*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_COLOR        "vertexColor"       // Binded by default to shader location: 3
-*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_TANGENT      "vertexTangent"     // Binded by default to shader location: 4
-*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_TEXCOORD2    "vertexTexCoord2"   // Binded by default to shader location: 5
+*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_POSITION     "vertexPosition"    // Bound by default to shader location: 0
+*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_TEXCOORD     "vertexTexCoord"    // Bound by default to shader location: 1
+*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_NORMAL       "vertexNormal"      // Bound by default to shader location: 2
+*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_COLOR        "vertexColor"       // Bound by default to shader location: 3
+*   #define RL_DEFAULT_SHADER_ATTRIB_NAME_TANGENT      "vertexTangent"     // Bound by default to shader location: 4
 *   #define RL_DEFAULT_SHADER_UNIFORM_NAME_MVP         "mvp"               // model-view-projection matrix
 *   #define RL_DEFAULT_SHADER_UNIFORM_NAME_VIEW        "matView"           // view matrix
 *   #define RL_DEFAULT_SHADER_UNIFORM_NAME_PROJECTION  "matProjection"     // projection matrix
@@ -85,7 +84,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2014-2022 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2014-2023 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -128,40 +127,13 @@
 // Matrix modes (equivalent to OpenGL)
 // Primitive assembly draw modes
 // GL equivalent data types
-// Buffer usage hint
+// GL buffer usage hint
 // GL Shader type
+// GL blending factors
+// GL blending functions/equations
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
 //----------------------------------------------------------------------------------
-typedef enum {
-    OPENGL_11 = 1,
-    OPENGL_21,
-    OPENGL_33,
-    OPENGL_43,
-    OPENGL_ES_20
-} rlGlVersion;
-typedef enum {
-    RL_ATTACHMENT_COLOR_CHANNEL0 = 0,
-    RL_ATTACHMENT_COLOR_CHANNEL1,
-    RL_ATTACHMENT_COLOR_CHANNEL2,
-    RL_ATTACHMENT_COLOR_CHANNEL3,
-    RL_ATTACHMENT_COLOR_CHANNEL4,
-    RL_ATTACHMENT_COLOR_CHANNEL5,
-    RL_ATTACHMENT_COLOR_CHANNEL6,
-    RL_ATTACHMENT_COLOR_CHANNEL7,
-    RL_ATTACHMENT_DEPTH = 100,
-    RL_ATTACHMENT_STENCIL = 200,
-} rlFramebufferAttachType;
-typedef enum {
-    RL_ATTACHMENT_CUBEMAP_POSITIVE_X = 0,
-    RL_ATTACHMENT_CUBEMAP_NEGATIVE_X,
-    RL_ATTACHMENT_CUBEMAP_POSITIVE_Y,
-    RL_ATTACHMENT_CUBEMAP_NEGATIVE_Y,
-    RL_ATTACHMENT_CUBEMAP_POSITIVE_Z,
-    RL_ATTACHMENT_CUBEMAP_NEGATIVE_Z,
-    RL_ATTACHMENT_TEXTURE2D = 100,
-    RL_ATTACHMENT_RENDERBUFFER = 200,
-} rlFramebufferAttachTextureType;
 // Dynamic vertex buffers (position + texcoords + colors + indices arrays)
 typedef struct rlVertexBuffer {
     int elementCount; // Number of elements in the buffer (QUADS)
@@ -183,8 +155,8 @@ typedef struct rlDrawCall {
     //unsigned int vaoId;       // Vertex array id to be used on the draw -> Using RLGL.currentBatch->vertexBuffer.vaoId
     //unsigned int shaderId;    // Shader id to be used on the draw -> Using RLGL.currentShaderId
     unsigned int textureId; // Texture id to be used on the draw -> Use to create new draw call if changes
-    //Matrix projection;      // Projection matrix for this draw -> Using RLGL.projection by default
-    //Matrix modelview;       // Modelview matrix for this draw -> Using RLGL.modelview by default
+    //Matrix projection;        // Projection matrix for this draw -> Using RLGL.projection by default
+    //Matrix modelview;         // Modelview matrix for this draw -> Using RLGL.modelview by default
 } rlDrawCall;
 // rlRenderBatch type
 typedef struct rlRenderBatch {
@@ -195,6 +167,14 @@ typedef struct rlRenderBatch {
     int drawCounter; // Draw calls counter
     float currentDepth; // Current depth value for next draw
 } rlRenderBatch;
+// OpenGL version
+typedef enum {
+    RL_OPENGL_11 = 1, // OpenGL 1.1
+    RL_OPENGL_21, // OpenGL 2.1 (GLSL 120)
+    RL_OPENGL_33, // OpenGL 3.3 (GLSL 330)
+    RL_OPENGL_43, // OpenGL 4.3 (using GLSL 330)
+    RL_OPENGL_ES_20 // OpenGL ES 2.0 (GLSL 100)
+} rlGlVersion;
 // Trace log level
 // NOTE: Organized by priority level
 typedef enum {
@@ -207,7 +187,8 @@ typedef enum {
     RL_LOG_FATAL, // Fatal logging, used to abort program: exit(EXIT_FAILURE)
     RL_LOG_NONE // Disable logging
 } rlTraceLogLevel;
-// Texture formats (support depends on OpenGL version)
+// Texture pixel formats
+// NOTE: Support depends on OpenGL version
 typedef enum {
     RL_PIXELFORMAT_UNCOMPRESSED_GRAYSCALE = 1, // 8 bit per pixel (no alpha)
     RL_PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA, // 8*2 bpp (2 channels)
@@ -250,7 +231,8 @@ typedef enum {
     RL_BLEND_ADD_COLORS, // Blend textures adding colors (alternative)
     RL_BLEND_SUBTRACT_COLORS, // Blend textures subtracting colors (alternative)
     RL_BLEND_ALPHA_PREMULTIPLY, // Blend premultiplied textures considering alpha
-    RL_BLEND_CUSTOM // Blend textures using custom src/dst factors (use rlSetBlendFactors())
+    RL_BLEND_CUSTOM, // Blend textures using custom src/dst factors (use rlSetBlendFactors())
+    RL_BLEND_CUSTOM_SEPARATE // Blend textures using custom src/dst factors (use rlSetBlendFactorsSeparate())
 } rlBlendMode;
 // Shader location point type
 typedef enum {
@@ -300,17 +282,47 @@ typedef enum {
     RL_SHADER_ATTRIB_VEC3, // Shader attribute type: vec3 (3 float)
     RL_SHADER_ATTRIB_VEC4 // Shader attribute type: vec4 (4 float)
 } rlShaderAttributeDataType;
+// Framebuffer attachment type
+// NOTE: By default up to 8 color channels defined, but it can be more
+typedef enum {
+    RL_ATTACHMENT_COLOR_CHANNEL0 = 0, // Framebuffer attachment type: color 0
+    RL_ATTACHMENT_COLOR_CHANNEL1, // Framebuffer attachment type: color 1
+    RL_ATTACHMENT_COLOR_CHANNEL2, // Framebuffer attachment type: color 2
+    RL_ATTACHMENT_COLOR_CHANNEL3, // Framebuffer attachment type: color 3
+    RL_ATTACHMENT_COLOR_CHANNEL4, // Framebuffer attachment type: color 4
+    RL_ATTACHMENT_COLOR_CHANNEL5, // Framebuffer attachment type: color 5
+    RL_ATTACHMENT_COLOR_CHANNEL6, // Framebuffer attachment type: color 6
+    RL_ATTACHMENT_COLOR_CHANNEL7, // Framebuffer attachment type: color 7
+    RL_ATTACHMENT_DEPTH = 100, // Framebuffer attachment type: depth
+    RL_ATTACHMENT_STENCIL = 200, // Framebuffer attachment type: stencil
+} rlFramebufferAttachType;
+// Framebuffer texture attachment type
+typedef enum {
+    RL_ATTACHMENT_CUBEMAP_POSITIVE_X = 0, // Framebuffer texture attachment type: cubemap, +X side
+    RL_ATTACHMENT_CUBEMAP_NEGATIVE_X, // Framebuffer texture attachment type: cubemap, -X side
+    RL_ATTACHMENT_CUBEMAP_POSITIVE_Y, // Framebuffer texture attachment type: cubemap, +Y side
+    RL_ATTACHMENT_CUBEMAP_NEGATIVE_Y, // Framebuffer texture attachment type: cubemap, -Y side
+    RL_ATTACHMENT_CUBEMAP_POSITIVE_Z, // Framebuffer texture attachment type: cubemap, +Z side
+    RL_ATTACHMENT_CUBEMAP_NEGATIVE_Z, // Framebuffer texture attachment type: cubemap, -Z side
+    RL_ATTACHMENT_TEXTURE2D = 100, // Framebuffer texture attachment type: texture2d
+    RL_ATTACHMENT_RENDERBUFFER = 200, // Framebuffer texture attachment type: renderbuffer
+} rlFramebufferAttachTextureType;
+// Face culling mode
+typedef enum {
+    RL_CULL_FACE_FRONT = 0,
+    RL_CULL_FACE_BACK
+} rlCullMode;
 //------------------------------------------------------------------------------------
 // Functions Declaration - Matrix operations
 //------------------------------------------------------------------------------------
  void rlMatrixMode(int mode); // Choose the current matrix to be transformed
  void rlPushMatrix(void); // Push the current matrix to stack
- void rlPopMatrix(void); // Pop lattest inserted matrix from stack
+ void rlPopMatrix(void); // Pop latest inserted matrix from stack
  void rlLoadIdentity(void); // Reset current matrix to identity matrix
  void rlTranslatef(float x, float y, float z); // Multiply the current matrix by a translation matrix
  void rlRotatef(float angle, float x, float y, float z); // Multiply the current matrix by a rotation matrix
  void rlScalef(float x, float y, float z); // Multiply the current matrix by a scaling matrix
- void rlMultMatrixf(float *matf); // Multiply the current matrix by another matrix
+ void rlMultMatrixf(const float *matf); // Multiply the current matrix by another matrix
  void rlFrustum(double left, double right, double bottom, double top, double znear, double zfar);
  void rlOrtho(double left, double right, double bottom, double top, double znear, double zfar);
  void rlViewport(int x, int y, int width, int height); // Set the viewport area
@@ -348,6 +360,7 @@ typedef enum {
  void rlEnableTextureCubemap(unsigned int id); // Enable texture cubemap
  void rlDisableTextureCubemap(void); // Disable texture cubemap
  void rlTextureParameters(unsigned int id, int param, int value); // Set texture parameters (filter, wrap)
+ void rlCubemapParameters(unsigned int id, int param, int value); // Set cubemap parameters (filter, wrap)
 // Shader state
  void rlEnableShader(unsigned int id); // Enable shader program
  void rlDisableShader(void); // Disable shader program
@@ -364,6 +377,7 @@ typedef enum {
  void rlDisableDepthMask(void); // Disable depth write
  void rlEnableBackfaceCulling(void); // Enable backface culling
  void rlDisableBackfaceCulling(void); // Disable backface culling
+ void rlSetCullFace(int mode); // Set face culling mode
  void rlEnableScissorTest(void); // Enable scissor test
  void rlDisableScissorTest(void); // Disable scissor test
  void rlScissor(int x, int y, int width, int height); // Scissor test
@@ -381,12 +395,13 @@ typedef enum {
  void rlCheckErrors(void); // Check and log OpenGL error codes
  void rlSetBlendMode(int mode); // Set blending mode
  void rlSetBlendFactors(int glSrcFactor, int glDstFactor, int glEquation); // Set blending mode factor and equation (using OpenGL factors)
+ void rlSetBlendFactorsSeparate(int glSrcRGB, int glDstRGB, int glSrcAlpha, int glDstAlpha, int glEqRGB, int glEqAlpha); // Set blending mode factors and equations separately (using OpenGL factors)
 //------------------------------------------------------------------------------------
 // Functions Declaration - rlgl functionality
 //------------------------------------------------------------------------------------
 // rlgl initialization functions
  void rlglInit(int width, int height); // Initialize rlgl (buffers, shaders, textures, states)
- void rlglClose(void); // De-inititialize rlgl (buffers, shaders, textures)
+ void rlglClose(void); // De-initialize rlgl (buffers, shaders, textures)
  void rlLoadExtensions(void *loader); // Load OpenGL extensions (loader function required)
  int rlGetVersion(void); // Get current OpenGL version
  void rlSetFramebufferWidth(int width); // Set current framebuffer width
@@ -451,17 +466,17 @@ typedef enum {
  void rlSetShader(unsigned int id, int *locs); // Set shader currently active (id and locations)
 // Compute shader management
  unsigned int rlLoadComputeShaderProgram(unsigned int shaderId); // Load compute shader program
- void rlComputeShaderDispatch(unsigned int groupX, unsigned int groupY, unsigned int groupZ); // Dispatch compute shader (equivalent to *draw* for graphics pilepine)
+ void rlComputeShaderDispatch(unsigned int groupX, unsigned int groupY, unsigned int groupZ); // Dispatch compute shader (equivalent to *draw* for graphics pipeline)
 // Shader buffer storage object management (ssbo)
- unsigned int rlLoadShaderBuffer(unsigned long long size, const void *data, int usageHint); // Load shader storage buffer object (SSBO)
+ unsigned int rlLoadShaderBuffer(unsigned int size, const void *data, int usageHint); // Load shader storage buffer object (SSBO)
  void rlUnloadShaderBuffer(unsigned int ssboId); // Unload shader storage buffer object (SSBO)
- void rlUpdateShaderBufferElements(unsigned int id, const void *data, unsigned long long dataSize, unsigned long long offset); // Update SSBO buffer data
- unsigned long long rlGetShaderBufferSize(unsigned int id); // Get SSBO buffer size
- void rlReadShaderBufferElements(unsigned int id, void *dest, unsigned long long count, unsigned long long offset); // Bind SSBO buffer
- void rlBindShaderBuffer(unsigned int id, unsigned int index); // Copy SSBO buffer data
+ void rlUpdateShaderBuffer(unsigned int id, const void *data, unsigned int dataSize, unsigned int offset); // Update SSBO buffer data
+ void rlBindShaderBuffer(unsigned int id, unsigned int index); // Bind SSBO buffer
+ void rlReadShaderBuffer(unsigned int id, void *dest, unsigned int count, unsigned int offset); // Read SSBO buffer data (GPU->CPU)
+ void rlCopyShaderBuffer(unsigned int destId, unsigned int srcId, unsigned int destOffset, unsigned int srcOffset, unsigned int count); // Copy SSBO data between buffers
+ unsigned int rlGetShaderBufferSize(unsigned int id); // Get SSBO buffer size
 // Buffer management
- void rlCopyBuffersElements(unsigned int destId, unsigned int srcId, unsigned long long destOffset, unsigned long long srcOffset, unsigned long long count); // Copy SSBO buffer data
- void rlBindImageTexture(unsigned int id, unsigned int index, unsigned int format, int readonly); // Bind image texture
+ void rlBindImageTexture(unsigned int id, unsigned int index, int format, bool readonly); // Bind image texture
 // Matrix state management
  Matrix rlGetMatrixModelview(void); // Get internal modelview matrix
  Matrix rlGetMatrixProjection(void); // Get internal projection matrix

@@ -19,7 +19,6 @@ model = load_model_from_mesh(mesh)
 model.materials.maps[MATERIAL_MAP_ALBEDO].texture = texture
 
 unload_image(image)
-set_camera_mode(camera, CAMERA_ORBITAL)
 
 pos = get_mouse_position()
 ray = get_mouse_ray(pos, camera)
@@ -27,7 +26,7 @@ ray = get_mouse_ray(pos, camera)
 #print(str(rayhit.position.x))
 
 while not window_should_close():
-    update_camera(camera)
+    update_camera(camera, CAMERA_ORBITAL)
     begin_drawing()
     clear_background(RAYWHITE)
     begin_mode_3d(camera)

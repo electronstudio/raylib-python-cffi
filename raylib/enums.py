@@ -305,6 +305,7 @@ class BlendMode(IntEnum):
     BLEND_SUBTRACT_COLORS = 4
     BLEND_ALPHA_PREMULTIPLY = 5
     BLEND_CUSTOM = 6
+    BLEND_CUSTOM_SEPARATE = 7
 
 class Gesture(IntEnum):
     GESTURE_NONE = 0
@@ -420,6 +421,9 @@ class GuiDropdownBoxProperty(IntEnum):
 class GuiTextBoxProperty(IntEnum):
     TEXT_INNER_PADDING = 16
     TEXT_LINES_SPACING = 17
+    TEXT_ALIGNMENT_VERTICAL = 18
+    TEXT_MULTILINE = 19
+    TEXT_WRAP_MODE = 20
 
 class GuiSpinnerProperty(IntEnum):
     SPIN_BUTTON_WIDTH = 16
@@ -645,19 +649,19 @@ class GuiIconName(IntEnum):
     ICON_FILE_NEW = 203
     ICON_FOLDER_ADD = 204
     ICON_ALARM = 205
-    ICON_206 = 206
-    ICON_207 = 207
-    ICON_208 = 208
-    ICON_209 = 209
-    ICON_210 = 210
-    ICON_211 = 211
-    ICON_212 = 212
-    ICON_213 = 213
-    ICON_214 = 214
-    ICON_215 = 215
-    ICON_216 = 216
-    ICON_217 = 217
-    ICON_218 = 218
+    ICON_CPU = 206
+    ICON_ROM = 207
+    ICON_STEP_OVER = 208
+    ICON_STEP_INTO = 209
+    ICON_STEP_OUT = 210
+    ICON_RESTART = 211
+    ICON_BREAKPOINT_ON = 212
+    ICON_BREAKPOINT_OFF = 213
+    ICON_BURGER_MENU = 214
+    ICON_CASE_SENSITIVE = 215
+    ICON_REG_EXP = 216
+    ICON_FOLDER = 217
+    ICON_FILE = 218
     ICON_219 = 219
     ICON_220 = 220
     ICON_221 = 221

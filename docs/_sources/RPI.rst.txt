@@ -8,22 +8,29 @@ with
 
 ::
 
-    python3 -m pip install raylib==4.2.0.0.dev1
+    python3.9 -m pip install raylib==4.2.1.2
 
 If it doesn't work, or we haven't published a binary wheel for the latest version,
-or if you want to use Raylib in ``PLATFORM_DRM`` mode, you will need to compile your own raylib
-and have pip compile the wheel.
+or if you want to use Raylib in ``PLATFORM_DRM`` mode, you will need to compile your own raylib.
+For full instructins on this, see https://github.com/raysan5/raylib/wiki/Working-on-Raspberry-Pi .  If you need help with this ask Raylib.
+
+This 'worked for me':
 
 ::
 
-    git clone https://github.com/raysan5/raylib.git
+    git clone https://github.com/raysan5/raylib.git --branch 4.2.0 --single-branch
     cd raylib
     mkdir build
     cd build
     cmake -DPLATFORM="DRM" -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
     make
     sudo make install
-    pip3 install --no-binary raylib --upgrade --force-reinstall raylib==4.2.0.0.dev2
+    
+Then have pip compile the wheel:
+
+::
+ 
+    pip3 install --no-binary raylib --upgrade --force-reinstall raylib==4.2.1.2
 
 (or newer version)
 

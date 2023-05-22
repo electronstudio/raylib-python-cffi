@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 4.2
+# Python Bindings for Raylib 4.5
 
 New CFFI API static bindings.
 * Automatically generated to be as close as possible to 

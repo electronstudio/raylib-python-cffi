@@ -90,8 +90,6 @@ modelA.materials[0].shader = lightSystem.shader
 modelB.materials[0].shader = lightSystem.shader
 modelC.materials[0].shader = lightSystem.shader
 
-rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)  # Set an orbital camera mode
-
 rl.SetTargetFPS(60)  # // Set our game to run at 60 frames-per-second
 # --------------------------------------------------------------------------------------
 
@@ -104,7 +102,7 @@ while not rl.WindowShouldClose():  # Detect window close button or ESC key
     if rl.IsKeyPressed(rl.KEY_G):  lights2.enabled = not lights2.enabled
     if rl.IsKeyPressed(rl.KEY_B):  lights3.enabled = not lights3.enabled
 
-    rl.UpdateCamera(camera)  # Update camera
+    rl.UpdateCamera(camera, rl.CAMERA_ORBITAL)  # Update camera
 
     # Make the lights do differing orbits
     angle -= 0.02

@@ -31,13 +31,11 @@ for i in range(MAX_COLUMNS):
     colors[i] = pyray.Color(pyray.get_random_value(20, 255), pyray.get_random_value(10, 55), 30, 255)
 
 
-pyray.set_camera_mode(camera, pyray.CAMERA_FIRST_PERSON) # Set a first person camera mode
-
 pyray.set_target_fps(60)                
 
 while not pyray.window_should_close():
 
-    pyray.update_camera(camera)
+    pyray.update_camera(camera, pyray.CAMERA_FIRST_PERSON)
 
     pyray.begin_drawing()
 

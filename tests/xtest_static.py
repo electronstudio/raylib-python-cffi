@@ -16,10 +16,9 @@ model = LoadModelFromMesh(mesh)
 model.materials.maps[MATERIAL_MAP_ALBEDO].texture = texture
 
 UnloadImage(image)
-SetCameraMode(camera[0], CAMERA_ORBITAL)
 
 while not WindowShouldClose():
-    UpdateCamera(camera)
+    UpdateCamera(camera, CAMERA_ORBITAL)
     BeginDrawing()
     ClearBackground(RAYWHITE)
     BeginMode3D(camera[0])

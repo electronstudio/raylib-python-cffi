@@ -17,10 +17,9 @@ print(model.materials)  # SHOULD BE A pointer to a 'struct Material' but some is
 model.materials.maps[rl.MATERIAL_MAP_ALBEDO].texture = texture
 
 rl.UnloadImage(image)
-rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)
 
 while not rl.WindowShouldClose():
-    rl.UpdateCamera(camera)
+    rl.UpdateCamera(camera, rl.CAMERA_ORBITAL)
     rl.BeginDrawing()
     rl.ClearBackground(rl.RAYWHITE)
     rl.BeginMode3D(camera[0])

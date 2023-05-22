@@ -26,7 +26,6 @@ camera.up = [ 0.0, 1.0, 0.0 ]          # Camera up vector (rotation towards targ
 camera.fovy = 45.0                                # Camera field-of-view Y
 camera.projection = CAMERA_PERSPECTIVE                   # Camera mode type
 
-rl.SetCameraMode(camera[0], rl.CAMERA_ORBITAL)
 
 model = LoadModel(b"resources/models/house.obj")                 # Load OBJ model
 texture = LoadTexture(b"resources/models/house_diffuse.png") # Load model texture
@@ -42,7 +41,7 @@ while not WindowShouldClose():    # Detect window close button or ESC key
     #----------------------------------------------------------------------------------
     #...
     #----------------------------------------------------------------------------------
-    rl.UpdateCamera(camera);
+    rl.UpdateCamera(camera, rl.CAMERA_ORBITAL)
     # Draw
     #----------------------------------------------------------------------------------
     BeginDrawing()

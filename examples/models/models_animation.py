@@ -26,8 +26,6 @@ count = ray.ffi.new("unsigned int *", 1)
 anims = ray.load_model_animations("resources/models/iqm/guyanim.iqm", count)
 anim_frame_counter = 0
 
-ray.set_camera_mode(camera, ray.CAMERA_FREE) # Set free camera mode
-
 ray.set_target_fps(60)                   # Set our game to run at 60 frames-per-second
 #--------------------------------------------------------------------------------------
 
@@ -35,7 +33,7 @@ ray.set_target_fps(60)                   # Set our game to run at 60 frames-per-
 while not ray.window_should_close():        # Detect window close button or ESC key
 	# Update
 	#----------------------------------------------------------------------------------
-	ray.update_camera(camera)
+	ray.update_camera(camera, ray.CAMERA_FREE)
 
 	# Play animation when spacebar is held down
 	if ray.is_key_down(ray.KEY_SPACE):

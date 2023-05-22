@@ -24,7 +24,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2015-2022 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2015-2023 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -81,8 +81,12 @@ inline /* Functions may be inlined or external definition used*/ float Vector2Le
 inline /* Functions may be inlined or external definition used*/ float Vector2LengthSqr(Vector2 v);// Calculate two vectors dot product
 inline /* Functions may be inlined or external definition used*/ float Vector2DotProduct(Vector2 v1, Vector2 v2);// Calculate distance between two vectors
 inline /* Functions may be inlined or external definition used*/ float Vector2Distance(Vector2 v1, Vector2 v2);// Calculate square distance between two vectors
-inline /* Functions may be inlined or external definition used*/ float Vector2DistanceSqr(Vector2 v1, Vector2 v2);// Calculate angle from two vectors
-inline /* Functions may be inlined or external definition used*/ float Vector2Angle(Vector2 v1, Vector2 v2);// Scale vector (multiply by value)
+inline /* Functions may be inlined or external definition used*/ float Vector2DistanceSqr(Vector2 v1, Vector2 v2);// Calculate angle between two vectors
+// NOTE: Angle is calculated from origin point (0, 0)
+inline /* Functions may be inlined or external definition used*/ float Vector2Angle(Vector2 v1, Vector2 v2);// Calculate angle defined by a two vectors line
+// NOTE: Parameters need to be normalized
+// Current implementation should be aligned with glm::angle
+inline /* Functions may be inlined or external definition used*/ float Vector2LineAngle(Vector2 start, Vector2 end);// Scale vector (multiply by value)
 inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Scale(Vector2 v, float scale);// Multiply vector by vector
 inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Multiply(Vector2 v1, Vector2 v2);// Negate vector
 inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Negate(Vector2 v);// Divide vector by vector

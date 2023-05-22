@@ -15,10 +15,9 @@ Example program:
     SetTargetFPS(60)
 
     camera = ffi.new("struct Camera3D *", [[18.0, 16.0, 18.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0], 45.0, 0])
-    SetCameraMode(camera[0], CAMERA_ORBITAL)
 
     while not WindowShouldClose():
-        UpdateCamera(camera)
+        UpdateCamera(camera, CAMERA_ORBITAL)
         BeginDrawing()
         ClearBackground(RAYWHITE)
         BeginMode3D(camera[0])

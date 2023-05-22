@@ -17,7 +17,7 @@ jobs:
     runs-on: macos-10.15
     strategy:
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11.0-alpha - 3.11.0',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
+        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -164,7 +164,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11.0-alpha - 3.11.0',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
+        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -208,36 +208,36 @@ jobs:
           path: dist/*
 
 
-  build-rpi:
-    runs-on: rpi
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-
-      - name: Build raylib
-        run: |
-          cd raylib-c
-          mkdir build
-          cd build
-          cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
-          make -j2
-          make install
-      - name: Copy extras
-        run: |
-          cp physac/src/physac.h /usr/local/include/
-          cp raygui/src/raygui.h /usr/local/include/
-
-      - name: Build raylib-python-cffi
-        run: |
-          python3 setup.py bdist_wheel
-
-      - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: wheel
-          path: dist/*
+#  build-rpi:
+#    runs-on: rpi
+#    steps:
+#      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+#      - uses: actions/checkout@v2
+#        with:
+#          submodules: recursive
+#
+#      - name: Build raylib
+#        run: |
+#          cd raylib-c
+#          mkdir build
+#          cd build
+#          cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+#          make -j2
+#          make install
+#      - name: Copy extras
+#        run: |
+#          cp physac/src/physac.h /usr/local/include/
+#          cp raygui/src/raygui.h /usr/local/include/
+#
+#      - name: Build raylib-python-cffi
+#        run: |
+#          python3 setup.py bdist_wheel
+#
+#      - name: Upload build Artifact wheel
+#        uses: actions/upload-artifact@v2.2.4
+#        with:
+#          name: wheel
+#          path: dist/*
 
   build-windows:
     # The type of runner that the job will run on
@@ -246,7 +246,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version:  [ '3.7', '3.8', '3.9', '3.10', '3.11.0-alpha - 3.11.0',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
+        python-version:  [ '3.7', '3.8', '3.9', '3.10', '3.11',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
