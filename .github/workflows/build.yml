@@ -159,7 +159,7 @@ jobs:
 
 
   build-linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
@@ -294,7 +294,7 @@ jobs:
           path: dist/* 
           
   source-distro:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -339,7 +339,7 @@ jobs:
           path: dist/*
 
   dynamic-distro:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
