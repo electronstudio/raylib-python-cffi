@@ -32,6 +32,7 @@ First make sure you have the latest pip installed:
 
 Then install
 
+    python3 -m pip install setuptools
     python3 -m pip install raylib
 
 On most platforms it should install a binary wheel (Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64).

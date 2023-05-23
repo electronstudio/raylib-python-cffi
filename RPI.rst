@@ -29,8 +29,9 @@ This 'worked for me':
 Then have pip compile the wheel:
 
 ::
- 
-    pip3 install --no-binary raylib --upgrade --force-reinstall raylib==4.2.1.2
+
+    pip3 install setuptools
+    pip3 install --no-cache-dir --no-binary raylib --upgrade --force-reinstall raylib==4.2.1.2
 
 (or newer version)
 
