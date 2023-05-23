@@ -1,0 +1,36 @@
+#container:
+#  image: python:3.11
+
+
+
+task:
+  macos_instance:
+    matrix:
+      - image: ghcr.io/cirruslabs/macos-monterey-xcode:latest
+      - image: ghcr.io/cirruslabs/macos-ventura-xcode:latest
+  env:
+    matrix:
+      - PY_VER: "3.9"
+      - PY_VER: "3.10"
+      - PY_VER: "3.11"
+  setup_script:
+    - brew update
+    - brew install python@${PY_VER}
+  build_raylib_script:
+    - git submodule update --init --recursive
+    - cd raylib-c
+    - mkdir build
+    - cd build
+    - cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+    - make -j8
+    - sudo make install
+  build_script:
+    - sudo cp physac/src/physac.h /usr/local/include/
+    - sudo cp raygui/src/raygui.h /usr/local/include/
+    - /opt/homebrew/bin/python${PY_VER} -m pip install --upgrade pip
+    - /opt/homebrew/bin/python${PY_VER} -m pip install cffi
+    - /opt/homebrew/bin/python${PY_VER} -m pip install setuptools
+    - /opt/homebrew/bin/python${PY_VER} -m pip install wheel
+    - /opt/homebrew/bin/python${PY_VER} setup.py bdist_wheel
+  artifacts:
+    path: "dist/*"
