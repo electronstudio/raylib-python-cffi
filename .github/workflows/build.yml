@@ -17,7 +17,7 @@ jobs:
     runs-on: macos-11
     strategy:
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
+        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', 'pypy-3.7', 'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -52,6 +52,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
+          pip3 install setuptools
           python setup.py bdist_wheel --plat-name macosx_10_15_x86_64
 
       - name: Upload build Artifact wheel
@@ -164,7 +165,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
+        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', 'pypy-3.7', 'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -199,6 +200,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
+          pip3 install setuptools
           python setup.py bdist_wheel --plat-name manylinux2014_x86_64
 
       - name: Upload build Artifact wheel
@@ -246,7 +248,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version:  [ '3.7', '3.8', '3.9', '3.10', '3.11',  'pypy-3.7', 'pypy-3.8', 'pypy-3.9' ]
+        python-version:  [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', 'pypy-3.7', 'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -280,6 +282,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
+          pip3 install setuptools
           del raylib\dynamic\*.so* >nul 2>&1
           del raylib\dynamic\*.dll >nul 2>&1
           del raylib\dynamic\*.dylib >nul 2>&1
@@ -330,6 +333,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
+          pip3 install setuptools
           python setup.py sdist
 
       - name: Upload build Artifact wheel
@@ -360,6 +364,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install cffi
           pip3 install wheel
+          pip3 install setuptools
           cd dynamic
           python setup.py sdist
 
