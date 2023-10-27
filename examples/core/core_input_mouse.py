@@ -1,72 +1,66 @@
 """
 
-raylib [core] example - Mouse input
+raylib [core] example - Mouse Input
 
 """
+
+# Import
+# ------------------------------------------------------------------------------------
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    DARKGRAY,
-    MAROON,
-    LIME,
-    DARKBLUE,
-    PURPLE,
-    YELLOW,
-    ORANGE,
-    BEIGE,
-)
-from raylib import (
-    MOUSE_BUTTON_LEFT,
-    MOUSE_BUTTON_MIDDLE,
-    MOUSE_BUTTON_RIGHT,
-    MOUSE_BUTTON_SIDE,
-    MOUSE_BUTTON_EXTRA,
-    MOUSE_BUTTON_FORWARD,
-    MOUSE_BUTTON_BACK
-)
+# ------------------------------------------------------------------------------------
 
-# Initialization
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 450
+# ------------------------------------------------------------------------------------
+# Program main entry point
+# ------------------------------------------------------------------------------------
+def main():
+    # Initialization
+    # --------------------------------------------------------------------------------------
+    SCREEN_WIDTH = 800
+    SCREEN_HEIGHT = 450
 
-init_window(SCREEN_WIDTH, SCREEN_HEIGHT,
-            'raylib [core] example - mouse input')
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - mouse input")
 
-ball_position = Vector2(-100, -100)
-ball_color = DARKBLUE
+    ball_position = Vector2(-100, -100)
+    ball_color = DARKBLUE
 
-set_target_fps(60)  # Set our game to run at 60 frames-per-second
+    set_target_fps(60)  # Set our game to run at 60 frames-per-second
+    # --------------------------------------------------------------------------------------
 
-# Main game loop
-while not window_should_close():  # Detect window close button or ESC key
-    # Update
-    ball_position = get_mouse_position()
+    # Main game loop
+    while not window_should_close():  # Detect window close button or ESC key
+        # Update
+        # ----------------------------------------------------------------------------------
+        ball_position = get_mouse_position()
 
-    if is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-        ball_color = MAROON
-    elif is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
-        ball_color = LIME
-    elif is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-        ball_color = DARKBLUE
-    elif is_mouse_button_pressed(MOUSE_BUTTON_SIDE):
-        ball_color = PURPLE
-    elif is_mouse_button_pressed(MOUSE_BUTTON_EXTRA):
-        ball_color = YELLOW
-    elif is_mouse_button_pressed(MOUSE_BUTTON_FORWARD):
-        ball_color = ORANGE
-    elif is_mouse_button_pressed(MOUSE_BUTTON_BACK):
-        ball_color = BEIGE
-    # Draw
-    begin_drawing()
+        if is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT): ball_color = MAROON
+        elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_MIDDLE): ball_color = LIME
+        elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_RIGHT): ball_color = DARKBLUE
+        elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_SIDE): ball_color = PURPLE
+        elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_EXTRA): ball_color = YELLOW
+        elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_FORWARD): ball_color = ORANGE
+        elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_BACK): ball_color = BEIGE
+        # ----------------------------------------------------------------------------------
 
-    clear_background(RAYWHITE)
-    draw_circle_v(ball_position, 40, ball_color)
-    draw_text(
-        'move ball with mouse and click mouse button to change color',
-        10, 10, 20, DARKGRAY
-    )
+        # Draw
+        # ----------------------------------------------------------------------------------
+        begin_drawing()
 
-    end_drawing()
+        clear_background(RAYWHITE)
 
-# De-Initialization
-close_window()  # Close window and OpenGL context
+        draw_circle_v(ball_position, 40, ball_color)
+
+        draw_text("move ball with mouse and click mouse button to change color", 10, 10, 20, DARKGRAY)
+
+        end_drawing()
+        # ----------------------------------------------------------------------------------
+
+    # De-Initialization
+    # ----------------------------------------------------------------------------------
+    close_window()  # Close window and OpenGL context
+    # ----------------------------------------------------------------------------------
+
+
+# Execute the main function
+if __name__ == '__main__':
+    main()
+

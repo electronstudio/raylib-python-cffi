@@ -1,16 +1,18 @@
 """
 
-raylib [shapes] example - Lines Bezier
+raylib [shapes] example - Cubic-bezier lines
 
 """
 
+# Import
+# ------------------------------------------------------------------------------------
 from pyray import *
 from raylib.colors import (
     RAYWHITE,
     GRAY,
     RED
 )
-
+# ------------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------------
 # Program main entry point
@@ -18,14 +20,14 @@ from raylib.colors import (
 def main():
     # Initialization
     # ------------------------------------------------------------------------------------
-    screenWidth = 800
-    screenHeight = 450
+    SCREEN_WIDTH = 800
+    SCREEN_HEIGHT = 450
 
     set_config_flags(ConfigFlags.FLAG_MSAA_4X_HINT)
-    init_window(screenWidth, screenHeight, "raylib [shapes] example - cubic-bezier lines")
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [shapes] example - cubic-bezier lines")
 
     start = Vector2(0, 0)
-    end = Vector2(screenWidth, screenHeight)
+    end = Vector2(SCREEN_WIDTH, SCREEN_HEIGHT)
 
     set_target_fps(60)  # Set our game to run at 60 frames-per-second
     # -------------------------------------------------------------------------------------
@@ -56,6 +58,7 @@ def main():
     close_window()  # Close window and OpenGL context
     # ----------------------------------------------------------------------------------
 
-# execute the main function 
+
+# Execute the main function 
 if __name__ == '__main__':
     main()

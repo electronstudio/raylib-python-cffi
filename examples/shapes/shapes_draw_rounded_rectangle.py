@@ -1,17 +1,12 @@
-#/*******************************************************************************************
-#*
-#*   raylib [shapes] example - draw rectangle rounded (with gui options)
-#*
-#*   This example has been created using raylib 2.5 (www.raylib.com)
-#*   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
-#*
-#*   Example contributed by Vlad Adrian (@demizdor) and reviewed by Ramon Santamaria (@raysan5)
-#*
-#*   Copyright (c) 2018 Vlad Adrian (@demizdor) and Ramon Santamaria (@raysan5)
-#*
-#********************************************************************************************/
+"""
 
-import pyray
+raylib [shapes] example - Draw Rounded Rectangle
+
+"""
+
+# Import
+# ------------------------------------------------------------------------------------
+from pyray import *
 from raylib.colors import (
     RAYWHITE,
     LIGHTGRAY,
@@ -19,67 +14,81 @@ from raylib.colors import (
     GOLD,
     MAROON,
 )
+# ------------------------------------------------------------------------------------
 
-#// Initialization
-#//--------------------------------------------------------------------------------------
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 450
+# ------------------------------------------------------------------------------------
+# Program main entry point
+# ------------------------------------------------------------------------------------
+def main():
+    # Initialization
+    # ------------------------------------------------------------------------------------
+    SCREEN_WIDTH = 800
+    SCREEN_HEIGHT = 450
 
-pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [shapes] example - draw rectangle rounded")
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [shapes] example - draw rectangle rounded")
 
-roundness = 0.2
-width = 200
-height = 100
-segments = 0
-lineThick = 1
+    roundness = 0.2
+    width = 200
+    height = 100
+    segments = 0
+    lineThick = 1
 
-drawRect = False
-drawRoundedRect = True
-drawRoundedLines = False
+    draw_rect = False
+    draw_rounded_rect = True
+    draw_rounded_lines = False
 
-pyray.set_target_fps(60)    #// Set our game to run at 60 frames-per-second
-#//--------------------------------------------------------------------------------------
+    set_target_fps(60)  # Set our game to run at 60 frames-per-second
+    # ------------------------------------------------------------------------------------
 
-#// Main game loop
-while not pyray.window_should_close():  #// Detect window close button or ESC key
+    # Main game loop
+    while not window_should_close():  # Detect window close button or ESC key
+        # Update
+        # ----------------------------------------------------------------------------------
+        rec = Rectangle((get_screen_width() - width - 250) / 2, (get_screen_height() - height) / 2, width, height)
+        # ----------------------------------------------------------------------------------
 
-    #// Update
-    #//----------------------------------------------------------------------------------
-    rec = pyray.Rectangle( (pyray.get_screen_width()-width-250)/2, (pyray.get_screen_height()-height)/2, width, height )
-    #//----------------------------------------------------------------------------------
+        # Draw
+        # ----------------------------------------------------------------------------------
+        begin_drawing()
 
-    #// Draw
-    #//----------------------------------------------------------------------------------
-    pyray.begin_drawing()
-    pyray.clear_background(RAYWHITE)
+        clear_background(RAYWHITE)
 
-    pyray.draw_line(560,0,560,pyray.get_screen_height(),pyray.fade(LIGHTGRAY,0.6))
-    pyray.draw_rectangle(560,0,pyray.get_screen_width()-500,pyray.get_screen_height(),pyray.fade(LIGHTGRAY,0.3))
+        draw_line(560, 0, 560, get_screen_height(), fade(LIGHTGRAY, 0.6))
+        draw_rectangle(560, 0, get_screen_width() - 500, get_screen_height(), fade(LIGHTGRAY, 0.3))
 
-    if drawRect:
-        pyray.draw_rectangle_rec(rec,pyray.fade(GOLD,0.6))
-    if drawRoundedRect:
-        pyray.draw_rectangle_rounded(rec,roundness,segments,pyray.fade(MAROON,0.2))
-    if drawRoundedLines:
-        pyray.draw_rectangle_rounded_lines(rec,roundness,segments,lineThick,pyray.fade(MAROON,0.4))
+        if draw_rect:
+            draw_rectangle_rec(rec, fade(GOLD, 0.6))
+        if draw_rounded_rect:
+            draw_rectangle_rounded(rec, roundness, segments, fade(MAROON, 0.2))
+        if draw_rounded_lines:
+            draw_rectangle_rounded_lines(rec, roundness, segments, lineThick, fade(MAROON, 0.4))
 
-    #// Draw GUI controls
-    #//------------------------------------------------------------------------------
-    width = int( pyray.gui_slider_bar(pyray.Rectangle(640,40,105,20),"Width",0,width,0,pyray.get_screen_width()-300) )
-    height = int( pyray.gui_slider_bar(pyray.Rectangle(640,70,105,20),"Height",0,height,0,pyray.get_screen_height()-50) )
-    roundness = pyray.gui_slider_bar(pyray.Rectangle(640,140,105,20),"Roundness",0,roundness,0,1)
-    lineThick = int( pyray.gui_slider_bar(pyray.Rectangle(640,170,105,20),"Thickness",0,lineThick,0,20) )
-    segments = int( pyray.gui_slider_bar(pyray.Rectangle(640,240,105,20),"Segments",0,segments,0,60) )
-    
-    drawRoundedRect = pyray.gui_check_box(pyray.Rectangle(640,320,20,20),"DrawRoundedRect",drawRoundedRect)
-    drawRoundedLines = pyray.gui_check_box(pyray.Rectangle(640,350,20,20),"DrawRoundedLines",drawRoundedLines)
-    drawRect = pyray.gui_check_box(pyray.Rectangle(640,380,20,20),"DrawRect",drawRect)
-    #//------------------------------------------------------------------------------
+        # Draw GUI controls
+        # ------------------------------------------------------------------------------
+        width = int(gui_slider_bar(Rectangle(640, 40, 105, 20), "Width", 0, width, 0, get_screen_width() - 300))
+        height = int(gui_slider_bar(Rectangle(640, 70, 105, 20), "Height", 0, height, 0, get_screen_height() - 50))
+        roundness = gui_slider_bar(Rectangle(640, 140, 105, 20), "Roundness", 0, roundness, 0, 1)
+        lineThick = int(gui_slider_bar(Rectangle(640, 170, 105, 20), "Thickness", 0, lineThick, 0, 20))
+        segments = int(gui_slider_bar(Rectangle(640, 240, 105, 20), "Segments", 0, segments, 0, 60))
 
-    pyray.draw_text(pyray.text_format( "MODE: %s" % "MANUAL" if segments >= 4 else "AUTO" ), 640, 280, 10, MAROON if segments >= 4 else DARKGRAY )
-    pyray.draw_fps(10,10)
-    pyray.end_drawing()
-    #//------------------------------------------------------------------------------
+        draw_rounded_rect = gui_check_box(Rectangle(640, 320, 20, 20), "DrawRoundedRect", draw_rounded_rect)
+        draw_rounded_lines = gui_check_box(Rectangle(640, 350, 20, 20), "DrawRoundedLines", draw_rounded_lines)
+        draw_rect = gui_check_box(Rectangle(640, 380, 20, 20), "DrawRect", draw_rect)
+        # ------------------------------------------------------------------------------
 
-# De-Initialization
-pyray.close_window()  # Close window and OpenGL context
+        draw_text(text_format("MODE: %s" % "MANUAL" if segments >= 4 else "AUTO"), 640, 280, 10, MAROON if segments >= 4 else DARKGRAY)
+
+        draw_fps(10, 10)
+
+        end_drawing()
+        # ------------------------------------------------------------------------------
+
+    # De-Initialization
+    # ----------------------------------------------------------------------------------
+    close_window()  # Close window and OpenGL context
+    # ----------------------------------------------------------------------------------
+
+
+# Execute the main function
+if __name__ == '__main__':
+    main()
