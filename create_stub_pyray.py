@@ -12,13 +12,23 @@
 #
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
+from pathlib import Path
 from raylib import rl, ffi
-
 from inspect import ismethod, getmembers, isbuiltin
 import inflection, sys, json
 
-f = open("raylib.json", "r")
-js = json.load(f)
+known_functions = {}
+known_structs = {}
+for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json")):
+    f = open(filename, "r")
+    js = json.load(f)
+    for fn in js["functions"]:
+        if fn["name"] not in known_functions:
+            known_functions[fn["name"]] = fn
+    for st in js["structs"]:
+        if st["name"] not in known_structs:
+            known_structs[st["name"]] = st
+
 
 def ctype_to_python_type(t):
     if t == '_Bool':
@@ -51,16 +61,17 @@ def pointer(struct):
     ...
 """)
 
-
-
+# These words can be used for c arg names, but not in python
+reserved_words = ("in", "list", "tuple", "set", "dict", "from", "range", "min", "max", "any", "all", "len")
 
 for name, attr in getmembers(rl):
     uname = inflection.underscore(name).replace('3_d', '_3d').replace('2_d', '_2d')
     if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>":
-        json_array = [x for x in js['functions'] if x['name'] == name]
-        json_object = {}
-        if len(json_array) > 0:
-            json_object = json_array[0]
+        json_object = known_functions.get(name, None)
+        if json_object is None:
+            # this is _not_ an exported function from raylib, raymath, rlgl raygui or physac
+            # so we don't want it in the pyray API
+            continue
         sig = ""
         for i, arg in enumerate(ffi.typeof(attr).args):
             param_name = arg.cname.replace("struct", "").replace("char *", "str").replace("*",
@@ -69,7 +80,9 @@ for name, attr in getmembers(rl):
             if 'params' in json_object:
                 p = json_object['params']
                 param_name = list(p)[i]['name']
-
+                # don't use a python reserved word:
+                if param_name in reserved_words:
+                    param_name = param_name + "_" + str(i)
             param_type = ctype_to_python_type(arg.cname)
             sig += f"{param_name}: {param_type},"
 
@@ -95,11 +108,13 @@ for name, attr in getmembers(rl):
 
 for struct in ffi.list_types()[0]:
     print("processing", struct, file=sys.stderr)
-    # json_array = [x for x in js['structs'] if x['name'] == name]
-    # json_object = {}
-    # if len(json_array) > 0:
-    #     json_object = json_array[0]
+
     if ffi.typeof(struct).kind == "struct":
+        json_object = known_structs.get(struct, None)
+        if json_object is None:
+            # this is _not_ an exported struct from raylib, raymath, rlgl raygui or physac
+            # so we don't want it in the pyray API
+            continue
         if ffi.typeof(struct).fields is None:
             print("weird empty struct, skipping "+struct, file=sys.stderr)
             continue

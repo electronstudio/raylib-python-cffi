@@ -1,6 +1,6 @@
 """
 
-raylib [core] example - 2d camera platformer
+raylib [core] example - 2D Camera platformer
 
 """
 from math import sqrt

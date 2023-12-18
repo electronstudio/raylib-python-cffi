@@ -1,6 +1,6 @@
 """
 
-raylib [core] example - 2d camera
+raylib [core] example - 2D Camera System
 
 """
 import pyray
