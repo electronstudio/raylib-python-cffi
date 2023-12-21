@@ -27,7 +27,7 @@ while not window_should_close():   # Detect window close button or ESC key
     # Update
     update_camera(camera, pyray.CAMERA_FREE)
 
-    if is_key_down(pyray.KEY_Z):
+    if is_key_pressed(pyray.KEY_Z):
         camera.target = Vector3(0.0, 0.0, 0.0)
 
     # Draw
@@ -44,8 +44,8 @@ while not window_should_close():   # Detect window close button or ESC key
 
     end_mode_3d()
 
-    draw_rectangle(10, 10, 320, 133, Fade(SKYBLUE, 0.5))
-    draw_rectangle_lines(10, 10, 320, 133, BLUE)
+    draw_rectangle(10, 10, 320, 93, Fade(SKYBLUE, 0.5))
+    draw_rectangle_lines(10, 10, 320, 93, BLUE)
 
     draw_text("Free camera default controls:", 20, 20, 10, BLACK)
     draw_text("- Mouse Wheel to Zoom in-out", 40, 40, 10, DARKGRAY)
