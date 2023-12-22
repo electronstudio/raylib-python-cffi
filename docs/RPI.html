@@ -61,7 +61,12 @@
 <li class="toctree-l1"><a class="reference internal" href="raylib.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic.html">Dynamic Bindings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BUILDING.html">Building from source</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Raspberry Pi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#binary-wheel">Binary wheel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compile-raylib-from-source-drm-mode">Compile Raylib from source DRM mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compile-raylib-from-source-x11-mode">Compile Raylib from source X11 mode</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -91,36 +96,65 @@
   <section id="raspberry-pi">
 <h1>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Link to this heading"></a></h1>
 <p>Please use Raspberry Pi OS Bullseye.  Older OSes are not tested.</p>
+<section id="binary-wheel">
+<h2>Binary wheel<a class="headerlink" href="#binary-wheel" title="Link to this heading"></a></h2>
 <p>We have published a binary wheel using Raylib in X11 mode.  This <em>should</em> install and work on Bullseye
 with</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="mf">.9</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">raylib</span><span class="o">==</span><span class="mf">4.2.1.2</span>
 </pre></div>
 </div>
-<p>If it doesn’t work, or we haven’t published a binary wheel for the latest version,
+<p>If it doesn’t work, or you’re not on Bullseye, or you want a newer version,
 or if you want to use Raylib in <code class="docutils literal notranslate"><span class="pre">PLATFORM_DRM</span></code> mode, you will need to compile your own raylib.
-For full instructins on this, see <a class="reference external" href="https://github.com/raysan5/raylib/wiki/Working-on-Raspberry-Pi">https://github.com/raysan5/raylib/wiki/Working-on-Raspberry-Pi</a> .  If you need help with this ask Raylib.</p>
-<p>This ‘worked for me’:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">raysan5</span><span class="o">/</span><span class="n">raylib</span><span class="o">.</span><span class="n">git</span> <span class="o">--</span><span class="n">branch</span> <span class="mf">4.2.0</span> <span class="o">--</span><span class="n">single</span><span class="o">-</span><span class="n">branch</span>
+For full instructions on this, see <a class="reference external" href="https://github.com/raysan5/raylib/wiki/Working-on-Raspberry-Pi">https://github.com/raysan5/raylib/wiki/Working-on-Raspberry-Pi</a> .  If you need help with this ask Raylib.</p>
+</section>
+<section id="compile-raylib-from-source-drm-mode">
+<h2>Compile Raylib from source DRM mode<a class="headerlink" href="#compile-raylib-from-source-drm-mode" title="Link to this heading"></a></h2>
+<p>As far as I can tell, Raylib DRM is broken.  It doesn’t work on my Pi.  However, if you want to compile it and
+give it a go, these are the commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">raysan5</span><span class="o">/</span><span class="n">raylib</span><span class="o">.</span><span class="n">git</span> <span class="o">--</span><span class="n">branch</span> <span class="mf">5.0</span> <span class="o">--</span><span class="n">single</span><span class="o">-</span><span class="n">branch</span>
 <span class="n">cd</span> <span class="n">raylib</span>
 <span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">rm</span> <span class="n">rf</span> <span class="n">build</span><span class="o">/*</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">DPLATFORM</span><span class="o">=</span><span class="s2">&quot;DRM&quot;</span> <span class="o">-</span><span class="n">DINCLUDE_EVERYTHING</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DPLATFORM</span><span class="o">=</span><span class="s2">&quot;DRM&quot;</span> <span class="o">-</span><span class="n">DBUILD_EXAMPLES</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
 <span class="n">make</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>Then have pip compile the wheel:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">setuptools</span>
-<span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">raylib</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">raylib</span><span class="o">==</span><span class="mf">4.2.1.2</span>
+<p>Then have pip compile and install the wheel with some extra linker flags:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">setuptools</span>
+<span class="n">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-lgbm -ldrm -lEGL&quot;</span> <span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">raylib</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">raylib</span><span class="o">==</span><span class="mf">5.0.0.0</span>
 </pre></div>
 </div>
-<p>(or newer version)</p>
+</section>
+<section id="compile-raylib-from-source-x11-mode">
+<h2>Compile Raylib from source X11 mode<a class="headerlink" href="#compile-raylib-from-source-x11-mode" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">raysan5</span><span class="o">/</span><span class="n">raylib</span><span class="o">.</span><span class="n">git</span> <span class="o">--</span><span class="n">branch</span> <span class="mf">5.0</span> <span class="o">--</span><span class="n">single</span><span class="o">-</span><span class="n">branch</span>
+<span class="n">cd</span> <span class="n">raylib</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span><span class="o">/*</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DPLATFORM</span><span class="o">=</span><span class="s2">&quot;Desktop&quot;</span> <span class="o">-</span><span class="n">DOPENGL_VERSION</span><span class="o">=</span><span class="mf">2.1</span> <span class="o">-</span><span class="n">DBUILD_EXAMPLES</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Then have pip compile and install the wheel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">setuptools</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">raylib</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">raylib</span><span class="o">==</span><span class="mf">5.0.0.0</span>
+</pre></div>
+</div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>The Broadcom proprietary Open GL ES 2.0 drivers (installed by Raspbian into <code class="docutils literal notranslate"><span class="pre">/opt/vc</span></code> and compiled in Raylib
 with <code class="docutils literal notranslate"><span class="pre">PLATFORM_RPI</span></code>) do not work with Bullseye and have not been tested with the bindings.  They will probably
 require additional linker arguments to be added to <code class="docutils literal notranslate"><span class="pre">build.py</span></code>.  Suggest you use <code class="docutils literal notranslate"><span class="pre">PLATFORM_DRM</span></code> instead.</p>
 </div>
+</section>
 </section>
 
 

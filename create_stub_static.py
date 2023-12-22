@@ -81,7 +81,7 @@ for name, attr in getmembers(rl):
                 param_name = str(arg.cname).split("(", 1)[0] + "_callback_" + str(i)
             else:
                 param_name = arg.cname.replace("struct", "").replace("char *", "str").replace("*",
-                                        "_pointer").replace(" ", "")+"_"+str(i)
+                                                                                              "_pointer").replace(" ", "")+"_"+str(i)
             if 'params' in json_object:
                 p = json_object['params']
                 #print("param_name: ", param_name, "i", i, "params: ",p,file=sys.stderr)

@@ -23,7 +23,7 @@ task:
     - cd raylib-c
     - mkdir build
     - cd build
-    - cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+    - cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j8
     - sudo make install
   build_script:
