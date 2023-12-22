@@ -23,9 +23,13 @@ gcc raylib-c/parser/raylib_parser.c
 
 echo "running parser"
 
-./a.out -i raygui/src/raygui.h -o raygui.json -f JSON
-./a.out -i physac/src/physac.h -o physac.json -f JSON
+./a.out -i raygui/src/raygui.h -d RAYGUIAPI -o raygui.json -f JSON
+./a.out -i physac/src/physac.h -d PHYSACDEF -o physac.json -f JSON
 ./a.out -i raylib-c/src/raylib.h -o raylib.json -f JSON
+./a.out -i raylib-c/src/rlgl.h -o rlgl.json -f JSON
+./a.out -i raylib-c/src/raymath.h -d RMAPI -o raymath.json -f JSON
+./a.out -i raylib-c/src/external/glfw/include/GLFW/glfw3.h -d GLFWAPI -o glfw3.json -f JSON
+sed -i "s|\/\*.*,$|,|g" glfw3.json
 
 echo "building raylib_python_cffi"
 
@@ -42,6 +46,7 @@ echo "creating pyi files"
 python3 create_stub_pyray.py > pyray/__init__.pyi
 python3 create_enums.py >> pyray/__init__.pyi
 cat raylib/colors.py >> pyray/__init__.pyi
+
 python3 create_stub_static.py >raylib/__init__.pyi
 cat raylib/colors.py >> raylib/__init__.pyi
 

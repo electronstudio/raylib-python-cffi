@@ -12,14 +12,22 @@
 #
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
+from pathlib import Path
 from raylib import rl, ffi
-
 from inspect import ismethod, getmembers, isbuiltin
 import inflection, sys, json
 
-f = open("raylib.json", "r")
-js = json.load(f)
-
+known_functions = {}
+known_structs = {}
+for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json"), Path("glfw3.json")):
+    f = open(filename, "r")
+    js = json.load(f)
+    for fn in js["functions"]:
+        if fn["name"] not in known_functions:
+            known_functions[fn["name"]] = fn
+    for st in js["structs"]:
+        if st["name"] not in known_structs:
+            known_structs[st["name"]] = st
 
 
 
@@ -59,22 +67,28 @@ class struct: ...
 
 """)
 
+# These words can be used for c arg names, but not in python
+reserved_words = ("in", "list", "tuple", "set", "dict", "from", "range", "min", "max", "any", "all", "len")
+
 for name, attr in getmembers(rl):
     uname = name
     if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>":
-        json_array = [x for x in js['functions'] if x['name'] == name]
-        json_object = {}
-        if len(json_array) > 0:
-            json_object = json_array[0]
+        json_object = known_functions.get(name, {})
         sig = ""
         for i, arg in enumerate(ffi.typeof(attr).args):
-            param_name = arg.cname.replace("struct", "").replace("char *", "str").replace("*",
-                                                                                          "_pointer").replace(
-                " ", "")+"_"+str(i)
+            if ")(" in arg.cname:
+                # fn signature in arg types
+                param_name = str(arg.cname).split("(", 1)[0] + "_callback_" + str(i)
+            else:
+                param_name = arg.cname.replace("struct", "").replace("char *", "str").replace("*",
+                                                                                              "_pointer").replace(" ", "")+"_"+str(i)
             if 'params' in json_object:
                 p = json_object['params']
                 #print("param_name: ", param_name, "i", i, "params: ",p,file=sys.stderr)
                 param_name = list(p)[i]['name']
+                # don't use a python reserved word:
+                if param_name in reserved_words:
+                    param_name = param_name+"_"+str(i)
             param_type = ctype_to_python_type(arg.cname)
             sig += f"{param_name}: {param_type},"
 
