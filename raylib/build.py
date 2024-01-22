@@ -194,7 +194,6 @@ def build_windows():
     #define PHYSAC_IMPLEMENTATION
     #include "physac.h"  
     """,
-
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
                           include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
@@ -202,7 +201,6 @@ def build_windows():
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\physac\\src'],
                           )
-
 
 
 ffibuilder = FFI()
