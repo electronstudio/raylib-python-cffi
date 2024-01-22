@@ -42,7 +42,14 @@ python3 create_enums.py > dynamic/raylib/enums.py
 python3 create_define_consts.py > raylib/defines.py
 python3 create_define_consts.py > dynamic/raylib/defines.py
 
-pip3 install sphinx-autoapi myst_parser sphinx_rtd_theme
+echo "creating defines.py"
+
+python3 create_define_consts.py > raylib/defines.py
+python3 create_define_consts.py > dynamic/raylib/defines.py
+
+
+echo "creating pyi files"
+
 python3 create_stub_pyray.py > pyray/__init__.pyi
 python3 create_enums.py >> pyray/__init__.pyi
 cat raylib/colors.py >> pyray/__init__.pyi
