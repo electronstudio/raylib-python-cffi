@@ -34,4 +34,3 @@ print("""from enum import IntEnum
 process("raylib.json")
 process("raygui.json")
 process("glfw3.json")
-

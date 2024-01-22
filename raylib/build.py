@@ -165,7 +165,7 @@ def build_unix():
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
         extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
-                           '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
+                                              '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
         libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic']
 
     ffibuilder.set_source("raylib._raylib_cffi",
@@ -194,13 +194,15 @@ def build_windows():
     #define PHYSAC_IMPLEMENTATION
     #include "physac.h"  
     """,
-              extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
-              libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
-              include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
-                            'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src\\external\\glfw\\include',
-                            'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',
-                            'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\physac\\src'],
-              )
+
+                          extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
+                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
+                          include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
+                                        'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src\\external\\glfw\\include',
+                                        'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',
+                                        'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\physac\\src'],
+                          )
+
 
 
 ffibuilder = FFI()
