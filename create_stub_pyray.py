@@ -19,7 +19,7 @@ import inflection, sys, json
 
 known_functions = {}
 known_structs = {}
-for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json")):
+for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json"), Path("glfw3.json")):
     f = open(filename, "r")
     js = json.load(f)
     for fn in js["functions"]:

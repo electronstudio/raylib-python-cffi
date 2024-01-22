@@ -27,6 +27,7 @@ task:
     - make -j8
     - sudo make install
   build_script:
+    - sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
     - sudo cp physac/src/physac.h /usr/local/include/
     - sudo cp raygui/src/raygui.h /usr/local/include/
     - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages --upgrade pip
