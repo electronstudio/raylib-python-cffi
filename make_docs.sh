@@ -40,6 +40,11 @@ echo "creating enums.py"
 python3 create_enums.py > raylib/enums.py
 python3 create_enums.py > dynamic/raylib/enums.py
 
+echo "creating defines.py"
+
+python3 create_define_consts.py > raylib/defines.py
+python3 create_define_consts.py > dynamic/raylib/defines.py
+
 
 echo "creating pyi files"
 
