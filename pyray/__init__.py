@@ -11,6 +11,8 @@
 #  available at https://www.gnu.org/software/classpath/license.html.
 #
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+import weakref
+from array import array
 
 from raylib import rl, ffi
 from raylib.colors import *
@@ -43,7 +45,7 @@ def makefunc(a):
     def func(*args):
         modified_args = []
         for (c_arg, arg) in zip(ffi.typeof(a).args, args):
-            #print("arg:",str(arg), "c_arg.kind:", c_arg.kind, "c_arg:", c_arg, "type(arg):",str(type(arg)))
+            # print("arg:",str(arg), "c_arg.kind:", c_arg.kind, "c_arg:", c_arg, "type(arg):",str(type(arg)))
             if c_arg.kind == 'pointer':
                 if type(arg) == str:
                     arg = arg.encode('utf-8')
@@ -53,7 +55,7 @@ def makefunc(a):
                     arg = ffi.new("int *", arg)
                 elif type(arg) is float:
                     arg = ffi.new("float *", arg)
-                elif type(arg) is list  and str(c_arg) == "<ctype 'char * *'>":
+                elif type(arg) is list and str(c_arg) == "<ctype 'char * *'>":
                     arg = [ffi.new("char[]", x.encode('utf-8')) for x in arg]
                 elif str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>" and "*" not in str(arg):  # CPython
                     arg = ffi.addressof(arg)
@@ -74,10 +76,24 @@ def makefunc(a):
 
     return func
 
+global_weakkeydict = weakref.WeakKeyDictionary()
 
 def makeStructHelper(struct):
     def func(*args):
-        return ffi.new(f"struct {struct} *", args)[0]
+        # print(struct, args)
+        modified_args = []
+        for (field, arg) in zip(ffi.typeof(struct).fields, args):
+            # print("arg:", str(arg), "field:", field[1], "field type:", field[1].type, "type(arg):", str(type(arg)))
+            if arg is None:
+                arg = ffi.NULL
+            elif (field[1].type.kind == 'pointer'
+                  and (str(type(arg)) == "<class 'numpy.ndarray'>"
+                       or isinstance(arg, (array, bytes, bytearray, memoryview)))):
+                    arg = ffi.from_buffer(field[1].type, arg)
+            modified_args.append(arg)
+        s = ffi.new(f"struct {struct} *", modified_args)[0]
+        global_weakkeydict[s] = modified_args
+        return s
 
     return func
 
