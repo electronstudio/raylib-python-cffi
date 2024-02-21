@@ -4,11 +4,6 @@ raylib [core] example - random values
 
 """
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    MAROON,
-    LIGHTGRAY
-)
 
 # Initialization
 SCREEN_WIDTH = 800

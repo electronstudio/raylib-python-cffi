@@ -4,15 +4,7 @@ raylib [core] example - Scissor Test
 
 """
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    LIGHTGRAY,
-    RED,
-    BLACK
-)
-from raylib import (
-    KEY_S
-)
+
 
 # Initialization
 # --------------------------------------------------------------------------------------

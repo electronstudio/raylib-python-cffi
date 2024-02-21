@@ -4,33 +4,13 @@ raylib [core] example - Mouse input
 
 """
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    DARKGRAY,
-    MAROON,
-    LIME,
-    DARKBLUE,
-    PURPLE,
-    YELLOW,
-    ORANGE,
-    BEIGE,
-)
-from raylib import (
-    MOUSE_BUTTON_LEFT,
-    MOUSE_BUTTON_MIDDLE,
-    MOUSE_BUTTON_RIGHT,
-    MOUSE_BUTTON_SIDE,
-    MOUSE_BUTTON_EXTRA,
-    MOUSE_BUTTON_FORWARD,
-    MOUSE_BUTTON_BACK
-)
+
 
 # Initialization
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 450
 
-init_window(SCREEN_WIDTH, SCREEN_HEIGHT,
-            'raylib [core] example - mouse input')
+init_window(SCREEN_WIDTH, SCREEN_HEIGHT, 'raylib [core] example - mouse input')
 
 ball_position = Vector2(-100, -100)
 ball_color = DARKBLUE

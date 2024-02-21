@@ -87,4 +87,4 @@ while not window_should_close(): # Detect window close button or ESC key
 
 unload_render_texture(target)   # Unload render texture
 
-close_window();                 # Close window and OpenGL context
+close_window()                # Close window and OpenGL context

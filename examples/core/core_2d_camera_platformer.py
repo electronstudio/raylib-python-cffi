@@ -6,15 +6,13 @@ raylib [core] example - 2D Camera platformer
 from math import sqrt
 
 import pyray
-from raylib.colors import (
+from pyray import (
     DARKGRAY,
     RED,
     BLACK,
     GRAY,
     LIGHTGRAY,
 )
-
-
 
 # Initialization
 global g_evening_out, g_even_out_target
@@ -27,8 +25,7 @@ PLAYER_HOR_SPD = 200.0
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 450
 
-pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT,
-                  'raylib [core] example - 2d camera')
+pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT, 'raylib [core] example - 2d camera')
 
 
 # Raylib Math
@@ -77,11 +74,11 @@ def update_player(player, env_items, delta):
     for ei in env_items:
         p = player.position
         if (
-            ei.blocking and
-            ei.rect.x <= p.x and
-            ei.rect.x + ei.rect.width >= p.x and
-            ei.rect.y >= p.y and
-            ei.rect.y < p.y + player.speed * delta
+                ei.blocking and
+                ei.rect.x <= p.x and
+                ei.rect.x + ei.rect.width >= p.x and
+                ei.rect.y >= p.y and
+                ei.rect.y < p.y + player.speed * delta
         ):
             hit_obstacle = True
             player.speed = 0.0
@@ -96,14 +93,14 @@ def update_player(player, env_items, delta):
 
 
 def update_camera_center(
-    camera, player, env_items, delta, width, height
+        camera, player, env_items, delta, width, height
 ):
     camera.offset = pyray.Vector2(width / 2, height / 2)
     camera.target = player.position
 
 
 def update_camera_center_inside_map(
-    camera, player, env_items, delta, width, height
+        camera, player, env_items, delta, width, height
 ):
     camera.target = player.position
     camera.offset = pyray.Vector2(width / 2, height / 2)
@@ -134,7 +131,7 @@ def update_camera_center_inside_map(
 
 
 def update_camera_center_smooth_follow(
-    camera, player, env_items, delta, width, height
+        camera, player, env_items, delta, width, height
 ):
     min_speed = 30
     min_effect_length = 10
@@ -152,7 +149,7 @@ def update_camera_center_smooth_follow(
 
 
 def update_camera_even_out_on_landing(
-    camera, player, env_items, delta, width, height
+        camera, player, env_items, delta, width, height
 ):
     global g_evening_out, g_even_out_target
 
@@ -175,16 +172,16 @@ def update_camera_even_out_on_landing(
                 g_evening_out = False
     else:
         if (
-            player.can_jump and
-            (player.speed == 0) and
-            (player.position.y != camera.target.y)
+                player.can_jump and
+                (player.speed == 0) and
+                (player.position.y != camera.target.y)
         ):
             g_evening_out = True
             g_even_out_target = player.position.y
 
 
 def update_camera_player_bounds_push(
-    camera, player, env_items, delta, width, height
+        camera, player, env_items, delta, width, height
 ):
     bbox = pyray.Vector2(0.2, 0.2)
 
@@ -207,11 +204,11 @@ def update_camera_player_bounds_push(
         camera.target.y = player.position.y
     if player.position.x > bbox_world_max.x:
         camera.target.x = (
-            bbox_world_min.x + (player.position.x - bbox_world_max.x)
+                bbox_world_min.x + (player.position.x - bbox_world_max.x)
         )
     if player.position.y > bbox_world_max.y:
         camera.target.y = (
-            bbox_world_min.y + (player.position.y - bbox_world_max.y)
+                bbox_world_min.y + (player.position.y - bbox_world_max.y)
         )
 
 

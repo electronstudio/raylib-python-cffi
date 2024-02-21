@@ -5,7 +5,7 @@ raylib [core] example - 2D Camera System
 """
 import pyray
 
-from raylib.colors import (
+from pyray import (
     RAYWHITE,
     DARKGRAY,
     RED,
@@ -15,16 +15,12 @@ from raylib.colors import (
     BLACK,
 )
 
-
-
-
 # Initialization
 MAX_BUILDINGS = 100
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 450
 
-pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT,
-                  'raylib [core] example - 2d camera')
+pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT,'raylib [core] example - 2d camera')
 
 player = pyray.Rectangle(400, 280, 40, 40)
 buildings = []
@@ -55,7 +51,6 @@ camera.rotation = 0.0
 camera.zoom = 1.0
 
 pyray.set_target_fps(60)  # Set our game to run at 60 frames-per-second
-
 
 # Main game loop
 while not pyray.window_should_close():  # Detect window close button or ESC key
@@ -132,7 +127,6 @@ while not pyray.window_should_close():  # Detect window close button or ESC key
     pyray.draw_text('- R to reset Zoom and Rotation', 40, 100, 10, DARKGRAY)
 
     pyray.end_drawing()
-
 
 # De-Initialization
 pyray.close_window()  # Close window and OpenGL context

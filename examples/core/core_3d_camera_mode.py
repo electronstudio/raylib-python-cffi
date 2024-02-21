@@ -17,7 +17,7 @@ camera.position = pyray.Vector3(0.0, 10.0, 10.0)   # Camera position
 camera.target = pyray.Vector3(0.0, 0.0, 0.0)       # Camera looking at point
 camera.up = pyray.Vector3(0.0, 1.0, 0.0)           # Camera up vector (rotation towards target)
 camera.fovy = 45.0                                 # Camera field-of-view Y
-camera.projection = pyray.CAMERA_PERSPECTIVE       # Camera mode type
+camera.projection = pyray.CameraProjection.CAMERA_PERSPECTIVE       # Camera mode type
 
 cube_position = pyray.Vector3(0.0, 0.0, 0.0)
 

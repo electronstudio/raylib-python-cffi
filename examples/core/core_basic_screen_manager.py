@@ -13,8 +13,7 @@ class GameScreen(Enum):
 
 
 def main():
-    init_window(SCREEN_WIDTH, SCREEN_HEIGHT,
-                "raylib [core] example - basic screen manager")
+    init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - basic screen manager")
 
     frame_count = 0
     set_target_fps(60)

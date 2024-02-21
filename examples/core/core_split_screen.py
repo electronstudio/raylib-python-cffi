@@ -6,13 +6,6 @@ raylib [core] example - Split Screen
 
 from pyray import *
 
-from raylib import (
-    KEY_W,
-    KEY_S,
-    KEY_UP,
-    KEY_DOWN,
-)
-
 cameraPlayer1 = Camera3D([0])
 cameraPlayer2 = Camera3D([0])
 

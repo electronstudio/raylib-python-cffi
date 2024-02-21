@@ -4,18 +4,6 @@ raylib [core] example - Window Should Close
 
 """
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    LIGHTGRAY,
-    WHITE,
-    BLACK
-)
-from raylib import (
-    KEY_NULL,
-    KEY_ESCAPE,
-    KEY_Y,
-    KEY_N
-)
 
 # Initialization
 # --------------------------------------------------------------------------------------

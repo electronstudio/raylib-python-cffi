@@ -19,8 +19,7 @@ MAX_GESTURE_STRINGS = 20
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 450
 
-pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT,
-                  'raylib [core] example - input gestures')
+pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT, 'raylib [core] example - input gestures')
 
 touch_position = pyray.Vector2(0, 0)
 touch_area = pyray.Rectangle(220, 10, SCREEN_WIDTH - 230, SCREEN_HEIGHT - 20)
