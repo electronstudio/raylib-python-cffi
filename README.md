@@ -6,7 +6,7 @@ original Raylib.
 * Faster, fewer bugs and easier to maintain than ctypes.
 * Commercial-friendly license.
 * Docstrings and auto-completion.
-* **Now includes extra libraries: raymath, raygui, rlgl and physac**
+* **Now includes extra libraries: raymath, raygui, rlgl, physac and GLFW**
 
 [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
 
@@ -80,6 +80,48 @@ Use [the C API](https://electronstudio.github.io/raylib-python-cffi/raylib.html)
 ### If you prefer a slightly more Pythonistic API and don't mind it might be slightly slower
 
 Use [the Python API](https://electronstudio.github.io/raylib-python-cffi/pyray.html).
+
+# Running in a web browser
+
+[Pygbag](https://pypi.org/project/pygbag/) >=0.8.7 supports running in a web browser.
+
+Make a folder `my_project` with a file `main.py`:
+
+    # /// script
+    # dependencies = [
+    #     "cffi",
+    #     "inflection",
+    #     "raylib"
+    # ]
+    # ///
+    import asyncio
+    import platform
+    from pyray import *
+
+    async def main():   # You must have an async main function
+        init_window(500, 500, "Hello")
+        platform.window.window_resize()  # You must add this line
+        while not window_should_close():
+            begin_drawing()
+            clear_background(WHITE)
+            draw_text("Hello world", 190, 200, 20, VIOLET)
+            end_drawing()
+            await asyncio.sleep(0) # You must call this in your main loop
+        close_window()
+
+    asyncio.run(main())
+
+Then to create the web files and launch a web server:
+
+    python3 -m pip install --user --upgrade git+https://github.com/pygame-web/pygbag
+    python3 -m pygbag --git --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl my_project
+
+Point your browser to http://localhost:8000
+
+This is all done by Pygbag rather than by me, so you should probably contact them with any issues.
+Carefully read all their [documentation](https://pygame-web.github.io/).
+
+It does work for most of the examples at https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/
 
 # App showcase
 
