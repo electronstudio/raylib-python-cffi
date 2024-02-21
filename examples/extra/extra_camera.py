@@ -1,3 +1,5 @@
+# python3 -m pip install pyglm
+
 from math import sin, cos
 import glm
 from raylib import rl, ffi

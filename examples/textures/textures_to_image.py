@@ -4,7 +4,6 @@ raylib [texture] example - To image
 
 """
 from pyray import *
-from raylib.colors import *
 
 # Initialization
 screenWidth = 800

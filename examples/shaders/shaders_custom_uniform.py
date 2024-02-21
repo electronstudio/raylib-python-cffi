@@ -78,7 +78,7 @@ while not rl.WindowShouldClose():            #// Detect window close button or E
     angle -= 0.002
     camera.position.x = math.sin(angle) * 30.0
     camera.position.z = math.cos(angle) * 30.0
-    rl.UpdateCamera(camera)              #// Update camera
+    rl.UpdateCamera(camera, rl.CAMERA_PERSPECTIVE)              #// Update camera
 
     swirl.x = rl.GetMouseX()
     swirl.y = screenHeight - rl.GetMouseY()

@@ -61,7 +61,7 @@ while not rl.WindowShouldClose():
     a += 0.01
     camera.position.x = math.sin(a) * 6
     camera.position.z = math.cos(a) * 6
-    rl.UpdateCamera(camera)
+    rl.UpdateCamera(camera, rl.CAMERA_PERSPECTIVE)
 
     lightSystem.update(camera.position)
 

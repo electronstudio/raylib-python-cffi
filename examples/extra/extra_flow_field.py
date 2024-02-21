@@ -2,7 +2,7 @@
 RenderTexture example
 
 Run with:
-
+python3 -m pip install pyglm
 python3 flow-field
         flow-field bees
 """
