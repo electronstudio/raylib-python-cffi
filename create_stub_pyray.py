@@ -41,6 +41,8 @@ def ctype_to_python_type(t):
         return "int"
     elif t == "double":
         return "float"
+    elif "char * *" in t:
+        return "list[str]"
     elif "char *" in t:
         return "str"
     elif "char" in t:

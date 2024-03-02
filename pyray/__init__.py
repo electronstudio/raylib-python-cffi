@@ -43,34 +43,45 @@ def makefunc(a):
     def func(*args):
         modified_args = []
         for (c_arg, arg) in zip(ffi.typeof(a).args, args):
-            #print("arg:",str(arg), "c_arg.kind:", c_arg.kind, "c_arg:", c_arg, "type(arg):",str(type(arg)))
+            # print("arg:",str(arg), "c_arg.kind:", c_arg.kind, "c_arg:", c_arg, "type(arg):",str(type(arg)))
             if c_arg.kind == 'pointer':
-                if type(arg) == str:
+                if type(arg) is str:
                     arg = arg.encode('utf-8')
-                elif type(arg) is bool:
-                    arg = ffi.new("bool *", arg)
-                elif type(arg) is int:
-                    arg = ffi.new("int *", arg)
-                elif type(arg) is float:
-                    arg = ffi.new("float *", arg)
-                elif type(arg) is list  and str(c_arg) == "<ctype 'char * *'>":
+                # if c_arg is a 'char *' not a 'const char *' then we ought to raise here because its an out
+                # parameter and user should supply a ctype pointer, but cffi cant detect const
+                # so we would have to get the info from raylib.json
+                elif type(arg) is list and str(c_arg) == "<ctype 'char * *'>":
                     arg = [ffi.new("char[]", x.encode('utf-8')) for x in arg]
-                elif str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>" and "*" not in str(arg):  # CPython
-                    arg = ffi.addressof(arg)
-                elif str(type(arg)) == "<class '_cffi_backend._CDataBase'>" and "*" not in str(arg):  # Pypy
+                elif is_cdata(arg) and "*" not in str(arg):
                     arg = ffi.addressof(arg)
                 elif arg is None:
                     arg = ffi.NULL
+                elif not is_cdata(arg):
+                    if str(c_arg) == "<ctype '_Bool *'>":
+                        raise TypeError(
+                            "Argument must be a ctype bool, please create one with: pyray.ffi.new('bool *', True)")
+                    elif str(c_arg) == "<ctype 'int *'>":
+                        raise TypeError(
+                            "Argument must be a ctype int, please create one with: pyray.ffi.new('int *', 1)")
+                    elif str(c_arg) == "<ctype 'float *'>":
+                        raise TypeError(
+                            "Argument must be a ctype float, please create one with: pyray.ffi.new('float *', 1.0)")
             modified_args.append(arg)
         result = a(*modified_args)
         if result is None:
             return
-        if str(type(result)) == "<class '_cffi_backend._CDataBase'>" and str(result).startswith("<cdata 'char *'"):
+        elif is_cdata(result) and str(result).startswith("<cdata 'char *'"):
             if str(result) == "<cdata 'char *' NULL>":
-                result = ""
+                return ""
             else:
-                result = ffi.string(result).decode('utf-8')
-        return result
+                return ffi.string(result).decode('utf-8')
+        else:
+            return result
+
+    # apparently pypy and cpython produce different types so check for both
+    def is_cdata(arg):
+        return str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>" or str(
+            type(arg)) == "<class '_cffi_backend._CDataBase'>"
 
     return func
 
@@ -83,20 +94,16 @@ def makeStructHelper(struct):
 
 
 for name, attr in getmembers(rl):
-    # print(name, attr)
+    #print(name, dir(attr))
     uname = inflection.underscore(name).replace('3_d', '_3d').replace('2_d', '_2d')
     if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>" or str(
             type(attr)) == "<class '_cffi_backend._CDataBase'>":
         # print(attr.__call__)
         # print(attr.__doc__)
-        # print(attr.__text_signature__)
         # print(dir(attr))
         # print(dir(attr.__repr__))
         f = makefunc(attr)
         setattr(current_module, uname, f)
-        # def wrap(*args):
-        #    print("call to ",attr)
-        # setattr(PyRay, uname, lambda *args: print("call to ",attr))
     else:
         setattr(current_module, name, attr)
 
