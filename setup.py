@@ -38,7 +38,7 @@ setup(
     ],
     packages=["raylib", "pyray"],
     include_package_data=True,
-    install_requires=["cffi>=1.14.6","inflection"],
+    install_requires=["cffi>=1.14.6"],
     distclass=BinaryDistribution,
     cffi_modules=["raylib/build.py:ffibuilder"]
 )

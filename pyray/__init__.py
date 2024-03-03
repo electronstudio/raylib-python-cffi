@@ -11,6 +11,7 @@
 #  available at https://www.gnu.org/software/classpath/license.html.
 #
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+import re
 import weakref
 from array import array
 
@@ -23,12 +24,21 @@ except AttributeError:
     print("sorry deprecated enums dont work on dynamic version")
 
 from inspect import getmembers, isbuiltin
-import inflection
 
 current_module = __import__(__name__)
 
 
-def pointer(self, struct):
+def _underscore(word: str) -> str:
+    """
+    from inflection
+    """
+    word = re.sub(r"([A-Z]+)([A-Z][a-z])", r'\1_\2', word)
+    word = re.sub(r"([a-z\d])([A-Z])", r'\1_\2', word)
+    word = word.replace("-", "_")
+    return word.lower()
+
+
+def pointer(struct):
     return ffi.addressof(struct)
 
 
@@ -40,11 +50,11 @@ def pointer(self, struct):
 # Another possibility is ffi.typeof() but that will throw an exception if you give it a type that isn't a ctype
 # Another way to improve performance might be to special-case simple types before doing the string comparisons
 
-def makefunc(a):
+def _wrap_function(original_func):
     # print("makefunc ",a, ffi.typeof(a).args)
-    def func(*args):
+    def wrapped_func(*args):
         modified_args = []
-        for (c_arg, arg) in zip(ffi.typeof(a).args, args):
+        for (c_arg, arg) in zip(ffi.typeof(original_func).args, args):
             # print("arg:",str(arg), "c_arg.kind:", c_arg.kind, "c_arg:", c_arg, "type(arg):",str(type(arg)))
             if c_arg.kind == 'pointer':
                 if type(arg) is str:
@@ -69,7 +79,7 @@ def makefunc(a):
                         raise TypeError(
                             "Argument must be a ctype float, please create one with: pyray.ffi.new('float *', 1.0)")
             modified_args.append(arg)
-        result = a(*modified_args)
+        result = original_func(*modified_args)
         if result is None:
             return
         elif is_cdata(result) and str(result).startswith("<cdata 'char *'"):
@@ -85,11 +95,13 @@ def makefunc(a):
         return str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>" or str(
             type(arg)) == "<class '_cffi_backend._CDataBase'>"
 
-    return func
+    return wrapped_func
+
 
 global_weakkeydict = weakref.WeakKeyDictionary()
 
-def makeStructHelper(struct):
+
+def _make_struct_constructor_function(struct):
     def func(*args):
         # print(struct, args)
         modified_args = []
@@ -100,7 +112,7 @@ def makeStructHelper(struct):
             elif (field[1].type.kind == 'pointer'
                   and (str(type(arg)) == "<class 'numpy.ndarray'>"
                        or isinstance(arg, (array, bytes, bytearray, memoryview)))):
-                    arg = ffi.from_buffer(field[1].type, arg)
+                arg = ffi.from_buffer(field[1].type, arg)
             modified_args.append(arg)
         s = ffi.new(f"struct {struct} *", modified_args)[0]
         global_weakkeydict[s] = modified_args
@@ -110,21 +122,21 @@ def makeStructHelper(struct):
 
 
 for name, attr in getmembers(rl):
-    #print(name, dir(attr))
-    uname = inflection.underscore(name).replace('3_d', '_3d').replace('2_d', '_2d')
+    # print(name, attr)
+    uname = _underscore(name).replace('3_d', '_3d').replace('2_d', '_2d')
     if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>" or str(
             type(attr)) == "<class '_cffi_backend._CDataBase'>":
         # print(attr.__call__)
         # print(attr.__doc__)
         # print(dir(attr))
         # print(dir(attr.__repr__))
-        f = makefunc(attr)
+        f = _wrap_function(attr)
         setattr(current_module, uname, f)
     else:
         setattr(current_module, name, attr)
 
 for struct in ffi.list_types()[0]:
-    f = makeStructHelper(struct)
+    f = _make_struct_constructor_function(struct)
     setattr(current_module, struct, f)
 
 # overwrite ffi enums with our own
