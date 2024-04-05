@@ -1,7 +1,5 @@
 # Python Bindings for Raylib 5.0
 
-<iframe src="https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/shapes_bouncing_ball/build/web/" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="450px" width="800px" allowfullscreen></iframe>
-
 Chatroom: [Discord](https://discord.gg/fKDwt85aX6) or [Matrix](https://matrix.to/#/#raylib-python-cffi:matrix.org)
 
 New CFFI API static bindings.
