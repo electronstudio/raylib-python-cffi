@@ -162,16 +162,19 @@ def build_unix():
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
                            'CoreVideo']
         libraries = []
+        extra_compile_args = ["-Wno-error=incompatible-function-pointer-types"]
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
         extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
                                               '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
+        extra_compile_args = []
         libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic']
 
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
                           include_dirs=[get_the_include_path()],
                           extra_link_args=extra_link_args,
+                          extra_compile_args=extra_compile_args,
                           libraries=libraries)
 
 
