@@ -13,10 +13,10 @@ Requirements for build: cmake, pkg-config.
 
 ::
 
-      cd raylib-4.2.0
+      cd raylib-5.0
       mkdir build
       cd build
-      cmake  -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+      cmake  -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
       make
       sudo make install
 
@@ -26,7 +26,7 @@ Then ask Pip to build from source:
 
 ::
 
-   pip3 install --no-binary raylib --upgrade --force-reinstall raylib
+   pip3 install --no-cache-dir --no-binary raylib --upgrade --force-reinstall raylib
 
 Or, Build from source manually
 ------------------------------
@@ -119,7 +119,7 @@ Build and install Raylib from the raylib-c directory.
    cd raylib-python-cffi/raylib-c
    mkdir build
    cd build
-   cmake -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release ..
+   cmake -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
    sudo make install
 
 .. note:: Optional: Build the Raylib shared libs, if you plan to use

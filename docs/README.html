@@ -61,6 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower">If you prefer a slightly more Pythonistic API and don’t mind it might be slightly slower</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="#running-in-a-web-browser">Running in a web browser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#help-wanted">Help wanted</a></li>
@@ -111,7 +112,7 @@ original Raylib.</p></li>
 <li><p>Faster, fewer bugs and easier to maintain than ctypes.</p></li>
 <li><p>Commercial-friendly license.</p></li>
 <li><p>Docstrings and auto-completion.</p></li>
-<li><p><strong>Now includes extra libraries: raymath, raygui, rlgl and physac</strong></p></li>
+<li><p><strong>Now includes extra libraries: raymath, raygui, rlgl, physac and GLFW</strong></p></li>
 </ul>
 <p><a class="reference external" href="http://electronstudio.github.io/raylib-python-cffi">Full documentation</a></p>
 </section>
@@ -182,6 +183,45 @@ to let us know what you did.</p>
 <h2>If you prefer a slightly more Pythonistic API and don’t mind it might be slightly slower<a class="headerlink" href="#if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower" title="Link to this heading"></a></h2>
 <p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/pyray.html">the Python API</a>.</p>
 </section>
+</section>
+<section id="running-in-a-web-browser">
+<h1>Running in a web browser<a class="headerlink" href="#running-in-a-web-browser" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://pypi.org/project/pygbag/">Pygbag</a> &gt;=0.8.7 supports running in a web browser.</p>
+<p>Make a folder <code class="docutils literal notranslate"><span class="pre">my_project</span></code> with a file <code class="docutils literal notranslate"><span class="pre">main.py</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># /// script
+# dependencies = [
+#     &quot;cffi&quot;,
+#     &quot;inflection&quot;,
+#     &quot;raylib&quot;
+# ]
+# ///
+import asyncio
+import platform
+from pyray import *
+
+async def main():   # You must have an async main function
+    init_window(500, 500, &quot;Hello&quot;)
+    platform.window.window_resize()  # You must add this line
+    while not window_should_close():
+        begin_drawing()
+        clear_background(WHITE)
+        draw_text(&quot;Hello world&quot;, 190, 200, 20, VIOLET)
+        end_drawing()
+        await asyncio.sleep(0) # You must call this in your main loop
+    close_window()
+
+asyncio.run(main())
+</pre></div>
+</div>
+<p>Then to create the web files and launch a web server:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install --user --upgrade git+https://github.com/pygame-web/pygbag
+python3 -m pygbag --git --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl my_project
+</pre></div>
+</div>
+<p>Point your browser to http://localhost:8000</p>
+<p>This is all done by Pygbag rather than by me, so you should probably contact them with any issues.
+Carefully read all their <a class="reference external" href="https://pygame-web.github.io/">documentation</a>.</p>
+<p>It does work for most of the examples at https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/</p>
 </section>
 <section id="app-showcase">
 <h1>App showcase<a class="headerlink" href="#app-showcase" title="Link to this heading"></a></h1>

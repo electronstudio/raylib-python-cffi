@@ -51,6 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#running-in-a-web-browser">Running in a web browser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#help-wanted">Help wanted</a></li>
@@ -106,16 +107,16 @@
 <p>First make sure Raylib is installed.  On Linux/Mac it must include the pkg-config files.  Best way to ensure this
 is to compile and install Raylib using CMake: <a class="reference external" href="https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake">https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake</a></p>
 <p>Requirements for build: cmake, pkg-config.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="mf">4.2.0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="mf">5.0</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span>  <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">cmake</span>  <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
 <span class="n">make</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>Then ask Pip to build from source:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">raylib</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">raylib</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">raylib</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">raylib</span>
 </pre></div>
 </div>
 </section>
@@ -189,7 +190,7 @@ work!</p>
 <span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">cffi</span><span class="o">/</span><span class="n">raylib</span><span class="o">-</span><span class="n">c</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
