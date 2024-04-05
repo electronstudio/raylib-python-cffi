@@ -1,5 +1,9 @@
 # Python Bindings for Raylib 5.0
 
+<iframe src="https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/shapes_bouncing_ball/build/web/" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="450px" width="800px" allowfullscreen></iframe>
+
+Chatroom: [Discord](https://discord.gg/fKDwt85aX6) or [Matrix](https://matrix.to/#/#raylib-python-cffi:matrix.org)
+
 New CFFI API static bindings.
 * Automatically generated to be as close as possible to 
 original Raylib.
@@ -113,15 +117,15 @@ Make a folder `my_project` with a file `main.py`:
 
 Then to create the web files and launch a web server:
 
-    python3 -m pip install --user --upgrade git+https://github.com/pygame-web/pygbag
-    python3 -m pygbag --git --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl my_project
+    python3.12 -m pip install --user --upgrade pygbag
+    python3.12 -m pygbag --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl my_project
 
 Point your browser to http://localhost:8000
 
 This is all done by Pygbag rather than by me, so you should probably contact them with any issues.
 Carefully read all their [documentation](https://pygame-web.github.io/).
 
-It does work for most of the examples at https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/
+It does work for most of [these examples](https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/)
 
 # App showcase
 
