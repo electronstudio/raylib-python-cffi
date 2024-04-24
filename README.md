@@ -160,13 +160,16 @@ and then only convert them to C data structures when you have to call the C func
 ## Bunnymark
 
 
-| Library                | Implementation    | Bunnies (60 FPS) | Percentage    |
-| -------------          | -------------     | -------------    | ------------- |
-| Raylib 3.7             | C                 | 168100           | 100%          |
-| Raylib Python CFFI 3.7 | Pypy 3.7          | 33800            | 20%           |
-| Raylib Python CFFI 3.7 | Python 3.9        | 7700             |  4.5%         |
-| Raylib Python CFFI 3.7 | Python 3.9 Nuitka | 8600             |  5.1%         |
-| Raylib Python CFFI 3.7 Dynamic | Python 3.9 | 6300             |  3.7%         |
+| Library                        | Implementation    | Bunnies (60 FPS) | Percentage |
+|--------------------------------|-------------------|------------------|------------|
+| Raylib 5.0                     | C                 | 180000           | 100%       |
+| Raylib Python CFFI 5.0.0.2     | Python 3.12       | 10500            | 5.8%       |
+| Raylib Python CFFI 5.0.0.2     | Pypy 3.10         | 95000            | 53%        |
+| Raylib 3.7                     | C                 | 168100           | 100%       |
+| Raylib Python CFFI 3.7         | Pypy 3.7          | 33800            | 20%        |
+| Raylib Python CFFI 3.7         | Python 3.9        | 7700             | 4.5%       |
+| Raylib Python CFFI 3.7         | Python 3.9 Nuitka | 8600             | 5.1%       |
+| Raylib Python CFFI 3.7 Dynamic | Python 3.9        | 6300             | 3.7%       |
 
 # Packaging your app
 
