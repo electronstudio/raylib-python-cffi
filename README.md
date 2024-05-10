@@ -151,11 +151,16 @@ statically link and use in non-free / proprietary / commercial projects!
 
 # Performance
 
-For fastest performance use Pypy rather than standard Python.
+If you need more performance, do in this order:
 
-Every call to C is costly, so it's slightly faster if you use Python data structures and functions when calculating
+1. Use Pypy rather than standard CPython.  It is much, much faster and will make more difference than any other optimisations you might do.
+
+2. Every call to C is costly, so it's slightly faster if you use Python data structures and functions when calculating
 in your update loop
 and then only convert them to C data structures when you have to call the C functions for drawing.
+
+3. The raylib.* functions are potentially 1.5x faster than the pyray.* equivalents, so if you need a tiny bit more performance
+you can switch your inner loop functions to these.
 
 ## Bunnymark
 
