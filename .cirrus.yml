@@ -7,8 +7,8 @@ pi_task:
   arm_container:
     image: dtcooper/raspberrypi-os:python-bullseye
   setup_script:
-    - sudo apt update
-    - sudo apt install cmake
+    - apt update
+    - apt install cmake
   build_raylib_script:
     - git submodule update --init --recursive
     - cd raylib-c
