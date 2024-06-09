@@ -51,7 +51,7 @@ jobs:
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
-          pip3 install cffi
+          pip3 install "cffi>=1.17.0rc1"
           pip3 install wheel
           pip3 install setuptools
           python setup.py bdist_wheel --plat-name macosx_10_15_x86_64
@@ -200,7 +200,7 @@ jobs:
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
-          pip3 install cffi
+          pip3 install "cffi>=1.17.0rc1"
           pip3 install wheel
           pip3 install setuptools
           python setup.py bdist_wheel --plat-name manylinux2014_x86_64
@@ -282,7 +282,7 @@ jobs:
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
-          pip3 install cffi
+          pip3 install "cffi>=1.17.0rc1"
           pip3 install wheel
           pip3 install setuptools
           del raylib\dynamic\*.so* >nul 2>&1
@@ -334,7 +334,7 @@ jobs:
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
-          pip3 install cffi
+          pip3 install "cffi>=1.17.0rc1"
           pip3 install wheel
           pip3 install setuptools
           python setup.py sdist
@@ -365,7 +365,7 @@ jobs:
       - name: Build raylib-python-cffi-dynamic
         run: |
           python -m pip install --upgrade pip
-          pip3 install cffi
+          pip3 install "cffi>=1.17.0rc1"
           pip3 install wheel
           pip3 install setuptools
           cd dynamic
