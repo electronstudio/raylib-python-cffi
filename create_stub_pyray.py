@@ -19,7 +19,8 @@ import inflection, sys, json
 
 known_functions = {}
 known_structs = {}
-for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json"), Path("glfw3.json")):
+for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json"),
+                 Path("glfw3.json")):
     f = open(filename, "r")
     js = json.load(f)
     for fn in js["functions"]:
@@ -39,6 +40,8 @@ def ctype_to_python_type(t):
         return "int"
     elif t == "unsigned long long":
         return "int"
+    elif t == "uint64_t":
+        return "int"
     elif t == "double":
         return "float"
     elif "char * *" in t:
@@ -50,11 +53,12 @@ def ctype_to_python_type(t):
     elif "*" in t:
         return "Any"
     elif t.startswith("struct"):
-        return t.replace("struct ","")
+        return t.replace("struct ", "")
     elif t.startswith("unsigned"):
         return t.replace("unsigned ", "")
     else:
         return t
+
 
 print("""from typing import Any
 
@@ -78,7 +82,7 @@ for name, attr in getmembers(rl):
         for i, arg in enumerate(ffi.typeof(attr).args):
             param_name = arg.cname.replace("struct", "").replace("char *", "str").replace("*",
                                                                                           "_pointer").replace(
-                " ", "")+"_"+str(i)
+                " ", "") + "_" + str(i)
             if 'params' in json_object:
                 p = json_object['params']
                 param_name = list(p)[i]['name']
@@ -103,8 +107,8 @@ for name, attr in getmembers(rl):
         print(
             f'def {uname}(*args) -> {ctype_to_python_type(return_type)}:\n        """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""\n        ...')
     else:
-        #print("*****", str(type(attr)))
-        t = str(type(attr))[8:-2] # this isolates the type
+        # print("*****", str(type(attr)))
+        t = str(type(attr))[8:-2]  # this isolates the type
         if t != "int":
             print(f"{name}: {t}")
 
@@ -118,7 +122,7 @@ for struct in ffi.list_types()[0]:
             # so we don't want it in the pyray API
             continue
         if ffi.typeof(struct).fields is None:
-            print("weird empty struct, skipping "+struct, file=sys.stderr)
+            print("weird empty struct, skipping " + struct, file=sys.stderr)
             continue
         print(f"class {struct}:")
         print(f'    """ struct """')
@@ -130,9 +134,36 @@ for struct in ffi.list_types()[0]:
         for arg in ffi.typeof(struct).fields:
             print(f"        self.{arg[0]}={arg[0]}")
 
-    #elif ffi.typeof(struct).kind == "enum":
+    # elif ffi.typeof(struct).kind == "enum":
     #    print(f"{struct}: int")
     else:
         print("ERROR UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
 
-
+print("""
+LIGHTGRAY  : Color
+GRAY       : Color
+DARKGRAY   : Color
+YELLOW     : Color
+GOLD       : Color
+ORANGE     : Color
+PINK       : Color
+RED        : Color
+MAROON     : Color
+GREEN      : Color
+LIME       : Color
+DARKGREEN  : Color
+SKYBLUE    : Color
+BLUE       : Color
+DARKBLUE   : Color
+PURPLE     : Color
+VIOLET     : Color
+DARKPURPLE : Color
+BEIGE      : Color
+BROWN      : Color
+DARKBROWN  : Color
+WHITE      : Color
+BLACK      : Color
+BLANK      : Color
+MAGENTA    : Color
+RAYWHITE   : Color
+""")

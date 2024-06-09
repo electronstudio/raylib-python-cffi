@@ -50,10 +50,8 @@ echo "creating pyi files"
 
 python3 create_stub_pyray.py > pyray/__init__.pyi
 python3 create_enums.py >> pyray/__init__.pyi
-cat raylib/colors.py >> pyray/__init__.pyi
 
 python3 create_stub_static.py >raylib/__init__.pyi
-cat raylib/colors.py >> raylib/__init__.pyi
 
 
 echo "installing sphinx modules"
