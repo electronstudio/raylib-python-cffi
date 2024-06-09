@@ -14,7 +14,7 @@ pi_task:
     - cd raylib-c
     - mkdir build
     - cd build
-    - cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - cmake -DPLATFORM="Desktop" -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j2
     - make install
   build_script:
@@ -25,7 +25,7 @@ pi_task:
     - python -m pip install --break-system-packages cffi
     - python -m pip install --break-system-packages setuptools
     - python -m pip install --break-system-packages wheel
-    - /opt/homebrew/bin/python${PY_VER} setup.py bdist_wheel
+    - python setup.py bdist_wheel
   artifacts:
     path: "dist/*"
 
