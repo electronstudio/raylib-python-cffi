@@ -8,7 +8,7 @@ pi_task:
     image: dtcooper/raspberrypi-os:python-bullseye
   setup_script:
     - apt update
-    - apt install cmake
+    - apt -y install cmake
   build_raylib_script:
     - git submodule update --init --recursive
     - cd raylib-c
@@ -16,11 +16,11 @@ pi_task:
     - cd build
     - cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j2
-    - sudo make install
+    - make install
   build_script:
-    - sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
-    - sudo cp physac/src/physac.h /usr/local/include/
-    - sudo cp raygui/src/raygui.h /usr/local/include/
+    - cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+    - cp physac/src/physac.h /usr/local/include/
+    - cp raygui/src/raygui.h /usr/local/include/
     - python -m pip install --break-system-packages --upgrade pip
     - python -m pip install --break-system-packages cffi
     - python -m pip install --break-system-packages setuptools
