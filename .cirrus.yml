@@ -1,9 +1,36 @@
-#container:
-#  image: python:3.11
-
 # download at https://api.cirrus-ci.com/v1/artifact/github/electronstudio/raylib-python-cffi/main/binary.zip
 
-task:
+pi_task:
+  arm_container:
+    matrix:
+      - image: dtcooper/raspberrypi-os:python-bullseye
+      - image: dtcooper/raspberrypi-os:python3.11-bullseye
+      - image: dtcooper/raspberrypi-os:python3.10-bullseye
+      - image: dtcooper/raspberrypi-os:python3.9-bullseye
+  setup_script:
+    - apt update
+    - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+  build_raylib_script:
+    - git submodule update --init --recursive
+    - cd raylib-c
+    - mkdir build
+    - cd build
+    - cmake -DPLATFORM="Desktop" -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - make -j2
+    - make install
+  build_script:
+    - cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+    - cp physac/src/physac.h /usr/local/include/
+    - cp raygui/src/raygui.h /usr/local/include/
+    - python -m pip install --break-system-packages --upgrade pip
+    - python -m pip install --break-system-packages cffi
+    - python -m pip install --break-system-packages setuptools
+    - python -m pip install --break-system-packages wheel
+    - python setup.py bdist_wheel --plat-name manylinux2014_aarch64
+  artifacts:
+    path: "dist/*"
+
+mac_task:
   macos_instance:
     matrix:
       - image: ghcr.io/cirruslabs/macos-ventura-xcode:latest

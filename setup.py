@@ -30,6 +30,8 @@ setup(
     classifiers=[
         "License :: OSI Approved :: Eclipse Public License 2.0 (EPL-2.0)",
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.9",
@@ -38,7 +40,7 @@ setup(
     ],
     packages=["raylib", "pyray"],
     include_package_data=True,
-    install_requires=["cffi>=1.14.6"],
+    install_requires=["cffi>=1.17.0rc1"],
     distclass=BinaryDistribution,
     cffi_modules=["raylib/build.py:ffibuilder"]
 )
