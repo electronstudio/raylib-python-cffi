@@ -8,7 +8,7 @@ pi_task:
     image: dtcooper/raspberrypi-os:python-bullseye
   setup_script:
     - apt update
-    - apt -y install cmake
+    - apt -y install cmake libxrandr-dev
   build_raylib_script:
     - git submodule update --init --recursive
     - cd raylib-c
