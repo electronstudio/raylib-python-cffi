@@ -3,7 +3,30 @@
 
 # download at https://api.cirrus-ci.com/v1/artifact/github/electronstudio/raylib-python-cffi/main/binary.zip
 
-task:
+pi_task:
+  arm_container:
+    image: dtcooper/raspberrypi-os:python-bullseye
+  build_raylib_script:
+    - git submodule update --init --recursive
+    - cd raylib-c
+    - mkdir build
+    - cd build
+    - cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - make -j2
+    - sudo make install
+  build_script:
+    - sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+    - sudo cp physac/src/physac.h /usr/local/include/
+    - sudo cp raygui/src/raygui.h /usr/local/include/
+    - python -m pip install --break-system-packages --upgrade pip
+    - python -m pip install --break-system-packages cffi
+    - python -m pip install --break-system-packages setuptools
+    - python -m pip install --break-system-packages wheel
+    - /opt/homebrew/bin/python${PY_VER} setup.py bdist_wheel
+  artifacts:
+    path: "dist/*"
+
+mac_task:
   macos_instance:
     matrix:
       - image: ghcr.io/cirruslabs/macos-ventura-xcode:latest
