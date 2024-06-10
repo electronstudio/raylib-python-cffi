@@ -92,7 +92,6 @@ Make a folder `my_project` with a file `main.py`:
     # /// script
     # dependencies = [
     #     "cffi",
-    #     "inflection",
     #     "raylib"
     # ]
     # ///
