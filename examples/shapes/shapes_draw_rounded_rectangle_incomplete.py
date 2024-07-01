@@ -20,32 +20,31 @@ from raylib.colors import (
     MAROON,
 )
 
-#// Initialization
-#//--------------------------------------------------------------------------------------
+
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 450
 
 pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [shapes] example - draw rectangle rounded")
 
-roundness = 0.2
-width = 200
-height = 100
-segments = 0
-lineThick = 1
+
 
 drawRect = False
 drawRoundedRect = True
 drawRoundedLines = False
 
-pyray.set_target_fps(60)    #// Set our game to run at 60 frames-per-second
-#//--------------------------------------------------------------------------------------
-
+pyray.set_target_fps(60)
+width = pyray.ffi.new('float *', 200)
+# these need to be changed to pointers for new raygui format
+roundness = 0.2
+height = 100
+segments = 0
+lineThick = 1
 #// Main game loop
 while not pyray.window_should_close():  #// Detect window close button or ESC key
 
     #// Update
     #//----------------------------------------------------------------------------------
-    rec = pyray.Rectangle( (pyray.get_screen_width()-width-250)/2, (pyray.get_screen_height()-height)/2, width, height )
+    rec = pyray.Rectangle( (pyray.get_screen_width()-width[0]-250)/2, (pyray.get_screen_height()-height)/2, width[0], height )
     #//----------------------------------------------------------------------------------
 
     #// Draw
@@ -65,18 +64,22 @@ while not pyray.window_should_close():  #// Detect window close button or ESC ke
 
     #// Draw GUI controls
     #//------------------------------------------------------------------------------
-    width = int( pyray.gui_slider_bar(pyray.Rectangle(640,40,105,20),"Width",0,width,0,pyray.get_screen_width()-300) )
-    height = int( pyray.gui_slider_bar(pyray.Rectangle(640,70,105,20),"Height",0,height,0,pyray.get_screen_height()-50) )
-    roundness = pyray.gui_slider_bar(pyray.Rectangle(640,140,105,20),"Roundness",0,roundness,0,1)
-    lineThick = int( pyray.gui_slider_bar(pyray.Rectangle(640,170,105,20),"Thickness",0,lineThick,0,20) )
-    segments = int( pyray.gui_slider_bar(pyray.Rectangle(640,240,105,20),"Segments",0,segments,0,60) )
-    
-    drawRoundedRect = pyray.gui_check_box(pyray.Rectangle(640,320,20,20),"DrawRoundedRect",drawRoundedRect)
-    drawRoundedLines = pyray.gui_check_box(pyray.Rectangle(640,350,20,20),"DrawRoundedLines",drawRoundedLines)
-    drawRect = pyray.gui_check_box(pyray.Rectangle(640,380,20,20),"DrawRect",drawRect)
+
+    pyray.gui_slider_bar(pyray.Rectangle(640,40,105,20),"Width","",width,0,pyray.get_screen_width()-300)
+
+    # these need to be updated to new raygui format like above like
+
+    # height = int( pyray.gui_slider_bar(pyray.Rectangle(640,70,105,20),"Height",0,height,0,pyray.get_screen_height()-50) )
+    # roundness = pyray.gui_slider_bar(pyray.Rectangle(640,140,105,20),"Roundness",0,roundness,0,1)
+    # lineThick = int( pyray.gui_slider_bar(pyray.Rectangle(640,170,105,20),"Thickness",0,lineThick,0,20) )
+    # segments = int( pyray.gui_slider_bar(pyray.Rectangle(640,240,105,20),"Segments",0,segments,0,60) )
+    #
+    # drawRoundedRect = pyray.gui_check_box(pyray.Rectangle(640,320,20,20),"DrawRoundedRect",drawRoundedRect)
+    # drawRoundedLines = pyray.gui_check_box(pyray.Rectangle(640,350,20,20),"DrawRoundedLines",drawRoundedLines)
+    # drawRect = pyray.gui_check_box(pyray.Rectangle(640,380,20,20),"DrawRect",drawRect)
     #//------------------------------------------------------------------------------
 
-    pyray.draw_text(pyray.text_format( "MODE: %s" % "MANUAL" if segments >= 4 else "AUTO" ), 640, 280, 10, MAROON if segments >= 4 else DARKGRAY )
+    pyray.draw_text( "MANUAL" if segments >= 4 else "AUTO" , 640, 280, 10, MAROON if segments >= 4 else DARKGRAY)
     pyray.draw_fps(10,10)
     pyray.end_drawing()
     #//------------------------------------------------------------------------------

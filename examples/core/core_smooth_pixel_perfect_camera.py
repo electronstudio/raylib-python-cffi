@@ -77,8 +77,8 @@ while not window_should_close(): # Detect window close button or ESC key
     draw_texture_pro(target.texture, sourceRec, destRec, origin, 0.0, WHITE)
     end_mode_2d()
 
-    draw_text(text_format("Screen resolution: %ix%i", screenWidth, screenHeight), 10, 10, 20, DARKBLUE)
-    draw_text(text_format("World resolution: %ix%i", virtualScreenWidth, virtualScreenHeight), 10, 40, 20, DARKGREEN)
+    draw_text(f"Screen resolution: {screenWidth}, {screenHeight}", 10, 10, 20, DARKBLUE)
+    draw_text(f"World resolution: {virtualScreenWidth}, {virtualScreenHeight}", 10, 40, 20, DARKGREEN)
     draw_fps(get_screen_width() - 95, 10)
     end_drawing()
 

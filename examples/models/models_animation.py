@@ -22,7 +22,7 @@ ray.set_material_texture(model.materials, ray.MATERIAL_MAP_ALBEDO, texture)     
 position = ( 0., 0., 0. )            # Set model position
 
 # Load animation data
-count = ray.ffi.new("unsigned int *", 1)
+count = ray.ffi.new("int *", 1)
 anims = ray.load_model_animations("resources/models/iqm/guyanim.iqm", count)
 anim_frame_counter = 0
 
@@ -55,7 +55,7 @@ while not ray.window_should_close():        # Detect window close button or ESC 
 	ray.draw_model_ex(model, position, ray.Vector3( 1.0, 0.0, 0.0 ), -90.0, ray.Vector3( 1.0, 1.0, 1.0 ), ray.WHITE)
 
 	for i in range(model.boneCount):
-		ray.draw_cube(anims[0].framePoses[anim_frame_counter][i].translation, 0.2, 0.2, 0.2, ray.RED)
+		ray.draw_cube(anims.framePoses[anim_frame_counter][i].translation, 0.2, 0.2, 0.2, ray.RED)
 
 	ray.draw_grid(10, 1.0)         # Draw a grid
 
@@ -75,8 +75,8 @@ while not ray.window_should_close():        # Detect window close button or ESC 
 ray.unload_texture(texture)     # Unload texture
 
 # Unload model animations data
-for anim in anims:
-	ray.unload_model_animation(anim)
+for i in range(count[0]):
+	ray.unload_model_animation(anims[i])
 
 ray.unload_model(model)         # Unload model
 

@@ -1,4 +1,6 @@
 import pyray
+import raylib
+
 GLSL_VERSION = 330
 
 # Initialization
@@ -30,18 +32,18 @@ device = pyray.VrDeviceInfo(
 config = pyray.load_vr_stereo_config(device)
 
 # Distortion shader (uses device lens distortion and chroma)
-distortion = pyray.load_shader(0, f"resources/distortion{GLSL_VERSION}.fs")
+distortion = pyray.load_shader(pyray.ffi.NULL, f"resources/distortion{GLSL_VERSION}.fs")
 
 # Update distortion shader with lens and distortion-scale parameters
-pyray.set_shader_value(distortion, 2,"leftLensCenter",  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 2,"rightLensCenter",  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 2,"leftScreenCenter",  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 2,"rightScreenCenter",  pyray.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2, pyray.ffi.new('char []', b"leftLensCenter"),  pyray.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"rightLensCenter"),  pyray.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"leftScreenCenter"),  pyray.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"rightScreenCenter"),  pyray.SHADER_UNIFORM_VEC2)
 
-pyray.set_shader_value(distortion, 2,"scale",  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 2,"scaleIn",  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 4,"deviceWarpParam",  pyray.SHADER_UNIFORM_VEC4)
-pyray.set_shader_value(distortion, 4,"chromaAbParam",  pyray.SHADER_UNIFORM_VEC4)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"scale"),  pyray.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"scaleIn"),  pyray.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 4,pyray.ffi.new('char []', b"deviceWarpParam"),  pyray.SHADER_UNIFORM_VEC4)
+pyray.set_shader_value(distortion, 4,pyray.ffi.new('char []', b"chromaAbParam"),  pyray.SHADER_UNIFORM_VEC4)
 
 # Initialize framebuffer for stereo rendering
 # NOTE: Screen size should match HMD aspect ratio

@@ -1,4 +1,4 @@
-from raylib.dynamic import raylib as rl, ffi
+import raylib as rl
 from raylib.colors import *
 
 screenWidth = 1260
@@ -6,7 +6,7 @@ screenHeight = 768
 
 rl.InitWindow(screenWidth, screenHeight, b'Skymap Demo')
 
-camera = ffi.new('struct Camera3D *', [[1, 1, 1], [4, 1, 4], [0, 1, 0], 70, 0])
+camera = rl.ffi.new('struct Camera3D *', [[1, 1, 1], [4, 1, 4], [0, 1, 0], 70, 0])
 
 cube = rl.GenMeshCube(100, 100, 100)
 skybox = rl.LoadModelFromMesh(cube)
@@ -19,8 +19,8 @@ skybox.materials[0].shader = rl.LoadShader(
 rl.SetShaderValue(
 	skybox.materials[0].shader,
 	rl.GetShaderLocation(skybox.materials[0].shader, b"environmentMap"),
-	ffi.new('int[]', [rl.MAP_CUBEMAP]),
-	rl.UNIFORM_INT
+	rl.ffi.new('int[]', [rl.MATERIAL_MAP_CUBEMAP]),
+	rl.RL_SHADER_UNIFORM_INT
 )
 
 shdrCubemap = rl.LoadShader(
@@ -31,13 +31,15 @@ shdrCubemap = rl.LoadShader(
 rl.SetShaderValue(
 	shdrCubemap,
 	rl.GetShaderLocation(shdrCubemap, b'equirectangularMap'),
-	ffi.new('int[]', [0]),
-	rl.UNIFORM_INT
+	rl.ffi.new('int[]', [0]),
+	rl.SHADER_UNIFORM_INT
 )
 
 texHDR = rl.LoadTexture(b'resources/dresden_square.hdr')
 
-skybox.materials[0].maps[rl.MAP_CUBEMAP].texture = rl.GenTextureCubemap(shdrCubemap, texHDR, 512, rl.UNCOMPRESSED_R32G32B32);
+# THIS FUNCTION NO LONGER EXISTS, will require porting a lot of C code from the C example to replace it
+skybox.materials[0].maps[rl.MAP_CUBEMAP].texture = rl.GenTextureCubemap(shdrCubemap, texHDR, 512, rl.UNCOMPRESSED_R32G32B32)
+
 
 rl.UnloadTexture(texHDR)
 rl.UnloadShader(shdrCubemap)
