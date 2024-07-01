@@ -1041,10 +1041,10 @@ def GuiLine(bounds: Rectangle,text: str,) -> int:
 def GuiListView(bounds: Rectangle,text: str,scrollIndex: Any,active: Any,) -> int:
         """List View control, returns selected list item index"""
         ...
-def GuiListViewEx(bounds: Rectangle,text: str,count: int,scrollIndex: Any,active: Any,focus: Any,) -> int:
+def GuiListViewEx(bounds: Rectangle,text: list[str],count: int,scrollIndex: Any,active: Any,focus: Any,) -> int:
         """List View with extended parameters"""
         ...
-def GuiLoadIcons(fileName: str,loadIconsName: bool,) -> str:
+def GuiLoadIcons(fileName: str,loadIconsName: bool,) -> list[str]:
         """Load raygui icons file (.rgi) into internal icons data"""
         ...
 def GuiLoadStyle(fileName: str,) -> None:
@@ -1098,7 +1098,7 @@ def GuiSpinner(bounds: Rectangle,text: str,value: Any,minValue: int,maxValue: in
 def GuiStatusBar(bounds: Rectangle,text: str,) -> int:
         """Status Bar control, shows info text"""
         ...
-def GuiTabBar(bounds: Rectangle,text: str,count: int,active: Any,) -> int:
+def GuiTabBar(bounds: Rectangle,text: list[str],count: int,active: Any,) -> int:
         """Tab Bar control, returns TAB to be closed or -1"""
         ...
 def GuiTextBox(bounds: Rectangle,text: str,textSize: int,editMode: bool,) -> int:
@@ -2612,7 +2612,7 @@ def TextInsert(text: str,insert: str,position: int,) -> str:
 def TextIsEqual(text1: str,text2: str,) -> bool:
         """Check if two text string are equal"""
         ...
-def TextJoin(textList: str,count: int,delimiter: str,) -> str:
+def TextJoin(textList: list[str],count: int,delimiter: str,) -> str:
         """Join text strings with delimiter"""
         ...
 def TextLength(text: str,) -> int:
@@ -2621,7 +2621,7 @@ def TextLength(text: str,) -> int:
 def TextReplace(text: str,replace: str,by: str,) -> str:
         """Replace text string (WARNING: memory must be freed!)"""
         ...
-def TextSplit(text: str,delimiter: str,count: Any,) -> str:
+def TextSplit(text: str,delimiter: str,count: Any,) -> list[str]:
         """Split text into multiple strings"""
         ...
 def TextSubtext(text: str,position: int,length: int,) -> str:
@@ -3009,7 +3009,7 @@ def glfwGetCurrentContext() -> Any:
 def glfwGetCursorPos(window: Any,xpos: Any,ypos: Any,) -> None:
         """"""
         ...
-def glfwGetError(description: str,) -> int:
+def glfwGetError(description: list[str],) -> int:
         """"""
         ...
 def glfwGetFramebufferSize(window: Any,width: Any,height: Any,) -> None:
@@ -3087,7 +3087,7 @@ def glfwGetPrimaryMonitor() -> Any:
 def glfwGetProcAddress(procname: str,) -> Any:
         """"""
         ...
-def glfwGetRequiredInstanceExtensions(count: Any,) -> str:
+def glfwGetRequiredInstanceExtensions(count: Any,) -> list[str]:
         """"""
         ...
 def glfwGetTime() -> float:
@@ -3201,7 +3201,7 @@ def glfwSetCursorPos(window: Any,xpos: float,ypos: float,) -> None:
 def glfwSetCursorPosCallback(window: Any,callback: Any,) -> Any:
         """"""
         ...
-def glfwSetDropCallback(window: Any,callback: str,) -> str:
+def glfwSetDropCallback(window: Any,callback: list[str],) -> list[str]:
         """"""
         ...
 def glfwSetErrorCallback(callback: str,) -> str:
