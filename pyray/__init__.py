@@ -51,35 +51,46 @@ def pointer(struct):
 # Another way to improve performance might be to special-case simple types before doing the string comparisons
 
 def _wrap_function(original_func):
+    c_args = [str(x) for x in ffi.typeof(original_func).args]
+    number_of_args=len(c_args)
+    c_arg_is_pointer = [x.kind == 'pointer' for x in ffi.typeof(original_func).args]
+    c_arg_is_string =  [str(x) == "<ctype 'char *'>" for x in ffi.typeof(original_func).args]
     # print("makefunc ",a, ffi.typeof(a).args)
     def wrapped_func(*args):
-        modified_args = []
-        for (c_arg, arg) in zip(ffi.typeof(original_func).args, args):
-            # print("arg:",str(arg), "c_arg.kind:", c_arg.kind, "c_arg:", c_arg, "type(arg):",str(type(arg)))
-            if c_arg.kind == 'pointer':
-                if type(arg) is str:
-                    arg = arg.encode('utf-8')
-                # if c_arg is a 'char *' not a 'const char *' then we ought to raise here because its an out
-                # parameter and user should supply a ctype pointer, but cffi cant detect const
+        args=list(args) # tuple is immutable, converting it to mutable list is faster than constructing new list!
+        for i in range(0, number_of_args):
+            try:
+                arg=args[i]
+            except IndexError:
+                raise RuntimeError(f"function requires {number_of_args} arguments but you supplied {len(args)}")
+            if c_arg_is_pointer[i]:
+                if c_arg_is_string[i]: # we assume c_arg is 'const char *'
+                    try: # if it's a 'char *' then user should be supplying a ctype pointer, not a Python string
+                        args[i] = arg.encode('utf-8') # in that case this conversion will fail
+                    except AttributeError: # but those functions are uncommon, so quicker on average to try the conversion
+                        pass # and ignore the exception
+                # if user supplied a Python string but c_arg is a 'char *' not a 'const char *' then we ought to raise
+                # exception because its an out
+                # parameter and user should supply a ctype pointer, but we cant because cffi cant detect 'const'
                 # so we would have to get the info from raylib.json
-                elif type(arg) is list and str(c_arg) == "<ctype 'char * *'>":
-                    arg = [ffi.new("char[]", x.encode('utf-8')) for x in arg]
+                elif c_args[i] == "<ctype 'char * *'>" and type(arg) is list:
+                    args[i] = [ffi.new("char[]", x.encode('utf-8')) for x in arg]
                 elif is_cdata(arg) and "*" not in str(arg):
-                    arg = ffi.addressof(arg)
+                    args[i] = ffi.addressof(arg)
                 elif arg is None:
-                    arg = ffi.NULL
+                    args[i] = ffi.NULL
                 elif not is_cdata(arg):
-                    if str(c_arg) == "<ctype '_Bool *'>":
+                    if c_args[i] == "<ctype '_Bool *'>":
                         raise TypeError(
                             "Argument must be a ctype bool, please create one with: pyray.ffi.new('bool *', True)")
-                    elif str(c_arg) == "<ctype 'int *'>":
+                    elif c_args[i] == "<ctype 'int *'>":
                         raise TypeError(
                             "Argument must be a ctype int, please create one with: pyray.ffi.new('int *', 1)")
-                    elif str(c_arg) == "<ctype 'float *'>":
+                    elif c_args[i] == "<ctype 'float *'>":
                         raise TypeError(
                             "Argument must be a ctype float, please create one with: pyray.ffi.new('float *', 1.0)")
-            modified_args.append(arg)
-        result = original_func(*modified_args)
+
+        result = original_func(*args)
         if result is None:
             return
         elif is_cdata(result) and str(result).startswith("<cdata 'char *'"):

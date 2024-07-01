@@ -161,6 +161,10 @@ and then only convert them to C data structures when you have to call the C func
 3. The raylib.* functions are potentially 1.5x faster than the pyray.* equivalents, so if you need a tiny bit more performance
 you can switch your inner loop functions to these.
 
+4. There is a version of Python that is faster than Pypy: GraalPy.  However it's not fully compatible with all Python
+packages.  It doesn't work with CFFI and so doesn't work with this binding.  But it *is* compatible with the
+*Java* binding, Jaylib!  There is an example of this here: https://github.com/electronstudio/megabunny/tree/master/raylib-python-jaylib
+
 ## Bunnymark
 
 
@@ -174,6 +178,8 @@ you can switch your inner loop functions to these.
 | Raylib Python CFFI 3.7         | Python 3.9        | 7700             | 4.5%       |
 | Raylib Python CFFI 3.7         | Python 3.9 Nuitka | 8600             | 5.1%       |
 | Raylib Python CFFI 3.7 Dynamic | Python 3.9        | 6300             | 3.7%       |
+
+See also https://github.com/electronstudio/megabunny/
 
 # Packaging your app
 
