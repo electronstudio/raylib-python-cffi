@@ -38,37 +38,28 @@ def _underscore(word: str) -> str:
     return word.lower()
 
 
-def pointer(struct):
-    return ffi.addressof(struct)
-
-
-# I'm concerned that we are doing a lot of string comparisons on every function call to detect types.
-# Quickest way would probably be isinstance(result, ffi._backend._CDataBase) but that class name varies
-# depending on if binding is static/dynamic
-# (and possibly also different on pypy implementations?).
-# which makes me reluctant to rely on it.
-# Another possibility is ffi.typeof() but that will throw an exception if you give it a type that isn't a ctype
-# Another way to improve performance might be to special-case simple types before doing the string comparisons
-
 def _wrap_function(original_func):
     c_args = [str(x) for x in ffi.typeof(original_func).args]
-    number_of_args=len(c_args)
+    number_of_args = len(c_args)
     c_arg_is_pointer = [x.kind == 'pointer' for x in ffi.typeof(original_func).args]
-    c_arg_is_string =  [str(x) == "<ctype 'char *'>" for x in ffi.typeof(original_func).args]
-    # print("makefunc ",a, ffi.typeof(a).args)
+    c_arg_is_string = [str(x) == "<ctype 'char *'>" for x in ffi.typeof(original_func).args]
+    # c_arg_is_void_pointer = [str(x) == "<ctype 'void *'>" for x in ffi.typeof(original_func).args]
+
     def wrapped_func(*args):
-        args=list(args) # tuple is immutable, converting it to mutable list is faster than constructing new list!
-        for i in range(0, number_of_args):
+        args = list(args)  # tuple is immutable, converting it to mutable list is faster than constructing new list!
+        for i in range(number_of_args):
             try:
-                arg=args[i]
+                arg = args[i]
             except IndexError:
                 raise RuntimeError(f"function requires {number_of_args} arguments but you supplied {len(args)}")
             if c_arg_is_pointer[i]:
-                if c_arg_is_string[i]: # we assume c_arg is 'const char *'
-                    try: # if it's a 'char *' then user should be supplying a ctype pointer, not a Python string
-                        args[i] = arg.encode('utf-8') # in that case this conversion will fail
-                    except AttributeError: # but those functions are uncommon, so quicker on average to try the conversion
-                        pass # and ignore the exception
+                if c_arg_is_string[i]:  # we assume c_arg is 'const char *'
+                    try:  # if it's a non-const 'char *' then user should be supplying a ctype pointer, not a Python
+                        # string
+                        args[i] = arg.encode('utf-8')  # in that case this conversion will fail
+                    except AttributeError:  # but those functions are uncommon, so quicker on average to try the
+                        # conversion
+                        pass  # and ignore the exception
                 # if user supplied a Python string but c_arg is a 'char *' not a 'const char *' then we ought to raise
                 # exception because its an out
                 # parameter and user should supply a ctype pointer, but we cant because cffi cant detect 'const'
@@ -82,13 +73,24 @@ def _wrap_function(original_func):
                 elif not is_cdata(arg):
                     if c_args[i] == "<ctype '_Bool *'>":
                         raise TypeError(
-                            "Argument must be a ctype bool, please create one with: pyray.ffi.new('bool *', True)")
+                            f"Argument {i} ({arg}) must be a ctype bool, please create one with: pyray.ffi.new('bool "
+                            f"*', True)")
                     elif c_args[i] == "<ctype 'int *'>":
                         raise TypeError(
-                            "Argument must be a ctype int, please create one with: pyray.ffi.new('int *', 1)")
+                            f"Argument {i} ({arg}) must be a ctype int, please create one with: pyray.ffi.new('int "
+                            f"*', 1)")
                     elif c_args[i] == "<ctype 'float *'>":
                         raise TypeError(
-                            "Argument must be a ctype float, please create one with: pyray.ffi.new('float *', 1.0)")
+                            f"Argument {i} ({arg}) must be a ctype float, please create one with: pyray.ffi.new("
+                            f"'float *', 1.0)")
+                    elif c_args[i] == "<ctype 'void *'>":
+                        # we could assume it's a string and try to convert it but we would have to be sure it's
+                        # const.  that seems reasonable assumption for char* but i'm not confident it is for void*
+                        raise TypeError(
+                            f"Argument {i} ({arg}) must be a cdata pointer. Type is void so I don't know what type it "
+                            f"should be."
+                            "If it's a const string you can create it with pyray.ffi.new('char []', b\"whatever\") . "
+                            "If it's a float you can create it with pyray.ffi.new('float *', 1.0)")
 
         result = original_func(*args)
         if result is None:
@@ -152,3 +154,7 @@ for struct in ffi.list_types()[0]:
 
 # overwrite ffi enums with our own
 from raylib.enums import *
+
+
+def text_format(*args):
+    raise RuntimeError("Use Python f-strings etc rather than calling text_format().")
