@@ -82,15 +82,12 @@ def _wrap_function(original_func):
         result = original_func(*modified_args)
         if result is None:
             return
-        elif is_cdata(result) and str(result).startswith("<cdata 'char *'"):
+        if is_cdata(result) and str(result).startswith("<cdata 'char *'"):
             if str(result) == "<cdata 'char *' NULL>":
                 return ""
-            else:
-                return ffi.string(result).decode('utf-8')
-        else:
-            return result
+            return ffi.string(result).decode('utf-8')
+        return result
 
-    # apparently pypy and cpython produce different types so check for both
     def is_cdata(arg):
         return str(type(arg)) == "<class '_cffi_backend.__CDataOwn'>" or str(
             type(arg)) == "<class '_cffi_backend._CDataBase'>"

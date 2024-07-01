@@ -34,26 +34,25 @@ for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), P
 def ctype_to_python_type(t):
     if t == '_Bool':
         return "bool"
-    elif t == 'void':
+    if t == 'void':
         return 'None'
-    elif t == "long":
+    if t == "long":
         return "int"
-    elif t == "unsigned long long":
+    if t == "unsigned long long":
         return "int"
-    elif t == "double":
+    if t == "double":
         return "float"
-    elif "char *" in t:
+    if "char *" in t:
         return "str"
-    elif "char" in t:
+    if "char" in t:
         return "str"  # not sure about this one
-    elif "*" in t:
+    if "*" in t:
         return "Any"
-    elif t.startswith("struct"):
+    if t.startswith("struct"):
         return t.replace("struct ","")
-    elif t.startswith("unsigned"):
+    if t.startswith("unsigned"):
         return t.replace("unsigned ", "")
-    else:
-        return t
+    return t
 
 
 print("""from typing import Any
