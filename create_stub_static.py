@@ -19,7 +19,8 @@ import inflection, sys, json
 
 known_functions = {}
 known_structs = {}
-for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json"), Path("glfw3.json")):
+for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json"),
+                 Path("glfw3.json")):
     f = open(filename, "r")
     js = json.load(f)
     for fn in js["functions"]:
@@ -28,7 +29,6 @@ for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), P
     for st in js["structs"]:
         if st["name"] not in known_structs:
             known_structs[st["name"]] = st
-
 
 
 def ctype_to_python_type(t):
@@ -40,8 +40,12 @@ def ctype_to_python_type(t):
         return "int"
     elif t == "unsigned long long":
         return "int"
+    elif t == "uint64_t":
+        return "int"
     elif t == "double":
         return "float"
+    elif "char * *" in t:
+        return "list[str]"
     elif "char *" in t:
         return "str"
     elif "char" in t:
@@ -49,7 +53,7 @@ def ctype_to_python_type(t):
     elif "*" in t:
         return "Any"
     elif t.startswith("struct"):
-        return t.replace("struct ","")
+        return t.replace("struct ", "")
     elif t.startswith("unsigned"):
         return t.replace("unsigned ", "")
     else:
@@ -81,14 +85,16 @@ for name, attr in getmembers(rl):
                 param_name = str(arg.cname).split("(", 1)[0] + "_callback_" + str(i)
             else:
                 param_name = arg.cname.replace("struct", "").replace("char *", "str").replace("*",
-                                                                                              "_pointer").replace(" ", "")+"_"+str(i)
+                                                                                              "_pointer").replace(" ",
+                                                                                                                  "") + "_" + str(
+                    i)
             if 'params' in json_object:
                 p = json_object['params']
-                #print("param_name: ", param_name, "i", i, "params: ",p,file=sys.stderr)
+                # print("param_name: ", param_name, "i", i, "params: ",p,file=sys.stderr)
                 param_name = list(p)[i]['name']
                 # don't use a python reserved word:
                 if param_name in reserved_words:
-                    param_name = param_name+"_"+str(i)
+                    param_name = param_name + "_" + str(i)
             param_type = ctype_to_python_type(arg.cname)
             sig += f"{param_name}: {param_type},"
 
@@ -106,7 +112,7 @@ for name, attr in getmembers(rl):
         print(
             f'def {uname}(*args) -> {ctype_to_python_type(return_type)}:\n        """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""\n        ...')
     else:
-        #print("*****", str(type(attr)))
+        # print("*****", str(type(attr)))
         print(f"{name}: {str(type(attr))[8:-2]}")  # this isolates the type
 
 for struct in ffi.list_types()[0]:
@@ -130,3 +136,31 @@ for struct in ffi.list_types()[0]:
         print("ERROR UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
 
 
+print("""
+LIGHTGRAY  : Color
+GRAY       : Color
+DARKGRAY   : Color
+YELLOW     : Color
+GOLD       : Color
+ORANGE     : Color
+PINK       : Color
+RED        : Color
+MAROON     : Color
+GREEN      : Color
+LIME       : Color
+DARKGREEN  : Color
+SKYBLUE    : Color
+BLUE       : Color
+DARKBLUE   : Color
+PURPLE     : Color
+VIOLET     : Color
+DARKPURPLE : Color
+BEIGE      : Color
+BROWN      : Color
+DARKBROWN  : Color
+WHITE      : Color
+BLACK      : Color
+BLANK      : Color
+MAGENTA    : Color
+RAYWHITE   : Color
+""")
