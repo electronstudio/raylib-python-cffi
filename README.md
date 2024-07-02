@@ -37,7 +37,7 @@ Then install
     python3 -m pip install setuptools
     python3 -m pip install raylib
 
-On most platforms it should install a binary wheel (Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64).
+On most platforms it should install a binary wheel (Windows 10 x64, MacOS 12 x64/arm64, Linux Ubuntu2004 x64/arm64).
 
 If yours isn't available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g. 
 using homebrew, apt, etc.
@@ -158,7 +158,7 @@ If you need more performance, do in this order:
 in your update loop
 and then only convert them to C data structures when you have to call the C functions for drawing.
 
-3. The raylib.* functions are potentially 1.5x faster than the pyray.* equivalents, so if you need a tiny bit more performance
+3. The raylib.* functions are potentially *slightly* faster than the pyray.* equivalents, so if you need a tiny bit more performance
 you can switch your inner loop functions to these.
 
 4. There is a version of Python that is faster than Pypy: GraalPy.  However it's not fully compatible with all Python

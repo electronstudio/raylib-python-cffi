@@ -143,7 +143,7 @@ close_window()
 python3 -m pip install raylib
 </pre></div>
 </div>
-<p>On most platforms it should install a binary wheel (Windows 10 x64, MacOS 10.15 x64, Linux Ubuntu1804 x64).</p>
+<p>On most platforms it should install a binary wheel (Windows 10 x64, MacOS 12 x64/arm64, Linux Ubuntu2004 x64/arm64).</p>
 <p>If yours isn’t available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g.
 using homebrew, apt, etc.</p>
 <section id="raspberry-pi">
@@ -255,7 +255,7 @@ statically link and use in non-free / proprietary / commercial projects!</p>
 <li><p>Every call to C is costly, so it’s slightly faster if you use Python data structures and functions when calculating
 in your update loop
 and then only convert them to C data structures when you have to call the C functions for drawing.</p></li>
-<li><p>The raylib.* functions are potentially 1.5x faster than the pyray.* equivalents, so if you need a tiny bit more performance
+<li><p>The raylib.* functions are potentially <em>slightly</em> faster than the pyray.* equivalents, so if you need a tiny bit more performance
 you can switch your inner loop functions to these.</p></li>
 <li><p>There is a version of Python that is faster than Pypy: GraalPy.  However it’s not fully compatible with all Python
 packages.  It doesn’t work with CFFI and so doesn’t work with this binding.  But it <em>is</em> compatible with the
