@@ -1,4 +1,5 @@
-# download at https://api.cirrus-ci.com/v1/artifact/github/electronstudio/raylib-python-cffi/main/binary.zip
+# download at https://api.cirrus-ci.com/v1/artifact/github/electronstudio/raylib-python-cffi/pi/binary.zip
+# https://api.cirrus-ci.com/v1/artifact/github/electronstudio/raylib-python-cffi/mac/binary.zip
 
 pi_task:
   arm_container:
@@ -33,7 +34,6 @@ pi_task:
 mac_task:
   macos_instance:
     matrix:
-      - image: ghcr.io/cirruslabs/macos-ventura-xcode:latest
       - image: ghcr.io/cirruslabs/macos-sonoma-xcode:latest
   env:
     matrix:
