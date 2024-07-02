@@ -147,7 +147,6 @@ def build_unix():
         """
 
     ffibuilder.cdef(pre_process_header(raylib_h))
-    ffibuilder.cdef(pre_process_header(glfw3_h))
     ffibuilder.cdef(pre_process_header(rlgl_h))
     ffibuilder.cdef(pre_process_header(raymath_h, True))
 
@@ -155,6 +154,9 @@ def build_unix():
         ffibuilder.cdef(pre_process_header(raygui_h))
     if os.path.isfile(physac_h):
         ffibuilder.cdef(pre_process_header(physac_h))
+    if os.path.isfile(glfw3_h):
+        ffibuilder.cdef(pre_process_header(glfw3_h))
+
 
     if platform.system() == "Darwin":
         print("BUILDING FOR MAC")
