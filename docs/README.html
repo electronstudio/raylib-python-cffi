@@ -7,7 +7,7 @@
   <title>Python Bindings for Raylib 5.0 &mdash; Raylib Python  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
 
   
   <!--[if lt IE 9]>
@@ -17,7 +17,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -193,7 +193,6 @@ to let us know what you did.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># /// script
 # dependencies = [
 #     &quot;cffi&quot;,
-#     &quot;inflection&quot;,
 #     &quot;raylib&quot;
 # ]
 # ///
@@ -250,10 +249,18 @@ statically link and use in non-free / proprietary / commercial projects!</p>
 </section>
 <section id="performance">
 <h1>Performance<a class="headerlink" href="#performance" title="Link to this heading"></a></h1>
-<p>For fastest performance use Pypy rather than standard Python.</p>
-<p>Every call to C is costly, so it’s slightly faster if you use Python data structures and functions when calculating
+<p>If you need more performance, do in this order:</p>
+<ol class="arabic simple">
+<li><p>Use Pypy rather than standard CPython.  It is much, much faster and will make more difference than any other optimisations you might do.</p></li>
+<li><p>Every call to C is costly, so it’s slightly faster if you use Python data structures and functions when calculating
 in your update loop
-and then only convert them to C data structures when you have to call the C functions for drawing.</p>
+and then only convert them to C data structures when you have to call the C functions for drawing.</p></li>
+<li><p>The raylib.* functions are potentially 1.5x faster than the pyray.* equivalents, so if you need a tiny bit more performance
+you can switch your inner loop functions to these.</p></li>
+<li><p>There is a version of Python that is faster than Pypy: GraalPy.  However it’s not fully compatible with all Python
+packages.  It doesn’t work with CFFI and so doesn’t work with this binding.  But it <em>is</em> compatible with the
+<em>Java</em> binding, Jaylib!  There is an example of this here: https://github.com/electronstudio/megabunny/tree/master/raylib-python-jaylib</p></li>
+</ol>
 <section id="bunnymark">
 <h2>Bunnymark<a class="headerlink" href="#bunnymark" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -265,33 +272,49 @@ and then only convert them to C data structures when you have to call the C func
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Raylib 3.7</p></td>
+<tr class="row-even"><td><p>Raylib 5.0</p></td>
+<td><p>C</p></td>
+<td><p>180000</p></td>
+<td><p>100%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Raylib Python CFFI 5.0.0.2</p></td>
+<td><p>Python 3.12</p></td>
+<td><p>10500</p></td>
+<td><p>5.8%</p></td>
+</tr>
+<tr class="row-even"><td><p>Raylib Python CFFI 5.0.0.2</p></td>
+<td><p>Pypy 3.10</p></td>
+<td><p>95000</p></td>
+<td><p>53%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Raylib 3.7</p></td>
 <td><p>C</p></td>
 <td><p>168100</p></td>
 <td><p>100%</p></td>
 </tr>
-<tr class="row-odd"><td><p>Raylib Python CFFI 3.7</p></td>
+<tr class="row-even"><td><p>Raylib Python CFFI 3.7</p></td>
 <td><p>Pypy 3.7</p></td>
 <td><p>33800</p></td>
 <td><p>20%</p></td>
 </tr>
-<tr class="row-even"><td><p>Raylib Python CFFI 3.7</p></td>
+<tr class="row-odd"><td><p>Raylib Python CFFI 3.7</p></td>
 <td><p>Python 3.9</p></td>
 <td><p>7700</p></td>
 <td><p>4.5%</p></td>
 </tr>
-<tr class="row-odd"><td><p>Raylib Python CFFI 3.7</p></td>
+<tr class="row-even"><td><p>Raylib Python CFFI 3.7</p></td>
 <td><p>Python 3.9 Nuitka</p></td>
 <td><p>8600</p></td>
 <td><p>5.1%</p></td>
 </tr>
-<tr class="row-even"><td><p>Raylib Python CFFI 3.7 Dynamic</p></td>
+<tr class="row-odd"><td><p>Raylib Python CFFI 3.7 Dynamic</p></td>
 <td><p>Python 3.9</p></td>
 <td><p>6300</p></td>
 <td><p>3.7%</p></td>
 </tr>
 </tbody>
 </table>
+<p>See also https://github.com/electronstudio/megabunny/</p>
 </section>
 </section>
 <section id="packaging-your-app">

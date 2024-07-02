@@ -1,7 +1,5 @@
 # Python Bindings for Raylib 5.0
 
-<iframe src="https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/shapes_bouncing_ball/build/web/" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="450px" width="800px" allowfullscreen></iframe>
-
 Chatroom: [Discord](https://discord.gg/fKDwt85aX6) or [Matrix](https://matrix.to/#/#raylib-python-cffi:matrix.org)
 
 New CFFI API static bindings.
@@ -94,7 +92,6 @@ Make a folder `my_project` with a file `main.py`:
     # /// script
     # dependencies = [
     #     "cffi",
-    #     "inflection",
     #     "raylib"
     # ]
     # ///
@@ -153,22 +150,36 @@ statically link and use in non-free / proprietary / commercial projects!
 
 # Performance
 
-For fastest performance use Pypy rather than standard Python.
+If you need more performance, do in this order:
 
-Every call to C is costly, so it's slightly faster if you use Python data structures and functions when calculating
+1. Use Pypy rather than standard CPython.  It is much, much faster and will make more difference than any other optimisations you might do.
+
+2. Every call to C is costly, so it's slightly faster if you use Python data structures and functions when calculating
 in your update loop
 and then only convert them to C data structures when you have to call the C functions for drawing.
+
+3. The raylib.* functions are potentially 1.5x faster than the pyray.* equivalents, so if you need a tiny bit more performance
+you can switch your inner loop functions to these.
+
+4. There is a version of Python that is faster than Pypy: GraalPy.  However it's not fully compatible with all Python
+packages.  It doesn't work with CFFI and so doesn't work with this binding.  But it *is* compatible with the
+*Java* binding, Jaylib!  There is an example of this here: https://github.com/electronstudio/megabunny/tree/master/raylib-python-jaylib
 
 ## Bunnymark
 
 
-| Library                | Implementation    | Bunnies (60 FPS) | Percentage    |
-| -------------          | -------------     | -------------    | ------------- |
-| Raylib 3.7             | C                 | 168100           | 100%          |
-| Raylib Python CFFI 3.7 | Pypy 3.7          | 33800            | 20%           |
-| Raylib Python CFFI 3.7 | Python 3.9        | 7700             |  4.5%         |
-| Raylib Python CFFI 3.7 | Python 3.9 Nuitka | 8600             |  5.1%         |
-| Raylib Python CFFI 3.7 Dynamic | Python 3.9 | 6300             |  3.7%         |
+| Library                        | Implementation    | Bunnies (60 FPS) | Percentage |
+|--------------------------------|-------------------|------------------|------------|
+| Raylib 5.0                     | C                 | 180000           | 100%       |
+| Raylib Python CFFI 5.0.0.2     | Python 3.12       | 10500            | 5.8%       |
+| Raylib Python CFFI 5.0.0.2     | Pypy 3.10         | 95000            | 53%        |
+| Raylib 3.7                     | C                 | 168100           | 100%       |
+| Raylib Python CFFI 3.7         | Pypy 3.7          | 33800            | 20%        |
+| Raylib Python CFFI 3.7         | Python 3.9        | 7700             | 4.5%       |
+| Raylib Python CFFI 3.7         | Python 3.9 Nuitka | 8600             | 5.1%       |
+| Raylib Python CFFI 3.7 Dynamic | Python 3.9        | 6300             | 3.7%       |
+
+See also https://github.com/electronstudio/megabunny/
 
 # Packaging your app
 
