@@ -164,16 +164,17 @@ def build_unix():
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
                            'CoreVideo']
         libraries = []
-        extra_compile_args = ["-Wno-error=incompatible-function-pointer-types"]
+        extra_compile_args = ["-Wno-error=incompatible-function-pointer-types", "-D_CFFI_NO_LIMITED_API"]
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
         extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
                                               '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
-        extra_compile_args = ["-Wno-incompatible-pointer-types"]
+        extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
         libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic']
 
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
+                          py_limited_api=False,
                           include_dirs=[get_the_include_path()],
                           extra_link_args=extra_link_args,
                           extra_compile_args=extra_compile_args,
@@ -200,6 +201,8 @@ def build_windows():
     #include "physac.h"  
     """,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
+                          extra_compile_args="/D_CFFI_NO_LIMITED_API",
+                          py_limited_api=False,
                           libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
                           include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src\\external\\glfw\\include',
