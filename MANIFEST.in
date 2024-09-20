@@ -4,7 +4,11 @@ include pyray/*.pyi
 include raylib/*.pyd
 exclude raylib/*.a
 include raylib/*.h
+include raylib/*.h.modified
 exclude raylib/*.c
 exclude raylib/*.o
 include version.py
+exclude tests/*
+
+
 
