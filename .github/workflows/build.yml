@@ -242,7 +242,7 @@ jobs:
           cd build
           cmake ../SDL-release-2.30.7
           cmake --build .
-          cmake --install .
+          sudo cmake --install .
 
       # Runs a set of commands using the runners shell
       - name: Build raylib
