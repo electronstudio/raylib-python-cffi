@@ -57,7 +57,7 @@ jobs:
           python setup.py bdist_wheel --plat-name macosx_10_15_x86_64
 
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3.2.1
         with:
           name: wheel
           path: dist/*
@@ -106,7 +106,7 @@ jobs:
 #
 #
 #      - name: Upload build Artifact wheel
-#        uses: actions/upload-artifact@v2.2.4
+#        uses: actions/upload-artifact@v3.2.1
 #        with:
 #          name: wheel
 #          path: dist/*
@@ -154,7 +154,7 @@ jobs:
 #          python setup.py bdist_wheel --plat-name macosx_11_0_arm64
 #
 #      - name: Upload build Artifact wheel
-#        uses: actions/upload-artifact@v2.2.4
+#        uses: actions/upload-artifact@v3.2.1
 #        with:
 #          name: wheel
 #          path: dist/*
@@ -207,7 +207,7 @@ jobs:
           python setup.py bdist_wheel --plat-name manylinux2014_x86_64
 
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3.2.1
         with:
           name: wheel
           path: dist/*
@@ -239,7 +239,7 @@ jobs:
 #          python3 setup.py bdist_wheel
 #
 #      - name: Upload build Artifact wheel
-#        uses: actions/upload-artifact@v2.2.4
+#        uses: actions/upload-artifact@v3.2.1
 #        with:
 #          name: wheel
 #          path: dist/*
@@ -294,7 +294,7 @@ jobs:
         shell: cmd
           
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3.2.1
         with:
           name: wheel
           path: dist/* 
@@ -341,7 +341,7 @@ jobs:
           python setup.py sdist
 
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3.2.1
         with:
           name: wheel
           path: dist/*
@@ -373,7 +373,7 @@ jobs:
           python setup.py sdist
 
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3.2.1
         with:
           name: wheel
           path: dynamic/dist/*
