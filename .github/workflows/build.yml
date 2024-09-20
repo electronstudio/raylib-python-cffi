@@ -234,11 +234,21 @@ jobs:
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
+      - name: Build SDL
+        run: |
+          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
+          tar xvfz release-2.30.7.tar.gz
+          mkdir build
+          cd build
+          cmake ../SDL-release-2.30.7
+          cmake --build .
+          cmake --install .
+
       # Runs a set of commands using the runners shell
       - name: Build raylib
         run: |
           sudo apt update
-          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libsdl2-dev
+          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev
           cd raylib-c
           mkdir build
           cd build
