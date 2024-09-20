@@ -161,7 +161,59 @@ jobs:
 #
 
 
-  build-linux:
+#  build-linux:
+#    runs-on: ubuntu-20.04
+#    strategy:
+#      # You can use PyPy versions in python-version.
+#      # For example, pypy2 and pypy3
+#      matrix:
+#        python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13.0-beta - 3.13.0',  'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
+#    steps:
+#      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+#      - uses: actions/checkout@v2
+#        with:
+#          submodules: recursive
+#
+#      - name: Setup Python
+#        uses: actions/setup-python@v2.2.2
+#        with:
+#          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
+#          python-version: ${{ matrix.python-version }}
+#          # The target architecture (x86, x64) of the Python interpreter.
+#          architecture: x64
+#
+#      # Runs a set of commands using the runners shell
+#      - name: Build raylib
+#        run: |
+#          sudo apt update
+#          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev
+#          cd raylib-c
+#          mkdir build
+#          cd build
+#          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+#          make -j2
+#          sudo make install
+#      - name: Copy extras
+#        run: |
+#          sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+#          sudo cp physac/src/physac.h /usr/local/include/
+#          sudo cp raygui/src/raygui.h /usr/local/include/
+#      - name: Build raylib-python-cffi
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip3 install "cffi>=1.17.1"
+#          pip3 install wheel
+#          pip3 install setuptools
+#          python setup.py bdist_wheel --plat-name manylinux2014_x86_64
+#
+#      - name: Upload build Artifact wheel
+#        uses: actions/upload-artifact@v3.2.1
+#        with:
+#          name: wheel
+#          path: dist/*
+
+
+  build-linux-sdl:
     runs-on: ubuntu-20.04
     strategy:
       # You can use PyPy versions in python-version.
@@ -186,11 +238,11 @@ jobs:
       - name: Build raylib
         run: |
           sudo apt update
-          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev
+          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libsdl2-dev
           cd raylib-c
           mkdir build
           cd build
-          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+          cmake -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
           make -j2
           sudo make install
       - name: Copy extras
@@ -211,6 +263,7 @@ jobs:
         with:
           name: wheel
           path: dist/*
+
 
 
 #  build-rpi:
@@ -319,7 +372,7 @@ jobs:
       - name: Build raylib
         run: |
           sudo apt update
-          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev
           cd raylib-c
           mkdir build
           cd build
