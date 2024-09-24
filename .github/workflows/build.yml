@@ -4,9 +4,7 @@ name: Build
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -240,8 +238,8 @@ jobs:
           tar xvfz release-2.30.7.tar.gz
           mkdir build
           cd build
-          cmake ../SDL-release-2.30.7
-          cmake --build .
+          cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
           sudo cmake --install .
 
       # Runs a set of commands using the runners shell
