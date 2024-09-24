@@ -238,7 +238,7 @@ jobs:
           tar xvfz release-2.30.7.tar.gz
           mkdir build
           cd build
-          cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_BUILD_TYPE=Release
+          cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
           sudo cmake --install .
 
