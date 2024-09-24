@@ -257,7 +257,6 @@ jobs:
           sudo make install
       - name: Copy extras
         run: |
-          sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
           sudo cp physac/src/physac.h /usr/local/include/
           sudo cp raygui/src/raygui.h /usr/local/include/
       - name: Build raylib-python-cffi
