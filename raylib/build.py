@@ -203,7 +203,7 @@ def build_windows():
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           extra_compile_args="/D_CFFI_NO_LIMITED_API",
                           py_limited_api=False,
-                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
+                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm', 'SDL2'],
                           include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src\\external\\glfw\\include',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',
