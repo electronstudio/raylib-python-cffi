@@ -1,6 +1,6 @@
 /*******************************************************************************************
 *
-*   raygui v4.0 - A simple and easy-to-use immediate-mode gui library
+*   raygui v4.5-dev - A simple and easy-to-use immediate-mode gui library
 *
 *   DESCRIPTION:
 *       raygui is a tools-dev-focused immediate-mode-gui library based on raylib but also
@@ -26,7 +26,7 @@
 *   NOTES:
 *       - WARNING: GuiLoadStyle() and GuiLoadStyle{Custom}() functions, allocate memory for
 *         font atlas recs and glyphs, freeing that memory is (usually) up to the user,
-*         no unload function is explicitly provided... but note that GuiLoadStyleDefaulf() unloads
+*         no unload function is explicitly provided... but note that GuiLoadStyleDefault() unloads
 *         by default any previously loaded font (texture, recs, glyphs).
 *       - Global UI alpha (guiAlpha) is applied inside GuiDrawRectangle() and GuiDrawText() functions
 *
@@ -136,11 +136,29 @@
 *
 *       #define RAYGUI_DEBUG_RECS_BOUNDS
 *           Draw control bounds rectangles for debug
-* 
+*
 *       #define RAYGUI_DEBUG_TEXT_BOUNDS
 *           Draw text bounds rectangles for debug
 *
 *   VERSIONS HISTORY:
+*       4.5-dev (Sep-2024)    Current dev version...
+*                         ADDED: guiControlExclusiveMode and guiControlExclusiveRec for exclusive modes
+*                         ADDED: GuiValueBoxFloat()
+*                         ADDED: GuiDropdonwBox() properties: DROPDOWN_ARROW_HIDDEN, DROPDOWN_ROLL_UP
+*                         ADDED: GuiListView() property: LIST_ITEMS_BORDER_WIDTH
+*                         ADDED: Multiple new icons
+*                         REVIEWED: GuiTabBar(), close tab with mouse middle button
+*                         REVIEWED: GuiScrollPanel(), scroll speed proportional to content
+*                         REVIEWED: GuiDropdownBox(), support roll up and hidden arrow
+*                         REVIEWED: GuiTextBox(), cursor position initialization
+*                         REVIEWED: GuiSliderPro(), control value change check
+*                         REVIEWED: GuiGrid(), simplified implementation
+*                         REVIEWED: GuiIconText(), increase buffer size and reviewed padding
+*                         REVIEWED: GuiDrawText(), improved wrap mode drawing
+*                         REVIEWED: GuiScrollBar(), minor tweaks
+*                         REVIEWED: Functions descriptions, removed wrong return value reference
+*                         REDESIGNED: GuiColorPanel(), improved HSV <-> RGBA convertion
+*
 *       4.0 (12-Sep-2023) ADDED: GuiToggleSlider()
 *                         ADDED: GuiColorPickerHSV() and GuiColorPanelHSV()
 *                         ADDED: Multiple new icons, mostly compiler related
@@ -246,7 +264,7 @@
 *       0.8 (27-Aug-2015) Initial release. Implemented by Kevin Gato, Daniel Nicolás and Ramon Santamaria.
 *
 *   DEPENDENCIES:
-*       raylib 4.6-dev      Inputs reading (keyboard/mouse), shapes drawing, font loading and text drawing
+*       raylib 5.0  - Inputs reading (keyboard/mouse), shapes drawing, font loading and text drawing
 *
 *   STANDALONE MODE:
 *       By default raygui depends on raylib mostly for the inputs and the drawing functionality but that dependency can be disabled
@@ -291,7 +309,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2014-2023 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2014-2024 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -431,11 +449,11 @@ typedef enum {
     TEXT_ALIGNMENT_VERTICAL, // Text vertical alignment inside text bounds (after border and padding)
     TEXT_WRAP_MODE // Text wrap-mode inside text bounds
     //TEXT_DECORATION             // Text decoration: 0-None, 1-Underline, 2-Line-through, 3-Overline
-    //TEXT_DECORATION_THICK       // Text decoration line thikness
+    //TEXT_DECORATION_THICK       // Text decoration line thickness
 } GuiDefaultProperty;
 // Other possible text properties:
 // TEXT_WEIGHT                  // Normal, Italic, Bold -> Requires specific font change
-// TEXT_INDENT	                // Text indentation -> Now using TEXT_PADDING...
+// TEXT_INDENT                  // Text indentation -> Now using TEXT_PADDING...
 // Label
 //typedef enum { } GuiLabelProperty;
 // Button/Spinner
@@ -474,7 +492,9 @@ typedef enum {
 // DropdownBox
 typedef enum {
     ARROW_PADDING = 16, // DropdownBox arrow separation from border and items
-    DROPDOWN_ITEMS_SPACING // DropdownBox items separation
+    DROPDOWN_ITEMS_SPACING, // DropdownBox items separation
+    DROPDOWN_ARROW_HIDDEN, // DropdownBox arrow hidden
+    DROPDOWN_ROLL_UP // DropdownBox roll up flag (default rolls down)
 } GuiDropdownBoxProperty;
 // TextBox/TextBoxMulti/ValueBox/Spinner
 typedef enum {
@@ -491,6 +511,7 @@ typedef enum {
     LIST_ITEMS_SPACING, // ListView items separation
     SCROLLBAR_WIDTH, // ListView scrollbar size (usually width)
     SCROLLBAR_SIDE, // ListView scrollbar side (0-SCROLLBAR_LEFT_SIDE, 1-SCROLLBAR_RIGHT_SIDE)
+    LIST_ITEMS_BORDER_WIDTH // ListView items border width
 } GuiListViewProperty;
 // ColorPicker
 typedef enum {
@@ -545,26 +566,27 @@ typedef enum {
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiTabBar(Rectangle bounds, const char **text, int count, int *active); // Tab Bar control, returns TAB to be closed or -1
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiScrollPanel(Rectangle bounds, const char *text, Rectangle content, Vector2 *scroll, Rectangle *view); // Scroll Panel control
 // Basic controls set
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiLabel(Rectangle bounds, const char *text); // Label control, shows text
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiLabel(Rectangle bounds, const char *text); // Label control
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiButton(Rectangle bounds, const char *text); // Button control, returns true when clicked
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiLabelButton(Rectangle bounds, const char *text); // Label button control, show true when clicked
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiToggle(Rectangle bounds, const char *text, bool *active); // Toggle Button control, returns true when active
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiToggleGroup(Rectangle bounds, const char *text, int *active); // Toggle Group control, returns active toggle index
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiToggleSlider(Rectangle bounds, const char *text, int *active); // Toggle Slider control, returns true when clicked
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiLabelButton(Rectangle bounds, const char *text); // Label button control, returns true when clicked
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiToggle(Rectangle bounds, const char *text, bool *active); // Toggle Button control
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiToggleGroup(Rectangle bounds, const char *text, int *active); // Toggle Group control
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiToggleSlider(Rectangle bounds, const char *text, int *active); // Toggle Slider control
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiCheckBox(Rectangle bounds, const char *text, bool *checked); // Check Box control, returns true when active
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiComboBox(Rectangle bounds, const char *text, int *active); // Combo Box control, returns selected item index
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiDropdownBox(Rectangle bounds, const char *text, int *active, bool editMode); // Dropdown Box control, returns selected item
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiSpinner(Rectangle bounds, const char *text, int *value, int minValue, int maxValue, bool editMode); // Spinner control, returns selected value
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiComboBox(Rectangle bounds, const char *text, int *active); // Combo Box control
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiDropdownBox(Rectangle bounds, const char *text, int *active, bool editMode); // Dropdown Box control
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiSpinner(Rectangle bounds, const char *text, int *value, int minValue, int maxValue, bool editMode); // Spinner control
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiValueBox(Rectangle bounds, const char *text, int *value, int minValue, int maxValue, bool editMode); // Value Box control, updates input text with numbers
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiValueBoxFloat(Rectangle bounds, const char *text, char *textValue, float *value, bool editMode); // Value box control for float values
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiTextBox(Rectangle bounds, char *text, int textSize, bool editMode); // Text Box control, updates input text
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiSlider(Rectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Slider control, returns selected value
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiSliderBar(Rectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Slider Bar control, returns selected value
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiProgressBar(Rectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Progress Bar control, shows current progress value
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiSlider(Rectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Slider control
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiSliderBar(Rectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Slider Bar control
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiProgressBar(Rectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Progress Bar control
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiStatusBar(Rectangle bounds, const char *text); // Status Bar control, shows info text
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiDummyRec(Rectangle bounds, const char *text); // Dummy control for placeholders
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiGrid(Rectangle bounds, const char *text, float spacing, int subdivs, Vector2 *mouseCell); // Grid control, returns mouse cell position
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiGrid(Rectangle bounds, const char *text, float spacing, int subdivs, Vector2 *mouseCell); // Grid control
 // Advance controls set
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiListView(Rectangle bounds, const char *text, int *scrollIndex, int *active); // List View control, returns selected list item index
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiListView(Rectangle bounds, const char *text, int *scrollIndex, int *active); // List View control
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiListViewEx(Rectangle bounds, const char **text, int count, int *scrollIndex, int *active, int *focus); // List View with extended parameters
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiMessageBox(Rectangle bounds, const char *title, const char *message, const char *buttons); // Message Box control, displays a message
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiTextInputBox(Rectangle bounds, const char *title, const char *message, const char *buttons, char *text, int textMaxSize, bool *secretViewActive); // Text Input Box control, ask for text, supports secret
@@ -573,7 +595,7 @@ typedef enum {
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiColorBarAlpha(Rectangle bounds, const char *text, float *alpha); // Color Bar Alpha control
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiColorBarHue(Rectangle bounds, const char *text, float *value); // Color Bar Hue control
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiColorPickerHSV(Rectangle bounds, const char *text, Vector3 *colorHsv); // Color Picker control that avoids conversion to RGB on each call (multiple color controls)
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiColorPanelHSV(Rectangle bounds, const char *text, Vector3 *colorHsv); // Color Panel control that returns HSV color value, used by GuiColorPickerHSV()
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiColorPanelHSV(Rectangle bounds, const char *text, Vector3 *colorHsv); // Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()
 //----------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------
 // Icons enumeration
@@ -799,15 +821,15 @@ typedef enum {
     ICON_FOLDER = 217,
     ICON_FILE = 218,
     ICON_SAND_TIMER = 219,
-    ICON_220 = 220,
-    ICON_221 = 221,
-    ICON_222 = 222,
-    ICON_223 = 223,
-    ICON_224 = 224,
-    ICON_225 = 225,
-    ICON_226 = 226,
-    ICON_227 = 227,
-    ICON_228 = 228,
+    ICON_WARNING = 220,
+    ICON_HELP_BOX = 221,
+    ICON_INFO_BOX = 222,
+    ICON_PRIORITY = 223,
+    ICON_LAYERS_ISO = 224,
+    ICON_LAYERS2 = 225,
+    ICON_MLAYERS = 226,
+    ICON_MAPS = 227,
+    ICON_HOT = 228,
     ICON_229 = 229,
     ICON_230 = 230,
     ICON_231 = 231,

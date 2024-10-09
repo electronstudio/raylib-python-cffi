@@ -18,7 +18,7 @@ class BinaryDistribution(Distribution):
 
 # This call to setup() does all the work
 setup(
-    name="raylib",
+    name="raylib_sdl",
     version=VERSION,
     description="Python CFFI bindings for Raylib",
     long_description=README,
