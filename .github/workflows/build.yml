@@ -356,6 +356,7 @@ jobs:
 
       - name: Build raylib-python-cffi
         run: |
+          copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.lib .
           python -m pip install --upgrade pip
           pip3 install "cffi>=1.17.1"
           pip3 install wheel
