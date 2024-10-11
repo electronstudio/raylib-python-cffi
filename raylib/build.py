@@ -168,9 +168,9 @@ def build_unix():
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
         extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
-                                              '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
+                                              '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic', '-lSDL2']
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
-        libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic']
+        libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic', 'SDL2']
 
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
@@ -184,7 +184,7 @@ def build_unix():
 def build_windows():
     print("BUILDING FOR WINDOWS")
     ffibuilder.cdef(open("raylib/raylib.h.modified").read())
-    ffibuilder.cdef(open("raylib/glfw3.h.modified").read())
+    #ffibuilder.cdef(open("raylib/glfw3.h.modified").read())
     ffibuilder.cdef(open("raylib/rlgl.h.modified").read())
     ffibuilder.cdef(open("raylib/raygui.h.modified").read())
     ffibuilder.cdef(open("raylib/physac.h.modified").read())
@@ -193,7 +193,7 @@ def build_windows():
     #include "raylib.h"
     #include "rlgl.h" 
     #include "raymath.h"
-    #include "GLFW/glfw3.h"
+
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
     #include "raygui.h"
@@ -201,9 +201,9 @@ def build_windows():
     #include "physac.h"  
     """,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
-                          extra_compile_args="/D_CFFI_NO_LIMITED_API",
+                          extra_compile_args=["/D_CFFI_NO_LIMITED_API"],
                           py_limited_api=False,
-                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
+                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm', 'SDL2'],
                           include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src\\external\\glfw\\include',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',
