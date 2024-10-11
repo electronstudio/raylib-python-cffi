@@ -184,7 +184,7 @@ def build_unix():
 def build_windows():
     print("BUILDING FOR WINDOWS")
     ffibuilder.cdef(open("raylib/raylib.h.modified").read())
-    ffibuilder.cdef(open("raylib/glfw3.h.modified").read())
+    #ffibuilder.cdef(open("raylib/glfw3.h.modified").read())
     ffibuilder.cdef(open("raylib/rlgl.h.modified").read())
     ffibuilder.cdef(open("raylib/raygui.h.modified").read())
     ffibuilder.cdef(open("raylib/physac.h.modified").read())
@@ -193,7 +193,7 @@ def build_windows():
     #include "raylib.h"
     #include "rlgl.h" 
     #include "raymath.h"
-    #include "GLFW/glfw3.h"
+
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
     #include "raygui.h"
