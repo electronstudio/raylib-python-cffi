@@ -323,12 +323,14 @@ jobs:
       - name: Download SDL2
         run: curl -L -o SDL2.zip https://github.com/libsdl-org/SDL/releases/download/release-2.30.8/SDL2-devel-2.30.8-VC.zip
 
+      - name: Create extraction directory
+        run: mkdir ${{ runner.temp }}\SDL2
+
       - name: Unzip SDL2
-        run: tar -xf SDL2.zip -C ${{ runner.temp }}\SDL2
+        run: tar -xf SDL2.zip -C ${{ runner.temp }}\SDL2 --strip-components=1
 
       - name: Set SDL_DIR environment variable
-        run: echo SDL_DIR=${{ runner.temp }}\SDL2\SDL2-2.30.8\cmake >> $GITHUB_ENV
-
+        run: echo SDL_DIR=${{ runner.temp }}\SDL2\cmake >> $GITHUB_ENV
 
       - name: Setup Python
         uses: actions/setup-python@v2.2.2
