@@ -333,8 +333,9 @@ jobs:
 
       - name: Build raylib
         run: |
-          curl -O https://github.com/libsdl-org/SDL/releases/download/release-2.30.8/SDL2-devel-2.30.8-VC.zip
-          unzip SDL2-devel-2.30.8-VC.zip
+          curl -L -o SDL2.zip https://github.com/libsdl-org/SDL/releases/download/release-2.30.8/SDL2-devel-2.30.8-VC.zip
+          Expand-Archive -Path SDL2.zip -DestinationPath ${{ github.workspace }}\SDL2
+          echo SDL_DIR=${{ github.workspace }}\SDL2\SDL2-2.30.8\cmake >> $GITHUB_ENV
           export SDL_DIR=/d/a/raylib-python-cffi/raylib-python-cffi/SDL2-devel-2.30.8-VC/cmake
           cd raylib-c
           mkdir build
