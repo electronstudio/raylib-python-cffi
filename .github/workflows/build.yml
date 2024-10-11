@@ -320,6 +320,16 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Download SDL2
+        run: curl -L -o SDL2.zip https://github.com/libsdl-org/SDL/releases/download/release-2.30.8/SDL2-devel-2.30.8-VC.zip
+
+      - name: Unzip SDL2
+        run: tar -xf SDL2.zip -C ${{ runner.temp }}\SDL2
+
+      - name: Set SDL_DIR environment variable
+        run: echo SDL_DIR=${{ runner.temp }}\SDL2\SDL2-2.30.8\cmake >> $GITHUB_ENV
+
+
       - name: Setup Python
         uses: actions/setup-python@v2.2.2
         with:
@@ -333,9 +343,6 @@ jobs:
 
       - name: Build raylib
         run: |
-          curl -L -o SDL2.zip https://github.com/libsdl-org/SDL/releases/download/release-2.30.8/SDL2-devel-2.30.8-VC.zip
-          Expand-Archive -Path SDL2.zip -DestinationPath ${{ github.workspace }}\SDL2
-          echo SDL_DIR=${{ github.workspace }}\SDL2\SDL2-2.30.8\cmake >> $GITHUB_ENV
           cd raylib-c
           mkdir build
           cd build
