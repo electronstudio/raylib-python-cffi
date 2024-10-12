@@ -2,6 +2,7 @@ include raylib/*.so
 include raylib/*.pyi
 include pyray/*.pyi
 include raylib/*.pyd
+include raylib/*.dll
 exclude raylib/*.a
 include raylib/*.h
 include raylib/*.h.modified
