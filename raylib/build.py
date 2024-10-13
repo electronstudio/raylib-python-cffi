@@ -162,7 +162,7 @@ def build_unix():
         print("BUILDING FOR MAC")
         extra_link_args = [get_the_lib_path() + '/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa',
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
-                           'CoreVideo']
+                           'CoreVideo', '-lSDL2']
         libraries = []
         extra_compile_args = ["-Wno-error=incompatible-function-pointer-types", "-D_CFFI_NO_LIMITED_API"]
     else:  #platform.system() == "Linux":
