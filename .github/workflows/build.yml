@@ -50,6 +50,15 @@ jobs:
           make -j2
           sudo make install
 
+      - name: Build raylibsdl
+        run: |
+          cd raylib-c
+          mkdir build2
+          cd build2
+          cmake -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j2
+          sudo make install
+
       - name: Copy extras
         run: |
           sudo cp physac/src/physac.h /usr/local/include/
