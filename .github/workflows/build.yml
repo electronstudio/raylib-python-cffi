@@ -41,7 +41,7 @@ jobs:
           architecture: x64
 
       # Runs a set of commands using the runners shell
-      - name: Build raylib
+      - name: Build raylib without SDL because SDL version has incorrect pkg-config
         run: |
           cd raylib-c
           mkdir build
@@ -50,14 +50,14 @@ jobs:
           make -j2
           sudo make install
 
-      - name: Build raylibsdl
+      - name: Build raylib with SDL
         run: |
           cd raylib-c
           mkdir build2
           cd build2
           cmake -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           make -j2
-          sudo make install
+          sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
 
       - name: Copy extras
         run: |
