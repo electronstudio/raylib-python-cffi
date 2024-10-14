@@ -201,7 +201,9 @@ def build_windows():
     #include "rlgl.h" 
     #include "raymath.h"
     """ +
-    """#include "GLFW/glfw3.h""" if not USE_SDL2 else ""
+    """
+    #include "GLFW/glfw3.h"
+    """ if not USE_SDL2 else ""
     + """
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
