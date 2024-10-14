@@ -26,11 +26,13 @@ import subprocess
 import time
 
 
-
+USE_SDL2 = True
 
 def check_raylib_installed():
     return subprocess.run(['pkg-config', '--exists', 'raylib'], text=True, stdout=subprocess.PIPE).returncode == 0
 
+def check_SDL_installed():
+    return subprocess.run(['pkg-config', '--exists', 'sdl2'], text=True, stdout=subprocess.PIPE).returncode == 0
 
 def get_the_include_path():
     return subprocess.run(['pkg-config', '--variable=includedir', 'raylib'], text=True,
@@ -106,6 +108,9 @@ def build_unix():
     if not check_raylib_installed():
         raise Exception("ERROR: raylib not found by pkg-config.  Please install pkg-config and Raylib.")
 
+    if USE_SDL2 and not check_SDL_installed():
+        raise Exception("ERROR: SDL2 not found by pkg-config.  Please install pkg-config and SDL2.")
+
     raylib_h = get_the_include_path() + "/raylib.h"
     rlgl_h = get_the_include_path() + "/rlgl.h"
     raymath_h = get_the_include_path() + "/raymath.h"
@@ -126,7 +131,7 @@ def build_unix():
     """
 
     glfw3_h = get_the_include_path() + "/GLFW/glfw3.h"
-    if check_header_exists(glfw3_h):
+    if not USE_SDL2 and check_header_exists(glfw3_h):
         ffi_includes += """
         #include "GLFW/glfw3.h"
         """
@@ -154,7 +159,7 @@ def build_unix():
         ffibuilder.cdef(pre_process_header(raygui_h))
     if os.path.isfile(physac_h):
         ffibuilder.cdef(pre_process_header(physac_h))
-    if os.path.isfile(glfw3_h):
+    if not USE_SDL2 and os.path.isfile(glfw3_h):
         ffibuilder.cdef(pre_process_header(glfw3_h))
 
 
@@ -162,15 +167,16 @@ def build_unix():
         print("BUILDING FOR MAC")
         extra_link_args = [get_the_lib_path() + '/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa',
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
-                           'CoreVideo', '-lSDL2']
+                           'CoreVideo'] + ['-lSDL2'] if USE_SDL2 else []
         libraries = []
         extra_compile_args = ["-Wno-error=incompatible-function-pointer-types", "-D_CFFI_NO_LIMITED_API"]
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
-        extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
-                                              '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic', '-lSDL2']
+        extra_link_args = (get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
+                                              '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
+                           + ['-lSDL2'] if USE_SDL2 else [])
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
-        libraries = []
+        libraries = [] # Not sure why but we put them in extra_link_args instead so *shouldnt* be needed here
 
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
@@ -184,7 +190,8 @@ def build_unix():
 def build_windows():
     print("BUILDING FOR WINDOWS")
     ffibuilder.cdef(open("raylib/raylib.h.modified").read())
-    #ffibuilder.cdef(open("raylib/glfw3.h.modified").read())
+    if not USE_SDL2:
+        ffibuilder.cdef(open("raylib/glfw3.h.modified").read())
     ffibuilder.cdef(open("raylib/rlgl.h.modified").read())
     ffibuilder.cdef(open("raylib/raygui.h.modified").read())
     ffibuilder.cdef(open("raylib/physac.h.modified").read())
@@ -193,7 +200,9 @@ def build_windows():
     #include "raylib.h"
     #include "rlgl.h" 
     #include "raymath.h"
-
+    """ +
+    """#include "GLFW/glfw3.h""" if not USE_SDL2 else ""
+    + """
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
     #include "raygui.h"
@@ -203,7 +212,7 @@ def build_windows():
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           extra_compile_args=["/D_CFFI_NO_LIMITED_API"],
                           py_limited_api=False,
-                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm', 'SDL2'],
+                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'] + ['SDL2'] if USE_SDL2 else [],
                           include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src\\external\\glfw\\include',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',
