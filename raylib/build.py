@@ -168,9 +168,9 @@ def build_unix():
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
         extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
-                                              '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic', '-lSDL2']
+                                              '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
-        libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic', 'SDL2']
+        libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic']
 
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
