@@ -226,11 +226,15 @@ jobs:
         run: |
           pip3 install dist/*.whl
           cd /
+          echo "moo"
           (exec 2>/dev/null python3 -c 'import pyray; pyray.init_window(100,100,"test")' 2>/dev/null >output)
-          exit_code=$?
-          if cat output | grep -q "INFO: Initializing raylib"; then
+          echo "woo"
+          cat output
+          if grep -q "INFO: Initializing raylib" output; then
+            echo "boo"
             exit 0
           else
+            echo "foo"
             exit 1
           fi
                     
