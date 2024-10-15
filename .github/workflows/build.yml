@@ -258,6 +258,8 @@ jobs:
         python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13',  'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
         raylib-platform: ['Desktop', 'SDL']
     steps:
+      - env:
+          RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
@@ -305,7 +307,7 @@ jobs:
           pip3 install "cffi>=1.17.1"
           pip3 install wheel
           pip3 install setuptools
-          RAYLIB_PLATFORM=${{ matrix.raylib-platform }} python setup.py bdist_wheel --plat-name manylinux2014_x86_64
+          python setup.py bdist_wheel --plat-name manylinux2014_x86_64
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v3.2.1
@@ -326,7 +328,9 @@ jobs:
         python-version:  [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13',  'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
         raylib-platform: ['Desktop', 'SDL']
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - env:
+          RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
+
       - uses: actions/checkout@v2
         with:
           submodules: recursive
@@ -377,7 +381,7 @@ jobs:
           del raylib\dynamic\*.dll >nul 2>&1
           del raylib\dynamic\*.dylib >nul 2>&1
           del raylib\dynamic\32bit\* >nul 2>&1
-          RAYLIB_PLATFORM=${{ matrix.raylib-platform }} python setup.py bdist_wheel
+          python setup.py bdist_wheel
         shell: cmd
           
       - name: Upload build Artifact wheel

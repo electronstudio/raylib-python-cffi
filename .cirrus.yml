@@ -58,9 +58,17 @@ mac_task:
     - cd raylib-c
     - mkdir build
     - cd build
-    - cmake -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j8
     - sudo make install
+  build_raylib_again_script:
+    - git submodule update --init --recursive
+    - cd raylib-c
+    - mkdir build
+    - cd build
+    - cmake -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - make -j8
+    - sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
   build_script:
     - sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
     - sudo cp physac/src/physac.h /usr/local/include/
@@ -69,6 +77,6 @@ mac_task:
     - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages cffi
     - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages setuptools
     - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages wheel
-    - /opt/homebrew/bin/python${PY_VER} setup.py bdist_wheel
+    - RAYLIB_PLATFORM=SDL /opt/homebrew/bin/python${PY_VER} setup.py bdist_wheel
   artifacts:
     path: "dist/*"
