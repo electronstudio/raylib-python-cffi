@@ -226,7 +226,13 @@ jobs:
         run: |
           pip3 install dist/*.whl
           cd /
-          python3 -c 'import pyray; pyray.init_window(100,100,"test")'
+          output=$(python3 -c 'import pyray; pyray.init_window(100,100,"test")' 2>&1)
+          if echo "$output" | grep -q "INFO: Initializing raylib"; then
+            exit 0
+          else
+            exit 1
+          fi
+                    
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v3.2.1
