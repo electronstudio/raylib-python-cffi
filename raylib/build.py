@@ -178,6 +178,9 @@ def build_unix():
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
         libraries = [] # Not sure why but we put them in extra_link_args instead so *shouldnt* be needed here
 
+    print("extra_link_args: "+str(extra_link_args))
+    print("extra_compile_args: "+str(extra_compile_args))
+    print("libraries: "+str(libraries))
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
                           py_limited_api=False,
@@ -215,11 +218,16 @@ def build_windows():
     #define PHYSAC_IMPLEMENTATION
     #include "physac.h"
     """
+    libraries = ['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm']
+    if USE_SDL2:
+        libraries += 'SDL2'
+
+    print("libraries: "+str(libraries))
     ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           extra_compile_args=["/D_CFFI_NO_LIMITED_API"],
                           py_limited_api=False,
-                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'] + ['SDL2'] if USE_SDL2 else [],
+                          libraries=libraries,
                           include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src\\external\\glfw\\include',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',
