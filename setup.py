@@ -1,7 +1,7 @@
 import pathlib
 from setuptools import setup
 from setuptools.dist import Distribution
-
+import os
 
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
