@@ -196,21 +196,27 @@ def build_windows():
     ffibuilder.cdef(open("raylib/raygui.h.modified").read())
     ffibuilder.cdef(open("raylib/physac.h.modified").read())
     ffibuilder.cdef(open("raylib/raymath.h.modified").read())
-    ffibuilder.set_source("raylib._raylib_cffi", """
+
+    ffi_includes = """
     #include "raylib.h"
-    #include "rlgl.h" 
+    #include "rlgl.h"
     #include "raymath.h"
-    """ +
     """
-    #include "GLFW/glfw3.h"
-    """ if not USE_SDL2 else ""
-    + """
+
+    if not USE_SDL2:
+        ffi_includes +=
+        """
+        #include "GLFW/glfw3.h"
+        """
+
+    ffi_includes += """
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
     #include "raygui.h"
     #define PHYSAC_IMPLEMENTATION
-    #include "physac.h"  
-    """,
+    #include "physac.h"
+    """
+    ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
                           extra_compile_args=["/D_CFFI_NO_LIMITED_API"],
                           py_limited_api=False,
