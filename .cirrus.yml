@@ -44,12 +44,21 @@ mac_task:
   setup_script:
     - brew update
     - brew install python@${PY_VER}
+  build_sdl_script:
+    - wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
+    - tar xvfz release-2.30.7.tar.gz
+    - mkdir build
+    - cd build
+    - cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+    - cmake --build . --config Release
+    - sudo cmake --install .
+    - cd ..
   build_raylib_script:
     - git submodule update --init --recursive
     - cd raylib-c
     - mkdir build
     - cd build
-    - cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - cmake -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j8
     - sudo make install
   build_script:

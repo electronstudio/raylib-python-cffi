@@ -10,6 +10,8 @@ HERE = pathlib.Path(__file__).parent
 README = (HERE / "README.md").read_text()
 VERSION = (HERE / "version.py").read_text().split()[-1].strip("\"'")
 
+RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
+NAME = "raylib_sdl" if RAYLIB_PLATFORM == "SDL" else "raylib"
 
 class BinaryDistribution(Distribution):
     """Distribution which always forces a binary package with platform name"""
@@ -18,7 +20,7 @@ class BinaryDistribution(Distribution):
 
 # This call to setup() does all the work
 setup(
-    name="raylib_sdl",
+    name=NAME,
     version=VERSION,
     description="Python CFFI bindings for Raylib",
     long_description=README,
