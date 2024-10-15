@@ -204,8 +204,7 @@ def build_windows():
     """
 
     if not USE_SDL2:
-        ffi_includes +=
-        """
+        ffi_includes += """
         #include "GLFW/glfw3.h"
         """
 
