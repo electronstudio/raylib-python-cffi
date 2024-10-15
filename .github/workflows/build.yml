@@ -222,7 +222,10 @@ jobs:
           pip3 install wheel
           pip3 install setuptools
           python setup.py bdist_wheel --plat-name manylinux2014_x86_64
+      - name: Test
+        run: |
           pip3 install dist/*.whl
+          cd /
           python3 -c 'import pyray; pyray.init_window(100,100,"test")'
 
       - name: Upload build Artifact wheel
