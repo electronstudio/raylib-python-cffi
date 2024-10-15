@@ -79,7 +79,7 @@ jobs:
           name: wheel
           path: dist/*
 
-  build-mac-arm:
+  build-mac-universal:
     runs-on: macos-14
     strategy:
       matrix:
@@ -98,7 +98,7 @@ jobs:
           tar xvfz release-2.30.7.tar.gz
           mkdir build
           cd build
-          cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake ../SDL-release-2.30.7 -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
           sudo cmake --install .
 
@@ -115,7 +115,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
 
@@ -124,7 +124,7 @@ jobs:
           cd raylib-c
           mkdir build2
           cd build2
-          cmake -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
 
@@ -147,6 +147,7 @@ jobs:
         with:
           name: wheel
           path: dist/*
+
 #  build-mac12-arm64:
 #    runs-on: macos-12
 #    strategy:
