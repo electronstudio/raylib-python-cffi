@@ -227,6 +227,7 @@ jobs:
           pip3 install dist/*.whl
           cd /
           output=$(python3 -c 'import pyray; pyray.init_window(100,100,"test")' 2>&1)
+          exit_code=$?
           if echo "$output" | grep -q "INFO: Initializing raylib"; then
             exit 0
           else
