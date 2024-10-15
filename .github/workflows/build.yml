@@ -258,8 +258,6 @@ jobs:
         python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13',  'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
         raylib-platform: ['Desktop', 'SDL']
     steps:
-      - env:
-          RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
@@ -302,6 +300,8 @@ jobs:
           sudo cp physac/src/physac.h /usr/local/include/
           sudo cp raygui/src/raygui.h /usr/local/include/
       - name: Build raylib-python-cffi
+        env:
+          RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
         run: |
           python -m pip install --upgrade pip
           pip3 install "cffi>=1.17.1"
@@ -328,9 +328,6 @@ jobs:
         python-version:  [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13',  'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
         raylib-platform: ['Desktop', 'SDL']
     steps:
-      - env:
-          RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
-
       - uses: actions/checkout@v2
         with:
           submodules: recursive
@@ -370,6 +367,8 @@ jobs:
         shell: cmd
 
       - name: Build raylib-python-cffi
+        env:
+          RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
         run: |
           copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.lib .
           copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.dll raylib\
