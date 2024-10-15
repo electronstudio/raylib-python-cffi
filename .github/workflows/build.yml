@@ -15,7 +15,9 @@ jobs:
     runs-on: macos-12
     strategy:
       matrix:
-        python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13.0-beta - 3.13.0', 'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
+        python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
+    env:
+      MACOSX_DEPLOYMENT_TARGET: 10.15
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -61,6 +63,7 @@ jobs:
 
       - name: Copy extras
         run: |
+          sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
           sudo cp physac/src/physac.h /usr/local/include/
           sudo cp raygui/src/raygui.h /usr/local/include/
 
@@ -224,6 +227,7 @@ jobs:
           sudo make install
       - name: Copy extras
         run: |
+          sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
           sudo cp physac/src/physac.h /usr/local/include/
           sudo cp raygui/src/raygui.h /usr/local/include/
       - name: Build raylib-python-cffi
@@ -242,45 +246,15 @@ jobs:
 
 
 
-#  build-rpi:
-#    runs-on: rpi
-#    steps:
-#      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#      - uses: actions/checkout@v2
-#        with:
-#          submodules: recursive
-#
-#      - name: Build raylib
-#        run: |
-#          cd raylib-c
-#          mkdir build
-#          cd build
-#          cmake -DBUILD_EXAMPLES=off -DINCLUDE_EVERYTHING=on -DSUPPORT_FILEFORMAT_JPG=on -DWITH_PIC=on -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
-#          make -j2
-#          make install
-#      - name: Copy extras
-#        run: |
-#          cp physac/src/physac.h /usr/local/include/
-#          cp raygui/src/raygui.h /usr/local/include/
-#
-#      - name: Build raylib-python-cffi
-#        run: |
-#          python3 setup.py bdist_wheel
-#
-#      - name: Upload build Artifact wheel
-#        uses: actions/upload-artifact@v3.2.1
-#        with:
-#          name: wheel
-#          path: dist/*
 
   build-windows:
     # The type of runner that the job will run on
-    runs-on: windows-latest
+    runs-on: windows-2019
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version:  [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13.0-beta - 3.13.0',  'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
+        python-version:  [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13',  'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
