@@ -167,17 +167,18 @@ def build_unix():
         print("BUILDING FOR MAC")
         extra_link_args = [get_the_lib_path() + '/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa',
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
-                           'CoreVideo'] + ['-lSDL2'] if USE_SDL2 else []
+                           'CoreVideo']
         libraries = []
         extra_compile_args = ["-Wno-error=incompatible-function-pointer-types", "-D_CFFI_NO_LIMITED_API"]
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
-        extra_link_args = (get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
+        extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
                                               '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
-                           + ['-lSDL2'] if USE_SDL2 else [])
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
         libraries = [] # Not sure why but we put them in extra_link_args instead so *shouldnt* be needed here
 
+    if USE_SDL2:
+        extra_link_args += ['-lSDL2']
     print("extra_link_args: "+str(extra_link_args))
     print("extra_compile_args: "+str(extra_compile_args))
     print("libraries: "+str(libraries))

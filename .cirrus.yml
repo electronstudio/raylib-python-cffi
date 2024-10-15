@@ -35,12 +35,15 @@ mac_task:
   macos_instance:
     matrix:
       - image: ghcr.io/cirruslabs/macos-sonoma-xcode:latest
-  env:
-    matrix:
-      - PY_VER: "3.9"
-      - PY_VER: "3.10"
-      - PY_VER: "3.11"
-      - PY_VER: "3.12"
+
+  matrix:
+    - env:
+        PY_VER: "3.9"
+        RAYLIB_PLATFORM: Desktop
+    - env:
+        PY_VER: "3.9"
+        RAYLIB_PLATFORM: SDL
+
   setup_script:
     - brew update
     - brew install python@${PY_VER}
