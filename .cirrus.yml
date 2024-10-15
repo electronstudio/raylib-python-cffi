@@ -62,10 +62,9 @@ mac_task:
     - make -j8
     - sudo make install
   build_raylib_again_script:
-    - git submodule update --init --recursive
     - cd raylib-c
-    - mkdir build
-    - cd build
+    - mkdir build2
+    - cd build2
     - cmake -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j8
     - sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a

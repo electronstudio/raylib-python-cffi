@@ -220,7 +220,7 @@ def build_windows():
     """
     libraries = ['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm']
     if USE_SDL2:
-        libraries += 'SDL2'
+        libraries += ['SDL2']
 
     print("libraries: "+str(libraries))
     ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
