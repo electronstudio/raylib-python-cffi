@@ -289,7 +289,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DPLATFORM=${{ matrix.raylib_platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
           make -j2
           sudo make install
       - name: Copy extras
@@ -303,7 +303,7 @@ jobs:
           pip3 install "cffi>=1.17.1"
           pip3 install wheel
           pip3 install setuptools
-          python setup.py bdist_wheel --plat-name manylinux2014_x86_64
+          RAYLIB_PLATFORM=${{ matrix.raylib-platform }} python setup.py bdist_wheel --plat-name manylinux2014_x86_64
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v3.2.1

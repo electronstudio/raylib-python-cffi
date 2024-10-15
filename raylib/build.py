@@ -25,8 +25,8 @@ import sys
 import subprocess
 import time
 
-
-USE_SDL2 = True
+RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
+USE_SDL2 = True if RAYLIB_PLATFORM == "SDL" else False
 
 def check_raylib_installed():
     return subprocess.run(['pkg-config', '--exists', 'raylib'], text=True, stdout=subprocess.PIPE).returncode == 0
