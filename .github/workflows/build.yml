@@ -84,6 +84,8 @@ jobs:
     strategy:
       matrix:
         python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
+    env:
+      MACOSX_DEPLOYMENT_TARGET: 11.0
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -105,7 +107,7 @@ jobs:
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
           python-version: ${{ matrix.python-version }}
-
+          architecture: arm64
 
       # Runs a set of commands using the runners shell
       - name: Build raylib without SDL because SDL version has incorrect pkg-config
