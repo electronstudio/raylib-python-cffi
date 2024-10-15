@@ -254,6 +254,7 @@ jobs:
       # For example, pypy2 and pypy3
       matrix:
         python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13',  'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
+        raylib-platform: ['Desktop', 'SDL']
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -288,7 +289,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+          cmake -DPLATFORM=${{ matrix.raylib_platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
           make -j2
           sudo make install
       - name: Copy extras
