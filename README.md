@@ -52,7 +52,7 @@ Use an [official Windows Python release](https://www.python.org/downloads/window
 
 Binaries require:
  * arm64 MacOS 14
- * x64 MacOS 12, or newer.
+ * x64 MacOS 10.13, or newer.
 
 Older MacOS requires building from source but this is usually simple:
 
@@ -87,7 +87,7 @@ This is not well tested but has better support for controllers:
     python3 -m pip uninstall raylib
     python3 -m pip install raylib_sdl
 
-You can't have multiple backends installed at once.
+You can't have multiple raylib packages installed at once.
 
 ## DRM backend
 
@@ -96,7 +96,7 @@ This uses the Linux framebuffer for devices that don't run X11/Wayland:
     python3 -m pip uninstall raylib
     python3 -m pip install raylib_drm
 
-You can't have multiple backends installed at once.
+You can't have multiple raylib packages installed at once.
 
 ## Problems?
 

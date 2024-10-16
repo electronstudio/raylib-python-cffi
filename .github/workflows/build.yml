@@ -76,7 +76,7 @@ jobs:
           pip3 install "cffi>=1.17.1"
           pip3 install wheel
           pip3 install setuptools
-          python setup.py bdist_wheel
+          python setup.py bdist_wheel --plat-name macosx_10_13_x86_64
 
       - name: Test
         run: |
