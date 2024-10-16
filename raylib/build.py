@@ -178,6 +178,8 @@ def build_unix():
                                               '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
         if RAYLIB_PLATFORM=="SDL":
             extra_link_args += ['-lSDL2']
+        elif RAYLIB_PLATFORM=="DRM":
+            extra_link_args += ['-lEGL']
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
         libraries = [] # Not sure why but we put them in extra_link_args instead so *shouldnt* be needed here
 
