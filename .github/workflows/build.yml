@@ -326,6 +326,21 @@ jobs:
           del raylib\dynamic\32bit\* >nul 2>&1
           python setup.py bdist_wheel
         shell: cmd
+
+      - name: Test
+        shell: bash
+        run: |
+          pip3 install dist/*.whl
+          cd /
+          python3 -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+          cat /tmp/output
+          if grep -q "INFO: Initializing raylib" /tmp/output; then
+            echo "Passed"
+            exit 0
+          else
+            echo "Failed"
+            exit 1
+          fi
           
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v3.2.1

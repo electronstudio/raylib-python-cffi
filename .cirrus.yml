@@ -111,5 +111,17 @@ mac_task:
     - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages setuptools
     - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages wheel
     - /opt/homebrew/bin/python${PY_VER} setup.py bdist_wheel
+  test_script:
+    - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages dist/*.whl
+    - cd /
+    - /opt/homebrew/bin/python${PY_VER} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+    - cat /tmp/output
+    - if grep -q "INFO: Initializing raylib" /tmp/output; then
+    - echo "Passed"
+    - exit 0
+    - else
+    - echo "Failed"
+    - exit 1
+    - fi
   artifacts:
     path: "dist/*"

@@ -169,7 +169,7 @@ def build_unix():
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
                            'CoreVideo']
         if USE_SDL2:
-            extra_link_args += ['/usr/local/lib/libSDL2.a']
+            extra_link_args += ['/usr/local/lib/libSDL2.a', '-framework', 'CoreHaptics']
         libraries = []
         extra_compile_args = ["-Wno-error=incompatible-function-pointer-types", "-D_CFFI_NO_LIMITED_API"]
     else:  #platform.system() == "Linux":
