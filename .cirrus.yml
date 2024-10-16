@@ -15,7 +15,7 @@ pi_task:
       - RAYLIB_PLATFORM: "DRM"
   setup_script:
     - apt update
-    - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev
+    - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libgbm-dev libdrm-dev
   build_sdl_script:
     - wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
     - tar xvfz release-2.30.7.tar.gz
