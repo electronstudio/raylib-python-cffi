@@ -50,7 +50,9 @@ Use an [official Windows Python release](https://www.python.org/downloads/window
 
 ## MacOS
 
-Binaries require arm64 MacOS 13 or x64 MacOS 12 or newer.
+Binaries require:
+ * arm64 MacOS 14
+ * x64 MacOS 12, or newer.
 
 Older MacOS requires building from source but this is usually simple:
 

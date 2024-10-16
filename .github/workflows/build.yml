@@ -17,6 +17,8 @@ jobs:
       matrix:
         python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10' ]
         raylib-platform: ['Desktop', 'SDL']
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '10.13'
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
