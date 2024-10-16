@@ -11,7 +11,12 @@ README = (HERE / "README.md").read_text()
 VERSION = (HERE / "version.py").read_text().split()[-1].strip("\"'")
 
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
-NAME = "raylib_sdl" if RAYLIB_PLATFORM == "SDL" else "raylib"
+if RAYLIB_PLATFORM == "SDL":
+    NAME = "raylib_sdl"
+elif RAYLIB_PLATFORM == "DRM":
+    NAME = "raylib_drm"
+else:
+    NAME = "raylib"
 
 class BinaryDistribution(Distribution):
     """Distribution which always forces a binary package with platform name"""
