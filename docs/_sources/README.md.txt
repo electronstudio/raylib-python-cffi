@@ -1,4 +1,6 @@
-# Python Bindings for Raylib 5.0
+# Python Bindings for Raylib 5.5
+## Libraries: raymath, raygui, rlgl, physac and GLFW
+## Backends: Desktop, SDL, DRM, Web
 
 Chatroom: [Discord](https://discord.gg/fKDwt85aX6) or [Matrix](https://matrix.to/#/#raylib-python-cffi:matrix.org)
 
@@ -8,23 +10,23 @@ original Raylib.
 * Faster, fewer bugs and easier to maintain than ctypes.
 * Commercial-friendly license.
 * Docstrings and auto-completion.
-* **Now includes extra libraries: raymath, raygui, rlgl, physac and GLFW**
+
 
 [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
 
 # Quickstart
 
-`pip3 install raylib`
-
-    from pyray import *
-    init_window(800, 450, "Hello")
-    while not window_should_close():
-        begin_drawing()
-        clear_background(WHITE)
-        draw_text("Hello world", 190, 200, 20, VIOLET)
-        end_drawing()
-    close_window()
-
+`pip3 install raylib==5.0.0.4`
+```python
+from pyray import *
+init_window(800, 450, "Hello")
+while not window_should_close():
+    begin_drawing()
+    clear_background(WHITE)
+    draw_text("Hello world", 190, 200, 20, VIOLET)
+    end_drawing()
+close_window()
+```
 
 # Installation
 
@@ -35,12 +37,34 @@ First make sure you have the latest pip installed:
 Then install
 
     python3 -m pip install setuptools
-    python3 -m pip install raylib
+    python3 -m pip install raylib==5.0.0.4
 
-On most platforms it should install a binary wheel (Windows 10 x64, MacOS 12 x64/arm64, Linux Ubuntu2004 x64/arm64).
-
-If yours isn't available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g. 
+On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g. 
 using homebrew, apt, etc.
+
+## Windows
+
+Binaries require x64 Windows 10 or newer.  (For x86 or older Windows you will have to build from source.)
+
+Use an [official Windows Python release](https://www.python.org/downloads/windows/) rather than WSL, MSYS, etc.
+
+## MacOS
+
+Binaries require arm64 MacOS 13 or x64 MacOS 12 or newer.
+
+Older MacOS requires building from source but this is usually simple:
+
+    brew install pkg-config
+    brew install raylib
+    python3 -m pip install raylib==5.0.0.4
+
+## Linux
+
+Binaries require OS newer than Ubuntu 2020, x64 or arm64.   Otherwise build from source.
+(Pip should attempt automatically but will need Raylib itself installed and also pkg-config.)
+
+The arm64 builds are built on Raspberry Pi arm64 Bullseye
+so may not work on other boards.
 
 ## Raspberry Pi
 
@@ -54,12 +78,23 @@ There is now a separate dynamic version of this binding:
 
 It works on some systems where the static version doesn't, [but be sure to read these caveats before using it](https://electronstudio.github.io/raylib-python-cffi/dynamic.html)
 
-## Beta testing
+## SDL backend
 
-If you find a bug, it may be fixed in the [latest dev release](https://github.com/electronstudio/raylib-python-cffi/releases).
-You can install an alpha or beta version by specifying the exact version number like this:
+This is not well tested but has better support for controllers:
 
-    python3 -m pip install raylib==4.2.0.0.dev4
+    python3 -m pip uninstall raylib
+    python3 -m pip install raylib_sdl
+
+You can't have multiple backends installed at once.
+
+## DRM backend
+
+This uses the Linux framebuffer for devices that don't run X11/Wayland:
+
+    python3 -m pip uninstall raylib
+    python3 -m pip install raylib_drm
+
+You can't have multiple backends installed at once.
 
 ## Problems?
 
@@ -143,9 +178,9 @@ A related library (that is a work in progress!):
  * Converting more examples from C to Python
  * Testing on more platforms
 
-# License (updated)
+# License
 
-The bindings are now under the Eclipse Public License, so you are free to
+Eclipse Public License, so you are free to
 statically link and use in non-free / proprietary / commercial projects!
 
 # Performance

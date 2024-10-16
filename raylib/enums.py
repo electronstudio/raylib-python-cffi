@@ -136,7 +136,7 @@ class KeyboardKey(IntEnum):
     KEY_KP_ENTER = 335
     KEY_KP_EQUAL = 336
     KEY_BACK = 4
-    KEY_MENU = 82
+    KEY_MENU = 5
     KEY_VOLUME_UP = 24
     KEY_VOLUME_DOWN = 25
 
@@ -230,6 +230,9 @@ class ShaderLocationIndex(IntEnum):
     SHADER_LOC_MAP_IRRADIANCE = 23
     SHADER_LOC_MAP_PREFILTER = 24
     SHADER_LOC_MAP_BRDF = 25
+    SHADER_LOC_VERTEX_BONEIDS = 26
+    SHADER_LOC_VERTEX_BONEWEIGHTS = 27
+    SHADER_LOC_BONE_MATRICES = 28
 
 class ShaderUniformDataType(IntEnum):
     SHADER_UNIFORM_FLOAT = 0
@@ -433,6 +436,8 @@ class GuiComboBoxProperty(IntEnum):
 class GuiDropdownBoxProperty(IntEnum):
     ARROW_PADDING = 16
     DROPDOWN_ITEMS_SPACING = 17
+    DROPDOWN_ARROW_HIDDEN = 18
+    DROPDOWN_ROLL_UP = 19
 
 class GuiTextBoxProperty(IntEnum):
     TEXT_READONLY = 16
@@ -446,6 +451,7 @@ class GuiListViewProperty(IntEnum):
     LIST_ITEMS_SPACING = 17
     SCROLLBAR_WIDTH = 18
     SCROLLBAR_SIDE = 19
+    LIST_ITEMS_BORDER_WIDTH = 20
 
 class GuiColorPickerProperty(IntEnum):
     COLOR_SELECTOR_SIZE = 16
@@ -675,15 +681,15 @@ class GuiIconName(IntEnum):
     ICON_FOLDER = 217
     ICON_FILE = 218
     ICON_SAND_TIMER = 219
-    ICON_220 = 220
-    ICON_221 = 221
-    ICON_222 = 222
-    ICON_223 = 223
-    ICON_224 = 224
-    ICON_225 = 225
-    ICON_226 = 226
-    ICON_227 = 227
-    ICON_228 = 228
+    ICON_WARNING = 220
+    ICON_HELP_BOX = 221
+    ICON_INFO_BOX = 222
+    ICON_PRIORITY = 223
+    ICON_LAYERS_ISO = 224
+    ICON_LAYERS2 = 225
+    ICON_MLAYERS = 226
+    ICON_MAPS = 227
+    ICON_HOT = 228
     ICON_229 = 229
     ICON_230 = 230
     ICON_231 = 231

@@ -63,8 +63,6 @@ def ctype_to_python_type(t):
 print("""from typing import Any
 
 
-def pointer(struct):
-    ...
 """)
 
 # These words can be used for c arg names, but not in python
@@ -137,7 +135,7 @@ for struct in ffi.list_types()[0]:
     # elif ffi.typeof(struct).kind == "enum":
     #    print(f"{struct}: int")
     else:
-        print("ERROR UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
+        print("WARNING: SKIPPING UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
 
 print("""
 LIGHTGRAY  : Color

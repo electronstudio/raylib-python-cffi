@@ -19,7 +19,7 @@ jobs:
         raylib-platform: ['Desktop', 'SDL']
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
@@ -34,7 +34,7 @@ jobs:
           sudo cmake --install .
 
       - name: Setup Python
-        uses: actions/setup-python@v2.2.2
+        uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
           python-version: ${{ matrix.python-version }}
@@ -106,7 +106,7 @@ jobs:
 #      MACOSX_DEPLOYMENT_TARGET: 11.0
 #    steps:
 #      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#      - uses: actions/checkout@v2
+#      - uses: actions/checkout@v4
 #        with:
 #          submodules: recursive
 #
@@ -121,7 +121,7 @@ jobs:
 #          sudo cmake --install .
 #
 #      - name: Setup Python
-#        uses: actions/setup-python@v2.2.2
+#        uses: actions/setup-python@v5
 #        with:
 #          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
 #          python-version: ${{ matrix.python-version }}
@@ -189,12 +189,12 @@ jobs:
         raylib-platform: ['Desktop', 'SDL', 'DRM']
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
       - name: Setup Python
-        uses: actions/setup-python@v2.2.2
+        uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
           python-version: ${{ matrix.python-version }}
@@ -272,7 +272,7 @@ jobs:
         python-version:  [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10' ]
         raylib-platform: ['Desktop', 'SDL']
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
@@ -289,7 +289,7 @@ jobs:
         run: echo SDL2_DIR=${{ runner.temp }}\SDL2\cmake >> $env:GITHUB_ENV
 
       - name: Setup Python
-        uses: actions/setup-python@v2.2.2
+        uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
           python-version: ${{ matrix.python-version }}
@@ -353,12 +353,12 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
       - name: Setup Python
-        uses: actions/setup-python@v2.2.2
+        uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
           python-version: '3.12'
@@ -400,12 +400,12 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
       - name: Setup Python
-        uses: actions/setup-python@v2.2.2
+        uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
           python-version: '3.12'
