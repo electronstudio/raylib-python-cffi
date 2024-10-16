@@ -8,6 +8,10 @@ pi_task:
       - image: dtcooper/raspberrypi-os:python3.11-bullseye
       - image: dtcooper/raspberrypi-os:python3.10-bullseye
       - image: dtcooper/raspberrypi-os:python3.9-bullseye
+  env:
+    matrix:
+      - RAYLIB_PLATFORM: "Desktop"
+      - RAYLIB_PLATFORM: "SDL"
   setup_script:
     - apt update
     - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev
