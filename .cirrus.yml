@@ -11,8 +11,11 @@ pi_task:
   env:
     matrix:
       - RAYLIB_PLATFORM: "Desktop"
+        RAYLIB_OPENGL: "2.1"
       - RAYLIB_PLATFORM: "SDL"
+        RAYLIB_OPENGL: "2.1"
       - RAYLIB_PLATFORM: "DRM"
+        RAYLIB_OPENGL: "ES2"
   setup_script:
     - apt update
     - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libgbm-dev libdrm-dev
@@ -37,9 +40,9 @@ pi_task:
     - cd raylib-c
     - mkdir build2
     - cd build2
-    - cmake -DPLATFORM=${RAYLIB_PLATFORM} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - cmake -DPLATFORM=${RAYLIB_PLATFORM} -DOPENGL_VERSION=${RAYLIB_OPENGL} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j2
-    - sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
+    - cp raylib/libraylib.a /usr/local/lib/libraylib.a
   build_script:
     - cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
     - cp physac/src/physac.h /usr/local/include/
