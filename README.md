@@ -60,6 +60,9 @@ Older MacOS requires building from source but this is usually simple:
     brew install raylib
     python3 -m pip install raylib==5.0.0.4
 
+(I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue
+if you want to test them.)
+
 ## Linux
 
 Binaries require OS newer than Ubuntu 2020, x64 or arm64.   Otherwise build from source.

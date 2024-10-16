@@ -30,9 +30,16 @@ pi_task:
     - cd raylib-c
     - mkdir build
     - cd build
-    - cmake -DPLATFORM=${RAYLIB_PLATFORM} -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j2
     - make install
+  build_raylib_again_script:
+    - cd raylib-c
+    - mkdir build2
+    - cd build2
+    - cmake -DPLATFORM=${RAYLIB_PLATFORM} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - make -j2
+    - sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
   build_script:
     - cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
     - cp physac/src/physac.h /usr/local/include/
