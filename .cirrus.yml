@@ -4,13 +4,13 @@
 pi_task:
   arm_container:
     matrix:
-      - image: dtcooper/raspberrypi-os:python-bullseye
+      - image: dtcooper/raspberrypi-os:python3.12-bullseye
       - image: dtcooper/raspberrypi-os:python3.11-bullseye
       - image: dtcooper/raspberrypi-os:python3.10-bullseye
       - image: dtcooper/raspberrypi-os:python3.9-bullseye
   setup_script:
     - apt update
-    - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+    - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev
   build_raylib_script:
     - git submodule update --init --recursive
     - cd raylib-c
@@ -28,6 +28,18 @@ pi_task:
     - python -m pip install --break-system-packages setuptools
     - python -m pip install --break-system-packages wheel
     - python setup.py bdist_wheel --plat-name manylinux2014_aarch64
+  test_script:
+    - python -m pip install --break-system-packages dist/*.whl
+    - cd /
+    - python -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+    - cat /tmp/output
+    - if grep -q "INFO: Initializing raylib" /tmp/output; then
+    -    echo "Passed"
+    -    exit 0
+    - else
+    -    echo "Failed"
+    -    exit 1
+    - fi
   artifacts:
     path: "dist/*"
 
