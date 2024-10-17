@@ -56,7 +56,6 @@ Example program:
         init_window(800, 450, "Raylib texture test")
         ...
 
-    (You don't need to use the PyRay() class anymore.)
 
 `See all examples here <https://github.com/electronstudio/raylib-python-cffi/tree/master/examples>`_
 

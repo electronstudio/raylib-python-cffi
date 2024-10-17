@@ -1227,6 +1227,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.color_to_hsv"><code class="docutils literal notranslate"><span class="pre">color_to_hsv()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.color_to_int"><code class="docutils literal notranslate"><span class="pre">color_to_int()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.compress_data"><code class="docutils literal notranslate"><span class="pre">compress_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.compute_crc32"><code class="docutils literal notranslate"><span class="pre">compute_crc32()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.compute_md5"><code class="docutils literal notranslate"><span class="pre">compute_md5()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.create_physics_body_circle"><code class="docutils literal notranslate"><span class="pre">create_physics_body_circle()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.create_physics_body_polygon"><code class="docutils literal notranslate"><span class="pre">create_physics_body_polygon()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.create_physics_body_rectangle"><code class="docutils literal notranslate"><span class="pre">create_physics_body_rectangle()</span></code></a></li>
@@ -1720,41 +1722,41 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_audio_device_ready"><code class="docutils literal notranslate"><span class="pre">is_audio_device_ready()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_audio_stream_playing"><code class="docutils literal notranslate"><span class="pre">is_audio_stream_playing()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_audio_stream_processed"><code class="docutils literal notranslate"><span class="pre">is_audio_stream_processed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_audio_stream_ready"><code class="docutils literal notranslate"><span class="pre">is_audio_stream_ready()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_audio_stream_valid"><code class="docutils literal notranslate"><span class="pre">is_audio_stream_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_cursor_hidden"><code class="docutils literal notranslate"><span class="pre">is_cursor_hidden()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_cursor_on_screen"><code class="docutils literal notranslate"><span class="pre">is_cursor_on_screen()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_file_dropped"><code class="docutils literal notranslate"><span class="pre">is_file_dropped()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_file_extension"><code class="docutils literal notranslate"><span class="pre">is_file_extension()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_file_name_valid"><code class="docutils literal notranslate"><span class="pre">is_file_name_valid()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_font_ready"><code class="docutils literal notranslate"><span class="pre">is_font_ready()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_font_valid"><code class="docutils literal notranslate"><span class="pre">is_font_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_gamepad_available"><code class="docutils literal notranslate"><span class="pre">is_gamepad_available()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_gamepad_button_down"><code class="docutils literal notranslate"><span class="pre">is_gamepad_button_down()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_gamepad_button_pressed"><code class="docutils literal notranslate"><span class="pre">is_gamepad_button_pressed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_gamepad_button_released"><code class="docutils literal notranslate"><span class="pre">is_gamepad_button_released()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_gamepad_button_up"><code class="docutils literal notranslate"><span class="pre">is_gamepad_button_up()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_gesture_detected"><code class="docutils literal notranslate"><span class="pre">is_gesture_detected()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_image_ready"><code class="docutils literal notranslate"><span class="pre">is_image_ready()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_image_valid"><code class="docutils literal notranslate"><span class="pre">is_image_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_key_down"><code class="docutils literal notranslate"><span class="pre">is_key_down()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_key_pressed"><code class="docutils literal notranslate"><span class="pre">is_key_pressed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_key_pressed_repeat"><code class="docutils literal notranslate"><span class="pre">is_key_pressed_repeat()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_key_released"><code class="docutils literal notranslate"><span class="pre">is_key_released()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_key_up"><code class="docutils literal notranslate"><span class="pre">is_key_up()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_material_ready"><code class="docutils literal notranslate"><span class="pre">is_material_ready()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_material_valid"><code class="docutils literal notranslate"><span class="pre">is_material_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_model_animation_valid"><code class="docutils literal notranslate"><span class="pre">is_model_animation_valid()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_model_ready"><code class="docutils literal notranslate"><span class="pre">is_model_ready()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_model_valid"><code class="docutils literal notranslate"><span class="pre">is_model_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_mouse_button_down"><code class="docutils literal notranslate"><span class="pre">is_mouse_button_down()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_mouse_button_pressed"><code class="docutils literal notranslate"><span class="pre">is_mouse_button_pressed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_mouse_button_released"><code class="docutils literal notranslate"><span class="pre">is_mouse_button_released()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_mouse_button_up"><code class="docutils literal notranslate"><span class="pre">is_mouse_button_up()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_music_ready"><code class="docutils literal notranslate"><span class="pre">is_music_ready()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_music_stream_playing"><code class="docutils literal notranslate"><span class="pre">is_music_stream_playing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_music_valid"><code class="docutils literal notranslate"><span class="pre">is_music_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_path_file"><code class="docutils literal notranslate"><span class="pre">is_path_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_render_texture_ready"><code class="docutils literal notranslate"><span class="pre">is_render_texture_ready()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_shader_ready"><code class="docutils literal notranslate"><span class="pre">is_shader_ready()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_render_texture_valid"><code class="docutils literal notranslate"><span class="pre">is_render_texture_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_shader_valid"><code class="docutils literal notranslate"><span class="pre">is_shader_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_sound_playing"><code class="docutils literal notranslate"><span class="pre">is_sound_playing()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_sound_ready"><code class="docutils literal notranslate"><span class="pre">is_sound_ready()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_texture_ready"><code class="docutils literal notranslate"><span class="pre">is_texture_ready()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.is_wave_ready"><code class="docutils literal notranslate"><span class="pre">is_wave_ready()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_sound_valid"><code class="docutils literal notranslate"><span class="pre">is_sound_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_texture_valid"><code class="docutils literal notranslate"><span class="pre">is_texture_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_wave_valid"><code class="docutils literal notranslate"><span class="pre">is_wave_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_window_focused"><code class="docutils literal notranslate"><span class="pre">is_window_focused()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_window_fullscreen"><code class="docutils literal notranslate"><span class="pre">is_window_fullscreen()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_window_hidden"><code class="docutils literal notranslate"><span class="pre">is_window_hidden()</span></code></a></li>
@@ -2369,7 +2371,6 @@
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>(You don’t need to use the PyRay() class anymore.)</p>
 </div>
 <p><a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/tree/master/examples">See all examples here</a></p>
 </section>
@@ -7525,6 +7526,18 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pyray.compute_crc32">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">compute_crc32</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#pyray.compute_crc32" title="Link to this definition"></a></dt>
+<dd><p>Compute CRC32 hash code</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyray.compute_md5">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">compute_md5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#pyray.compute_md5" title="Link to this definition"></a></dt>
+<dd><p>Compute MD5 hash code, returns static int[4] (16 bytes)</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pyray.create_physics_body_circle">
 <span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">create_physics_body_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Vector2" title="pyray.Vector2"><span class="pre">Vector2</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#pyray.create_physics_body_circle" title="Link to this definition"></a></dt>
 <dd><p>Creates a new circle physics body with generic parameters</p>
@@ -10336,9 +10349,9 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_audio_stream_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_audio_stream_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.AudioStream" title="pyray.AudioStream"><span class="pre">AudioStream</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_audio_stream_ready" title="Link to this definition"></a></dt>
-<dd><p>Checks if an audio stream is ready</p>
+<dt class="sig sig-object py" id="pyray.is_audio_stream_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_audio_stream_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.AudioStream" title="pyray.AudioStream"><span class="pre">AudioStream</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_audio_stream_valid" title="Link to this definition"></a></dt>
+<dd><p>Checks if an audio stream is valid (buffers initialized)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -10372,9 +10385,9 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_font_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_font_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Font" title="pyray.Font"><span class="pre">Font</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_font_ready" title="Link to this definition"></a></dt>
-<dd><p>Check if a font is ready</p>
+<dt class="sig sig-object py" id="pyray.is_font_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_font_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Font" title="pyray.Font"><span class="pre">Font</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_font_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if a font is valid (font data loaded, WARNING: GPU texture not checked)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -10414,9 +10427,9 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_image_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_image_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Image" title="pyray.Image"><span class="pre">Image</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_image_ready" title="Link to this definition"></a></dt>
-<dd><p>Check if an image is ready</p>
+<dt class="sig sig-object py" id="pyray.is_image_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_image_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Image" title="pyray.Image"><span class="pre">Image</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_image_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if an image is valid (data and parameters)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -10450,9 +10463,9 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_material_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_material_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Material" title="pyray.Material"><span class="pre">Material</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_material_ready" title="Link to this definition"></a></dt>
-<dd><p>Check if a material is ready</p>
+<dt class="sig sig-object py" id="pyray.is_material_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_material_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Material" title="pyray.Material"><span class="pre">Material</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_material_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if a material is valid (shader assigned, map textures loaded in GPU)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -10462,9 +10475,9 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_model_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_model_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Model" title="pyray.Model"><span class="pre">Model</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_model_ready" title="Link to this definition"></a></dt>
-<dd><p>Check if a model is ready</p>
+<dt class="sig sig-object py" id="pyray.is_model_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_model_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Model" title="pyray.Model"><span class="pre">Model</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_model_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if a model is valid (loaded in GPU, VAO/VBOs)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -10492,15 +10505,15 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_music_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_music_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Music" title="pyray.Music"><span class="pre">Music</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_music_ready" title="Link to this definition"></a></dt>
-<dd><p>Checks if a music stream is ready</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pyray.is_music_stream_playing">
 <span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_music_stream_playing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Music" title="pyray.Music"><span class="pre">Music</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_music_stream_playing" title="Link to this definition"></a></dt>
 <dd><p>Check if music is playing</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyray.is_music_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_music_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Music" title="pyray.Music"><span class="pre">Music</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_music_valid" title="Link to this definition"></a></dt>
+<dd><p>Checks if a music stream is valid (context and buffers initialized)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -10510,15 +10523,15 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_render_texture_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_render_texture_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.RenderTexture" title="pyray.RenderTexture"><span class="pre">RenderTexture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_render_texture_ready" title="Link to this definition"></a></dt>
-<dd><p>Check if a render texture is ready</p>
+<dt class="sig sig-object py" id="pyray.is_render_texture_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_render_texture_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.RenderTexture" title="pyray.RenderTexture"><span class="pre">RenderTexture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_render_texture_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if a render texture is valid (loaded in GPU)</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_shader_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_shader_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Shader" title="pyray.Shader"><span class="pre">Shader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_shader_ready" title="Link to this definition"></a></dt>
-<dd><p>Check if a shader is ready</p>
+<dt class="sig sig-object py" id="pyray.is_shader_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_shader_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Shader" title="pyray.Shader"><span class="pre">Shader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_shader_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if a shader is valid (loaded on GPU)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -10528,21 +10541,21 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_sound_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_sound_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Sound" title="pyray.Sound"><span class="pre">Sound</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_sound_ready" title="Link to this definition"></a></dt>
-<dd><p>Checks if a sound is ready</p>
+<dt class="sig sig-object py" id="pyray.is_sound_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_sound_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Sound" title="pyray.Sound"><span class="pre">Sound</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_sound_valid" title="Link to this definition"></a></dt>
+<dd><p>Checks if a sound is valid (data loaded and buffers initialized)</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_texture_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_texture_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Texture" title="pyray.Texture"><span class="pre">Texture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_texture_ready" title="Link to this definition"></a></dt>
-<dd><p>Check if a texture is ready</p>
+<dt class="sig sig-object py" id="pyray.is_texture_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_texture_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Texture" title="pyray.Texture"><span class="pre">Texture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_texture_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if a texture is valid (loaded in GPU)</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyray.is_wave_ready">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_wave_ready</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Wave" title="pyray.Wave"><span class="pre">Wave</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_wave_ready" title="Link to this definition"></a></dt>
-<dd><p>Checks if wave data is ready</p>
+<dt class="sig sig-object py" id="pyray.is_wave_valid">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_wave_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Wave" title="pyray.Wave"><span class="pre">Wave</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_wave_valid" title="Link to this definition"></a></dt>
+<dd><p>Checks if wave data is valid (data loaded and parameters)</p>
 </dd></dl>
 
 <dl class="py function">

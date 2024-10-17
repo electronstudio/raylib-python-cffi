@@ -163,6 +163,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.ColorToHSV"><code class="docutils literal notranslate"><span class="pre">ColorToHSV()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.ColorToInt"><code class="docutils literal notranslate"><span class="pre">ColorToInt()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.CompressData"><code class="docutils literal notranslate"><span class="pre">CompressData()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.ComputeCRC32"><code class="docutils literal notranslate"><span class="pre">ComputeCRC32()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.ComputeMD5"><code class="docutils literal notranslate"><span class="pre">ComputeMD5()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.ConfigFlags"><code class="docutils literal notranslate"><span class="pre">ConfigFlags</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.CreatePhysicsBodyCircle"><code class="docutils literal notranslate"><span class="pre">CreatePhysicsBodyCircle()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.CreatePhysicsBodyPolygon"><code class="docutils literal notranslate"><span class="pre">CreatePhysicsBodyPolygon()</span></code></a></li>
@@ -894,41 +896,41 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsAudioDeviceReady"><code class="docutils literal notranslate"><span class="pre">IsAudioDeviceReady()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsAudioStreamPlaying"><code class="docutils literal notranslate"><span class="pre">IsAudioStreamPlaying()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsAudioStreamProcessed"><code class="docutils literal notranslate"><span class="pre">IsAudioStreamProcessed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsAudioStreamReady"><code class="docutils literal notranslate"><span class="pre">IsAudioStreamReady()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsAudioStreamValid"><code class="docutils literal notranslate"><span class="pre">IsAudioStreamValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsCursorHidden"><code class="docutils literal notranslate"><span class="pre">IsCursorHidden()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsCursorOnScreen"><code class="docutils literal notranslate"><span class="pre">IsCursorOnScreen()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsFileDropped"><code class="docutils literal notranslate"><span class="pre">IsFileDropped()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsFileExtension"><code class="docutils literal notranslate"><span class="pre">IsFileExtension()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsFileNameValid"><code class="docutils literal notranslate"><span class="pre">IsFileNameValid()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsFontReady"><code class="docutils literal notranslate"><span class="pre">IsFontReady()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsFontValid"><code class="docutils literal notranslate"><span class="pre">IsFontValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsGamepadAvailable"><code class="docutils literal notranslate"><span class="pre">IsGamepadAvailable()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsGamepadButtonDown"><code class="docutils literal notranslate"><span class="pre">IsGamepadButtonDown()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsGamepadButtonPressed"><code class="docutils literal notranslate"><span class="pre">IsGamepadButtonPressed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsGamepadButtonReleased"><code class="docutils literal notranslate"><span class="pre">IsGamepadButtonReleased()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsGamepadButtonUp"><code class="docutils literal notranslate"><span class="pre">IsGamepadButtonUp()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsGestureDetected"><code class="docutils literal notranslate"><span class="pre">IsGestureDetected()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsImageReady"><code class="docutils literal notranslate"><span class="pre">IsImageReady()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsImageValid"><code class="docutils literal notranslate"><span class="pre">IsImageValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsKeyDown"><code class="docutils literal notranslate"><span class="pre">IsKeyDown()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsKeyPressed"><code class="docutils literal notranslate"><span class="pre">IsKeyPressed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsKeyPressedRepeat"><code class="docutils literal notranslate"><span class="pre">IsKeyPressedRepeat()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsKeyReleased"><code class="docutils literal notranslate"><span class="pre">IsKeyReleased()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsKeyUp"><code class="docutils literal notranslate"><span class="pre">IsKeyUp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsMaterialReady"><code class="docutils literal notranslate"><span class="pre">IsMaterialReady()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsMaterialValid"><code class="docutils literal notranslate"><span class="pre">IsMaterialValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsModelAnimationValid"><code class="docutils literal notranslate"><span class="pre">IsModelAnimationValid()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsModelReady"><code class="docutils literal notranslate"><span class="pre">IsModelReady()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsModelValid"><code class="docutils literal notranslate"><span class="pre">IsModelValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsMouseButtonDown"><code class="docutils literal notranslate"><span class="pre">IsMouseButtonDown()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsMouseButtonPressed"><code class="docutils literal notranslate"><span class="pre">IsMouseButtonPressed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsMouseButtonReleased"><code class="docutils literal notranslate"><span class="pre">IsMouseButtonReleased()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsMouseButtonUp"><code class="docutils literal notranslate"><span class="pre">IsMouseButtonUp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsMusicReady"><code class="docutils literal notranslate"><span class="pre">IsMusicReady()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsMusicStreamPlaying"><code class="docutils literal notranslate"><span class="pre">IsMusicStreamPlaying()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsMusicValid"><code class="docutils literal notranslate"><span class="pre">IsMusicValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsPathFile"><code class="docutils literal notranslate"><span class="pre">IsPathFile()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsRenderTextureReady"><code class="docutils literal notranslate"><span class="pre">IsRenderTextureReady()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsShaderReady"><code class="docutils literal notranslate"><span class="pre">IsShaderReady()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsRenderTextureValid"><code class="docutils literal notranslate"><span class="pre">IsRenderTextureValid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsShaderValid"><code class="docutils literal notranslate"><span class="pre">IsShaderValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsSoundPlaying"><code class="docutils literal notranslate"><span class="pre">IsSoundPlaying()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsSoundReady"><code class="docutils literal notranslate"><span class="pre">IsSoundReady()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsTextureReady"><code class="docutils literal notranslate"><span class="pre">IsTextureReady()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.IsWaveReady"><code class="docutils literal notranslate"><span class="pre">IsWaveReady()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsSoundValid"><code class="docutils literal notranslate"><span class="pre">IsSoundValid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsTextureValid"><code class="docutils literal notranslate"><span class="pre">IsTextureValid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsWaveValid"><code class="docutils literal notranslate"><span class="pre">IsWaveValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsWindowFocused"><code class="docutils literal notranslate"><span class="pre">IsWindowFocused()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsWindowFullscreen"><code class="docutils literal notranslate"><span class="pre">IsWindowFullscreen()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsWindowHidden"><code class="docutils literal notranslate"><span class="pre">IsWindowHidden()</span></code></a></li>
@@ -2665,6 +2667,18 @@ are very, very similar to the C originals.</p>
 <dt class="sig sig-object py" id="raylib.CompressData">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">CompressData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compDataSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#raylib.CompressData" title="Link to this definition"></a></dt>
 <dd><p>Compress data (DEFLATE algorithm), memory must be MemFree()</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.ComputeCRC32">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">ComputeCRC32</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.ComputeCRC32" title="Link to this definition"></a></dt>
+<dd><p>Compute CRC32 hash code</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.ComputeMD5">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">ComputeMD5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#raylib.ComputeMD5" title="Link to this definition"></a></dt>
+<dd><p>Compute MD5 hash code, returns static int[4] (16 bytes)</p>
 </dd></dl>
 
 <dl class="py data">
@@ -6687,9 +6701,9 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsAudioStreamReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsAudioStreamReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.AudioStream" title="pyray.AudioStream"><span class="pre">AudioStream</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsAudioStreamReady" title="Link to this definition"></a></dt>
-<dd><p>Checks if an audio stream is ready</p>
+<dt class="sig sig-object py" id="raylib.IsAudioStreamValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsAudioStreamValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.AudioStream" title="pyray.AudioStream"><span class="pre">AudioStream</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsAudioStreamValid" title="Link to this definition"></a></dt>
+<dd><p>Checks if an audio stream is valid (buffers initialized)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -6723,9 +6737,9 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsFontReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsFontReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Font" title="pyray.Font"><span class="pre">Font</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsFontReady" title="Link to this definition"></a></dt>
-<dd><p>Check if a font is ready</p>
+<dt class="sig sig-object py" id="raylib.IsFontValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsFontValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Font" title="pyray.Font"><span class="pre">Font</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsFontValid" title="Link to this definition"></a></dt>
+<dd><p>Check if a font is valid (font data loaded, WARNING: GPU texture not checked)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -6765,9 +6779,9 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsImageReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsImageReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Image" title="pyray.Image"><span class="pre">Image</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsImageReady" title="Link to this definition"></a></dt>
-<dd><p>Check if an image is ready</p>
+<dt class="sig sig-object py" id="raylib.IsImageValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsImageValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Image" title="pyray.Image"><span class="pre">Image</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsImageValid" title="Link to this definition"></a></dt>
+<dd><p>Check if an image is valid (data and parameters)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -6801,9 +6815,9 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsMaterialReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsMaterialReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Material" title="pyray.Material"><span class="pre">Material</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsMaterialReady" title="Link to this definition"></a></dt>
-<dd><p>Check if a material is ready</p>
+<dt class="sig sig-object py" id="raylib.IsMaterialValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsMaterialValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Material" title="pyray.Material"><span class="pre">Material</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsMaterialValid" title="Link to this definition"></a></dt>
+<dd><p>Check if a material is valid (shader assigned, map textures loaded in GPU)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -6813,9 +6827,9 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsModelReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsModelReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Model" title="pyray.Model"><span class="pre">Model</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsModelReady" title="Link to this definition"></a></dt>
-<dd><p>Check if a model is ready</p>
+<dt class="sig sig-object py" id="raylib.IsModelValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsModelValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Model" title="pyray.Model"><span class="pre">Model</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsModelValid" title="Link to this definition"></a></dt>
+<dd><p>Check if a model is valid (loaded in GPU, VAO/VBOs)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -6843,15 +6857,15 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsMusicReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsMusicReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Music" title="pyray.Music"><span class="pre">Music</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsMusicReady" title="Link to this definition"></a></dt>
-<dd><p>Checks if a music stream is ready</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="raylib.IsMusicStreamPlaying">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsMusicStreamPlaying</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Music" title="pyray.Music"><span class="pre">Music</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsMusicStreamPlaying" title="Link to this definition"></a></dt>
 <dd><p>Check if music is playing</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.IsMusicValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsMusicValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Music" title="pyray.Music"><span class="pre">Music</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsMusicValid" title="Link to this definition"></a></dt>
+<dd><p>Checks if a music stream is valid (context and buffers initialized)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -6861,15 +6875,15 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsRenderTextureReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsRenderTextureReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.RenderTexture" title="pyray.RenderTexture"><span class="pre">RenderTexture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsRenderTextureReady" title="Link to this definition"></a></dt>
-<dd><p>Check if a render texture is ready</p>
+<dt class="sig sig-object py" id="raylib.IsRenderTextureValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsRenderTextureValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.RenderTexture" title="pyray.RenderTexture"><span class="pre">RenderTexture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsRenderTextureValid" title="Link to this definition"></a></dt>
+<dd><p>Check if a render texture is valid (loaded in GPU)</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsShaderReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsShaderReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Shader" title="pyray.Shader"><span class="pre">Shader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsShaderReady" title="Link to this definition"></a></dt>
-<dd><p>Check if a shader is ready</p>
+<dt class="sig sig-object py" id="raylib.IsShaderValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsShaderValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Shader" title="pyray.Shader"><span class="pre">Shader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsShaderValid" title="Link to this definition"></a></dt>
+<dd><p>Check if a shader is valid (loaded on GPU)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -6879,21 +6893,21 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsSoundReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsSoundReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Sound" title="pyray.Sound"><span class="pre">Sound</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsSoundReady" title="Link to this definition"></a></dt>
-<dd><p>Checks if a sound is ready</p>
+<dt class="sig sig-object py" id="raylib.IsSoundValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsSoundValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Sound" title="pyray.Sound"><span class="pre">Sound</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsSoundValid" title="Link to this definition"></a></dt>
+<dd><p>Checks if a sound is valid (data loaded and buffers initialized)</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsTextureReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsTextureReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Texture" title="pyray.Texture"><span class="pre">Texture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsTextureReady" title="Link to this definition"></a></dt>
-<dd><p>Check if a texture is ready</p>
+<dt class="sig sig-object py" id="raylib.IsTextureValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsTextureValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Texture" title="pyray.Texture"><span class="pre">Texture</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsTextureValid" title="Link to this definition"></a></dt>
+<dd><p>Check if a texture is valid (loaded in GPU)</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.IsWaveReady">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsWaveReady</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Wave" title="pyray.Wave"><span class="pre">Wave</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsWaveReady" title="Link to this definition"></a></dt>
-<dd><p>Checks if wave data is ready</p>
+<dt class="sig sig-object py" id="raylib.IsWaveValid">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsWaveValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wave</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyray.html#pyray.Wave" title="pyray.Wave"><span class="pre">Wave</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsWaveValid" title="Link to this definition"></a></dt>
+<dd><p>Checks if wave data is valid (data loaded and parameters)</p>
 </dd></dl>
 
 <dl class="py function">

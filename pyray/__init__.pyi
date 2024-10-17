@@ -134,6 +134,12 @@ def color_to_int(color: Color,) -> int:
 def compress_data(data: str,dataSize: int,compDataSize: Any,) -> str:
         """Compress data (DEFLATE algorithm), memory must be MemFree()"""
         ...
+def compute_crc32(data: str,dataSize: int,) -> int:
+        """Compute CRC32 hash code"""
+        ...
+def compute_md5(data: str,dataSize: int,) -> Any:
+        """Compute MD5 hash code, returns static int[4] (16 bytes)"""
+        ...
 def create_physics_body_circle(pos: Vector2,radius: float,density: float,) -> Any:
         """Creates a new circle physics body with generic parameters"""
         ...
@@ -1229,8 +1235,8 @@ def is_audio_stream_playing(stream: AudioStream,) -> bool:
 def is_audio_stream_processed(stream: AudioStream,) -> bool:
         """Check if any audio stream buffers requires refill"""
         ...
-def is_audio_stream_ready(stream: AudioStream,) -> bool:
-        """Checks if an audio stream is ready"""
+def is_audio_stream_valid(stream: AudioStream,) -> bool:
+        """Checks if an audio stream is valid (buffers initialized)"""
         ...
 def is_cursor_hidden() -> bool:
         """Check if cursor is not visible"""
@@ -1247,8 +1253,8 @@ def is_file_extension(fileName: str,ext: str,) -> bool:
 def is_file_name_valid(fileName: str,) -> bool:
         """Check if fileName is valid for the platform/OS"""
         ...
-def is_font_ready(font: Font,) -> bool:
-        """Check if a font is ready"""
+def is_font_valid(font: Font,) -> bool:
+        """Check if a font is valid (font data loaded, WARNING: GPU texture not checked)"""
         ...
 def is_gamepad_available(gamepad: int,) -> bool:
         """Check if a gamepad is available"""
@@ -1268,8 +1274,8 @@ def is_gamepad_button_up(gamepad: int,button: int,) -> bool:
 def is_gesture_detected(gesture: int,) -> bool:
         """Check if a gesture have been detected"""
         ...
-def is_image_ready(image: Image,) -> bool:
-        """Check if an image is ready"""
+def is_image_valid(image: Image,) -> bool:
+        """Check if an image is valid (data and parameters)"""
         ...
 def is_key_down(key: int,) -> bool:
         """Check if a key is being pressed"""
@@ -1286,14 +1292,14 @@ def is_key_released(key: int,) -> bool:
 def is_key_up(key: int,) -> bool:
         """Check if a key is NOT being pressed"""
         ...
-def is_material_ready(material: Material,) -> bool:
-        """Check if a material is ready"""
+def is_material_valid(material: Material,) -> bool:
+        """Check if a material is valid (shader assigned, map textures loaded in GPU)"""
         ...
 def is_model_animation_valid(model: Model,anim: ModelAnimation,) -> bool:
         """Check model animation skeleton match"""
         ...
-def is_model_ready(model: Model,) -> bool:
-        """Check if a model is ready"""
+def is_model_valid(model: Model,) -> bool:
+        """Check if a model is valid (loaded in GPU, VAO/VBOs)"""
         ...
 def is_mouse_button_down(button: int,) -> bool:
         """Check if a mouse button is being pressed"""
@@ -1307,32 +1313,32 @@ def is_mouse_button_released(button: int,) -> bool:
 def is_mouse_button_up(button: int,) -> bool:
         """Check if a mouse button is NOT being pressed"""
         ...
-def is_music_ready(music: Music,) -> bool:
-        """Checks if a music stream is ready"""
-        ...
 def is_music_stream_playing(music: Music,) -> bool:
         """Check if music is playing"""
+        ...
+def is_music_valid(music: Music,) -> bool:
+        """Checks if a music stream is valid (context and buffers initialized)"""
         ...
 def is_path_file(path: str,) -> bool:
         """Check if a given path is a file or a directory"""
         ...
-def is_render_texture_ready(target: RenderTexture,) -> bool:
-        """Check if a render texture is ready"""
+def is_render_texture_valid(target: RenderTexture,) -> bool:
+        """Check if a render texture is valid (loaded in GPU)"""
         ...
-def is_shader_ready(shader: Shader,) -> bool:
-        """Check if a shader is ready"""
+def is_shader_valid(shader: Shader,) -> bool:
+        """Check if a shader is valid (loaded on GPU)"""
         ...
 def is_sound_playing(sound: Sound,) -> bool:
         """Check if a sound is currently playing"""
         ...
-def is_sound_ready(sound: Sound,) -> bool:
-        """Checks if a sound is ready"""
+def is_sound_valid(sound: Sound,) -> bool:
+        """Checks if a sound is valid (data loaded and buffers initialized)"""
         ...
-def is_texture_ready(texture: Texture,) -> bool:
-        """Check if a texture is ready"""
+def is_texture_valid(texture: Texture,) -> bool:
+        """Check if a texture is valid (loaded in GPU)"""
         ...
-def is_wave_ready(wave: Wave,) -> bool:
-        """Checks if wave data is ready"""
+def is_wave_valid(wave: Wave,) -> bool:
+        """Checks if wave data is valid (data loaded and parameters)"""
         ...
 def is_window_focused() -> bool:
         """Check if window is currently focused (only PLATFORM_DESKTOP)"""

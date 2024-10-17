@@ -2,7 +2,7 @@
 ## Libraries: raymath, raygui, rlgl, physac and GLFW
 ## Backends: Desktop, SDL, DRM, Web
 
-Chatroom: [Discord](https://discord.gg/fKDwt85aX6) or [Matrix](https://matrix.to/#/#raylib-python-cffi:matrix.org)
+Chatroom: [Discord](https://discord.gg/fKDwt85aX6)
 
 New CFFI API static bindings.
 * Automatically generated to be as close as possible to 
@@ -39,7 +39,8 @@ Then install
     python3 -m pip install setuptools
     python3 -m pip install raylib==5.0.0.4
 
-On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g. 
+On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from
+source, in which case you will need to have Raylib development libs installed, e.g. 
 using homebrew, apt, etc.
 
 ## Windows
@@ -68,7 +69,7 @@ if you want to test them.)
 Binaries require OS newer than Ubuntu 2020, x64 or arm64.   Otherwise build from source.
 (Pip should attempt automatically but will need Raylib itself installed and also pkg-config.)
 
-The arm64 builds are built on Raspberry Pi arm64 Bullseye
+The arm64 binaries are built on Raspberry Pi arm64 Bullseye with OpenGL 2.0
 so may not work on other boards.
 
 ## Raspberry Pi
@@ -79,6 +80,7 @@ so may not work on other boards.
 
 There is now a separate dynamic version of this binding:
 
+    python3 -m pip uninstall raylib
     python3 -m pip install raylib_dynamic
 
 It works on some systems where the static version doesn't, [but be sure to read these caveats before using it](https://electronstudio.github.io/raylib-python-cffi/dynamic.html)
@@ -106,22 +108,24 @@ You can't have multiple raylib packages installed at once.
 If it doesn't work, [try to build manually.](BUILDING.rst).  If that works then [submit an issue](https://github.com/electronstudio/raylib-python-cffi/issues)
 to let us know what you did.
 
-If you need help you can try asking [on Discord](https://discord.gg/raylib).
+If you need help you can try asking on [our discord](https://discord.gg/fKDwt85aX6).  There is also a large [Raylib discord](https://discord.gg/raylib)
+for issues that are not Python-specific.
 
 If it still doesn't work, [submit an issue](https://github.com/electronstudio/raylib-python-cffi/issues).
 
 
 # How to use
 
-There are two APIs, you can use either or both:
+There are two modules in the raylib package, `raylib` and `pyray`. (There is no separate package for
+pyray).  You can use either or both:
 
 ### If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API
 
-Use [the C API](https://electronstudio.github.io/raylib-python-cffi/raylib.html).
+Use [the raylib module](https://electronstudio.github.io/raylib-python-cffi/raylib.html).
 
-### If you prefer a slightly more Pythonistic API and don't mind it might be slightly slower
+### If you prefer a  more Pythonistic API
 
-Use [the Python API](https://electronstudio.github.io/raylib-python-cffi/pyray.html).
+Use [the pyray module](https://electronstudio.github.io/raylib-python-cffi/pyray.html).
 
 # Running in a web browser
 
