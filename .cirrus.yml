@@ -15,7 +15,7 @@ pi_task:
       - RAYLIB_PLATFORM: "SDL"
         RAYLIB_OPENGL: "2.1"
       - RAYLIB_PLATFORM: "DRM"
-        RAYLIB_OPENGL: "ES2"
+        RAYLIB_OPENGL: "ES 2.0"
   setup_script:
     - apt update
     - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libgbm-dev libdrm-dev
