@@ -29,9 +29,8 @@ current_module = __import__(__name__)
 
 
 def _underscore(word: str) -> str:
-    """
-    from inflection
-    """
+    word = re.sub('2D$', '_2d', word)
+    word = re.sub('3D$', '_3d', word)
     word = re.sub(r"([A-Z]+)([A-Z][a-z])", r'\1_\2', word)
     word = re.sub(r"([a-z\d])([A-Z])", r'\1_\2', word)
     word = word.replace("-", "_")
@@ -136,7 +135,7 @@ def _make_struct_constructor_function(struct):
 
 for name, attr in getmembers(rl):
     # print(name, attr)
-    uname = _underscore(name).replace('3_d', '_3d').replace('2_d', '_2d')
+    uname = _underscore(name)
     if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>" or str(
             type(attr)) == "<class '_cffi_backend._CDataBase'>":
         # print(attr.__call__)
