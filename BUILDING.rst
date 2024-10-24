@@ -38,7 +38,7 @@ project.
    If the Pip build doesn’t work, please submit a bug. (And if you have
    fixed it, a PR.)
 
-Manual instructions follow, but may be outdated, so see also how we actually build the wheels
+Manual instructions follow, but are probably outdated, so see instead how we actually build the wheels
 at https://github.com/electronstudio/raylib-python-cffi/blob/master/.github/workflows/build.yml
 
 Windows manual build

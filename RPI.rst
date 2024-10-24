@@ -12,7 +12,10 @@ We have published binary wheels compiled for 64-bit Raspberry OS Bullseye in X11
 
     python -m pip install --break-system-packages raylib
 
-If it doesn't work, or you're not on Bullseye, or you're 32 bit, or if you want to use Raylib in ``PLATFORM_DRM`` mode, you will need to compile your own raylib.  See below.
+Alternatively there is a DRM wheel called ``raylib_drm`` to use the framebuffer without X11.  You can't have both wheels
+installed at once.
+
+If it doesn't work, or you're not on Bullseye, or you're 32 bit, you will need to compile your own raylib.  See below.
 For full instructions on this, see https://github.com/raysan5/raylib/wiki/Working-on-Raspberry-Pi .  If you need help with this ask Raylib.
 
 Option 2: Compile Raylib from source X11 mode
@@ -39,7 +42,7 @@ Then have pip compile and install the wheel:
 ::
 
     python3 -m pip install --break-system-packages setuptools
-    python3 -m pip install --no-cache-dir --no-binary raylib --upgrade --force-reinstall --break-system-packages raylib==5.0.0.3
+    python3 -m pip install --no-cache-dir --no-binary raylib --upgrade --force-reinstall --break-system-packages raylib==5.0.0.4
 
 Option 3: Compile Raylib from source DRM mode
 ---------------------------------------------
@@ -82,7 +85,7 @@ Then have pip compile and install the wheel:
 ::
 
     python3 -m pip install --break-system-packages setuptools
-    python3 -m pip install --no-cache-dir --no-binary raylib --upgrade --force-reinstall --break-system-packages raylib==5.0.0.3
+    python3 -m pip install --no-cache-dir --no-binary raylib --upgrade --force-reinstall --break-system-packages raylib==5.0.0.4
 
 
 

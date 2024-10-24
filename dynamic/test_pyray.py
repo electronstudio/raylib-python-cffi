@@ -21,7 +21,7 @@ model.materials.maps[pr.MATERIAL_MAP_ALBEDO].texture = texture
 pr.unload_image(image)
 
 pos = pr.get_mouse_position()
-ray = pr.get_mouse_ray(pos, camera)
+ray = pr.get_screen_to_world_ray(pos, camera)
 
 
 while not pr.window_should_close():
@@ -36,6 +36,6 @@ while not pr.window_should_close():
     pr.end_drawing()
 
     pos = pr.get_mouse_position()
-    ray = pr.get_mouse_ray(pos, camera)
+    ray = pr.get_screen_to_world_ray(pos, camera)
 
 pr.close_window()

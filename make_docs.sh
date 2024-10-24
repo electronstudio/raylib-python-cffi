@@ -2,6 +2,7 @@
 
 echo "building and installing raylib"
 cd raylib-c
+rm -rf build
 mkdir build
 cd build
 cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
@@ -16,6 +17,7 @@ sudo cp ./raylib-c/src/rlgl.h /usr/local/include/
 sudo cp ./raylib-c/src/raymath.h /usr/local/include/
 sudo cp ./raygui/src/raygui.h /usr/local/include/
 sudo cp ./physac/src/physac.h /usr/local/include/
+sudo cp -r ./raylib-c/src/external/glfw/include/GLFW /usr/local/include/
 
 echo "building raylib_parser"
 
@@ -37,6 +39,7 @@ python3 raylib/build.py
 
 echo "creating enums.py"
 
+python3 -m pip install inflection --break-system-packages # TODO: venv
 python3 create_enums.py > raylib/enums.py
 python3 create_enums.py > dynamic/raylib/enums.py
 
@@ -56,7 +59,7 @@ python3 create_stub_static.py >raylib/__init__.pyi
 
 echo "installing sphinx modules"
 
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 pip3 install sphinx-autoapi myst_parser sphinx_rtd_theme
 
