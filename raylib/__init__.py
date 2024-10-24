@@ -12,12 +12,18 @@
 #
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
-from ._raylib_cffi import ffi, lib as rl
+import sys
+try:
+    from ._raylib_cffi import ffi, lib as rl
+except ModuleNotFoundError:
+    print("\n*** ERROR LOADING NATIVE CODE ***\n")
+    print("See https://github.com/electronstudio/raylib-python-cffi/issues/142\n", file=sys.stderr)
+    print("Your Python is: "+str(sys.implementation)+"\n", file=sys.stderr)
+    raise
 from raylib._raylib_cffi.lib import *
 from raylib.colors import *
 from raylib.defines import *
 import cffi
-import sys
 from .version import  __version__
 
 print("RAYLIB STATIC "+__version__+" LOADED", file=sys.stderr)
