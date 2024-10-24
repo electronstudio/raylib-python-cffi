@@ -2120,16 +2120,16 @@ def vector2_clamp(v: Vector2,min_1: Vector2,max_2: Vector2,) -> Vector2:
 def vector2_clamp_value(v: Vector2,min_1: float,max_2: float,) -> Vector2:
         """"""
         ...
-def vector_2distance(v1: Vector2,v2: Vector2,) -> float:
+def vector2_distance(v1: Vector2,v2: Vector2,) -> float:
         """"""
         ...
-def vector_2distance_sqr(v1: Vector2,v2: Vector2,) -> float:
+def vector2_distance_sqr(v1: Vector2,v2: Vector2,) -> float:
         """"""
         ...
-def vector_2divide(v1: Vector2,v2: Vector2,) -> Vector2:
+def vector2_divide(v1: Vector2,v2: Vector2,) -> Vector2:
         """"""
         ...
-def vector_2dot_product(v1: Vector2,v2: Vector2,) -> float:
+def vector2_dot_product(v1: Vector2,v2: Vector2,) -> float:
         """"""
         ...
 def vector2_equals(p: Vector2,q: Vector2,) -> int:
@@ -2219,16 +2219,16 @@ def vector3_cross_product(v1: Vector3,v2: Vector3,) -> Vector3:
 def vector3_cubic_hermite(v1: Vector3,tangent1: Vector3,v2: Vector3,tangent2: Vector3,amount: float,) -> Vector3:
         """"""
         ...
-def vector_3distance(v1: Vector3,v2: Vector3,) -> float:
+def vector3_distance(v1: Vector3,v2: Vector3,) -> float:
         """"""
         ...
-def vector_3distance_sqr(v1: Vector3,v2: Vector3,) -> float:
+def vector3_distance_sqr(v1: Vector3,v2: Vector3,) -> float:
         """"""
         ...
-def vector_3divide(v1: Vector3,v2: Vector3,) -> Vector3:
+def vector3_divide(v1: Vector3,v2: Vector3,) -> Vector3:
         """"""
         ...
-def vector_3dot_product(v1: Vector3,v2: Vector3,) -> float:
+def vector3_dot_product(v1: Vector3,v2: Vector3,) -> float:
         """"""
         ...
 def vector3_equals(p: Vector3,q: Vector3,) -> int:

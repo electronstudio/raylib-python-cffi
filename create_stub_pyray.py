@@ -14,6 +14,7 @@
 
 from pathlib import Path
 from raylib import rl, ffi
+from pyray import _underscore
 from inspect import ismethod, getmembers, isbuiltin
 import inflection, sys, json
 
@@ -69,7 +70,7 @@ print("""from typing import Any
 reserved_words = ("in", "list", "tuple", "set", "dict", "from", "range", "min", "max", "any", "all", "len")
 
 for name, attr in getmembers(rl):
-    uname = inflection.underscore(name).replace('3_d', '_3d').replace('2_d', '_2d')
+    uname = _underscore(name)
     if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>":
         json_object = known_functions.get(name, None)
         if json_object is None:
