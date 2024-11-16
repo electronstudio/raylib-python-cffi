@@ -1,4 +1,3 @@
-
 import pyray as ray
 
 
@@ -13,11 +12,11 @@ camera.position = ray.Vector3( 10.0, 10.0, 10.0 ) # Camera position
 camera.target = ray.Vector3( 0.0, 0.0, 0.0 )      # Camera looking at point
 camera.up = ray.Vector3( 0.0, 1.0, 0.0 )          # Camera up vector (rotation towards target)
 camera.fovy = 45.0                                # Camera field-of-view Y
-camera.projection = ray.CAMERA_PERSPECTIVE        # Camera mode type
+camera.projection = ray.CameraProjection.CAMERA_PERSPECTIVE        # Camera mode type
 
 model   = ray.load_model("resources/models/iqm/guy.iqm")                    # Load the animated model mesh and basic data
 texture = ray.load_texture("resources/models/iqm/guytex.png")         # Load model texture and set material
-ray.set_material_texture(model.materials, ray.MATERIAL_MAP_ALBEDO, texture)     # Set model material map texture
+ray.set_material_texture(model.materials, ray.MaterialMapIndex.MATERIAL_MAP_ALBEDO, texture)     # Set model material map texture
 
 position = ( 0., 0., 0. )            # Set model position
 
@@ -33,10 +32,10 @@ ray.set_target_fps(60)                   # Set our game to run at 60 frames-per-
 while not ray.window_should_close():        # Detect window close button or ESC key
 	# Update
 	#----------------------------------------------------------------------------------
-	ray.update_camera(camera, ray.CAMERA_FREE)
+	ray.update_camera(camera, ray.CameraMode.CAMERA_FREE)
 
 	# Play animation when spacebar is held down
-	if ray.is_key_down(ray.KEY_SPACE):
+	if ray.is_key_down(ray.KeyboardKey.KEY_SPACE):
 		anim_frame_counter+=1
 		ray.update_model_animation(model, anims[0], anim_frame_counter)
 		if anim_frame_counter >= anims[0].frameCount:

@@ -18,7 +18,7 @@ worldSpaceCamera.zoom = 1.0
 screenSpaceCamera = Camera2D([0]) # Smoothing camera
 screenSpaceCamera.zoom = 1.0
 
-target = load_render_texture(virtualScreenWidth, virtualScreenHeight); # This is where we'll draw all our objects.
+target = load_render_texture(virtualScreenWidth, virtualScreenHeight) # This is where we'll draw all our objects.
 
 rec01 = Rectangle(70.0, 35.0, 20.0, 20.0)
 rec02 = Rectangle(90.0, 55.0, 30.0, 10.0)
@@ -42,7 +42,7 @@ while not window_should_close(): # Detect window close button or ESC key
 
     # Update
 
-    rotation += 60.0 *get_frame_time();   # Rotate the rectangles, 60 degrees per second
+    rotation += 60.0 *get_frame_time()   # Rotate the rectangles, 60 degrees per second
 
     # Make the camera move to demonstrate the effect
     cameraX = (math.sin(get_time())*50.0) - 10.0

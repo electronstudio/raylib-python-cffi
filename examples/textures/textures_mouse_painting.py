@@ -4,16 +4,6 @@ raylib [texture] example - Mouse Painting
 
 """
 from pyray import *
-from raylib.colors import *
-from raylib import (
-    KEY_RIGHT,
-    KEY_LEFT,
-    MOUSE_BUTTON_LEFT,
-    KEY_C,
-    GESTURE_DRAG,
-    MOUSE_BUTTON_RIGHT,
-    KEY_S
-)
 
 MAX_COLORS_COUNT = 23  # Number of colors available
 
@@ -62,9 +52,9 @@ while not window_should_close():  # Detect window close button or ESC key
     mousePos = get_mouse_position()
 
     # Move between colors with keys
-    if is_key_pressed(KEY_RIGHT):
+    if is_key_pressed(KeyboardKey.KEY_RIGHT):
         colorSelected += 1
-    elif is_key_pressed(KEY_LEFT):
+    elif is_key_pressed(KeyboardKey.KEY_LEFT):
         colorSelected -= 1
 
     if colorSelected >= MAX_COLORS_COUNT:
@@ -80,7 +70,7 @@ while not window_should_close():  # Detect window close button or ESC key
         else:
             colorMouseHover = -1
 
-    if colorMouseHover >= 0 and is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+    if colorMouseHover >= 0 and is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
         colorSelected = colorMouseHover
         colorSelectedPrev = colorSelected
 
@@ -89,13 +79,13 @@ while not window_should_close():  # Detect window close button or ESC key
     if brushSize < 2: brushSize = 2
     if brushSize > 50: brushSize = 50
 
-    if is_key_pressed(KEY_C):
+    if is_key_pressed(KeyboardKey.KEY_C):
         # Clear render texture to clear color
         begin_texture_mode(target)
         clear_background(colors[0])
         end_texture_mode()
 
-    if is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or get_gesture_detected() == GESTURE_DRAG:
+    if is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT) or get_gesture_detected() == Gesture.GESTURE_DRAG:
 
         # Paint circle into render texture
         # NOTE: To avoid discontinuous circles, we could store
@@ -104,7 +94,7 @@ while not window_should_close():  # Detect window close button or ESC key
         if mousePos.y > 50:
             draw_circle(int(mousePos.x), int(mousePos.y), brushSize, colors[colorSelected])
         end_texture_mode()
-    if is_mouse_button_down(MOUSE_BUTTON_RIGHT):
+    if is_mouse_button_down(MouseButton.MOUSE_BUTTON_RIGHT):
 
         if not mouseWasPressed:
             colorSelectedPrev = colorSelected
@@ -117,7 +107,7 @@ while not window_should_close():  # Detect window close button or ESC key
         if mousePos.y > 50: draw_circle(int(mousePos.x), int(mousePos.y), brushSize, colors[0])
         end_texture_mode()
 
-    elif is_mouse_button_released(MOUSE_BUTTON_RIGHT) and mouseWasPressed:
+    elif is_mouse_button_released(MouseButton.MOUSE_BUTTON_RIGHT) and mouseWasPressed:
 
         colorSelected = colorSelectedPrev
         mouseWasPressed = False
@@ -130,7 +120,7 @@ while not window_should_close():  # Detect window close button or ESC key
 
     # Image saving logic
     # NOTE: Saving painted texture to a default named image
-    if (btnSaveMouseHover and is_mouse_button_released(MOUSE_BUTTON_LEFT)) or is_key_pressed(KEY_S):
+    if (btnSaveMouseHover and is_mouse_button_released(MouseButton.MOUSE_BUTTON_LEFT)) or is_key_pressed(KeyboardKey.KEY_S):
         image = load_image_from_texture(target.texture)
         image_flip_vertical(image)
         export_image(image, "my_amazing_texture_painting.png")
@@ -157,7 +147,7 @@ while not window_should_close():  # Detect window close button or ESC key
 
     # Draw drawing circle for reference
     if mousePos.y > 50:
-        if is_mouse_button_down(MOUSE_BUTTON_RIGHT):
+        if is_mouse_button_down(MouseButton.MOUSE_BUTTON_RIGHT):
             draw_circle_lines(int(mousePos.x), int(mousePos.y), brushSize, GRAY)
         else:
             draw_circle(get_mouse_x(), get_mouse_y(), brushSize, colors[colorSelected])

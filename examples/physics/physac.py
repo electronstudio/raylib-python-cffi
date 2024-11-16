@@ -2,13 +2,9 @@
 raylib [physac] example - physics demo
 """
 
-from pyray import Vector2
+
 from raylib import *
-from raylib.colors import (
-    BLACK,
-    GREEN,
-    WHITE
-)
+
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 450
@@ -18,10 +14,10 @@ InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, b'[physac] Basic demo')
 
 InitPhysics()
 
-floor = CreatePhysicsBodyRectangle(Vector2(SCREEN_WIDTH/2, SCREEN_HEIGHT), 500, 100, 10)
+floor = CreatePhysicsBodyRectangle((SCREEN_WIDTH/2, SCREEN_HEIGHT), 500, 100, 10)
 floor.enabled = False
 
-circle = CreatePhysicsBodyCircle(Vector2(SCREEN_WIDTH/2, SCREEN_HEIGHT/2), 45, 10)
+circle = CreatePhysicsBodyCircle((SCREEN_WIDTH/2, SCREEN_HEIGHT/2), 45, 10)
 circle.enabled = False
 
 SetTargetFPS(60)
@@ -34,10 +30,10 @@ while not WindowShouldClose():
     if IsKeyPressed(KEY_R):  # Reset physics system
         ResetPhysics()
 
-        floor = CreatePhysicsBodyRectangle(Vector2(SCREEN_WIDTH/2, SCREEN_HEIGHT), 500, 100, 10)
+        floor = CreatePhysicsBodyRectangle((SCREEN_WIDTH/2, SCREEN_HEIGHT), 500, 100, 10)
         floor.enabled = False
 
-        circle = CreatePhysicsBodyCircle(Vector2(SCREEN_WIDTH/2, SCREEN_HEIGHT/2), 45, 10)
+        circle = CreatePhysicsBodyCircle((SCREEN_WIDTH/2, SCREEN_HEIGHT/2), 45, 10)
         circle.enabled = False
 
     # Physics body creation inputs

@@ -4,20 +4,20 @@ import raylib as rl
 class LightSystem:
     MAX_LIGHTS = 4         #// Max dynamic lights supported by shader
     lightsCount = 0
-    lights = []
+    lights: list['Light'] = []
 
     def __init__(self, ambient = [ 0.2, 0.2, 0.2, 1.0 ], *ls):
         self.shader = rl.LoadShader(b"resources/shaders/fogLight.vs",
                             b"resources/shaders/fogLight.fs");
 
         #// Get some shader loactions
-        self.shader.locs[rl.SHADER_LOC_MATRIX_MODEL] = rl.GetShaderLocation(self.shader, b"matModel");
-        self.shader.locs[rl.SHADER_LOC_VECTOR_VIEW] = rl.GetShaderLocation(self.shader, b"viewPos");
+        self.shader.locs[rl.SHADER_LOC_MATRIX_MODEL] = rl.GetShaderLocation(self.shader, b"matModel")
+        self.shader.locs[rl.SHADER_LOC_VECTOR_VIEW] = rl.GetShaderLocation(self.shader, b"viewPos")
 
         #// ambient light level
-        self.ambientLoc = rl.GetShaderLocation(self.shader, b"ambient");
+        self.ambientLoc = rl.GetShaderLocation(self.shader, b"ambient")
         v = rl.ffi.new("struct Vector4 *", ambient)
-        rl.SetShaderValue(self.shader, self.ambientLoc, v, rl.SHADER_UNIFORM_VEC4);
+        rl.SetShaderValue(self.shader, self.ambientLoc, v, rl.SHADER_UNIFORM_VEC4)
 
         for light in ls:
             self.add(light)

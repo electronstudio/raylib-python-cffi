@@ -38,9 +38,9 @@ bunnies = []
 for i in range(0, MAX_BUNNIES):
     bunnies.append(Bunny())
 
-bunniesCount = 0;          # Bunnies counter
+bunniesCount = 0          # Bunnies counter
 
-SetTargetFPS(60);               # Set our game to run at 60 frames-per-second
+SetTargetFPS(60)               # Set our game to run at 60 frames-per-second
 #//--------------------------------------------------------------------------------------
 
 #// Main game loop
@@ -63,8 +63,8 @@ while not WindowShouldClose():    #// Detect window close button or ESC key
 
     # // Update bunnies
     for i in range(0, bunniesCount):
-        bunnies[i].position.x += bunnies[i].speed.x;
-        bunnies[i].position.y += bunnies[i].speed.y;
+        bunnies[i].position.x += bunnies[i].speed.x
+        bunnies[i].position.y += bunnies[i].speed.y
 
         if ((bunnies[i].position.x + texBunny.width/2) > GetScreenWidth()) or ((bunnies[i].position.x + texBunny.width/2) < 0):
             bunnies[i].speed.x *= -1
@@ -104,7 +104,7 @@ while not WindowShouldClose():    #// Detect window close button or ESC key
 #//--------------------------------------------------------------------------------------
 
 
-UnloadTexture(texBunny);   #Unload bunny texture
+UnloadTexture(texBunny)   #Unload bunny texture
 
 CloseWindow()              # Close window and OpenGL context
 #//--------------------------------------------------------------------------------------

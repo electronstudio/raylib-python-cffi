@@ -17,7 +17,6 @@ device = pyray.VrDeviceInfo(
     1200,                  # Vertical resolution in pixels
     0.133793,              # Horizontal size in meters
     0.0669,                # Vertical size in meters
-    0.04678,             # Screen center in meters
     0.041,         # Distance between eye and display in meters
     0.07,       # Lens separation distance in meters
     0.07,       # IPD (distance between pupils) in meters
@@ -35,15 +34,15 @@ config = pyray.load_vr_stereo_config(device)
 distortion = pyray.load_shader(pyray.ffi.NULL, f"resources/distortion{GLSL_VERSION}.fs")
 
 # Update distortion shader with lens and distortion-scale parameters
-pyray.set_shader_value(distortion, 2, pyray.ffi.new('char []', b"leftLensCenter"),  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"rightLensCenter"),  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"leftScreenCenter"),  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"rightScreenCenter"),  pyray.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2, pyray.ffi.new('char []', b"leftLensCenter"),  pyray.ShaderUniformDataType.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"rightLensCenter"),  pyray.ShaderUniformDataType.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"leftScreenCenter"),  pyray.ShaderUniformDataType.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"rightScreenCenter"),  pyray.ShaderUniformDataType.SHADER_UNIFORM_VEC2)
 
-pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"scale"),  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"scaleIn"),  pyray.SHADER_UNIFORM_VEC2)
-pyray.set_shader_value(distortion, 4,pyray.ffi.new('char []', b"deviceWarpParam"),  pyray.SHADER_UNIFORM_VEC4)
-pyray.set_shader_value(distortion, 4,pyray.ffi.new('char []', b"chromaAbParam"),  pyray.SHADER_UNIFORM_VEC4)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"scale"),  pyray.ShaderUniformDataType.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 2,pyray.ffi.new('char []', b"scaleIn"),  pyray.ShaderUniformDataType.SHADER_UNIFORM_VEC2)
+pyray.set_shader_value(distortion, 4,pyray.ffi.new('char []', b"deviceWarpParam"),  pyray.ShaderUniformDataType.SHADER_UNIFORM_VEC4)
+pyray.set_shader_value(distortion, 4,pyray.ffi.new('char []', b"chromaAbParam"),  pyray.ShaderUniformDataType.SHADER_UNIFORM_VEC4)
 
 # Initialize framebuffer for stereo rendering
 # NOTE: Screen size should match HMD aspect ratio
@@ -59,7 +58,7 @@ camera = pyray.Camera3D(
     pyray.Vector3(0.0, 2.0, 0.0),      # Camera looking at point
     pyray.Vector3(0.0, 1.0, 0.0),          # Camera up vector
     60.0,                               # Camera field-of-view Y
-    pyray.CAMERA_PERSPECTIVE       # Camera projection type
+    pyray.CameraProjection.CAMERA_PERSPECTIVE       # Camera projection type
 )
 
 cubePosition = pyray.Vector3(0.0, 0.0, 0.0)
@@ -71,7 +70,7 @@ pyray.set_target_fps(90)              # Set our game to run at 90 frames-per-sec
 # Main game loop
 while not pyray.window_should_close():     # Detect window close button or ESC key
     # Update
-    pyray.update_camera(camera, pyray.CAMERA_FIRST_PERSON)
+    pyray.update_camera(camera, pyray.CameraMode.CAMERA_FIRST_PERSON)
 
     # Draw
     pyray.begin_texture_mode(target)

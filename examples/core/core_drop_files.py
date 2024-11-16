@@ -11,12 +11,6 @@
 
 """
 import pyray
-from raylib.colors import (
-    RAYWHITE,
-    DARKGRAY,
-    LIGHTGRAY,
-    GRAY
-)
 
 screenWidth = 800
 screenHeight = 450
@@ -36,21 +30,21 @@ while not pyray.window_should_close():
 
     pyray.begin_drawing()
 
-    pyray.clear_background(RAYWHITE)
+    pyray.clear_background(pyray.RAYWHITE)
 
     if droppedFiles.count == 0:
-        pyray.draw_text("Drop your files to this window!", 100, 40, 20, DARKGRAY)
+        pyray.draw_text("Drop your files to this window!", 100, 40, 20, pyray.DARKGRAY)
     else:
-        pyray.draw_text("Dropped files:", 100, 40, 20, DARKGRAY)
+        pyray.draw_text("Dropped files:", 100, 40, 20, pyray.DARKGRAY)
 
     for i in range(0, droppedFiles.count):
         if i % 2 == 0:
-            pyray.draw_rectangle(0, 85 + 40*i, screenWidth, 40, pyray.fade(LIGHTGRAY, 0.5))
+            pyray.draw_rectangle(0, 85 + 40*i, screenWidth, 40, pyray.fade(pyray.LIGHTGRAY, 0.5))
         else:
-            pyray.draw_rectangle(0, 85 + 40*i, screenWidth, 40, pyray.fade(LIGHTGRAY, 0.3))
-        pyray.draw_text(droppedFiles.paths[i], 120, 100 + 40*i, 10, GRAY)
+            pyray.draw_rectangle(0, 85 + 40*i, screenWidth, 40, pyray.fade(pyray.LIGHTGRAY, 0.3))
+        pyray.draw_text(droppedFiles.paths[i], 120, 100 + 40*i, 10, pyray.GRAY)
 
-    pyray.draw_text("Drop new files...", 100, 110 + 40*droppedFiles.count, 20, DARKGRAY)
+    pyray.draw_text("Drop new files...", 100, 110 + 40*droppedFiles.count, 20, pyray.DARKGRAY)
     pyray.end_drawing()
 
 # De-Initialization

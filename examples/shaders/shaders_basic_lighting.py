@@ -48,7 +48,7 @@ screenWidth = 1200
 screenHeight = 720
 
 rl.SetConfigFlags(
-    rl.FLAG_MSAA_4X_HINT | rl.FLAG_WINDOW_RESIZABLE);  # Enable Multi Sampling Anti Aliasing 4x (if available)
+    rl.FLAG_MSAA_4X_HINT | rl.FLAG_WINDOW_RESIZABLE)  # Enable Multi Sampling Anti Aliasing 4x (if available)
 rl.InitWindow(screenWidth, screenHeight, b"raylib [shaders] example - basic lighting")
 
 camera = rl.ffi.new('struct Camera3D *', [

@@ -15,7 +15,7 @@ camera.position = Vector3(30.0, 20.0, 30.0)  # Camera position
 camera.target = Vector3(0.0, 0.0, 0.0)       # Camera looking at point
 camera.up = Vector3(0.0, 1.0, 0.0)           # Camera up vector (rotation towards target)
 camera.fovy = 70.0                           # Camera field-of-view Y
-camera.projection = pyray.CAMERA_PERSPECTIVE      # Camera projection type
+camera.projection = pyray.CameraProjection.CAMERA_PERSPECTIVE      # Camera projection type
 
 # Specify the amount of blocks in each direction
 numBlocks = 15
