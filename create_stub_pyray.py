@@ -29,6 +29,12 @@ for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), P
     for st in js["structs"]:
         if st["name"] not in known_structs:
             known_structs[st["name"]] = st
+    for e in js['enums']:
+        if e['name'] and e['values']:
+            print ("class "+e['name']+"(int):")
+            for value in e['values']:
+                print("    "+value['name']+" = "+str(value['value']))
+            print("")
 
 
 def ctype_to_python_type(t):
@@ -42,29 +48,39 @@ def ctype_to_python_type(t):
         return "int"
     elif t == "uint64_t":
         return "int"
+    elif t == "short":
+        return "int"
+    elif t == "unsigned short":
+        return "int"
     elif t == "double":
         return "float"
     elif "char * *" in t:
         return "list[str]"
     elif "char *" in t:
         return "str"
-    elif "char" in t:
+    elif t == "char":
         return "str"  # not sure about this one
+    elif t == "unsigned char":
+        return "int"
     elif "*" in t:
         return "Any"
+    elif "[" in t:
+        return "list" # TODO FIXME type of items in the list
     elif t.startswith("struct"):
         return t.replace("struct ", "")
     elif t.startswith("unsigned"):
         return t.replace("unsigned ", "")
+    elif t.startswith("enum"):
+        return t.replace("enum ", "")
     else:
         return t
 
 
 print("""from typing import Any
 
+import _cffi_backend # type: ignore
 
-def pointer(struct):
-    ...
+ffi: _cffi_backend.FFI
 """)
 
 # These words can be used for c arg names, but not in python
@@ -90,6 +106,8 @@ for name, attr in getmembers(rl):
                 if param_name in reserved_words:
                     param_name = param_name + "_" + str(i)
             param_type = ctype_to_python_type(arg.cname)
+            if "struct" in arg.cname:
+                param_type += "|list|tuple"
             sig += f"{param_name}: {param_type},"
 
         return_type = ffi.typeof(attr).result.cname
@@ -128,11 +146,14 @@ for struct in ffi.list_types()[0]:
         print(f'    """ struct """')
         sig = ""
         for arg in ffi.typeof(struct).fields:
-            sig += ", " + arg[0]
+            ptype = ctype_to_python_type(arg[1].type.cname)
+            if arg[1].type.kind == "struct":
+                ptype += "|list|tuple"
+            sig += f", {arg[0]}: {ptype}|None = None"
         print(f"    def __init__(self{sig}):")
 
         for arg in ffi.typeof(struct).fields:
-            print(f"        self.{arg[0]}={arg[0]}")
+            print(f"        self.{arg[0]}:{ctype_to_python_type(arg[1].type.cname)} = {arg[0]} # type: ignore")
 
     # elif ffi.typeof(struct).kind == "enum":
     #    print(f"{struct}: int")

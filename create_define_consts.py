@@ -45,8 +45,8 @@ def process(filename):
             strval = str(e['value']).strip()
             if strval.startswith("__"):
                 continue
-            if strval in known_enum:
-                print(e['name'] + " = raylib." + strval)
+            # if strval in known_enum:
+            #     print(e['name'] + " = raylib." + strval)
             elif strval in known_define:
                 print(e['name'] + " = " + strval)
             else:
