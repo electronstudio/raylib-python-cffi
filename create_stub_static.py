@@ -42,27 +42,35 @@ def ctype_to_python_type(t):
         return "int"
     elif t == "uint64_t":
         return "int"
+    elif t == "short":
+        return "int"
+    elif t == "unsigned short":
+        return "int"
     elif t == "double":
         return "float"
     elif "char * *" in t:
-        return "list[str]"
+        return "list[bytes]"
     elif "char *" in t:
-        return "str"
+        return "bytes"
     elif "char" in t:
-        return "str"  # not sure about this one
+        return "bytes"  # not sure about this one
     elif "*" in t:
         return "Any"
+    elif "[" in t:
+        return "list" # TODO FIXME type of items in the list
     elif t.startswith("struct"):
         return t.replace("struct ", "")
     elif t.startswith("unsigned"):
         return t.replace("unsigned ", "")
+    elif t.startswith("enum"):
+        return t.replace("enum ", "")
     else:
         return t
 
 
 print("""from typing import Any
 
-import _cffi_backend
+import _cffi_backend # type: ignore
 
 ffi: _cffi_backend.FFI
 rl: _cffi_backend.Lib
@@ -96,6 +104,8 @@ for name, attr in getmembers(rl):
                 if param_name in reserved_words:
                     param_name = param_name + "_" + str(i)
             param_type = ctype_to_python_type(arg.cname)
+            if "struct" in arg.cname:
+                param_type += "|list|tuple"
             sig += f"{param_name}: {param_type},"
 
         return_type = ffi.typeof(attr).result.cname
@@ -121,17 +131,22 @@ for struct in ffi.list_types()[0]:
         # if ffi.typeof(struct).fields is None:
         #     print("weird empty struct, skipping", file=sys.stderr)
         #     continue
-        print(f"{struct}: struct")
+        print(f"class {struct}:")
         # sig = ""
-        # for arg in ffi.typeof(struct).fields:
-        #     sig += ", " + arg[0]
+        fields = ffi.typeof(struct).fields
+        if fields is not None:
+            #print(ffi.typeof(struct).fields)
+        #print(f"    {arg}: {arg}")
         # print(f"        def __init__(self{sig}):")
         #
-        # for arg in ffi.typeof(struct).fields:
+            for arg in ffi.typeof(struct).fields:
+                print(f"    {arg[0]}: {ctype_to_python_type(arg[1].type.cname)}")
+        else:
+            print("    ...")
         #     print(f"            self.{arg[0]}={arg[0]}")
 
     elif ffi.typeof(struct).kind == "enum":
-        print(f"{struct}: int")
+        print(f"{struct} = int")
     else:
         print("ERROR UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
 
