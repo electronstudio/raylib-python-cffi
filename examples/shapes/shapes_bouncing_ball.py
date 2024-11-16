@@ -17,7 +17,7 @@ pyray.set_target_fps(60)
 # Main game loop
 while not pyray.window_should_close():
     # Update
-    if pyray.is_key_pressed(pyray.KEY_SPACE):
+    if pyray.is_key_pressed(pyray.KeyboardKey.KEY_SPACE):
         pause = not pause
 
     if not pause:

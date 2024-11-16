@@ -62,11 +62,11 @@ class EnvItem:
 
 
 def update_player(player, env_items, delta):
-    if pyray.is_key_down(pyray.KEY_LEFT):
+    if pyray.is_key_down(pyray.KeyboardKey.KEY_LEFT):
         player.position.x -= PLAYER_HOR_SPD * delta
-    if pyray.is_key_down(pyray.KEY_RIGHT):
+    if pyray.is_key_down(pyray.KeyboardKey.KEY_RIGHT):
         player.position.x += PLAYER_HOR_SPD * delta
-    if pyray.is_key_down(pyray.KEY_SPACE) and player.can_jump:
+    if pyray.is_key_down(pyray.KeyboardKey.KEY_SPACE) and player.can_jump:
         player.speed = -PLAYER_JUMP_SPD
         player.can_jump = False
 
@@ -264,11 +264,11 @@ while not pyray.window_should_close():  # Detect window close button or ESC key
     elif camera.zoom < 0.25:
         camera.zoom = 0.25
 
-    if pyray.is_key_pressed(pyray.KEY_R):
+    if pyray.is_key_pressed(pyray.KeyboardKey.KEY_R):
         camera.zoom = 1.0
         player.position = pyray.Vector2(400, 280)
 
-    if pyray.is_key_pressed(pyray.KEY_C):
+    if pyray.is_key_pressed(pyray.KeyboardKey.KEY_C):
         camera_option = (camera_option + 1) % camera_updaters_length
 
     # Call update camera function by its pointer

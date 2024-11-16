@@ -12,13 +12,6 @@
 #********************************************************************************************/
 
 import pyray
-from raylib.colors import (
-    RAYWHITE,
-    LIGHTGRAY,
-    DARKGRAY,
-    GOLD,
-    MAROON,
-)
 
 
 SCREEN_WIDTH = 800
@@ -50,17 +43,17 @@ while not pyray.window_should_close():  #// Detect window close button or ESC ke
     #// Draw
     #//----------------------------------------------------------------------------------
     pyray.begin_drawing()
-    pyray.clear_background(RAYWHITE)
+    pyray.clear_background(pyray.RAYWHITE)
 
-    pyray.draw_line(560,0,560,pyray.get_screen_height(),pyray.fade(LIGHTGRAY,0.6))
-    pyray.draw_rectangle(560,0,pyray.get_screen_width()-500,pyray.get_screen_height(),pyray.fade(LIGHTGRAY,0.3))
+    pyray.draw_line(560,0,560,pyray.get_screen_height(),pyray.fade(pyray.LIGHTGRAY,0.6))
+    pyray.draw_rectangle(560,0,pyray.get_screen_width()-500,pyray.get_screen_height(),pyray.fade(pyray.LIGHTGRAY,0.3))
 
     if drawRect:
-        pyray.draw_rectangle_rec(rec,pyray.fade(GOLD,0.6))
+        pyray.draw_rectangle_rec(rec,pyray.fade(pyray.GOLD,0.6))
     if drawRoundedRect:
-        pyray.draw_rectangle_rounded(rec,roundness,segments,pyray.fade(MAROON,0.2))
+        pyray.draw_rectangle_rounded(rec,roundness,segments,pyray.fade(pyray.MAROON,0.2))
     if drawRoundedLines:
-        pyray.draw_rectangle_rounded_lines(rec,roundness,segments,lineThick,pyray.fade(MAROON,0.4))
+        pyray.draw_rectangle_rounded_lines(rec,roundness,segments,pyray.fade(pyray.MAROON,0.4))
 
     #// Draw GUI controls
     #//------------------------------------------------------------------------------
@@ -79,7 +72,7 @@ while not pyray.window_should_close():  #// Detect window close button or ESC ke
     # drawRect = pyray.gui_check_box(pyray.Rectangle(640,380,20,20),"DrawRect",drawRect)
     #//------------------------------------------------------------------------------
 
-    pyray.draw_text( "MANUAL" if segments >= 4 else "AUTO" , 640, 280, 10, MAROON if segments >= 4 else DARKGRAY)
+    pyray.draw_text( "MANUAL" if segments >= 4 else "AUTO" , 640, 280, 10, pyray.MAROON if segments >= 4 else pyray.DARKGRAY)
     pyray.draw_fps(10,10)
     pyray.end_drawing()
     #//------------------------------------------------------------------------------

@@ -39,6 +39,8 @@ while not window_should_close():  # Detect window close button or ESC key
 
     clear_background(RAYWHITE)
 
+    texture.width
+
     draw_texture(texture, int(screenWidth/2 - texture.width/2), int(screenHeight/2 - texture.height/2), WHITE)
 
     draw_text("this IS a texture loaded from an image!", 300, 370, 10, GRAY)

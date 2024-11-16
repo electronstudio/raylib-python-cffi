@@ -27,13 +27,13 @@ def main():
             if frame_count > 120:
                 current_screen = GameScreen.TITLE
         elif current_screen == GameScreen.TITLE:
-            if is_key_pressed(KEY_ENTER) or is_gesture_detected(GESTURE_TAP):
+            if is_key_pressed(KeyboardKey.KEY_ENTER) or is_gesture_detected(Gesture.GESTURE_TAP):
                 current_screen = GameScreen.GAMEPLAY
         elif current_screen == GameScreen.GAMEPLAY:
-            if is_key_pressed(KEY_ENTER) or is_gesture_detected(GESTURE_TAP):
+            if is_key_pressed(KeyboardKey.KEY_ENTER) or is_gesture_detected(Gesture.GESTURE_TAP):
                 current_screen = GameScreen.ENDING
         elif current_screen == GameScreen.ENDING:
-            if is_key_pressed(KEY_ENTER) or is_gesture_detected(GESTURE_TAP):
+            if is_key_pressed(KeyboardKey.KEY_ENTER) or is_gesture_detected(Gesture.GESTURE_TAP):
                 current_screen = GameScreen.TITLE
 
         begin_drawing()
