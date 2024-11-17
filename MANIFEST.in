@@ -7,4 +7,6 @@ include raylib/*.h
 exclude raylib/*.c
 exclude raylib/*.o
 include version.py
+include raylib/py.typed
+include pyray/py.typed
 
