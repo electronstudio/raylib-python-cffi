@@ -11,11 +11,12 @@ cd ../..
 
 echo "installing raylib headers to /usr/local/include"
 
-sudo cp ./raylib-c/src/raylib.h /usr/local/include/
-sudo cp ./raylib-c/src/rlgl.h /usr/local/include/
-sudo cp ./raylib-c/src/raymath.h /usr/local/include/
-sudo cp ./raygui/src/raygui.h /usr/local/include/
-sudo cp ./physac/src/physac.h /usr/local/include/
+sudo cp -v ./raylib-c/src/raylib.h /usr/local/include/
+sudo cp -v ./raylib-c/src/rlgl.h /usr/local/include/
+sudo cp -v ./raylib-c/src/raymath.h /usr/local/include/
+sudo cp -v ./raygui/src/raygui.h /usr/local/include/
+sudo cp -v ./physac/src/physac.h /usr/local/include/
+sudo cp -rv raylib-c/src/external/glfw/include/GLFW  /usr/local/include
 
 echo "building raylib_parser"
 
@@ -49,13 +50,12 @@ python3 create_define_consts.py | awk '!seen[$0]++' > dynamic/raylib/defines.py
 echo "creating pyi files"
 
 python3 create_stub_pyray.py > pyray/__init__.pyi
-
 python3 create_stub_static.py >raylib/__init__.pyi
-
+python3 create_stub_static.py >dynamic/raylib/__init__.pyi
 
 echo "installing sphinx modules"
 
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 pip3 install sphinx-autoapi myst_parser sphinx_rtd_theme
 
