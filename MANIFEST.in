@@ -9,6 +9,7 @@ exclude raylib/*.c
 exclude raylib/*.o
 include version.py
 exclude tests/*
-
+include raylib/py.typed
+include pyray/py.typed
 
 

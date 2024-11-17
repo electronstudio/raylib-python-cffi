@@ -38,7 +38,6 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.7",
     ],
-    package_data={"raylib": ["py.typed"], "pyray": ["py.typed"]},
     packages=["raylib", "pyray"],
     include_package_data=True,
     setup_requires=["cffi>=1.17.1"],
