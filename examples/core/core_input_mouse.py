@@ -22,19 +22,19 @@ while not window_should_close():  # Detect window close button or ESC key
     # Update
     ball_position = get_mouse_position()
 
-    if is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+    if is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
         ball_color = MAROON
-    elif is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+    elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_MIDDLE):
         ball_color = LIME
-    elif is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+    elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_RIGHT):
         ball_color = DARKBLUE
-    elif is_mouse_button_pressed(MOUSE_BUTTON_SIDE):
+    elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_SIDE):
         ball_color = PURPLE
-    elif is_mouse_button_pressed(MOUSE_BUTTON_EXTRA):
+    elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_EXTRA):
         ball_color = YELLOW
-    elif is_mouse_button_pressed(MOUSE_BUTTON_FORWARD):
+    elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_FORWARD):
         ball_color = ORANGE
-    elif is_mouse_button_pressed(MOUSE_BUTTON_BACK):
+    elif is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_BACK):
         ball_color = BEIGE
     # Draw
     begin_drawing()

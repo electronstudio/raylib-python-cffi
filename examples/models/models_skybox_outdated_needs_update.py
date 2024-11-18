@@ -1,3 +1,4 @@
+#type: ignore
 import raylib as rl
 from raylib.colors import *
 

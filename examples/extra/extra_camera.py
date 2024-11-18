@@ -1,7 +1,7 @@
 # python3 -m pip install pyglm
 
 from math import sin, cos
-import glm
+import glm # type: ignore
 from raylib import rl, ffi
 
 

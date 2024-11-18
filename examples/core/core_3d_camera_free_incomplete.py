@@ -25,7 +25,7 @@ while not window_should_close():   # Detect window close button or ESC key
     # Update
     update_camera(camera, CameraMode.CAMERA_FREE)
 
-    if is_key_pressed(KEY_Z):
+    if is_key_pressed(KeyboardKey.KEY_Z):
         camera.target = Vector3(0.0, 0.0, 0.0)
 
     # Draw

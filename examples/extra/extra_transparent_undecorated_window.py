@@ -18,9 +18,9 @@ Mac:
 """
 
 import sys, time
-import glm
-import pytweening as tween
-import screeninfo
+import glm # type: ignore
+import pytweening as tween # type: ignore
+import screeninfo # type: ignore
 from raylib import rl, ffi
 from raylib.colors import *
 

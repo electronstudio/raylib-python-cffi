@@ -10,7 +10,7 @@ MAX_COLUMNS = 20
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 450
 
-pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT, b"raylib [core] example - 3d camera first person")
+pyray.init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - 3d camera first person")
 
 # Define the camera to look into our 3d world (position, target, up vector)
 camera = pyray.Camera3D()
@@ -18,24 +18,24 @@ camera.position = pyray.Vector3(4.0, 2.0, 4.0)
 camera.target = pyray.Vector3(0.0, 1.8, 0.0)
 camera.up = pyray.Vector3(0.0, 1.0, 0.0)
 camera.fovy = 60.0
-camera.projection = pyray.CAMERA_PERSPECTIVE
+camera.projection = pyray.CameraProjection.CAMERA_PERSPECTIVE
 
 # Generates some random columns
-heights = [None] * MAX_COLUMNS
-positions = [None] * MAX_COLUMNS
-colors = [None] * MAX_COLUMNS
+heights = []
+positions = []
+colors = []
 
 for i in range(MAX_COLUMNS):
-    heights[i] = pyray.get_random_value(1, 12) * 1.0
-    positions[i] = pyray.Vector3(pyray.get_random_value(-15, 15) * 1.0, heights[i]/2.0 * 1.0, pyray.get_random_value(-15, 15) * 1.0)
-    colors[i] = pyray.Color(pyray.get_random_value(20, 255), pyray.get_random_value(10, 55), 30, 255)
+    heights.append(pyray.get_random_value(1, 12) * 1.0)
+    positions.append(pyray.Vector3(pyray.get_random_value(-15, 15) * 1.0, heights[i]/2.0 * 1.0, pyray.get_random_value(-15, 15) * 1.0))
+    colors.append(pyray.Color(pyray.get_random_value(20, 255), pyray.get_random_value(10, 55), 30, 255))
 
 
 pyray.set_target_fps(60)                
 
 while not pyray.window_should_close():
 
-    pyray.update_camera(camera, pyray.CAMERA_FIRST_PERSON)
+    pyray.update_camera(camera, pyray.CameraMode.CAMERA_FIRST_PERSON)
 
     pyray.begin_drawing()
 

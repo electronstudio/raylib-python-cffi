@@ -57,18 +57,18 @@ while not pyray.window_should_close():  # Detect window close button or ESC key
     # Update
 
     # Player movement
-    if pyray.is_key_down(pyray.KEY_RIGHT):
+    if pyray.is_key_down(pyray.KeyboardKey.KEY_RIGHT):
         player.x += 2
-    elif pyray.is_key_down(pyray.KEY_LEFT):
+    elif pyray.is_key_down(pyray.KeyboardKey.KEY_LEFT):
         player.x -= 2
 
     # Camera target follows player
     camera.target = pyray.Vector2(player.x + 20, player.y + 20)
 
     # Camera rotation controls
-    if pyray.is_key_down(pyray.KEY_A):
+    if pyray.is_key_down(pyray.KeyboardKey.KEY_A):
         camera.rotation -= 1
-    elif pyray.is_key_down(pyray.KEY_S):
+    elif pyray.is_key_down(pyray.KeyboardKey.KEY_S):
         camera.rotation += 1
 
     # Limit camera rotation to 80 degrees (-40 to 40)
@@ -86,7 +86,7 @@ while not pyray.window_should_close():  # Detect window close button or ESC key
         camera.zoom = 0.1
 
     # Camera reset (zoom and rotation)
-    if pyray.is_key_pressed(pyray.KEY_R):
+    if pyray.is_key_pressed(pyray.KeyboardKey.KEY_R):
         camera.zoom = 1.0
         camera.rotation = 0.0
 
