@@ -1,22 +1,22 @@
 /**********************************************************************************************
 *
-*   raylib v5.5-dev - A simple and easy-to-use library to enjoy videogames programming (www.raylib.com)
+*   raylib v5.5 - A simple and easy-to-use library to enjoy videogames programming (www.raylib.com)
 *
 *   FEATURES:
 *       - NO external dependencies, all required libraries included with raylib
 *       - Multiplatform: Windows, Linux, FreeBSD, OpenBSD, NetBSD, DragonFly,
 *                        MacOS, Haiku, Android, Raspberry Pi, DRM native, HTML5.
 *       - Written in plain C code (C99) in PascalCase/camelCase notation
-*       - Hardware accelerated with OpenGL (1.1, 2.1, 3.3, 4.3 or ES2 - choose at compile)
+*       - Hardware accelerated with OpenGL (1.1, 2.1, 3.3, 4.3, ES2, ES3 - choose at compile)
 *       - Unique OpenGL abstraction layer (usable as standalone module): [rlgl]
-*       - Multiple Fonts formats supported (TTF, XNA fonts, AngelCode fonts)
+*       - Multiple Fonts formats supported (TTF, OTF, FNT, BDF, Sprite fonts)
 *       - Outstanding texture formats support, including compressed formats (DXT, ETC, ASTC)
 *       - Full 3d support for 3d Shapes, Models, Billboards, Heightmaps and more!
 *       - Flexible Materials system, supporting classic maps and PBR maps
-*       - Animated 3D models supported (skeletal bones animation) (IQM)
+*       - Animated 3D models supported (skeletal bones animation) (IQM, M3D, GLTF)
 *       - Shaders support, including Model shaders and Postprocessing shaders
 *       - Powerful math module for Vector, Matrix and Quaternion operations: [raymath]
-*       - Audio loading and playing with streaming support (WAV, OGG, MP3, FLAC, XM, MOD)
+*       - Audio loading and playing with streaming support (WAV, OGG, MP3, FLAC, QOA, XM, MOD)
 *       - VR stereo rendering with configurable HMD device parameters
 *       - Bindings to multiple programming languages available!
 *
@@ -27,29 +27,35 @@
 *       - One default RenderBatch is loaded on rlglInit()->rlLoadRenderBatch() [rlgl] (OpenGL 3.3 or ES2)
 *
 *   DEPENDENCIES (included):
-*       [rcore] rglfw (Camilla Löwy - github.com/glfw/glfw) for window/context management and input (PLATFORM_DESKTOP)
-*       [rlgl] glad (David Herberth - github.com/Dav1dde/glad) for OpenGL 3.3 extensions loading (PLATFORM_DESKTOP)
+*       [rcore][GLFW] rglfw (Camilla Löwy - github.com/glfw/glfw) for window/context management and input
+*       [rcore][RGFW] rgfw (ColleagueRiley - github.com/ColleagueRiley/RGFW) for window/context management and input
+*       [rlgl] glad/glad_gles2 (David Herberth - github.com/Dav1dde/glad) for OpenGL 3.3 extensions loading
 *       [raudio] miniaudio (David Reid - github.com/mackron/miniaudio) for audio device/context management
 *
 *   OPTIONAL DEPENDENCIES (included):
 *       [rcore] msf_gif (Miles Fogle) for GIF recording
 *       [rcore] sinfl (Micha Mettke) for DEFLATE decompression algorithm
 *       [rcore] sdefl (Micha Mettke) for DEFLATE compression algorithm
+*       [rcore] rprand (Ramon Snatamaria) for pseudo-random numbers generation
+*       [rtextures] qoi (Dominic Szablewski - https://phoboslab.org) for QOI image manage
 *       [rtextures] stb_image (Sean Barret) for images loading (BMP, TGA, PNG, JPEG, HDR...)
 *       [rtextures] stb_image_write (Sean Barret) for image writing (BMP, TGA, PNG, JPG)
-*       [rtextures] stb_image_resize (Sean Barret) for image resizing algorithms
+*       [rtextures] stb_image_resize2 (Sean Barret) for image resizing algorithms
+*       [rtextures] stb_perlin (Sean Barret) for Perlin Noise image generation
 *       [rtext] stb_truetype (Sean Barret) for ttf fonts loading
 *       [rtext] stb_rect_pack (Sean Barret) for rectangles packing
 *       [rmodels] par_shapes (Philip Rideout) for parametric 3d shapes generation
 *       [rmodels] tinyobj_loader_c (Syoyo Fujita) for models loading (OBJ, MTL)
 *       [rmodels] cgltf (Johannes Kuhlmann) for models loading (glTF)
-*       [rmodels] Model3D (bzt) for models loading (M3D, https://bztsrc.gitlab.io/model3d)
+*       [rmodels] m3d (bzt) for models loading (M3D, https://bztsrc.gitlab.io/model3d)
+*       [rmodels] vox_loader (Johann Nadalutti) for models loading (VOX)
 *       [raudio] dr_wav (David Reid) for WAV audio file loading
 *       [raudio] dr_flac (David Reid) for FLAC audio file loading
 *       [raudio] dr_mp3 (David Reid) for MP3 audio file loading
 *       [raudio] stb_vorbis (Sean Barret) for OGG audio loading
 *       [raudio] jar_xm (Joshua Reisenauer) for XM audio module loading
 *       [raudio] jar_mod (Joshua Reisenauer) for MOD audio module loading
+*       [raudio] qoa (Dominic Szablewski - https://phoboslab.org) for QOA audio manage
 *
 *
 *   LICENSE: zlib/libpng
@@ -700,8 +706,7 @@ typedef enum {
     CUBEMAP_LAYOUT_LINE_VERTICAL, // Layout is defined by a vertical line with faces
     CUBEMAP_LAYOUT_LINE_HORIZONTAL, // Layout is defined by a horizontal line with faces
     CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR, // Layout is defined by a 3x4 cross with cubemap faces
-    CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE, // Layout is defined by a 4x3 cross with cubemap faces
-    CUBEMAP_LAYOUT_PANORAMA // Layout is defined by a panorama image (equirrectangular map)
+    CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE // Layout is defined by a 4x3 cross with cubemap faces
 } CubemapLayout;
 // Font type, defines generation method
 typedef enum {
@@ -774,36 +779,36 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  bool WindowShouldClose(void); // Check if application should close (KEY_ESCAPE pressed or windows close icon clicked)
  bool IsWindowReady(void); // Check if window has been initialized successfully
  bool IsWindowFullscreen(void); // Check if window is currently fullscreen
- bool IsWindowHidden(void); // Check if window is currently hidden (only PLATFORM_DESKTOP)
- bool IsWindowMinimized(void); // Check if window is currently minimized (only PLATFORM_DESKTOP)
- bool IsWindowMaximized(void); // Check if window is currently maximized (only PLATFORM_DESKTOP)
- bool IsWindowFocused(void); // Check if window is currently focused (only PLATFORM_DESKTOP)
+ bool IsWindowHidden(void); // Check if window is currently hidden
+ bool IsWindowMinimized(void); // Check if window is currently minimized
+ bool IsWindowMaximized(void); // Check if window is currently maximized
+ bool IsWindowFocused(void); // Check if window is currently focused
  bool IsWindowResized(void); // Check if window has been resized last frame
  bool IsWindowState(unsigned int flag); // Check if one specific window flag is enabled
- void SetWindowState(unsigned int flags); // Set window configuration state using flags (only PLATFORM_DESKTOP)
+ void SetWindowState(unsigned int flags); // Set window configuration state using flags
  void ClearWindowState(unsigned int flags); // Clear window configuration state flags
- void ToggleFullscreen(void); // Toggle window state: fullscreen/windowed [resizes monitor to match window resolution] (only PLATFORM_DESKTOP)
- void ToggleBorderlessWindowed(void); // Toggle window state: borderless windowed [resizes window to match monitor resolution] (only PLATFORM_DESKTOP)
- void MaximizeWindow(void); // Set window state: maximized, if resizable (only PLATFORM_DESKTOP)
- void MinimizeWindow(void); // Set window state: minimized, if resizable (only PLATFORM_DESKTOP)
- void RestoreWindow(void); // Set window state: not minimized/maximized (only PLATFORM_DESKTOP)
- void SetWindowIcon(Image image); // Set icon for window (single image, RGBA 32bit, only PLATFORM_DESKTOP)
- void SetWindowIcons(Image *images, int count); // Set icon for window (multiple images, RGBA 32bit, only PLATFORM_DESKTOP)
- void SetWindowTitle(const char *title); // Set title for window (only PLATFORM_DESKTOP and PLATFORM_WEB)
- void SetWindowPosition(int x, int y); // Set window position on screen (only PLATFORM_DESKTOP)
+ void ToggleFullscreen(void); // Toggle window state: fullscreen/windowed, resizes monitor to match window resolution
+ void ToggleBorderlessWindowed(void); // Toggle window state: borderless windowed, resizes window to match monitor resolution
+ void MaximizeWindow(void); // Set window state: maximized, if resizable
+ void MinimizeWindow(void); // Set window state: minimized, if resizable
+ void RestoreWindow(void); // Set window state: not minimized/maximized
+ void SetWindowIcon(Image image); // Set icon for window (single image, RGBA 32bit)
+ void SetWindowIcons(Image *images, int count); // Set icon for window (multiple images, RGBA 32bit)
+ void SetWindowTitle(const char *title); // Set title for window
+ void SetWindowPosition(int x, int y); // Set window position on screen
  void SetWindowMonitor(int monitor); // Set monitor for the current window
  void SetWindowMinSize(int width, int height); // Set window minimum dimensions (for FLAG_WINDOW_RESIZABLE)
  void SetWindowMaxSize(int width, int height); // Set window maximum dimensions (for FLAG_WINDOW_RESIZABLE)
  void SetWindowSize(int width, int height); // Set window dimensions
- void SetWindowOpacity(float opacity); // Set window opacity [0.0f..1.0f] (only PLATFORM_DESKTOP)
- void SetWindowFocused(void); // Set window focused (only PLATFORM_DESKTOP)
+ void SetWindowOpacity(float opacity); // Set window opacity [0.0f..1.0f]
+ void SetWindowFocused(void); // Set window focused
  void *GetWindowHandle(void); // Get native window handle
  int GetScreenWidth(void); // Get current screen width
  int GetScreenHeight(void); // Get current screen height
  int GetRenderWidth(void); // Get current render width (it considers HiDPI)
  int GetRenderHeight(void); // Get current render height (it considers HiDPI)
  int GetMonitorCount(void); // Get number of connected monitors
- int GetCurrentMonitor(void); // Get current connected monitor
+ int GetCurrentMonitor(void); // Get current monitor where window is placed
  Vector2 GetMonitorPosition(int monitor); // Get specified monitor position
  int GetMonitorWidth(int monitor); // Get specified monitor width (current video mode used by monitor)
  int GetMonitorHeight(int monitor); // Get specified monitor height (current video mode used by monitor)
@@ -815,6 +820,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  const char *GetMonitorName(int monitor); // Get the human-readable, UTF-8 encoded name of the specified monitor
  void SetClipboardText(const char *text); // Set clipboard text content
  const char *GetClipboardText(void); // Get clipboard text content
+ Image GetClipboardImage(void); // Get clipboard image content
  void EnableEventWaiting(void); // Enable waiting for events on EndDrawing(), no automatic event polling
  void DisableEventWaiting(void); // Disable waiting for events on EndDrawing(), automatic events polling
 // Cursor-related functions
@@ -940,6 +946,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  unsigned char *DecodeDataBase64(const unsigned char *data, int *outputSize); // Decode Base64 string data, memory must be MemFree()
  unsigned int ComputeCRC32(unsigned char *data, int dataSize); // Compute CRC32 hash code
  unsigned int *ComputeMD5(unsigned char *data, int dataSize); // Compute MD5 hash code, returns static int[4] (16 bytes)
+ unsigned int *ComputeSHA1(unsigned char *data, int dataSize); // Compute SHA1 hash code, returns static int[5] (20 bytes)
 // Automation events functionality
  AutomationEventList LoadAutomationEventList(const char *fileName); // Load automation events list from file, NULL for empty list, capacity = MAX_AUTOMATION_EVENTS
  void UnloadAutomationEventList(AutomationEventList list); // Unload automation events list from file
@@ -954,7 +961,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
 //------------------------------------------------------------------------------------
 // Input-related functions: keyboard
  bool IsKeyPressed(int key); // Check if a key has been pressed once
- bool IsKeyPressedRepeat(int key); // Check if a key has been pressed again (Only PLATFORM_DESKTOP)
+ bool IsKeyPressedRepeat(int key); // Check if a key has been pressed again
  bool IsKeyDown(int key); // Check if a key is being pressed
  bool IsKeyReleased(int key); // Check if a key has been released once
  bool IsKeyUp(int key); // Check if a key is NOT being pressed
@@ -972,7 +979,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  int GetGamepadAxisCount(int gamepad); // Get gamepad axis count for a gamepad
  float GetGamepadAxisMovement(int gamepad, int axis); // Get axis movement value for a gamepad axis
  int SetGamepadMappings(const char *mappings); // Set internal gamepad mappings (SDL_GameControllerDB)
- void SetGamepadVibration(int gamepad, float leftMotor, float rightMotor); // Set gamepad vibration for both motors
+ void SetGamepadVibration(int gamepad, float leftMotor, float rightMotor, float duration); // Set gamepad vibration for both motors (duration in seconds)
 // Input-related functions: mouse
  bool IsMouseButtonPressed(int button); // Check if a mouse button has been pressed once
  bool IsMouseButtonDown(int button); // Check if a mouse button is being pressed
@@ -1000,7 +1007,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void SetGesturesEnabled(unsigned int flags); // Enable a set of gestures using flags
  bool IsGestureDetected(unsigned int gesture); // Check if a gesture have been detected
  int GetGestureDetected(void); // Get latest detected gesture
- float GetGestureHoldDuration(void); // Get gesture hold time in milliseconds
+ float GetGestureHoldDuration(void); // Get gesture hold time in seconds
  Vector2 GetGestureDragVector(void); // Get gesture drag vector
  float GetGestureDragAngle(void); // Get gesture drag angle
  Vector2 GetGesturePinchVector(void); // Get gesture pinch delta
@@ -1078,13 +1085,13 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  bool CheckCollisionRecs(Rectangle rec1, Rectangle rec2); // Check collision between two rectangles
  bool CheckCollisionCircles(Vector2 center1, float radius1, Vector2 center2, float radius2); // Check collision between two circles
  bool CheckCollisionCircleRec(Vector2 center, float radius, Rectangle rec); // Check collision between circle and rectangle
+ bool CheckCollisionCircleLine(Vector2 center, float radius, Vector2 p1, Vector2 p2); // Check if circle collides with a line created betweeen two points [p1] and [p2]
  bool CheckCollisionPointRec(Vector2 point, Rectangle rec); // Check if point is inside rectangle
  bool CheckCollisionPointCircle(Vector2 point, Vector2 center, float radius); // Check if point is inside circle
  bool CheckCollisionPointTriangle(Vector2 point, Vector2 p1, Vector2 p2, Vector2 p3); // Check if point is inside a triangle
+ bool CheckCollisionPointLine(Vector2 point, Vector2 p1, Vector2 p2, int threshold); // Check if point belongs to line created between two points [p1] and [p2] with defined margin in pixels [threshold]
  bool CheckCollisionPointPoly(Vector2 point, const Vector2 *points, int pointCount); // Check if point is within a polygon described by array of vertices
  bool CheckCollisionLines(Vector2 startPos1, Vector2 endPos1, Vector2 startPos2, Vector2 endPos2, Vector2 *collisionPoint); // Check the collision between two lines defined by two points each, returns collision point by reference
- bool CheckCollisionPointLine(Vector2 point, Vector2 p1, Vector2 p2, int threshold); // Check if point belongs to line created between two points [p1] and [p2] with defined margin in pixels [threshold]
- bool CheckCollisionCircleLine(Vector2 center, float radius, Vector2 p1, Vector2 p2); // Check if circle collides with a line created betweeen two points [p1] and [p2]
  Rectangle GetCollisionRec(Rectangle rec1, Rectangle rec2); // Get collision rectangle for two rectangles collision
 //------------------------------------------------------------------------------------
 // Texture Loading and Drawing Functions (Module: textures)
@@ -1350,11 +1357,11 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, char *text); // FileI
  void SetModelMeshMaterial(Model *model, int meshId, int materialId); // Set material for a mesh
 // Model animations loading/unloading functions
  ModelAnimation *LoadModelAnimations(const char *fileName, int *animCount); // Load model animations from file
- void UpdateModelAnimation(Model model, ModelAnimation anim, int frame); // Update model animation pose
+ void UpdateModelAnimation(Model model, ModelAnimation anim, int frame); // Update model animation pose (CPU)
+ void UpdateModelAnimationBones(Model model, ModelAnimation anim, int frame); // Update model animation mesh bone matrices (GPU skinning)
  void UnloadModelAnimation(ModelAnimation anim); // Unload animation data
  void UnloadModelAnimations(ModelAnimation *animations, int animCount); // Unload animation array data
  bool IsModelAnimationValid(Model model, ModelAnimation anim); // Check model animation skeleton match
- void UpdateModelAnimationBoneMatrices(Model model, ModelAnimation anim, int frame); // Update model animation mesh bone matrices (Note GPU skinning does not work on Mac)
 // Collision detection functions
  bool CheckCollisionSpheres(Vector3 center1, float radius1, Vector3 center2, float radius2); // Check collision between two spheres
  bool CheckCollisionBoxes(BoundingBox box1, BoundingBox box2); // Check collision between two bounding boxes
