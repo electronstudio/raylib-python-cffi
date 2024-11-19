@@ -1,22 +1,26 @@
 # Python Bindings for Raylib 5.5
 ## Libraries: raymath, raygui, rlgl, physac and GLFW
 ## Backends: Desktop, SDL, DRM, Web
+## Platforms: Windows, Mac, Linux, Raspberry Pi, Web
 
 Chatroom: [Discord](https://discord.gg/fKDwt85aX6)
 
-New CFFI API static bindings.
+[HELP WANTED: writing examples](https://github.com/electronstudio/raylib-python-cffi/issues/155)
+
+* CFFI API static bindings.
 * Automatically generated to be as close as possible to 
 original Raylib.
 * Faster, fewer bugs and easier to maintain than ctypes.
 * Commercial-friendly license.
 * Docstrings and auto-completion.
+* Type checking with Mypy
 
 
 [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
 
 # Quickstart
 
-`pip3 install raylib==5.0.0.4`
+`pip3 install raylib==5.5.0.0`
 ```python
 from pyray import *
 init_window(800, 450, "Hello")
@@ -37,7 +41,7 @@ First make sure you have the latest pip installed:
 Then install
 
     python3 -m pip install setuptools
-    python3 -m pip install raylib==5.0.0.4
+    python3 -m pip install raylib==5.5.0.0
 
 On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from
 source, in which case you will need to have Raylib development libs installed, e.g. 
@@ -59,7 +63,7 @@ Older MacOS requires building from source but this is usually simple:
 
     brew install pkg-config
     brew install raylib
-    python3 -m pip install raylib==5.0.0.4
+    python3 -m pip install raylib==5.5.0.0
 
 (I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue
 if you want to test them.)
@@ -76,6 +80,8 @@ so may not work on other boards.
 
 [Using on Rasperry Pi](RPI.rst)
 
+# Backends
+
 ## Dynamic binding version
 
 There is now a separate dynamic version of this binding:
@@ -84,6 +90,8 @@ There is now a separate dynamic version of this binding:
     python3 -m pip install raylib_dynamic
 
 It works on some systems where the static version doesn't, [but be sure to read these caveats before using it](https://electronstudio.github.io/raylib-python-cffi/dynamic.html)
+
+You can't have multiple raylib packages installed at once.
 
 ## SDL backend
 
@@ -116,52 +124,62 @@ If it still doesn't work, [submit an issue](https://github.com/electronstudio/ra
 
 # How to use
 
-There are two modules in the raylib package, `raylib` and `pyray`. (There is no separate package for
-pyray).  You can use either or both:
+There are *two* modules in the raylib package, `raylib` and `pyray`. (There is no separate package for
+pyray.  Do *not* `pip install pyray`).  You can use either or both:
 
 ### If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API
 
 Use [the raylib module](https://electronstudio.github.io/raylib-python-cffi/raylib.html).
 
-### If you prefer a  more Pythonistic API
+### If you prefer a more Pythonistic API
 
 Use [the pyray module](https://electronstudio.github.io/raylib-python-cffi/pyray.html).
 
 # Running in a web browser
 
-[Pygbag](https://pypi.org/project/pygbag/) >=0.8.7 supports running in a web browser.
+[Pygbag](https://pypi.org/project/pygbag/) >=0.8.7 supports running in a web browser.  Usually the latest git version
+is recommended.
 
 Make a folder `my_project` with a file `main.py`:
 
-    # /// script
-    # dependencies = [
-    #     "cffi",
-    #     "raylib"
-    # ]
-    # ///
-    import asyncio
-    import platform
-    from pyray import *
+```python
+# /// script
+# dependencies = [
+#     "cffi",
+#     "raylib"
+# ]
+# ///
+import asyncio
+import platform
+from pyray import *
 
-    async def main():   # You must have an async main function
-        init_window(500, 500, "Hello")
-        platform.window.window_resize()  # You must add this line
-        while not window_should_close():
-            begin_drawing()
-            clear_background(WHITE)
-            draw_text("Hello world", 190, 200, 20, VIOLET)
-            end_drawing()
-            await asyncio.sleep(0) # You must call this in your main loop
-        close_window()
+async def main():   # You MUST have an async main function
+    init_window(500, 500, "Hello")
+    platform.window.window_resize()  # You MAY want to add this line
+    while not window_should_close():
+        begin_drawing()
+        clear_background(WHITE)
+        draw_text("Hello world", 190, 200, 20, VIOLET)
+        end_drawing()
+        await asyncio.sleep(0) # You MUST call this in your main loop
+    close_window()
 
-    asyncio.run(main())
+asyncio.run(main())
+```
 
 Then to create the web files and launch a web server:
 
     python3.12 -m pip install --user --upgrade pygbag
-    python3.12 -m pygbag --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl my_project
+    python3.12 -m pygbag --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl --git my_project
 
 Point your browser to http://localhost:8000
+
+Some features may not work, so you can disable them like this:
+
+```python
+if platform.system() != "Emscripten":  # audio does not work on current version of emscripten
+    init_audio_device()
+```
 
 This is all done by Pygbag rather than by me, so you should probably contact them with any issues.
 Carefully read all their [documentation](https://pygame-web.github.io/).
@@ -170,9 +188,19 @@ It does work for most of [these examples](https://electronstudio.github.io/rayli
 
 # App showcase
 
+[Tempest-raylib](https://github.com/Emtyloc/tempest-raylib)
+
+[KarabinerKeyboard](https://github.com/bilbofroggins/KarabinerKeyboard)
+
+[PyTaiko](https://github.com/Yonokid/PyTaiko)
+
+[DOOM-Clone](https://github.com/StanislavPetrovV/DOOM-Clone)
+
 [Tanki](https://github.com/pkulev/tanki)
 
 [Alloy Bloxel Editor](https://pebaz.itch.io/alloy-bloxel-editor)
+
+[Eidolon](https://github.com/Miou-zora/Eidolon)
 
 Add your app here!
 

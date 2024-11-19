@@ -48,6 +48,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Python Bindings for Raylib 5.5</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#libraries-raymath-raygui-rlgl-physac-and-glfw">Libraries: raymath, raygui, rlgl, physac and GLFW</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backends-desktop-sdl-drm-web">Backends: Desktop, SDL, DRM, Web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#platforms-windows-mac-linux-raspberry-pi-web">Platforms: Windows, Mac, Linux, Raspberry Pi, Web</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#quickstart">Quickstart</a></li>
@@ -56,6 +57,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#macos">MacOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#raspberry-pi">Raspberry Pi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#backends">Backends</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dynamic-binding-version">Dynamic binding version</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sdl-backend">SDL backend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#drm-backend">DRM backend</a></li>
@@ -64,7 +68,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#how-to-use">How to use</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api">If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#if-you-prefer-a-more-pythonistic-api">If you prefer a  more Pythonistic API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#if-you-prefer-a-more-pythonistic-api">If you prefer a more Pythonistic API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#running-in-a-web-browser">Running in a web browser</a></li>
@@ -116,21 +120,26 @@
 </section>
 <section id="backends-desktop-sdl-drm-web">
 <h2>Backends: Desktop, SDL, DRM, Web<a class="headerlink" href="#backends-desktop-sdl-drm-web" title="Link to this heading"></a></h2>
+</section>
+<section id="platforms-windows-mac-linux-raspberry-pi-web">
+<h2>Platforms: Windows, Mac, Linux, Raspberry Pi, Web<a class="headerlink" href="#platforms-windows-mac-linux-raspberry-pi-web" title="Link to this heading"></a></h2>
 <p>Chatroom: <a class="reference external" href="https://discord.gg/fKDwt85aX6">Discord</a></p>
-<p>New CFFI API static bindings.</p>
+<p><a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues/155">HELP WANTED: writing examples</a></p>
 <ul class="simple">
+<li><p>CFFI API static bindings.</p></li>
 <li><p>Automatically generated to be as close as possible to
 original Raylib.</p></li>
 <li><p>Faster, fewer bugs and easier to maintain than ctypes.</p></li>
 <li><p>Commercial-friendly license.</p></li>
 <li><p>Docstrings and auto-completion.</p></li>
+<li><p>Type checking with Mypy</p></li>
 </ul>
 <p><a class="reference external" href="http://electronstudio.github.io/raylib-python-cffi">Full documentation</a></p>
 </section>
 </section>
 <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==5.0.0.4</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==5.5.0.0</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyray</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">init_window</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>
@@ -150,7 +159,7 @@ original Raylib.</p></li>
 </div>
 <p>Then install</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install setuptools
-python3 -m pip install raylib==5.0.0.4
+python3 -m pip install raylib==5.5.0.0
 </pre></div>
 </div>
 <p>On most platforms it should install a binary wheel.  If yours isn’t available then pip will attempt to build from
@@ -171,7 +180,7 @@ using homebrew, apt, etc.</p>
 <p>Older MacOS requires building from source but this is usually simple:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>brew install pkg-config
 brew install raylib
-python3 -m pip install raylib==5.0.0.4
+python3 -m pip install raylib==5.5.0.0
 </pre></div>
 </div>
 <p>(I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue
@@ -188,6 +197,9 @@ so may not work on other boards.</p>
 <h2>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="RPI.html"><span class="std std-doc">Using on Rasperry Pi</span></a></p>
 </section>
+</section>
+<section id="backends">
+<h1>Backends<a class="headerlink" href="#backends" title="Link to this heading"></a></h1>
 <section id="dynamic-binding-version">
 <h2>Dynamic binding version<a class="headerlink" href="#dynamic-binding-version" title="Link to this heading"></a></h2>
 <p>There is now a separate dynamic version of this binding:</p>
@@ -196,6 +208,7 @@ python3 -m pip install raylib_dynamic
 </pre></div>
 </div>
 <p>It works on some systems where the static version doesn’t, <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/dynamic.html">but be sure to read these caveats before using it</a></p>
+<p>You can’t have multiple raylib packages installed at once.</p>
 </section>
 <section id="sdl-backend">
 <h2>SDL backend<a class="headerlink" href="#sdl-backend" title="Link to this heading"></a></h2>
@@ -226,59 +239,70 @@ for issues that are not Python-specific.</p>
 </section>
 <section id="how-to-use">
 <h1>How to use<a class="headerlink" href="#how-to-use" title="Link to this heading"></a></h1>
-<p>There are two modules in the raylib package, <code class="docutils literal notranslate"><span class="pre">raylib</span></code> and <code class="docutils literal notranslate"><span class="pre">pyray</span></code>. (There is no separate package for
-pyray).  You can use either or both:</p>
+<p>There are <em>two</em> modules in the raylib package, <code class="docutils literal notranslate"><span class="pre">raylib</span></code> and <code class="docutils literal notranslate"><span class="pre">pyray</span></code>. (There is no separate package for
+pyray.  Do <em>not</em> <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyray</span></code>).  You can use either or both:</p>
 <section id="if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api">
 <h2>If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API<a class="headerlink" href="#if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api" title="Link to this heading"></a></h2>
 <p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/raylib.html">the raylib module</a>.</p>
 </section>
 <section id="if-you-prefer-a-more-pythonistic-api">
-<h2>If you prefer a  more Pythonistic API<a class="headerlink" href="#if-you-prefer-a-more-pythonistic-api" title="Link to this heading"></a></h2>
+<h2>If you prefer a more Pythonistic API<a class="headerlink" href="#if-you-prefer-a-more-pythonistic-api" title="Link to this heading"></a></h2>
 <p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/pyray.html">the pyray module</a>.</p>
 </section>
 </section>
 <section id="running-in-a-web-browser">
 <h1>Running in a web browser<a class="headerlink" href="#running-in-a-web-browser" title="Link to this heading"></a></h1>
-<p><a class="reference external" href="https://pypi.org/project/pygbag/">Pygbag</a> &gt;=0.8.7 supports running in a web browser.</p>
+<p><a class="reference external" href="https://pypi.org/project/pygbag/">Pygbag</a> &gt;=0.8.7 supports running in a web browser.  Usually the latest git version
+is recommended.</p>
 <p>Make a folder <code class="docutils literal notranslate"><span class="pre">my_project</span></code> with a file <code class="docutils literal notranslate"><span class="pre">main.py</span></code>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># /// script
-# dependencies = [
-#     &quot;cffi&quot;,
-#     &quot;raylib&quot;
-# ]
-# ///
-import asyncio
-import platform
-from pyray import *
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
+<span class="c1"># dependencies = [</span>
+<span class="c1">#     &quot;cffi&quot;,</span>
+<span class="c1">#     &quot;raylib&quot;</span>
+<span class="c1"># ]</span>
+<span class="c1"># ///</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">from</span> <span class="nn">pyray</span> <span class="kn">import</span> <span class="o">*</span>
 
-async def main():   # You must have an async main function
-    init_window(500, 500, &quot;Hello&quot;)
-    platform.window.window_resize()  # You must add this line
-    while not window_should_close():
-        begin_drawing()
-        clear_background(WHITE)
-        draw_text(&quot;Hello world&quot;, 190, 200, 20, VIOLET)
-        end_drawing()
-        await asyncio.sleep(0) # You must call this in your main loop
-    close_window()
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>   <span class="c1"># You MUST have an async main function</span>
+    <span class="n">init_window</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+    <span class="n">platform</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">window_resize</span><span class="p">()</span>  <span class="c1"># You MAY want to add this line</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>
+        <span class="n">begin_drawing</span><span class="p">()</span>
+        <span class="n">clear_background</span><span class="p">(</span><span class="n">WHITE</span><span class="p">)</span>
+        <span class="n">draw_text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">VIOLET</span><span class="p">)</span>
+        <span class="n">end_drawing</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># You MUST call this in your main loop</span>
+    <span class="n">close_window</span><span class="p">()</span>
 
-asyncio.run(main())
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Then to create the web files and launch a web server:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3.12 -m pip install --user --upgrade pygbag
-python3.12 -m pygbag --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl my_project
+python3.12 -m pygbag --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl --git my_project
 </pre></div>
 </div>
 <p>Point your browser to http://localhost:8000</p>
+<p>Some features may not work, so you can disable them like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;Emscripten&quot;</span><span class="p">:</span>  <span class="c1"># audio does not work on current version of emscripten</span>
+    <span class="n">init_audio_device</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>This is all done by Pygbag rather than by me, so you should probably contact them with any issues.
 Carefully read all their <a class="reference external" href="https://pygame-web.github.io/">documentation</a>.</p>
 <p>It does work for most of <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/">these examples</a></p>
 </section>
 <section id="app-showcase">
 <h1>App showcase<a class="headerlink" href="#app-showcase" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://github.com/Emtyloc/tempest-raylib">Tempest-raylib</a></p>
+<p><a class="reference external" href="https://github.com/bilbofroggins/KarabinerKeyboard">KarabinerKeyboard</a></p>
+<p><a class="reference external" href="https://github.com/Yonokid/PyTaiko">PyTaiko</a></p>
+<p><a class="reference external" href="https://github.com/StanislavPetrovV/DOOM-Clone">DOOM-Clone</a></p>
 <p><a class="reference external" href="https://github.com/pkulev/tanki">Tanki</a></p>
 <p><a class="reference external" href="https://pebaz.itch.io/alloy-bloxel-editor">Alloy Bloxel Editor</a></p>
+<p><a class="reference external" href="https://github.com/Miou-zora/Eidolon">Eidolon</a></p>
 <p>Add your app here!</p>
 </section>
 <section id="rlzero">

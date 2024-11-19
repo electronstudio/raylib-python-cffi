@@ -42,7 +42,7 @@ Then have pip compile and install the wheel:
 ::
 
     python3 -m pip install --break-system-packages setuptools
-    python3 -m pip install --no-cache-dir --no-binary raylib --upgrade --force-reinstall --break-system-packages raylib==5.0.0.4
+    python3 -m pip install --no-cache-dir --no-binary raylib --upgrade --force-reinstall --break-system-packages raylib==5.5.0.0
 
 Option 3: Compile Raylib from source DRM mode
 ---------------------------------------------
@@ -85,7 +85,7 @@ Then have pip compile and install the wheel:
 ::
 
     python3 -m pip install --break-system-packages setuptools
-    python3 -m pip install --no-cache-dir --no-binary raylib --upgrade --force-reinstall --break-system-packages raylib==5.0.0.4
+    python3 -m pip install --no-cache-dir --no-binary raylib --upgrade --force-reinstall --break-system-packages raylib==5.5.0.0
 
 
 
