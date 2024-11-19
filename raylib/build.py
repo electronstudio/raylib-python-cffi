@@ -25,12 +25,13 @@ import sys
 import subprocess
 import time
 
-
-
+RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 
 def check_raylib_installed():
     return subprocess.run(['pkg-config', '--exists', 'raylib'], text=True, stdout=subprocess.PIPE).returncode == 0
 
+def check_SDL_installed():
+    return subprocess.run(['pkg-config', '--exists', 'sdl2'], text=True, stdout=subprocess.PIPE).returncode == 0
 
 def get_the_include_path():
     return subprocess.run(['pkg-config', '--variable=includedir', 'raylib'], text=True,
@@ -106,6 +107,9 @@ def build_unix():
     if not check_raylib_installed():
         raise Exception("ERROR: raylib not found by pkg-config.  Please install pkg-config and Raylib.")
 
+    if RAYLIB_PLATFORM=="SDL" and not check_SDL_installed():
+        raise Exception("ERROR: SDL2 not found by pkg-config.  Please install pkg-config and SDL2.")
+
     raylib_h = get_the_include_path() + "/raylib.h"
     rlgl_h = get_the_include_path() + "/rlgl.h"
     raymath_h = get_the_include_path() + "/raymath.h"
@@ -126,7 +130,7 @@ def build_unix():
     """
 
     glfw3_h = get_the_include_path() + "/GLFW/glfw3.h"
-    if check_header_exists(glfw3_h):
+    if RAYLIB_PLATFORM=="Desktop" and check_header_exists(glfw3_h):
         ffi_includes += """
         #include "GLFW/glfw3.h"
         """
@@ -154,7 +158,7 @@ def build_unix():
         ffibuilder.cdef(pre_process_header(raygui_h))
     if os.path.isfile(physac_h):
         ffibuilder.cdef(pre_process_header(physac_h))
-    if os.path.isfile(glfw3_h):
+    if RAYLIB_PLATFORM=="Desktop" and os.path.isfile(glfw3_h):
         ffibuilder.cdef(pre_process_header(glfw3_h))
 
 
@@ -163,15 +167,28 @@ def build_unix():
         extra_link_args = [get_the_lib_path() + '/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa',
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
                            'CoreVideo']
+        if RAYLIB_PLATFORM=="SDL":
+            extra_link_args += ['/usr/local/lib/libSDL2.a', '-framework', 'CoreHaptics', '-framework', 'ForceFeedback',
+            '-framework', 'GameController']
         libraries = []
         extra_compile_args = ["-Wno-error=incompatible-function-pointer-types", "-D_CFFI_NO_LIMITED_API"]
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
         extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
-                                              '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
+                                              '-lrt', '-lm', '-ldl', '-lpthread', '-latomic']
+        if RAYLIB_PLATFORM=="SDL":
+            extra_link_args += ['-lX11','-lSDL2']
+        elif RAYLIB_PLATFORM=="DRM":
+            extra_link_args += ['-lEGL', '-lgbm']
+        else:
+            extra_link_args += ['-lX11']
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
-        libraries = ['GL', 'm', 'pthread', 'dl', 'rt', 'X11', 'atomic']
+        libraries = [] # Not sure why but we put them in extra_link_args instead so *shouldnt* be needed here
 
+
+    print("extra_link_args: "+str(extra_link_args))
+    print("extra_compile_args: "+str(extra_compile_args))
+    print("libraries: "+str(libraries))
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
                           py_limited_api=False,
@@ -184,26 +201,41 @@ def build_unix():
 def build_windows():
     print("BUILDING FOR WINDOWS")
     ffibuilder.cdef(open("raylib/raylib.h.modified").read())
-    ffibuilder.cdef(open("raylib/glfw3.h.modified").read())
+    if RAYLIB_PLATFORM=="Desktop":
+        ffibuilder.cdef(open("raylib/glfw3.h.modified").read())
     ffibuilder.cdef(open("raylib/rlgl.h.modified").read())
     ffibuilder.cdef(open("raylib/raygui.h.modified").read())
     ffibuilder.cdef(open("raylib/physac.h.modified").read())
     ffibuilder.cdef(open("raylib/raymath.h.modified").read())
-    ffibuilder.set_source("raylib._raylib_cffi", """
+
+    ffi_includes = """
     #include "raylib.h"
-    #include "rlgl.h" 
+    #include "rlgl.h"
     #include "raymath.h"
-    #include "GLFW/glfw3.h"
+    """
+
+    if RAYLIB_PLATFORM=="Desktop":
+        ffi_includes += """
+        #include "GLFW/glfw3.h"
+        """
+
+    ffi_includes += """
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
     #include "raygui.h"
     #define PHYSAC_IMPLEMENTATION
-    #include "physac.h"  
-    """,
+    #include "physac.h"
+    """
+    libraries = ['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm']
+    if RAYLIB_PLATFORM=="SDL":
+        libraries += ['SDL2']
+
+    print("libraries: "+str(libraries))
+    ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
                           extra_link_args=['/NODEFAULTLIB:MSVCRTD'],
-                          extra_compile_args="/D_CFFI_NO_LIMITED_API",
+                          extra_compile_args=["/D_CFFI_NO_LIMITED_API"],
                           py_limited_api=False,
-                          libraries=['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm'],
+                          libraries=libraries,
                           include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src\\external\\glfw\\include',
                                         'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',

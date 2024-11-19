@@ -21,7 +21,7 @@ model.materials.maps[MATERIAL_MAP_ALBEDO].texture = texture
 unload_image(image)
 
 pos = get_mouse_position()
-ray = get_mouse_ray(pos, camera)
+ray = get_screen_to_world_ray(pos, camera)
 #rayhit = get_ray_collision_ground(ray, 0)
 #print(str(rayhit.position.x))
 
@@ -33,11 +33,11 @@ while not window_should_close():
     draw_model(model, (-8.0, 0.0, -8.0), 1.0, RED)
     draw_grid(20, 1.0)
     end_mode_3d()
-    draw_text("This mesh should be textured", 190, 200, 20, VIOLET)
+    draw_text("This mesh should be tesxtured", 190, 200, 20, VIOLET)
     end_drawing()
 
     pos = get_mouse_position()
-    ray = get_mouse_ray(pos, camera)
+    ray = get_screen_to_world_ray(pos, camera)
     #rayhit = get_ray_collision_ground(ray, 0)
     #print(str(rayhit.position.x))
 

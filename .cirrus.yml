@@ -4,21 +4,45 @@
 pi_task:
   arm_container:
     matrix:
-      - image: dtcooper/raspberrypi-os:python-bullseye
+      - image: dtcooper/raspberrypi-os:python3.12-bullseye
       - image: dtcooper/raspberrypi-os:python3.11-bullseye
       - image: dtcooper/raspberrypi-os:python3.10-bullseye
       - image: dtcooper/raspberrypi-os:python3.9-bullseye
+  env:
+    matrix:
+      - RAYLIB_PLATFORM: "Desktop"
+        RAYLIB_OPENGL: "2.1"
+      - RAYLIB_PLATFORM: "SDL"
+        RAYLIB_OPENGL: "2.1"
+      - RAYLIB_PLATFORM: "DRM"
+        RAYLIB_OPENGL: "ES 2.0"
   setup_script:
     - apt update
-    - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+    - apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libgbm-dev libdrm-dev
+  build_sdl_script:
+    - wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
+    - tar xvfz release-2.30.7.tar.gz
+    - mkdir buildsdl
+    - cd buildsdl
+    - cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+    - cmake --build . --config Release
+    - cmake --install .
+    - cd ..
   build_raylib_script:
     - git submodule update --init --recursive
     - cd raylib-c
     - mkdir build
     - cd build
-    - cmake -DPLATFORM="Desktop" -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j2
     - make install
+  build_raylib_again_script:
+    - cd raylib-c
+    - mkdir build2
+    - cd build2
+    - cmake -DPLATFORM=${RAYLIB_PLATFORM} -DOPENGL_VERSION="${RAYLIB_OPENGL}" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - make -j2
+    - cp raylib/libraylib.a /usr/local/lib/libraylib.a
   build_script:
     - cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
     - cp physac/src/physac.h /usr/local/include/
@@ -28,6 +52,18 @@ pi_task:
     - python -m pip install --break-system-packages setuptools
     - python -m pip install --break-system-packages wheel
     - python setup.py bdist_wheel --plat-name manylinux2014_aarch64
+  test_script:
+    - python -m pip install --break-system-packages dist/*.whl
+    - cd /
+    - python -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+    - cat /tmp/output
+    - if grep -q "INFO: Initializing raylib" /tmp/output; then
+    -    echo "Passed"
+    -    exit 0
+    - else
+    -    echo "Failed"
+    -    exit 1
+    - fi
   artifacts:
     path: "dist/*"
 
@@ -36,14 +72,46 @@ mac_task:
     matrix:
       - image: ghcr.io/cirruslabs/macos-sonoma-xcode:latest
   env:
-    matrix:
-      - PY_VER: "3.9"
-      - PY_VER: "3.10"
-      - PY_VER: "3.11"
-      - PY_VER: "3.12"
+    MACOSX_DEPLOYMENT_TARGET: "11.0"
+  matrix:
+    - env:
+        PY_VER: "3.9"
+        RAYLIB_PLATFORM: Desktop
+    - env:
+        PY_VER: "3.9"
+        RAYLIB_PLATFORM: SDL
+    - env:
+        PY_VER: "3.10"
+        RAYLIB_PLATFORM: Desktop
+    - env:
+        PY_VER: "3.10"
+        RAYLIB_PLATFORM: SDL
+    - env:
+        PY_VER: "3.11"
+        RAYLIB_PLATFORM: Desktop
+    - env:
+        PY_VER: "3.12"
+        RAYLIB_PLATFORM: SDL
+    - env:
+        PY_VER: "3.13"
+        RAYLIB_PLATFORM: Desktop
+    - env:
+        PY_VER: "3.13"
+        RAYLIB_PLATFORM: SDL
+
+
   setup_script:
     - brew update
     - brew install python@${PY_VER}
+  build_sdl_script:
+    - wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
+    - tar xvfz release-2.30.7.tar.gz
+    - mkdir buildsdl
+    - cd buildsdl
+    - cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+    - cmake --build . --config Release
+    - sudo cmake --install .
+    - cd ..
   build_raylib_script:
     - git submodule update --init --recursive
     - cd raylib-c
@@ -52,6 +120,13 @@ mac_task:
     - cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     - make -j8
     - sudo make install
+  build_raylib_again_script:
+    - cd raylib-c
+    - mkdir build2
+    - cd build2
+    - cmake -DPLATFORM=${RAYLIB_PLATFORM} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    - make -j8
+    - sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
   build_script:
     - sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
     - sudo cp physac/src/physac.h /usr/local/include/
@@ -61,5 +136,17 @@ mac_task:
     - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages setuptools
     - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages wheel
     - /opt/homebrew/bin/python${PY_VER} setup.py bdist_wheel
+  test_script:
+    - /opt/homebrew/bin/python${PY_VER} -m pip install --break-system-packages dist/*.whl
+    - cd /
+    - /opt/homebrew/bin/python${PY_VER} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+    - cat /tmp/output
+    - if grep -q "INFO: Initializing raylib" /tmp/output; then
+    - echo "Passed"
+    - exit 0
+    - else
+    - echo "Failed"
+    - exit 1
+    - fi
   artifacts:
     path: "dist/*"

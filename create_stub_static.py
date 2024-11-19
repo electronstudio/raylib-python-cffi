@@ -148,7 +148,7 @@ for struct in ffi.list_types()[0]:
     elif ffi.typeof(struct).kind == "enum":
         print(f"{struct} = int")
     else:
-        print("ERROR UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
+        print("WARNING: SKIPPING UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
 
 
 print("""

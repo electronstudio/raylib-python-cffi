@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Bindings for Raylib 5.0 &mdash; Raylib Python  documentation</title>
+  <title>Python Bindings for Raylib 5.5 &mdash; Raylib Python  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -45,25 +45,33 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Bindings for Raylib 5.0</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Bindings for Raylib 5.5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#libraries-raymath-raygui-rlgl-physac-and-glfw">Libraries: raymath, raygui, rlgl, physac and GLFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backends-desktop-sdl-drm-web">Backends: Desktop, SDL, DRM, Web</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="#quickstart">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#macos">MacOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#raspberry-pi">Raspberry Pi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dynamic-binding-version">Dynamic binding version</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#beta-testing">Beta testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sdl-backend">SDL backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drm-backend">DRM backend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#problems">Problems?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#how-to-use">How to use</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api">If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower">If you prefer a slightly more Pythonistic API and don’t mind it might be slightly slower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#if-you-prefer-a-more-pythonistic-api">If you prefer a  more Pythonistic API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#running-in-a-web-browser">Running in a web browser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#help-wanted">Help wanted</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#license-updated">License (updated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#performance">Performance</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#bunnymark">Bunnymark</a></li>
 </ul>
@@ -91,7 +99,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Python Bindings for Raylib 5.0</li>
+      <li class="breadcrumb-item active">Python Bindings for Raylib 5.5</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/README.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -101,9 +109,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="python-bindings-for-raylib-5-0">
-<h1>Python Bindings for Raylib 5.0<a class="headerlink" href="#python-bindings-for-raylib-5-0" title="Link to this heading"></a></h1>
-<p>Chatroom: <a class="reference external" href="https://discord.gg/fKDwt85aX6">Discord</a> or <a class="reference external" href="https://matrix.to/#/#raylib-python-cffi:matrix.org">Matrix</a></p>
+  <section id="python-bindings-for-raylib-5-5">
+<h1>Python Bindings for Raylib 5.5<a class="headerlink" href="#python-bindings-for-raylib-5-5" title="Link to this heading"></a></h1>
+<section id="libraries-raymath-raygui-rlgl-physac-and-glfw">
+<h2>Libraries: raymath, raygui, rlgl, physac and GLFW<a class="headerlink" href="#libraries-raymath-raygui-rlgl-physac-and-glfw" title="Link to this heading"></a></h2>
+</section>
+<section id="backends-desktop-sdl-drm-web">
+<h2>Backends: Desktop, SDL, DRM, Web<a class="headerlink" href="#backends-desktop-sdl-drm-web" title="Link to this heading"></a></h2>
+<p>Chatroom: <a class="reference external" href="https://discord.gg/fKDwt85aX6">Discord</a></p>
 <p>New CFFI API static bindings.</p>
 <ul class="simple">
 <li><p>Automatically generated to be as close as possible to
@@ -111,21 +124,21 @@ original Raylib.</p></li>
 <li><p>Faster, fewer bugs and easier to maintain than ctypes.</p></li>
 <li><p>Commercial-friendly license.</p></li>
 <li><p>Docstrings and auto-completion.</p></li>
-<li><p><strong>Now includes extra libraries: raymath, raygui, rlgl, physac and GLFW</strong></p></li>
 </ul>
 <p><a class="reference external" href="http://electronstudio.github.io/raylib-python-cffi">Full documentation</a></p>
 </section>
+</section>
 <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib</span></code></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from pyray import *
-init_window(800, 450, &quot;Hello&quot;)
-while not window_should_close():
-    begin_drawing()
-    clear_background(WHITE)
-    draw_text(&quot;Hello world&quot;, 190, 200, 20, VIOLET)
-    end_drawing()
-close_window()
+<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==5.0.0.4</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyray</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">init_window</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>
+    <span class="n">begin_drawing</span><span class="p">()</span>
+    <span class="n">clear_background</span><span class="p">(</span><span class="n">WHITE</span><span class="p">)</span>
+    <span class="n">draw_text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">VIOLET</span><span class="p">)</span>
+    <span class="n">end_drawing</span><span class="p">()</span>
+<span class="n">close_window</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -137,12 +150,40 @@ close_window()
 </div>
 <p>Then install</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install setuptools
-python3 -m pip install raylib
+python3 -m pip install raylib==5.0.0.4
 </pre></div>
 </div>
-<p>On most platforms it should install a binary wheel (Windows 10 x64, MacOS 12 x64/arm64, Linux Ubuntu2004 x64/arm64).</p>
-<p>If yours isn’t available then pip will attempt to build from source, in which case you will need to have Raylib development libs installed, e.g.
+<p>On most platforms it should install a binary wheel.  If yours isn’t available then pip will attempt to build from
+source, in which case you will need to have Raylib development libs installed, e.g.
 using homebrew, apt, etc.</p>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h2>
+<p>Binaries require x64 Windows 10 or newer.  (For x86 or older Windows you will have to build from source.)</p>
+<p>Use an <a class="reference external" href="https://www.python.org/downloads/windows/">official Windows Python release</a> rather than WSL, MSYS, etc.</p>
+</section>
+<section id="macos">
+<h2>MacOS<a class="headerlink" href="#macos" title="Link to this heading"></a></h2>
+<p>Binaries require:</p>
+<ul class="simple">
+<li><p>arm64 MacOS 14</p></li>
+<li><p>x64 MacOS 10.13, or newer.</p></li>
+</ul>
+<p>Older MacOS requires building from source but this is usually simple:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>brew install pkg-config
+brew install raylib
+python3 -m pip install raylib==5.0.0.4
+</pre></div>
+</div>
+<p>(I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue
+if you want to test them.)</p>
+</section>
+<section id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h2>
+<p>Binaries require OS newer than Ubuntu 2020, x64 or arm64.   Otherwise build from source.
+(Pip should attempt automatically but will need Raylib itself installed and also pkg-config.)</p>
+<p>The arm64 binaries are built on Raspberry Pi arm64 Bullseye with OpenGL 2.0
+so may not work on other boards.</p>
+</section>
 <section id="raspberry-pi">
 <h2>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="RPI.html"><span class="std std-doc">Using on Rasperry Pi</span></a></p>
@@ -150,37 +191,50 @@ using homebrew, apt, etc.</p>
 <section id="dynamic-binding-version">
 <h2>Dynamic binding version<a class="headerlink" href="#dynamic-binding-version" title="Link to this heading"></a></h2>
 <p>There is now a separate dynamic version of this binding:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install raylib_dynamic
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip uninstall raylib
+python3 -m pip install raylib_dynamic
 </pre></div>
 </div>
 <p>It works on some systems where the static version doesn’t, <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/dynamic.html">but be sure to read these caveats before using it</a></p>
 </section>
-<section id="beta-testing">
-<h2>Beta testing<a class="headerlink" href="#beta-testing" title="Link to this heading"></a></h2>
-<p>If you find a bug, it may be fixed in the <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/releases">latest dev release</a>.
-You can install an alpha or beta version by specifying the exact version number like this:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install raylib==4.2.0.0.dev4
+<section id="sdl-backend">
+<h2>SDL backend<a class="headerlink" href="#sdl-backend" title="Link to this heading"></a></h2>
+<p>This is not well tested but has better support for controllers:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip uninstall raylib
+python3 -m pip install raylib_sdl
 </pre></div>
 </div>
+<p>You can’t have multiple raylib packages installed at once.</p>
+</section>
+<section id="drm-backend">
+<h2>DRM backend<a class="headerlink" href="#drm-backend" title="Link to this heading"></a></h2>
+<p>This uses the Linux framebuffer for devices that don’t run X11/Wayland:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip uninstall raylib
+python3 -m pip install raylib_drm
+</pre></div>
+</div>
+<p>You can’t have multiple raylib packages installed at once.</p>
 </section>
 <section id="problems">
 <h2>Problems?<a class="headerlink" href="#problems" title="Link to this heading"></a></h2>
 <p>If it doesn’t work, <a class="reference internal" href="BUILDING.html"><span class="std std-doc">try to build manually.</span></a>.  If that works then <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues">submit an issue</a>
 to let us know what you did.</p>
-<p>If you need help you can try asking <a class="reference external" href="https://discord.gg/raylib">on Discord</a>.</p>
+<p>If you need help you can try asking on <a class="reference external" href="https://discord.gg/fKDwt85aX6">our discord</a>.  There is also a large <a class="reference external" href="https://discord.gg/raylib">Raylib discord</a>
+for issues that are not Python-specific.</p>
 <p>If it still doesn’t work, <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues">submit an issue</a>.</p>
 </section>
 </section>
 <section id="how-to-use">
 <h1>How to use<a class="headerlink" href="#how-to-use" title="Link to this heading"></a></h1>
-<p>There are two APIs, you can use either or both:</p>
+<p>There are two modules in the raylib package, <code class="docutils literal notranslate"><span class="pre">raylib</span></code> and <code class="docutils literal notranslate"><span class="pre">pyray</span></code>. (There is no separate package for
+pyray).  You can use either or both:</p>
 <section id="if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api">
 <h2>If you are familiar with C coding and the Raylib C library and you want to use an exact copy of the C API<a class="headerlink" href="#if-you-are-familiar-with-c-coding-and-the-raylib-c-library-and-you-want-to-use-an-exact-copy-of-the-c-api" title="Link to this heading"></a></h2>
-<p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/raylib.html">the C API</a>.</p>
+<p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/raylib.html">the raylib module</a>.</p>
 </section>
-<section id="if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower">
-<h2>If you prefer a slightly more Pythonistic API and don’t mind it might be slightly slower<a class="headerlink" href="#if-you-prefer-a-slightly-more-pythonistic-api-and-don-t-mind-it-might-be-slightly-slower" title="Link to this heading"></a></h2>
-<p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/pyray.html">the Python API</a>.</p>
+<section id="if-you-prefer-a-more-pythonistic-api">
+<h2>If you prefer a  more Pythonistic API<a class="headerlink" href="#if-you-prefer-a-more-pythonistic-api" title="Link to this heading"></a></h2>
+<p>Use <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi/pyray.html">the pyray module</a>.</p>
 </section>
 </section>
 <section id="running-in-a-web-browser">
@@ -239,9 +293,9 @@ Carefully read all their <a class="reference external" href="https://pygame-web.
 <li><p>Testing on more platforms</p></li>
 </ul>
 </section>
-<section id="license-updated">
-<h1>License (updated)<a class="headerlink" href="#license-updated" title="Link to this heading"></a></h1>
-<p>The bindings are now under the Eclipse Public License, so you are free to
+<section id="license">
+<h1>License<a class="headerlink" href="#license" title="Link to this heading"></a></h1>
+<p>Eclipse Public License, so you are free to
 statically link and use in non-free / proprietary / commercial projects!</p>
 </section>
 <section id="performance">

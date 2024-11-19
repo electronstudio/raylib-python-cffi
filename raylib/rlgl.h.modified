@@ -1,6 +1,6 @@
 /**********************************************************************************************
 *
-*   rlgl v4.5 - A multi-OpenGL abstraction layer with an immediate-mode style API
+*   rlgl v5.0 - A multi-OpenGL abstraction layer with an immediate-mode style API
 *
 *   DESCRIPTION:
 *       An abstraction layer for multiple OpenGL versions (1.1, 2.1, 3.3 Core, 4.3 Core, ES 2.0)
@@ -8,17 +8,17 @@
 *
 *   ADDITIONAL NOTES:
 *       When choosing an OpenGL backend different than OpenGL 1.1, some internal buffer are
-*       initialized on rlglInit() to accumulate vertex data.
+*       initialized on rlglInit() to accumulate vertex data
 *
 *       When an internal state change is required all the stored vertex data is renderer in batch,
-*       additionally, rlDrawRenderBatchActive() could be called to force flushing of the batch.
+*       additionally, rlDrawRenderBatchActive() could be called to force flushing of the batch
 *
 *       Some resources are also loaded for convenience, here the complete list:
 *          - Default batch (RLGL.defaultBatch): RenderBatch system to accumulate vertex data
 *          - Default texture (RLGL.defaultTextureId): 1x1 white pixel R8G8B8A8
 *          - Default shader (RLGL.State.defaultShaderId, RLGL.State.defaultShaderLocs)
 *
-*       Internal buffer (and resources) must be manually unloaded calling rlglClose().
+*       Internal buffer (and resources) must be manually unloaded calling rlglClose()
 *
 *   CONFIGURATION:
 *       #define GRAPHICS_API_OPENGL_11
@@ -32,9 +32,9 @@
 *           required by any other module, use rlGetVersion() to check it
 *
 *       #define RLGL_IMPLEMENTATION
-*           Generates the implementation of the library into the included file.
+*           Generates the implementation of the library into the included file
 *           If not defined, the library is in header only mode and can be included in other headers
-*           or source files without problems. But only ONE file should hold the implementation.
+*           or source files without problems. But only ONE file should hold the implementation
 *
 *       #define RLGL_RENDER_TEXTURES_HINT
 *           Enable framebuffer objects (fbo) support (enabled by default)
@@ -62,18 +62,21 @@
 *       When loading a shader, the following vertex attributes and uniform
 *       location names are tried to be set automatically:
 *
-*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_POSITION     "vertexPosition"    // Bound by default to shader location: 0
-*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_TEXCOORD     "vertexTexCoord"    // Bound by default to shader location: 1
-*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_NORMAL       "vertexNormal"      // Bound by default to shader location: 2
-*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_COLOR        "vertexColor"       // Bound by default to shader location: 3
-*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_TANGENT      "vertexTangent"     // Bound by default to shader location: 4
-*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_TEXCOORD2    "vertexTexCoord2"   // Bound by default to shader location: 5
+*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_POSITION     "vertexPosition"    // Bound by default to shader location: RL_DEFAULT_SHADER_ATTRIB_LOCATION_POSITION
+*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_TEXCOORD     "vertexTexCoord"    // Bound by default to shader location: RL_DEFAULT_SHADER_ATTRIB_LOCATION_TEXCOORD
+*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_NORMAL       "vertexNormal"      // Bound by default to shader location: RL_DEFAULT_SHADER_ATTRIB_LOCATION_NORMAL
+*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_COLOR        "vertexColor"       // Bound by default to shader location: RL_DEFAULT_SHADER_ATTRIB_LOCATION_COLOR
+*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_TANGENT      "vertexTangent"     // Bound by default to shader location: RL_DEFAULT_SHADER_ATTRIB_LOCATION_TANGENT
+*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_TEXCOORD2    "vertexTexCoord2"   // Bound by default to shader location: RL_DEFAULT_SHADER_ATTRIB_LOCATION_TEXCOORD2
+*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_BONEIDS      "vertexBoneIds"     // Bound by default to shader location: RL_DEFAULT_SHADER_ATTRIB_LOCATION_BONEIDS
+*       #define RL_DEFAULT_SHADER_ATTRIB_NAME_BONEWEIGHTS  "vertexBoneWeights" // Bound by default to shader location: RL_DEFAULT_SHADER_ATTRIB_LOCATION_BONEWEIGHTS
 *       #define RL_DEFAULT_SHADER_UNIFORM_NAME_MVP         "mvp"               // model-view-projection matrix
 *       #define RL_DEFAULT_SHADER_UNIFORM_NAME_VIEW        "matView"           // view matrix
 *       #define RL_DEFAULT_SHADER_UNIFORM_NAME_PROJECTION  "matProjection"     // projection matrix
 *       #define RL_DEFAULT_SHADER_UNIFORM_NAME_MODEL       "matModel"          // model matrix
-*       #define RL_DEFAULT_SHADER_UNIFORM_NAME_NORMAL      "matNormal"         // normal matrix (transpose(inverse(matModelView))
+*       #define RL_DEFAULT_SHADER_UNIFORM_NAME_NORMAL      "matNormal"         // normal matrix (transpose(inverse(matModelView)))
 *       #define RL_DEFAULT_SHADER_UNIFORM_NAME_COLOR       "colDiffuse"        // color diffuse (base tint color, multiplied by texture color)
+*       #define RL_DEFAULT_SHADER_UNIFORM_NAME_BONE_MATRICES  "boneMatrices"   // bone matrices
 *       #define RL_DEFAULT_SHADER_SAMPLER2D_NAME_TEXTURE0  "texture0"          // texture0 (texture slot active 0)
 *       #define RL_DEFAULT_SHADER_SAMPLER2D_NAME_TEXTURE1  "texture1"          // texture1 (texture slot active 1)
 *       #define RL_DEFAULT_SHADER_SAMPLER2D_NAME_TEXTURE2  "texture2"          // texture2 (texture slot active 2)
@@ -85,7 +88,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2014-2023 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2014-2024 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -103,8 +106,9 @@
 *     3. This notice may not be removed or altered from any source distribution.
 *
 **********************************************************************************************/
-// Function specifiers in case library is build/used as a shared library (Windows)
+// Function specifiers in case library is build/used as a shared library
 // NOTE: Microsoft specifiers to tell compiler that symbols are imported/exported from a .dll
+// NOTE: visibility(default) attribute makes symbols "visible" when compiled with -fvisibility=hidden
 // Function specifiers definition
 // Support TRACELOG macros
 // Allow custom memory allocators
@@ -133,6 +137,7 @@
 // GL Shader type
 // GL blending factors
 // GL blending functions/equations
+// Default shader vertex attribute locations
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
 //----------------------------------------------------------------------------------
@@ -141,10 +146,11 @@ typedef struct rlVertexBuffer {
     int elementCount; // Number of elements in the buffer (QUADS)
     float *vertices; // Vertex position (XYZ - 3 components per vertex) (shader-location = 0)
     float *texcoords; // Vertex texture coordinates (UV - 2 components per vertex) (shader-location = 1)
+    float *normals; // Vertex normal (XYZ - 3 components per vertex) (shader-location = 2)
     unsigned char *colors; // Vertex colors (RGBA - 4 components per vertex) (shader-location = 3)
     unsigned int *indices; // Vertex indices (in case vertex data comes indexed) (6 indices per quad)
     unsigned int vaoId; // OpenGL Vertex Array Object id
-    unsigned int vboId[4]; // OpenGL Vertex Buffer Objects id (4 types of vertex data)
+    unsigned int vboId[5]; // OpenGL Vertex Buffer Objects id (5 types of vertex data)
 } rlVertexBuffer;
 // Draw call type
 // NOTE: Only texture changes register a new draw, other state-change-related elements are not
@@ -279,6 +285,10 @@ typedef enum {
     RL_SHADER_UNIFORM_IVEC2, // Shader uniform type: ivec2 (2 int)
     RL_SHADER_UNIFORM_IVEC3, // Shader uniform type: ivec3 (3 int)
     RL_SHADER_UNIFORM_IVEC4, // Shader uniform type: ivec4 (4 int)
+    RL_SHADER_UNIFORM_UINT, // Shader uniform type: unsigned int
+    RL_SHADER_UNIFORM_UIVEC2, // Shader uniform type: uivec2 (2 unsigned int)
+    RL_SHADER_UNIFORM_UIVEC3, // Shader uniform type: uivec3 (3 unsigned int)
+    RL_SHADER_UNIFORM_UIVEC4, // Shader uniform type: uivec4 (4 unsigned int)
     RL_SHADER_UNIFORM_SAMPLER2D // Shader uniform type: sampler2d
 } rlShaderUniformDataType;
 // Shader attribute data types
@@ -332,6 +342,9 @@ typedef enum {
  void rlFrustum(double left, double right, double bottom, double top, double znear, double zfar);
  void rlOrtho(double left, double right, double bottom, double top, double znear, double zfar);
  void rlViewport(int x, int y, int width, int height); // Set the viewport area
+ void rlSetClipPlanes(double nearPlane, double farPlane); // Set clip planes distances
+ double rlGetCullDistanceNear(void); // Get cull plane distance near
+ double rlGetCullDistanceFar(void); // Get cull plane distance far
 //------------------------------------------------------------------------------------
 // Functions Declaration - Vertex level operations
 //------------------------------------------------------------------------------------
@@ -355,10 +368,10 @@ typedef enum {
  void rlDisableVertexArray(void); // Disable vertex array (VAO, if supported)
  void rlEnableVertexBuffer(unsigned int id); // Enable vertex buffer (VBO)
  void rlDisableVertexBuffer(void); // Disable vertex buffer (VBO)
- void rlEnableVertexBufferElement(unsigned int id);// Enable vertex buffer element (VBO element)
+ void rlEnableVertexBufferElement(unsigned int id); // Enable vertex buffer element (VBO element)
  void rlDisableVertexBufferElement(void); // Disable vertex buffer element (VBO element)
  void rlEnableVertexAttribute(unsigned int index); // Enable vertex attribute index
- void rlDisableVertexAttribute(unsigned int index);// Disable vertex attribute index
+ void rlDisableVertexAttribute(unsigned int index); // Disable vertex attribute index
 // Textures state
  void rlActiveTextureSlot(int slot); // Select and active a texture slot
  void rlEnableTexture(unsigned int id); // Enable texture
@@ -373,8 +386,10 @@ typedef enum {
 // Framebuffer state
  void rlEnableFramebuffer(unsigned int id); // Enable render texture (fbo)
  void rlDisableFramebuffer(void); // Disable render texture (fbo), return to default framebuffer
+ unsigned int rlGetActiveFramebuffer(void); // Get the currently active render texture (fbo), 0 for default framebuffer
  void rlActiveDrawBuffers(int count); // Activate multiple draw color buffers
  void rlBlitFramebuffer(int srcX, int srcY, int srcWidth, int srcHeight, int dstX, int dstY, int dstWidth, int dstHeight, int bufferMask); // Blit active framebuffer to main framebuffer
+ void rlBindFramebuffer(unsigned int target, unsigned int framebuffer); // Bind framebuffer (FBO)
 // General render state
  void rlEnableColorBlend(void); // Enable color blending
  void rlDisableColorBlend(void); // Disable color blending
@@ -384,13 +399,14 @@ typedef enum {
  void rlDisableDepthMask(void); // Disable depth write
  void rlEnableBackfaceCulling(void); // Enable backface culling
  void rlDisableBackfaceCulling(void); // Disable backface culling
+ void rlColorMask(bool r, bool g, bool b, bool a); // Color mask control
  void rlSetCullFace(int mode); // Set face culling mode
  void rlEnableScissorTest(void); // Enable scissor test
  void rlDisableScissorTest(void); // Disable scissor test
  void rlScissor(int x, int y, int width, int height); // Scissor test
  void rlEnableWireMode(void); // Enable wire mode
- void rlEnablePointMode(void); //  Enable point mode
- void rlDisableWireMode(void); // Disable wire mode ( and point ) maybe rename
+ void rlEnablePointMode(void); // Enable point mode
+ void rlDisableWireMode(void); // Disable wire (and point) mode
  void rlSetLineWidth(float width); // Set the line drawing width
  float rlGetLineWidth(void); // Get the line drawing width
  void rlEnableSmoothLines(void); // Enable line aliasing
@@ -432,24 +448,24 @@ typedef enum {
 //------------------------------------------------------------------------------------------------------------------------
 // Vertex buffers management
  unsigned int rlLoadVertexArray(void); // Load vertex array (vao) if supported
- unsigned int rlLoadVertexBuffer(const void *buffer, int size, bool dynamic); // Load a vertex buffer attribute
- unsigned int rlLoadVertexBufferElement(const void *buffer, int size, bool dynamic); // Load a new attributes element buffer
- void rlUpdateVertexBuffer(unsigned int bufferId, const void *data, int dataSize, int offset); // Update GPU buffer with new data
- void rlUpdateVertexBufferElements(unsigned int id, const void *data, int dataSize, int offset); // Update vertex buffer elements with new data
- void rlUnloadVertexArray(unsigned int vaoId);
- void rlUnloadVertexBuffer(unsigned int vboId);
- void rlSetVertexAttribute(unsigned int index, int compSize, int type, bool normalized, int stride, const void *pointer);
- void rlSetVertexAttributeDivisor(unsigned int index, int divisor);
- void rlSetVertexAttributeDefault(int locIndex, const void *value, int attribType, int count); // Set vertex attribute default value
- void rlDrawVertexArray(int offset, int count);
- void rlDrawVertexArrayElements(int offset, int count, const void *buffer);
- void rlDrawVertexArrayInstanced(int offset, int count, int instances);
- void rlDrawVertexArrayElementsInstanced(int offset, int count, const void *buffer, int instances);
+ unsigned int rlLoadVertexBuffer(const void *buffer, int size, bool dynamic); // Load a vertex buffer object
+ unsigned int rlLoadVertexBufferElement(const void *buffer, int size, bool dynamic); // Load vertex buffer elements object
+ void rlUpdateVertexBuffer(unsigned int bufferId, const void *data, int dataSize, int offset); // Update vertex buffer object data on GPU buffer
+ void rlUpdateVertexBufferElements(unsigned int id, const void *data, int dataSize, int offset); // Update vertex buffer elements data on GPU buffer
+ void rlUnloadVertexArray(unsigned int vaoId); // Unload vertex array (vao)
+ void rlUnloadVertexBuffer(unsigned int vboId); // Unload vertex buffer object
+ void rlSetVertexAttribute(unsigned int index, int compSize, int type, bool normalized, int stride, int offset); // Set vertex attribute data configuration
+ void rlSetVertexAttributeDivisor(unsigned int index, int divisor); // Set vertex attribute data divisor
+ void rlSetVertexAttributeDefault(int locIndex, const void *value, int attribType, int count); // Set vertex attribute default value, when attribute to provided
+ void rlDrawVertexArray(int offset, int count); // Draw vertex array (currently active vao)
+ void rlDrawVertexArrayElements(int offset, int count, const void *buffer); // Draw vertex array elements
+ void rlDrawVertexArrayInstanced(int offset, int count, int instances); // Draw vertex array (currently active vao) with instancing
+ void rlDrawVertexArrayElementsInstanced(int offset, int count, const void *buffer, int instances); // Draw vertex array elements with instancing
 // Textures management
- unsigned int rlLoadTexture(const void *data, int width, int height, int format, int mipmapCount); // Load texture in GPU
+ unsigned int rlLoadTexture(const void *data, int width, int height, int format, int mipmapCount); // Load texture data
  unsigned int rlLoadTextureDepth(int width, int height, bool useRenderBuffer); // Load depth texture/renderbuffer (to be attached to fbo)
- unsigned int rlLoadTextureCubemap(const void *data, int size, int format); // Load texture cubemap
- void rlUpdateTexture(unsigned int id, int offsetX, int offsetY, int width, int height, int format, const void *data); // Update GPU texture with new data
+ unsigned int rlLoadTextureCubemap(const void *data, int size, int format, int mipmapCount); // Load texture cubemap data
+ void rlUpdateTexture(unsigned int id, int offsetX, int offsetY, int width, int height, int format, const void *data); // Update texture with new data on GPU
  void rlGetGlTextureFormats(int format, unsigned int *glInternalFormat, unsigned int *glFormat, unsigned int *glType); // Get OpenGL internal formats
  const char *rlGetPixelFormatName(unsigned int format); // Get name string for pixel format
  void rlUnloadTexture(unsigned int id); // Unload texture from GPU memory
@@ -457,7 +473,7 @@ typedef enum {
  void *rlReadTexturePixels(unsigned int id, int width, int height, int format); // Read texture pixel data
  unsigned char *rlReadScreenPixels(int width, int height); // Read screen pixel data (color buffer)
 // Framebuffer management (fbo)
- unsigned int rlLoadFramebuffer(int width, int height); // Load an empty framebuffer
+ unsigned int rlLoadFramebuffer(void); // Load an empty framebuffer
  void rlFramebufferAttach(unsigned int fboId, unsigned int texId, int attachType, int texType, int mipLevel); // Attach texture/renderbuffer to a framebuffer
  bool rlFramebufferComplete(unsigned int id); // Verify framebuffer is complete
  void rlUnloadFramebuffer(unsigned int id); // Delete framebuffer from GPU
@@ -470,6 +486,7 @@ typedef enum {
  int rlGetLocationAttrib(unsigned int shaderId, const char *attribName); // Get shader location attribute
  void rlSetUniform(int locIndex, const void *value, int uniformType, int count); // Set shader value uniform
  void rlSetUniformMatrix(int locIndex, Matrix mat); // Set shader value matrix
+ void rlSetUniformMatrices(int locIndex, const Matrix *mat, int count); // Set shader value matrices
  void rlSetUniformSampler(int locIndex, unsigned int textureId); // Set shader value sampler
  void rlSetShader(unsigned int id, int *locs); // Set shader currently active (id and locations)
 // Compute shader management

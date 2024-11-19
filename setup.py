@@ -1,7 +1,7 @@
 import pathlib
 from setuptools import setup
 from setuptools.dist import Distribution
-
+import os
 
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
@@ -10,6 +10,13 @@ HERE = pathlib.Path(__file__).parent
 README = (HERE / "README.md").read_text()
 VERSION = (HERE / "version.py").read_text().split()[-1].strip("\"'")
 
+RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
+if RAYLIB_PLATFORM == "SDL":
+    NAME = "raylib_sdl"
+elif RAYLIB_PLATFORM == "DRM":
+    NAME = "raylib_drm"
+else:
+    NAME = "raylib"
 
 class BinaryDistribution(Distribution):
     """Distribution which always forces a binary package with platform name"""
@@ -18,7 +25,7 @@ class BinaryDistribution(Distribution):
 
 # This call to setup() does all the work
 setup(
-    name="raylib",
+    name=NAME,
     version=VERSION,
     description="Python CFFI bindings for Raylib",
     long_description=README,
