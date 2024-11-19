@@ -175,11 +175,13 @@ def build_unix():
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
         extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
-                                              '-lrt', '-lm', '-ldl', '-lX11', '-lpthread', '-latomic']
+                                              '-lrt', '-lm', '-ldl', '-lpthread', '-latomic']
         if RAYLIB_PLATFORM=="SDL":
-            extra_link_args += ['-lSDL2']
+            extra_link_args += ['-lX11','-lSDL2']
         elif RAYLIB_PLATFORM=="DRM":
             extra_link_args += ['-lEGL', '-lgbm']
+        else:
+            extra_link_args += ['-lX11']
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
         libraries = [] # Not sure why but we put them in extra_link_args instead so *shouldnt* be needed here
 

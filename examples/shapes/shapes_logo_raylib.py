@@ -4,11 +4,7 @@ raylib [shapes] example - Logo Raylib
 
 """
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    BLACK,
-    GRAY
-)
+
 
 # Initialization
 screenWidth = 800

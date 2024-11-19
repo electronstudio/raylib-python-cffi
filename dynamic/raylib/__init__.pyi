@@ -1,6 +1,6 @@
 from typing import Any
 
-import _cffi_backend
+import _cffi_backend # type: ignore
 
 ffi: _cffi_backend.FFI
 rl: _cffi_backend.Lib
@@ -12,10 +12,10 @@ ARROWS_SIZE: int
 ARROWS_VISIBLE: int
 ARROW_PADDING: int
 def AttachAudioMixedProcessor(processor: Any,) -> None:
-        """Attach audio stream processor to the entire audio pipeline, receives the samples as <float>s"""
+        """Attach audio stream processor to the entire audio pipeline, receives the samples as 'float'"""
         ...
-def AttachAudioStreamProcessor(stream: AudioStream,processor: Any,) -> None:
-        """Attach audio stream processor to stream, receives the samples as <float>s"""
+def AttachAudioStreamProcessor(stream: AudioStream|list|tuple,processor: Any,) -> None:
+        """Attach audio stream processor to stream, receives the samples as 'float'"""
         ...
 BACKGROUND_COLOR: int
 BASE_COLOR_DISABLED: int
@@ -42,22 +42,22 @@ def BeginBlendMode(mode: int,) -> None:
 def BeginDrawing() -> None:
         """Setup canvas (framebuffer) to start drawing"""
         ...
-def BeginMode2D(camera: Camera2D,) -> None:
+def BeginMode2D(camera: Camera2D|list|tuple,) -> None:
         """Begin 2D mode with custom camera (2D)"""
         ...
-def BeginMode3D(camera: Camera3D,) -> None:
+def BeginMode3D(camera: Camera3D|list|tuple,) -> None:
         """Begin 3D mode with custom camera (3D)"""
         ...
 def BeginScissorMode(x: int,y: int,width: int,height: int,) -> None:
         """Begin scissor mode (define screen area for following drawing)"""
         ...
-def BeginShaderMode(shader: Shader,) -> None:
+def BeginShaderMode(shader: Shader|list|tuple,) -> None:
         """Begin custom shader drawing"""
         ...
-def BeginTextureMode(target: RenderTexture,) -> None:
+def BeginTextureMode(target: RenderTexture|list|tuple,) -> None:
         """Begin drawing to render texture"""
         ...
-def BeginVrStereoMode(config: VrStereoConfig,) -> None:
+def BeginVrStereoMode(config: VrStereoConfig|list|tuple,) -> None:
         """Begin stereo rendering (requires VR simulator)"""
         ...
 CAMERA_CUSTOM: int
@@ -79,52 +79,52 @@ CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE: int
 CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR: int
 CUBEMAP_LAYOUT_LINE_HORIZONTAL: int
 CUBEMAP_LAYOUT_LINE_VERTICAL: int
-CUBEMAP_LAYOUT_PANORAMA: int
-def ChangeDirectory(dir: str,) -> bool:
+def ChangeDirectory(dir: bytes,) -> bool:
         """Change working directory, return true on success"""
         ...
-def CheckCollisionBoxSphere(box: BoundingBox,center: Vector3,radius: float,) -> bool:
+def CheckCollisionBoxSphere(box: BoundingBox|list|tuple,center: Vector3|list|tuple,radius: float,) -> bool:
         """Check collision between box and sphere"""
         ...
-def CheckCollisionBoxes(box1: BoundingBox,box2: BoundingBox,) -> bool:
+def CheckCollisionBoxes(box1: BoundingBox|list|tuple,box2: BoundingBox|list|tuple,) -> bool:
         """Check collision between two bounding boxes"""
         ...
-def CheckCollisionCircleRec(center: Vector2,radius: float,rec: Rectangle,) -> bool:
+def CheckCollisionCircleLine(center: Vector2|list|tuple,radius: float,p1: Vector2|list|tuple,p2: Vector2|list|tuple,) -> bool:
+        """Check if circle collides with a line created betweeen two points [p1] and [p2]"""
+        ...
+def CheckCollisionCircleRec(center: Vector2|list|tuple,radius: float,rec: Rectangle|list|tuple,) -> bool:
         """Check collision between circle and rectangle"""
         ...
-def CheckCollisionCircles(center1: Vector2,radius1: float,center2: Vector2,radius2: float,) -> bool:
+def CheckCollisionCircles(center1: Vector2|list|tuple,radius1: float,center2: Vector2|list|tuple,radius2: float,) -> bool:
         """Check collision between two circles"""
         ...
-def CheckCollisionLines(startPos1: Vector2,endPos1: Vector2,startPos2: Vector2,endPos2: Vector2,collisionPoint: Any,) -> bool:
+def CheckCollisionLines(startPos1: Vector2|list|tuple,endPos1: Vector2|list|tuple,startPos2: Vector2|list|tuple,endPos2: Vector2|list|tuple,collisionPoint: Any|list|tuple,) -> bool:
         """Check the collision between two lines defined by two points each, returns collision point by reference"""
         ...
-def CheckCollisionPointCircle(point: Vector2,center: Vector2,radius: float,) -> bool:
+def CheckCollisionPointCircle(point: Vector2|list|tuple,center: Vector2|list|tuple,radius: float,) -> bool:
         """Check if point is inside circle"""
         ...
-def CheckCollisionPointLine(point: Vector2,p1: Vector2,p2: Vector2,threshold: int,) -> bool:
+def CheckCollisionPointLine(point: Vector2|list|tuple,p1: Vector2|list|tuple,p2: Vector2|list|tuple,threshold: int,) -> bool:
         """Check if point belongs to line created between two points [p1] and [p2] with defined margin in pixels [threshold]"""
         ...
-def CheckCollisionPointPoly(point: Vector2,points: Any,pointCount: int,) -> bool:
+def CheckCollisionPointPoly(point: Vector2|list|tuple,points: Any|list|tuple,pointCount: int,) -> bool:
         """Check if point is within a polygon described by array of vertices"""
         ...
-def CheckCollisionPointRec(point: Vector2,rec: Rectangle,) -> bool:
+def CheckCollisionPointRec(point: Vector2|list|tuple,rec: Rectangle|list|tuple,) -> bool:
         """Check if point is inside rectangle"""
         ...
-def CheckCollisionPointTriangle(point: Vector2,p1: Vector2,p2: Vector2,p3: Vector2,) -> bool:
+def CheckCollisionPointTriangle(point: Vector2|list|tuple,p1: Vector2|list|tuple,p2: Vector2|list|tuple,p3: Vector2|list|tuple,) -> bool:
         """Check if point is inside a triangle"""
         ...
-def CheckCollisionRecs(rec1: Rectangle,rec2: Rectangle,) -> bool:
+def CheckCollisionRecs(rec1: Rectangle|list|tuple,rec2: Rectangle|list|tuple,) -> bool:
         """Check collision between two rectangles"""
         ...
-def CheckCollisionSpheres(center1: Vector3,radius1: float,center2: Vector3,radius2: float,) -> bool:
+def CheckCollisionSpheres(center1: Vector3|list|tuple,radius1: float,center2: Vector3|list|tuple,radius2: float,) -> bool:
         """Check collision between two spheres"""
         ...
-def Clamp(float_0: float,float_1: float,float_2: float,) -> float:
-        """float Clamp(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Clamp(value: float,min_1: float,max_2: float,) -> float:
+        """"""
         ...
-def ClearBackground(color: Color,) -> None:
+def ClearBackground(color: Color|list|tuple,) -> None:
         """Set background color (framebuffer clear color)"""
         ...
 def ClearWindowState(flags: int,) -> None:
@@ -134,85 +134,92 @@ def CloseAudioDevice() -> None:
         """Close the audio device and context"""
         ...
 def ClosePhysics() -> None:
-        """void ClosePhysics();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Close physics system and unload used memory"""
         ...
 def CloseWindow() -> None:
         """Close window and unload OpenGL context"""
         ...
-def CodepointToUTF8(codepoint: int,utf8Size: Any,) -> str:
+def CodepointToUTF8(codepoint: int,utf8Size: Any,) -> bytes:
         """Encode one codepoint into UTF-8 byte array (array length returned as parameter)"""
         ...
-def ColorAlpha(color: Color,alpha: float,) -> Color:
+def ColorAlpha(color: Color|list|tuple,alpha: float,) -> Color:
         """Get color with alpha applied, alpha goes from 0.0f to 1.0f"""
         ...
-def ColorAlphaBlend(dst: Color,src: Color,tint: Color,) -> Color:
+def ColorAlphaBlend(dst: Color|list|tuple,src: Color|list|tuple,tint: Color|list|tuple,) -> Color:
         """Get src alpha-blended into dst color with tint"""
         ...
-def ColorBrightness(color: Color,factor: float,) -> Color:
+def ColorBrightness(color: Color|list|tuple,factor: float,) -> Color:
         """Get color with brightness correction, brightness factor goes from -1.0f to 1.0f"""
         ...
-def ColorContrast(color: Color,contrast: float,) -> Color:
+def ColorContrast(color: Color|list|tuple,contrast: float,) -> Color:
         """Get color with contrast correction, contrast values between -1.0f and 1.0f"""
         ...
 def ColorFromHSV(hue: float,saturation: float,value: float,) -> Color:
         """Get a Color from HSV values, hue [0..360], saturation/value [0..1]"""
         ...
-def ColorFromNormalized(normalized: Vector4,) -> Color:
+def ColorFromNormalized(normalized: Vector4|list|tuple,) -> Color:
         """Get Color from normalized values [0..1]"""
         ...
-def ColorNormalize(color: Color,) -> Vector4:
+def ColorIsEqual(col1: Color|list|tuple,col2: Color|list|tuple,) -> bool:
+        """Check if two colors are equal"""
+        ...
+def ColorLerp(color1: Color|list|tuple,color2: Color|list|tuple,factor: float,) -> Color:
+        """Get color lerp interpolation between two colors, factor [0.0f..1.0f]"""
+        ...
+def ColorNormalize(color: Color|list|tuple,) -> Vector4:
         """Get Color normalized as float [0..1]"""
         ...
-def ColorTint(color: Color,tint: Color,) -> Color:
+def ColorTint(color: Color|list|tuple,tint: Color|list|tuple,) -> Color:
         """Get color multiplied with another color"""
         ...
-def ColorToHSV(color: Color,) -> Vector3:
+def ColorToHSV(color: Color|list|tuple,) -> Vector3:
         """Get HSV values for a Color, hue [0..360], saturation/value [0..1]"""
         ...
-def ColorToInt(color: Color,) -> int:
-        """Get hexadecimal value for a Color"""
+def ColorToInt(color: Color|list|tuple,) -> int:
+        """Get hexadecimal value for a Color (0xRRGGBBAA)"""
         ...
-def CompressData(data: str,dataSize: int,compDataSize: Any,) -> str:
+def CompressData(data: bytes,dataSize: int,compDataSize: Any,) -> bytes:
         """Compress data (DEFLATE algorithm), memory must be MemFree()"""
         ...
-def CreatePhysicsBodyCircle(Vector2_0: Vector2,float_1: float,float_2: float,) -> Any:
-        """struct PhysicsBodyData *CreatePhysicsBodyCircle(struct Vector2, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def ComputeCRC32(data: bytes,dataSize: int,) -> int:
+        """Compute CRC32 hash code"""
         ...
-def CreatePhysicsBodyPolygon(Vector2_0: Vector2,float_1: float,int_2: int,float_3: float,) -> Any:
-        """struct PhysicsBodyData *CreatePhysicsBodyPolygon(struct Vector2, float, int, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def ComputeMD5(data: bytes,dataSize: int,) -> Any:
+        """Compute MD5 hash code, returns static int[4] (16 bytes)"""
         ...
-def CreatePhysicsBodyRectangle(Vector2_0: Vector2,float_1: float,float_2: float,float_3: float,) -> Any:
-        """struct PhysicsBodyData *CreatePhysicsBodyRectangle(struct Vector2, float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def ComputeSHA1(data: bytes,dataSize: int,) -> Any:
+        """Compute SHA1 hash code, returns static int[5] (20 bytes)"""
+        ...
+def CreatePhysicsBodyCircle(pos: Vector2|list|tuple,radius: float,density: float,) -> Any:
+        """Creates a new circle physics body with generic parameters"""
+        ...
+def CreatePhysicsBodyPolygon(pos: Vector2|list|tuple,radius: float,sides: int,density: float,) -> Any:
+        """Creates a new polygon physics body with generic parameters"""
+        ...
+def CreatePhysicsBodyRectangle(pos: Vector2|list|tuple,width: float,height: float,density: float,) -> Any:
+        """Creates a new rectangle physics body with generic parameters"""
         ...
 DEFAULT: int
 DROPDOWNBOX: int
+DROPDOWN_ARROW_HIDDEN: int
 DROPDOWN_ITEMS_SPACING: int
-def DecodeDataBase64(data: str,outputSize: Any,) -> str:
+DROPDOWN_ROLL_UP: int
+def DecodeDataBase64(data: bytes,outputSize: Any,) -> bytes:
         """Decode Base64 string data, memory must be MemFree()"""
         ...
-def DecompressData(compData: str,compDataSize: int,dataSize: Any,) -> str:
+def DecompressData(compData: bytes,compDataSize: int,dataSize: Any,) -> bytes:
         """Decompress data (DEFLATE algorithm), memory must be MemFree()"""
         ...
-def DestroyPhysicsBody(PhysicsBodyData_pointer_0: Any,) -> None:
-        """void DestroyPhysicsBody(struct PhysicsBodyData *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def DestroyPhysicsBody(body: Any|list|tuple,) -> None:
+        """Destroy a physics body"""
         ...
 def DetachAudioMixedProcessor(processor: Any,) -> None:
         """Detach audio stream processor from the entire audio pipeline"""
         ...
-def DetachAudioStreamProcessor(stream: AudioStream,processor: Any,) -> None:
+def DetachAudioStreamProcessor(stream: AudioStream|list|tuple,processor: Any,) -> None:
         """Detach audio stream processor from stream"""
         ...
-def DirectoryExists(dirPath: str,) -> bool:
+def DirectoryExists(dirPath: bytes,) -> bool:
         """Check if a directory path exists"""
         ...
 def DisableCursor() -> None:
@@ -221,76 +228,76 @@ def DisableCursor() -> None:
 def DisableEventWaiting() -> None:
         """Disable waiting for events on EndDrawing(), automatic events polling"""
         ...
-def DrawBillboard(camera: Camera3D,texture: Texture,position: Vector3,size: float,tint: Color,) -> None:
+def DrawBillboard(camera: Camera3D|list|tuple,texture: Texture|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
         """Draw a billboard texture"""
         ...
-def DrawBillboardPro(camera: Camera3D,texture: Texture,source: Rectangle,position: Vector3,up: Vector3,size: Vector2,origin: Vector2,rotation: float,tint: Color,) -> None:
+def DrawBillboardPro(camera: Camera3D|list|tuple,texture: Texture|list|tuple,source: Rectangle|list|tuple,position: Vector3|list|tuple,up: Vector3|list|tuple,size: Vector2|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
         """Draw a billboard texture defined by source and rotation"""
         ...
-def DrawBillboardRec(camera: Camera3D,texture: Texture,source: Rectangle,position: Vector3,size: Vector2,tint: Color,) -> None:
+def DrawBillboardRec(camera: Camera3D|list|tuple,texture: Texture|list|tuple,source: Rectangle|list|tuple,position: Vector3|list|tuple,size: Vector2|list|tuple,tint: Color|list|tuple,) -> None:
         """Draw a billboard texture defined by source"""
         ...
-def DrawBoundingBox(box: BoundingBox,color: Color,) -> None:
+def DrawBoundingBox(box: BoundingBox|list|tuple,color: Color|list|tuple,) -> None:
         """Draw bounding box (wires)"""
         ...
-def DrawCapsule(startPos: Vector3,endPos: Vector3,radius: float,slices: int,rings: int,color: Color,) -> None:
+def DrawCapsule(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,radius: float,slices: int,rings: int,color: Color|list|tuple,) -> None:
         """Draw a capsule with the center of its sphere caps at startPos and endPos"""
         ...
-def DrawCapsuleWires(startPos: Vector3,endPos: Vector3,radius: float,slices: int,rings: int,color: Color,) -> None:
+def DrawCapsuleWires(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,radius: float,slices: int,rings: int,color: Color|list|tuple,) -> None:
         """Draw capsule wireframe with the center of its sphere caps at startPos and endPos"""
         ...
-def DrawCircle(centerX: int,centerY: int,radius: float,color: Color,) -> None:
+def DrawCircle(centerX: int,centerY: int,radius: float,color: Color|list|tuple,) -> None:
         """Draw a color-filled circle"""
         ...
-def DrawCircle3D(center: Vector3,radius: float,rotationAxis: Vector3,rotationAngle: float,color: Color,) -> None:
+def DrawCircle3D(center: Vector3|list|tuple,radius: float,rotationAxis: Vector3|list|tuple,rotationAngle: float,color: Color|list|tuple,) -> None:
         """Draw a circle in 3D world space"""
         ...
-def DrawCircleGradient(centerX: int,centerY: int,radius: float,color1: Color,color2: Color,) -> None:
+def DrawCircleGradient(centerX: int,centerY: int,radius: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> None:
         """Draw a gradient-filled circle"""
         ...
-def DrawCircleLines(centerX: int,centerY: int,radius: float,color: Color,) -> None:
+def DrawCircleLines(centerX: int,centerY: int,radius: float,color: Color|list|tuple,) -> None:
         """Draw circle outline"""
         ...
-def DrawCircleLinesV(center: Vector2,radius: float,color: Color,) -> None:
+def DrawCircleLinesV(center: Vector2|list|tuple,radius: float,color: Color|list|tuple,) -> None:
         """Draw circle outline (Vector version)"""
         ...
-def DrawCircleSector(center: Vector2,radius: float,startAngle: float,endAngle: float,segments: int,color: Color,) -> None:
+def DrawCircleSector(center: Vector2|list|tuple,radius: float,startAngle: float,endAngle: float,segments: int,color: Color|list|tuple,) -> None:
         """Draw a piece of a circle"""
         ...
-def DrawCircleSectorLines(center: Vector2,radius: float,startAngle: float,endAngle: float,segments: int,color: Color,) -> None:
+def DrawCircleSectorLines(center: Vector2|list|tuple,radius: float,startAngle: float,endAngle: float,segments: int,color: Color|list|tuple,) -> None:
         """Draw circle sector outline"""
         ...
-def DrawCircleV(center: Vector2,radius: float,color: Color,) -> None:
+def DrawCircleV(center: Vector2|list|tuple,radius: float,color: Color|list|tuple,) -> None:
         """Draw a color-filled circle (Vector version)"""
         ...
-def DrawCube(position: Vector3,width: float,height: float,length: float,color: Color,) -> None:
+def DrawCube(position: Vector3|list|tuple,width: float,height: float,length: float,color: Color|list|tuple,) -> None:
         """Draw cube"""
         ...
-def DrawCubeV(position: Vector3,size: Vector3,color: Color,) -> None:
+def DrawCubeV(position: Vector3|list|tuple,size: Vector3|list|tuple,color: Color|list|tuple,) -> None:
         """Draw cube (Vector version)"""
         ...
-def DrawCubeWires(position: Vector3,width: float,height: float,length: float,color: Color,) -> None:
+def DrawCubeWires(position: Vector3|list|tuple,width: float,height: float,length: float,color: Color|list|tuple,) -> None:
         """Draw cube wires"""
         ...
-def DrawCubeWiresV(position: Vector3,size: Vector3,color: Color,) -> None:
+def DrawCubeWiresV(position: Vector3|list|tuple,size: Vector3|list|tuple,color: Color|list|tuple,) -> None:
         """Draw cube wires (Vector version)"""
         ...
-def DrawCylinder(position: Vector3,radiusTop: float,radiusBottom: float,height: float,slices: int,color: Color,) -> None:
+def DrawCylinder(position: Vector3|list|tuple,radiusTop: float,radiusBottom: float,height: float,slices: int,color: Color|list|tuple,) -> None:
         """Draw a cylinder/cone"""
         ...
-def DrawCylinderEx(startPos: Vector3,endPos: Vector3,startRadius: float,endRadius: float,sides: int,color: Color,) -> None:
+def DrawCylinderEx(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,startRadius: float,endRadius: float,sides: int,color: Color|list|tuple,) -> None:
         """Draw a cylinder with base at startPos and top at endPos"""
         ...
-def DrawCylinderWires(position: Vector3,radiusTop: float,radiusBottom: float,height: float,slices: int,color: Color,) -> None:
+def DrawCylinderWires(position: Vector3|list|tuple,radiusTop: float,radiusBottom: float,height: float,slices: int,color: Color|list|tuple,) -> None:
         """Draw a cylinder/cone wires"""
         ...
-def DrawCylinderWiresEx(startPos: Vector3,endPos: Vector3,startRadius: float,endRadius: float,sides: int,color: Color,) -> None:
+def DrawCylinderWiresEx(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,startRadius: float,endRadius: float,sides: int,color: Color|list|tuple,) -> None:
         """Draw a cylinder wires with base at startPos and top at endPos"""
         ...
-def DrawEllipse(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color,) -> None:
+def DrawEllipse(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
         """Draw ellipse"""
         ...
-def DrawEllipseLines(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color,) -> None:
+def DrawEllipseLines(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
         """Draw ellipse outline"""
         ...
 def DrawFPS(posX: int,posY: int,) -> None:
@@ -299,193 +306,202 @@ def DrawFPS(posX: int,posY: int,) -> None:
 def DrawGrid(slices: int,spacing: float,) -> None:
         """Draw a grid (centered at (0, 0, 0))"""
         ...
-def DrawLine(startPosX: int,startPosY: int,endPosX: int,endPosY: int,color: Color,) -> None:
+def DrawLine(startPosX: int,startPosY: int,endPosX: int,endPosY: int,color: Color|list|tuple,) -> None:
         """Draw a line"""
         ...
-def DrawLine3D(startPos: Vector3,endPos: Vector3,color: Color,) -> None:
+def DrawLine3D(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,color: Color|list|tuple,) -> None:
         """Draw a line in 3D world space"""
         ...
-def DrawLineBezier(startPos: Vector2,endPos: Vector2,thick: float,color: Color,) -> None:
+def DrawLineBezier(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
         """Draw line segment cubic-bezier in-out interpolation"""
         ...
-def DrawLineEx(startPos: Vector2,endPos: Vector2,thick: float,color: Color,) -> None:
+def DrawLineEx(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
         """Draw a line (using triangles/quads)"""
         ...
-def DrawLineStrip(points: Any,pointCount: int,color: Color,) -> None:
+def DrawLineStrip(points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
         """Draw lines sequence (using gl lines)"""
         ...
-def DrawLineV(startPos: Vector2,endPos: Vector2,color: Color,) -> None:
+def DrawLineV(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,color: Color|list|tuple,) -> None:
         """Draw a line (using gl lines)"""
         ...
-def DrawMesh(mesh: Mesh,material: Material,transform: Matrix,) -> None:
+def DrawMesh(mesh: Mesh|list|tuple,material: Material|list|tuple,transform: Matrix|list|tuple,) -> None:
         """Draw a 3d mesh with material and transform"""
         ...
-def DrawMeshInstanced(mesh: Mesh,material: Material,transforms: Any,instances: int,) -> None:
+def DrawMeshInstanced(mesh: Mesh|list|tuple,material: Material|list|tuple,transforms: Any|list|tuple,instances: int,) -> None:
         """Draw multiple mesh instances with material and different transforms"""
         ...
-def DrawModel(model: Model,position: Vector3,scale: float,tint: Color,) -> None:
+def DrawModel(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
         """Draw a model (with texture if set)"""
         ...
-def DrawModelEx(model: Model,position: Vector3,rotationAxis: Vector3,rotationAngle: float,scale: Vector3,tint: Color,) -> None:
+def DrawModelEx(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
         """Draw a model with extended parameters"""
         ...
-def DrawModelWires(model: Model,position: Vector3,scale: float,tint: Color,) -> None:
+def DrawModelPoints(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
+        """Draw a model as points"""
+        ...
+def DrawModelPointsEx(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
+        """Draw a model as points with extended parameters"""
+        ...
+def DrawModelWires(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
         """Draw a model wires (with texture if set)"""
         ...
-def DrawModelWiresEx(model: Model,position: Vector3,rotationAxis: Vector3,rotationAngle: float,scale: Vector3,tint: Color,) -> None:
+def DrawModelWiresEx(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
         """Draw a model wires (with texture if set) with extended parameters"""
         ...
-def DrawPixel(posX: int,posY: int,color: Color,) -> None:
-        """Draw a pixel"""
+def DrawPixel(posX: int,posY: int,color: Color|list|tuple,) -> None:
+        """Draw a pixel using geometry [Can be slow, use with care]"""
         ...
-def DrawPixelV(position: Vector2,color: Color,) -> None:
-        """Draw a pixel (Vector version)"""
+def DrawPixelV(position: Vector2|list|tuple,color: Color|list|tuple,) -> None:
+        """Draw a pixel using geometry (Vector version) [Can be slow, use with care]"""
         ...
-def DrawPlane(centerPos: Vector3,size: Vector2,color: Color,) -> None:
+def DrawPlane(centerPos: Vector3|list|tuple,size: Vector2|list|tuple,color: Color|list|tuple,) -> None:
         """Draw a plane XZ"""
         ...
-def DrawPoint3D(position: Vector3,color: Color,) -> None:
+def DrawPoint3D(position: Vector3|list|tuple,color: Color|list|tuple,) -> None:
         """Draw a point in 3D space, actually a small line"""
         ...
-def DrawPoly(center: Vector2,sides: int,radius: float,rotation: float,color: Color,) -> None:
+def DrawPoly(center: Vector2|list|tuple,sides: int,radius: float,rotation: float,color: Color|list|tuple,) -> None:
         """Draw a regular polygon (Vector version)"""
         ...
-def DrawPolyLines(center: Vector2,sides: int,radius: float,rotation: float,color: Color,) -> None:
+def DrawPolyLines(center: Vector2|list|tuple,sides: int,radius: float,rotation: float,color: Color|list|tuple,) -> None:
         """Draw a polygon outline of n sides"""
         ...
-def DrawPolyLinesEx(center: Vector2,sides: int,radius: float,rotation: float,lineThick: float,color: Color,) -> None:
+def DrawPolyLinesEx(center: Vector2|list|tuple,sides: int,radius: float,rotation: float,lineThick: float,color: Color|list|tuple,) -> None:
         """Draw a polygon outline of n sides with extended parameters"""
         ...
-def DrawRay(ray: Ray,color: Color,) -> None:
+def DrawRay(ray: Ray|list|tuple,color: Color|list|tuple,) -> None:
         """Draw a ray line"""
         ...
-def DrawRectangle(posX: int,posY: int,width: int,height: int,color: Color,) -> None:
+def DrawRectangle(posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
         """Draw a color-filled rectangle"""
         ...
-def DrawRectangleGradientEx(rec: Rectangle,col1: Color,col2: Color,col3: Color,col4: Color,) -> None:
+def DrawRectangleGradientEx(rec: Rectangle|list|tuple,topLeft: Color|list|tuple,bottomLeft: Color|list|tuple,topRight: Color|list|tuple,bottomRight: Color|list|tuple,) -> None:
         """Draw a gradient-filled rectangle with custom vertex colors"""
         ...
-def DrawRectangleGradientH(posX: int,posY: int,width: int,height: int,color1: Color,color2: Color,) -> None:
+def DrawRectangleGradientH(posX: int,posY: int,width: int,height: int,left: Color|list|tuple,right: Color|list|tuple,) -> None:
         """Draw a horizontal-gradient-filled rectangle"""
         ...
-def DrawRectangleGradientV(posX: int,posY: int,width: int,height: int,color1: Color,color2: Color,) -> None:
+def DrawRectangleGradientV(posX: int,posY: int,width: int,height: int,top: Color|list|tuple,bottom: Color|list|tuple,) -> None:
         """Draw a vertical-gradient-filled rectangle"""
         ...
-def DrawRectangleLines(posX: int,posY: int,width: int,height: int,color: Color,) -> None:
+def DrawRectangleLines(posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
         """Draw rectangle outline"""
         ...
-def DrawRectangleLinesEx(rec: Rectangle,lineThick: float,color: Color,) -> None:
+def DrawRectangleLinesEx(rec: Rectangle|list|tuple,lineThick: float,color: Color|list|tuple,) -> None:
         """Draw rectangle outline with extended parameters"""
         ...
-def DrawRectanglePro(rec: Rectangle,origin: Vector2,rotation: float,color: Color,) -> None:
+def DrawRectanglePro(rec: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,color: Color|list|tuple,) -> None:
         """Draw a color-filled rectangle with pro parameters"""
         ...
-def DrawRectangleRec(rec: Rectangle,color: Color,) -> None:
+def DrawRectangleRec(rec: Rectangle|list|tuple,color: Color|list|tuple,) -> None:
         """Draw a color-filled rectangle"""
         ...
-def DrawRectangleRounded(rec: Rectangle,roundness: float,segments: int,color: Color,) -> None:
+def DrawRectangleRounded(rec: Rectangle|list|tuple,roundness: float,segments: int,color: Color|list|tuple,) -> None:
         """Draw rectangle with rounded edges"""
         ...
-def DrawRectangleRoundedLines(rec: Rectangle,roundness: float,segments: int,lineThick: float,color: Color,) -> None:
+def DrawRectangleRoundedLines(rec: Rectangle|list|tuple,roundness: float,segments: int,color: Color|list|tuple,) -> None:
+        """Draw rectangle lines with rounded edges"""
+        ...
+def DrawRectangleRoundedLinesEx(rec: Rectangle|list|tuple,roundness: float,segments: int,lineThick: float,color: Color|list|tuple,) -> None:
         """Draw rectangle with rounded edges outline"""
         ...
-def DrawRectangleV(position: Vector2,size: Vector2,color: Color,) -> None:
+def DrawRectangleV(position: Vector2|list|tuple,size: Vector2|list|tuple,color: Color|list|tuple,) -> None:
         """Draw a color-filled rectangle (Vector version)"""
         ...
-def DrawRing(center: Vector2,innerRadius: float,outerRadius: float,startAngle: float,endAngle: float,segments: int,color: Color,) -> None:
+def DrawRing(center: Vector2|list|tuple,innerRadius: float,outerRadius: float,startAngle: float,endAngle: float,segments: int,color: Color|list|tuple,) -> None:
         """Draw ring"""
         ...
-def DrawRingLines(center: Vector2,innerRadius: float,outerRadius: float,startAngle: float,endAngle: float,segments: int,color: Color,) -> None:
+def DrawRingLines(center: Vector2|list|tuple,innerRadius: float,outerRadius: float,startAngle: float,endAngle: float,segments: int,color: Color|list|tuple,) -> None:
         """Draw ring outline"""
         ...
-def DrawSphere(centerPos: Vector3,radius: float,color: Color,) -> None:
+def DrawSphere(centerPos: Vector3|list|tuple,radius: float,color: Color|list|tuple,) -> None:
         """Draw sphere"""
         ...
-def DrawSphereEx(centerPos: Vector3,radius: float,rings: int,slices: int,color: Color,) -> None:
+def DrawSphereEx(centerPos: Vector3|list|tuple,radius: float,rings: int,slices: int,color: Color|list|tuple,) -> None:
         """Draw sphere with extended parameters"""
         ...
-def DrawSphereWires(centerPos: Vector3,radius: float,rings: int,slices: int,color: Color,) -> None:
+def DrawSphereWires(centerPos: Vector3|list|tuple,radius: float,rings: int,slices: int,color: Color|list|tuple,) -> None:
         """Draw sphere wires"""
         ...
-def DrawSplineBasis(points: Any,pointCount: int,thick: float,color: Color,) -> None:
+def DrawSplineBasis(points: Any|list|tuple,pointCount: int,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline: B-Spline, minimum 4 points"""
         ...
-def DrawSplineBezierCubic(points: Any,pointCount: int,thick: float,color: Color,) -> None:
+def DrawSplineBezierCubic(points: Any|list|tuple,pointCount: int,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline: Cubic Bezier, minimum 4 points (2 control points): [p1, c2, c3, p4, c5, c6...]"""
         ...
-def DrawSplineBezierQuadratic(points: Any,pointCount: int,thick: float,color: Color,) -> None:
+def DrawSplineBezierQuadratic(points: Any|list|tuple,pointCount: int,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline: Quadratic Bezier, minimum 3 points (1 control point): [p1, c2, p3, c4...]"""
         ...
-def DrawSplineCatmullRom(points: Any,pointCount: int,thick: float,color: Color,) -> None:
+def DrawSplineCatmullRom(points: Any|list|tuple,pointCount: int,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline: Catmull-Rom, minimum 4 points"""
         ...
-def DrawSplineLinear(points: Any,pointCount: int,thick: float,color: Color,) -> None:
+def DrawSplineLinear(points: Any|list|tuple,pointCount: int,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline: Linear, minimum 2 points"""
         ...
-def DrawSplineSegmentBasis(p1: Vector2,p2: Vector2,p3: Vector2,p4: Vector2,thick: float,color: Color,) -> None:
+def DrawSplineSegmentBasis(p1: Vector2|list|tuple,p2: Vector2|list|tuple,p3: Vector2|list|tuple,p4: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline segment: B-Spline, 4 points"""
         ...
-def DrawSplineSegmentBezierCubic(p1: Vector2,c2: Vector2,c3: Vector2,p4: Vector2,thick: float,color: Color,) -> None:
+def DrawSplineSegmentBezierCubic(p1: Vector2|list|tuple,c2: Vector2|list|tuple,c3: Vector2|list|tuple,p4: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline segment: Cubic Bezier, 2 points, 2 control points"""
         ...
-def DrawSplineSegmentBezierQuadratic(p1: Vector2,c2: Vector2,p3: Vector2,thick: float,color: Color,) -> None:
+def DrawSplineSegmentBezierQuadratic(p1: Vector2|list|tuple,c2: Vector2|list|tuple,p3: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline segment: Quadratic Bezier, 2 points, 1 control point"""
         ...
-def DrawSplineSegmentCatmullRom(p1: Vector2,p2: Vector2,p3: Vector2,p4: Vector2,thick: float,color: Color,) -> None:
+def DrawSplineSegmentCatmullRom(p1: Vector2|list|tuple,p2: Vector2|list|tuple,p3: Vector2|list|tuple,p4: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline segment: Catmull-Rom, 4 points"""
         ...
-def DrawSplineSegmentLinear(p1: Vector2,p2: Vector2,thick: float,color: Color,) -> None:
+def DrawSplineSegmentLinear(p1: Vector2|list|tuple,p2: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
         """Draw spline segment: Linear, 2 points"""
         ...
-def DrawText(text: str,posX: int,posY: int,fontSize: int,color: Color,) -> None:
+def DrawText(text: bytes,posX: int,posY: int,fontSize: int,color: Color|list|tuple,) -> None:
         """Draw text (using default font)"""
         ...
-def DrawTextCodepoint(font: Font,codepoint: int,position: Vector2,fontSize: float,tint: Color,) -> None:
+def DrawTextCodepoint(font: Font|list|tuple,codepoint: int,position: Vector2|list|tuple,fontSize: float,tint: Color|list|tuple,) -> None:
         """Draw one character (codepoint)"""
         ...
-def DrawTextCodepoints(font: Font,codepoints: Any,codepointCount: int,position: Vector2,fontSize: float,spacing: float,tint: Color,) -> None:
+def DrawTextCodepoints(font: Font|list|tuple,codepoints: Any,codepointCount: int,position: Vector2|list|tuple,fontSize: float,spacing: float,tint: Color|list|tuple,) -> None:
         """Draw multiple character (codepoint)"""
         ...
-def DrawTextEx(font: Font,text: str,position: Vector2,fontSize: float,spacing: float,tint: Color,) -> None:
+def DrawTextEx(font: Font|list|tuple,text: bytes,position: Vector2|list|tuple,fontSize: float,spacing: float,tint: Color|list|tuple,) -> None:
         """Draw text using font and additional parameters"""
         ...
-def DrawTextPro(font: Font,text: str,position: Vector2,origin: Vector2,rotation: float,fontSize: float,spacing: float,tint: Color,) -> None:
+def DrawTextPro(font: Font|list|tuple,text: bytes,position: Vector2|list|tuple,origin: Vector2|list|tuple,rotation: float,fontSize: float,spacing: float,tint: Color|list|tuple,) -> None:
         """Draw text using Font and pro parameters (rotation)"""
         ...
-def DrawTexture(texture: Texture,posX: int,posY: int,tint: Color,) -> None:
+def DrawTexture(texture: Texture|list|tuple,posX: int,posY: int,tint: Color|list|tuple,) -> None:
         """Draw a Texture2D"""
         ...
-def DrawTextureEx(texture: Texture,position: Vector2,rotation: float,scale: float,tint: Color,) -> None:
+def DrawTextureEx(texture: Texture|list|tuple,position: Vector2|list|tuple,rotation: float,scale: float,tint: Color|list|tuple,) -> None:
         """Draw a Texture2D with extended parameters"""
         ...
-def DrawTextureNPatch(texture: Texture,nPatchInfo: NPatchInfo,dest: Rectangle,origin: Vector2,rotation: float,tint: Color,) -> None:
+def DrawTextureNPatch(texture: Texture|list|tuple,nPatchInfo: NPatchInfo|list|tuple,dest: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
         """Draws a texture (or part of it) that stretches or shrinks nicely"""
         ...
-def DrawTexturePro(texture: Texture,source: Rectangle,dest: Rectangle,origin: Vector2,rotation: float,tint: Color,) -> None:
+def DrawTexturePro(texture: Texture|list|tuple,source: Rectangle|list|tuple,dest: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
         """Draw a part of a texture defined by a rectangle with 'pro' parameters"""
         ...
-def DrawTextureRec(texture: Texture,source: Rectangle,position: Vector2,tint: Color,) -> None:
+def DrawTextureRec(texture: Texture|list|tuple,source: Rectangle|list|tuple,position: Vector2|list|tuple,tint: Color|list|tuple,) -> None:
         """Draw a part of a texture defined by a rectangle"""
         ...
-def DrawTextureV(texture: Texture,position: Vector2,tint: Color,) -> None:
+def DrawTextureV(texture: Texture|list|tuple,position: Vector2|list|tuple,tint: Color|list|tuple,) -> None:
         """Draw a Texture2D with position defined as Vector2"""
         ...
-def DrawTriangle(v1: Vector2,v2: Vector2,v3: Vector2,color: Color,) -> None:
+def DrawTriangle(v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
         """Draw a color-filled triangle (vertex in counter-clockwise order!)"""
         ...
-def DrawTriangle3D(v1: Vector3,v2: Vector3,v3: Vector3,color: Color,) -> None:
+def DrawTriangle3D(v1: Vector3|list|tuple,v2: Vector3|list|tuple,v3: Vector3|list|tuple,color: Color|list|tuple,) -> None:
         """Draw a color-filled triangle (vertex in counter-clockwise order!)"""
         ...
-def DrawTriangleFan(points: Any,pointCount: int,color: Color,) -> None:
+def DrawTriangleFan(points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
         """Draw a triangle fan defined by points (first vertex is the center)"""
         ...
-def DrawTriangleLines(v1: Vector2,v2: Vector2,v3: Vector2,color: Color,) -> None:
+def DrawTriangleLines(v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
         """Draw triangle outline (vertex in counter-clockwise order!)"""
         ...
-def DrawTriangleStrip(points: Any,pointCount: int,color: Color,) -> None:
+def DrawTriangleStrip(points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
         """Draw a triangle strip defined by points"""
         ...
-def DrawTriangleStrip3D(points: Any,pointCount: int,color: Color,) -> None:
+def DrawTriangleStrip3D(points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
         """Draw a triangle strip defined by points"""
         ...
 def EnableCursor() -> None:
@@ -494,7 +510,7 @@ def EnableCursor() -> None:
 def EnableEventWaiting() -> None:
         """Enable waiting for events on EndDrawing(), no automatic event polling"""
         ...
-def EncodeDataBase64(data: str,dataSize: int,outputSize: Any,) -> str:
+def EncodeDataBase64(data: bytes,dataSize: int,outputSize: Any,) -> bytes:
         """Encode data to Base64 string, memory must be MemFree()"""
         ...
 def EndBlendMode() -> None:
@@ -521,31 +537,34 @@ def EndTextureMode() -> None:
 def EndVrStereoMode() -> None:
         """End stereo rendering (requires VR simulator)"""
         ...
-def ExportAutomationEventList(list: AutomationEventList,fileName: str,) -> bool:
+def ExportAutomationEventList(list_0: AutomationEventList|list|tuple,fileName: bytes,) -> bool:
         """Export automation events list as text file"""
         ...
-def ExportDataAsCode(data: str,dataSize: int,fileName: str,) -> bool:
+def ExportDataAsCode(data: bytes,dataSize: int,fileName: bytes,) -> bool:
         """Export data to code (.h), returns true on success"""
         ...
-def ExportFontAsCode(font: Font,fileName: str,) -> bool:
+def ExportFontAsCode(font: Font|list|tuple,fileName: bytes,) -> bool:
         """Export font as code file, returns true on success"""
         ...
-def ExportImage(image: Image,fileName: str,) -> bool:
+def ExportImage(image: Image|list|tuple,fileName: bytes,) -> bool:
         """Export image data to file, returns true on success"""
         ...
-def ExportImageAsCode(image: Image,fileName: str,) -> bool:
+def ExportImageAsCode(image: Image|list|tuple,fileName: bytes,) -> bool:
         """Export image as code file defining an array of bytes, returns true on success"""
         ...
-def ExportImageToMemory(image: Image,fileType: str,fileSize: Any,) -> str:
+def ExportImageToMemory(image: Image|list|tuple,fileType: bytes,fileSize: Any,) -> bytes:
         """Export image to memory buffer"""
         ...
-def ExportMesh(mesh: Mesh,fileName: str,) -> bool:
+def ExportMesh(mesh: Mesh|list|tuple,fileName: bytes,) -> bool:
         """Export mesh data to file, returns true on success"""
         ...
-def ExportWave(wave: Wave,fileName: str,) -> bool:
+def ExportMeshAsCode(mesh: Mesh|list|tuple,fileName: bytes,) -> bool:
+        """Export mesh as code file (.h) defining multiple arrays of vertex attributes"""
+        ...
+def ExportWave(wave: Wave|list|tuple,fileName: bytes,) -> bool:
         """Export wave data to file, returns true on success"""
         ...
-def ExportWaveAsCode(wave: Wave,fileName: str,) -> bool:
+def ExportWaveAsCode(wave: Wave|list|tuple,fileName: bytes,) -> bool:
         """Export wave sample data to code (.h), returns true on success"""
         ...
 FLAG_BORDERLESS_WINDOWED_MODE: int
@@ -567,16 +586,14 @@ FLAG_WINDOW_UNFOCUSED: int
 FONT_BITMAP: int
 FONT_DEFAULT: int
 FONT_SDF: int
-def Fade(color: Color,alpha: float,) -> Color:
+def Fade(color: Color|list|tuple,alpha: float,) -> Color:
         """Get color with alpha applied, alpha goes from 0.0f to 1.0f"""
         ...
-def FileExists(fileName: str,) -> bool:
+def FileExists(fileName: bytes,) -> bool:
         """Check if file exists"""
         ...
-def FloatEquals(float_0: float,float_1: float,) -> int:
-        """int FloatEquals(float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def FloatEquals(x: float,y: float,) -> int:
+        """"""
         ...
 GAMEPAD_AXIS_LEFT_TRIGGER: int
 GAMEPAD_AXIS_LEFT_X: int
@@ -617,28 +634,28 @@ GROUP_PADDING: int
 def GenImageCellular(width: int,height: int,tileSize: int,) -> Image:
         """Generate image: cellular algorithm, bigger tileSize means bigger cells"""
         ...
-def GenImageChecked(width: int,height: int,checksX: int,checksY: int,col1: Color,col2: Color,) -> Image:
+def GenImageChecked(width: int,height: int,checksX: int,checksY: int,col1: Color|list|tuple,col2: Color|list|tuple,) -> Image:
         """Generate image: checked"""
         ...
-def GenImageColor(width: int,height: int,color: Color,) -> Image:
+def GenImageColor(width: int,height: int,color: Color|list|tuple,) -> Image:
         """Generate image: plain color"""
         ...
-def GenImageFontAtlas(glyphs: Any,glyphRecs: Any,glyphCount: int,fontSize: int,padding: int,packMethod: int,) -> Image:
+def GenImageFontAtlas(glyphs: Any|list|tuple,glyphRecs: Any|list|tuple,glyphCount: int,fontSize: int,padding: int,packMethod: int,) -> Image:
         """Generate image font atlas using chars info"""
         ...
-def GenImageGradientLinear(width: int,height: int,direction: int,start: Color,end: Color,) -> Image:
+def GenImageGradientLinear(width: int,height: int,direction: int,start: Color|list|tuple,end: Color|list|tuple,) -> Image:
         """Generate image: linear gradient, direction in degrees [0..360], 0=Vertical gradient"""
         ...
-def GenImageGradientRadial(width: int,height: int,density: float,inner: Color,outer: Color,) -> Image:
+def GenImageGradientRadial(width: int,height: int,density: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> Image:
         """Generate image: radial gradient"""
         ...
-def GenImageGradientSquare(width: int,height: int,density: float,inner: Color,outer: Color,) -> Image:
+def GenImageGradientSquare(width: int,height: int,density: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> Image:
         """Generate image: square gradient"""
         ...
 def GenImagePerlinNoise(width: int,height: int,offsetX: int,offsetY: int,scale: float,) -> Image:
         """Generate image: perlin noise"""
         ...
-def GenImageText(width: int,height: int,text: str,) -> Image:
+def GenImageText(width: int,height: int,text: bytes,) -> Image:
         """Generate image: grayscale image from text data"""
         ...
 def GenImageWhiteNoise(width: int,height: int,factor: float,) -> Image:
@@ -650,13 +667,13 @@ def GenMeshCone(radius: float,height: float,slices: int,) -> Mesh:
 def GenMeshCube(width: float,height: float,length: float,) -> Mesh:
         """Generate cuboid mesh"""
         ...
-def GenMeshCubicmap(cubicmap: Image,cubeSize: Vector3,) -> Mesh:
+def GenMeshCubicmap(cubicmap: Image|list|tuple,cubeSize: Vector3|list|tuple,) -> Mesh:
         """Generate cubes-based map mesh from image data"""
         ...
 def GenMeshCylinder(radius: float,height: float,slices: int,) -> Mesh:
         """Generate cylinder mesh"""
         ...
-def GenMeshHeightmap(heightmap: Image,size: Vector3,) -> Mesh:
+def GenMeshHeightmap(heightmap: Image|list|tuple,size: Vector3|list|tuple,) -> Mesh:
         """Generate heightmap mesh from image data"""
         ...
 def GenMeshHemiSphere(radius: float,rings: int,slices: int,) -> Mesh:
@@ -674,70 +691,73 @@ def GenMeshPoly(sides: int,radius: float,) -> Mesh:
 def GenMeshSphere(radius: float,rings: int,slices: int,) -> Mesh:
         """Generate sphere mesh (standard sphere)"""
         ...
-def GenMeshTangents(mesh: Any,) -> None:
+def GenMeshTangents(mesh: Any|list|tuple,) -> None:
         """Compute mesh tangents"""
         ...
 def GenMeshTorus(radius: float,size: float,radSeg: int,sides: int,) -> Mesh:
         """Generate torus mesh"""
         ...
-def GenTextureMipmaps(texture: Any,) -> None:
+def GenTextureMipmaps(texture: Any|list|tuple,) -> None:
         """Generate GPU mipmaps for a texture"""
         ...
-def GetApplicationDirectory() -> str:
+def GetApplicationDirectory() -> bytes:
         """Get the directory of the running application (uses static string)"""
         ...
-def GetCameraMatrix(camera: Camera3D,) -> Matrix:
+def GetCameraMatrix(camera: Camera3D|list|tuple,) -> Matrix:
         """Get camera transform matrix (view matrix)"""
         ...
-def GetCameraMatrix2D(camera: Camera2D,) -> Matrix:
+def GetCameraMatrix2D(camera: Camera2D|list|tuple,) -> Matrix:
         """Get camera 2d transform matrix"""
         ...
 def GetCharPressed() -> int:
         """Get char pressed (unicode), call it multiple times for chars queued, returns 0 when the queue is empty"""
         ...
-def GetClipboardText() -> str:
+def GetClipboardImage() -> Image:
+        """Get clipboard image content"""
+        ...
+def GetClipboardText() -> bytes:
         """Get clipboard text content"""
         ...
-def GetCodepoint(text: str,codepointSize: Any,) -> int:
+def GetCodepoint(text: bytes,codepointSize: Any,) -> int:
         """Get next codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure"""
         ...
-def GetCodepointCount(text: str,) -> int:
+def GetCodepointCount(text: bytes,) -> int:
         """Get total number of codepoints in a UTF-8 encoded string"""
         ...
-def GetCodepointNext(text: str,codepointSize: Any,) -> int:
+def GetCodepointNext(text: bytes,codepointSize: Any,) -> int:
         """Get next codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure"""
         ...
-def GetCodepointPrevious(text: str,codepointSize: Any,) -> int:
+def GetCodepointPrevious(text: bytes,codepointSize: Any,) -> int:
         """Get previous codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure"""
         ...
-def GetCollisionRec(rec1: Rectangle,rec2: Rectangle,) -> Rectangle:
+def GetCollisionRec(rec1: Rectangle|list|tuple,rec2: Rectangle|list|tuple,) -> Rectangle:
         """Get collision rectangle for two rectangles collision"""
         ...
 def GetColor(hexValue: int,) -> Color:
         """Get Color structure from hexadecimal value"""
         ...
 def GetCurrentMonitor() -> int:
-        """Get current connected monitor"""
+        """Get current monitor where window is placed"""
         ...
-def GetDirectoryPath(filePath: str,) -> str:
+def GetDirectoryPath(filePath: bytes,) -> bytes:
         """Get full path for a given fileName with path (uses static string)"""
         ...
 def GetFPS() -> int:
         """Get current FPS"""
         ...
-def GetFileExtension(fileName: str,) -> str:
+def GetFileExtension(fileName: bytes,) -> bytes:
         """Get pointer to extension for a filename string (includes dot: '.png')"""
         ...
-def GetFileLength(fileName: str,) -> int:
+def GetFileLength(fileName: bytes,) -> int:
         """Get file length in bytes (NOTE: GetFileSize() conflicts with windows.h)"""
         ...
-def GetFileModTime(fileName: str,) -> int:
+def GetFileModTime(fileName: bytes,) -> int:
         """Get file modification time (last write time)"""
         ...
-def GetFileName(filePath: str,) -> str:
+def GetFileName(filePath: bytes,) -> bytes:
         """Get pointer to filename for a path string"""
         ...
-def GetFileNameWithoutExt(filePath: str,) -> str:
+def GetFileNameWithoutExt(filePath: bytes,) -> bytes:
         """Get filename string without extension (uses static string)"""
         ...
 def GetFontDefault() -> Font:
@@ -755,7 +775,7 @@ def GetGamepadAxisMovement(gamepad: int,axis: int,) -> float:
 def GetGamepadButtonPressed() -> int:
         """Get the last gamepad button pressed"""
         ...
-def GetGamepadName(gamepad: int,) -> str:
+def GetGamepadName(gamepad: int,) -> bytes:
         """Get gamepad internal name id"""
         ...
 def GetGestureDetected() -> int:
@@ -768,7 +788,7 @@ def GetGestureDragVector() -> Vector2:
         """Get gesture drag vector"""
         ...
 def GetGestureHoldDuration() -> float:
-        """Get gesture hold time in milliseconds"""
+        """Get gesture hold time in seconds"""
         ...
 def GetGesturePinchAngle() -> float:
         """Get gesture pinch angle"""
@@ -776,19 +796,19 @@ def GetGesturePinchAngle() -> float:
 def GetGesturePinchVector() -> Vector2:
         """Get gesture pinch delta"""
         ...
-def GetGlyphAtlasRec(font: Font,codepoint: int,) -> Rectangle:
+def GetGlyphAtlasRec(font: Font|list|tuple,codepoint: int,) -> Rectangle:
         """Get glyph rectangle in font atlas for a codepoint (unicode character), fallback to '?' if not found"""
         ...
-def GetGlyphIndex(font: Font,codepoint: int,) -> int:
+def GetGlyphIndex(font: Font|list|tuple,codepoint: int,) -> int:
         """Get glyph index position in font for a codepoint (unicode character), fallback to '?' if not found"""
         ...
-def GetGlyphInfo(font: Font,codepoint: int,) -> GlyphInfo:
+def GetGlyphInfo(font: Font|list|tuple,codepoint: int,) -> GlyphInfo:
         """Get glyph font info data for a codepoint (unicode character), fallback to '?' if not found"""
         ...
-def GetImageAlphaBorder(image: Image,threshold: float,) -> Rectangle:
+def GetImageAlphaBorder(image: Image|list|tuple,threshold: float,) -> Rectangle:
         """Get image alpha border rectangle"""
         ...
-def GetImageColor(image: Image,x: int,y: int,) -> Color:
+def GetImageColor(image: Image|list|tuple,x: int,y: int,) -> Color:
         """Get image pixel color at (x, y) position"""
         ...
 def GetKeyPressed() -> int:
@@ -797,10 +817,10 @@ def GetKeyPressed() -> int:
 def GetMasterVolume() -> float:
         """Get master volume (listener)"""
         ...
-def GetMeshBoundingBox(mesh: Mesh,) -> BoundingBox:
+def GetMeshBoundingBox(mesh: Mesh|list|tuple,) -> BoundingBox:
         """Compute mesh bounding box limits"""
         ...
-def GetModelBoundingBox(model: Model,) -> BoundingBox:
+def GetModelBoundingBox(model: Model|list|tuple,) -> BoundingBox:
         """Compute model bounding box limits (considers all meshes)"""
         ...
 def GetMonitorCount() -> int:
@@ -809,7 +829,7 @@ def GetMonitorCount() -> int:
 def GetMonitorHeight(monitor: int,) -> int:
         """Get specified monitor height (current video mode used by monitor)"""
         ...
-def GetMonitorName(monitor: int,) -> str:
+def GetMonitorName(monitor: int,) -> bytes:
         """Get the human-readable, UTF-8 encoded name of the specified monitor"""
         ...
 def GetMonitorPhysicalHeight(monitor: int,) -> int:
@@ -833,9 +853,6 @@ def GetMouseDelta() -> Vector2:
 def GetMousePosition() -> Vector2:
         """Get mouse position XY"""
         ...
-def GetMouseRay(mousePosition: Vector2,camera: Camera3D,) -> Ray:
-        """Get a ray trace from mouse position"""
-        ...
 def GetMouseWheelMove() -> float:
         """Get mouse wheel movement for X or Y, whichever is larger"""
         ...
@@ -848,36 +865,26 @@ def GetMouseX() -> int:
 def GetMouseY() -> int:
         """Get mouse position Y"""
         ...
-def GetMusicTimeLength(music: Music,) -> float:
+def GetMusicTimeLength(music: Music|list|tuple,) -> float:
         """Get music time length (in seconds)"""
         ...
-def GetMusicTimePlayed(music: Music,) -> float:
+def GetMusicTimePlayed(music: Music|list|tuple,) -> float:
         """Get current music time played (in seconds)"""
         ...
 def GetPhysicsBodiesCount() -> int:
-        """int GetPhysicsBodiesCount();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Returns the current amount of created physics bodies"""
         ...
-def GetPhysicsBody(int_0: int,) -> Any:
-        """struct PhysicsBodyData *GetPhysicsBody(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GetPhysicsBody(index: int,) -> Any:
+        """Returns a physics body of the bodies pool at a specific index"""
         ...
-def GetPhysicsShapeType(int_0: int,) -> int:
-        """int GetPhysicsShapeType(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GetPhysicsShapeType(index: int,) -> int:
+        """Returns the physics body shape type (PHYSICS_CIRCLE or PHYSICS_POLYGON)"""
         ...
-def GetPhysicsShapeVertex(PhysicsBodyData_pointer_0: Any,int_1: int,) -> Vector2:
-        """struct Vector2 GetPhysicsShapeVertex(struct PhysicsBodyData *, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GetPhysicsShapeVertex(body: Any|list|tuple,vertex: int,) -> Vector2:
+        """Returns transformed position of a body shape (body position + vertex transformed position)"""
         ...
-def GetPhysicsShapeVerticesCount(int_0: int,) -> int:
-        """int GetPhysicsShapeVerticesCount(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GetPhysicsShapeVerticesCount(index: int,) -> int:
+        """Returns the amount of vertices of a physics body shape"""
         ...
 def GetPixelColor(srcPtr: Any,format: int,) -> Color:
         """Get Color from a source pixel pointer of certain format"""
@@ -885,25 +892,25 @@ def GetPixelColor(srcPtr: Any,format: int,) -> Color:
 def GetPixelDataSize(width: int,height: int,format: int,) -> int:
         """Get pixel data size in bytes for certain format"""
         ...
-def GetPrevDirectoryPath(dirPath: str,) -> str:
+def GetPrevDirectoryPath(dirPath: bytes,) -> bytes:
         """Get previous directory path for a given path (uses static string)"""
         ...
-def GetRandomValue(min: int,max: int,) -> int:
+def GetRandomValue(min_0: int,max_1: int,) -> int:
         """Get a random value between min and max (both included)"""
         ...
-def GetRayCollisionBox(ray: Ray,box: BoundingBox,) -> RayCollision:
+def GetRayCollisionBox(ray: Ray|list|tuple,box: BoundingBox|list|tuple,) -> RayCollision:
         """Get collision info between ray and box"""
         ...
-def GetRayCollisionMesh(ray: Ray,mesh: Mesh,transform: Matrix,) -> RayCollision:
+def GetRayCollisionMesh(ray: Ray|list|tuple,mesh: Mesh|list|tuple,transform: Matrix|list|tuple,) -> RayCollision:
         """Get collision info between ray and mesh"""
         ...
-def GetRayCollisionQuad(ray: Ray,p1: Vector3,p2: Vector3,p3: Vector3,p4: Vector3,) -> RayCollision:
+def GetRayCollisionQuad(ray: Ray|list|tuple,p1: Vector3|list|tuple,p2: Vector3|list|tuple,p3: Vector3|list|tuple,p4: Vector3|list|tuple,) -> RayCollision:
         """Get collision info between ray and quad"""
         ...
-def GetRayCollisionSphere(ray: Ray,center: Vector3,radius: float,) -> RayCollision:
+def GetRayCollisionSphere(ray: Ray|list|tuple,center: Vector3|list|tuple,radius: float,) -> RayCollision:
         """Get collision info between ray and sphere"""
         ...
-def GetRayCollisionTriangle(ray: Ray,p1: Vector3,p2: Vector3,p3: Vector3,) -> RayCollision:
+def GetRayCollisionTriangle(ray: Ray|list|tuple,p1: Vector3|list|tuple,p2: Vector3|list|tuple,p3: Vector3|list|tuple,) -> RayCollision:
         """Get collision info between ray and triangle"""
         ...
 def GetRenderHeight() -> int:
@@ -915,31 +922,43 @@ def GetRenderWidth() -> int:
 def GetScreenHeight() -> int:
         """Get current screen height"""
         ...
-def GetScreenToWorld2D(position: Vector2,camera: Camera2D,) -> Vector2:
+def GetScreenToWorld2D(position: Vector2|list|tuple,camera: Camera2D|list|tuple,) -> Vector2:
         """Get the world space position for a 2d camera screen space position"""
+        ...
+def GetScreenToWorldRay(position: Vector2|list|tuple,camera: Camera3D|list|tuple,) -> Ray:
+        """Get a ray trace from screen position (i.e mouse)"""
+        ...
+def GetScreenToWorldRayEx(position: Vector2|list|tuple,camera: Camera3D|list|tuple,width: int,height: int,) -> Ray:
+        """Get a ray trace from screen position (i.e mouse) in a viewport"""
         ...
 def GetScreenWidth() -> int:
         """Get current screen width"""
         ...
-def GetShaderLocation(shader: Shader,uniformName: str,) -> int:
+def GetShaderLocation(shader: Shader|list|tuple,uniformName: bytes,) -> int:
         """Get shader uniform location"""
         ...
-def GetShaderLocationAttrib(shader: Shader,attribName: str,) -> int:
+def GetShaderLocationAttrib(shader: Shader|list|tuple,attribName: bytes,) -> int:
         """Get shader attribute location"""
         ...
-def GetSplinePointBasis(p1: Vector2,p2: Vector2,p3: Vector2,p4: Vector2,t: float,) -> Vector2:
+def GetShapesTexture() -> Texture:
+        """Get texture that is used for shapes drawing"""
+        ...
+def GetShapesTextureRectangle() -> Rectangle:
+        """Get texture source rectangle that is used for shapes drawing"""
+        ...
+def GetSplinePointBasis(p1: Vector2|list|tuple,p2: Vector2|list|tuple,p3: Vector2|list|tuple,p4: Vector2|list|tuple,t: float,) -> Vector2:
         """Get (evaluate) spline point: B-Spline"""
         ...
-def GetSplinePointBezierCubic(p1: Vector2,c2: Vector2,c3: Vector2,p4: Vector2,t: float,) -> Vector2:
+def GetSplinePointBezierCubic(p1: Vector2|list|tuple,c2: Vector2|list|tuple,c3: Vector2|list|tuple,p4: Vector2|list|tuple,t: float,) -> Vector2:
         """Get (evaluate) spline point: Cubic Bezier"""
         ...
-def GetSplinePointBezierQuad(p1: Vector2,c2: Vector2,p3: Vector2,t: float,) -> Vector2:
+def GetSplinePointBezierQuad(p1: Vector2|list|tuple,c2: Vector2|list|tuple,p3: Vector2|list|tuple,t: float,) -> Vector2:
         """Get (evaluate) spline point: Quadratic Bezier"""
         ...
-def GetSplinePointCatmullRom(p1: Vector2,p2: Vector2,p3: Vector2,p4: Vector2,t: float,) -> Vector2:
+def GetSplinePointCatmullRom(p1: Vector2|list|tuple,p2: Vector2|list|tuple,p3: Vector2|list|tuple,p4: Vector2|list|tuple,t: float,) -> Vector2:
         """Get (evaluate) spline point: Catmull-Rom"""
         ...
-def GetSplinePointLinear(startPos: Vector2,endPos: Vector2,t: float,) -> Vector2:
+def GetSplinePointLinear(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,t: float,) -> Vector2:
         """Get (evaluate) spline point: Linear"""
         ...
 def GetTime() -> float:
@@ -969,297 +988,188 @@ def GetWindowPosition() -> Vector2:
 def GetWindowScaleDPI() -> Vector2:
         """Get window scale DPI factor"""
         ...
-def GetWorkingDirectory() -> str:
+def GetWorkingDirectory() -> bytes:
         """Get current working directory (uses static string)"""
         ...
-def GetWorldToScreen(position: Vector3,camera: Camera3D,) -> Vector2:
+def GetWorldToScreen(position: Vector3|list|tuple,camera: Camera3D|list|tuple,) -> Vector2:
         """Get the screen space position for a 3d world space position"""
         ...
-def GetWorldToScreen2D(position: Vector2,camera: Camera2D,) -> Vector2:
+def GetWorldToScreen2D(position: Vector2|list|tuple,camera: Camera2D|list|tuple,) -> Vector2:
         """Get the screen space position for a 2d camera world space position"""
         ...
-def GetWorldToScreenEx(position: Vector3,camera: Camera3D,width: int,height: int,) -> Vector2:
+def GetWorldToScreenEx(position: Vector3|list|tuple,camera: Camera3D|list|tuple,width: int,height: int,) -> Vector2:
         """Get size position for a 3d world space position"""
         ...
-def GuiButton(Rectangle_0: Rectangle,str_1: str,) -> int:
-        """int GuiButton(struct Rectangle, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiButton(bounds: Rectangle|list|tuple,text: bytes,) -> int:
+        """Button control, returns true when clicked"""
         ...
-def GuiCheckBox(Rectangle_0: Rectangle,str_1: str,_Bool_pointer_2: Any,) -> int:
-        """int GuiCheckBox(struct Rectangle, char *, _Bool *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiCheckBox(bounds: Rectangle|list|tuple,text: bytes,checked: Any,) -> int:
+        """Check Box control, returns true when active"""
         ...
-def GuiColorBarAlpha(Rectangle_0: Rectangle,str_1: str,float_pointer_2: Any,) -> int:
-        """int GuiColorBarAlpha(struct Rectangle, char *, float *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiColorBarAlpha(bounds: Rectangle|list|tuple,text: bytes,alpha: Any,) -> int:
+        """Color Bar Alpha control"""
         ...
-def GuiColorBarHue(Rectangle_0: Rectangle,str_1: str,float_pointer_2: Any,) -> int:
-        """int GuiColorBarHue(struct Rectangle, char *, float *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiColorBarHue(bounds: Rectangle|list|tuple,text: bytes,value: Any,) -> int:
+        """Color Bar Hue control"""
         ...
-def GuiColorPanel(Rectangle_0: Rectangle,str_1: str,Color_pointer_2: Any,) -> int:
-        """int GuiColorPanel(struct Rectangle, char *, struct Color *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiColorPanel(bounds: Rectangle|list|tuple,text: bytes,color: Any|list|tuple,) -> int:
+        """Color Panel control"""
         ...
-def GuiColorPanelHSV(Rectangle_0: Rectangle,str_1: str,Vector3_pointer_2: Any,) -> int:
-        """int GuiColorPanelHSV(struct Rectangle, char *, struct Vector3 *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiColorPanelHSV(bounds: Rectangle|list|tuple,text: bytes,colorHsv: Any|list|tuple,) -> int:
+        """Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()"""
         ...
-def GuiColorPicker(Rectangle_0: Rectangle,str_1: str,Color_pointer_2: Any,) -> int:
-        """int GuiColorPicker(struct Rectangle, char *, struct Color *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiColorPicker(bounds: Rectangle|list|tuple,text: bytes,color: Any|list|tuple,) -> int:
+        """Color Picker control (multiple color controls)"""
         ...
-def GuiColorPickerHSV(Rectangle_0: Rectangle,str_1: str,Vector3_pointer_2: Any,) -> int:
-        """int GuiColorPickerHSV(struct Rectangle, char *, struct Vector3 *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiColorPickerHSV(bounds: Rectangle|list|tuple,text: bytes,colorHsv: Any|list|tuple,) -> int:
+        """Color Picker control that avoids conversion to RGB on each call (multiple color controls)"""
         ...
-def GuiComboBox(Rectangle_0: Rectangle,str_1: str,int_pointer_2: Any,) -> int:
-        """int GuiComboBox(struct Rectangle, char *, int *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiComboBox(bounds: Rectangle|list|tuple,text: bytes,active: Any,) -> int:
+        """Combo Box control"""
         ...
 def GuiDisable() -> None:
-        """void GuiDisable();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable gui controls (global state)"""
         ...
 def GuiDisableTooltip() -> None:
-        """void GuiDisableTooltip();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable gui tooltips (global state)"""
         ...
-def GuiDrawIcon(int_0: int,int_1: int,int_2: int,int_3: int,Color_4: Color,) -> None:
-        """void GuiDrawIcon(int, int, int, int, struct Color);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiDrawIcon(iconId: int,posX: int,posY: int,pixelSize: int,color: Color|list|tuple,) -> None:
+        """Draw icon using pixel size at specified position"""
         ...
-def GuiDropdownBox(Rectangle_0: Rectangle,str_1: str,int_pointer_2: Any,_Bool_3: bool,) -> int:
-        """int GuiDropdownBox(struct Rectangle, char *, int *, _Bool);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiDropdownBox(bounds: Rectangle|list|tuple,text: bytes,active: Any,editMode: bool,) -> int:
+        """Dropdown Box control"""
         ...
-def GuiDummyRec(Rectangle_0: Rectangle,str_1: str,) -> int:
-        """int GuiDummyRec(struct Rectangle, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiDummyRec(bounds: Rectangle|list|tuple,text: bytes,) -> int:
+        """Dummy control for placeholders"""
         ...
 def GuiEnable() -> None:
-        """void GuiEnable();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable gui controls (global state)"""
         ...
 def GuiEnableTooltip() -> None:
-        """void GuiEnableTooltip();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable gui tooltips (global state)"""
         ...
 def GuiGetFont() -> Font:
-        """struct Font GuiGetFont();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get gui custom font (global state)"""
         ...
 def GuiGetIcons() -> Any:
-        """unsigned int *GuiGetIcons();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get raygui icons data pointer"""
         ...
 def GuiGetState() -> int:
-        """int GuiGetState();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get gui state (global state)"""
         ...
-def GuiGetStyle(int_0: int,int_1: int,) -> int:
-        """int GuiGetStyle(int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiGetStyle(control: int,property: int,) -> int:
+        """Get one style property"""
         ...
-def GuiGrid(Rectangle_0: Rectangle,str_1: str,float_2: float,int_3: int,Vector2_pointer_4: Any,) -> int:
-        """int GuiGrid(struct Rectangle, char *, float, int, struct Vector2 *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiGrid(bounds: Rectangle|list|tuple,text: bytes,spacing: float,subdivs: int,mouseCell: Any|list|tuple,) -> int:
+        """Grid control"""
         ...
-def GuiGroupBox(Rectangle_0: Rectangle,str_1: str,) -> int:
-        """int GuiGroupBox(struct Rectangle, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiGroupBox(bounds: Rectangle|list|tuple,text: bytes,) -> int:
+        """Group Box control with text name"""
         ...
-def GuiIconText(int_0: int,str_1: str,) -> str:
-        """char *GuiIconText(int, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiIconText(iconId: int,text: bytes,) -> bytes:
+        """Get text with icon id prepended (if supported)"""
         ...
 def GuiIsLocked() -> bool:
-        """_Bool GuiIsLocked();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Check if gui is locked (global state)"""
         ...
-def GuiLabel(Rectangle_0: Rectangle,str_1: str,) -> int:
-        """int GuiLabel(struct Rectangle, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiLabel(bounds: Rectangle|list|tuple,text: bytes,) -> int:
+        """Label control"""
         ...
-def GuiLabelButton(Rectangle_0: Rectangle,str_1: str,) -> int:
-        """int GuiLabelButton(struct Rectangle, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiLabelButton(bounds: Rectangle|list|tuple,text: bytes,) -> int:
+        """Label button control, returns true when clicked"""
         ...
-def GuiLine(Rectangle_0: Rectangle,str_1: str,) -> int:
-        """int GuiLine(struct Rectangle, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiLine(bounds: Rectangle|list|tuple,text: bytes,) -> int:
+        """Line separator control, could contain text"""
         ...
-def GuiListView(Rectangle_0: Rectangle,str_1: str,int_pointer_2: Any,int_pointer_3: Any,) -> int:
-        """int GuiListView(struct Rectangle, char *, int *, int *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiListView(bounds: Rectangle|list|tuple,text: bytes,scrollIndex: Any,active: Any,) -> int:
+        """List View control"""
         ...
-def GuiListViewEx(Rectangle_0: Rectangle,str_pointer_1: str,int_2: int,int_pointer_3: Any,int_pointer_4: Any,int_pointer_5: Any,) -> int:
-        """int GuiListViewEx(struct Rectangle, char * *, int, int *, int *, int *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiListViewEx(bounds: Rectangle|list|tuple,text: list[bytes],count: int,scrollIndex: Any,active: Any,focus: Any,) -> int:
+        """List View with extended parameters"""
         ...
-def GuiLoadIcons(str_0: str,_Bool_1: bool,) -> str:
-        """char * *GuiLoadIcons(char *, _Bool);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiLoadIcons(fileName: bytes,loadIconsName: bool,) -> list[bytes]:
+        """Load raygui icons file (.rgi) into internal icons data"""
         ...
-def GuiLoadStyle(str_0: str,) -> None:
-        """void GuiLoadStyle(char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiLoadStyle(fileName: bytes,) -> None:
+        """Load style file over global style variable (.rgs)"""
         ...
 def GuiLoadStyleDefault() -> None:
-        """void GuiLoadStyleDefault();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Load style default over global style"""
         ...
 def GuiLock() -> None:
-        """void GuiLock();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Lock gui controls (global state)"""
         ...
-def GuiMessageBox(Rectangle_0: Rectangle,str_1: str,str_2: str,str_3: str,) -> int:
-        """int GuiMessageBox(struct Rectangle, char *, char *, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiMessageBox(bounds: Rectangle|list|tuple,title: bytes,message: bytes,buttons: bytes,) -> int:
+        """Message Box control, displays a message"""
         ...
-def GuiPanel(Rectangle_0: Rectangle,str_1: str,) -> int:
-        """int GuiPanel(struct Rectangle, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiPanel(bounds: Rectangle|list|tuple,text: bytes,) -> int:
+        """Panel control, useful to group controls"""
         ...
-def GuiProgressBar(Rectangle_0: Rectangle,str_1: str,str_2: str,float_pointer_3: Any,float_4: float,float_5: float,) -> int:
-        """int GuiProgressBar(struct Rectangle, char *, char *, float *, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiProgressBar(bounds: Rectangle|list|tuple,textLeft: bytes,textRight: bytes,value: Any,minValue: float,maxValue: float,) -> int:
+        """Progress Bar control"""
         ...
-def GuiScrollPanel(Rectangle_0: Rectangle,str_1: str,Rectangle_2: Rectangle,Vector2_pointer_3: Any,Rectangle_pointer_4: Any,) -> int:
-        """int GuiScrollPanel(struct Rectangle, char *, struct Rectangle, struct Vector2 *, struct Rectangle *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiScrollPanel(bounds: Rectangle|list|tuple,text: bytes,content: Rectangle|list|tuple,scroll: Any|list|tuple,view: Any|list|tuple,) -> int:
+        """Scroll Panel control"""
         ...
-def GuiSetAlpha(float_0: float,) -> None:
-        """void GuiSetAlpha(float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiSetAlpha(alpha: float,) -> None:
+        """Set gui controls alpha (global state), alpha goes from 0.0f to 1.0f"""
         ...
-def GuiSetFont(Font_0: Font,) -> None:
-        """void GuiSetFont(struct Font);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiSetFont(font: Font|list|tuple,) -> None:
+        """Set gui custom font (global state)"""
         ...
-def GuiSetIconScale(int_0: int,) -> None:
-        """void GuiSetIconScale(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiSetIconScale(scale: int,) -> None:
+        """Set default icon drawing size"""
         ...
-def GuiSetState(int_0: int,) -> None:
-        """void GuiSetState(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiSetState(state: int,) -> None:
+        """Set gui state (global state)"""
         ...
-def GuiSetStyle(int_0: int,int_1: int,int_2: int,) -> None:
-        """void GuiSetStyle(int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiSetStyle(control: int,property: int,value: int,) -> None:
+        """Set one style property"""
         ...
-def GuiSetTooltip(str_0: str,) -> None:
-        """void GuiSetTooltip(char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiSetTooltip(tooltip: bytes,) -> None:
+        """Set tooltip string"""
         ...
-def GuiSlider(Rectangle_0: Rectangle,str_1: str,str_2: str,float_pointer_3: Any,float_4: float,float_5: float,) -> int:
-        """int GuiSlider(struct Rectangle, char *, char *, float *, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiSlider(bounds: Rectangle|list|tuple,textLeft: bytes,textRight: bytes,value: Any,minValue: float,maxValue: float,) -> int:
+        """Slider control"""
         ...
-def GuiSliderBar(Rectangle_0: Rectangle,str_1: str,str_2: str,float_pointer_3: Any,float_4: float,float_5: float,) -> int:
-        """int GuiSliderBar(struct Rectangle, char *, char *, float *, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiSliderBar(bounds: Rectangle|list|tuple,textLeft: bytes,textRight: bytes,value: Any,minValue: float,maxValue: float,) -> int:
+        """Slider Bar control"""
         ...
-def GuiSpinner(Rectangle_0: Rectangle,str_1: str,int_pointer_2: Any,int_3: int,int_4: int,_Bool_5: bool,) -> int:
-        """int GuiSpinner(struct Rectangle, char *, int *, int, int, _Bool);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiSpinner(bounds: Rectangle|list|tuple,text: bytes,value: Any,minValue: int,maxValue: int,editMode: bool,) -> int:
+        """Spinner control"""
         ...
-def GuiStatusBar(Rectangle_0: Rectangle,str_1: str,) -> int:
-        """int GuiStatusBar(struct Rectangle, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiStatusBar(bounds: Rectangle|list|tuple,text: bytes,) -> int:
+        """Status Bar control, shows info text"""
         ...
-def GuiTabBar(Rectangle_0: Rectangle,str_pointer_1: str,int_2: int,int_pointer_3: Any,) -> int:
-        """int GuiTabBar(struct Rectangle, char * *, int, int *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiTabBar(bounds: Rectangle|list|tuple,text: list[bytes],count: int,active: Any,) -> int:
+        """Tab Bar control, returns TAB to be closed or -1"""
         ...
-def GuiTextBox(Rectangle_0: Rectangle,str_1: str,int_2: int,_Bool_3: bool,) -> int:
-        """int GuiTextBox(struct Rectangle, char *, int, _Bool);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiTextBox(bounds: Rectangle|list|tuple,text: bytes,textSize: int,editMode: bool,) -> int:
+        """Text Box control, updates input text"""
         ...
-def GuiTextInputBox(Rectangle_0: Rectangle,str_1: str,str_2: str,str_3: str,str_4: str,int_5: int,_Bool_pointer_6: Any,) -> int:
-        """int GuiTextInputBox(struct Rectangle, char *, char *, char *, char *, int, _Bool *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiTextInputBox(bounds: Rectangle|list|tuple,title: bytes,message: bytes,buttons: bytes,text: bytes,textMaxSize: int,secretViewActive: Any,) -> int:
+        """Text Input Box control, ask for text, supports secret"""
         ...
-def GuiToggle(Rectangle_0: Rectangle,str_1: str,_Bool_pointer_2: Any,) -> int:
-        """int GuiToggle(struct Rectangle, char *, _Bool *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiToggle(bounds: Rectangle|list|tuple,text: bytes,active: Any,) -> int:
+        """Toggle Button control"""
         ...
-def GuiToggleGroup(Rectangle_0: Rectangle,str_1: str,int_pointer_2: Any,) -> int:
-        """int GuiToggleGroup(struct Rectangle, char *, int *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiToggleGroup(bounds: Rectangle|list|tuple,text: bytes,active: Any,) -> int:
+        """Toggle Group control"""
         ...
-def GuiToggleSlider(Rectangle_0: Rectangle,str_1: str,int_pointer_2: Any,) -> int:
-        """int GuiToggleSlider(struct Rectangle, char *, int *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiToggleSlider(bounds: Rectangle|list|tuple,text: bytes,active: Any,) -> int:
+        """Toggle Slider control"""
         ...
 def GuiUnlock() -> None:
-        """void GuiUnlock();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Unlock gui controls (global state)"""
         ...
-def GuiValueBox(Rectangle_0: Rectangle,str_1: str,int_pointer_2: Any,int_3: int,int_4: int,_Bool_5: bool,) -> int:
-        """int GuiValueBox(struct Rectangle, char *, int *, int, int, _Bool);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiValueBox(bounds: Rectangle|list|tuple,text: bytes,value: Any,minValue: int,maxValue: int,editMode: bool,) -> int:
+        """Value Box control, updates input text with numbers"""
         ...
-def GuiWindowBox(Rectangle_0: Rectangle,str_1: str,) -> int:
-        """int GuiWindowBox(struct Rectangle, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def GuiValueBoxFloat(bounds: Rectangle|list|tuple,text: bytes,textValue: bytes,value: Any,editMode: bool,) -> int:
+        """Value box control for float values"""
+        ...
+def GuiWindowBox(bounds: Rectangle|list|tuple,title: bytes,) -> int:
+        """Window Box control, shows a window that can be closed"""
         ...
 HUEBAR_PADDING: int
 HUEBAR_SELECTOR_HEIGHT: int
@@ -1269,15 +1179,6 @@ def HideCursor() -> None:
         """Hides cursor"""
         ...
 ICON_1UP: int
-ICON_220: int
-ICON_221: int
-ICON_222: int
-ICON_223: int
-ICON_224: int
-ICON_225: int
-ICON_226: int
-ICON_227: int
-ICON_228: int
 ICON_229: int
 ICON_230: int
 ICON_231: int
@@ -1423,13 +1324,18 @@ ICON_GRID_FILL: int
 ICON_HAND_POINTER: int
 ICON_HEART: int
 ICON_HELP: int
+ICON_HELP_BOX: int
 ICON_HEX: int
 ICON_HIDPI: int
+ICON_HOT: int
 ICON_HOUSE: int
 ICON_INFO: int
+ICON_INFO_BOX: int
 ICON_KEY: int
 ICON_LASER: int
 ICON_LAYERS: int
+ICON_LAYERS2: int
+ICON_LAYERS_ISO: int
 ICON_LAYERS_VISIBLE: int
 ICON_LENS: int
 ICON_LENS_BIG: int
@@ -1443,7 +1349,9 @@ ICON_LOCK_CLOSE: int
 ICON_LOCK_OPEN: int
 ICON_MAGNET: int
 ICON_MAILBOX: int
+ICON_MAPS: int
 ICON_MIPMAPS: int
+ICON_MLAYERS: int
 ICON_MODE_2D: int
 ICON_MODE_3D: int
 ICON_MONITOR: int
@@ -1467,6 +1375,7 @@ ICON_PLAYER_RECORD: int
 ICON_PLAYER_STOP: int
 ICON_POT: int
 ICON_PRINTER: int
+ICON_PRIORITY: int
 ICON_REDO: int
 ICON_REDO_FILL: int
 ICON_REG_EXP: int
@@ -1513,6 +1422,7 @@ ICON_UNDO: int
 ICON_UNDO_FILL: int
 ICON_VERTICAL_BARS: int
 ICON_VERTICAL_BARS_FILL: int
+ICON_WARNING: int
 ICON_WATER_DROP: int
 ICON_WAVE: int
 ICON_WAVE_SINUS: int
@@ -1524,160 +1434,182 @@ ICON_ZOOM_BIG: int
 ICON_ZOOM_CENTER: int
 ICON_ZOOM_MEDIUM: int
 ICON_ZOOM_SMALL: int
-def ImageAlphaClear(image: Any,color: Color,threshold: float,) -> None:
+def ImageAlphaClear(image: Any|list|tuple,color: Color|list|tuple,threshold: float,) -> None:
         """Clear alpha channel to desired color"""
         ...
-def ImageAlphaCrop(image: Any,threshold: float,) -> None:
+def ImageAlphaCrop(image: Any|list|tuple,threshold: float,) -> None:
         """Crop image depending on alpha value"""
         ...
-def ImageAlphaMask(image: Any,alphaMask: Image,) -> None:
+def ImageAlphaMask(image: Any|list|tuple,alphaMask: Image|list|tuple,) -> None:
         """Apply alpha mask to image"""
         ...
-def ImageAlphaPremultiply(image: Any,) -> None:
+def ImageAlphaPremultiply(image: Any|list|tuple,) -> None:
         """Premultiply alpha channel"""
         ...
-def ImageBlurGaussian(image: Any,blurSize: int,) -> None:
+def ImageBlurGaussian(image: Any|list|tuple,blurSize: int,) -> None:
         """Apply Gaussian blur using a box blur approximation"""
         ...
-def ImageClearBackground(dst: Any,color: Color,) -> None:
+def ImageClearBackground(dst: Any|list|tuple,color: Color|list|tuple,) -> None:
         """Clear image background with given color"""
         ...
-def ImageColorBrightness(image: Any,brightness: int,) -> None:
+def ImageColorBrightness(image: Any|list|tuple,brightness: int,) -> None:
         """Modify image color: brightness (-255 to 255)"""
         ...
-def ImageColorContrast(image: Any,contrast: float,) -> None:
+def ImageColorContrast(image: Any|list|tuple,contrast: float,) -> None:
         """Modify image color: contrast (-100 to 100)"""
         ...
-def ImageColorGrayscale(image: Any,) -> None:
+def ImageColorGrayscale(image: Any|list|tuple,) -> None:
         """Modify image color: grayscale"""
         ...
-def ImageColorInvert(image: Any,) -> None:
+def ImageColorInvert(image: Any|list|tuple,) -> None:
         """Modify image color: invert"""
         ...
-def ImageColorReplace(image: Any,color: Color,replace: Color,) -> None:
+def ImageColorReplace(image: Any|list|tuple,color: Color|list|tuple,replace: Color|list|tuple,) -> None:
         """Modify image color: replace color"""
         ...
-def ImageColorTint(image: Any,color: Color,) -> None:
+def ImageColorTint(image: Any|list|tuple,color: Color|list|tuple,) -> None:
         """Modify image color: tint"""
         ...
-def ImageCopy(image: Image,) -> Image:
+def ImageCopy(image: Image|list|tuple,) -> Image:
         """Create an image duplicate (useful for transformations)"""
         ...
-def ImageCrop(image: Any,crop: Rectangle,) -> None:
+def ImageCrop(image: Any|list|tuple,crop: Rectangle|list|tuple,) -> None:
         """Crop an image to a defined rectangle"""
         ...
-def ImageDither(image: Any,rBpp: int,gBpp: int,bBpp: int,aBpp: int,) -> None:
+def ImageDither(image: Any|list|tuple,rBpp: int,gBpp: int,bBpp: int,aBpp: int,) -> None:
         """Dither image data to 16bpp or lower (Floyd-Steinberg dithering)"""
         ...
-def ImageDraw(dst: Any,src: Image,srcRec: Rectangle,dstRec: Rectangle,tint: Color,) -> None:
+def ImageDraw(dst: Any|list|tuple,src: Image|list|tuple,srcRec: Rectangle|list|tuple,dstRec: Rectangle|list|tuple,tint: Color|list|tuple,) -> None:
         """Draw a source image within a destination image (tint applied to source)"""
         ...
-def ImageDrawCircle(dst: Any,centerX: int,centerY: int,radius: int,color: Color,) -> None:
+def ImageDrawCircle(dst: Any|list|tuple,centerX: int,centerY: int,radius: int,color: Color|list|tuple,) -> None:
         """Draw a filled circle within an image"""
         ...
-def ImageDrawCircleLines(dst: Any,centerX: int,centerY: int,radius: int,color: Color,) -> None:
+def ImageDrawCircleLines(dst: Any|list|tuple,centerX: int,centerY: int,radius: int,color: Color|list|tuple,) -> None:
         """Draw circle outline within an image"""
         ...
-def ImageDrawCircleLinesV(dst: Any,center: Vector2,radius: int,color: Color,) -> None:
+def ImageDrawCircleLinesV(dst: Any|list|tuple,center: Vector2|list|tuple,radius: int,color: Color|list|tuple,) -> None:
         """Draw circle outline within an image (Vector version)"""
         ...
-def ImageDrawCircleV(dst: Any,center: Vector2,radius: int,color: Color,) -> None:
+def ImageDrawCircleV(dst: Any|list|tuple,center: Vector2|list|tuple,radius: int,color: Color|list|tuple,) -> None:
         """Draw a filled circle within an image (Vector version)"""
         ...
-def ImageDrawLine(dst: Any,startPosX: int,startPosY: int,endPosX: int,endPosY: int,color: Color,) -> None:
+def ImageDrawLine(dst: Any|list|tuple,startPosX: int,startPosY: int,endPosX: int,endPosY: int,color: Color|list|tuple,) -> None:
         """Draw line within an image"""
         ...
-def ImageDrawLineV(dst: Any,start: Vector2,end: Vector2,color: Color,) -> None:
+def ImageDrawLineEx(dst: Any|list|tuple,start: Vector2|list|tuple,end: Vector2|list|tuple,thick: int,color: Color|list|tuple,) -> None:
+        """Draw a line defining thickness within an image"""
+        ...
+def ImageDrawLineV(dst: Any|list|tuple,start: Vector2|list|tuple,end: Vector2|list|tuple,color: Color|list|tuple,) -> None:
         """Draw line within an image (Vector version)"""
         ...
-def ImageDrawPixel(dst: Any,posX: int,posY: int,color: Color,) -> None:
+def ImageDrawPixel(dst: Any|list|tuple,posX: int,posY: int,color: Color|list|tuple,) -> None:
         """Draw pixel within an image"""
         ...
-def ImageDrawPixelV(dst: Any,position: Vector2,color: Color,) -> None:
+def ImageDrawPixelV(dst: Any|list|tuple,position: Vector2|list|tuple,color: Color|list|tuple,) -> None:
         """Draw pixel within an image (Vector version)"""
         ...
-def ImageDrawRectangle(dst: Any,posX: int,posY: int,width: int,height: int,color: Color,) -> None:
+def ImageDrawRectangle(dst: Any|list|tuple,posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
         """Draw rectangle within an image"""
         ...
-def ImageDrawRectangleLines(dst: Any,rec: Rectangle,thick: int,color: Color,) -> None:
+def ImageDrawRectangleLines(dst: Any|list|tuple,rec: Rectangle|list|tuple,thick: int,color: Color|list|tuple,) -> None:
         """Draw rectangle lines within an image"""
         ...
-def ImageDrawRectangleRec(dst: Any,rec: Rectangle,color: Color,) -> None:
+def ImageDrawRectangleRec(dst: Any|list|tuple,rec: Rectangle|list|tuple,color: Color|list|tuple,) -> None:
         """Draw rectangle within an image"""
         ...
-def ImageDrawRectangleV(dst: Any,position: Vector2,size: Vector2,color: Color,) -> None:
+def ImageDrawRectangleV(dst: Any|list|tuple,position: Vector2|list|tuple,size: Vector2|list|tuple,color: Color|list|tuple,) -> None:
         """Draw rectangle within an image (Vector version)"""
         ...
-def ImageDrawText(dst: Any,text: str,posX: int,posY: int,fontSize: int,color: Color,) -> None:
+def ImageDrawText(dst: Any|list|tuple,text: bytes,posX: int,posY: int,fontSize: int,color: Color|list|tuple,) -> None:
         """Draw text (using default font) within an image (destination)"""
         ...
-def ImageDrawTextEx(dst: Any,font: Font,text: str,position: Vector2,fontSize: float,spacing: float,tint: Color,) -> None:
+def ImageDrawTextEx(dst: Any|list|tuple,font: Font|list|tuple,text: bytes,position: Vector2|list|tuple,fontSize: float,spacing: float,tint: Color|list|tuple,) -> None:
         """Draw text (custom sprite font) within an image (destination)"""
         ...
-def ImageFlipHorizontal(image: Any,) -> None:
+def ImageDrawTriangle(dst: Any|list|tuple,v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
+        """Draw triangle within an image"""
+        ...
+def ImageDrawTriangleEx(dst: Any|list|tuple,v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,c1: Color|list|tuple,c2: Color|list|tuple,c3: Color|list|tuple,) -> None:
+        """Draw triangle with interpolated colors within an image"""
+        ...
+def ImageDrawTriangleFan(dst: Any|list|tuple,points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
+        """Draw a triangle fan defined by points within an image (first vertex is the center)"""
+        ...
+def ImageDrawTriangleLines(dst: Any|list|tuple,v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
+        """Draw triangle outline within an image"""
+        ...
+def ImageDrawTriangleStrip(dst: Any|list|tuple,points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
+        """Draw a triangle strip defined by points within an image"""
+        ...
+def ImageFlipHorizontal(image: Any|list|tuple,) -> None:
         """Flip image horizontally"""
         ...
-def ImageFlipVertical(image: Any,) -> None:
+def ImageFlipVertical(image: Any|list|tuple,) -> None:
         """Flip image vertically"""
         ...
-def ImageFormat(image: Any,newFormat: int,) -> None:
+def ImageFormat(image: Any|list|tuple,newFormat: int,) -> None:
         """Convert image data to desired format"""
         ...
-def ImageFromImage(image: Image,rec: Rectangle,) -> Image:
+def ImageFromChannel(image: Image|list|tuple,selectedChannel: int,) -> Image:
+        """Create an image from a selected channel of another image (GRAYSCALE)"""
+        ...
+def ImageFromImage(image: Image|list|tuple,rec: Rectangle|list|tuple,) -> Image:
         """Create an image from another image piece"""
         ...
-def ImageMipmaps(image: Any,) -> None:
+def ImageKernelConvolution(image: Any|list|tuple,kernel: Any,kernelSize: int,) -> None:
+        """Apply custom square convolution kernel to image"""
+        ...
+def ImageMipmaps(image: Any|list|tuple,) -> None:
         """Compute all mipmap levels for a provided image"""
         ...
-def ImageResize(image: Any,newWidth: int,newHeight: int,) -> None:
+def ImageResize(image: Any|list|tuple,newWidth: int,newHeight: int,) -> None:
         """Resize image (Bicubic scaling algorithm)"""
         ...
-def ImageResizeCanvas(image: Any,newWidth: int,newHeight: int,offsetX: int,offsetY: int,fill: Color,) -> None:
+def ImageResizeCanvas(image: Any|list|tuple,newWidth: int,newHeight: int,offsetX: int,offsetY: int,fill: Color|list|tuple,) -> None:
         """Resize canvas and fill with color"""
         ...
-def ImageResizeNN(image: Any,newWidth: int,newHeight: int,) -> None:
+def ImageResizeNN(image: Any|list|tuple,newWidth: int,newHeight: int,) -> None:
         """Resize image (Nearest-Neighbor scaling algorithm)"""
         ...
-def ImageRotate(image: Any,degrees: int,) -> None:
+def ImageRotate(image: Any|list|tuple,degrees: int,) -> None:
         """Rotate image by input angle in degrees (-359 to 359)"""
         ...
-def ImageRotateCCW(image: Any,) -> None:
+def ImageRotateCCW(image: Any|list|tuple,) -> None:
         """Rotate image counter-clockwise 90deg"""
         ...
-def ImageRotateCW(image: Any,) -> None:
+def ImageRotateCW(image: Any|list|tuple,) -> None:
         """Rotate image clockwise 90deg"""
         ...
-def ImageText(text: str,fontSize: int,color: Color,) -> Image:
+def ImageText(text: bytes,fontSize: int,color: Color|list|tuple,) -> Image:
         """Create an image from text (default font)"""
         ...
-def ImageTextEx(font: Font,text: str,fontSize: float,spacing: float,tint: Color,) -> Image:
+def ImageTextEx(font: Font|list|tuple,text: bytes,fontSize: float,spacing: float,tint: Color|list|tuple,) -> Image:
         """Create an image from text (custom sprite font)"""
         ...
-def ImageToPOT(image: Any,fill: Color,) -> None:
+def ImageToPOT(image: Any|list|tuple,fill: Color|list|tuple,) -> None:
         """Convert image to POT (power-of-two)"""
         ...
 def InitAudioDevice() -> None:
         """Initialize audio device and context"""
         ...
 def InitPhysics() -> None:
-        """void InitPhysics();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Initializes physics system"""
         ...
-def InitWindow(width: int,height: int,title: str,) -> None:
+def InitWindow(width: int,height: int,title: bytes,) -> None:
         """Initialize window and OpenGL context"""
         ...
 def IsAudioDeviceReady() -> bool:
         """Check if audio device has been initialized successfully"""
         ...
-def IsAudioStreamPlaying(stream: AudioStream,) -> bool:
+def IsAudioStreamPlaying(stream: AudioStream|list|tuple,) -> bool:
         """Check if audio stream is playing"""
         ...
-def IsAudioStreamProcessed(stream: AudioStream,) -> bool:
+def IsAudioStreamProcessed(stream: AudioStream|list|tuple,) -> bool:
         """Check if any audio stream buffers requires refill"""
         ...
-def IsAudioStreamReady(stream: AudioStream,) -> bool:
-        """Checks if an audio stream is ready"""
+def IsAudioStreamValid(stream: AudioStream|list|tuple,) -> bool:
+        """Checks if an audio stream is valid (buffers initialized)"""
         ...
 def IsCursorHidden() -> bool:
         """Check if cursor is not visible"""
@@ -1688,11 +1620,14 @@ def IsCursorOnScreen() -> bool:
 def IsFileDropped() -> bool:
         """Check if a file has been dropped into window"""
         ...
-def IsFileExtension(fileName: str,ext: str,) -> bool:
+def IsFileExtension(fileName: bytes,ext: bytes,) -> bool:
         """Check file extension (including point: .png, .wav)"""
         ...
-def IsFontReady(font: Font,) -> bool:
-        """Check if a font is ready"""
+def IsFileNameValid(fileName: bytes,) -> bool:
+        """Check if fileName is valid for the platform/OS"""
+        ...
+def IsFontValid(font: Font|list|tuple,) -> bool:
+        """Check if a font is valid (font data loaded, WARNING: GPU texture not checked)"""
         ...
 def IsGamepadAvailable(gamepad: int,) -> bool:
         """Check if a gamepad is available"""
@@ -1712,8 +1647,8 @@ def IsGamepadButtonUp(gamepad: int,button: int,) -> bool:
 def IsGestureDetected(gesture: int,) -> bool:
         """Check if a gesture have been detected"""
         ...
-def IsImageReady(image: Image,) -> bool:
-        """Check if an image is ready"""
+def IsImageValid(image: Image|list|tuple,) -> bool:
+        """Check if an image is valid (data and parameters)"""
         ...
 def IsKeyDown(key: int,) -> bool:
         """Check if a key is being pressed"""
@@ -1722,7 +1657,7 @@ def IsKeyPressed(key: int,) -> bool:
         """Check if a key has been pressed once"""
         ...
 def IsKeyPressedRepeat(key: int,) -> bool:
-        """Check if a key has been pressed again (Only PLATFORM_DESKTOP)"""
+        """Check if a key has been pressed again"""
         ...
 def IsKeyReleased(key: int,) -> bool:
         """Check if a key has been released once"""
@@ -1730,14 +1665,14 @@ def IsKeyReleased(key: int,) -> bool:
 def IsKeyUp(key: int,) -> bool:
         """Check if a key is NOT being pressed"""
         ...
-def IsMaterialReady(material: Material,) -> bool:
-        """Check if a material is ready"""
+def IsMaterialValid(material: Material|list|tuple,) -> bool:
+        """Check if a material is valid (shader assigned, map textures loaded in GPU)"""
         ...
-def IsModelAnimationValid(model: Model,anim: ModelAnimation,) -> bool:
+def IsModelAnimationValid(model: Model|list|tuple,anim: ModelAnimation|list|tuple,) -> bool:
         """Check model animation skeleton match"""
         ...
-def IsModelReady(model: Model,) -> bool:
-        """Check if a model is ready"""
+def IsModelValid(model: Model|list|tuple,) -> bool:
+        """Check if a model is valid (loaded in GPU, VAO/VBOs)"""
         ...
 def IsMouseButtonDown(button: int,) -> bool:
         """Check if a mouse button is being pressed"""
@@ -1751,47 +1686,47 @@ def IsMouseButtonReleased(button: int,) -> bool:
 def IsMouseButtonUp(button: int,) -> bool:
         """Check if a mouse button is NOT being pressed"""
         ...
-def IsMusicReady(music: Music,) -> bool:
-        """Checks if a music stream is ready"""
-        ...
-def IsMusicStreamPlaying(music: Music,) -> bool:
+def IsMusicStreamPlaying(music: Music|list|tuple,) -> bool:
         """Check if music is playing"""
         ...
-def IsPathFile(path: str,) -> bool:
+def IsMusicValid(music: Music|list|tuple,) -> bool:
+        """Checks if a music stream is valid (context and buffers initialized)"""
+        ...
+def IsPathFile(path: bytes,) -> bool:
         """Check if a given path is a file or a directory"""
         ...
-def IsRenderTextureReady(target: RenderTexture,) -> bool:
-        """Check if a render texture is ready"""
+def IsRenderTextureValid(target: RenderTexture|list|tuple,) -> bool:
+        """Check if a render texture is valid (loaded in GPU)"""
         ...
-def IsShaderReady(shader: Shader,) -> bool:
-        """Check if a shader is ready"""
+def IsShaderValid(shader: Shader|list|tuple,) -> bool:
+        """Check if a shader is valid (loaded on GPU)"""
         ...
-def IsSoundPlaying(sound: Sound,) -> bool:
+def IsSoundPlaying(sound: Sound|list|tuple,) -> bool:
         """Check if a sound is currently playing"""
         ...
-def IsSoundReady(sound: Sound,) -> bool:
-        """Checks if a sound is ready"""
+def IsSoundValid(sound: Sound|list|tuple,) -> bool:
+        """Checks if a sound is valid (data loaded and buffers initialized)"""
         ...
-def IsTextureReady(texture: Texture,) -> bool:
-        """Check if a texture is ready"""
+def IsTextureValid(texture: Texture|list|tuple,) -> bool:
+        """Check if a texture is valid (loaded in GPU)"""
         ...
-def IsWaveReady(wave: Wave,) -> bool:
-        """Checks if wave data is ready"""
+def IsWaveValid(wave: Wave|list|tuple,) -> bool:
+        """Checks if wave data is valid (data loaded and parameters)"""
         ...
 def IsWindowFocused() -> bool:
-        """Check if window is currently focused (only PLATFORM_DESKTOP)"""
+        """Check if window is currently focused"""
         ...
 def IsWindowFullscreen() -> bool:
         """Check if window is currently fullscreen"""
         ...
 def IsWindowHidden() -> bool:
-        """Check if window is currently hidden (only PLATFORM_DESKTOP)"""
+        """Check if window is currently hidden"""
         ...
 def IsWindowMaximized() -> bool:
-        """Check if window is currently maximized (only PLATFORM_DESKTOP)"""
+        """Check if window is currently maximized"""
         ...
 def IsWindowMinimized() -> bool:
-        """Check if window is currently minimized (only PLATFORM_DESKTOP)"""
+        """Check if window is currently minimized"""
         ...
 def IsWindowReady() -> bool:
         """Check if window has been initialized successfully"""
@@ -1915,6 +1850,7 @@ KEY_ZERO: int
 LABEL: int
 LINE_COLOR: int
 LISTVIEW: int
+LIST_ITEMS_BORDER_WIDTH: int
 LIST_ITEMS_HEIGHT: int
 LIST_ITEMS_SPACING: int
 LOG_ALL: int
@@ -1925,141 +1861,139 @@ LOG_INFO: int
 LOG_NONE: int
 LOG_TRACE: int
 LOG_WARNING: int
-def Lerp(float_0: float,float_1: float,float_2: float,) -> float:
-        """float Lerp(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Lerp(start: float,end: float,amount: float,) -> float:
+        """"""
         ...
 def LoadAudioStream(sampleRate: int,sampleSize: int,channels: int,) -> AudioStream:
         """Load audio stream (to stream raw audio pcm data)"""
         ...
-def LoadAutomationEventList(fileName: str,) -> AutomationEventList:
+def LoadAutomationEventList(fileName: bytes,) -> AutomationEventList:
         """Load automation events list from file, NULL for empty list, capacity = MAX_AUTOMATION_EVENTS"""
         ...
-def LoadCodepoints(text: str,count: Any,) -> Any:
+def LoadCodepoints(text: bytes,count: Any,) -> Any:
         """Load all codepoints from a UTF-8 text string, codepoints count returned by parameter"""
         ...
-def LoadDirectoryFiles(dirPath: str,) -> FilePathList:
+def LoadDirectoryFiles(dirPath: bytes,) -> FilePathList:
         """Load directory filepaths"""
         ...
-def LoadDirectoryFilesEx(basePath: str,filter: str,scanSubdirs: bool,) -> FilePathList:
-        """Load directory filepaths with extension filtering and recursive directory scan"""
+def LoadDirectoryFilesEx(basePath: bytes,filter: bytes,scanSubdirs: bool,) -> FilePathList:
+        """Load directory filepaths with extension filtering and recursive directory scan. Use 'DIR' in the filter string to include directories in the result"""
         ...
 def LoadDroppedFiles() -> FilePathList:
         """Load dropped filepaths"""
         ...
-def LoadFileData(fileName: str,dataSize: Any,) -> str:
+def LoadFileData(fileName: bytes,dataSize: Any,) -> bytes:
         """Load file data as byte array (read)"""
         ...
-def LoadFileText(fileName: str,) -> str:
+def LoadFileText(fileName: bytes,) -> bytes:
         """Load text data from file (read), returns a '\0' terminated string"""
         ...
-def LoadFont(fileName: str,) -> Font:
+def LoadFont(fileName: bytes,) -> Font:
         """Load font from file into GPU memory (VRAM)"""
         ...
-def LoadFontData(fileData: str,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,type: int,) -> Any:
+def LoadFontData(fileData: bytes,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,type: int,) -> Any:
         """Load font data for further use"""
         ...
-def LoadFontEx(fileName: str,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
-        """Load font from file with extended parameters, use NULL for codepoints and 0 for codepointCount to load the default character setFont"""
+def LoadFontEx(fileName: bytes,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
+        """Load font from file with extended parameters, use NULL for codepoints and 0 for codepointCount to load the default character set, font size is provided in pixels height"""
         ...
-def LoadFontFromImage(image: Image,key: Color,firstChar: int,) -> Font:
+def LoadFontFromImage(image: Image|list|tuple,key: Color|list|tuple,firstChar: int,) -> Font:
         """Load font from Image (XNA style)"""
         ...
-def LoadFontFromMemory(fileType: str,fileData: str,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
+def LoadFontFromMemory(fileType: bytes,fileData: bytes,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
         """Load font from memory buffer, fileType refers to extension: i.e. '.ttf'"""
         ...
-def LoadImage(fileName: str,) -> Image:
+def LoadImage(fileName: bytes,) -> Image:
         """Load image from file into CPU memory (RAM)"""
         ...
-def LoadImageAnim(fileName: str,frames: Any,) -> Image:
+def LoadImageAnim(fileName: bytes,frames: Any,) -> Image:
         """Load image sequence from file (frames appended to image.data)"""
         ...
-def LoadImageColors(image: Image,) -> Any:
+def LoadImageAnimFromMemory(fileType: bytes,fileData: bytes,dataSize: int,frames: Any,) -> Image:
+        """Load image sequence from memory buffer"""
+        ...
+def LoadImageColors(image: Image|list|tuple,) -> Any:
         """Load color data from image as a Color array (RGBA - 32bit)"""
         ...
-def LoadImageFromMemory(fileType: str,fileData: str,dataSize: int,) -> Image:
+def LoadImageFromMemory(fileType: bytes,fileData: bytes,dataSize: int,) -> Image:
         """Load image from memory buffer, fileType refers to extension: i.e. '.png'"""
         ...
 def LoadImageFromScreen() -> Image:
         """Load image from screen buffer and (screenshot)"""
         ...
-def LoadImageFromTexture(texture: Texture,) -> Image:
+def LoadImageFromTexture(texture: Texture|list|tuple,) -> Image:
         """Load image from GPU texture data"""
         ...
-def LoadImagePalette(image: Image,maxPaletteSize: int,colorCount: Any,) -> Any:
+def LoadImagePalette(image: Image|list|tuple,maxPaletteSize: int,colorCount: Any,) -> Any:
         """Load colors palette from image as a Color array (RGBA - 32bit)"""
         ...
-def LoadImageRaw(fileName: str,width: int,height: int,format: int,headerSize: int,) -> Image:
+def LoadImageRaw(fileName: bytes,width: int,height: int,format: int,headerSize: int,) -> Image:
         """Load image from RAW file data"""
-        ...
-def LoadImageSvg(fileNameOrString: str,width: int,height: int,) -> Image:
-        """Load image from SVG file data or string with specified size"""
         ...
 def LoadMaterialDefault() -> Material:
         """Load default material (Supports: DIFFUSE, SPECULAR, NORMAL maps)"""
         ...
-def LoadMaterials(fileName: str,materialCount: Any,) -> Any:
+def LoadMaterials(fileName: bytes,materialCount: Any,) -> Any:
         """Load materials from model file"""
         ...
-def LoadModel(fileName: str,) -> Model:
+def LoadModel(fileName: bytes,) -> Model:
         """Load model from files (meshes and materials)"""
         ...
-def LoadModelAnimations(fileName: str,animCount: Any,) -> Any:
+def LoadModelAnimations(fileName: bytes,animCount: Any,) -> Any:
         """Load model animations from file"""
         ...
-def LoadModelFromMesh(mesh: Mesh,) -> Model:
+def LoadModelFromMesh(mesh: Mesh|list|tuple,) -> Model:
         """Load model from generated mesh (default material)"""
         ...
-def LoadMusicStream(fileName: str,) -> Music:
+def LoadMusicStream(fileName: bytes,) -> Music:
         """Load music stream from file"""
         ...
-def LoadMusicStreamFromMemory(fileType: str,data: str,dataSize: int,) -> Music:
+def LoadMusicStreamFromMemory(fileType: bytes,data: bytes,dataSize: int,) -> Music:
         """Load music stream from data"""
         ...
-def LoadRandomSequence(count: int,min: int,max: int,) -> Any:
+def LoadRandomSequence(count: int,min_1: int,max_2: int,) -> Any:
         """Load random values sequence, no values repeated"""
         ...
 def LoadRenderTexture(width: int,height: int,) -> RenderTexture:
         """Load texture for rendering (framebuffer)"""
         ...
-def LoadShader(vsFileName: str,fsFileName: str,) -> Shader:
+def LoadShader(vsFileName: bytes,fsFileName: bytes,) -> Shader:
         """Load shader from files and bind default locations"""
         ...
-def LoadShaderFromMemory(vsCode: str,fsCode: str,) -> Shader:
+def LoadShaderFromMemory(vsCode: bytes,fsCode: bytes,) -> Shader:
         """Load shader from code strings and bind default locations"""
         ...
-def LoadSound(fileName: str,) -> Sound:
+def LoadSound(fileName: bytes,) -> Sound:
         """Load sound from file"""
         ...
-def LoadSoundAlias(source: Sound,) -> Sound:
+def LoadSoundAlias(source: Sound|list|tuple,) -> Sound:
         """Create a new sound that shares the same sample data as the source sound, does not own the sound data"""
         ...
-def LoadSoundFromWave(wave: Wave,) -> Sound:
+def LoadSoundFromWave(wave: Wave|list|tuple,) -> Sound:
         """Load sound from wave data"""
         ...
-def LoadTexture(fileName: str,) -> Texture:
+def LoadTexture(fileName: bytes,) -> Texture:
         """Load texture from file into GPU memory (VRAM)"""
         ...
-def LoadTextureCubemap(image: Image,layout: int,) -> Texture:
+def LoadTextureCubemap(image: Image|list|tuple,layout: int,) -> Texture:
         """Load cubemap from image, multiple image cubemap layouts supported"""
         ...
-def LoadTextureFromImage(image: Image,) -> Texture:
+def LoadTextureFromImage(image: Image|list|tuple,) -> Texture:
         """Load texture from image data"""
         ...
-def LoadUTF8(codepoints: Any,length: int,) -> str:
+def LoadUTF8(codepoints: Any,length: int,) -> bytes:
         """Load UTF-8 text encoded from codepoints array"""
         ...
-def LoadVrStereoConfig(device: VrDeviceInfo,) -> VrStereoConfig:
+def LoadVrStereoConfig(device: VrDeviceInfo|list|tuple,) -> VrStereoConfig:
         """Load VR stereo config for VR simulator device parameters"""
         ...
-def LoadWave(fileName: str,) -> Wave:
+def LoadWave(fileName: bytes,) -> Wave:
         """Load wave data from file"""
         ...
-def LoadWaveFromMemory(fileType: str,fileData: str,dataSize: int,) -> Wave:
+def LoadWaveFromMemory(fileType: bytes,fileData: bytes,dataSize: int,) -> Wave:
         """Load wave from memory buffer, fileType refers to extension: i.e. '.wav'"""
         ...
-def LoadWaveSamples(wave: Wave,) -> Any:
+def LoadWaveSamples(wave: Wave|list|tuple,) -> Any:
         """Load samples data from wave as a 32bit float data array"""
         ...
 MATERIAL_MAP_ALBEDO: int
@@ -2091,118 +2025,82 @@ MOUSE_CURSOR_RESIZE_EW: int
 MOUSE_CURSOR_RESIZE_NESW: int
 MOUSE_CURSOR_RESIZE_NS: int
 MOUSE_CURSOR_RESIZE_NWSE: int
-def MatrixAdd(Matrix_0: Matrix,Matrix_1: Matrix,) -> Matrix:
-        """struct Matrix MatrixAdd(struct Matrix, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MakeDirectory(dirPath: bytes,) -> int:
+        """Create directories (including full path requested), returns 0 on success"""
         ...
-def MatrixDeterminant(Matrix_0: Matrix,) -> float:
-        """float MatrixDeterminant(struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixAdd(left: Matrix|list|tuple,right: Matrix|list|tuple,) -> Matrix:
+        """"""
         ...
-def MatrixFrustum(double_0: float,double_1: float,double_2: float,double_3: float,double_4: float,double_5: float,) -> Matrix:
-        """struct Matrix MatrixFrustum(double, double, double, double, double, double);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixDecompose(mat: Matrix|list|tuple,translation: Any|list|tuple,rotation: Any|list|tuple,scale: Any|list|tuple,) -> None:
+        """"""
+        ...
+def MatrixDeterminant(mat: Matrix|list|tuple,) -> float:
+        """"""
+        ...
+def MatrixFrustum(left: float,right: float,bottom: float,top: float,nearPlane: float,farPlane: float,) -> Matrix:
+        """"""
         ...
 def MatrixIdentity() -> Matrix:
-        """struct Matrix MatrixIdentity();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """"""
         ...
-def MatrixInvert(Matrix_0: Matrix,) -> Matrix:
-        """struct Matrix MatrixInvert(struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixInvert(mat: Matrix|list|tuple,) -> Matrix:
+        """"""
         ...
-def MatrixLookAt(Vector3_0: Vector3,Vector3_1: Vector3,Vector3_2: Vector3,) -> Matrix:
-        """struct Matrix MatrixLookAt(struct Vector3, struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixLookAt(eye: Vector3|list|tuple,target: Vector3|list|tuple,up: Vector3|list|tuple,) -> Matrix:
+        """"""
         ...
-def MatrixMultiply(Matrix_0: Matrix,Matrix_1: Matrix,) -> Matrix:
-        """struct Matrix MatrixMultiply(struct Matrix, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixMultiply(left: Matrix|list|tuple,right: Matrix|list|tuple,) -> Matrix:
+        """"""
         ...
-def MatrixOrtho(double_0: float,double_1: float,double_2: float,double_3: float,double_4: float,double_5: float,) -> Matrix:
-        """struct Matrix MatrixOrtho(double, double, double, double, double, double);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixOrtho(left: float,right: float,bottom: float,top: float,nearPlane: float,farPlane: float,) -> Matrix:
+        """"""
         ...
-def MatrixPerspective(double_0: float,double_1: float,double_2: float,double_3: float,) -> Matrix:
-        """struct Matrix MatrixPerspective(double, double, double, double);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixPerspective(fovY: float,aspect: float,nearPlane: float,farPlane: float,) -> Matrix:
+        """"""
         ...
-def MatrixRotate(Vector3_0: Vector3,float_1: float,) -> Matrix:
-        """struct Matrix MatrixRotate(struct Vector3, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixRotate(axis: Vector3|list|tuple,angle: float,) -> Matrix:
+        """"""
         ...
-def MatrixRotateX(float_0: float,) -> Matrix:
-        """struct Matrix MatrixRotateX(float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixRotateX(angle: float,) -> Matrix:
+        """"""
         ...
-def MatrixRotateXYZ(Vector3_0: Vector3,) -> Matrix:
-        """struct Matrix MatrixRotateXYZ(struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixRotateXYZ(angle: Vector3|list|tuple,) -> Matrix:
+        """"""
         ...
-def MatrixRotateY(float_0: float,) -> Matrix:
-        """struct Matrix MatrixRotateY(float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixRotateY(angle: float,) -> Matrix:
+        """"""
         ...
-def MatrixRotateZ(float_0: float,) -> Matrix:
-        """struct Matrix MatrixRotateZ(float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixRotateZ(angle: float,) -> Matrix:
+        """"""
         ...
-def MatrixRotateZYX(Vector3_0: Vector3,) -> Matrix:
-        """struct Matrix MatrixRotateZYX(struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixRotateZYX(angle: Vector3|list|tuple,) -> Matrix:
+        """"""
         ...
-def MatrixScale(float_0: float,float_1: float,float_2: float,) -> Matrix:
-        """struct Matrix MatrixScale(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixScale(x: float,y: float,z: float,) -> Matrix:
+        """"""
         ...
-def MatrixSubtract(Matrix_0: Matrix,Matrix_1: Matrix,) -> Matrix:
-        """struct Matrix MatrixSubtract(struct Matrix, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixSubtract(left: Matrix|list|tuple,right: Matrix|list|tuple,) -> Matrix:
+        """"""
         ...
-def MatrixToFloatV(Matrix_0: Matrix,) -> float16:
-        """struct float16 MatrixToFloatV(struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixToFloatV(mat: Matrix|list|tuple,) -> float16:
+        """"""
         ...
-def MatrixTrace(Matrix_0: Matrix,) -> float:
-        """float MatrixTrace(struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixTrace(mat: Matrix|list|tuple,) -> float:
+        """"""
         ...
-def MatrixTranslate(float_0: float,float_1: float,float_2: float,) -> Matrix:
-        """struct Matrix MatrixTranslate(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixTranslate(x: float,y: float,z: float,) -> Matrix:
+        """"""
         ...
-def MatrixTranspose(Matrix_0: Matrix,) -> Matrix:
-        """struct Matrix MatrixTranspose(struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def MatrixTranspose(mat: Matrix|list|tuple,) -> Matrix:
+        """"""
         ...
 def MaximizeWindow() -> None:
-        """Set window state: maximized, if resizable (only PLATFORM_DESKTOP)"""
+        """Set window state: maximized, if resizable"""
         ...
-def MeasureText(text: str,fontSize: int,) -> int:
+def MeasureText(text: bytes,fontSize: int,) -> int:
         """Measure string width for default font"""
         ...
-def MeasureTextEx(font: Font,text: str,fontSize: float,spacing: float,) -> Vector2:
+def MeasureTextEx(font: Font|list|tuple,text: bytes,fontSize: float,spacing: float,) -> Vector2:
         """Measure string size for Font"""
         ...
 def MemAlloc(size: int,) -> Any:
@@ -2215,17 +2113,15 @@ def MemRealloc(ptr: Any,size: int,) -> Any:
         """Internal memory reallocator"""
         ...
 def MinimizeWindow() -> None:
-        """Set window state: minimized, if resizable (only PLATFORM_DESKTOP)"""
+        """Set window state: minimized, if resizable"""
         ...
 NPATCH_NINE_PATCH: int
 NPATCH_THREE_PATCH_HORIZONTAL: int
 NPATCH_THREE_PATCH_VERTICAL: int
-def Normalize(float_0: float,float_1: float,float_2: float,) -> float:
-        """float Normalize(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Normalize(value: float,start: float,end: float,) -> float:
+        """"""
         ...
-def OpenURL(url: str,) -> None:
+def OpenURL(url: bytes,) -> None:
         """Open URL with default system browser (if available)"""
         ...
 PHYSICS_CIRCLE: int
@@ -2256,159 +2152,110 @@ PIXELFORMAT_UNCOMPRESSED_R8G8B8: int
 PIXELFORMAT_UNCOMPRESSED_R8G8B8A8: int
 PROGRESSBAR: int
 PROGRESS_PADDING: int
-def PauseAudioStream(stream: AudioStream,) -> None:
+def PauseAudioStream(stream: AudioStream|list|tuple,) -> None:
         """Pause audio stream"""
         ...
-def PauseMusicStream(music: Music,) -> None:
+def PauseMusicStream(music: Music|list|tuple,) -> None:
         """Pause music playing"""
         ...
-def PauseSound(sound: Sound,) -> None:
+def PauseSound(sound: Sound|list|tuple,) -> None:
         """Pause a sound"""
         ...
-def PhysicsAddForce(PhysicsBodyData_pointer_0: Any,Vector2_1: Vector2,) -> None:
-        """void PhysicsAddForce(struct PhysicsBodyData *, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def PhysicsAddForce(body: Any|list|tuple,force: Vector2|list|tuple,) -> None:
+        """Adds a force to a physics body"""
         ...
-def PhysicsAddTorque(PhysicsBodyData_pointer_0: Any,float_1: float,) -> None:
-        """void PhysicsAddTorque(struct PhysicsBodyData *, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def PhysicsAddTorque(body: Any|list|tuple,amount: float,) -> None:
+        """Adds an angular force to a physics body"""
         ...
-def PhysicsShatter(PhysicsBodyData_pointer_0: Any,Vector2_1: Vector2,float_2: float,) -> None:
-        """void PhysicsShatter(struct PhysicsBodyData *, struct Vector2, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def PhysicsShatter(body: Any|list|tuple,position: Vector2|list|tuple,force: float,) -> None:
+        """Shatters a polygon shape physics body to little physics bodies with explosion force"""
         ...
-def PlayAudioStream(stream: AudioStream,) -> None:
+def PlayAudioStream(stream: AudioStream|list|tuple,) -> None:
         """Play audio stream"""
         ...
-def PlayAutomationEvent(event: AutomationEvent,) -> None:
+def PlayAutomationEvent(event: AutomationEvent|list|tuple,) -> None:
         """Play a recorded automation event"""
         ...
-def PlayMusicStream(music: Music,) -> None:
+def PlayMusicStream(music: Music|list|tuple,) -> None:
         """Start music playing"""
         ...
-def PlaySound(sound: Sound,) -> None:
+def PlaySound(sound: Sound|list|tuple,) -> None:
         """Play a sound"""
         ...
 def PollInputEvents() -> None:
         """Register all input events"""
         ...
-def QuaternionAdd(Vector4_0: Vector4,Vector4_1: Vector4,) -> Vector4:
-        """struct Vector4 QuaternionAdd(struct Vector4, struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionAdd(q1: Vector4|list|tuple,q2: Vector4|list|tuple,) -> Vector4:
+        """"""
         ...
-def QuaternionAddValue(Vector4_0: Vector4,float_1: float,) -> Vector4:
-        """struct Vector4 QuaternionAddValue(struct Vector4, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionAddValue(q: Vector4|list|tuple,add: float,) -> Vector4:
+        """"""
         ...
-def QuaternionDivide(Vector4_0: Vector4,Vector4_1: Vector4,) -> Vector4:
-        """struct Vector4 QuaternionDivide(struct Vector4, struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionCubicHermiteSpline(q1: Vector4|list|tuple,outTangent1: Vector4|list|tuple,q2: Vector4|list|tuple,inTangent2: Vector4|list|tuple,t: float,) -> Vector4:
+        """"""
         ...
-def QuaternionEquals(Vector4_0: Vector4,Vector4_1: Vector4,) -> int:
-        """int QuaternionEquals(struct Vector4, struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionDivide(q1: Vector4|list|tuple,q2: Vector4|list|tuple,) -> Vector4:
+        """"""
         ...
-def QuaternionFromAxisAngle(Vector3_0: Vector3,float_1: float,) -> Vector4:
-        """struct Vector4 QuaternionFromAxisAngle(struct Vector3, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionEquals(p: Vector4|list|tuple,q: Vector4|list|tuple,) -> int:
+        """"""
         ...
-def QuaternionFromEuler(float_0: float,float_1: float,float_2: float,) -> Vector4:
-        """struct Vector4 QuaternionFromEuler(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionFromAxisAngle(axis: Vector3|list|tuple,angle: float,) -> Vector4:
+        """"""
         ...
-def QuaternionFromMatrix(Matrix_0: Matrix,) -> Vector4:
-        """struct Vector4 QuaternionFromMatrix(struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionFromEuler(pitch: float,yaw: float,roll: float,) -> Vector4:
+        """"""
         ...
-def QuaternionFromVector3ToVector3(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector4:
-        """struct Vector4 QuaternionFromVector3ToVector3(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionFromMatrix(mat: Matrix|list|tuple,) -> Vector4:
+        """"""
+        ...
+def QuaternionFromVector3ToVector3(from_0: Vector3|list|tuple,to: Vector3|list|tuple,) -> Vector4:
+        """"""
         ...
 def QuaternionIdentity() -> Vector4:
-        """struct Vector4 QuaternionIdentity();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """"""
         ...
-def QuaternionInvert(Vector4_0: Vector4,) -> Vector4:
-        """struct Vector4 QuaternionInvert(struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionInvert(q: Vector4|list|tuple,) -> Vector4:
+        """"""
         ...
-def QuaternionLength(Vector4_0: Vector4,) -> float:
-        """float QuaternionLength(struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionLength(q: Vector4|list|tuple,) -> float:
+        """"""
         ...
-def QuaternionLerp(Vector4_0: Vector4,Vector4_1: Vector4,float_2: float,) -> Vector4:
-        """struct Vector4 QuaternionLerp(struct Vector4, struct Vector4, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionLerp(q1: Vector4|list|tuple,q2: Vector4|list|tuple,amount: float,) -> Vector4:
+        """"""
         ...
-def QuaternionMultiply(Vector4_0: Vector4,Vector4_1: Vector4,) -> Vector4:
-        """struct Vector4 QuaternionMultiply(struct Vector4, struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionMultiply(q1: Vector4|list|tuple,q2: Vector4|list|tuple,) -> Vector4:
+        """"""
         ...
-def QuaternionNlerp(Vector4_0: Vector4,Vector4_1: Vector4,float_2: float,) -> Vector4:
-        """struct Vector4 QuaternionNlerp(struct Vector4, struct Vector4, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionNlerp(q1: Vector4|list|tuple,q2: Vector4|list|tuple,amount: float,) -> Vector4:
+        """"""
         ...
-def QuaternionNormalize(Vector4_0: Vector4,) -> Vector4:
-        """struct Vector4 QuaternionNormalize(struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionNormalize(q: Vector4|list|tuple,) -> Vector4:
+        """"""
         ...
-def QuaternionScale(Vector4_0: Vector4,float_1: float,) -> Vector4:
-        """struct Vector4 QuaternionScale(struct Vector4, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionScale(q: Vector4|list|tuple,mul: float,) -> Vector4:
+        """"""
         ...
-def QuaternionSlerp(Vector4_0: Vector4,Vector4_1: Vector4,float_2: float,) -> Vector4:
-        """struct Vector4 QuaternionSlerp(struct Vector4, struct Vector4, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionSlerp(q1: Vector4|list|tuple,q2: Vector4|list|tuple,amount: float,) -> Vector4:
+        """"""
         ...
-def QuaternionSubtract(Vector4_0: Vector4,Vector4_1: Vector4,) -> Vector4:
-        """struct Vector4 QuaternionSubtract(struct Vector4, struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionSubtract(q1: Vector4|list|tuple,q2: Vector4|list|tuple,) -> Vector4:
+        """"""
         ...
-def QuaternionSubtractValue(Vector4_0: Vector4,float_1: float,) -> Vector4:
-        """struct Vector4 QuaternionSubtractValue(struct Vector4, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionSubtractValue(q: Vector4|list|tuple,sub: float,) -> Vector4:
+        """"""
         ...
-def QuaternionToAxisAngle(Vector4_0: Vector4,Vector3_pointer_1: Any,float_pointer_2: Any,) -> None:
-        """void QuaternionToAxisAngle(struct Vector4, struct Vector3 *, float *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionToAxisAngle(q: Vector4|list|tuple,outAxis: Any|list|tuple,outAngle: Any,) -> None:
+        """"""
         ...
-def QuaternionToEuler(Vector4_0: Vector4,) -> Vector3:
-        """struct Vector3 QuaternionToEuler(struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionToEuler(q: Vector4|list|tuple,) -> Vector3:
+        """"""
         ...
-def QuaternionToMatrix(Vector4_0: Vector4,) -> Matrix:
-        """struct Matrix QuaternionToMatrix(struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionToMatrix(q: Vector4|list|tuple,) -> Matrix:
+        """"""
         ...
-def QuaternionTransform(Vector4_0: Vector4,Matrix_1: Matrix,) -> Vector4:
-        """struct Vector4 QuaternionTransform(struct Vector4, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def QuaternionTransform(q: Vector4|list|tuple,mat: Matrix|list|tuple,) -> Vector4:
+        """"""
         ...
 RL_ATTACHMENT_COLOR_CHANNEL0: int
 RL_ATTACHMENT_COLOR_CHANNEL1: int
@@ -2512,6 +2359,10 @@ RL_SHADER_UNIFORM_IVEC2: int
 RL_SHADER_UNIFORM_IVEC3: int
 RL_SHADER_UNIFORM_IVEC4: int
 RL_SHADER_UNIFORM_SAMPLER2D: int
+RL_SHADER_UNIFORM_UINT: int
+RL_SHADER_UNIFORM_UIVEC2: int
+RL_SHADER_UNIFORM_UIVEC3: int
+RL_SHADER_UNIFORM_UIVEC4: int
 RL_SHADER_UNIFORM_VEC2: int
 RL_SHADER_UNIFORM_VEC3: int
 RL_SHADER_UNIFORM_VEC4: int
@@ -2521,26 +2372,22 @@ RL_TEXTURE_FILTER_ANISOTROPIC_8X: int
 RL_TEXTURE_FILTER_BILINEAR: int
 RL_TEXTURE_FILTER_POINT: int
 RL_TEXTURE_FILTER_TRILINEAR: int
-def Remap(float_0: float,float_1: float,float_2: float,float_3: float,float_4: float,) -> float:
-        """float Remap(float, float, float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Remap(value: float,inputStart: float,inputEnd: float,outputStart: float,outputEnd: float,) -> float:
+        """"""
         ...
 def ResetPhysics() -> None:
-        """void ResetPhysics();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Reset physics system (global variables)"""
         ...
 def RestoreWindow() -> None:
-        """Set window state: not minimized/maximized (only PLATFORM_DESKTOP)"""
+        """Set window state: not minimized/maximized"""
         ...
-def ResumeAudioStream(stream: AudioStream,) -> None:
+def ResumeAudioStream(stream: AudioStream|list|tuple,) -> None:
         """Resume audio stream"""
         ...
-def ResumeMusicStream(music: Music,) -> None:
+def ResumeMusicStream(music: Music|list|tuple,) -> None:
         """Resume playing paused music"""
         ...
-def ResumeSound(sound: Sound,) -> None:
+def ResumeSound(sound: Sound|list|tuple,) -> None:
         """Resume a paused sound"""
         ...
 SCROLLBAR: int
@@ -2554,6 +2401,7 @@ SHADER_ATTRIB_FLOAT: int
 SHADER_ATTRIB_VEC2: int
 SHADER_ATTRIB_VEC3: int
 SHADER_ATTRIB_VEC4: int
+SHADER_LOC_BONE_MATRICES: int
 SHADER_LOC_COLOR_AMBIENT: int
 SHADER_LOC_COLOR_DIFFUSE: int
 SHADER_LOC_COLOR_SPECULAR: int
@@ -2574,6 +2422,8 @@ SHADER_LOC_MATRIX_NORMAL: int
 SHADER_LOC_MATRIX_PROJECTION: int
 SHADER_LOC_MATRIX_VIEW: int
 SHADER_LOC_VECTOR_VIEW: int
+SHADER_LOC_VERTEX_BONEIDS: int
+SHADER_LOC_VERTEX_BONEWEIGHTS: int
 SHADER_LOC_VERTEX_COLOR: int
 SHADER_LOC_VERTEX_NORMAL: int
 SHADER_LOC_VERTEX_POSITION: int
@@ -2600,37 +2450,37 @@ STATE_FOCUSED: int
 STATE_NORMAL: int
 STATE_PRESSED: int
 STATUSBAR: int
-def SaveFileData(fileName: str,data: Any,dataSize: int,) -> bool:
+def SaveFileData(fileName: bytes,data: Any,dataSize: int,) -> bool:
         """Save data to file from byte array (write), returns true on success"""
         ...
-def SaveFileText(fileName: str,text: str,) -> bool:
+def SaveFileText(fileName: bytes,text: bytes,) -> bool:
         """Save text data to file (write), string must be '\0' terminated, returns true on success"""
         ...
-def SeekMusicStream(music: Music,position: float,) -> None:
+def SeekMusicStream(music: Music|list|tuple,position: float,) -> None:
         """Seek music to a position (in seconds)"""
         ...
 def SetAudioStreamBufferSizeDefault(size: int,) -> None:
         """Default size for new audio streams"""
         ...
-def SetAudioStreamCallback(stream: AudioStream,callback: Any,) -> None:
+def SetAudioStreamCallback(stream: AudioStream|list|tuple,callback: Any,) -> None:
         """Audio thread callback to request new data"""
         ...
-def SetAudioStreamPan(stream: AudioStream,pan: float,) -> None:
+def SetAudioStreamPan(stream: AudioStream|list|tuple,pan: float,) -> None:
         """Set pan for audio stream (0.5 is centered)"""
         ...
-def SetAudioStreamPitch(stream: AudioStream,pitch: float,) -> None:
+def SetAudioStreamPitch(stream: AudioStream|list|tuple,pitch: float,) -> None:
         """Set pitch for audio stream (1.0 is base level)"""
         ...
-def SetAudioStreamVolume(stream: AudioStream,volume: float,) -> None:
+def SetAudioStreamVolume(stream: AudioStream|list|tuple,volume: float,) -> None:
         """Set volume for audio stream (1.0 is max level)"""
         ...
 def SetAutomationEventBaseFrame(frame: int,) -> None:
         """Set automation event internal base frame to start recording"""
         ...
-def SetAutomationEventList(list: Any,) -> None:
+def SetAutomationEventList(list_0: Any|list|tuple,) -> None:
         """Set automation event list to record to"""
         ...
-def SetClipboardText(text: str,) -> None:
+def SetClipboardText(text: bytes,) -> None:
         """Set clipboard text content"""
         ...
 def SetConfigFlags(flags: int,) -> None:
@@ -2639,25 +2489,28 @@ def SetConfigFlags(flags: int,) -> None:
 def SetExitKey(key: int,) -> None:
         """Set a custom key to exit program (default is ESC)"""
         ...
-def SetGamepadMappings(mappings: str,) -> int:
+def SetGamepadMappings(mappings: bytes,) -> int:
         """Set internal gamepad mappings (SDL_GameControllerDB)"""
+        ...
+def SetGamepadVibration(gamepad: int,leftMotor: float,rightMotor: float,duration: float,) -> None:
+        """Set gamepad vibration for both motors (duration in seconds)"""
         ...
 def SetGesturesEnabled(flags: int,) -> None:
         """Enable a set of gestures using flags"""
         ...
-def SetLoadFileDataCallback(callback: str,) -> None:
+def SetLoadFileDataCallback(callback: bytes,) -> None:
         """Set custom file binary data loader"""
         ...
-def SetLoadFileTextCallback(callback: str,) -> None:
+def SetLoadFileTextCallback(callback: bytes,) -> None:
         """Set custom file text data loader"""
         ...
 def SetMasterVolume(volume: float,) -> None:
         """Set master volume (listener)"""
         ...
-def SetMaterialTexture(material: Any,mapType: int,texture: Texture,) -> None:
+def SetMaterialTexture(material: Any|list|tuple,mapType: int,texture: Texture|list|tuple,) -> None:
         """Set texture for a material map type (MATERIAL_MAP_DIFFUSE, MATERIAL_MAP_SPECULAR...)"""
         ...
-def SetModelMeshMaterial(model: Any,meshId: int,materialId: int,) -> None:
+def SetModelMeshMaterial(model: Any|list|tuple,meshId: int,materialId: int,) -> None:
         """Set material for a mesh"""
         ...
 def SetMouseCursor(cursor: int,) -> None:
@@ -2672,64 +2525,58 @@ def SetMousePosition(x: int,y: int,) -> None:
 def SetMouseScale(scaleX: float,scaleY: float,) -> None:
         """Set mouse scaling"""
         ...
-def SetMusicPan(music: Music,pan: float,) -> None:
+def SetMusicPan(music: Music|list|tuple,pan: float,) -> None:
         """Set pan for a music (0.5 is center)"""
         ...
-def SetMusicPitch(music: Music,pitch: float,) -> None:
+def SetMusicPitch(music: Music|list|tuple,pitch: float,) -> None:
         """Set pitch for a music (1.0 is base level)"""
         ...
-def SetMusicVolume(music: Music,volume: float,) -> None:
+def SetMusicVolume(music: Music|list|tuple,volume: float,) -> None:
         """Set volume for music (1.0 is max level)"""
         ...
-def SetPhysicsBodyRotation(PhysicsBodyData_pointer_0: Any,float_1: float,) -> None:
-        """void SetPhysicsBodyRotation(struct PhysicsBodyData *, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def SetPhysicsBodyRotation(body: Any|list|tuple,radians: float,) -> None:
+        """Sets physics body shape transform based on radians parameter"""
         ...
-def SetPhysicsGravity(float_0: float,float_1: float,) -> None:
-        """void SetPhysicsGravity(float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def SetPhysicsGravity(x: float,y: float,) -> None:
+        """Sets physics global gravity force"""
         ...
-def SetPhysicsTimeStep(double_0: float,) -> None:
-        """void SetPhysicsTimeStep(double);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def SetPhysicsTimeStep(delta: float,) -> None:
+        """Sets physics fixed time step in milliseconds. 1.666666 by default"""
         ...
-def SetPixelColor(dstPtr: Any,color: Color,format: int,) -> None:
+def SetPixelColor(dstPtr: Any,color: Color|list|tuple,format: int,) -> None:
         """Set color formatted into destination pixel pointer"""
         ...
 def SetRandomSeed(seed: int,) -> None:
         """Set the seed for the random number generator"""
         ...
-def SetSaveFileDataCallback(callback: str,) -> None:
+def SetSaveFileDataCallback(callback: bytes,) -> None:
         """Set custom file binary data saver"""
         ...
-def SetSaveFileTextCallback(callback: str,) -> None:
+def SetSaveFileTextCallback(callback: bytes,) -> None:
         """Set custom file text data saver"""
         ...
-def SetShaderValue(shader: Shader,locIndex: int,value: Any,uniformType: int,) -> None:
+def SetShaderValue(shader: Shader|list|tuple,locIndex: int,value: Any,uniformType: int,) -> None:
         """Set shader uniform value"""
         ...
-def SetShaderValueMatrix(shader: Shader,locIndex: int,mat: Matrix,) -> None:
+def SetShaderValueMatrix(shader: Shader|list|tuple,locIndex: int,mat: Matrix|list|tuple,) -> None:
         """Set shader uniform value (matrix 4x4)"""
         ...
-def SetShaderValueTexture(shader: Shader,locIndex: int,texture: Texture,) -> None:
+def SetShaderValueTexture(shader: Shader|list|tuple,locIndex: int,texture: Texture|list|tuple,) -> None:
         """Set shader uniform value for texture (sampler2d)"""
         ...
-def SetShaderValueV(shader: Shader,locIndex: int,value: Any,uniformType: int,count: int,) -> None:
+def SetShaderValueV(shader: Shader|list|tuple,locIndex: int,value: Any,uniformType: int,count: int,) -> None:
         """Set shader uniform value vector"""
         ...
-def SetShapesTexture(texture: Texture,source: Rectangle,) -> None:
+def SetShapesTexture(texture: Texture|list|tuple,source: Rectangle|list|tuple,) -> None:
         """Set texture and rectangle to be used on shapes drawing"""
         ...
-def SetSoundPan(sound: Sound,pan: float,) -> None:
+def SetSoundPan(sound: Sound|list|tuple,pan: float,) -> None:
         """Set pan for a sound (0.5 is center)"""
         ...
-def SetSoundPitch(sound: Sound,pitch: float,) -> None:
+def SetSoundPitch(sound: Sound|list|tuple,pitch: float,) -> None:
         """Set pitch for a sound (1.0 is base level)"""
         ...
-def SetSoundVolume(sound: Sound,volume: float,) -> None:
+def SetSoundVolume(sound: Sound|list|tuple,volume: float,) -> None:
         """Set volume for a sound (1.0 is max level)"""
         ...
 def SetTargetFPS(fps: int,) -> None:
@@ -2738,26 +2585,26 @@ def SetTargetFPS(fps: int,) -> None:
 def SetTextLineSpacing(spacing: int,) -> None:
         """Set vertical line spacing when drawing with line-breaks"""
         ...
-def SetTextureFilter(texture: Texture,filter: int,) -> None:
+def SetTextureFilter(texture: Texture|list|tuple,filter: int,) -> None:
         """Set texture scaling filter mode"""
         ...
-def SetTextureWrap(texture: Texture,wrap: int,) -> None:
+def SetTextureWrap(texture: Texture|list|tuple,wrap: int,) -> None:
         """Set texture wrapping mode"""
         ...
-def SetTraceLogCallback(callback: str,) -> None:
+def SetTraceLogCallback(callback: bytes,) -> None:
         """Set custom trace log"""
         ...
 def SetTraceLogLevel(logLevel: int,) -> None:
         """Set the current threshold (minimum) log level"""
         ...
 def SetWindowFocused() -> None:
-        """Set window focused (only PLATFORM_DESKTOP)"""
+        """Set window focused"""
         ...
-def SetWindowIcon(image: Image,) -> None:
-        """Set icon for window (single image, RGBA 32bit, only PLATFORM_DESKTOP)"""
+def SetWindowIcon(image: Image|list|tuple,) -> None:
+        """Set icon for window (single image, RGBA 32bit)"""
         ...
-def SetWindowIcons(images: Any,count: int,) -> None:
-        """Set icon for window (multiple images, RGBA 32bit, only PLATFORM_DESKTOP)"""
+def SetWindowIcons(images: Any|list|tuple,count: int,) -> None:
+        """Set icon for window (multiple images, RGBA 32bit)"""
         ...
 def SetWindowMaxSize(width: int,height: int,) -> None:
         """Set window maximum dimensions (for FLAG_WINDOW_RESIZABLE)"""
@@ -2769,19 +2616,19 @@ def SetWindowMonitor(monitor: int,) -> None:
         """Set monitor for the current window"""
         ...
 def SetWindowOpacity(opacity: float,) -> None:
-        """Set window opacity [0.0f..1.0f] (only PLATFORM_DESKTOP)"""
+        """Set window opacity [0.0f..1.0f]"""
         ...
 def SetWindowPosition(x: int,y: int,) -> None:
-        """Set window position on screen (only PLATFORM_DESKTOP)"""
+        """Set window position on screen"""
         ...
 def SetWindowSize(width: int,height: int,) -> None:
         """Set window dimensions"""
         ...
 def SetWindowState(flags: int,) -> None:
-        """Set window configuration state using flags (only PLATFORM_DESKTOP)"""
+        """Set window configuration state using flags"""
         ...
-def SetWindowTitle(title: str,) -> None:
-        """Set title for window (only PLATFORM_DESKTOP and PLATFORM_WEB)"""
+def SetWindowTitle(title: bytes,) -> None:
+        """Set title for window"""
         ...
 def ShowCursor() -> None:
         """Shows cursor"""
@@ -2789,16 +2636,16 @@ def ShowCursor() -> None:
 def StartAutomationEventRecording() -> None:
         """Start recording automation events (AutomationEventList must be set)"""
         ...
-def StopAudioStream(stream: AudioStream,) -> None:
+def StopAudioStream(stream: AudioStream|list|tuple,) -> None:
         """Stop audio stream"""
         ...
 def StopAutomationEventRecording() -> None:
         """Stop recording automation events"""
         ...
-def StopMusicStream(music: Music,) -> None:
+def StopMusicStream(music: Music|list|tuple,) -> None:
         """Stop music playing"""
         ...
-def StopSound(sound: Sound,) -> None:
+def StopSound(sound: Sound|list|tuple,) -> None:
         """Stop playing a sound"""
         ...
 def SwapScreenBuffer() -> None:
@@ -2837,1400 +2684,1720 @@ TEXT_WRAP_MODE: int
 TEXT_WRAP_NONE: int
 TEXT_WRAP_WORD: int
 TOGGLE: int
-def TakeScreenshot(fileName: str,) -> None:
+def TakeScreenshot(fileName: bytes,) -> None:
         """Takes a screenshot of current screen (filename extension defines format)"""
         ...
-def TextAppend(text: str,append: str,position: Any,) -> None:
+def TextAppend(text: bytes,append: bytes,position: Any,) -> None:
         """Append text at specific position and move cursor!"""
         ...
-def TextCopy(dst: str,src: str,) -> int:
+def TextCopy(dst: bytes,src: bytes,) -> int:
         """Copy one string to another, returns bytes copied"""
         ...
-def TextFindIndex(text: str,find: str,) -> int:
+def TextFindIndex(text: bytes,find: bytes,) -> int:
         """Find first text occurrence within a string"""
         ...
-def TextFormat(*args) -> str:
+def TextFormat(*args) -> bytes:
         """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""
         ...
-def TextInsert(text: str,insert: str,position: int,) -> str:
+def TextInsert(text: bytes,insert: bytes,position: int,) -> bytes:
         """Insert text in a position (WARNING: memory must be freed!)"""
         ...
-def TextIsEqual(text1: str,text2: str,) -> bool:
+def TextIsEqual(text1: bytes,text2: bytes,) -> bool:
         """Check if two text string are equal"""
         ...
-def TextJoin(textList: str,count: int,delimiter: str,) -> str:
+def TextJoin(textList: list[bytes],count: int,delimiter: bytes,) -> bytes:
         """Join text strings with delimiter"""
         ...
-def TextLength(text: str,) -> int:
+def TextLength(text: bytes,) -> int:
         """Get text length, checks for '\0' ending"""
         ...
-def TextReplace(text: str,replace: str,by: str,) -> str:
+def TextReplace(text: bytes,replace: bytes,by: bytes,) -> bytes:
         """Replace text string (WARNING: memory must be freed!)"""
         ...
-def TextSplit(text: str,delimiter: str,count: Any,) -> str:
+def TextSplit(text: bytes,delimiter: bytes,count: Any,) -> list[bytes]:
         """Split text into multiple strings"""
         ...
-def TextSubtext(text: str,position: int,length: int,) -> str:
+def TextSubtext(text: bytes,position: int,length: int,) -> bytes:
         """Get a piece of a text string"""
         ...
-def TextToInteger(text: str,) -> int:
+def TextToCamel(text: bytes,) -> bytes:
+        """Get Camel case notation version of provided string"""
+        ...
+def TextToFloat(text: bytes,) -> float:
+        """Get float value from text (negative values not supported)"""
+        ...
+def TextToInteger(text: bytes,) -> int:
         """Get integer value from text (negative values not supported)"""
         ...
-def TextToLower(text: str,) -> str:
+def TextToLower(text: bytes,) -> bytes:
         """Get lower case version of provided string"""
         ...
-def TextToPascal(text: str,) -> str:
+def TextToPascal(text: bytes,) -> bytes:
         """Get Pascal case notation version of provided string"""
         ...
-def TextToUpper(text: str,) -> str:
+def TextToSnake(text: bytes,) -> bytes:
+        """Get Snake case notation version of provided string"""
+        ...
+def TextToUpper(text: bytes,) -> bytes:
         """Get upper case version of provided string"""
         ...
 def ToggleBorderlessWindowed() -> None:
-        """Toggle window state: borderless windowed (only PLATFORM_DESKTOP)"""
+        """Toggle window state: borderless windowed, resizes window to match monitor resolution"""
         ...
 def ToggleFullscreen() -> None:
-        """Toggle window state: fullscreen/windowed (only PLATFORM_DESKTOP)"""
+        """Toggle window state: fullscreen/windowed, resizes monitor to match window resolution"""
         ...
 def TraceLog(*args) -> None:
         """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""
         ...
-def UnloadAudioStream(stream: AudioStream,) -> None:
+def UnloadAudioStream(stream: AudioStream|list|tuple,) -> None:
         """Unload audio stream and free memory"""
         ...
-def UnloadAutomationEventList(list: Any,) -> None:
+def UnloadAutomationEventList(list_0: AutomationEventList|list|tuple,) -> None:
         """Unload automation events list from file"""
         ...
 def UnloadCodepoints(codepoints: Any,) -> None:
         """Unload codepoints data from memory"""
         ...
-def UnloadDirectoryFiles(files: FilePathList,) -> None:
+def UnloadDirectoryFiles(files: FilePathList|list|tuple,) -> None:
         """Unload filepaths"""
         ...
-def UnloadDroppedFiles(files: FilePathList,) -> None:
+def UnloadDroppedFiles(files: FilePathList|list|tuple,) -> None:
         """Unload dropped filepaths"""
         ...
-def UnloadFileData(data: str,) -> None:
+def UnloadFileData(data: bytes,) -> None:
         """Unload file data allocated by LoadFileData()"""
         ...
-def UnloadFileText(text: str,) -> None:
+def UnloadFileText(text: bytes,) -> None:
         """Unload file text data allocated by LoadFileText()"""
         ...
-def UnloadFont(font: Font,) -> None:
+def UnloadFont(font: Font|list|tuple,) -> None:
         """Unload font from GPU memory (VRAM)"""
         ...
-def UnloadFontData(glyphs: Any,glyphCount: int,) -> None:
+def UnloadFontData(glyphs: Any|list|tuple,glyphCount: int,) -> None:
         """Unload font chars info data (RAM)"""
         ...
-def UnloadImage(image: Image,) -> None:
+def UnloadImage(image: Image|list|tuple,) -> None:
         """Unload image from CPU memory (RAM)"""
         ...
-def UnloadImageColors(colors: Any,) -> None:
+def UnloadImageColors(colors: Any|list|tuple,) -> None:
         """Unload color data loaded with LoadImageColors()"""
         ...
-def UnloadImagePalette(colors: Any,) -> None:
+def UnloadImagePalette(colors: Any|list|tuple,) -> None:
         """Unload colors palette loaded with LoadImagePalette()"""
         ...
-def UnloadMaterial(material: Material,) -> None:
+def UnloadMaterial(material: Material|list|tuple,) -> None:
         """Unload material from GPU memory (VRAM)"""
         ...
-def UnloadMesh(mesh: Mesh,) -> None:
+def UnloadMesh(mesh: Mesh|list|tuple,) -> None:
         """Unload mesh data from CPU and GPU"""
         ...
-def UnloadModel(model: Model,) -> None:
+def UnloadModel(model: Model|list|tuple,) -> None:
         """Unload model (including meshes) from memory (RAM and/or VRAM)"""
         ...
-def UnloadModelAnimation(anim: ModelAnimation,) -> None:
+def UnloadModelAnimation(anim: ModelAnimation|list|tuple,) -> None:
         """Unload animation data"""
         ...
-def UnloadModelAnimations(animations: Any,animCount: int,) -> None:
+def UnloadModelAnimations(animations: Any|list|tuple,animCount: int,) -> None:
         """Unload animation array data"""
         ...
-def UnloadMusicStream(music: Music,) -> None:
+def UnloadMusicStream(music: Music|list|tuple,) -> None:
         """Unload music stream"""
         ...
 def UnloadRandomSequence(sequence: Any,) -> None:
         """Unload random values sequence"""
         ...
-def UnloadRenderTexture(target: RenderTexture,) -> None:
+def UnloadRenderTexture(target: RenderTexture|list|tuple,) -> None:
         """Unload render texture from GPU memory (VRAM)"""
         ...
-def UnloadShader(shader: Shader,) -> None:
+def UnloadShader(shader: Shader|list|tuple,) -> None:
         """Unload shader from GPU memory (VRAM)"""
         ...
-def UnloadSound(sound: Sound,) -> None:
+def UnloadSound(sound: Sound|list|tuple,) -> None:
         """Unload sound"""
         ...
-def UnloadSoundAlias(alias: Sound,) -> None:
+def UnloadSoundAlias(alias: Sound|list|tuple,) -> None:
         """Unload a sound alias (does not deallocate sample data)"""
         ...
-def UnloadTexture(texture: Texture,) -> None:
+def UnloadTexture(texture: Texture|list|tuple,) -> None:
         """Unload texture from GPU memory (VRAM)"""
         ...
-def UnloadUTF8(text: str,) -> None:
+def UnloadUTF8(text: bytes,) -> None:
         """Unload UTF-8 text encoded from codepoints array"""
         ...
-def UnloadVrStereoConfig(config: VrStereoConfig,) -> None:
+def UnloadVrStereoConfig(config: VrStereoConfig|list|tuple,) -> None:
         """Unload VR stereo config"""
         ...
-def UnloadWave(wave: Wave,) -> None:
+def UnloadWave(wave: Wave|list|tuple,) -> None:
         """Unload wave data"""
         ...
 def UnloadWaveSamples(samples: Any,) -> None:
         """Unload samples data loaded with LoadWaveSamples()"""
         ...
-def UpdateAudioStream(stream: AudioStream,data: Any,frameCount: int,) -> None:
+def UpdateAudioStream(stream: AudioStream|list|tuple,data: Any,frameCount: int,) -> None:
         """Update audio stream buffers with data"""
         ...
-def UpdateCamera(camera: Any,mode: int,) -> None:
+def UpdateCamera(camera: Any|list|tuple,mode: int,) -> None:
         """Update camera position for selected mode"""
         ...
-def UpdateCameraPro(camera: Any,movement: Vector3,rotation: Vector3,zoom: float,) -> None:
+def UpdateCameraPro(camera: Any|list|tuple,movement: Vector3|list|tuple,rotation: Vector3|list|tuple,zoom: float,) -> None:
         """Update camera movement/rotation"""
         ...
-def UpdateMeshBuffer(mesh: Mesh,index: int,data: Any,dataSize: int,offset: int,) -> None:
+def UpdateMeshBuffer(mesh: Mesh|list|tuple,index: int,data: Any,dataSize: int,offset: int,) -> None:
         """Update mesh vertex data in GPU for a specific buffer index"""
         ...
-def UpdateModelAnimation(model: Model,anim: ModelAnimation,frame: int,) -> None:
-        """Update model animation pose"""
+def UpdateModelAnimation(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: int,) -> None:
+        """Update model animation pose (CPU)"""
         ...
-def UpdateMusicStream(music: Music,) -> None:
+def UpdateModelAnimationBones(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: int,) -> None:
+        """Update model animation mesh bone matrices (GPU skinning)"""
+        ...
+def UpdateMusicStream(music: Music|list|tuple,) -> None:
         """Updates buffers for music streaming"""
         ...
 def UpdatePhysics() -> None:
-        """void UpdatePhysics();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Update physics system"""
         ...
-def UpdateSound(sound: Sound,data: Any,sampleCount: int,) -> None:
+def UpdateSound(sound: Sound|list|tuple,data: Any,sampleCount: int,) -> None:
         """Update sound buffer with new data"""
         ...
-def UpdateTexture(texture: Texture,pixels: Any,) -> None:
+def UpdateTexture(texture: Texture|list|tuple,pixels: Any,) -> None:
         """Update GPU texture with new data"""
         ...
-def UpdateTextureRec(texture: Texture,rec: Rectangle,pixels: Any,) -> None:
+def UpdateTextureRec(texture: Texture|list|tuple,rec: Rectangle|list|tuple,pixels: Any,) -> None:
         """Update GPU texture rectangle with new data"""
         ...
-def UploadMesh(mesh: Any,dynamic: bool,) -> None:
+def UploadMesh(mesh: Any|list|tuple,dynamic: bool,) -> None:
         """Upload mesh vertex data in GPU and provide VAO/VBO ids"""
         ...
 VALUEBOX: int
-def Vector2Add(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
-        """struct Vector2 Vector2Add(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Add(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> Vector2:
+        """"""
         ...
-def Vector2AddValue(Vector2_0: Vector2,float_1: float,) -> Vector2:
-        """struct Vector2 Vector2AddValue(struct Vector2, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2AddValue(v: Vector2|list|tuple,add: float,) -> Vector2:
+        """"""
         ...
-def Vector2Angle(Vector2_0: Vector2,Vector2_1: Vector2,) -> float:
-        """float Vector2Angle(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Angle(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> float:
+        """"""
         ...
-def Vector2Clamp(Vector2_0: Vector2,Vector2_1: Vector2,Vector2_2: Vector2,) -> Vector2:
-        """struct Vector2 Vector2Clamp(struct Vector2, struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Clamp(v: Vector2|list|tuple,min_1: Vector2|list|tuple,max_2: Vector2|list|tuple,) -> Vector2:
+        """"""
         ...
-def Vector2ClampValue(Vector2_0: Vector2,float_1: float,float_2: float,) -> Vector2:
-        """struct Vector2 Vector2ClampValue(struct Vector2, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2ClampValue(v: Vector2|list|tuple,min_1: float,max_2: float,) -> Vector2:
+        """"""
         ...
-def Vector2Distance(Vector2_0: Vector2,Vector2_1: Vector2,) -> float:
-        """float Vector2Distance(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Distance(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> float:
+        """"""
         ...
-def Vector2DistanceSqr(Vector2_0: Vector2,Vector2_1: Vector2,) -> float:
-        """float Vector2DistanceSqr(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2DistanceSqr(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> float:
+        """"""
         ...
-def Vector2Divide(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
-        """struct Vector2 Vector2Divide(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Divide(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> Vector2:
+        """"""
         ...
-def Vector2DotProduct(Vector2_0: Vector2,Vector2_1: Vector2,) -> float:
-        """float Vector2DotProduct(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2DotProduct(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> float:
+        """"""
         ...
-def Vector2Equals(Vector2_0: Vector2,Vector2_1: Vector2,) -> int:
-        """int Vector2Equals(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Equals(p: Vector2|list|tuple,q: Vector2|list|tuple,) -> int:
+        """"""
         ...
-def Vector2Invert(Vector2_0: Vector2,) -> Vector2:
-        """struct Vector2 Vector2Invert(struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Invert(v: Vector2|list|tuple,) -> Vector2:
+        """"""
         ...
-def Vector2Length(Vector2_0: Vector2,) -> float:
-        """float Vector2Length(struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Length(v: Vector2|list|tuple,) -> float:
+        """"""
         ...
-def Vector2LengthSqr(Vector2_0: Vector2,) -> float:
-        """float Vector2LengthSqr(struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2LengthSqr(v: Vector2|list|tuple,) -> float:
+        """"""
         ...
-def Vector2Lerp(Vector2_0: Vector2,Vector2_1: Vector2,float_2: float,) -> Vector2:
-        """struct Vector2 Vector2Lerp(struct Vector2, struct Vector2, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Lerp(v1: Vector2|list|tuple,v2: Vector2|list|tuple,amount: float,) -> Vector2:
+        """"""
         ...
-def Vector2LineAngle(Vector2_0: Vector2,Vector2_1: Vector2,) -> float:
-        """float Vector2LineAngle(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2LineAngle(start: Vector2|list|tuple,end: Vector2|list|tuple,) -> float:
+        """"""
         ...
-def Vector2MoveTowards(Vector2_0: Vector2,Vector2_1: Vector2,float_2: float,) -> Vector2:
-        """struct Vector2 Vector2MoveTowards(struct Vector2, struct Vector2, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Max(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> Vector2:
+        """"""
         ...
-def Vector2Multiply(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
-        """struct Vector2 Vector2Multiply(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Min(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> Vector2:
+        """"""
         ...
-def Vector2Negate(Vector2_0: Vector2,) -> Vector2:
-        """struct Vector2 Vector2Negate(struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2MoveTowards(v: Vector2|list|tuple,target: Vector2|list|tuple,maxDistance: float,) -> Vector2:
+        """"""
         ...
-def Vector2Normalize(Vector2_0: Vector2,) -> Vector2:
-        """struct Vector2 Vector2Normalize(struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Multiply(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> Vector2:
+        """"""
+        ...
+def Vector2Negate(v: Vector2|list|tuple,) -> Vector2:
+        """"""
+        ...
+def Vector2Normalize(v: Vector2|list|tuple,) -> Vector2:
+        """"""
         ...
 def Vector2One() -> Vector2:
-        """struct Vector2 Vector2One();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """"""
         ...
-def Vector2Reflect(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
-        """struct Vector2 Vector2Reflect(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Reflect(v: Vector2|list|tuple,normal: Vector2|list|tuple,) -> Vector2:
+        """"""
         ...
-def Vector2Rotate(Vector2_0: Vector2,float_1: float,) -> Vector2:
-        """struct Vector2 Vector2Rotate(struct Vector2, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Refract(v: Vector2|list|tuple,n: Vector2|list|tuple,r: float,) -> Vector2:
+        """"""
         ...
-def Vector2Scale(Vector2_0: Vector2,float_1: float,) -> Vector2:
-        """struct Vector2 Vector2Scale(struct Vector2, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Rotate(v: Vector2|list|tuple,angle: float,) -> Vector2:
+        """"""
         ...
-def Vector2Subtract(Vector2_0: Vector2,Vector2_1: Vector2,) -> Vector2:
-        """struct Vector2 Vector2Subtract(struct Vector2, struct Vector2);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Scale(v: Vector2|list|tuple,scale: float,) -> Vector2:
+        """"""
         ...
-def Vector2SubtractValue(Vector2_0: Vector2,float_1: float,) -> Vector2:
-        """struct Vector2 Vector2SubtractValue(struct Vector2, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2Subtract(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> Vector2:
+        """"""
         ...
-def Vector2Transform(Vector2_0: Vector2,Matrix_1: Matrix,) -> Vector2:
-        """struct Vector2 Vector2Transform(struct Vector2, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector2SubtractValue(v: Vector2|list|tuple,sub: float,) -> Vector2:
+        """"""
+        ...
+def Vector2Transform(v: Vector2|list|tuple,mat: Matrix|list|tuple,) -> Vector2:
+        """"""
         ...
 def Vector2Zero() -> Vector2:
-        """struct Vector2 Vector2Zero();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """"""
         ...
-def Vector3Add(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Add(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Add(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3AddValue(Vector3_0: Vector3,float_1: float,) -> Vector3:
-        """struct Vector3 Vector3AddValue(struct Vector3, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3AddValue(v: Vector3|list|tuple,add: float,) -> Vector3:
+        """"""
         ...
-def Vector3Angle(Vector3_0: Vector3,Vector3_1: Vector3,) -> float:
-        """float Vector3Angle(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Angle(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> float:
+        """"""
         ...
-def Vector3Barycenter(Vector3_0: Vector3,Vector3_1: Vector3,Vector3_2: Vector3,Vector3_3: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Barycenter(struct Vector3, struct Vector3, struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Barycenter(p: Vector3|list|tuple,a: Vector3|list|tuple,b: Vector3|list|tuple,c: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Clamp(Vector3_0: Vector3,Vector3_1: Vector3,Vector3_2: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Clamp(struct Vector3, struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Clamp(v: Vector3|list|tuple,min_1: Vector3|list|tuple,max_2: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3ClampValue(Vector3_0: Vector3,float_1: float,float_2: float,) -> Vector3:
-        """struct Vector3 Vector3ClampValue(struct Vector3, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3ClampValue(v: Vector3|list|tuple,min_1: float,max_2: float,) -> Vector3:
+        """"""
         ...
-def Vector3CrossProduct(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3CrossProduct(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3CrossProduct(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Distance(Vector3_0: Vector3,Vector3_1: Vector3,) -> float:
-        """float Vector3Distance(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3CubicHermite(v1: Vector3|list|tuple,tangent1: Vector3|list|tuple,v2: Vector3|list|tuple,tangent2: Vector3|list|tuple,amount: float,) -> Vector3:
+        """"""
         ...
-def Vector3DistanceSqr(Vector3_0: Vector3,Vector3_1: Vector3,) -> float:
-        """float Vector3DistanceSqr(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Distance(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> float:
+        """"""
         ...
-def Vector3Divide(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Divide(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3DistanceSqr(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> float:
+        """"""
         ...
-def Vector3DotProduct(Vector3_0: Vector3,Vector3_1: Vector3,) -> float:
-        """float Vector3DotProduct(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Divide(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Equals(Vector3_0: Vector3,Vector3_1: Vector3,) -> int:
-        """int Vector3Equals(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3DotProduct(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> float:
+        """"""
         ...
-def Vector3Invert(Vector3_0: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Invert(struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Equals(p: Vector3|list|tuple,q: Vector3|list|tuple,) -> int:
+        """"""
         ...
-def Vector3Length(Vector3_0: Vector3,) -> float:
-        """float Vector3Length(struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Invert(v: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3LengthSqr(Vector3_0: Vector3,) -> float:
-        """float Vector3LengthSqr(struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Length(v: Vector3|list|tuple,) -> float:
+        """"""
         ...
-def Vector3Lerp(Vector3_0: Vector3,Vector3_1: Vector3,float_2: float,) -> Vector3:
-        """struct Vector3 Vector3Lerp(struct Vector3, struct Vector3, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3LengthSqr(v: Vector3|list|tuple,) -> float:
+        """"""
         ...
-def Vector3Max(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Max(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Lerp(v1: Vector3|list|tuple,v2: Vector3|list|tuple,amount: float,) -> Vector3:
+        """"""
         ...
-def Vector3Min(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Min(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Max(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Multiply(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Multiply(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Min(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Negate(Vector3_0: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Negate(struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3MoveTowards(v: Vector3|list|tuple,target: Vector3|list|tuple,maxDistance: float,) -> Vector3:
+        """"""
         ...
-def Vector3Normalize(Vector3_0: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Normalize(struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Multiply(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> Vector3:
+        """"""
+        ...
+def Vector3Negate(v: Vector3|list|tuple,) -> Vector3:
+        """"""
+        ...
+def Vector3Normalize(v: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
 def Vector3One() -> Vector3:
-        """struct Vector3 Vector3One();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """"""
         ...
-def Vector3OrthoNormalize(Vector3_pointer_0: Any,Vector3_pointer_1: Any,) -> None:
-        """void Vector3OrthoNormalize(struct Vector3 *, struct Vector3 *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3OrthoNormalize(v1: Any|list|tuple,v2: Any|list|tuple,) -> None:
+        """"""
         ...
-def Vector3Perpendicular(Vector3_0: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Perpendicular(struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Perpendicular(v: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Project(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Project(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Project(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Reflect(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Reflect(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Reflect(v: Vector3|list|tuple,normal: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Refract(Vector3_0: Vector3,Vector3_1: Vector3,float_2: float,) -> Vector3:
-        """struct Vector3 Vector3Refract(struct Vector3, struct Vector3, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Refract(v: Vector3|list|tuple,n: Vector3|list|tuple,r: float,) -> Vector3:
+        """"""
         ...
-def Vector3Reject(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Reject(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Reject(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3RotateByAxisAngle(Vector3_0: Vector3,Vector3_1: Vector3,float_2: float,) -> Vector3:
-        """struct Vector3 Vector3RotateByAxisAngle(struct Vector3, struct Vector3, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3RotateByAxisAngle(v: Vector3|list|tuple,axis: Vector3|list|tuple,angle: float,) -> Vector3:
+        """"""
         ...
-def Vector3RotateByQuaternion(Vector3_0: Vector3,Vector4_1: Vector4,) -> Vector3:
-        """struct Vector3 Vector3RotateByQuaternion(struct Vector3, struct Vector4);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3RotateByQuaternion(v: Vector3|list|tuple,q: Vector4|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Scale(Vector3_0: Vector3,float_1: float,) -> Vector3:
-        """struct Vector3 Vector3Scale(struct Vector3, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Scale(v: Vector3|list|tuple,scalar: float,) -> Vector3:
+        """"""
         ...
-def Vector3Subtract(Vector3_0: Vector3,Vector3_1: Vector3,) -> Vector3:
-        """struct Vector3 Vector3Subtract(struct Vector3, struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Subtract(v1: Vector3|list|tuple,v2: Vector3|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3SubtractValue(Vector3_0: Vector3,float_1: float,) -> Vector3:
-        """struct Vector3 Vector3SubtractValue(struct Vector3, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3SubtractValue(v: Vector3|list|tuple,sub: float,) -> Vector3:
+        """"""
         ...
-def Vector3ToFloatV(Vector3_0: Vector3,) -> float3:
-        """struct float3 Vector3ToFloatV(struct Vector3);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3ToFloatV(v: Vector3|list|tuple,) -> float3:
+        """"""
         ...
-def Vector3Transform(Vector3_0: Vector3,Matrix_1: Matrix,) -> Vector3:
-        """struct Vector3 Vector3Transform(struct Vector3, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Transform(v: Vector3|list|tuple,mat: Matrix|list|tuple,) -> Vector3:
+        """"""
         ...
-def Vector3Unproject(Vector3_0: Vector3,Matrix_1: Matrix,Matrix_2: Matrix,) -> Vector3:
-        """struct Vector3 Vector3Unproject(struct Vector3, struct Matrix, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Vector3Unproject(source: Vector3|list|tuple,projection: Matrix|list|tuple,view: Matrix|list|tuple,) -> Vector3:
+        """"""
         ...
 def Vector3Zero() -> Vector3:
-        """struct Vector3 Vector3Zero();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """"""
+        ...
+def Vector4Add(v1: Vector4|list|tuple,v2: Vector4|list|tuple,) -> Vector4:
+        """"""
+        ...
+def Vector4AddValue(v: Vector4|list|tuple,add: float,) -> Vector4:
+        """"""
+        ...
+def Vector4Distance(v1: Vector4|list|tuple,v2: Vector4|list|tuple,) -> float:
+        """"""
+        ...
+def Vector4DistanceSqr(v1: Vector4|list|tuple,v2: Vector4|list|tuple,) -> float:
+        """"""
+        ...
+def Vector4Divide(v1: Vector4|list|tuple,v2: Vector4|list|tuple,) -> Vector4:
+        """"""
+        ...
+def Vector4DotProduct(v1: Vector4|list|tuple,v2: Vector4|list|tuple,) -> float:
+        """"""
+        ...
+def Vector4Equals(p: Vector4|list|tuple,q: Vector4|list|tuple,) -> int:
+        """"""
+        ...
+def Vector4Invert(v: Vector4|list|tuple,) -> Vector4:
+        """"""
+        ...
+def Vector4Length(v: Vector4|list|tuple,) -> float:
+        """"""
+        ...
+def Vector4LengthSqr(v: Vector4|list|tuple,) -> float:
+        """"""
+        ...
+def Vector4Lerp(v1: Vector4|list|tuple,v2: Vector4|list|tuple,amount: float,) -> Vector4:
+        """"""
+        ...
+def Vector4Max(v1: Vector4|list|tuple,v2: Vector4|list|tuple,) -> Vector4:
+        """"""
+        ...
+def Vector4Min(v1: Vector4|list|tuple,v2: Vector4|list|tuple,) -> Vector4:
+        """"""
+        ...
+def Vector4MoveTowards(v: Vector4|list|tuple,target: Vector4|list|tuple,maxDistance: float,) -> Vector4:
+        """"""
+        ...
+def Vector4Multiply(v1: Vector4|list|tuple,v2: Vector4|list|tuple,) -> Vector4:
+        """"""
+        ...
+def Vector4Negate(v: Vector4|list|tuple,) -> Vector4:
+        """"""
+        ...
+def Vector4Normalize(v: Vector4|list|tuple,) -> Vector4:
+        """"""
+        ...
+def Vector4One() -> Vector4:
+        """"""
+        ...
+def Vector4Scale(v: Vector4|list|tuple,scale: float,) -> Vector4:
+        """"""
+        ...
+def Vector4Subtract(v1: Vector4|list|tuple,v2: Vector4|list|tuple,) -> Vector4:
+        """"""
+        ...
+def Vector4SubtractValue(v: Vector4|list|tuple,add: float,) -> Vector4:
+        """"""
+        ...
+def Vector4Zero() -> Vector4:
+        """"""
         ...
 def WaitTime(seconds: float,) -> None:
         """Wait for some time (halt program execution)"""
         ...
-def WaveCopy(wave: Wave,) -> Wave:
+def WaveCopy(wave: Wave|list|tuple,) -> Wave:
         """Copy a wave to a new wave"""
         ...
-def WaveCrop(wave: Any,initSample: int,finalSample: int,) -> None:
-        """Crop a wave to defined samples range"""
+def WaveCrop(wave: Any|list|tuple,initFrame: int,finalFrame: int,) -> None:
+        """Crop a wave to defined frames range"""
         ...
-def WaveFormat(wave: Any,sampleRate: int,sampleSize: int,channels: int,) -> None:
+def WaveFormat(wave: Any|list|tuple,sampleRate: int,sampleSize: int,channels: int,) -> None:
         """Convert wave data to desired format"""
         ...
 def WindowShouldClose() -> bool:
         """Check if application should close (KEY_ESCAPE pressed or windows close icon clicked)"""
         ...
-def Wrap(float_0: float,float_1: float,float_2: float,) -> float:
-        """float Wrap(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def Wrap(value: float,min_1: float,max_2: float,) -> float:
+        """"""
         ...
-def rlActiveDrawBuffers(int_0: int,) -> None:
-        """void rlActiveDrawBuffers(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def glfwCreateCursor(image: Any|list|tuple,xhot: int,yhot: int,) -> Any:
+        """"""
         ...
-def rlActiveTextureSlot(int_0: int,) -> None:
-        """void rlActiveTextureSlot(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def glfwCreateStandardCursor(shape: int,) -> Any:
+        """"""
         ...
-def rlBegin(int_0: int,) -> None:
-        """void rlBegin(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def glfwCreateWindow(width: int,height: int,title: bytes,monitor: Any|list|tuple,share: Any|list|tuple,) -> Any:
+        """"""
         ...
-def rlBindImageTexture(unsignedint_0: int,unsignedint_1: int,int_2: int,_Bool_3: bool,) -> None:
-        """void rlBindImageTexture(unsigned int, unsigned int, int, _Bool);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def glfwDefaultWindowHints() -> None:
+        """"""
         ...
-def rlBindShaderBuffer(unsignedint_0: int,unsignedint_1: int,) -> None:
-        """void rlBindShaderBuffer(unsigned int, unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def glfwDestroyCursor(cursor: Any|list|tuple,) -> None:
+        """"""
         ...
-def rlBlitFramebuffer(int_0: int,int_1: int,int_2: int,int_3: int,int_4: int,int_5: int,int_6: int,int_7: int,int_8: int,) -> None:
-        """void rlBlitFramebuffer(int, int, int, int, int, int, int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def glfwDestroyWindow(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwExtensionSupported(extension: bytes,) -> int:
+        """"""
+        ...
+def glfwFocusWindow(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwGetClipboardString(window: Any|list|tuple,) -> bytes:
+        """"""
+        ...
+def glfwGetCurrentContext() -> Any:
+        """"""
+        ...
+def glfwGetCursorPos(window: Any|list|tuple,xpos: Any,ypos: Any,) -> None:
+        """"""
+        ...
+def glfwGetError(description: list[bytes],) -> int:
+        """"""
+        ...
+def glfwGetFramebufferSize(window: Any|list|tuple,width: Any,height: Any,) -> None:
+        """"""
+        ...
+def glfwGetGamepadName(jid: int,) -> bytes:
+        """"""
+        ...
+def glfwGetGamepadState(jid: int,state: Any|list|tuple,) -> int:
+        """"""
+        ...
+def glfwGetGammaRamp(monitor: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwGetInputMode(window: Any|list|tuple,mode: int,) -> int:
+        """"""
+        ...
+def glfwGetJoystickAxes(jid: int,count: Any,) -> Any:
+        """"""
+        ...
+def glfwGetJoystickButtons(jid: int,count: Any,) -> bytes:
+        """"""
+        ...
+def glfwGetJoystickGUID(jid: int,) -> bytes:
+        """"""
+        ...
+def glfwGetJoystickHats(jid: int,count: Any,) -> bytes:
+        """"""
+        ...
+def glfwGetJoystickName(jid: int,) -> bytes:
+        """"""
+        ...
+def glfwGetJoystickUserPointer(jid: int,) -> Any:
+        """"""
+        ...
+def glfwGetKey(window: Any|list|tuple,key: int,) -> int:
+        """"""
+        ...
+def glfwGetKeyName(key: int,scancode: int,) -> bytes:
+        """"""
+        ...
+def glfwGetKeyScancode(key: int,) -> int:
+        """"""
+        ...
+def glfwGetMonitorContentScale(monitor: Any|list|tuple,xscale: Any,yscale: Any,) -> None:
+        """"""
+        ...
+def glfwGetMonitorName(monitor: Any|list|tuple,) -> bytes:
+        """"""
+        ...
+def glfwGetMonitorPhysicalSize(monitor: Any|list|tuple,widthMM: Any,heightMM: Any,) -> None:
+        """"""
+        ...
+def glfwGetMonitorPos(monitor: Any|list|tuple,xpos: Any,ypos: Any,) -> None:
+        """"""
+        ...
+def glfwGetMonitorUserPointer(monitor: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwGetMonitorWorkarea(monitor: Any|list|tuple,xpos: Any,ypos: Any,width: Any,height: Any,) -> None:
+        """"""
+        ...
+def glfwGetMonitors(count: Any,) -> Any:
+        """"""
+        ...
+def glfwGetMouseButton(window: Any|list|tuple,button: int,) -> int:
+        """"""
+        ...
+def glfwGetPlatform() -> int:
+        """"""
+        ...
+def glfwGetPrimaryMonitor() -> Any:
+        """"""
+        ...
+def glfwGetProcAddress(procname: bytes,) -> Any:
+        """"""
+        ...
+def glfwGetRequiredInstanceExtensions(count: Any,) -> list[bytes]:
+        """"""
+        ...
+def glfwGetTime() -> float:
+        """"""
+        ...
+def glfwGetTimerFrequency() -> int:
+        """"""
+        ...
+def glfwGetTimerValue() -> int:
+        """"""
+        ...
+def glfwGetVersion(major: Any,minor: Any,rev: Any,) -> None:
+        """"""
+        ...
+def glfwGetVersionString() -> bytes:
+        """"""
+        ...
+def glfwGetVideoMode(monitor: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwGetVideoModes(monitor: Any|list|tuple,count: Any,) -> Any:
+        """"""
+        ...
+def glfwGetWindowAttrib(window: Any|list|tuple,attrib: int,) -> int:
+        """"""
+        ...
+def glfwGetWindowContentScale(window: Any|list|tuple,xscale: Any,yscale: Any,) -> None:
+        """"""
+        ...
+def glfwGetWindowFrameSize(window: Any|list|tuple,left: Any,top: Any,right: Any,bottom: Any,) -> None:
+        """"""
+        ...
+def glfwGetWindowMonitor(window: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwGetWindowOpacity(window: Any|list|tuple,) -> float:
+        """"""
+        ...
+def glfwGetWindowPos(window: Any|list|tuple,xpos: Any,ypos: Any,) -> None:
+        """"""
+        ...
+def glfwGetWindowSize(window: Any|list|tuple,width: Any,height: Any,) -> None:
+        """"""
+        ...
+def glfwGetWindowTitle(window: Any|list|tuple,) -> bytes:
+        """"""
+        ...
+def glfwGetWindowUserPointer(window: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwHideWindow(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwIconifyWindow(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwInit() -> int:
+        """"""
+        ...
+def glfwInitAllocator(allocator: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwInitHint(hint: int,value: int,) -> None:
+        """"""
+        ...
+def glfwJoystickIsGamepad(jid: int,) -> int:
+        """"""
+        ...
+def glfwJoystickPresent(jid: int,) -> int:
+        """"""
+        ...
+def glfwMakeContextCurrent(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwMaximizeWindow(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwPlatformSupported(platform: int,) -> int:
+        """"""
+        ...
+def glfwPollEvents() -> None:
+        """"""
+        ...
+def glfwPostEmptyEvent() -> None:
+        """"""
+        ...
+def glfwRawMouseMotionSupported() -> int:
+        """"""
+        ...
+def glfwRequestWindowAttention(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwRestoreWindow(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwSetCharCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetCharModsCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetClipboardString(window: Any|list|tuple,string: bytes,) -> None:
+        """"""
+        ...
+def glfwSetCursor(window: Any|list|tuple,cursor: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwSetCursorEnterCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetCursorPos(window: Any|list|tuple,xpos: float,ypos: float,) -> None:
+        """"""
+        ...
+def glfwSetCursorPosCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetDropCallback(window: Any|list|tuple,callback: list[bytes]|list|tuple,) -> list[bytes]:
+        """"""
+        ...
+def glfwSetErrorCallback(callback: bytes,) -> bytes:
+        """"""
+        ...
+def glfwSetFramebufferSizeCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetGamma(monitor: Any|list|tuple,gamma: float,) -> None:
+        """"""
+        ...
+def glfwSetGammaRamp(monitor: Any|list|tuple,ramp: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwSetInputMode(window: Any|list|tuple,mode: int,value: int,) -> None:
+        """"""
+        ...
+def glfwSetJoystickCallback(callback: Any,) -> Any:
+        """"""
+        ...
+def glfwSetJoystickUserPointer(jid: int,pointer: Any,) -> None:
+        """"""
+        ...
+def glfwSetKeyCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetMonitorCallback(callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetMonitorUserPointer(monitor: Any|list|tuple,pointer: Any,) -> None:
+        """"""
+        ...
+def glfwSetMouseButtonCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetScrollCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetTime(time: float,) -> None:
+        """"""
+        ...
+def glfwSetWindowAspectRatio(window: Any|list|tuple,numer: int,denom: int,) -> None:
+        """"""
+        ...
+def glfwSetWindowAttrib(window: Any|list|tuple,attrib: int,value: int,) -> None:
+        """"""
+        ...
+def glfwSetWindowCloseCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetWindowContentScaleCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetWindowFocusCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetWindowIcon(window: Any|list|tuple,count: int,images: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwSetWindowIconifyCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetWindowMaximizeCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetWindowMonitor(window: Any|list|tuple,monitor: Any|list|tuple,xpos: int,ypos: int,width: int,height: int,refreshRate: int,) -> None:
+        """"""
+        ...
+def glfwSetWindowOpacity(window: Any|list|tuple,opacity: float,) -> None:
+        """"""
+        ...
+def glfwSetWindowPos(window: Any|list|tuple,xpos: int,ypos: int,) -> None:
+        """"""
+        ...
+def glfwSetWindowPosCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetWindowRefreshCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetWindowShouldClose(window: Any|list|tuple,value: int,) -> None:
+        """"""
+        ...
+def glfwSetWindowSize(window: Any|list|tuple,width: int,height: int,) -> None:
+        """"""
+        ...
+def glfwSetWindowSizeCallback(window: Any|list|tuple,callback: Any|list|tuple,) -> Any:
+        """"""
+        ...
+def glfwSetWindowSizeLimits(window: Any|list|tuple,minwidth: int,minheight: int,maxwidth: int,maxheight: int,) -> None:
+        """"""
+        ...
+def glfwSetWindowTitle(window: Any|list|tuple,title: bytes,) -> None:
+        """"""
+        ...
+def glfwSetWindowUserPointer(window: Any|list|tuple,pointer: Any,) -> None:
+        """"""
+        ...
+def glfwShowWindow(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwSwapBuffers(window: Any|list|tuple,) -> None:
+        """"""
+        ...
+def glfwSwapInterval(interval: int,) -> None:
+        """"""
+        ...
+def glfwTerminate() -> None:
+        """"""
+        ...
+def glfwUpdateGamepadMappings(string: bytes,) -> int:
+        """"""
+        ...
+def glfwVulkanSupported() -> int:
+        """"""
+        ...
+def glfwWaitEvents() -> None:
+        """"""
+        ...
+def glfwWaitEventsTimeout(timeout: float,) -> None:
+        """"""
+        ...
+def glfwWindowHint(hint: int,value: int,) -> None:
+        """"""
+        ...
+def glfwWindowHintString(hint: int,value: bytes,) -> None:
+        """"""
+        ...
+def glfwWindowShouldClose(window: Any|list|tuple,) -> int:
+        """"""
+        ...
+def rlActiveDrawBuffers(count: int,) -> None:
+        """Activate multiple draw color buffers"""
+        ...
+def rlActiveTextureSlot(slot: int,) -> None:
+        """Select and active a texture slot"""
+        ...
+def rlBegin(mode: int,) -> None:
+        """Initialize drawing mode (how to organize vertex)"""
+        ...
+def rlBindFramebuffer(target: int,framebuffer: int,) -> None:
+        """Bind framebuffer (FBO)"""
+        ...
+def rlBindImageTexture(id: int,index: int,format: int,readonly: bool,) -> None:
+        """Bind image texture"""
+        ...
+def rlBindShaderBuffer(id: int,index: int,) -> None:
+        """Bind SSBO buffer"""
+        ...
+def rlBlitFramebuffer(srcX: int,srcY: int,srcWidth: int,srcHeight: int,dstX: int,dstY: int,dstWidth: int,dstHeight: int,bufferMask: int,) -> None:
+        """Blit active framebuffer to main framebuffer"""
         ...
 def rlCheckErrors() -> None:
-        """void rlCheckErrors();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Check and log OpenGL error codes"""
         ...
-def rlCheckRenderBatchLimit(int_0: int,) -> bool:
-        """_Bool rlCheckRenderBatchLimit(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlCheckRenderBatchLimit(vCount: int,) -> bool:
+        """Check internal buffer overflow for a given number of vertex"""
         ...
-def rlClearColor(unsignedchar_0: str,unsignedchar_1: str,unsignedchar_2: str,unsignedchar_3: str,) -> None:
-        """void rlClearColor(unsigned char, unsigned char, unsigned char, unsigned char);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlClearColor(r: bytes,g: bytes,b: bytes,a: bytes,) -> None:
+        """Clear color buffer with color"""
         ...
 def rlClearScreenBuffers() -> None:
-        """void rlClearScreenBuffers();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Clear used screen buffers (color and depth)"""
         ...
-def rlColor3f(float_0: float,float_1: float,float_2: float,) -> None:
-        """void rlColor3f(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlColor3f(x: float,y: float,z: float,) -> None:
+        """Define one vertex (color) - 3 float"""
         ...
-def rlColor4f(float_0: float,float_1: float,float_2: float,float_3: float,) -> None:
-        """void rlColor4f(float, float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlColor4f(x: float,y: float,z: float,w: float,) -> None:
+        """Define one vertex (color) - 4 float"""
         ...
-def rlColor4ub(unsignedchar_0: str,unsignedchar_1: str,unsignedchar_2: str,unsignedchar_3: str,) -> None:
-        """void rlColor4ub(unsigned char, unsigned char, unsigned char, unsigned char);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlColor4ub(r: bytes,g: bytes,b: bytes,a: bytes,) -> None:
+        """Define one vertex (color) - 4 byte"""
         ...
-def rlCompileShader(str_0: str,int_1: int,) -> int:
-        """unsigned int rlCompileShader(char *, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlColorMask(r: bool,g: bool,b: bool,a: bool,) -> None:
+        """Color mask control"""
         ...
-def rlComputeShaderDispatch(unsignedint_0: int,unsignedint_1: int,unsignedint_2: int,) -> None:
-        """void rlComputeShaderDispatch(unsigned int, unsigned int, unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlCompileShader(shaderCode: bytes,type: int,) -> int:
+        """Compile custom shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER)"""
         ...
-def rlCopyShaderBuffer(unsignedint_0: int,unsignedint_1: int,unsignedint_2: int,unsignedint_3: int,unsignedint_4: int,) -> None:
-        """void rlCopyShaderBuffer(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlComputeShaderDispatch(groupX: int,groupY: int,groupZ: int,) -> None:
+        """Dispatch compute shader (equivalent to *draw* for graphics pipeline)"""
         ...
-def rlCubemapParameters(unsignedint_0: int,int_1: int,int_2: int,) -> None:
-        """void rlCubemapParameters(unsigned int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlCopyShaderBuffer(destId: int,srcId: int,destOffset: int,srcOffset: int,count: int,) -> None:
+        """Copy SSBO data between buffers"""
+        ...
+def rlCubemapParameters(id: int,param: int,value: int,) -> None:
+        """Set cubemap parameters (filter, wrap)"""
         ...
 def rlDisableBackfaceCulling() -> None:
-        """void rlDisableBackfaceCulling();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable backface culling"""
         ...
 def rlDisableColorBlend() -> None:
-        """void rlDisableColorBlend();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable color blending"""
         ...
 def rlDisableDepthMask() -> None:
-        """void rlDisableDepthMask();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable depth write"""
         ...
 def rlDisableDepthTest() -> None:
-        """void rlDisableDepthTest();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable depth test"""
         ...
 def rlDisableFramebuffer() -> None:
-        """void rlDisableFramebuffer();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable render texture (fbo), return to default framebuffer"""
         ...
 def rlDisableScissorTest() -> None:
-        """void rlDisableScissorTest();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable scissor test"""
         ...
 def rlDisableShader() -> None:
-        """void rlDisableShader();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable shader program"""
         ...
 def rlDisableSmoothLines() -> None:
-        """void rlDisableSmoothLines();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable line aliasing"""
         ...
 def rlDisableStereoRender() -> None:
-        """void rlDisableStereoRender();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable stereo rendering"""
         ...
 def rlDisableTexture() -> None:
-        """void rlDisableTexture();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable texture"""
         ...
 def rlDisableTextureCubemap() -> None:
-        """void rlDisableTextureCubemap();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable texture cubemap"""
         ...
 def rlDisableVertexArray() -> None:
-        """void rlDisableVertexArray();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable vertex array (VAO, if supported)"""
         ...
-def rlDisableVertexAttribute(unsignedint_0: int,) -> None:
-        """void rlDisableVertexAttribute(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlDisableVertexAttribute(index: int,) -> None:
+        """Disable vertex attribute index"""
         ...
 def rlDisableVertexBuffer() -> None:
-        """void rlDisableVertexBuffer();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable vertex buffer (VBO)"""
         ...
 def rlDisableVertexBufferElement() -> None:
-        """void rlDisableVertexBufferElement();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable vertex buffer element (VBO element)"""
         ...
 def rlDisableWireMode() -> None:
-        """void rlDisableWireMode();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Disable wire (and point) mode"""
         ...
-def rlDrawRenderBatch(rlRenderBatch_pointer_0: Any,) -> None:
-        """void rlDrawRenderBatch(struct rlRenderBatch *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlDrawRenderBatch(batch: Any|list|tuple,) -> None:
+        """Draw render batch data (Update->Draw->Reset)"""
         ...
 def rlDrawRenderBatchActive() -> None:
-        """void rlDrawRenderBatchActive();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Update and draw internal render batch"""
         ...
-def rlDrawVertexArray(int_0: int,int_1: int,) -> None:
-        """void rlDrawVertexArray(int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlDrawVertexArray(offset: int,count: int,) -> None:
+        """Draw vertex array (currently active vao)"""
         ...
-def rlDrawVertexArrayElements(int_0: int,int_1: int,void_pointer_2: Any,) -> None:
-        """void rlDrawVertexArrayElements(int, int, void *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlDrawVertexArrayElements(offset: int,count: int,buffer: Any,) -> None:
+        """Draw vertex array elements"""
         ...
-def rlDrawVertexArrayElementsInstanced(int_0: int,int_1: int,void_pointer_2: Any,int_3: int,) -> None:
-        """void rlDrawVertexArrayElementsInstanced(int, int, void *, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlDrawVertexArrayElementsInstanced(offset: int,count: int,buffer: Any,instances: int,) -> None:
+        """Draw vertex array elements with instancing"""
         ...
-def rlDrawVertexArrayInstanced(int_0: int,int_1: int,int_2: int,) -> None:
-        """void rlDrawVertexArrayInstanced(int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlDrawVertexArrayInstanced(offset: int,count: int,instances: int,) -> None:
+        """Draw vertex array (currently active vao) with instancing"""
         ...
 def rlEnableBackfaceCulling() -> None:
-        """void rlEnableBackfaceCulling();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable backface culling"""
         ...
 def rlEnableColorBlend() -> None:
-        """void rlEnableColorBlend();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable color blending"""
         ...
 def rlEnableDepthMask() -> None:
-        """void rlEnableDepthMask();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable depth write"""
         ...
 def rlEnableDepthTest() -> None:
-        """void rlEnableDepthTest();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable depth test"""
         ...
-def rlEnableFramebuffer(unsignedint_0: int,) -> None:
-        """void rlEnableFramebuffer(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlEnableFramebuffer(id: int,) -> None:
+        """Enable render texture (fbo)"""
         ...
 def rlEnablePointMode() -> None:
-        """void rlEnablePointMode();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable point mode"""
         ...
 def rlEnableScissorTest() -> None:
-        """void rlEnableScissorTest();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable scissor test"""
         ...
-def rlEnableShader(unsignedint_0: int,) -> None:
-        """void rlEnableShader(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlEnableShader(id: int,) -> None:
+        """Enable shader program"""
         ...
 def rlEnableSmoothLines() -> None:
-        """void rlEnableSmoothLines();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable line aliasing"""
         ...
 def rlEnableStereoRender() -> None:
-        """void rlEnableStereoRender();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable stereo rendering"""
         ...
-def rlEnableTexture(unsignedint_0: int,) -> None:
-        """void rlEnableTexture(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlEnableTexture(id: int,) -> None:
+        """Enable texture"""
         ...
-def rlEnableTextureCubemap(unsignedint_0: int,) -> None:
-        """void rlEnableTextureCubemap(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlEnableTextureCubemap(id: int,) -> None:
+        """Enable texture cubemap"""
         ...
-def rlEnableVertexArray(unsignedint_0: int,) -> bool:
-        """_Bool rlEnableVertexArray(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlEnableVertexArray(vaoId: int,) -> bool:
+        """Enable vertex array (VAO, if supported)"""
         ...
-def rlEnableVertexAttribute(unsignedint_0: int,) -> None:
-        """void rlEnableVertexAttribute(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlEnableVertexAttribute(index: int,) -> None:
+        """Enable vertex attribute index"""
         ...
-def rlEnableVertexBuffer(unsignedint_0: int,) -> None:
-        """void rlEnableVertexBuffer(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlEnableVertexBuffer(id: int,) -> None:
+        """Enable vertex buffer (VBO)"""
         ...
-def rlEnableVertexBufferElement(unsignedint_0: int,) -> None:
-        """void rlEnableVertexBufferElement(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlEnableVertexBufferElement(id: int,) -> None:
+        """Enable vertex buffer element (VBO element)"""
         ...
 def rlEnableWireMode() -> None:
-        """void rlEnableWireMode();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Enable wire mode"""
         ...
 def rlEnd() -> None:
-        """void rlEnd();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Finish vertex providing"""
         ...
-def rlFramebufferAttach(unsignedint_0: int,unsignedint_1: int,int_2: int,int_3: int,int_4: int,) -> None:
-        """void rlFramebufferAttach(unsigned int, unsigned int, int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlFramebufferAttach(fboId: int,texId: int,attachType: int,texType: int,mipLevel: int,) -> None:
+        """Attach texture/renderbuffer to a framebuffer"""
         ...
-def rlFramebufferComplete(unsignedint_0: int,) -> bool:
-        """_Bool rlFramebufferComplete(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlFramebufferComplete(id: int,) -> bool:
+        """Verify framebuffer is complete"""
         ...
-def rlFrustum(double_0: float,double_1: float,double_2: float,double_3: float,double_4: float,double_5: float,) -> None:
-        """void rlFrustum(double, double, double, double, double, double);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlFrustum(left: float,right: float,bottom: float,top: float,znear: float,zfar: float,) -> None:
+        """"""
         ...
-def rlGenTextureMipmaps(unsignedint_0: int,int_1: int,int_2: int,int_3: int,int_pointer_4: Any,) -> None:
-        """void rlGenTextureMipmaps(unsigned int, int, int, int, int *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlGenTextureMipmaps(id: int,width: int,height: int,format: int,mipmaps: Any,) -> None:
+        """Generate mipmap data for selected texture"""
+        ...
+def rlGetActiveFramebuffer() -> int:
+        """Get the currently active render texture (fbo), 0 for default framebuffer"""
+        ...
+def rlGetCullDistanceFar() -> float:
+        """Get cull plane distance far"""
+        ...
+def rlGetCullDistanceNear() -> float:
+        """Get cull plane distance near"""
         ...
 def rlGetFramebufferHeight() -> int:
-        """int rlGetFramebufferHeight();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get default framebuffer height"""
         ...
 def rlGetFramebufferWidth() -> int:
-        """int rlGetFramebufferWidth();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get default framebuffer width"""
         ...
-def rlGetGlTextureFormats(int_0: int,unsignedint_pointer_1: Any,unsignedint_pointer_2: Any,unsignedint_pointer_3: Any,) -> None:
-        """void rlGetGlTextureFormats(int, unsigned int *, unsigned int *, unsigned int *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlGetGlTextureFormats(format: int,glInternalFormat: Any,glFormat: Any,glType: Any,) -> None:
+        """Get OpenGL internal formats"""
         ...
 def rlGetLineWidth() -> float:
-        """float rlGetLineWidth();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get the line drawing width"""
         ...
-def rlGetLocationAttrib(unsignedint_0: int,str_1: str,) -> int:
-        """int rlGetLocationAttrib(unsigned int, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlGetLocationAttrib(shaderId: int,attribName: bytes,) -> int:
+        """Get shader location attribute"""
         ...
-def rlGetLocationUniform(unsignedint_0: int,str_1: str,) -> int:
-        """int rlGetLocationUniform(unsigned int, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlGetLocationUniform(shaderId: int,uniformName: bytes,) -> int:
+        """Get shader location uniform"""
         ...
 def rlGetMatrixModelview() -> Matrix:
-        """struct Matrix rlGetMatrixModelview();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get internal modelview matrix"""
         ...
 def rlGetMatrixProjection() -> Matrix:
-        """struct Matrix rlGetMatrixProjection();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get internal projection matrix"""
         ...
-def rlGetMatrixProjectionStereo(int_0: int,) -> Matrix:
-        """struct Matrix rlGetMatrixProjectionStereo(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlGetMatrixProjectionStereo(eye: int,) -> Matrix:
+        """Get internal projection matrix for stereo render (selected eye)"""
         ...
 def rlGetMatrixTransform() -> Matrix:
-        """struct Matrix rlGetMatrixTransform();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get internal accumulated transform matrix"""
         ...
-def rlGetMatrixViewOffsetStereo(int_0: int,) -> Matrix:
-        """struct Matrix rlGetMatrixViewOffsetStereo(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlGetMatrixViewOffsetStereo(eye: int,) -> Matrix:
+        """Get internal view offset matrix for stereo render (selected eye)"""
         ...
-def rlGetPixelFormatName(unsignedint_0: int,) -> str:
-        """char *rlGetPixelFormatName(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlGetPixelFormatName(format: int,) -> bytes:
+        """Get name string for pixel format"""
         ...
-def rlGetShaderBufferSize(unsignedint_0: int,) -> int:
-        """unsigned int rlGetShaderBufferSize(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlGetShaderBufferSize(id: int,) -> int:
+        """Get SSBO buffer size"""
         ...
 def rlGetShaderIdDefault() -> int:
-        """unsigned int rlGetShaderIdDefault();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get default shader id"""
         ...
 def rlGetShaderLocsDefault() -> Any:
-        """int *rlGetShaderLocsDefault();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get default shader locations"""
         ...
 def rlGetTextureIdDefault() -> int:
-        """unsigned int rlGetTextureIdDefault();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get default texture id"""
         ...
 def rlGetVersion() -> int:
-        """int rlGetVersion();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Get current OpenGL version"""
         ...
 def rlIsStereoRenderEnabled() -> bool:
-        """_Bool rlIsStereoRenderEnabled();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Check if stereo render is enabled"""
         ...
-def rlLoadComputeShaderProgram(unsignedint_0: int,) -> int:
-        """unsigned int rlLoadComputeShaderProgram(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadComputeShaderProgram(shaderId: int,) -> int:
+        """Load compute shader program"""
         ...
 def rlLoadDrawCube() -> None:
-        """void rlLoadDrawCube();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Load and draw a cube"""
         ...
 def rlLoadDrawQuad() -> None:
-        """void rlLoadDrawQuad();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Load and draw a quad"""
         ...
-def rlLoadExtensions(void_pointer_0: Any,) -> None:
-        """void rlLoadExtensions(void *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadExtensions(loader: Any,) -> None:
+        """Load OpenGL extensions (loader function required)"""
         ...
-def rlLoadFramebuffer(int_0: int,int_1: int,) -> int:
-        """unsigned int rlLoadFramebuffer(int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadFramebuffer() -> int:
+        """Load an empty framebuffer"""
         ...
 def rlLoadIdentity() -> None:
-        """void rlLoadIdentity();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Reset current matrix to identity matrix"""
         ...
-def rlLoadRenderBatch(int_0: int,int_1: int,) -> rlRenderBatch:
-        """struct rlRenderBatch rlLoadRenderBatch(int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadRenderBatch(numBuffers: int,bufferElements: int,) -> rlRenderBatch:
+        """Load a render batch system"""
         ...
-def rlLoadShaderBuffer(unsignedint_0: int,void_pointer_1: Any,int_2: int,) -> int:
-        """unsigned int rlLoadShaderBuffer(unsigned int, void *, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadShaderBuffer(size: int,data: Any,usageHint: int,) -> int:
+        """Load shader storage buffer object (SSBO)"""
         ...
-def rlLoadShaderCode(str_0: str,str_1: str,) -> int:
-        """unsigned int rlLoadShaderCode(char *, char *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadShaderCode(vsCode: bytes,fsCode: bytes,) -> int:
+        """Load shader from code strings"""
         ...
-def rlLoadShaderProgram(unsignedint_0: int,unsignedint_1: int,) -> int:
-        """unsigned int rlLoadShaderProgram(unsigned int, unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadShaderProgram(vShaderId: int,fShaderId: int,) -> int:
+        """Load custom shader program"""
         ...
-def rlLoadTexture(void_pointer_0: Any,int_1: int,int_2: int,int_3: int,int_4: int,) -> int:
-        """unsigned int rlLoadTexture(void *, int, int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadTexture(data: Any,width: int,height: int,format: int,mipmapCount: int,) -> int:
+        """Load texture data"""
         ...
-def rlLoadTextureCubemap(void_pointer_0: Any,int_1: int,int_2: int,) -> int:
-        """unsigned int rlLoadTextureCubemap(void *, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadTextureCubemap(data: Any,size: int,format: int,mipmapCount: int,) -> int:
+        """Load texture cubemap data"""
         ...
-def rlLoadTextureDepth(int_0: int,int_1: int,_Bool_2: bool,) -> int:
-        """unsigned int rlLoadTextureDepth(int, int, _Bool);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadTextureDepth(width: int,height: int,useRenderBuffer: bool,) -> int:
+        """Load depth texture/renderbuffer (to be attached to fbo)"""
         ...
 def rlLoadVertexArray() -> int:
-        """unsigned int rlLoadVertexArray();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Load vertex array (vao) if supported"""
         ...
-def rlLoadVertexBuffer(void_pointer_0: Any,int_1: int,_Bool_2: bool,) -> int:
-        """unsigned int rlLoadVertexBuffer(void *, int, _Bool);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadVertexBuffer(buffer: Any,size: int,dynamic: bool,) -> int:
+        """Load a vertex buffer object"""
         ...
-def rlLoadVertexBufferElement(void_pointer_0: Any,int_1: int,_Bool_2: bool,) -> int:
-        """unsigned int rlLoadVertexBufferElement(void *, int, _Bool);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlLoadVertexBufferElement(buffer: Any,size: int,dynamic: bool,) -> int:
+        """Load vertex buffer elements object"""
         ...
-def rlMatrixMode(int_0: int,) -> None:
-        """void rlMatrixMode(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlMatrixMode(mode: int,) -> None:
+        """Choose the current matrix to be transformed"""
         ...
-def rlMultMatrixf(float_pointer_0: Any,) -> None:
-        """void rlMultMatrixf(float *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlMultMatrixf(matf: Any,) -> None:
+        """Multiply the current matrix by another matrix"""
         ...
-def rlNormal3f(float_0: float,float_1: float,float_2: float,) -> None:
-        """void rlNormal3f(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlNormal3f(x: float,y: float,z: float,) -> None:
+        """Define one vertex (normal) - 3 float"""
         ...
-def rlOrtho(double_0: float,double_1: float,double_2: float,double_3: float,double_4: float,double_5: float,) -> None:
-        """void rlOrtho(double, double, double, double, double, double);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlOrtho(left: float,right: float,bottom: float,top: float,znear: float,zfar: float,) -> None:
+        """"""
         ...
 def rlPopMatrix() -> None:
-        """void rlPopMatrix();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Pop latest inserted matrix from stack"""
         ...
 def rlPushMatrix() -> None:
-        """void rlPushMatrix();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """Push the current matrix to stack"""
         ...
-def rlReadScreenPixels(int_0: int,int_1: int,) -> str:
-        """unsigned char *rlReadScreenPixels(int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlReadScreenPixels(width: int,height: int,) -> bytes:
+        """Read screen pixel data (color buffer)"""
         ...
-def rlReadShaderBuffer(unsignedint_0: int,void_pointer_1: Any,unsignedint_2: int,unsignedint_3: int,) -> None:
-        """void rlReadShaderBuffer(unsigned int, void *, unsigned int, unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlReadShaderBuffer(id: int,dest: Any,count: int,offset: int,) -> None:
+        """Read SSBO buffer data (GPU->CPU)"""
         ...
-def rlReadTexturePixels(unsignedint_0: int,int_1: int,int_2: int,int_3: int,) -> Any:
-        """void *rlReadTexturePixels(unsigned int, int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlReadTexturePixels(id: int,width: int,height: int,format: int,) -> Any:
+        """Read texture pixel data"""
         ...
-def rlRotatef(float_0: float,float_1: float,float_2: float,float_3: float,) -> None:
-        """void rlRotatef(float, float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlRotatef(angle: float,x: float,y: float,z: float,) -> None:
+        """Multiply the current matrix by a rotation matrix"""
         ...
-def rlScalef(float_0: float,float_1: float,float_2: float,) -> None:
-        """void rlScalef(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlScalef(x: float,y: float,z: float,) -> None:
+        """Multiply the current matrix by a scaling matrix"""
         ...
-def rlScissor(int_0: int,int_1: int,int_2: int,int_3: int,) -> None:
-        """void rlScissor(int, int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlScissor(x: int,y: int,width: int,height: int,) -> None:
+        """Scissor test"""
         ...
-def rlSetBlendFactors(int_0: int,int_1: int,int_2: int,) -> None:
-        """void rlSetBlendFactors(int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetBlendFactors(glSrcFactor: int,glDstFactor: int,glEquation: int,) -> None:
+        """Set blending mode factor and equation (using OpenGL factors)"""
         ...
-def rlSetBlendFactorsSeparate(int_0: int,int_1: int,int_2: int,int_3: int,int_4: int,int_5: int,) -> None:
-        """void rlSetBlendFactorsSeparate(int, int, int, int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetBlendFactorsSeparate(glSrcRGB: int,glDstRGB: int,glSrcAlpha: int,glDstAlpha: int,glEqRGB: int,glEqAlpha: int,) -> None:
+        """Set blending mode factors and equations separately (using OpenGL factors)"""
         ...
-def rlSetBlendMode(int_0: int,) -> None:
-        """void rlSetBlendMode(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetBlendMode(mode: int,) -> None:
+        """Set blending mode"""
         ...
-def rlSetCullFace(int_0: int,) -> None:
-        """void rlSetCullFace(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetClipPlanes(nearPlane: float,farPlane: float,) -> None:
+        """Set clip planes distances"""
         ...
-def rlSetFramebufferHeight(int_0: int,) -> None:
-        """void rlSetFramebufferHeight(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetCullFace(mode: int,) -> None:
+        """Set face culling mode"""
         ...
-def rlSetFramebufferWidth(int_0: int,) -> None:
-        """void rlSetFramebufferWidth(int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetFramebufferHeight(height: int,) -> None:
+        """Set current framebuffer height"""
         ...
-def rlSetLineWidth(float_0: float,) -> None:
-        """void rlSetLineWidth(float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetFramebufferWidth(width: int,) -> None:
+        """Set current framebuffer width"""
         ...
-def rlSetMatrixModelview(Matrix_0: Matrix,) -> None:
-        """void rlSetMatrixModelview(struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetLineWidth(width: float,) -> None:
+        """Set the line drawing width"""
         ...
-def rlSetMatrixProjection(Matrix_0: Matrix,) -> None:
-        """void rlSetMatrixProjection(struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetMatrixModelview(view: Matrix|list|tuple,) -> None:
+        """Set a custom modelview matrix (replaces internal modelview matrix)"""
         ...
-def rlSetMatrixProjectionStereo(Matrix_0: Matrix,Matrix_1: Matrix,) -> None:
-        """void rlSetMatrixProjectionStereo(struct Matrix, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetMatrixProjection(proj: Matrix|list|tuple,) -> None:
+        """Set a custom projection matrix (replaces internal projection matrix)"""
         ...
-def rlSetMatrixViewOffsetStereo(Matrix_0: Matrix,Matrix_1: Matrix,) -> None:
-        """void rlSetMatrixViewOffsetStereo(struct Matrix, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetMatrixProjectionStereo(right: Matrix|list|tuple,left: Matrix|list|tuple,) -> None:
+        """Set eyes projection matrices for stereo rendering"""
         ...
-def rlSetRenderBatchActive(rlRenderBatch_pointer_0: Any,) -> None:
-        """void rlSetRenderBatchActive(struct rlRenderBatch *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetMatrixViewOffsetStereo(right: Matrix|list|tuple,left: Matrix|list|tuple,) -> None:
+        """Set eyes view offsets matrices for stereo rendering"""
         ...
-def rlSetShader(unsignedint_0: int,int_pointer_1: Any,) -> None:
-        """void rlSetShader(unsigned int, int *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetRenderBatchActive(batch: Any|list|tuple,) -> None:
+        """Set the active render batch for rlgl (NULL for default internal)"""
         ...
-def rlSetTexture(unsignedint_0: int,) -> None:
-        """void rlSetTexture(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetShader(id: int,locs: Any,) -> None:
+        """Set shader currently active (id and locations)"""
         ...
-def rlSetUniform(int_0: int,void_pointer_1: Any,int_2: int,int_3: int,) -> None:
-        """void rlSetUniform(int, void *, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetTexture(id: int,) -> None:
+        """Set current texture for render batch and check buffers limits"""
         ...
-def rlSetUniformMatrix(int_0: int,Matrix_1: Matrix,) -> None:
-        """void rlSetUniformMatrix(int, struct Matrix);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetUniform(locIndex: int,value: Any,uniformType: int,count: int,) -> None:
+        """Set shader value uniform"""
         ...
-def rlSetUniformSampler(int_0: int,unsignedint_1: int,) -> None:
-        """void rlSetUniformSampler(int, unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetUniformMatrices(locIndex: int,mat: Any|list|tuple,count: int,) -> None:
+        """Set shader value matrices"""
         ...
-def rlSetVertexAttribute(unsignedint_0: int,int_1: int,int_2: int,_Bool_3: bool,int_4: int,void_pointer_5: Any,) -> None:
-        """void rlSetVertexAttribute(unsigned int, int, int, _Bool, int, void *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetUniformMatrix(locIndex: int,mat: Matrix|list|tuple,) -> None:
+        """Set shader value matrix"""
         ...
-def rlSetVertexAttributeDefault(int_0: int,void_pointer_1: Any,int_2: int,int_3: int,) -> None:
-        """void rlSetVertexAttributeDefault(int, void *, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetUniformSampler(locIndex: int,textureId: int,) -> None:
+        """Set shader value sampler"""
         ...
-def rlSetVertexAttributeDivisor(unsignedint_0: int,int_1: int,) -> None:
-        """void rlSetVertexAttributeDivisor(unsigned int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetVertexAttribute(index: int,compSize: int,type: int,normalized: bool,stride: int,offset: int,) -> None:
+        """Set vertex attribute data configuration"""
         ...
-def rlTexCoord2f(float_0: float,float_1: float,) -> None:
-        """void rlTexCoord2f(float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetVertexAttributeDefault(locIndex: int,value: Any,attribType: int,count: int,) -> None:
+        """Set vertex attribute default value, when attribute to provided"""
         ...
-def rlTextureParameters(unsignedint_0: int,int_1: int,int_2: int,) -> None:
-        """void rlTextureParameters(unsigned int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlSetVertexAttributeDivisor(index: int,divisor: int,) -> None:
+        """Set vertex attribute data divisor"""
         ...
-def rlTranslatef(float_0: float,float_1: float,float_2: float,) -> None:
-        """void rlTranslatef(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlTexCoord2f(x: float,y: float,) -> None:
+        """Define one vertex (texture coordinate) - 2 float"""
         ...
-def rlUnloadFramebuffer(unsignedint_0: int,) -> None:
-        """void rlUnloadFramebuffer(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlTextureParameters(id: int,param: int,value: int,) -> None:
+        """Set texture parameters (filter, wrap)"""
         ...
-def rlUnloadRenderBatch(rlRenderBatch_0: rlRenderBatch,) -> None:
-        """void rlUnloadRenderBatch(struct rlRenderBatch);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlTranslatef(x: float,y: float,z: float,) -> None:
+        """Multiply the current matrix by a translation matrix"""
         ...
-def rlUnloadShaderBuffer(unsignedint_0: int,) -> None:
-        """void rlUnloadShaderBuffer(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUnloadFramebuffer(id: int,) -> None:
+        """Delete framebuffer from GPU"""
         ...
-def rlUnloadShaderProgram(unsignedint_0: int,) -> None:
-        """void rlUnloadShaderProgram(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUnloadRenderBatch(batch: rlRenderBatch|list|tuple,) -> None:
+        """Unload render batch system"""
         ...
-def rlUnloadTexture(unsignedint_0: int,) -> None:
-        """void rlUnloadTexture(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUnloadShaderBuffer(ssboId: int,) -> None:
+        """Unload shader storage buffer object (SSBO)"""
         ...
-def rlUnloadVertexArray(unsignedint_0: int,) -> None:
-        """void rlUnloadVertexArray(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUnloadShaderProgram(id: int,) -> None:
+        """Unload shader program"""
         ...
-def rlUnloadVertexBuffer(unsignedint_0: int,) -> None:
-        """void rlUnloadVertexBuffer(unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUnloadTexture(id: int,) -> None:
+        """Unload texture from GPU memory"""
         ...
-def rlUpdateShaderBuffer(unsignedint_0: int,void_pointer_1: Any,unsignedint_2: int,unsignedint_3: int,) -> None:
-        """void rlUpdateShaderBuffer(unsigned int, void *, unsigned int, unsigned int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUnloadVertexArray(vaoId: int,) -> None:
+        """Unload vertex array (vao)"""
         ...
-def rlUpdateTexture(unsignedint_0: int,int_1: int,int_2: int,int_3: int,int_4: int,int_5: int,void_pointer_6: Any,) -> None:
-        """void rlUpdateTexture(unsigned int, int, int, int, int, int, void *);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUnloadVertexBuffer(vboId: int,) -> None:
+        """Unload vertex buffer object"""
         ...
-def rlUpdateVertexBuffer(unsignedint_0: int,void_pointer_1: Any,int_2: int,int_3: int,) -> None:
-        """void rlUpdateVertexBuffer(unsigned int, void *, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUpdateShaderBuffer(id: int,data: Any,dataSize: int,offset: int,) -> None:
+        """Update SSBO buffer data"""
         ...
-def rlUpdateVertexBufferElements(unsignedint_0: int,void_pointer_1: Any,int_2: int,int_3: int,) -> None:
-        """void rlUpdateVertexBufferElements(unsigned int, void *, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUpdateTexture(id: int,offsetX: int,offsetY: int,width: int,height: int,format: int,data: Any,) -> None:
+        """Update texture with new data on GPU"""
         ...
-def rlVertex2f(float_0: float,float_1: float,) -> None:
-        """void rlVertex2f(float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUpdateVertexBuffer(bufferId: int,data: Any,dataSize: int,offset: int,) -> None:
+        """Update vertex buffer object data on GPU buffer"""
         ...
-def rlVertex2i(int_0: int,int_1: int,) -> None:
-        """void rlVertex2i(int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlUpdateVertexBufferElements(id: int,data: Any,dataSize: int,offset: int,) -> None:
+        """Update vertex buffer elements data on GPU buffer"""
         ...
-def rlVertex3f(float_0: float,float_1: float,float_2: float,) -> None:
-        """void rlVertex3f(float, float, float);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlVertex2f(x: float,y: float,) -> None:
+        """Define one vertex (position) - 2 float"""
         ...
-def rlViewport(int_0: int,int_1: int,int_2: int,int_3: int,) -> None:
-        """void rlViewport(int, int, int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlVertex2i(x: int,y: int,) -> None:
+        """Define one vertex (position) - 2 int"""
+        ...
+def rlVertex3f(x: float,y: float,z: float,) -> None:
+        """Define one vertex (position) - 3 float"""
+        ...
+def rlViewport(x: int,y: int,width: int,height: int,) -> None:
+        """Set the viewport area"""
         ...
 def rlglClose() -> None:
-        """void rlglClose();
-
-CFFI C function from raylib._raylib_cffi.lib"""
+        """De-initialize rlgl (buffers, shaders, textures)"""
         ...
-def rlglInit(int_0: int,int_1: int,) -> None:
-        """void rlglInit(int, int);
-
-CFFI C function from raylib._raylib_cffi.lib"""
+def rlglInit(width: int,height: int,) -> None:
+        """Initialize rlgl (buffers, shaders, textures, states)"""
         ...
-AudioStream: struct
-AutomationEvent: struct
-AutomationEventList: struct
-BlendMode: int
-BoneInfo: struct
-BoundingBox: struct
-Camera: struct
-Camera2D: struct
-Camera3D: struct
-CameraMode: int
-CameraProjection: int
-Color: struct
-ConfigFlags: int
-CubemapLayout: int
-FilePathList: struct
-Font: struct
-FontType: int
-GamepadAxis: int
-GamepadButton: int
-Gesture: int
-GlyphInfo: struct
-GuiCheckBoxProperty: int
-GuiColorPickerProperty: int
-GuiComboBoxProperty: int
-GuiControl: int
-GuiControlProperty: int
-GuiDefaultProperty: int
-GuiDropdownBoxProperty: int
-GuiIconName: int
-GuiListViewProperty: int
-GuiProgressBarProperty: int
-GuiScrollBarProperty: int
-GuiSliderProperty: int
-GuiSpinnerProperty: int
-GuiState: int
-GuiStyleProp: struct
-GuiTextAlignment: int
-GuiTextAlignmentVertical: int
-GuiTextBoxProperty: int
-GuiTextWrapMode: int
-GuiToggleProperty: int
-Image: struct
-KeyboardKey: int
-Material: struct
-MaterialMap: struct
-MaterialMapIndex: int
-Matrix: struct
-Matrix2x2: struct
-Mesh: struct
-Model: struct
-ModelAnimation: struct
-MouseButton: int
-MouseCursor: int
-Music: struct
-NPatchInfo: struct
-NPatchLayout: int
-PhysicsBodyData: struct
-PhysicsManifoldData: struct
-PhysicsShape: struct
-PhysicsShapeType: int
-PhysicsVertexData: struct
-PixelFormat: int
-Quaternion: struct
-Ray: struct
-RayCollision: struct
-Rectangle: struct
-RenderTexture: struct
-RenderTexture2D: struct
-Shader: struct
-ShaderAttributeDataType: int
-ShaderLocationIndex: int
-ShaderUniformDataType: int
-Sound: struct
-Texture: struct
-Texture2D: struct
-TextureCubemap: struct
-TextureFilter: int
-TextureWrap: int
-TraceLogLevel: int
-Transform: struct
-Vector2: struct
-Vector3: struct
-Vector4: struct
-VrDeviceInfo: struct
-VrStereoConfig: struct
-Wave: struct
-float16: struct
-float3: struct
-rAudioBuffer: struct
-rAudioProcessor: struct
-rlBlendMode: int
-rlCullMode: int
-rlDrawCall: struct
-rlFramebufferAttachTextureType: int
-rlFramebufferAttachType: int
-rlGlVersion: int
-rlPixelFormat: int
-rlRenderBatch: struct
-rlShaderAttributeDataType: int
-rlShaderLocationIndex: int
-rlShaderUniformDataType: int
-rlTextureFilter: int
-rlTraceLogLevel: int
-rlVertexBuffer: struct
-#  Copyright (c) 2021 Richard Smith and others
-#
-#  This program and the accompanying materials are made available under the
-#  terms of the Eclipse Public License 2.0 which is available at
-#  http://www.eclipse.org/legal/epl-2.0.
-#
-#  This Source Code may also be made available under the following Secondary
-#  licenses when the conditions for such availability set forth in the Eclipse
-#  Public License, v. 2.0 are satisfied: GNU General Public License, version 2
-#  with the GNU Classpath Exception which is
-#  available at https://www.gnu.org/software/classpath/license.html.
-#
-#  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+class AudioStream:
+    buffer: Any
+    processor: Any
+    sampleRate: int
+    sampleSize: int
+    channels: int
+class AutomationEvent:
+    frame: int
+    type: int
+    params: list
+class AutomationEventList:
+    capacity: int
+    count: int
+    events: Any
+BlendMode = int
+class BoneInfo:
+    name: bytes
+    parent: int
+class BoundingBox:
+    min: Vector3
+    max: Vector3
+class Camera:
+    position: Vector3
+    target: Vector3
+    up: Vector3
+    fovy: float
+    projection: int
+class Camera2D:
+    offset: Vector2
+    target: Vector2
+    rotation: float
+    zoom: float
+class Camera3D:
+    position: Vector3
+    target: Vector3
+    up: Vector3
+    fovy: float
+    projection: int
+CameraMode = int
+CameraProjection = int
+class Color:
+    r: bytes
+    g: bytes
+    b: bytes
+    a: bytes
+ConfigFlags = int
+CubemapLayout = int
+class FilePathList:
+    capacity: int
+    count: int
+    paths: list[bytes]
+class Font:
+    baseSize: int
+    glyphCount: int
+    glyphPadding: int
+    texture: Texture
+    recs: Any
+    glyphs: Any
+FontType = int
+class GLFWallocator:
+    allocate: Any
+    reallocate: Any
+    deallocate: Any
+    user: Any
+class GLFWcursor:
+    ...
+class GLFWgamepadstate:
+    buttons: bytes
+    axes: list
+class GLFWgammaramp:
+    red: Any
+    green: Any
+    blue: Any
+    size: int
+class GLFWimage:
+    width: int
+    height: int
+    pixels: bytes
+class GLFWmonitor:
+    ...
+class GLFWvidmode:
+    width: int
+    height: int
+    redBits: int
+    greenBits: int
+    blueBits: int
+    refreshRate: int
+class GLFWwindow:
+    ...
+GamepadAxis = int
+GamepadButton = int
+Gesture = int
+class GlyphInfo:
+    value: int
+    offsetX: int
+    offsetY: int
+    advanceX: int
+    image: Image
+GuiCheckBoxProperty = int
+GuiColorPickerProperty = int
+GuiComboBoxProperty = int
+GuiControl = int
+GuiControlProperty = int
+GuiDefaultProperty = int
+GuiDropdownBoxProperty = int
+GuiIconName = int
+GuiListViewProperty = int
+GuiProgressBarProperty = int
+GuiScrollBarProperty = int
+GuiSliderProperty = int
+GuiSpinnerProperty = int
+GuiState = int
+class GuiStyleProp:
+    controlId: int
+    propertyId: int
+    propertyValue: int
+GuiTextAlignment = int
+GuiTextAlignmentVertical = int
+GuiTextBoxProperty = int
+GuiTextWrapMode = int
+GuiToggleProperty = int
+class Image:
+    data: Any
+    width: int
+    height: int
+    mipmaps: int
+    format: int
+KeyboardKey = int
+class Material:
+    shader: Shader
+    maps: Any
+    params: list
+class MaterialMap:
+    texture: Texture
+    color: Color
+    value: float
+MaterialMapIndex = int
+class Matrix:
+    m0: float
+    m4: float
+    m8: float
+    m12: float
+    m1: float
+    m5: float
+    m9: float
+    m13: float
+    m2: float
+    m6: float
+    m10: float
+    m14: float
+    m3: float
+    m7: float
+    m11: float
+    m15: float
+class Matrix2x2:
+    m00: float
+    m01: float
+    m10: float
+    m11: float
+class Mesh:
+    vertexCount: int
+    triangleCount: int
+    vertices: Any
+    texcoords: Any
+    texcoords2: Any
+    normals: Any
+    tangents: Any
+    colors: bytes
+    indices: Any
+    animVertices: Any
+    animNormals: Any
+    boneIds: bytes
+    boneWeights: Any
+    boneMatrices: Any
+    boneCount: int
+    vaoId: int
+    vboId: Any
+class Model:
+    transform: Matrix
+    meshCount: int
+    materialCount: int
+    meshes: Any
+    materials: Any
+    meshMaterial: Any
+    boneCount: int
+    bones: Any
+    bindPose: Any
+class ModelAnimation:
+    boneCount: int
+    frameCount: int
+    bones: Any
+    framePoses: Any
+    name: bytes
+MouseButton = int
+MouseCursor = int
+class Music:
+    stream: AudioStream
+    frameCount: int
+    looping: bool
+    ctxType: int
+    ctxData: Any
+class NPatchInfo:
+    source: Rectangle
+    left: int
+    top: int
+    right: int
+    bottom: int
+    layout: int
+NPatchLayout = int
+class PhysicsBodyData:
+    id: int
+    enabled: bool
+    position: Vector2
+    velocity: Vector2
+    force: Vector2
+    angularVelocity: float
+    torque: float
+    orient: float
+    inertia: float
+    inverseInertia: float
+    mass: float
+    inverseMass: float
+    staticFriction: float
+    dynamicFriction: float
+    restitution: float
+    useGravity: bool
+    isGrounded: bool
+    freezeOrient: bool
+    shape: PhysicsShape
+class PhysicsManifoldData:
+    id: int
+    bodyA: Any
+    bodyB: Any
+    penetration: float
+    normal: Vector2
+    contacts: list
+    contactsCount: int
+    restitution: float
+    dynamicFriction: float
+    staticFriction: float
+class PhysicsShape:
+    type: PhysicsShapeType
+    body: Any
+    vertexData: PhysicsVertexData
+    radius: float
+    transform: Matrix2x2
+PhysicsShapeType = int
+class PhysicsVertexData:
+    vertexCount: int
+    positions: list
+    normals: list
+PixelFormat = int
+class Quaternion:
+    x: float
+    y: float
+    z: float
+    w: float
+class Ray:
+    position: Vector3
+    direction: Vector3
+class RayCollision:
+    hit: bool
+    distance: float
+    point: Vector3
+    normal: Vector3
+class Rectangle:
+    x: float
+    y: float
+    width: float
+    height: float
+class RenderTexture:
+    id: int
+    texture: Texture
+    depth: Texture
+class RenderTexture2D:
+    id: int
+    texture: Texture
+    depth: Texture
+class Shader:
+    id: int
+    locs: Any
+ShaderAttributeDataType = int
+ShaderLocationIndex = int
+ShaderUniformDataType = int
+class Sound:
+    stream: AudioStream
+    frameCount: int
+class Texture:
+    id: int
+    width: int
+    height: int
+    mipmaps: int
+    format: int
+class Texture2D:
+    id: int
+    width: int
+    height: int
+    mipmaps: int
+    format: int
+class TextureCubemap:
+    id: int
+    width: int
+    height: int
+    mipmaps: int
+    format: int
+TextureFilter = int
+TextureWrap = int
+TraceLogLevel = int
+class Transform:
+    translation: Vector3
+    rotation: Vector4
+    scale: Vector3
+class Vector2:
+    x: float
+    y: float
+class Vector3:
+    x: float
+    y: float
+    z: float
+class Vector4:
+    x: float
+    y: float
+    z: float
+    w: float
+class VrDeviceInfo:
+    hResolution: int
+    vResolution: int
+    hScreenSize: float
+    vScreenSize: float
+    eyeToScreenDistance: float
+    lensSeparationDistance: float
+    interpupillaryDistance: float
+    lensDistortionValues: list
+    chromaAbCorrection: list
+class VrStereoConfig:
+    projection: list
+    viewOffset: list
+    leftLensCenter: list
+    rightLensCenter: list
+    leftScreenCenter: list
+    rightScreenCenter: list
+    scale: list
+    scaleIn: list
+class Wave:
+    frameCount: int
+    sampleRate: int
+    sampleSize: int
+    channels: int
+    data: Any
+class float16:
+    v: list
+class float3:
+    v: list
+class rAudioBuffer:
+    ...
+class rAudioProcessor:
+    ...
+rlBlendMode = int
+rlCullMode = int
+class rlDrawCall:
+    mode: int
+    vertexCount: int
+    vertexAlignment: int
+    textureId: int
+rlFramebufferAttachTextureType = int
+rlFramebufferAttachType = int
+rlGlVersion = int
+rlPixelFormat = int
+class rlRenderBatch:
+    bufferCount: int
+    currentBuffer: int
+    vertexBuffer: Any
+    draws: Any
+    drawCounter: int
+    currentDepth: float
+rlShaderAttributeDataType = int
+rlShaderLocationIndex = int
+rlShaderUniformDataType = int
+rlTextureFilter = int
+rlTraceLogLevel = int
+class rlVertexBuffer:
+    elementCount: int
+    vertices: Any
+    texcoords: Any
+    normals: Any
+    colors: bytes
+    indices: Any
+    vaoId: int
+    vboId: list
 
-LIGHTGRAY  =( 200, 200, 200, 255 )
-GRAY       =( 130, 130, 130, 255 )
-DARKGRAY   =( 80, 80, 80, 255 )
-YELLOW     =( 253, 249, 0, 255 )
-GOLD       =( 255, 203, 0, 255 )
-ORANGE     =( 255, 161, 0, 255 )
-PINK       =( 255, 109, 194, 255 )
-RED        =( 230, 41, 55, 255 )
-MAROON     =( 190, 33, 55, 255 )
-GREEN      =( 0, 228, 48, 255 )
-LIME       =( 0, 158, 47, 255 )
-DARKGREEN  =( 0, 117, 44, 255 )
-SKYBLUE    =( 102, 191, 255, 255 )
-BLUE       =( 0, 121, 241, 255 )
-DARKBLUE   =( 0, 82, 172, 255 )
-PURPLE     =( 200, 122, 255, 255 )
-VIOLET     =( 135, 60, 190, 255 )
-DARKPURPLE =( 112, 31, 126, 255 )
-BEIGE      =( 211, 176, 131, 255 )
-BROWN      =( 127, 106, 79, 255 )
-DARKBROWN  =( 76, 63, 47, 255 )
-WHITE      =( 255, 255, 255, 255 )
-BLACK      =( 0, 0, 0, 255 )
-BLANK      =( 0, 0, 0, 0 )
-MAGENTA    =( 255, 0, 255, 255 )
-RAYWHITE   =( 245, 245, 245, 255 )
+LIGHTGRAY  : Color
+GRAY       : Color
+DARKGRAY   : Color
+YELLOW     : Color
+GOLD       : Color
+ORANGE     : Color
+PINK       : Color
+RED        : Color
+MAROON     : Color
+GREEN      : Color
+LIME       : Color
+DARKGREEN  : Color
+SKYBLUE    : Color
+BLUE       : Color
+DARKBLUE   : Color
+PURPLE     : Color
+VIOLET     : Color
+DARKPURPLE : Color
+BEIGE      : Color
+BROWN      : Color
+DARKBROWN  : Color
+WHITE      : Color
+BLACK      : Color
+BLANK      : Color
+MAGENTA    : Color
+RAYWHITE   : Color
 

@@ -1,4 +1,4 @@
-import cv2 as cv
+import cv2 as cv # type:ignore
 from pyray import *
 
 opencv_image = cv.imread("resources/raylib_logo.jpg")
@@ -10,7 +10,7 @@ screenHeight = 450
 init_window(screenWidth, screenHeight, "example - image loading")
 
 pointer_to_image_data = ffi.from_buffer(opencv_image.data)
-raylib_image = Image(pointer_to_image_data, 256, 256, 1, PIXELFORMAT_UNCOMPRESSED_R8G8B8)
+raylib_image = Image(pointer_to_image_data, 256, 256, 1, PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8)
 texture = load_texture_from_image(raylib_image)
 unload_image(raylib_image)
 

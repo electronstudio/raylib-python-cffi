@@ -5,13 +5,7 @@ raylib [shapes] example - Following Eyes
 """
 
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    BROWN,
-    BLACK,
-    LIGHTGRAY,
-    DARKGREEN,
-)
+
 from math import (
     atan2,
     cos,

@@ -118,18 +118,18 @@ class Camera:
 # GLFW3: Error callback
 @ffi.callback("void(int, const char *)")
 def ErrorCallback(error: int, description: bytes):
-    print("%s" % description, file=sys.stderr)
+    print("%r" % description, file=sys.stderr)
 
 
 # GLFW3: Keyboard callback
 @ffi.callback("void(GLFWwindow *, int, int, int, int)")
-def KeyCallback(window: 'GLFWwindow', key: int, scancode: int, action: int, mods: int):
+def KeyCallback(window, key: int, scancode: int, action: int, mods: int):
     if key == GLFW_KEY_ESCAPE and action == GLFW_PRESS:
         rl.glfwSetWindowShouldClose(window, GLFW_TRUE)
 
 
 # Draw rectangle using rlgl OpenGL 1.1 style coding (translated to OpenGL 3.3 internally)
-def DrawRectangleV(position: 'raylib.Vector2', size: 'raylib.Vector2', color: Color):
+def DrawRectangleV(position, size, color: Color):
     rl.rlBegin(RL_TRIANGLES)
     rl.rlColor4ub(color.r, color.g, color.b, color.a)
     rl.rlVertex2f(position.x, position.y)
@@ -168,7 +168,7 @@ def DrawGrid(slices: int, spacing: float):
 
 # Draw cube
 # NOTE: Cube position is the center position
-def DrawCube(position: 'raylib.Vector3', width: float, height: float, length: float, color: Color):
+def DrawCube(position, width: float, height: float, length: float, color: Color):
     x: float = 0.0
     y: float = 0.0
     z: float = 0.0
@@ -242,7 +242,7 @@ def DrawCube(position: 'raylib.Vector3', width: float, height: float, length: fl
 
 
 #Draw cube wires
-def DrawCubeWires(position: 'raylib.Vector3', width: float, height: float, length: float, color: Color):
+def DrawCubeWires(position, width: float, height: float, length: float, color: Color):
     x: float = 0.0
     y: float = 0.0
     z: float = 0.0

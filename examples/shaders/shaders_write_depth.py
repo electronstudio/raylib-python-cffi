@@ -9,7 +9,7 @@ def LoadRenderTextureDepthTex(width, height):
 
     target =  RenderTexture()
 
-    target.id = rl_load_framebuffer(width, height)   # Load an empty framebuffer
+    target.id = rl_load_framebuffer()   # Load an empty framebuffer
 
     if target.id > 0:
 
@@ -72,12 +72,7 @@ shader = load_shader("","resources/shaders/glsl330/write_depth.fs")
 target = LoadRenderTextureDepthTex(screenWidth, screenHeight)
 
 # Define the camera to look into our 3d world
-camera = Camera3D()
-camera.position = (2.0, 2.0, 3.0)     # Camera position
-camera.target = (0.0, 0.5, 0.0)     # Camera looking at point
-camera.up = (0.0, 1.0, 0.0)           # Camera up vector (rotation towards target)
-camera.fovy = 45.0                                # Camera field-of-view Y
-camera.projection = CameraProjection.CAMERA_PERSPECTIVE              # Camera projection type
+camera = Camera3D((2.0, 2.0, 3.0),(0.0, 0.5, 0.0),(0.0, 1.0, 0.0),45.0, CameraProjection.CAMERA_PERSPECTIVE)
 
 
 set_target_fps(60)                   # Set our game to run at 60 frames-per-second

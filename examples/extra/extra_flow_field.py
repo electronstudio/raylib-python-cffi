@@ -8,7 +8,8 @@ python3 flow-field
 """
 
 import sys, math, time, random
-import glm # Note package is PyGLM, not glm.
+import glm # type: ignore
+# Note package is PyGLM, not glm.
 from raylib import rl, ffi
 from raylib.colors import *
 

@@ -5,11 +5,6 @@ raylib [shapes] example - Lines Bezier
 """
 
 from pyray import *
-from raylib.colors import (
-    RAYWHITE,
-    GRAY,
-    RED
-)
 
 
 # ------------------------------------------------------------------------------------

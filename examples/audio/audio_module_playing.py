@@ -6,26 +6,6 @@ raylib [audio] example - playing
 import dataclasses
 import pyray
 import raylib as rl
-from raylib.colors import (
-    RAYWHITE,
-    ORANGE,
-    RED,
-    GOLD,
-    LIME,
-    BLUE,
-    VIOLET,
-    BROWN,
-    LIGHTGRAY,
-    PINK,
-    YELLOW,
-    GREEN,
-    SKYBLUE,
-    PURPLE,
-    BEIGE,
-    MAROON,
-    GRAY,
-    BLACK
-)
 
 
 MAX_CIRCLES=64
@@ -33,12 +13,11 @@ MAX_CIRCLES=64
 
 @dataclasses.dataclass
 class CircleWave:
-    position: 'rl.Vector2'
+    position: pyray.Vector2
     radius: float
     alpha: float
     speed: float
-    color: 'rl.Color'
-
+    color: pyray.Color
 
 screenWidth = 800
 screenHeight = 450
@@ -49,8 +28,8 @@ rl.InitWindow(screenWidth, screenHeight, b"raylib [audio] example - module playi
 
 rl.InitAudioDevice()                  # Initialize audio device
 
-colors = [ ORANGE, RED, GOLD, LIME, BLUE, VIOLET, BROWN, LIGHTGRAY, PINK,
-           YELLOW, GREEN, SKYBLUE, PURPLE, BEIGE ]
+colors = [pyray.ORANGE, pyray.RED, pyray.GOLD, pyray.LIME, pyray.BLUE, pyray.VIOLET, pyray.BROWN, pyray.LIGHTGRAY, pyray.PINK,
+          pyray.YELLOW, pyray.GREEN, pyray.SKYBLUE, pyray.PURPLE, pyray.BEIGE]
 
 # Creates some circles for visual effect
 circles = []
@@ -141,23 +120,23 @@ while not rl.WindowShouldClose():    # Detect window close button or ESC key
     #----------------------------------------------------------------------------------
     pyray.begin_drawing()
 
-    pyray.clear_background(RAYWHITE)
+    pyray.clear_background(pyray.RAYWHITE)
 
     for i in range(MAX_CIRCLES):
-        pyray.draw_circle_v(circles[i].position, circles[i].radius, rl.Fade(circles[i].color, circles[i].alpha))
+        pyray.draw_circle_v(circles[i].position, circles[i].radius, pyray.fade(circles[i].color, circles[i].alpha))
 
     # Draw time bar
-    pyray.draw_rectangle(20, screenHeight - 20 - 12, screenWidth - 40, 12, LIGHTGRAY)
-    pyray.draw_rectangle(20, screenHeight - 20 - 12, int(timePlayed), 12, MAROON)
-    pyray.draw_rectangle_lines(20, screenHeight - 20 - 12, screenWidth - 40, 12, GRAY)
+    pyray.draw_rectangle(20, screenHeight - 20 - 12, screenWidth - 40, 12, pyray.LIGHTGRAY)
+    pyray.draw_rectangle(20, screenHeight - 20 - 12, int(timePlayed), 12, pyray.MAROON)
+    pyray.draw_rectangle_lines(20, screenHeight - 20 - 12, screenWidth - 40, 12, pyray.GRAY)
 
     # Draw help instructions
-    pyray.draw_rectangle(20, 20, 425, 145, RAYWHITE)
-    pyray.draw_rectangle_lines(20, 20, 425, 145, GRAY)
-    pyray.draw_text("PRESS SPACE TO RESTART MUSIC", 40, 40, 20, BLACK)
-    pyray.draw_text("PRESS P TO PAUSE/RESUME", 40, 70, 20, BLACK)
-    pyray.draw_text("PRESS UP/DOWN TO CHANGE SPEED", 40, 100, 20, BLACK)
-    pyray.draw_text(f"SPEED: {pitch}", 40, 130, 20, MAROON)
+    pyray.draw_rectangle(20, 20, 425, 145, pyray.RAYWHITE)
+    pyray.draw_rectangle_lines(20, 20, 425, 145, pyray.GRAY)
+    pyray.draw_text("PRESS SPACE TO RESTART MUSIC", 40, 40, 20, pyray.BLACK)
+    pyray.draw_text("PRESS P TO PAUSE/RESUME", 40, 70, 20, pyray.BLACK)
+    pyray.draw_text("PRESS UP/DOWN TO CHANGE SPEED", 40, 100, 20, pyray.BLACK)
+    pyray.draw_text(f"SPEED: {pitch}", 40, 130, 20, pyray.MAROON)
 
     pyray.end_drawing()
     #----------------------------------------------------------------------------------

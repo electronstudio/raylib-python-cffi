@@ -36,9 +36,9 @@ bunnies = []
 for i in range(0, MAX_BUNNIES):
     bunnies.append(Bunny())
 
-bunniesCount = 0;          # Bunnies counter
+bunniesCount = 0         # Bunnies counter
 
-SetTargetFPS(60);               # Set our game to run at 60 frames-per-second
+SetTargetFPS(60)              # Set our game to run at 60 frames-per-second
 #//--------------------------------------------------------------------------------------
 
 #// Main game loop

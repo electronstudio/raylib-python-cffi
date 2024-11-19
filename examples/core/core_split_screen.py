@@ -66,21 +66,21 @@ while not window_should_close(): # Detect window close button or ESC key
 
     # Move Player1 forward and backwards (no turning)
 
-    if is_key_down(KEY_W):
+    if is_key_down(KeyboardKey.KEY_W):
         cameraPlayer1.position.z += offsetThisFrame
         cameraPlayer1.target.z += offsetThisFrame
     
-    elif is_key_down(KEY_S):
+    elif is_key_down(KeyboardKey.KEY_S):
     
         cameraPlayer1.position.z -= offsetThisFrame
         cameraPlayer1.target.z -= offsetThisFrame
 
     # Move Player2 forward and backwards (no turning)
-    if is_key_down(KEY_UP):
+    if is_key_down(KeyboardKey.KEY_UP):
         cameraPlayer2.position.x += offsetThisFrame
         cameraPlayer2.target.x += offsetThisFrame
     
-    elif is_key_down(KEY_DOWN):
+    elif is_key_down(KeyboardKey.KEY_DOWN):
         cameraPlayer2.position
         cameraPlayer2.position.x -= offsetThisFrame
         cameraPlayer2.target.x -= offsetThisFrame
