@@ -12,11 +12,11 @@ VERSION = (HERE / "version.py").read_text().split()[-1].strip("\"'")
 
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 if RAYLIB_PLATFORM == "SDL":
-    NAME = "raylib_sdl"
+    NAME = "_sdl"
 elif RAYLIB_PLATFORM == "DRM":
-    NAME = "raylib_drm"
+    NAME = "_drm"
 else:
-    NAME = "raylib"
+    NAME = ""
 
 class BinaryDistribution(Distribution):
     """Distribution which always forces a binary package with platform name"""
@@ -25,7 +25,7 @@ class BinaryDistribution(Distribution):
 
 # This call to setup() does all the work
 setup(
-    name=NAME,
+    name="raylib"+NAME,
     version=VERSION,
     description="Python CFFI bindings for Raylib",
     long_description=README,
