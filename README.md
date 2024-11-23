@@ -3,9 +3,13 @@
 ## Backends: Desktop, SDL, DRM, Web
 ## Platforms: Windows, Mac, Linux, Raspberry Pi, Web
 
+![PyPI - Downloads](https://img.shields.io/pypi/dm/raylib)
+
 Chatroom: [Discord](https://discord.gg/fKDwt85aX6)
 
-[HELP WANTED: writing examples](https://github.com/electronstudio/raylib-python-cffi/issues/155)
+HELP WANTED: [writing examples](https://github.com/electronstudio/raylib-python-cffi/issues/155)
+
+Features:
 
 * CFFI API static bindings.
 * Automatically generated to be as close as possible to 
