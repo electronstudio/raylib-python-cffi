@@ -23,9 +23,9 @@ class BinaryDistribution(Distribution):
     def has_ext_modules(foo):
         return True
 
-# This call to setup() does all the work
+# should be name="raylib"+NAME but then Git doesn't track dependants
 setup(
-    name="raylib"+NAME,
+    name="raylib",
     version=VERSION,
     description="Python CFFI bindings for Raylib",
     long_description=README,
@@ -41,9 +41,6 @@ setup(
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.7",
     ],
     packages=["raylib", "pyray"],
     include_package_data=True,
