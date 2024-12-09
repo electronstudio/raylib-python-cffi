@@ -23,9 +23,9 @@ class BinaryDistribution(Distribution):
     def has_ext_modules(foo):
         return True
 
-# should be name="raylib"+NAME but then Git doesn't track dependants
+# should be name="raylib"+NAME but then Github doesn't track dependants
 setup(
-    name="raylib"+NAME,
+    name="raylib",
     version=VERSION,
     description="Python CFFI bindings for Raylib",
     long_description=README,
