@@ -12,7 +12,7 @@ on:
 
 jobs:
   build-mac-intel:
-    runs-on: macos-12
+    runs-on: macos-13
     strategy:
       matrix:
         python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10' ]
