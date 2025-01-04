@@ -90,6 +90,12 @@ mac_task:
         PY_VER: "3.11"
         RAYLIB_PLATFORM: Desktop
     - env:
+        PY_VER: "3.11"
+        RAYLIB_PLATFORM: SDL
+    - env:
+        PY_VER: "3.12"
+        RAYLIB_PLATFORM: Desktop
+    - env:
         PY_VER: "3.12"
         RAYLIB_PLATFORM: SDL
     - env:
