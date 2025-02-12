@@ -123,8 +123,10 @@
 </section>
 <section id="platforms-windows-mac-linux-raspberry-pi-web">
 <h2>Platforms: Windows, Mac, Linux, Raspberry Pi, Web<a class="headerlink" href="#platforms-windows-mac-linux-raspberry-pi-web" title="Link to this heading"></a></h2>
+<p><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/raylib" /></p>
 <p>Chatroom: <a class="reference external" href="https://discord.gg/fKDwt85aX6">Discord</a></p>
-<p><a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues/155">HELP WANTED: writing examples</a></p>
+<p>HELP WANTED: <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues/155">writing examples</a></p>
+<p>Features:</p>
 <ul class="simple">
 <li><p>CFFI API static bindings.</p></li>
 <li><p>Automatically generated to be as close as possible to
@@ -139,7 +141,7 @@ original Raylib.</p></li>
 </section>
 <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==5.5.0.0</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==5.5.0.2</span> <span class="pre">--break-system-packages</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyray</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">init_window</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>
@@ -153,13 +155,18 @@ original Raylib.</p></li>
 </section>
 <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>First make sure you have the latest pip installed:</p>
+<p>If you are on a modern Linux you will probably want to create a venv:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m venv venv
+source venv/bin/activate
+</pre></div>
+</div>
+<p>Then make sure you have the latest pip installed:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install --upgrade pip
 </pre></div>
 </div>
 <p>Then install</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install setuptools
-python3 -m pip install raylib==5.5.0.0
+python3 -m pip install raylib==5.5.0.2
 </pre></div>
 </div>
 <p>On most platforms it should install a binary wheel.  If yours isn’t available then pip will attempt to build from
@@ -180,7 +187,7 @@ using homebrew, apt, etc.</p>
 <p>Older MacOS requires building from source but this is usually simple:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>brew install pkg-config
 brew install raylib
-python3 -m pip install raylib==5.5.0.0
+python3 -m pip install raylib==5.5.0.2
 </pre></div>
 </div>
 <p>(I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue
@@ -286,7 +293,7 @@ python3.12 -m pygbag --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl --git my
 </div>
 <p>Point your browser to http://localhost:8000</p>
 <p>Some features may not work, so you can disable them like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;Emscripten&quot;</span><span class="p">:</span>  <span class="c1"># audio does not work on current version of emscripten</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;Emscripten&quot;</span><span class="p">:</span>  <span class="c1"># audio may not work on current version of emscripten</span>
     <span class="n">init_audio_device</span><span class="p">()</span>
 </pre></div>
 </div>

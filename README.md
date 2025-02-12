@@ -24,7 +24,7 @@ original Raylib.
 
 # Quickstart
 
-`pip3 install raylib==5.5.0.0`
+`pip3 install raylib==5.5.0.2 --break-system-packages`
 ```python
 from pyray import *
 init_window(800, 450, "Hello")
@@ -38,14 +38,19 @@ close_window()
 
 # Installation
 
-First make sure you have the latest pip installed:
+If you are on a modern Linux you will probably want to create a venv:
+
+    python3 -m venv venv
+    source venv/bin/activate
+
+Then make sure you have the latest pip installed:
 
     python3 -m pip install --upgrade pip
 
 Then install
 
     python3 -m pip install setuptools
-    python3 -m pip install raylib==5.5.0.0
+    python3 -m pip install raylib==5.5.0.2
 
 On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from
 source, in which case you will need to have Raylib development libs installed, e.g. 
@@ -67,7 +72,7 @@ Older MacOS requires building from source but this is usually simple:
 
     brew install pkg-config
     brew install raylib
-    python3 -m pip install raylib==5.5.0.0
+    python3 -m pip install raylib==5.5.0.2
 
 (I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue
 if you want to test them.)
@@ -181,7 +186,7 @@ Point your browser to http://localhost:8000
 Some features may not work, so you can disable them like this:
 
 ```python
-if platform.system() != "Emscripten":  # audio does not work on current version of emscripten
+if platform.system() != "Emscripten":  # audio may not work on current version of emscripten
     init_audio_device()
 ```
 
