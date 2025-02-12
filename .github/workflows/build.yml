@@ -15,7 +15,7 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10' ]
+        python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10', 'pypy-3.11' ]
         raylib-platform: ['Desktop', 'SDL']
     env:
       MACOSX_DEPLOYMENT_TARGET: '10.13'
@@ -187,7 +187,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10' ]
+        python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10', 'pypy-3.11' ]
         raylib-platform: ['Desktop', 'SDL', 'DRM']
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -271,7 +271,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version:  [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10' ]
+        python-version:  [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10', 'pypy-3.11' ]
         raylib-platform: ['Desktop', 'SDL']
     steps:
       - uses: actions/checkout@v4
