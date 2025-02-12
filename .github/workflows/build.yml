@@ -93,9 +93,9 @@ jobs:
           fi
 
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v3.2.1
+        uses: actions/upload-artifact@v4
         with:
-          name: wheel
+          name: wheel-mac-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/*
 
 #  build-mac-universal:
@@ -256,9 +256,9 @@ jobs:
                     
 
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v3.2.1
+        uses: actions/upload-artifact@v4
         with:
-          name: wheel
+          name: wheel-linux-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/*
 
 
@@ -299,7 +299,7 @@ jobs:
           architecture: x64
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@v2
 
       - name: Build raylib
         run: |
@@ -345,13 +345,13 @@ jobs:
           fi
           
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v3.2.1
+        uses: actions/upload-artifact@v4
         with:
-          name: wheel
+          name: wheel-windows-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/* 
           
   source-distro:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -392,13 +392,13 @@ jobs:
           python setup.py sdist
 
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v3.2.1
+        uses: actions/upload-artifact@v4
         with:
-          name: wheel
+          name: wheel-source
           path: dist/*
 
   dynamic-distro:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -424,7 +424,17 @@ jobs:
           python setup.py sdist
 
       - name: Upload build Artifact wheel
-        uses: actions/upload-artifact@v3.2.1
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel-dynamic
+          path: dynamic/dist/*
+
+  merge:
+    needs: [build-mac-intel, build-windows, build-linux, source-distro, dynamic-distro]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge All Artifacts
+        uses: actions/upload-artifact/merge@v4
         with:
           name: wheel
-          path: dynamic/dist/*
+          pattern: wheel-*
