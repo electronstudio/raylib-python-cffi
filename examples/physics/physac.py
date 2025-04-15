@@ -25,10 +25,10 @@ SetTargetFPS(60)
 while not WindowShouldClose():
     # Update
     # ----------------------------------------------------------------------
-    UpdatePhysics()  # Update physics system
 
     if IsKeyPressed(KEY_R):  # Reset physics system
-        ResetPhysics()
+        ClosePhysics()
+        InitPhysics()
 
         floor = CreatePhysicsBodyRectangle((SCREEN_WIDTH/2, SCREEN_HEIGHT), 500, 100, 10)
         floor.enabled = False
