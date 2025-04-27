@@ -13,18 +13,22 @@
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
 import sys
+import logging
+
+logger = logging.getLogger(__name__)
+
 try:
     from ._raylib_cffi import ffi, lib as rl
 except ModuleNotFoundError:
-    print("\n*** ERROR LOADING NATIVE CODE ***\n")
-    print("See https://github.com/electronstudio/raylib-python-cffi/issues/142\n", file=sys.stderr)
-    print("Your Python is: "+str(sys.implementation)+"\n", file=sys.stderr)
+    logger.error("*** ERROR LOADING NATIVE CODE ***")
+    logger.error("See https://github.com/electronstudio/raylib-python-cffi/issues/142")
+    logger.error("Your Python is: %s", str(sys.implementation))
     raise
+
 from raylib._raylib_cffi.lib import *
 from raylib.colors import *
 from raylib.defines import *
 import cffi
 from .version import  __version__
 
-print("RAYLIB STATIC "+__version__+" LOADED", file=sys.stderr)
-
+logger.debug("RAYLIB STATIC %s LOADED", __version__)
