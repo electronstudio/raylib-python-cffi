@@ -995,7 +995,7 @@ def close_audio_device() -> None:
     ...
 @deprecated("Raylib no longer recommends the use of Physac library")
 def close_physics() -> None:
-    """Close physics system and unload used memory."""
+    """Unitializes physics pointers and closes physics loop thread."""
     ...
 def close_window() -> None:
     """Close window and unload OpenGL context."""
@@ -1071,7 +1071,7 @@ def decompress_data(compData: str,compDataSize: int,dataSize: Any,) -> str:
     ...
 @deprecated("Raylib no longer recommends the use of Physac library")
 def destroy_physics_body(body: Any|list|tuple,) -> None:
-    """Destroy a physics body."""
+    """Unitializes and destroy a physics body."""
     ...
 def detach_audio_mixed_processor(processor: Any,) -> None:
     """Detach audio stream processor from the entire audio pipeline."""
@@ -2145,7 +2145,7 @@ def init_audio_device() -> None:
     ...
 @deprecated("Raylib no longer recommends the use of Physac library")
 def init_physics() -> None:
-    """Initializes physics system."""
+    """Initializes physics values, pointers and creates physics loop thread."""
     ...
 def init_window(width: int,height: int,title: str,) -> None:
     """Initialize window and OpenGL context."""
@@ -2245,6 +2245,10 @@ def is_music_valid(music: Music|list|tuple,) -> bool:
     ...
 def is_path_file(path: str,) -> bool:
     """Check if a given path is a file or a directory."""
+    ...
+@deprecated("Raylib no longer recommends the use of Physac library")
+def is_physics_enabled() -> bool:
+    """Returns true if physics thread is currently enabled."""
     ...
 def is_render_texture_valid(target: RenderTexture|list|tuple,) -> bool:
     """Check if a render texture is valid (loaded in GPU)."""
@@ -2630,10 +2634,6 @@ def quaternion_transform(q: Vector4|list|tuple,mat: Matrix|list|tuple,) -> Vecto
 def remap(value: float,inputStart: float,inputEnd: float,outputStart: float,outputEnd: float,) -> float:
     """."""
     ...
-@deprecated("Raylib no longer recommends the use of Physac library")
-def reset_physics() -> None:
-    """Reset physics system (global variables)."""
-    ...
 def restore_window() -> None:
     """Set window state: not minimized/maximized."""
     ...
@@ -2645,6 +2645,10 @@ def resume_music_stream(music: Music|list|tuple,) -> None:
     ...
 def resume_sound(sound: Sound|list|tuple,) -> None:
     """Resume a paused sound."""
+    ...
+@deprecated("Raylib no longer recommends the use of Physac library")
+def run_physics_step() -> None:
+    """Run physics step, to be used if PHYSICS_NO_THREADS is set in your main loop."""
     ...
 def save_file_data(fileName: str,data: Any,dataSize: int,) -> bool:
     """Save data to file from byte array (write), returns true on success."""
@@ -3020,10 +3024,6 @@ def update_model_animation_bones(model: Model|list|tuple,anim: ModelAnimation|li
     ...
 def update_music_stream(music: Music|list|tuple,) -> None:
     """Updates buffers for music streaming."""
-    ...
-@deprecated("Raylib no longer recommends the use of Physac library")
-def update_physics() -> None:
-    """Update physics system."""
     ...
 def update_sound(sound: Sound|list|tuple,data: Any,sampleCount: int,) -> None:
     """Update sound buffer with new data."""
@@ -4239,6 +4239,13 @@ class Image:
         self.height:int = height # type: ignore
         self.mipmaps:int = mipmaps # type: ignore
         self.format:int = format # type: ignore
+class Mat2:
+    """Mat2 type (used for polygon shape rotation matrix)."""
+    def __init__(self, m00: float|None = None, m01: float|None = None, m10: float|None = None, m11: float|None = None):
+        self.m00:float = m00 # type: ignore
+        self.m01:float = m01 # type: ignore
+        self.m10:float = m10 # type: ignore
+        self.m11:float = m11 # type: ignore
 class Material:
     """Material, includes shader and maps."""
     def __init__(self, shader: Shader|list|tuple|None = None, maps: Any|None = None, params: list|None = None):
@@ -4270,13 +4277,6 @@ class Matrix:
         self.m7:float = m7 # type: ignore
         self.m11:float = m11 # type: ignore
         self.m15:float = m15 # type: ignore
-class Matrix2x2:
-    """Matrix2x2 type (used for polygon shape rotation matrix)."""
-    def __init__(self, m00: float|None = None, m01: float|None = None, m10: float|None = None, m11: float|None = None):
-        self.m00:float = m00 # type: ignore
-        self.m01:float = m01 # type: ignore
-        self.m10:float = m10 # type: ignore
-        self.m11:float = m11 # type: ignore
 class Mesh:
     """Mesh, vertex data and vao/vbo."""
     def __init__(self, vertexCount: int|None = None, triangleCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, texcoords2: Any|None = None, normals: Any|None = None, tangents: Any|None = None, colors: str|None = None, indices: Any|None = None, animVertices: Any|None = None, animNormals: Any|None = None, boneIds: str|None = None, boneWeights: Any|None = None, boneMatrices: Any|None = None, boneCount: int|None = None, vaoId: int|None = None, vboId: Any|None = None):
@@ -4371,13 +4371,13 @@ class PhysicsManifoldData:
         self.staticFriction:float = staticFriction # type: ignore
 class PhysicsShape:
     """."""
-    def __init__(self, type: PhysicsShapeType|None = None, body: Any|None = None, vertexData: PhysicsVertexData|list|tuple|None = None, radius: float|None = None, transform: Matrix2x2|list|tuple|None = None):
+    def __init__(self, type: PhysicsShapeType|None = None, body: Any|None = None, radius: float|None = None, transform: Mat2|list|tuple|None = None, vertexData: PolygonData|list|tuple|None = None):
         self.type:PhysicsShapeType = type # type: ignore
         self.body:Any = body # type: ignore
-        self.vertexData:PhysicsVertexData = vertexData # type: ignore
         self.radius:float = radius # type: ignore
-        self.transform:Matrix2x2 = transform # type: ignore
-class PhysicsVertexData:
+        self.transform:Mat2 = transform # type: ignore
+        self.vertexData:PolygonData = vertexData # type: ignore
+class PolygonData:
     """."""
     def __init__(self, vertexCount: int|None = None, positions: list|None = None, normals: list|None = None):
         self.vertexCount:int = vertexCount # type: ignore

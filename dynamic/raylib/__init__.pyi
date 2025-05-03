@@ -135,7 +135,7 @@ def CloseAudioDevice() -> None:
     ...
 @deprecated("Raylib no longer recommends the use of Physac library")
 def ClosePhysics() -> None:
-    """Close physics system and unload used memory."""
+    """Unitializes physics pointers and closes physics loop thread."""
     ...
 def CloseWindow() -> None:
     """Close window and unload OpenGL context."""
@@ -216,7 +216,7 @@ def DecompressData(compData: bytes,compDataSize: int,dataSize: Any,) -> bytes:
     ...
 @deprecated("Raylib no longer recommends the use of Physac library")
 def DestroyPhysicsBody(body: Any|list|tuple,) -> None:
-    """Destroy a physics body."""
+    """Unitializes and destroy a physics body."""
     ...
 def DetachAudioMixedProcessor(processor: Any,) -> None:
     """Detach audio stream processor from the entire audio pipeline."""
@@ -1605,7 +1605,7 @@ def InitAudioDevice() -> None:
     ...
 @deprecated("Raylib no longer recommends the use of Physac library")
 def InitPhysics() -> None:
-    """Initializes physics system."""
+    """Initializes physics values, pointers and creates physics loop thread."""
     ...
 def InitWindow(width: int,height: int,title: bytes,) -> None:
     """Initialize window and OpenGL context."""
@@ -1705,6 +1705,10 @@ def IsMusicValid(music: Music|list|tuple,) -> bool:
     ...
 def IsPathFile(path: bytes,) -> bool:
     """Check if a given path is a file or a directory."""
+    ...
+@deprecated("Raylib no longer recommends the use of Physac library")
+def IsPhysicsEnabled() -> bool:
+    """Returns true if physics thread is currently enabled."""
     ...
 def IsRenderTextureValid(target: RenderTexture|list|tuple,) -> bool:
     """Check if a render texture is valid (loaded in GPU)."""
@@ -2389,10 +2393,6 @@ RL_TEXTURE_FILTER_TRILINEAR: int
 def Remap(value: float,inputStart: float,inputEnd: float,outputStart: float,outputEnd: float,) -> float:
     """."""
     ...
-@deprecated("Raylib no longer recommends the use of Physac library")
-def ResetPhysics() -> None:
-    """Reset physics system (global variables)."""
-    ...
 def RestoreWindow() -> None:
     """Set window state: not minimized/maximized."""
     ...
@@ -2404,6 +2404,10 @@ def ResumeMusicStream(music: Music|list|tuple,) -> None:
     ...
 def ResumeSound(sound: Sound|list|tuple,) -> None:
     """Resume a paused sound."""
+    ...
+@deprecated("Raylib no longer recommends the use of Physac library")
+def RunPhysicsStep() -> None:
+    """Run physics step, to be used if PHYSICS_NO_THREADS is set in your main loop."""
     ...
 SCROLLBAR: int
 SCROLLBAR_SIDE: int
@@ -2872,10 +2876,6 @@ def UpdateModelAnimationBones(model: Model|list|tuple,anim: ModelAnimation|list|
     ...
 def UpdateMusicStream(music: Music|list|tuple,) -> None:
     """Updates buffers for music streaming."""
-    ...
-@deprecated("Raylib no longer recommends the use of Physac library")
-def UpdatePhysics() -> None:
-    """Update physics system."""
     ...
 def UpdateSound(sound: Sound|list|tuple,data: Any,sampleCount: int,) -> None:
     """Update sound buffer with new data."""
@@ -4131,6 +4131,11 @@ class Image:
     mipmaps: int
     format: int
 KeyboardKey = int
+class Mat2:
+    m00: float
+    m01: float
+    m10: float
+    m11: float
 class Material:
     shader: Shader
     maps: Any
@@ -4157,11 +4162,6 @@ class Matrix:
     m7: float
     m11: float
     m15: float
-class Matrix2x2:
-    m00: float
-    m01: float
-    m10: float
-    m11: float
 class Mesh:
     vertexCount: int
     triangleCount: int
@@ -4246,15 +4246,15 @@ class PhysicsManifoldData:
 class PhysicsShape:
     type: PhysicsShapeType
     body: Any
-    vertexData: PhysicsVertexData
     radius: float
-    transform: Matrix2x2
+    transform: Mat2
+    vertexData: PolygonData
 PhysicsShapeType = int
-class PhysicsVertexData:
+PixelFormat = int
+class PolygonData:
     vertexCount: int
     positions: list
     normals: list
-PixelFormat = int
 class Quaternion:
     x: float
     y: float
