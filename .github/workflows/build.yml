@@ -182,7 +182,7 @@ jobs:
 
 
   build-linux:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
