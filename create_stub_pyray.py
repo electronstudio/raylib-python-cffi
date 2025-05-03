@@ -79,7 +79,7 @@ def ctype_to_python_type(t):
 
 
 print("""from typing import Any
-
+from warnings import deprecated
 import _cffi_backend # type: ignore
 
 ffi: _cffi_backend.FFI
@@ -119,8 +119,11 @@ for name, attr in getmembers(rl):
         if 'description' in json_object:
             description = json_object['description']
 
-        print(
-            f'def {uname}({sig}) -> {ctype_to_python_type(return_type)}:\n        """{description}"""\n        ...')
+        if 'physics' in uname:
+            print('@deprecated("Raylib no longer recommends the use of Physac library")')
+        print(f'def {uname}({sig}) -> {ctype_to_python_type(return_type)}:')
+        print(f'    """{description}."""')
+        print(f'    ...')
 
     elif str(type(attr)) == "<class '_cffi_backend._CDataBase'>":
         return_type = ffi.typeof(attr).result.cname
