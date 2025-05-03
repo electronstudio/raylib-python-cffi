@@ -4,6 +4,3 @@
 [submodule "raygui"]
 	path = raygui
 	url = https://github.com/raysan5/raygui.git
-[submodule "physac"]
-	path = physac
-	url = https://github.com/raysan5/physac.git
