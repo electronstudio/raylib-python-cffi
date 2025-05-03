@@ -224,6 +224,7 @@ def build_windows():
     #define RAYGUI_SUPPORT_RICONS
     #include "raygui.h"
     #define PHYSAC_IMPLEMENTATION
+    #define PHYSAC_NO_THREADS
     #include "physac.h"
     """
     libraries = ['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm']
