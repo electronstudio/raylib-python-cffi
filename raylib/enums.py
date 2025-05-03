@@ -1,6 +1,7 @@
 from enum import IntEnum
 
 class ConfigFlags(IntEnum):
+    """System/Window config flags."""
     FLAG_VSYNC_HINT = 64
     FLAG_FULLSCREEN_MODE = 2
     FLAG_WINDOW_RESIZABLE = 4
@@ -19,6 +20,7 @@ class ConfigFlags(IntEnum):
     FLAG_INTERLACED_HINT = 65536
 
 class TraceLogLevel(IntEnum):
+    """Trace log level."""
     LOG_ALL = 0
     LOG_TRACE = 1
     LOG_DEBUG = 2
@@ -29,6 +31,7 @@ class TraceLogLevel(IntEnum):
     LOG_NONE = 7
 
 class KeyboardKey(IntEnum):
+    """Keyboard keys (US keyboard layout)."""
     KEY_NULL = 0
     KEY_APOSTROPHE = 39
     KEY_COMMA = 44
@@ -141,6 +144,7 @@ class KeyboardKey(IntEnum):
     KEY_VOLUME_DOWN = 25
 
 class MouseButton(IntEnum):
+    """Mouse buttons."""
     MOUSE_BUTTON_LEFT = 0
     MOUSE_BUTTON_RIGHT = 1
     MOUSE_BUTTON_MIDDLE = 2
@@ -150,6 +154,7 @@ class MouseButton(IntEnum):
     MOUSE_BUTTON_BACK = 6
 
 class MouseCursor(IntEnum):
+    """Mouse cursor."""
     MOUSE_CURSOR_DEFAULT = 0
     MOUSE_CURSOR_ARROW = 1
     MOUSE_CURSOR_IBEAM = 2
@@ -163,6 +168,7 @@ class MouseCursor(IntEnum):
     MOUSE_CURSOR_NOT_ALLOWED = 10
 
 class GamepadButton(IntEnum):
+    """Gamepad buttons."""
     GAMEPAD_BUTTON_UNKNOWN = 0
     GAMEPAD_BUTTON_LEFT_FACE_UP = 1
     GAMEPAD_BUTTON_LEFT_FACE_RIGHT = 2
@@ -183,6 +189,7 @@ class GamepadButton(IntEnum):
     GAMEPAD_BUTTON_RIGHT_THUMB = 17
 
 class GamepadAxis(IntEnum):
+    """Gamepad axis."""
     GAMEPAD_AXIS_LEFT_X = 0
     GAMEPAD_AXIS_LEFT_Y = 1
     GAMEPAD_AXIS_RIGHT_X = 2
@@ -191,6 +198,7 @@ class GamepadAxis(IntEnum):
     GAMEPAD_AXIS_RIGHT_TRIGGER = 5
 
 class MaterialMapIndex(IntEnum):
+    """Material map index."""
     MATERIAL_MAP_ALBEDO = 0
     MATERIAL_MAP_METALNESS = 1
     MATERIAL_MAP_NORMAL = 2
@@ -204,6 +212,7 @@ class MaterialMapIndex(IntEnum):
     MATERIAL_MAP_BRDF = 10
 
 class ShaderLocationIndex(IntEnum):
+    """Shader location index."""
     SHADER_LOC_VERTEX_POSITION = 0
     SHADER_LOC_VERTEX_TEXCOORD01 = 1
     SHADER_LOC_VERTEX_TEXCOORD02 = 2
@@ -235,6 +244,7 @@ class ShaderLocationIndex(IntEnum):
     SHADER_LOC_BONE_MATRICES = 28
 
 class ShaderUniformDataType(IntEnum):
+    """Shader uniform data type."""
     SHADER_UNIFORM_FLOAT = 0
     SHADER_UNIFORM_VEC2 = 1
     SHADER_UNIFORM_VEC3 = 2
@@ -246,12 +256,14 @@ class ShaderUniformDataType(IntEnum):
     SHADER_UNIFORM_SAMPLER2D = 8
 
 class ShaderAttributeDataType(IntEnum):
+    """Shader attribute data types."""
     SHADER_ATTRIB_FLOAT = 0
     SHADER_ATTRIB_VEC2 = 1
     SHADER_ATTRIB_VEC3 = 2
     SHADER_ATTRIB_VEC4 = 3
 
 class PixelFormat(IntEnum):
+    """Pixel formats."""
     PIXELFORMAT_UNCOMPRESSED_GRAYSCALE = 1
     PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA = 2
     PIXELFORMAT_UNCOMPRESSED_R5G6B5 = 3
@@ -278,6 +290,7 @@ class PixelFormat(IntEnum):
     PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA = 24
 
 class TextureFilter(IntEnum):
+    """Texture parameters: filter mode."""
     TEXTURE_FILTER_POINT = 0
     TEXTURE_FILTER_BILINEAR = 1
     TEXTURE_FILTER_TRILINEAR = 2
@@ -286,12 +299,14 @@ class TextureFilter(IntEnum):
     TEXTURE_FILTER_ANISOTROPIC_16X = 5
 
 class TextureWrap(IntEnum):
+    """Texture parameters: wrap mode."""
     TEXTURE_WRAP_REPEAT = 0
     TEXTURE_WRAP_CLAMP = 1
     TEXTURE_WRAP_MIRROR_REPEAT = 2
     TEXTURE_WRAP_MIRROR_CLAMP = 3
 
 class CubemapLayout(IntEnum):
+    """Cubemap layouts."""
     CUBEMAP_LAYOUT_AUTO_DETECT = 0
     CUBEMAP_LAYOUT_LINE_VERTICAL = 1
     CUBEMAP_LAYOUT_LINE_HORIZONTAL = 2
@@ -299,11 +314,13 @@ class CubemapLayout(IntEnum):
     CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE = 4
 
 class FontType(IntEnum):
+    """Font type, defines generation method."""
     FONT_DEFAULT = 0
     FONT_BITMAP = 1
     FONT_SDF = 2
 
 class BlendMode(IntEnum):
+    """Color blending modes (pre-defined)."""
     BLEND_ALPHA = 0
     BLEND_ADDITIVE = 1
     BLEND_MULTIPLIED = 2
@@ -314,6 +331,7 @@ class BlendMode(IntEnum):
     BLEND_CUSTOM_SEPARATE = 7
 
 class Gesture(IntEnum):
+    """Gesture."""
     GESTURE_NONE = 0
     GESTURE_TAP = 1
     GESTURE_DOUBLETAP = 2
@@ -327,6 +345,7 @@ class Gesture(IntEnum):
     GESTURE_PINCH_OUT = 512
 
 class CameraMode(IntEnum):
+    """Camera system modes."""
     CAMERA_CUSTOM = 0
     CAMERA_FREE = 1
     CAMERA_ORBITAL = 2
@@ -334,36 +353,43 @@ class CameraMode(IntEnum):
     CAMERA_THIRD_PERSON = 4
 
 class CameraProjection(IntEnum):
+    """Camera projection."""
     CAMERA_PERSPECTIVE = 0
     CAMERA_ORTHOGRAPHIC = 1
 
 class NPatchLayout(IntEnum):
+    """N-patch layout."""
     NPATCH_NINE_PATCH = 0
     NPATCH_THREE_PATCH_VERTICAL = 1
     NPATCH_THREE_PATCH_HORIZONTAL = 2
 
 class GuiState(IntEnum):
+    """Gui control state."""
     STATE_NORMAL = 0
     STATE_FOCUSED = 1
     STATE_PRESSED = 2
     STATE_DISABLED = 3
 
 class GuiTextAlignment(IntEnum):
+    """Gui control text alignment."""
     TEXT_ALIGN_LEFT = 0
     TEXT_ALIGN_CENTER = 1
     TEXT_ALIGN_RIGHT = 2
 
 class GuiTextAlignmentVertical(IntEnum):
+    """Gui control text alignment vertical."""
     TEXT_ALIGN_TOP = 0
     TEXT_ALIGN_MIDDLE = 1
     TEXT_ALIGN_BOTTOM = 2
 
 class GuiTextWrapMode(IntEnum):
+    """Gui control text wrap mode."""
     TEXT_WRAP_NONE = 0
     TEXT_WRAP_CHAR = 1
     TEXT_WRAP_WORD = 2
 
 class GuiControl(IntEnum):
+    """Gui controls."""
     DEFAULT = 0
     LABEL = 1
     BUTTON = 2
@@ -382,6 +408,7 @@ class GuiControl(IntEnum):
     STATUSBAR = 15
 
 class GuiControlProperty(IntEnum):
+    """Gui base properties for every control."""
     BORDER_COLOR_NORMAL = 0
     BASE_COLOR_NORMAL = 1
     TEXT_COLOR_NORMAL = 2
@@ -399,6 +426,7 @@ class GuiControlProperty(IntEnum):
     TEXT_ALIGNMENT = 14
 
 class GuiDefaultProperty(IntEnum):
+    """DEFAULT extended properties."""
     TEXT_SIZE = 16
     TEXT_SPACING = 17
     LINE_COLOR = 18
@@ -408,16 +436,20 @@ class GuiDefaultProperty(IntEnum):
     TEXT_WRAP_MODE = 22
 
 class GuiToggleProperty(IntEnum):
+    """Toggle/ToggleGroup."""
     GROUP_PADDING = 16
 
 class GuiSliderProperty(IntEnum):
+    """Slider/SliderBar."""
     SLIDER_WIDTH = 16
     SLIDER_PADDING = 17
 
 class GuiProgressBarProperty(IntEnum):
+    """ProgressBar."""
     PROGRESS_PADDING = 16
 
 class GuiScrollBarProperty(IntEnum):
+    """ScrollBar."""
     ARROWS_SIZE = 16
     ARROWS_VISIBLE = 17
     SCROLL_SLIDER_PADDING = 18
@@ -426,26 +458,32 @@ class GuiScrollBarProperty(IntEnum):
     SCROLL_SPEED = 21
 
 class GuiCheckBoxProperty(IntEnum):
+    """CheckBox."""
     CHECK_PADDING = 16
 
 class GuiComboBoxProperty(IntEnum):
+    """ComboBox."""
     COMBO_BUTTON_WIDTH = 16
     COMBO_BUTTON_SPACING = 17
 
 class GuiDropdownBoxProperty(IntEnum):
+    """DropdownBox."""
     ARROW_PADDING = 16
     DROPDOWN_ITEMS_SPACING = 17
     DROPDOWN_ARROW_HIDDEN = 18
     DROPDOWN_ROLL_UP = 19
 
 class GuiTextBoxProperty(IntEnum):
+    """TextBox/TextBoxMulti/ValueBox/Spinner."""
     TEXT_READONLY = 16
 
 class GuiSpinnerProperty(IntEnum):
+    """Spinner."""
     SPIN_BUTTON_WIDTH = 16
     SPIN_BUTTON_SPACING = 17
 
 class GuiListViewProperty(IntEnum):
+    """ListView."""
     LIST_ITEMS_HEIGHT = 16
     LIST_ITEMS_SPACING = 17
     SCROLLBAR_WIDTH = 18
@@ -453,6 +491,7 @@ class GuiListViewProperty(IntEnum):
     LIST_ITEMS_BORDER_WIDTH = 20
 
 class GuiColorPickerProperty(IntEnum):
+    """ColorPicker."""
     COLOR_SELECTOR_SIZE = 16
     HUEBAR_WIDTH = 17
     HUEBAR_PADDING = 18
@@ -460,6 +499,7 @@ class GuiColorPickerProperty(IntEnum):
     HUEBAR_SELECTOR_OVERFLOW = 20
 
 class GuiIconName(IntEnum):
+    """."""
     ICON_NONE = 0
     ICON_FOLDER_FILE_OPEN = 1
     ICON_FILE_SAVE_CLASSIC = 2

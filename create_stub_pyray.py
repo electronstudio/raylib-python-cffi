@@ -32,7 +32,8 @@ for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), P
             known_structs[st["name"]] = st
     for e in js['enums']:
         if e['name'] and e['values']:
-            print ("class "+e['name']+"(int):")
+            print("class "+e['name']+"(int):")
+            print(f'    """{e['description']}."""')
             for value in e['values']:
                 print("    "+value['name']+" = "+str(value['value']))
             print("")
@@ -144,7 +145,7 @@ for struct in ffi.list_types()[0]:
             print("weird empty struct, skipping " + struct, file=sys.stderr)
             continue
         print(f"class {struct}:")
-        print(f'    """ struct """')
+        print(f'    """{known_structs[struct]['description']}."""')
         sig = ""
         for arg in ffi.typeof(struct).fields:
             ptype = ctype_to_python_type(arg[1].type.cname)

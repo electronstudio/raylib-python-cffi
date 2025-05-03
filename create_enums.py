@@ -24,6 +24,7 @@ def process(filename):
     for e in js['enums']:
         if e['name'] and e['values']:
             print ("class "+e['name']+"("+"IntEnum):")
+            print(f'    """{e['description']}."""')
             for value in e['values']:
                 print("    "+value['name']+" = "+str(value['value']))
             print("")

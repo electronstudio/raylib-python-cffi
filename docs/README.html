@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python Bindings for Raylib 5.5 &mdash; Raylib Python  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
@@ -142,7 +142,7 @@ original Raylib.</p></li>
 <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==5.5.0.2</span> <span class="pre">--break-system-packages</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyray</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyray</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">init_window</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>
     <span class="n">begin_drawing</span><span class="p">()</span>
@@ -202,7 +202,7 @@ so may not work on other boards.</p>
 </section>
 <section id="raspberry-pi">
 <h2>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Link to this heading"></a></h2>
-<p><a class="reference internal" href="RPI.html"><span class="std std-doc">Using on Rasperry Pi</span></a></p>
+<p><span class="xref myst">Using on Rasperry Pi</span></p>
 </section>
 </section>
 <section id="backends">
@@ -237,7 +237,7 @@ python3 -m pip install raylib_drm
 </section>
 <section id="problems">
 <h2>Problems?<a class="headerlink" href="#problems" title="Link to this heading"></a></h2>
-<p>If it doesn’t work, <a class="reference internal" href="BUILDING.html"><span class="std std-doc">try to build manually.</span></a>.  If that works then <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues">submit an issue</a>
+<p>If it doesn’t work, <span class="xref myst">try to build manually.</span>.  If that works then <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues">submit an issue</a>
 to let us know what you did.</p>
 <p>If you need help you can try asking on <a class="reference external" href="https://discord.gg/fKDwt85aX6">our discord</a>.  There is also a large <a class="reference external" href="https://discord.gg/raylib">Raylib discord</a>
 for issues that are not Python-specific.</p>
@@ -268,11 +268,11 @@ is recommended.</p>
 <span class="c1">#     &quot;raylib&quot;</span>
 <span class="c1"># ]</span>
 <span class="c1"># ///</span>
-<span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">import</span> <span class="nn">platform</span>
-<span class="kn">from</span> <span class="nn">pyray</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyray</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>   <span class="c1"># You MUST have an async main function</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>   <span class="c1"># You MUST have an async main function</span>
     <span class="n">init_window</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
     <span class="n">platform</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">window_resize</span><span class="p">()</span>  <span class="c1"># You MAY want to add this line</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>

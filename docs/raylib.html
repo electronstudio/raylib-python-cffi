@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>C API &mdash; Raylib Python  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
@@ -2451,7 +2451,7 @@
 So the <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/tree/master/examples">example programs</a>
 are very, very similar to the C originals.</p>
 <p>Example program:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">raylib</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">raylib</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">InitWindow</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Hello Raylib&quot;</span><span class="p">)</span>
 <span class="n">SetTargetFPS</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
@@ -2471,7 +2471,7 @@ are very, very similar to the C originals.</p>
 </pre></div>
 </div>
 <p>If you want to be more portable (i.e. same code will work with dynamic bindings) you can prefix the functions like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">raylib</span> <span class="kn">import</span> <span class="n">ffi</span><span class="p">,</span> <span class="n">rl</span><span class="p">,</span> <span class="n">colors</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">raylib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ffi</span><span class="p">,</span> <span class="n">rl</span><span class="p">,</span> <span class="n">colors</span>
 
 <span class="n">rl</span><span class="o">.</span><span class="n">InitWindow</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Hello Raylib&quot;</span><span class="p">)</span>
 <span class="n">rl</span><span class="o">.</span><span class="n">SetTargetFPS</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
@@ -2524,7 +2524,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.AudioStream">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">AudioStream</span></span><a class="headerlink" href="#raylib.AudioStream" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">AudioStream</span></span><a class="headerlink" href="#raylib.AudioStream" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.AudioStream.buffer">
 <span class="sig-name descname"><span class="pre">buffer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.AudioStream.buffer" title="Link to this definition"></a></dt>
@@ -2554,7 +2554,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.AutomationEvent">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">AutomationEvent</span></span><a class="headerlink" href="#raylib.AutomationEvent" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">AutomationEvent</span></span><a class="headerlink" href="#raylib.AutomationEvent" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.AutomationEvent.frame">
 <span class="sig-name descname"><span class="pre">frame</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.AutomationEvent.frame" title="Link to this definition"></a></dt>
@@ -2574,7 +2574,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.AutomationEventList">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">AutomationEventList</span></span><a class="headerlink" href="#raylib.AutomationEventList" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">AutomationEventList</span></span><a class="headerlink" href="#raylib.AutomationEventList" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.AutomationEventList.capacity">
 <span class="sig-name descname"><span class="pre">capacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.AutomationEventList.capacity" title="Link to this definition"></a></dt>
@@ -2767,7 +2767,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.BoneInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">BoneInfo</span></span><a class="headerlink" href="#raylib.BoneInfo" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">BoneInfo</span></span><a class="headerlink" href="#raylib.BoneInfo" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.BoneInfo.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></em><a class="headerlink" href="#raylib.BoneInfo.name" title="Link to this definition"></a></dt>
@@ -2782,7 +2782,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.BoundingBox">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">BoundingBox</span></span><a class="headerlink" href="#raylib.BoundingBox" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">BoundingBox</span></span><a class="headerlink" href="#raylib.BoundingBox" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.BoundingBox.max">
 <span class="sig-name descname"><span class="pre">max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Vector3" title="raylib.Vector3"><span class="pre">Vector3</span></a></em><a class="headerlink" href="#raylib.BoundingBox.max" title="Link to this definition"></a></dt>
@@ -2892,7 +2892,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Camera">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Camera</span></span><a class="headerlink" href="#raylib.Camera" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Camera</span></span><a class="headerlink" href="#raylib.Camera" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Camera.fovy">
 <span class="sig-name descname"><span class="pre">fovy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Camera.fovy" title="Link to this definition"></a></dt>
@@ -2922,7 +2922,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Camera2D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Camera2D</span></span><a class="headerlink" href="#raylib.Camera2D" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Camera2D</span></span><a class="headerlink" href="#raylib.Camera2D" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Camera2D.offset">
 <span class="sig-name descname"><span class="pre">offset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Vector2" title="raylib.Vector2"><span class="pre">Vector2</span></a></em><a class="headerlink" href="#raylib.Camera2D.offset" title="Link to this definition"></a></dt>
@@ -2947,7 +2947,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Camera3D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Camera3D</span></span><a class="headerlink" href="#raylib.Camera3D" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Camera3D</span></span><a class="headerlink" href="#raylib.Camera3D" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Camera3D.fovy">
 <span class="sig-name descname"><span class="pre">fovy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Camera3D.fovy" title="Link to this definition"></a></dt>
@@ -3112,7 +3112,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Color">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Color</span></span><a class="headerlink" href="#raylib.Color" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Color</span></span><a class="headerlink" href="#raylib.Color" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Color.a">
 <span class="sig-name descname"><span class="pre">a</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></em><a class="headerlink" href="#raylib.Color.a" title="Link to this definition"></a></dt>
@@ -4144,7 +4144,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.FilePathList">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">FilePathList</span></span><a class="headerlink" href="#raylib.FilePathList" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">FilePathList</span></span><a class="headerlink" href="#raylib.FilePathList" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.FilePathList.capacity">
 <span class="sig-name descname"><span class="pre">capacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.FilePathList.capacity" title="Link to this definition"></a></dt>
@@ -4169,7 +4169,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Font">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Font</span></span><a class="headerlink" href="#raylib.Font" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Font</span></span><a class="headerlink" href="#raylib.Font" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Font.baseSize">
 <span class="sig-name descname"><span class="pre">baseSize</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.Font.baseSize" title="Link to this definition"></a></dt>
@@ -4384,7 +4384,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GLFWallocator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWallocator</span></span><a class="headerlink" href="#raylib.GLFWallocator" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWallocator</span></span><a class="headerlink" href="#raylib.GLFWallocator" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.GLFWallocator.allocate">
 <span class="sig-name descname"><span class="pre">allocate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.GLFWallocator.allocate" title="Link to this definition"></a></dt>
@@ -4409,12 +4409,12 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GLFWcursor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWcursor</span></span><a class="headerlink" href="#raylib.GLFWcursor" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWcursor</span></span><a class="headerlink" href="#raylib.GLFWcursor" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GLFWgamepadstate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWgamepadstate</span></span><a class="headerlink" href="#raylib.GLFWgamepadstate" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWgamepadstate</span></span><a class="headerlink" href="#raylib.GLFWgamepadstate" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.GLFWgamepadstate.axes">
 <span class="sig-name descname"><span class="pre">axes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.GLFWgamepadstate.axes" title="Link to this definition"></a></dt>
@@ -4429,7 +4429,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GLFWgammaramp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWgammaramp</span></span><a class="headerlink" href="#raylib.GLFWgammaramp" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWgammaramp</span></span><a class="headerlink" href="#raylib.GLFWgammaramp" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.GLFWgammaramp.blue">
 <span class="sig-name descname"><span class="pre">blue</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.GLFWgammaramp.blue" title="Link to this definition"></a></dt>
@@ -4454,7 +4454,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GLFWimage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWimage</span></span><a class="headerlink" href="#raylib.GLFWimage" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWimage</span></span><a class="headerlink" href="#raylib.GLFWimage" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.GLFWimage.height">
 <span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.GLFWimage.height" title="Link to this definition"></a></dt>
@@ -4474,12 +4474,12 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GLFWmonitor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWmonitor</span></span><a class="headerlink" href="#raylib.GLFWmonitor" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWmonitor</span></span><a class="headerlink" href="#raylib.GLFWmonitor" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GLFWvidmode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWvidmode</span></span><a class="headerlink" href="#raylib.GLFWvidmode" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWvidmode</span></span><a class="headerlink" href="#raylib.GLFWvidmode" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.GLFWvidmode.blueBits">
 <span class="sig-name descname"><span class="pre">blueBits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.GLFWvidmode.blueBits" title="Link to this definition"></a></dt>
@@ -4514,7 +4514,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GLFWwindow">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWwindow</span></span><a class="headerlink" href="#raylib.GLFWwindow" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GLFWwindow</span></span><a class="headerlink" href="#raylib.GLFWwindow" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -5292,7 +5292,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GlyphInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GlyphInfo</span></span><a class="headerlink" href="#raylib.GlyphInfo" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GlyphInfo</span></span><a class="headerlink" href="#raylib.GlyphInfo" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.GlyphInfo.advanceX">
 <span class="sig-name descname"><span class="pre">advanceX</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.GlyphInfo.advanceX" title="Link to this definition"></a></dt>
@@ -5674,7 +5674,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.GuiStyleProp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GuiStyleProp</span></span><a class="headerlink" href="#raylib.GuiStyleProp" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">GuiStyleProp</span></span><a class="headerlink" href="#raylib.GuiStyleProp" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.GuiStyleProp.controlId">
 <span class="sig-name descname"><span class="pre">controlId</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.GuiStyleProp.controlId" title="Link to this definition"></a></dt>
@@ -7085,7 +7085,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Image">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Image</span></span><a class="headerlink" href="#raylib.Image" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Image</span></span><a class="headerlink" href="#raylib.Image" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Image.data">
 <span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.Image.data" title="Link to this definition"></a></dt>
@@ -8786,7 +8786,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Material">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Material</span></span><a class="headerlink" href="#raylib.Material" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Material</span></span><a class="headerlink" href="#raylib.Material" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Material.maps">
 <span class="sig-name descname"><span class="pre">maps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.Material.maps" title="Link to this definition"></a></dt>
@@ -8806,7 +8806,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.MaterialMap">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">MaterialMap</span></span><a class="headerlink" href="#raylib.MaterialMap" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">MaterialMap</span></span><a class="headerlink" href="#raylib.MaterialMap" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.MaterialMap.color">
 <span class="sig-name descname"><span class="pre">color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Color" title="raylib.Color"><span class="pre">Color</span></a></em><a class="headerlink" href="#raylib.MaterialMap.color" title="Link to this definition"></a></dt>
@@ -8831,7 +8831,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Matrix">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Matrix</span></span><a class="headerlink" href="#raylib.Matrix" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Matrix</span></span><a class="headerlink" href="#raylib.Matrix" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Matrix.m0">
 <span class="sig-name descname"><span class="pre">m0</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Matrix.m0" title="Link to this definition"></a></dt>
@@ -8916,7 +8916,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Matrix2x2">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Matrix2x2</span></span><a class="headerlink" href="#raylib.Matrix2x2" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Matrix2x2</span></span><a class="headerlink" href="#raylib.Matrix2x2" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Matrix2x2.m00">
 <span class="sig-name descname"><span class="pre">m00</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Matrix2x2.m00" title="Link to this definition"></a></dt>
@@ -9087,7 +9087,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Mesh">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Mesh</span></span><a class="headerlink" href="#raylib.Mesh" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Mesh</span></span><a class="headerlink" href="#raylib.Mesh" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Mesh.animNormals">
 <span class="sig-name descname"><span class="pre">animNormals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.Mesh.animNormals" title="Link to this definition"></a></dt>
@@ -9183,7 +9183,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Model">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#raylib.Model" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#raylib.Model" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Model.bindPose">
 <span class="sig-name descname"><span class="pre">bindPose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.Model.bindPose" title="Link to this definition"></a></dt>
@@ -9233,7 +9233,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.ModelAnimation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">ModelAnimation</span></span><a class="headerlink" href="#raylib.ModelAnimation" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">ModelAnimation</span></span><a class="headerlink" href="#raylib.ModelAnimation" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.ModelAnimation.boneCount">
 <span class="sig-name descname"><span class="pre">boneCount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.ModelAnimation.boneCount" title="Link to this definition"></a></dt>
@@ -9273,7 +9273,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Music">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Music</span></span><a class="headerlink" href="#raylib.Music" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Music</span></span><a class="headerlink" href="#raylib.Music" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Music.ctxData">
 <span class="sig-name descname"><span class="pre">ctxData</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.Music.ctxData" title="Link to this definition"></a></dt>
@@ -9318,7 +9318,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.NPatchInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">NPatchInfo</span></span><a class="headerlink" href="#raylib.NPatchInfo" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">NPatchInfo</span></span><a class="headerlink" href="#raylib.NPatchInfo" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.NPatchInfo.bottom">
 <span class="sig-name descname"><span class="pre">bottom</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.NPatchInfo.bottom" title="Link to this definition"></a></dt>
@@ -9554,7 +9554,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.PhysicsBodyData">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsBodyData</span></span><a class="headerlink" href="#raylib.PhysicsBodyData" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsBodyData</span></span><a class="headerlink" href="#raylib.PhysicsBodyData" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.PhysicsBodyData.angularVelocity">
 <span class="sig-name descname"><span class="pre">angularVelocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.PhysicsBodyData.angularVelocity" title="Link to this definition"></a></dt>
@@ -9654,7 +9654,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.PhysicsManifoldData">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsManifoldData</span></span><a class="headerlink" href="#raylib.PhysicsManifoldData" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsManifoldData</span></span><a class="headerlink" href="#raylib.PhysicsManifoldData" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.PhysicsManifoldData.bodyA">
 <span class="sig-name descname"><span class="pre">bodyA</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.PhysicsManifoldData.bodyA" title="Link to this definition"></a></dt>
@@ -9709,7 +9709,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.PhysicsShape">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsShape</span></span><a class="headerlink" href="#raylib.PhysicsShape" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsShape</span></span><a class="headerlink" href="#raylib.PhysicsShape" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.PhysicsShape.body">
 <span class="sig-name descname"><span class="pre">body</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#raylib.PhysicsShape.body" title="Link to this definition"></a></dt>
@@ -9750,7 +9750,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.PhysicsVertexData">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsVertexData</span></span><a class="headerlink" href="#raylib.PhysicsVertexData" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsVertexData</span></span><a class="headerlink" href="#raylib.PhysicsVertexData" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.PhysicsVertexData.normals">
 <span class="sig-name descname"><span class="pre">normals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.PhysicsVertexData.normals" title="Link to this definition"></a></dt>
@@ -9805,7 +9805,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Quaternion">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Quaternion</span></span><a class="headerlink" href="#raylib.Quaternion" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Quaternion</span></span><a class="headerlink" href="#raylib.Quaternion" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Quaternion.w">
 <span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Quaternion.w" title="Link to this definition"></a></dt>
@@ -10535,7 +10535,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Ray">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Ray</span></span><a class="headerlink" href="#raylib.Ray" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Ray</span></span><a class="headerlink" href="#raylib.Ray" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Ray.direction">
 <span class="sig-name descname"><span class="pre">direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Vector3" title="raylib.Vector3"><span class="pre">Vector3</span></a></em><a class="headerlink" href="#raylib.Ray.direction" title="Link to this definition"></a></dt>
@@ -10550,7 +10550,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.RayCollision">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RayCollision</span></span><a class="headerlink" href="#raylib.RayCollision" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RayCollision</span></span><a class="headerlink" href="#raylib.RayCollision" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.RayCollision.distance">
 <span class="sig-name descname"><span class="pre">distance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.RayCollision.distance" title="Link to this definition"></a></dt>
@@ -10575,7 +10575,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Rectangle">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Rectangle</span></span><a class="headerlink" href="#raylib.Rectangle" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Rectangle</span></span><a class="headerlink" href="#raylib.Rectangle" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Rectangle.height">
 <span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Rectangle.height" title="Link to this definition"></a></dt>
@@ -10605,7 +10605,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.RenderTexture">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RenderTexture</span></span><a class="headerlink" href="#raylib.RenderTexture" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RenderTexture</span></span><a class="headerlink" href="#raylib.RenderTexture" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.RenderTexture.depth">
 <span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Texture" title="raylib.Texture"><span class="pre">Texture</span></a></em><a class="headerlink" href="#raylib.RenderTexture.depth" title="Link to this definition"></a></dt>
@@ -10625,7 +10625,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.RenderTexture2D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RenderTexture2D</span></span><a class="headerlink" href="#raylib.RenderTexture2D" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RenderTexture2D</span></span><a class="headerlink" href="#raylib.RenderTexture2D" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.RenderTexture2D.depth">
 <span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Texture" title="raylib.Texture"><span class="pre">Texture</span></a></em><a class="headerlink" href="#raylib.RenderTexture2D.depth" title="Link to this definition"></a></dt>
@@ -11340,7 +11340,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Shader">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Shader</span></span><a class="headerlink" href="#raylib.Shader" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Shader</span></span><a class="headerlink" href="#raylib.Shader" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Shader.id">
 <span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.Shader.id" title="Link to this definition"></a></dt>
@@ -11376,7 +11376,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Sound">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Sound</span></span><a class="headerlink" href="#raylib.Sound" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Sound</span></span><a class="headerlink" href="#raylib.Sound" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Sound.frameCount">
 <span class="sig-name descname"><span class="pre">frameCount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.Sound.frameCount" title="Link to this definition"></a></dt>
@@ -11706,7 +11706,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Texture">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Texture</span></span><a class="headerlink" href="#raylib.Texture" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Texture</span></span><a class="headerlink" href="#raylib.Texture" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Texture.format">
 <span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.Texture.format" title="Link to this definition"></a></dt>
@@ -11736,7 +11736,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Texture2D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Texture2D</span></span><a class="headerlink" href="#raylib.Texture2D" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Texture2D</span></span><a class="headerlink" href="#raylib.Texture2D" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Texture2D.format">
 <span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.Texture2D.format" title="Link to this definition"></a></dt>
@@ -11766,7 +11766,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.TextureCubemap">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">TextureCubemap</span></span><a class="headerlink" href="#raylib.TextureCubemap" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">TextureCubemap</span></span><a class="headerlink" href="#raylib.TextureCubemap" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.TextureCubemap.format">
 <span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.TextureCubemap.format" title="Link to this definition"></a></dt>
@@ -11829,7 +11829,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Transform">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Transform</span></span><a class="headerlink" href="#raylib.Transform" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Transform</span></span><a class="headerlink" href="#raylib.Transform" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Transform.rotation">
 <span class="sig-name descname"><span class="pre">rotation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Vector4" title="raylib.Vector4"><span class="pre">Vector4</span></a></em><a class="headerlink" href="#raylib.Transform.rotation" title="Link to this definition"></a></dt>
@@ -12099,7 +12099,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Vector2">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Vector2</span></span><a class="headerlink" href="#raylib.Vector2" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Vector2</span></span><a class="headerlink" href="#raylib.Vector2" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Vector2.x">
 <span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Vector2.x" title="Link to this definition"></a></dt>
@@ -12264,7 +12264,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Vector3">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Vector3</span></span><a class="headerlink" href="#raylib.Vector3" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Vector3</span></span><a class="headerlink" href="#raylib.Vector3" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Vector3.x">
 <span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Vector3.x" title="Link to this definition"></a></dt>
@@ -12479,7 +12479,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Vector4">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Vector4</span></span><a class="headerlink" href="#raylib.Vector4" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Vector4</span></span><a class="headerlink" href="#raylib.Vector4" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Vector4.w">
 <span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Vector4.w" title="Link to this definition"></a></dt>
@@ -12614,7 +12614,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.VrDeviceInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">VrDeviceInfo</span></span><a class="headerlink" href="#raylib.VrDeviceInfo" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">VrDeviceInfo</span></span><a class="headerlink" href="#raylib.VrDeviceInfo" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.VrDeviceInfo.chromaAbCorrection">
 <span class="sig-name descname"><span class="pre">chromaAbCorrection</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.VrDeviceInfo.chromaAbCorrection" title="Link to this definition"></a></dt>
@@ -12664,7 +12664,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.VrStereoConfig">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">VrStereoConfig</span></span><a class="headerlink" href="#raylib.VrStereoConfig" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">VrStereoConfig</span></span><a class="headerlink" href="#raylib.VrStereoConfig" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.VrStereoConfig.leftLensCenter">
 <span class="sig-name descname"><span class="pre">leftLensCenter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.VrStereoConfig.leftLensCenter" title="Link to this definition"></a></dt>
@@ -12720,7 +12720,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.Wave">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Wave</span></span><a class="headerlink" href="#raylib.Wave" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Wave</span></span><a class="headerlink" href="#raylib.Wave" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Wave.channels">
 <span class="sig-name descname"><span class="pre">channels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.Wave.channels" title="Link to this definition"></a></dt>
@@ -12789,7 +12789,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.float16">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">float16</span></span><a class="headerlink" href="#raylib.float16" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">float16</span></span><a class="headerlink" href="#raylib.float16" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.float16.v">
 <span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.float16.v" title="Link to this definition"></a></dt>
@@ -12799,7 +12799,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.float3">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">float3</span></span><a class="headerlink" href="#raylib.float3" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">float3</span></span><a class="headerlink" href="#raylib.float3" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.float3.v">
 <span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.float3.v" title="Link to this definition"></a></dt>
@@ -13409,12 +13409,12 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.rAudioBuffer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rAudioBuffer</span></span><a class="headerlink" href="#raylib.rAudioBuffer" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rAudioBuffer</span></span><a class="headerlink" href="#raylib.rAudioBuffer" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.rAudioProcessor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rAudioProcessor</span></span><a class="headerlink" href="#raylib.rAudioProcessor" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rAudioProcessor</span></span><a class="headerlink" href="#raylib.rAudioProcessor" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -13644,7 +13644,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.rlDrawCall">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlDrawCall</span></span><a class="headerlink" href="#raylib.rlDrawCall" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlDrawCall</span></span><a class="headerlink" href="#raylib.rlDrawCall" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.rlDrawCall.mode">
 <span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.rlDrawCall.mode" title="Link to this definition"></a></dt>
@@ -14131,7 +14131,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.rlRenderBatch">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlRenderBatch</span></span><a class="headerlink" href="#raylib.rlRenderBatch" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlRenderBatch</span></span><a class="headerlink" href="#raylib.rlRenderBatch" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.rlRenderBatch.bufferCount">
 <span class="sig-name descname"><span class="pre">bufferCount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.rlRenderBatch.bufferCount" title="Link to this definition"></a></dt>
@@ -14443,7 +14443,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.rlVertexBuffer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlVertexBuffer</span></span><a class="headerlink" href="#raylib.rlVertexBuffer" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlVertexBuffer</span></span><a class="headerlink" href="#raylib.rlVertexBuffer" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.rlVertexBuffer.colors">
 <span class="sig-name descname"><span class="pre">colors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></em><a class="headerlink" href="#raylib.rlVertexBuffer.colors" title="Link to this definition"></a></dt>
@@ -14506,7 +14506,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="raylib.struct">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">struct</span></span><a class="headerlink" href="#raylib.struct" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">struct</span></span><a class="headerlink" href="#raylib.struct" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>

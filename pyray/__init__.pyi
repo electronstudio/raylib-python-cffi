@@ -1,4 +1,5 @@
 class ConfigFlags(int):
+    """System/Window config flags."""
     FLAG_VSYNC_HINT = 64
     FLAG_FULLSCREEN_MODE = 2
     FLAG_WINDOW_RESIZABLE = 4
@@ -17,6 +18,7 @@ class ConfigFlags(int):
     FLAG_INTERLACED_HINT = 65536
 
 class TraceLogLevel(int):
+    """Trace log level."""
     LOG_ALL = 0
     LOG_TRACE = 1
     LOG_DEBUG = 2
@@ -27,6 +29,7 @@ class TraceLogLevel(int):
     LOG_NONE = 7
 
 class KeyboardKey(int):
+    """Keyboard keys (US keyboard layout)."""
     KEY_NULL = 0
     KEY_APOSTROPHE = 39
     KEY_COMMA = 44
@@ -139,6 +142,7 @@ class KeyboardKey(int):
     KEY_VOLUME_DOWN = 25
 
 class MouseButton(int):
+    """Mouse buttons."""
     MOUSE_BUTTON_LEFT = 0
     MOUSE_BUTTON_RIGHT = 1
     MOUSE_BUTTON_MIDDLE = 2
@@ -148,6 +152,7 @@ class MouseButton(int):
     MOUSE_BUTTON_BACK = 6
 
 class MouseCursor(int):
+    """Mouse cursor."""
     MOUSE_CURSOR_DEFAULT = 0
     MOUSE_CURSOR_ARROW = 1
     MOUSE_CURSOR_IBEAM = 2
@@ -161,6 +166,7 @@ class MouseCursor(int):
     MOUSE_CURSOR_NOT_ALLOWED = 10
 
 class GamepadButton(int):
+    """Gamepad buttons."""
     GAMEPAD_BUTTON_UNKNOWN = 0
     GAMEPAD_BUTTON_LEFT_FACE_UP = 1
     GAMEPAD_BUTTON_LEFT_FACE_RIGHT = 2
@@ -181,6 +187,7 @@ class GamepadButton(int):
     GAMEPAD_BUTTON_RIGHT_THUMB = 17
 
 class GamepadAxis(int):
+    """Gamepad axis."""
     GAMEPAD_AXIS_LEFT_X = 0
     GAMEPAD_AXIS_LEFT_Y = 1
     GAMEPAD_AXIS_RIGHT_X = 2
@@ -189,6 +196,7 @@ class GamepadAxis(int):
     GAMEPAD_AXIS_RIGHT_TRIGGER = 5
 
 class MaterialMapIndex(int):
+    """Material map index."""
     MATERIAL_MAP_ALBEDO = 0
     MATERIAL_MAP_METALNESS = 1
     MATERIAL_MAP_NORMAL = 2
@@ -202,6 +210,7 @@ class MaterialMapIndex(int):
     MATERIAL_MAP_BRDF = 10
 
 class ShaderLocationIndex(int):
+    """Shader location index."""
     SHADER_LOC_VERTEX_POSITION = 0
     SHADER_LOC_VERTEX_TEXCOORD01 = 1
     SHADER_LOC_VERTEX_TEXCOORD02 = 2
@@ -233,6 +242,7 @@ class ShaderLocationIndex(int):
     SHADER_LOC_BONE_MATRICES = 28
 
 class ShaderUniformDataType(int):
+    """Shader uniform data type."""
     SHADER_UNIFORM_FLOAT = 0
     SHADER_UNIFORM_VEC2 = 1
     SHADER_UNIFORM_VEC3 = 2
@@ -244,12 +254,14 @@ class ShaderUniformDataType(int):
     SHADER_UNIFORM_SAMPLER2D = 8
 
 class ShaderAttributeDataType(int):
+    """Shader attribute data types."""
     SHADER_ATTRIB_FLOAT = 0
     SHADER_ATTRIB_VEC2 = 1
     SHADER_ATTRIB_VEC3 = 2
     SHADER_ATTRIB_VEC4 = 3
 
 class PixelFormat(int):
+    """Pixel formats."""
     PIXELFORMAT_UNCOMPRESSED_GRAYSCALE = 1
     PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA = 2
     PIXELFORMAT_UNCOMPRESSED_R5G6B5 = 3
@@ -276,6 +288,7 @@ class PixelFormat(int):
     PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA = 24
 
 class TextureFilter(int):
+    """Texture parameters: filter mode."""
     TEXTURE_FILTER_POINT = 0
     TEXTURE_FILTER_BILINEAR = 1
     TEXTURE_FILTER_TRILINEAR = 2
@@ -284,12 +297,14 @@ class TextureFilter(int):
     TEXTURE_FILTER_ANISOTROPIC_16X = 5
 
 class TextureWrap(int):
+    """Texture parameters: wrap mode."""
     TEXTURE_WRAP_REPEAT = 0
     TEXTURE_WRAP_CLAMP = 1
     TEXTURE_WRAP_MIRROR_REPEAT = 2
     TEXTURE_WRAP_MIRROR_CLAMP = 3
 
 class CubemapLayout(int):
+    """Cubemap layouts."""
     CUBEMAP_LAYOUT_AUTO_DETECT = 0
     CUBEMAP_LAYOUT_LINE_VERTICAL = 1
     CUBEMAP_LAYOUT_LINE_HORIZONTAL = 2
@@ -297,11 +312,13 @@ class CubemapLayout(int):
     CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE = 4
 
 class FontType(int):
+    """Font type, defines generation method."""
     FONT_DEFAULT = 0
     FONT_BITMAP = 1
     FONT_SDF = 2
 
 class BlendMode(int):
+    """Color blending modes (pre-defined)."""
     BLEND_ALPHA = 0
     BLEND_ADDITIVE = 1
     BLEND_MULTIPLIED = 2
@@ -312,6 +329,7 @@ class BlendMode(int):
     BLEND_CUSTOM_SEPARATE = 7
 
 class Gesture(int):
+    """Gesture."""
     GESTURE_NONE = 0
     GESTURE_TAP = 1
     GESTURE_DOUBLETAP = 2
@@ -325,6 +343,7 @@ class Gesture(int):
     GESTURE_PINCH_OUT = 512
 
 class CameraMode(int):
+    """Camera system modes."""
     CAMERA_CUSTOM = 0
     CAMERA_FREE = 1
     CAMERA_ORBITAL = 2
@@ -332,15 +351,18 @@ class CameraMode(int):
     CAMERA_THIRD_PERSON = 4
 
 class CameraProjection(int):
+    """Camera projection."""
     CAMERA_PERSPECTIVE = 0
     CAMERA_ORTHOGRAPHIC = 1
 
 class NPatchLayout(int):
+    """N-patch layout."""
     NPATCH_NINE_PATCH = 0
     NPATCH_THREE_PATCH_VERTICAL = 1
     NPATCH_THREE_PATCH_HORIZONTAL = 2
 
 class rlGlVersion(int):
+    """OpenGL version."""
     RL_OPENGL_11 = 1
     RL_OPENGL_21 = 2
     RL_OPENGL_33 = 3
@@ -349,6 +371,7 @@ class rlGlVersion(int):
     RL_OPENGL_ES_30 = 6
 
 class rlTraceLogLevel(int):
+    """Trace log level."""
     RL_LOG_ALL = 0
     RL_LOG_TRACE = 1
     RL_LOG_DEBUG = 2
@@ -359,6 +382,7 @@ class rlTraceLogLevel(int):
     RL_LOG_NONE = 7
 
 class rlPixelFormat(int):
+    """Texture pixel formats."""
     RL_PIXELFORMAT_UNCOMPRESSED_GRAYSCALE = 1
     RL_PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA = 2
     RL_PIXELFORMAT_UNCOMPRESSED_R5G6B5 = 3
@@ -385,6 +409,7 @@ class rlPixelFormat(int):
     RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA = 24
 
 class rlTextureFilter(int):
+    """Texture parameters: filter mode."""
     RL_TEXTURE_FILTER_POINT = 0
     RL_TEXTURE_FILTER_BILINEAR = 1
     RL_TEXTURE_FILTER_TRILINEAR = 2
@@ -393,6 +418,7 @@ class rlTextureFilter(int):
     RL_TEXTURE_FILTER_ANISOTROPIC_16X = 5
 
 class rlBlendMode(int):
+    """Color blending modes (pre-defined)."""
     RL_BLEND_ALPHA = 0
     RL_BLEND_ADDITIVE = 1
     RL_BLEND_MULTIPLIED = 2
@@ -403,6 +429,7 @@ class rlBlendMode(int):
     RL_BLEND_CUSTOM_SEPARATE = 7
 
 class rlShaderLocationIndex(int):
+    """Shader location point type."""
     RL_SHADER_LOC_VERTEX_POSITION = 0
     RL_SHADER_LOC_VERTEX_TEXCOORD01 = 1
     RL_SHADER_LOC_VERTEX_TEXCOORD02 = 2
@@ -431,6 +458,7 @@ class rlShaderLocationIndex(int):
     RL_SHADER_LOC_MAP_BRDF = 25
 
 class rlShaderUniformDataType(int):
+    """Shader uniform data type."""
     RL_SHADER_UNIFORM_FLOAT = 0
     RL_SHADER_UNIFORM_VEC2 = 1
     RL_SHADER_UNIFORM_VEC3 = 2
@@ -446,12 +474,14 @@ class rlShaderUniformDataType(int):
     RL_SHADER_UNIFORM_SAMPLER2D = 12
 
 class rlShaderAttributeDataType(int):
+    """Shader attribute data types."""
     RL_SHADER_ATTRIB_FLOAT = 0
     RL_SHADER_ATTRIB_VEC2 = 1
     RL_SHADER_ATTRIB_VEC3 = 2
     RL_SHADER_ATTRIB_VEC4 = 3
 
 class rlFramebufferAttachType(int):
+    """Framebuffer attachment type."""
     RL_ATTACHMENT_COLOR_CHANNEL0 = 0
     RL_ATTACHMENT_COLOR_CHANNEL1 = 1
     RL_ATTACHMENT_COLOR_CHANNEL2 = 2
@@ -464,6 +494,7 @@ class rlFramebufferAttachType(int):
     RL_ATTACHMENT_STENCIL = 200
 
 class rlFramebufferAttachTextureType(int):
+    """Framebuffer texture attachment type."""
     RL_ATTACHMENT_CUBEMAP_POSITIVE_X = 0
     RL_ATTACHMENT_CUBEMAP_NEGATIVE_X = 1
     RL_ATTACHMENT_CUBEMAP_POSITIVE_Y = 2
@@ -474,31 +505,37 @@ class rlFramebufferAttachTextureType(int):
     RL_ATTACHMENT_RENDERBUFFER = 200
 
 class rlCullMode(int):
+    """Face culling mode."""
     RL_CULL_FACE_FRONT = 0
     RL_CULL_FACE_BACK = 1
 
 class GuiState(int):
+    """Gui control state."""
     STATE_NORMAL = 0
     STATE_FOCUSED = 1
     STATE_PRESSED = 2
     STATE_DISABLED = 3
 
 class GuiTextAlignment(int):
+    """Gui control text alignment."""
     TEXT_ALIGN_LEFT = 0
     TEXT_ALIGN_CENTER = 1
     TEXT_ALIGN_RIGHT = 2
 
 class GuiTextAlignmentVertical(int):
+    """Gui control text alignment vertical."""
     TEXT_ALIGN_TOP = 0
     TEXT_ALIGN_MIDDLE = 1
     TEXT_ALIGN_BOTTOM = 2
 
 class GuiTextWrapMode(int):
+    """Gui control text wrap mode."""
     TEXT_WRAP_NONE = 0
     TEXT_WRAP_CHAR = 1
     TEXT_WRAP_WORD = 2
 
 class GuiControl(int):
+    """Gui controls."""
     DEFAULT = 0
     LABEL = 1
     BUTTON = 2
@@ -517,6 +554,7 @@ class GuiControl(int):
     STATUSBAR = 15
 
 class GuiControlProperty(int):
+    """Gui base properties for every control."""
     BORDER_COLOR_NORMAL = 0
     BASE_COLOR_NORMAL = 1
     TEXT_COLOR_NORMAL = 2
@@ -534,6 +572,7 @@ class GuiControlProperty(int):
     TEXT_ALIGNMENT = 14
 
 class GuiDefaultProperty(int):
+    """DEFAULT extended properties."""
     TEXT_SIZE = 16
     TEXT_SPACING = 17
     LINE_COLOR = 18
@@ -543,16 +582,20 @@ class GuiDefaultProperty(int):
     TEXT_WRAP_MODE = 22
 
 class GuiToggleProperty(int):
+    """Toggle/ToggleGroup."""
     GROUP_PADDING = 16
 
 class GuiSliderProperty(int):
+    """Slider/SliderBar."""
     SLIDER_WIDTH = 16
     SLIDER_PADDING = 17
 
 class GuiProgressBarProperty(int):
+    """ProgressBar."""
     PROGRESS_PADDING = 16
 
 class GuiScrollBarProperty(int):
+    """ScrollBar."""
     ARROWS_SIZE = 16
     ARROWS_VISIBLE = 17
     SCROLL_SLIDER_PADDING = 18
@@ -561,26 +604,32 @@ class GuiScrollBarProperty(int):
     SCROLL_SPEED = 21
 
 class GuiCheckBoxProperty(int):
+    """CheckBox."""
     CHECK_PADDING = 16
 
 class GuiComboBoxProperty(int):
+    """ComboBox."""
     COMBO_BUTTON_WIDTH = 16
     COMBO_BUTTON_SPACING = 17
 
 class GuiDropdownBoxProperty(int):
+    """DropdownBox."""
     ARROW_PADDING = 16
     DROPDOWN_ITEMS_SPACING = 17
     DROPDOWN_ARROW_HIDDEN = 18
     DROPDOWN_ROLL_UP = 19
 
 class GuiTextBoxProperty(int):
+    """TextBox/TextBoxMulti/ValueBox/Spinner."""
     TEXT_READONLY = 16
 
 class GuiSpinnerProperty(int):
+    """Spinner."""
     SPIN_BUTTON_WIDTH = 16
     SPIN_BUTTON_SPACING = 17
 
 class GuiListViewProperty(int):
+    """ListView."""
     LIST_ITEMS_HEIGHT = 16
     LIST_ITEMS_SPACING = 17
     SCROLLBAR_WIDTH = 18
@@ -588,6 +637,7 @@ class GuiListViewProperty(int):
     LIST_ITEMS_BORDER_WIDTH = 20
 
 class GuiColorPickerProperty(int):
+    """ColorPicker."""
     COLOR_SELECTOR_SIZE = 16
     HUEBAR_WIDTH = 17
     HUEBAR_PADDING = 18
@@ -595,6 +645,7 @@ class GuiColorPickerProperty(int):
     HUEBAR_SELECTOR_OVERFLOW = 20
 
 class GuiIconName(int):
+    """."""
     ICON_NONE = 0
     ICON_FOLDER_FILE_OPEN = 1
     ICON_FILE_SAVE_CLASSIC = 2
@@ -4081,7 +4132,7 @@ def rlgl_init(width: int,height: int,) -> None:
         """Initialize rlgl (buffers, shaders, textures, states)"""
         ...
 class AudioStream:
-    """ struct """
+    """AudioStream, custom audio stream."""
     def __init__(self, buffer: Any|None = None, processor: Any|None = None, sampleRate: int|None = None, sampleSize: int|None = None, channels: int|None = None):
         self.buffer:Any = buffer # type: ignore
         self.processor:Any = processor # type: ignore
@@ -4089,36 +4140,36 @@ class AudioStream:
         self.sampleSize:int = sampleSize # type: ignore
         self.channels:int = channels # type: ignore
 class AutomationEvent:
-    """ struct """
+    """Automation event."""
     def __init__(self, frame: int|None = None, type: int|None = None, params: list|None = None):
         self.frame:int = frame # type: ignore
         self.type:int = type # type: ignore
         self.params:list = params # type: ignore
 class AutomationEventList:
-    """ struct """
+    """Automation event list."""
     def __init__(self, capacity: int|None = None, count: int|None = None, events: Any|None = None):
         self.capacity:int = capacity # type: ignore
         self.count:int = count # type: ignore
         self.events:Any = events # type: ignore
 class BoneInfo:
-    """ struct """
+    """Bone, skeletal animation bone."""
     def __init__(self, name: list|None = None, parent: int|None = None):
         self.name:list = name # type: ignore
         self.parent:int = parent # type: ignore
 class BoundingBox:
-    """ struct """
+    """BoundingBox."""
     def __init__(self, min: Vector3|list|tuple|None = None, max: Vector3|list|tuple|None = None):
         self.min:Vector3 = min # type: ignore
         self.max:Vector3 = max # type: ignore
 class Camera2D:
-    """ struct """
+    """Camera2D, defines position/orientation in 2d space."""
     def __init__(self, offset: Vector2|list|tuple|None = None, target: Vector2|list|tuple|None = None, rotation: float|None = None, zoom: float|None = None):
         self.offset:Vector2 = offset # type: ignore
         self.target:Vector2 = target # type: ignore
         self.rotation:float = rotation # type: ignore
         self.zoom:float = zoom # type: ignore
 class Camera3D:
-    """ struct """
+    """Camera, defines position/orientation in 3d space."""
     def __init__(self, position: Vector3|list|tuple|None = None, target: Vector3|list|tuple|None = None, up: Vector3|list|tuple|None = None, fovy: float|None = None, projection: int|None = None):
         self.position:Vector3 = position # type: ignore
         self.target:Vector3 = target # type: ignore
@@ -4126,20 +4177,20 @@ class Camera3D:
         self.fovy:float = fovy # type: ignore
         self.projection:int = projection # type: ignore
 class Color:
-    """ struct """
+    """Color, 4 components, R8G8B8A8 (32bit)."""
     def __init__(self, r: int|None = None, g: int|None = None, b: int|None = None, a: int|None = None):
         self.r:int = r # type: ignore
         self.g:int = g # type: ignore
         self.b:int = b # type: ignore
         self.a:int = a # type: ignore
 class FilePathList:
-    """ struct """
+    """File path list."""
     def __init__(self, capacity: int|None = None, count: int|None = None, paths: list[str]|None = None):
         self.capacity:int = capacity # type: ignore
         self.count:int = count # type: ignore
         self.paths:list[str] = paths # type: ignore
 class Font:
-    """ struct """
+    """Font, font texture and GlyphInfo array data."""
     def __init__(self, baseSize: int|None = None, glyphCount: int|None = None, glyphPadding: int|None = None, texture: Texture|list|tuple|None = None, recs: Any|None = None, glyphs: Any|None = None):
         self.baseSize:int = baseSize # type: ignore
         self.glyphCount:int = glyphCount # type: ignore
@@ -4148,7 +4199,7 @@ class Font:
         self.recs:Any = recs # type: ignore
         self.glyphs:Any = glyphs # type: ignore
 class GlyphInfo:
-    """ struct """
+    """GlyphInfo, font characters glyphs info."""
     def __init__(self, value: int|None = None, offsetX: int|None = None, offsetY: int|None = None, advanceX: int|None = None, image: Image|list|tuple|None = None):
         self.value:int = value # type: ignore
         self.offsetX:int = offsetX # type: ignore
@@ -4156,13 +4207,13 @@ class GlyphInfo:
         self.advanceX:int = advanceX # type: ignore
         self.image:Image = image # type: ignore
 class GuiStyleProp:
-    """ struct """
+    """NOTE: Used when exporting style as code for convenience."""
     def __init__(self, controlId: int|None = None, propertyId: int|None = None, propertyValue: int|None = None):
         self.controlId:int = controlId # type: ignore
         self.propertyId:int = propertyId # type: ignore
         self.propertyValue:int = propertyValue # type: ignore
 class Image:
-    """ struct """
+    """Image, pixel data stored in CPU memory (RAM)."""
     def __init__(self, data: Any|None = None, width: int|None = None, height: int|None = None, mipmaps: int|None = None, format: int|None = None):
         self.data:Any = data # type: ignore
         self.width:int = width # type: ignore
@@ -4170,19 +4221,19 @@ class Image:
         self.mipmaps:int = mipmaps # type: ignore
         self.format:int = format # type: ignore
 class Material:
-    """ struct """
+    """Material, includes shader and maps."""
     def __init__(self, shader: Shader|list|tuple|None = None, maps: Any|None = None, params: list|None = None):
         self.shader:Shader = shader # type: ignore
         self.maps:Any = maps # type: ignore
         self.params:list = params # type: ignore
 class MaterialMap:
-    """ struct """
+    """MaterialMap."""
     def __init__(self, texture: Texture|list|tuple|None = None, color: Color|list|tuple|None = None, value: float|None = None):
         self.texture:Texture = texture # type: ignore
         self.color:Color = color # type: ignore
         self.value:float = value # type: ignore
 class Matrix:
-    """ struct """
+    """Matrix, 4x4 components, column major, OpenGL style, right-handed."""
     def __init__(self, m0: float|None = None, m4: float|None = None, m8: float|None = None, m12: float|None = None, m1: float|None = None, m5: float|None = None, m9: float|None = None, m13: float|None = None, m2: float|None = None, m6: float|None = None, m10: float|None = None, m14: float|None = None, m3: float|None = None, m7: float|None = None, m11: float|None = None, m15: float|None = None):
         self.m0:float = m0 # type: ignore
         self.m4:float = m4 # type: ignore
@@ -4201,14 +4252,14 @@ class Matrix:
         self.m11:float = m11 # type: ignore
         self.m15:float = m15 # type: ignore
 class Matrix2x2:
-    """ struct """
+    """Matrix2x2 type (used for polygon shape rotation matrix)."""
     def __init__(self, m00: float|None = None, m01: float|None = None, m10: float|None = None, m11: float|None = None):
         self.m00:float = m00 # type: ignore
         self.m01:float = m01 # type: ignore
         self.m10:float = m10 # type: ignore
         self.m11:float = m11 # type: ignore
 class Mesh:
-    """ struct """
+    """Mesh, vertex data and vao/vbo."""
     def __init__(self, vertexCount: int|None = None, triangleCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, texcoords2: Any|None = None, normals: Any|None = None, tangents: Any|None = None, colors: str|None = None, indices: Any|None = None, animVertices: Any|None = None, animNormals: Any|None = None, boneIds: str|None = None, boneWeights: Any|None = None, boneMatrices: Any|None = None, boneCount: int|None = None, vaoId: int|None = None, vboId: Any|None = None):
         self.vertexCount:int = vertexCount # type: ignore
         self.triangleCount:int = triangleCount # type: ignore
@@ -4228,7 +4279,7 @@ class Mesh:
         self.vaoId:int = vaoId # type: ignore
         self.vboId:Any = vboId # type: ignore
 class Model:
-    """ struct """
+    """Model, meshes, materials and animation data."""
     def __init__(self, transform: Matrix|list|tuple|None = None, meshCount: int|None = None, materialCount: int|None = None, meshes: Any|None = None, materials: Any|None = None, meshMaterial: Any|None = None, boneCount: int|None = None, bones: Any|None = None, bindPose: Any|None = None):
         self.transform:Matrix = transform # type: ignore
         self.meshCount:int = meshCount # type: ignore
@@ -4240,7 +4291,7 @@ class Model:
         self.bones:Any = bones # type: ignore
         self.bindPose:Any = bindPose # type: ignore
 class ModelAnimation:
-    """ struct """
+    """ModelAnimation."""
     def __init__(self, boneCount: int|None = None, frameCount: int|None = None, bones: Any|None = None, framePoses: Any|None = None, name: list|None = None):
         self.boneCount:int = boneCount # type: ignore
         self.frameCount:int = frameCount # type: ignore
@@ -4248,7 +4299,7 @@ class ModelAnimation:
         self.framePoses:Any = framePoses # type: ignore
         self.name:list = name # type: ignore
 class Music:
-    """ struct """
+    """Music, audio stream, anything longer than ~10 seconds should be streamed."""
     def __init__(self, stream: AudioStream|list|tuple|None = None, frameCount: int|None = None, looping: bool|None = None, ctxType: int|None = None, ctxData: Any|None = None):
         self.stream:AudioStream = stream # type: ignore
         self.frameCount:int = frameCount # type: ignore
@@ -4256,7 +4307,7 @@ class Music:
         self.ctxType:int = ctxType # type: ignore
         self.ctxData:Any = ctxData # type: ignore
 class NPatchInfo:
-    """ struct """
+    """NPatchInfo, n-patch layout info."""
     def __init__(self, source: Rectangle|list|tuple|None = None, left: int|None = None, top: int|None = None, right: int|None = None, bottom: int|None = None, layout: int|None = None):
         self.source:Rectangle = source # type: ignore
         self.left:int = left # type: ignore
@@ -4265,7 +4316,7 @@ class NPatchInfo:
         self.bottom:int = bottom # type: ignore
         self.layout:int = layout # type: ignore
 class PhysicsBodyData:
-    """ struct """
+    """."""
     def __init__(self, id: int|None = None, enabled: bool|None = None, position: Vector2|list|tuple|None = None, velocity: Vector2|list|tuple|None = None, force: Vector2|list|tuple|None = None, angularVelocity: float|None = None, torque: float|None = None, orient: float|None = None, inertia: float|None = None, inverseInertia: float|None = None, mass: float|None = None, inverseMass: float|None = None, staticFriction: float|None = None, dynamicFriction: float|None = None, restitution: float|None = None, useGravity: bool|None = None, isGrounded: bool|None = None, freezeOrient: bool|None = None, shape: PhysicsShape|list|tuple|None = None):
         self.id:int = id # type: ignore
         self.enabled:bool = enabled # type: ignore
@@ -4287,7 +4338,7 @@ class PhysicsBodyData:
         self.freezeOrient:bool = freezeOrient # type: ignore
         self.shape:PhysicsShape = shape # type: ignore
 class PhysicsManifoldData:
-    """ struct """
+    """."""
     def __init__(self, id: int|None = None, bodyA: Any|None = None, bodyB: Any|None = None, penetration: float|None = None, normal: Vector2|list|tuple|None = None, contacts: list|None = None, contactsCount: int|None = None, restitution: float|None = None, dynamicFriction: float|None = None, staticFriction: float|None = None):
         self.id:int = id # type: ignore
         self.bodyA:Any = bodyA # type: ignore
@@ -4300,7 +4351,7 @@ class PhysicsManifoldData:
         self.dynamicFriction:float = dynamicFriction # type: ignore
         self.staticFriction:float = staticFriction # type: ignore
 class PhysicsShape:
-    """ struct """
+    """."""
     def __init__(self, type: PhysicsShapeType|None = None, body: Any|None = None, vertexData: PhysicsVertexData|list|tuple|None = None, radius: float|None = None, transform: Matrix2x2|list|tuple|None = None):
         self.type:PhysicsShapeType = type # type: ignore
         self.body:Any = body # type: ignore
@@ -4308,48 +4359,48 @@ class PhysicsShape:
         self.radius:float = radius # type: ignore
         self.transform:Matrix2x2 = transform # type: ignore
 class PhysicsVertexData:
-    """ struct """
+    """."""
     def __init__(self, vertexCount: int|None = None, positions: list|None = None, normals: list|None = None):
         self.vertexCount:int = vertexCount # type: ignore
         self.positions:list = positions # type: ignore
         self.normals:list = normals # type: ignore
 class Ray:
-    """ struct """
+    """Ray, ray for raycasting."""
     def __init__(self, position: Vector3|list|tuple|None = None, direction: Vector3|list|tuple|None = None):
         self.position:Vector3 = position # type: ignore
         self.direction:Vector3 = direction # type: ignore
 class RayCollision:
-    """ struct """
+    """RayCollision, ray hit information."""
     def __init__(self, hit: bool|None = None, distance: float|None = None, point: Vector3|list|tuple|None = None, normal: Vector3|list|tuple|None = None):
         self.hit:bool = hit # type: ignore
         self.distance:float = distance # type: ignore
         self.point:Vector3 = point # type: ignore
         self.normal:Vector3 = normal # type: ignore
 class Rectangle:
-    """ struct """
+    """Rectangle, 4 components."""
     def __init__(self, x: float|None = None, y: float|None = None, width: float|None = None, height: float|None = None):
         self.x:float = x # type: ignore
         self.y:float = y # type: ignore
         self.width:float = width # type: ignore
         self.height:float = height # type: ignore
 class RenderTexture:
-    """ struct """
+    """RenderTexture, fbo for texture rendering."""
     def __init__(self, id: int|None = None, texture: Texture|list|tuple|None = None, depth: Texture|list|tuple|None = None):
         self.id:int = id # type: ignore
         self.texture:Texture = texture # type: ignore
         self.depth:Texture = depth # type: ignore
 class Shader:
-    """ struct """
+    """Shader."""
     def __init__(self, id: int|None = None, locs: Any|None = None):
         self.id:int = id # type: ignore
         self.locs:Any = locs # type: ignore
 class Sound:
-    """ struct """
+    """Sound."""
     def __init__(self, stream: AudioStream|list|tuple|None = None, frameCount: int|None = None):
         self.stream:AudioStream = stream # type: ignore
         self.frameCount:int = frameCount # type: ignore
 class Texture:
-    """ struct """
+    """Texture, tex data stored in GPU memory (VRAM)."""
     def __init__(self, id: int|None = None, width: int|None = None, height: int|None = None, mipmaps: int|None = None, format: int|None = None):
         self.id:int = id # type: ignore
         self.width:int = width # type: ignore
@@ -4357,7 +4408,7 @@ class Texture:
         self.mipmaps:int = mipmaps # type: ignore
         self.format:int = format # type: ignore
 class Texture2D:
-    """ struct """
+    """It should be redesigned to be provided by user."""
     def __init__(self, id: int|None = None, width: int|None = None, height: int|None = None, mipmaps: int|None = None, format: int|None = None):
         self.id:int = id # type: ignore
         self.width:int = width # type: ignore
@@ -4365,31 +4416,31 @@ class Texture2D:
         self.mipmaps:int = mipmaps # type: ignore
         self.format:int = format # type: ignore
 class Transform:
-    """ struct """
+    """Transform, vertex transformation data."""
     def __init__(self, translation: Vector3|list|tuple|None = None, rotation: Vector4|list|tuple|None = None, scale: Vector3|list|tuple|None = None):
         self.translation:Vector3 = translation # type: ignore
         self.rotation:Vector4 = rotation # type: ignore
         self.scale:Vector3 = scale # type: ignore
 class Vector2:
-    """ struct """
+    """Vector2, 2 components."""
     def __init__(self, x: float|None = None, y: float|None = None):
         self.x:float = x # type: ignore
         self.y:float = y # type: ignore
 class Vector3:
-    """ struct """
+    """Vector3, 3 components."""
     def __init__(self, x: float|None = None, y: float|None = None, z: float|None = None):
         self.x:float = x # type: ignore
         self.y:float = y # type: ignore
         self.z:float = z # type: ignore
 class Vector4:
-    """ struct """
+    """Vector4, 4 components."""
     def __init__(self, x: float|None = None, y: float|None = None, z: float|None = None, w: float|None = None):
         self.x:float = x # type: ignore
         self.y:float = y # type: ignore
         self.z:float = z # type: ignore
         self.w:float = w # type: ignore
 class VrDeviceInfo:
-    """ struct """
+    """VrDeviceInfo, Head-Mounted-Display device parameters."""
     def __init__(self, hResolution: int|None = None, vResolution: int|None = None, hScreenSize: float|None = None, vScreenSize: float|None = None, eyeToScreenDistance: float|None = None, lensSeparationDistance: float|None = None, interpupillaryDistance: float|None = None, lensDistortionValues: list|None = None, chromaAbCorrection: list|None = None):
         self.hResolution:int = hResolution # type: ignore
         self.vResolution:int = vResolution # type: ignore
@@ -4401,7 +4452,7 @@ class VrDeviceInfo:
         self.lensDistortionValues:list = lensDistortionValues # type: ignore
         self.chromaAbCorrection:list = chromaAbCorrection # type: ignore
 class VrStereoConfig:
-    """ struct """
+    """VrStereoConfig, VR stereo rendering configuration for simulator."""
     def __init__(self, projection: list|None = None, viewOffset: list|None = None, leftLensCenter: list|None = None, rightLensCenter: list|None = None, leftScreenCenter: list|None = None, rightScreenCenter: list|None = None, scale: list|None = None, scaleIn: list|None = None):
         self.projection:list = projection # type: ignore
         self.viewOffset:list = viewOffset # type: ignore
@@ -4412,7 +4463,7 @@ class VrStereoConfig:
         self.scale:list = scale # type: ignore
         self.scaleIn:list = scaleIn # type: ignore
 class Wave:
-    """ struct """
+    """Wave, audio wave data."""
     def __init__(self, frameCount: int|None = None, sampleRate: int|None = None, sampleSize: int|None = None, channels: int|None = None, data: Any|None = None):
         self.frameCount:int = frameCount # type: ignore
         self.sampleRate:int = sampleRate # type: ignore
@@ -4420,22 +4471,22 @@ class Wave:
         self.channels:int = channels # type: ignore
         self.data:Any = data # type: ignore
 class float16:
-    """ struct """
+    """."""
     def __init__(self, v: list|None = None):
         self.v:list = v # type: ignore
 class float3:
-    """ struct """
+    """NOTE: Helper types to be used instead of array return types for *ToFloat functions."""
     def __init__(self, v: list|None = None):
         self.v:list = v # type: ignore
 class rlDrawCall:
-    """ struct """
+    """of those state-change happens (this is done in core module)."""
     def __init__(self, mode: int|None = None, vertexCount: int|None = None, vertexAlignment: int|None = None, textureId: int|None = None):
         self.mode:int = mode # type: ignore
         self.vertexCount:int = vertexCount # type: ignore
         self.vertexAlignment:int = vertexAlignment # type: ignore
         self.textureId:int = textureId # type: ignore
 class rlRenderBatch:
-    """ struct """
+    """rlRenderBatch type."""
     def __init__(self, bufferCount: int|None = None, currentBuffer: int|None = None, vertexBuffer: Any|None = None, draws: Any|None = None, drawCounter: int|None = None, currentDepth: float|None = None):
         self.bufferCount:int = bufferCount # type: ignore
         self.currentBuffer:int = currentBuffer # type: ignore
@@ -4444,7 +4495,7 @@ class rlRenderBatch:
         self.drawCounter:int = drawCounter # type: ignore
         self.currentDepth:float = currentDepth # type: ignore
 class rlVertexBuffer:
-    """ struct """
+    """Dynamic vertex buffers (position + texcoords + colors + indices arrays)."""
     def __init__(self, elementCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, normals: Any|None = None, colors: str|None = None, indices: Any|None = None, vaoId: int|None = None, vboId: list|None = None):
         self.elementCount:int = elementCount # type: ignore
         self.vertices:Any = vertices # type: ignore
