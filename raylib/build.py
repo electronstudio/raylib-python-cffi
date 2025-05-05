@@ -41,6 +41,8 @@ REPO_ROOT = THIS_DIR.parent
 #    e.g.: /usr/local/include/GLFW
 # PHYSAC_INCLUDE_PATH: Directory to find physac.h
 #    e.g.: /usr/local/include
+# LIBFFI_INCLUDE_PATH:
+#    e.g.: /usr/local/include
 
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 
@@ -185,6 +187,10 @@ def build_unix():
         #include "physac.h"
         """
 
+    libffi_include_path = os.getenv("LIBFFI_INCLUDE_PATH")
+    if libffi_include_path is None:
+        libffi_include_path = get_the_include_path_from_pkgconfig()
+
     ffibuilder.cdef(pre_process_header(raylib_h))
     ffibuilder.cdef(pre_process_header(rlgl_h))
     ffibuilder.cdef(pre_process_header(raymath_h, True))
@@ -237,7 +243,8 @@ def build_unix():
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
                           py_limited_api=False,
-                          include_dirs=[get_the_include_path_from_pkgconfig()],
+                          include_dirs=[raylib_include_path, raygui_include_path, physac_include_path, glfw_include_path,
+                                        libffi_include_path],
                           extra_link_args=extra_link_args,
                           extra_compile_args=extra_compile_args,
                           libraries=libraries)
