@@ -24,6 +24,11 @@ import platform
 import sys
 import subprocess
 import time
+from pathlib import Path
+
+THIS_DIR = Path(__file__).resolve().parent
+REPO_ROOT = THIS_DIR.parent
+
 
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 
@@ -200,13 +205,13 @@ def build_unix():
 
 def build_windows():
     print("BUILDING FOR WINDOWS")
-    ffibuilder.cdef(open("raylib/raylib.h.modified").read())
+    ffibuilder.cdef((THIS_DIR / "raylib.h.modified").read_text())
     if RAYLIB_PLATFORM=="Desktop":
-        ffibuilder.cdef(open("raylib/glfw3.h.modified").read())
-    ffibuilder.cdef(open("raylib/rlgl.h.modified").read())
-    ffibuilder.cdef(open("raylib/raygui.h.modified").read())
-    ffibuilder.cdef(open("raylib/physac.h.modified").read())
-    ffibuilder.cdef(open("raylib/raymath.h.modified").read())
+        ffibuilder.cdef((THIS_DIR / "glfw3.h.modified").read_text())
+    ffibuilder.cdef((THIS_DIR / "rlgl.h.modified").read_text())
+    ffibuilder.cdef((THIS_DIR / "raygui.h.modified").read_text())
+    ffibuilder.cdef((THIS_DIR / "physac.h.modified").read_text())
+    ffibuilder.cdef((THIS_DIR / "raymath.h.modified").read_text())
 
     ffi_includes = """
     #include "raylib.h"
@@ -237,10 +242,10 @@ def build_windows():
                           extra_compile_args=["/D_CFFI_NO_LIMITED_API"],
                           py_limited_api=False,
                           libraries=libraries,
-                          include_dirs=['D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src',
-                                        'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raylib-c\\src\\external\\glfw\\include',
-                                        'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\raygui\\src',
-                                        'D:\\a\\raylib-python-cffi\\raylib-python-cffi\\physac\\src'],
+                          include_dirs=[str(REPO_ROOT / 'raylib-c/src'),
+                                        str(REPO_ROOT / 'raylib-c/src/external/glfw/include'),
+                                        str(REPO_ROOT / 'raygui/src'),
+                                        str(REPO_ROOT / 'physac/src')],
                           )
 
 

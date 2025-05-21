@@ -83,11 +83,6 @@ To build a binary wheel distribution:
    pip3 install wheel
    python setup.py bdist_wheel
 
-.. TODO::
-   There's a hardcoded path (to the raylib header files) in `raylib/build.py` you will probably need to edit.
-   Would be useful if some Windows user could figure out how to auto detect this.
-
-
 Then install it:
 
 ::
