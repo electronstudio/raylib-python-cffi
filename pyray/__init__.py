@@ -126,7 +126,7 @@ def _make_struct_constructor_function(struct):
                        or isinstance(arg, (array, bytes, bytearray, memoryview)))):
                 arg = ffi.from_buffer(field[1].type, arg)
             modified_args.append(arg)
-        s = ffi.new(f"struct {struct} *", modified_args)[0]
+        s = ffi.new(f"{struct} *", modified_args)[0]
         global_weakkeydict[s] = modified_args
         return s
 

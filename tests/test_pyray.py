@@ -7,6 +7,8 @@ import pyray as pr
 pr.init_window(800, 450, "Raylib texture test")
 pr.set_target_fps(60)
 
+test_typedef_init = pr.Texture2D() # Texture2D is typedef for Texture
+
 image = pr.gen_image_color(800, 400, (0,0,0,255) )
 texture = pr.load_texture_from_image(image)
 pr.update_texture(texture, image.data)
