@@ -908,6 +908,7 @@ from warnings import deprecated
 import _cffi_backend # type: ignore
 
 ffi: _cffi_backend.FFI
+PhysicsShapeType = int
 
 def attach_audio_mixed_processor(processor: Any,) -> None:
     """Attach audio stream processor to the entire audio pipeline, receives the samples as 'float'."""

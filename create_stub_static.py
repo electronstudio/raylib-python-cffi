@@ -74,6 +74,7 @@ import _cffi_backend # type: ignore
 
 ffi: _cffi_backend.FFI
 rl: _cffi_backend.Lib
+PhysicsShapeType = int
 
 class struct: ...
 

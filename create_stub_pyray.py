@@ -83,6 +83,7 @@ from warnings import deprecated
 import _cffi_backend # type: ignore
 
 ffi: _cffi_backend.FFI
+PhysicsShapeType = int
 """)
 
 # These words can be used for c arg names, but not in python
