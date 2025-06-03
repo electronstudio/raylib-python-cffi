@@ -31,4 +31,4 @@ from raylib.defines import *
 import cffi
 from .version import  __version__
 
-logger.debug("RAYLIB STATIC %s LOADED", __version__)
+logger.warning("RAYLIB STATIC %s LOADED", __version__)
