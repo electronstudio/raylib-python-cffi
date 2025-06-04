@@ -22,9 +22,10 @@ import itertools
 import os
 import pathlib
 import platform
+import logging
 from .version import __version__
 
-
+logger = logging.getLogger(__name__)
 MODULE = pathlib.Path(__file__).parent
 
 def raylib_library_path():
@@ -54,9 +55,9 @@ ffi.cdef(open(MODULE / "raylib_modified.h").read().replace('RLAPI ', ''))
 try:
     raylib_fname = raylib_library_path()
     rl = ffi.dlopen(raylib_fname)
-    print('LOADED DYNAMICALLY SHARED LIB {} {}'.format(__version__, raylib_fname))
+    logger.warning('LOADED DYNAMICALLY SHARED LIB {} {}'.format(__version__, raylib_fname))
 except Exception as e:
-    print(e)
+    logger.exception(e)
 
 LIGHTGRAY  =( 200, 200, 200, 255 )
 GRAY       =( 130, 130, 130, 255 )
