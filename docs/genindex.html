@@ -44,6 +44,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 5.5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#links">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#backends">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
@@ -5409,6 +5410,8 @@
 </li>
       <li><a href="pyray.html#pyray.is_path_file">is_path_file() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.is_physics_enabled">is_physics_enabled() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.is_render_texture_valid">is_render_texture_valid() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.is_shader_valid">is_shader_valid() (in module pyray)</a>
@@ -5506,6 +5509,8 @@
       <li><a href="raylib.html#raylib.IsMusicValid">IsMusicValid() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.IsPathFile">IsPathFile() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.IsPhysicsEnabled">IsPhysicsEnabled() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.IsRenderTextureValid">IsRenderTextureValid() (in module raylib)</a>
 </li>
@@ -6553,16 +6558,16 @@
         <li><a href="raylib.html#raylib.Matrix.m0">(raylib.Matrix attribute)</a>
 </li>
       </ul></li>
-      <li><a href="pyray.html#pyray.Matrix2x2.m00">m00 (pyray.Matrix2x2 attribute)</a>
+      <li><a href="pyray.html#pyray.Mat2.m00">m00 (pyray.Mat2 attribute)</a>
 
       <ul>
-        <li><a href="raylib.html#raylib.Matrix2x2.m00">(raylib.Matrix2x2 attribute)</a>
+        <li><a href="raylib.html#raylib.Mat2.m00">(raylib.Mat2 attribute)</a>
 </li>
       </ul></li>
-      <li><a href="pyray.html#pyray.Matrix2x2.m01">m01 (pyray.Matrix2x2 attribute)</a>
+      <li><a href="pyray.html#pyray.Mat2.m01">m01 (pyray.Mat2 attribute)</a>
 
       <ul>
-        <li><a href="raylib.html#raylib.Matrix2x2.m01">(raylib.Matrix2x2 attribute)</a>
+        <li><a href="raylib.html#raylib.Mat2.m01">(raylib.Mat2 attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.Matrix.m1">m1 (pyray.Matrix attribute)</a>
@@ -6571,24 +6576,24 @@
         <li><a href="raylib.html#raylib.Matrix.m1">(raylib.Matrix attribute)</a>
 </li>
       </ul></li>
-      <li><a href="pyray.html#pyray.Matrix.m10">m10 (pyray.Matrix attribute)</a>
+      <li><a href="pyray.html#pyray.Mat2.m10">m10 (pyray.Mat2 attribute)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.Matrix2x2.m10">(pyray.Matrix2x2 attribute)</a>
+        <li><a href="pyray.html#pyray.Matrix.m10">(pyray.Matrix attribute)</a>
+</li>
+        <li><a href="raylib.html#raylib.Mat2.m10">(raylib.Mat2 attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Matrix.m10">(raylib.Matrix attribute)</a>
 </li>
-        <li><a href="raylib.html#raylib.Matrix2x2.m10">(raylib.Matrix2x2 attribute)</a>
-</li>
       </ul></li>
-      <li><a href="pyray.html#pyray.Matrix.m11">m11 (pyray.Matrix attribute)</a>
+      <li><a href="pyray.html#pyray.Mat2.m11">m11 (pyray.Mat2 attribute)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.Matrix2x2.m11">(pyray.Matrix2x2 attribute)</a>
+        <li><a href="pyray.html#pyray.Matrix.m11">(pyray.Matrix attribute)</a>
+</li>
+        <li><a href="raylib.html#raylib.Mat2.m11">(raylib.Mat2 attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Matrix.m11">(raylib.Matrix attribute)</a>
-</li>
-        <li><a href="raylib.html#raylib.Matrix2x2.m11">(raylib.Matrix2x2 attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.Matrix.m12">m12 (pyray.Matrix attribute)</a>
@@ -6691,6 +6696,12 @@
         <li><a href="raylib.html#raylib.PhysicsBodyData.mass">(raylib.PhysicsBodyData attribute)</a>
 </li>
       </ul></li>
+      <li><a href="pyray.html#pyray.Mat2">Mat2 (class in pyray)</a>
+
+      <ul>
+        <li><a href="raylib.html#raylib.Mat2">(class in raylib)</a>
+</li>
+      </ul></li>
       <li><a href="pyray.html#pyray.Material">Material (class in pyray)</a>
 
       <ul>
@@ -6791,12 +6802,6 @@
 
       <ul>
         <li><a href="raylib.html#raylib.Matrix">(class in raylib)</a>
-</li>
-      </ul></li>
-      <li><a href="pyray.html#pyray.Matrix2x2">Matrix2x2 (class in pyray)</a>
-
-      <ul>
-        <li><a href="raylib.html#raylib.Matrix2x2">(class in raylib)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.matrix_add">matrix_add() (in module pyray)</a>
@@ -7155,13 +7160,13 @@
       <li><a href="pyray.html#pyray.Mesh.normals">normals (pyray.Mesh attribute)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.PhysicsVertexData.normals">(pyray.PhysicsVertexData attribute)</a>
+        <li><a href="pyray.html#pyray.PolygonData.normals">(pyray.PolygonData attribute)</a>
 </li>
         <li><a href="pyray.html#pyray.rlVertexBuffer.normals">(pyray.rlVertexBuffer attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Mesh.normals">(raylib.Mesh attribute)</a>
 </li>
-        <li><a href="raylib.html#raylib.PhysicsVertexData.normals">(raylib.PhysicsVertexData attribute)</a>
+        <li><a href="raylib.html#raylib.PolygonData.normals">(raylib.PolygonData attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.rlVertexBuffer.normals">(raylib.rlVertexBuffer attribute)</a>
 </li>
@@ -7318,16 +7323,14 @@
         <li><a href="raylib.html#raylib.PhysicsShape">(class in raylib)</a>
 </li>
       </ul></li>
-      <li><a href="raylib.html#raylib.PhysicsShapeType">PhysicsShapeType (in module raylib)</a>
-</li>
-      <li><a href="raylib.html#raylib.PhysicsShatter">PhysicsShatter() (in module raylib)</a>
-</li>
-      <li><a href="pyray.html#pyray.PhysicsVertexData">PhysicsVertexData (class in pyray)</a>
+      <li><a href="pyray.html#pyray.PhysicsShapeType">PhysicsShapeType (in module pyray)</a>
 
       <ul>
-        <li><a href="raylib.html#raylib.PhysicsVertexData">(class in raylib)</a>
+        <li><a href="raylib.html#id0">(in module raylib)</a>, <a href="raylib.html#raylib.PhysicsShapeType">[1]</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.PhysicsShatter">PhysicsShatter() (in module raylib)</a>
+</li>
       <li><a href="pyray.html#pyray.PINK">PINK (in module pyray)</a>
 
       <ul>
@@ -7418,14 +7421,14 @@
         <li><a href="pyray.html#pyray.PixelFormat.PIXELFORMAT_UNCOMPRESSED_GRAYSCALE">(pyray.PixelFormat attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.PIXELFORMAT_UNCOMPRESSED_R16">PIXELFORMAT_UNCOMPRESSED_R16 (in module raylib)</a>
 
       <ul>
         <li><a href="pyray.html#pyray.PixelFormat.PIXELFORMAT_UNCOMPRESSED_R16">(pyray.PixelFormat attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.PIXELFORMAT_UNCOMPRESSED_R16G16B16">PIXELFORMAT_UNCOMPRESSED_R16G16B16 (in module raylib)</a>
 
       <ul>
@@ -7514,6 +7517,12 @@
 </li>
       <li><a href="raylib.html#raylib.PollInputEvents">PollInputEvents() (in module raylib)</a>
 </li>
+      <li><a href="pyray.html#pyray.PolygonData">PolygonData (class in pyray)</a>
+
+      <ul>
+        <li><a href="raylib.html#raylib.PolygonData">(class in raylib)</a>
+</li>
+      </ul></li>
       <li><a href="pyray.html#pyray.Camera3D.position">position (pyray.Camera3D attribute)</a>
 
       <ul>
@@ -7530,10 +7539,10 @@
         <li><a href="raylib.html#raylib.Ray.position">(raylib.Ray attribute)</a>
 </li>
       </ul></li>
-      <li><a href="pyray.html#pyray.PhysicsVertexData.positions">positions (pyray.PhysicsVertexData attribute)</a>
+      <li><a href="pyray.html#pyray.PolygonData.positions">positions (pyray.PolygonData attribute)</a>
 
       <ul>
-        <li><a href="raylib.html#raylib.PhysicsVertexData.positions">(raylib.PhysicsVertexData attribute)</a>
+        <li><a href="raylib.html#raylib.PolygonData.positions">(raylib.PolygonData attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.AudioStream.processor">processor (pyray.AudioStream attribute)</a>
@@ -7781,10 +7790,6 @@
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.RenderTexture2D">RenderTexture2D (class in raylib)</a>
-</li>
-      <li><a href="pyray.html#pyray.reset_physics">reset_physics() (in module pyray)</a>
-</li>
-      <li><a href="raylib.html#raylib.ResetPhysics">ResetPhysics() (in module raylib)</a>
 </li>
       <li><a href="pyray.html#pyray.PhysicsBodyData.restitution">restitution (pyray.PhysicsBodyData attribute)</a>
 
@@ -8484,12 +8489,12 @@
 </li>
       <li><a href="pyray.html#pyray.rl_set_uniform">rl_set_uniform() (in module pyray)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.rl_set_uniform_matrices">rl_set_uniform_matrices() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_set_uniform_matrix">rl_set_uniform_matrix() (in module pyray)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.rl_set_uniform_sampler">rl_set_uniform_sampler() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_set_vertex_attribute">rl_set_vertex_attribute() (in module pyray)</a>
@@ -9234,6 +9239,10 @@
         <li><a href="raylib.html#raylib.Transform.rotation">(raylib.Transform attribute)</a>
 </li>
       </ul></li>
+      <li><a href="pyray.html#pyray.run_physics_step">run_physics_step() (in module pyray)</a>
+</li>
+      <li><a href="raylib.html#raylib.RunPhysicsStep">RunPhysicsStep() (in module raylib)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -10506,10 +10515,10 @@
 </li>
       <li><a href="raylib.html#raylib.UnloadMesh">UnloadMesh() (in module raylib)</a>
 </li>
-      <li><a href="raylib.html#raylib.UnloadModel">UnloadModel() (in module raylib)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="raylib.html#raylib.UnloadModel">UnloadModel() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.UnloadModelAnimation">UnloadModelAnimation() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.UnloadModelAnimations">UnloadModelAnimations() (in module raylib)</a>
@@ -10558,8 +10567,6 @@
 </li>
       <li><a href="pyray.html#pyray.update_music_stream">update_music_stream() (in module pyray)</a>
 </li>
-      <li><a href="pyray.html#pyray.update_physics">update_physics() (in module pyray)</a>
-</li>
       <li><a href="pyray.html#pyray.update_sound">update_sound() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.update_texture">update_texture() (in module pyray)</a>
@@ -10579,8 +10586,6 @@
       <li><a href="raylib.html#raylib.UpdateModelAnimationBones">UpdateModelAnimationBones() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.UpdateMusicStream">UpdateMusicStream() (in module raylib)</a>
-</li>
-      <li><a href="raylib.html#raylib.UpdatePhysics">UpdatePhysics() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.UpdateSound">UpdateSound() (in module raylib)</a>
 </li>
@@ -11057,13 +11062,13 @@
       <li><a href="pyray.html#pyray.Mesh.vertexCount">vertexCount (pyray.Mesh attribute)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.PhysicsVertexData.vertexCount">(pyray.PhysicsVertexData attribute)</a>
+        <li><a href="pyray.html#pyray.PolygonData.vertexCount">(pyray.PolygonData attribute)</a>
 </li>
         <li><a href="pyray.html#pyray.rlDrawCall.vertexCount">(pyray.rlDrawCall attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Mesh.vertexCount">(raylib.Mesh attribute)</a>
 </li>
-        <li><a href="raylib.html#raylib.PhysicsVertexData.vertexCount">(raylib.PhysicsVertexData attribute)</a>
+        <li><a href="raylib.html#raylib.PolygonData.vertexCount">(raylib.PolygonData attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.rlDrawCall.vertexCount">(raylib.rlDrawCall attribute)</a>
 </li>

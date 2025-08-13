@@ -47,6 +47,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 5.5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#links">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#backends">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
@@ -63,6 +64,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dynamic.html">Dynamic Bindings</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Building from source</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#have-pip-build-from-source">Have Pip build from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-variables-new-in-5-5-0-3">Environment variables (new in 5.5.0.3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#or-build-from-source-manually">Or, Build from source manually</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#windows-manual-build">Windows manual build</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#linux-manual-build">Linux manual build</a></li>
@@ -102,22 +104,43 @@
 <h1>Building from source<a class="headerlink" href="#building-from-source" title="Link to this heading"></a></h1>
 <section id="have-pip-build-from-source">
 <h2>Have Pip build from source<a class="headerlink" href="#have-pip-build-from-source" title="Link to this heading"></a></h2>
-<p>This is useful if the binaries don’t work on your system, or you want to use a newer version of Raylib.</p>
+<p>This is useful if the binaries don’t work on your system, or you want to use a newer version of Raylib, or compile
+Raylib with a different version of OpenGL than the default.  (e.g. on old hardware use cmake option <code class="docutils literal notranslate"><span class="pre">-DOPENGL_VERSION=1.1</span></code>)</p>
 <p>First make sure Raylib is installed.  On Linux/Mac it must include the pkg-config files.  Best way to ensure this
 is to compile and install Raylib using CMake: <a class="reference external" href="https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake">https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake</a></p>
 <p>Requirements for build: cmake, pkg-config.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="mf">5.0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">raysan5</span><span class="o">/</span><span class="n">raylib</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">tags</span><span class="o">/</span><span class="mf">5.5</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">unzip</span> <span class="mf">5.5</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="mf">5.5</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
 <span class="n">cmake</span>  <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
 <span class="n">make</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<span class="n">export</span> <span class="n">PKG_CONFIG_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pkgconfig</span>
 </pre></div>
 </div>
 <p>Then ask Pip to build from source:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">raylib</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">raylib</span>
 </pre></div>
 </div>
+</section>
+<section id="environment-variables-new-in-5-5-0-3">
+<h2>Environment variables (new in 5.5.0.3)<a class="headerlink" href="#environment-variables-new-in-5-5-0-3" title="Link to this heading"></a></h2>
+<p>If plg-config doesn’t work you can manually set these environment variables:</p>
+<p><code class="docutils literal notranslate"><span class="pre">RAYLIB_PLATFORM</span></code>: Any one of: <code class="docutils literal notranslate"><span class="pre">Desktop</span></code>, <code class="docutils literal notranslate"><span class="pre">SDL</span></code>, <code class="docutils literal notranslate"><span class="pre">DRM</span></code>, <code class="docutils literal notranslate"><span class="pre">PLATFORM_COMMA</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">RAYLIB_LINK_ARGS</span></code>: Arguments to pass to the linker rather than getting them from pkg-config.
+e.g.: <code class="docutils literal notranslate"><span class="pre">&quot;-L/usr/local/lib</span> <span class="pre">-lraylib&quot;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">RAYLIB_INCLUDE_PATH</span></code>: Directory to find raylib.h rather than getting from pkg-config.
+e.g.: <code class="docutils literal notranslate"><span class="pre">/usr/local/include</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">RAYGUI_INCLUDE_PATH</span></code>: Directory to find raygui.h
+e.g.: <code class="docutils literal notranslate"><span class="pre">/usr/local/include</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">GLFW_INCLUDE_PATH</span></code>: Directory to find glfw3.h
+e.g.: <code class="docutils literal notranslate"><span class="pre">/usr/local/include/GLFW</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">PHYSAC_INCLUDE_PATH</span></code>: Directory to find physac.h
+e.g.: <code class="docutils literal notranslate"><span class="pre">/usr/local/include</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">LIBFFI_INCLUDE_PATH</span></code>:
+e.g.: <code class="docutils literal notranslate"><span class="pre">/usr/local/include</span></code></p>
 </section>
 <section id="or-build-from-source-manually">
 <h2>Or, Build from source manually<a class="headerlink" href="#or-build-from-source-manually" title="Link to this heading"></a></h2>
@@ -160,11 +183,6 @@ Raylib.</p>
 <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>There’s a hardcoded path (to the raylib header files) in <cite>raylib/build.py</cite> you will probably need to edit.
-Would be useful if some Windows user could figure out how to auto detect this.</p>
-</div>
 <p>Then install it:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">dist</span>\<span class="n">raylib</span><span class="o">-</span><span class="mf">3.7.0</span><span class="o">-</span><span class="n">cp37</span><span class="o">-</span><span class="n">cp37m</span><span class="o">-</span><span class="n">win_amd64</span><span class="o">.</span><span class="n">whl</span>
 </pre></div>
@@ -191,6 +209,7 @@ work!</p>
 <span class="n">cd</span> <span class="n">build</span>
 <span class="n">cmake</span> <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<span class="n">export</span> <span class="n">PKG_CONFIG_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pkgconfig</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -240,7 +259,7 @@ work!</p>
 <code class="docutils literal notranslate"><span class="pre">--plat-name</span> <span class="pre">manylinux2014_x86_64</span></code> so on linux please run
 <code class="docutils literal notranslate"><span class="pre">./raylib/build_multi_linux.sh</span></code> )</p>
 </div>
-<div class="admonition-todo admonition" id="id2">
+<div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>Separate the instructions for preparing the dynamic module
 from the instructions for building the static module!</p>

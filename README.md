@@ -5,8 +5,6 @@
 
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/raylib)
 
-Chatroom: [Discord](https://discord.gg/fKDwt85aX6)
-
 HELP WANTED: [writing examples](https://github.com/electronstudio/raylib-python-cffi/issues/155)
 
 Features:
@@ -18,9 +16,6 @@ original Raylib.
 * Commercial-friendly license.
 * Docstrings and auto-completion.
 * Type checking with Mypy
-
-
-[Full documentation](http://electronstudio.github.io/raylib-python-cffi)
 
 # Quickstart
 
@@ -35,6 +30,19 @@ while not window_should_close():
     end_drawing()
 close_window()
 ```
+
+# Links
+
+* [Tutorial video](https://www.youtube.com/watch?v=UoAsDlUwjy0&lc=UgxCR-tvnQJITZr2IvN4AaABAg)
+* [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
+* [Imgui integration](https://github.com/Scr44gr/raylib-imgui)
+* [Examples](https://github.com/electronstudio/raylib-python-cffi/tree/master/examples)
+* [Blep's examples](https://github.com/blep/pyray_examples)
+* [Raylib Python Discord](https://discord.gg/fKDwt85aX6)
+* [Raylib General Discord](https://discord.com/invite/raylib)
+* [Python video player](https://github.com/anrayliu/pyvidplayer2)
+* [A Vector2 class](https://github.com/electronstudio/raylib-python-cffi/blob/master/examples/extra/vector2_extended.py)
+* [Raylib C FAQ](https://github.com/raysan5/raylib/wiki/Frequently-Asked-Questions/)
 
 # Installation
 
