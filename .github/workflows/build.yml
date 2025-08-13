@@ -31,11 +31,11 @@ jobs:
 
       - name: Build SDL
         run: |
-          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
-          tar xvfz release-2.30.7.tar.gz
+          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.8.tar.gz
+          tar xvfz release-2.32.8.tar.gz
           mkdir build
           cd build
-          cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake ../SDL-release-2.32.8 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
           sudo cmake --install .
 
@@ -118,11 +118,11 @@ jobs:
 #
 #      - name: Build SDL
 #        run: |
-#          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
-#          tar xvfz release-2.30.7.tar.gz
+#          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.8.tar.gz
+#          tar xvfz release-2.32.8.tar.gz
 #          mkdir build
 #          cd build
-#          cmake ../SDL-release-2.30.7 -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+#          cmake ../SDL-release-2.32.8 -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
 #          cmake --build . --config Release
 #          sudo cmake --install .
 #
@@ -186,7 +186,13 @@ jobs:
 
 
   build-linux:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    container:
+      image: electronstudio/ubuntu16-modern:latest
+      options: --user root
+      volumes:
+        # override /__e/node20 because GitHub Actions uses a version that requires too-recent glibc
+        - /tmp:/__e/node20
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
@@ -194,8 +200,11 @@ jobs:
         python-version: ['3.10', '3.11', '3.12', '3.13', '3.14.0-rc.1',  'pypy-3.10', 'pypy-3.11' ]
         raylib-platform: ['Desktop', 'SDL', 'DRM']
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: fix node
+        run: |
+          ln -s /usr/local/bin /__e/node20/bin
+
+      - uses: actions/checkout@v2
         with:
           submodules: recursive
 
@@ -211,19 +220,15 @@ jobs:
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
-      - name: install prereqs
-        run: |
-          sudo apt update
-          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev
       - name: Build SDL
         run: |          
-          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
-          tar xvfz release-2.30.7.tar.gz
+          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.8.tar.gz
+          tar xvfz release-2.32.8.tar.gz
           mkdir build
           cd build
-          cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake ../SDL-release-2.32.8 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
-          sudo cmake --install .
+          cmake --install .
 
       # Runs a set of commands using the runners shell
       - name: Build raylib
@@ -233,12 +238,12 @@ jobs:
           cd build
           cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
           make -j2
-          sudo make install
+          make install
       - name: Copy extras
         run: |
-          sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
-          sudo cp physac/src/physac.h /usr/local/include/
-          sudo cp raygui/src/raygui.h /usr/local/include/
+          cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+          cp physac/src/physac.h /usr/local/include/
+          cp raygui/src/raygui.h /usr/local/include/
       - name: Build raylib-python-cffi
         env:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
