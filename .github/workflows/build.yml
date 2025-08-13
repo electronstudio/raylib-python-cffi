@@ -77,9 +77,9 @@ jobs:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
         run: |
           python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
+          pip3 install --upgrade "cffi>=1.17.1"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
           python setup.py bdist_wheel --plat-name macosx_10_13_x86_64
 
       - name: Test
@@ -244,9 +244,9 @@ jobs:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
         run: |
           python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
+          pip3 install --upgrade "cffi>=1.17.1"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
           python setup.py bdist_wheel --plat-name manylinux2014_x86_64
       - name: Test
         run: |
@@ -331,9 +331,9 @@ jobs:
           copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.lib .
           copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.dll raylib\
           python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
+          pip3 install --upgrade "cffi>=1.17.1"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
           del raylib\dynamic\*.so* >nul 2>&1
           del raylib\dynamic\*.dll >nul 2>&1
           del raylib\dynamic\*.dylib >nul 2>&1
@@ -402,9 +402,9 @@ jobs:
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
+          pip3 install --upgrade "cffi>=1.17.1"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
           python setup.py sdist
 
       - name: Upload build Artifact wheel
@@ -437,9 +437,9 @@ jobs:
       - name: Build raylib-python-cffi-dynamic
         run: |
           python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
+          pip3 install --upgrade "cffi>=1.17.1"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
           cd dynamic
           python setup.py sdist
 
