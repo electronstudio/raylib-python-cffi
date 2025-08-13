@@ -274,7 +274,7 @@ jobs:
 
   build-windows:
     # The type of runner that the job will run on
-    runs-on: windows-2019
+    runs-on: windows-2022
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
