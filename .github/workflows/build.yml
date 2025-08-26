@@ -25,6 +25,10 @@ jobs:
         with:
           submodules: recursive
 
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+
       - name: Build SDL
         run: |
           wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
@@ -195,6 +199,10 @@ jobs:
         with:
           submodules: recursive
 
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -278,6 +286,10 @@ jobs:
         with:
           submodules: recursive
 
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+
       - name: Download SDL2
         run: curl -L -o SDL2.zip https://github.com/libsdl-org/SDL/releases/download/release-2.30.8/SDL2-devel-2.30.8-VC.zip
 
@@ -359,6 +371,10 @@ jobs:
         with:
           submodules: recursive
 
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -405,6 +421,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
 
       - name: Setup Python
         uses: actions/setup-python@v5
