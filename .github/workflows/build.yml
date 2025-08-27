@@ -151,16 +151,11 @@ jobs:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
           PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
         run: |
-          export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-          ls -l /usr/local/lib/pkgconfig
-          pkg-config --libs raylib
-          echo $?
-          echo $PKG_CONFIG_PATH
           ${{ matrix.python-version }} -m pip install --upgrade pip
           ${{ matrix.python-version }} -m pip install --upgrade "cffi>=1.17.1"
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
-          PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ${{ matrix.python-version }} setup.py bdist_wheel --plat-name manylinux2014_x86_64
+          ${{ matrix.python-version }} setup.py bdist_wheel --plat-name manylinux2014_x86_64
         shell: bash
       - name: Test
         run: |
