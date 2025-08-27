@@ -159,6 +159,8 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade build
           ${{ matrix.python-version }} -m pip install --upgrade auditwheel
           ${{ matrix.python-version }} -m pip install --upgrade patchelf
+          cp -vf /opt/pypy*/bin/* /usr/bin/
+          cp -vf $HOME/.local/bin/* /usr/bin/
           ${{ matrix.python-version }} -m build --wheel
           ${{ matrix.python-version }} -m auditwheel -v show dist/*.whl
           ${{ matrix.python-version }} -m auditwheel repair dist/*.whl
