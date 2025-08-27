@@ -33,10 +33,10 @@ REPO_ROOT = THIS_DIR.parent
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 
 def check_raylib_installed():
-    return subprocess.run(['pkg-config', '--exists', 'raylib'], text=True, stdout=subprocess.PIPE).returncode == 0
+    return subprocess.run(['pkg-config', '--libs', 'raylib'], text=True, stdout=subprocess.PIPE).returncode == 0
 
 def check_SDL_installed():
-    return subprocess.run(['pkg-config', '--exists', 'sdl2'], text=True, stdout=subprocess.PIPE).returncode == 0
+    return subprocess.run(['pkg-config', '--libs', 'sdl2'], text=True, stdout=subprocess.PIPE).returncode == 0
 
 def get_the_include_path():
     return subprocess.run(['pkg-config', '--variable=includedir', 'raylib'], text=True,
