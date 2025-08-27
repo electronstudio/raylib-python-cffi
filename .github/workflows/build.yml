@@ -155,11 +155,13 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade "cffi>=1.17.1"
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
-          ${{ matrix.python-version }} setup.py bdist_wheel --plat-name manylinux2014_x86_64
+          ${{ matrix.python-version }} -m pip install --upgrade auditwheel
+          ${{ matrix.python-version }} -m build --wheel
+          ${{ matrix.python-version }} -m auditwheel repair dist/*.whl
         shell: bash
       - name: Test
         run: |
-          ${{ matrix.python-version }} -m pip install dist/*.whl
+          ${{ matrix.python-version }} -m pip install wheelhouse/*.whl
           cd /
           ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
@@ -176,7 +178,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wheel-linux-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
-          path: dist/*
+          path: wheelhouse/*
 
 
   build-windows:
