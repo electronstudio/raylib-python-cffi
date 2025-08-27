@@ -27,7 +27,9 @@ from pathlib import Path
 THIS_DIR = Path(__file__).resolve().parent
 REPO_ROOT = THIS_DIR.parent
 
-
+# TODO: I think the customisation is making this file overly complex and probably isn't used
+# by many/any users, see discussion at https://github.com/electronstudio/raylib-python-cffi/pull/172
+#
 # Environment variables you can set before build
 #
 # RAYLIB_PLATFORM: Any one of: Desktop, SDL, DRM, PLATFORM_COMMA
@@ -43,6 +45,15 @@ REPO_ROOT = THIS_DIR.parent
 #    e.g.: /usr/local/include
 # LIBFFI_INCLUDE_PATH:
 #    e.g.: /usr/local/include
+#
+# PKG_CONFIG_LIB_raylib: the package to request from pkg-config for raylib include files, default 'raylib'
+# PKG_CONFIG_LIB_raygui: the package to request from pkg-config for raygui include files
+#   set to 'raygui' if you have a separate raygui package, else unset for default 'raylib'
+# PKG_CONFIG_LIB_physac: the package to request from pkg-config for physac indlude files
+#   set to 'physac' if you have a separate raygui physac, else unset for default 'raylib'
+# PKG_CONFIG_LIB_glfw3: the package to request from pkg-config for glfw3 include files
+#   set to 'glfw3' if you have a separate glfw3 package, else unset for default 'raylib'
+# PKG_CONFIG_LIB_libffi: the package to request from pkg-config for libffi include files
 
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 
@@ -54,9 +65,11 @@ def check_sdl_pkgconfig_installed():
     # this should be 'pkg-config --exists sdl2' but result is non-deterministic on old versions of pkg-config!
     return subprocess.run(['pkg-config', '--libs', 'sdl2'], text=True, stdout=subprocess.PIPE).returncode == 0
 
-def get_the_include_path_from_pkgconfig():
-    return subprocess.run(['pkg-config', '--variable=includedir', 'raylib'], text=True,
-                          stdout=subprocess.PIPE).stdout.strip()
+
+def get_the_include_path_from_pkgconfig(libname):
+    return subprocess.run(
+        ['pkg-config', '--variable=includedir', os.environ.get("PKG_CONFIG_LIB_" + libname, 'raylib')], text=True,
+        stdout=subprocess.PIPE).stdout.strip()
 
 
 def get_the_lib_path_from_pkgconfig():
@@ -137,7 +150,7 @@ def build_unix():
 
     raylib_include_path = os.getenv("RAYLIB_INCLUDE_PATH")
     if raylib_include_path is None:
-        raylib_include_path = get_the_include_path_from_pkgconfig()
+        raylib_include_path = get_the_include_path_from_pkgconfig("raylib")
     raylib_h = raylib_include_path + "/raylib.h"
     rlgl_h = raylib_include_path + "/rlgl.h"
     raymath_h = raylib_include_path + "/raymath.h"
@@ -159,7 +172,7 @@ def build_unix():
 
     glfw_include_path = os.getenv("GLFW_INCLUDE_PATH")
     if glfw_include_path is None:
-        glfw_include_path = get_the_include_path_from_pkgconfig()
+        glfw_include_path = get_the_include_path_from_pkgconfig("glfw3")
     glfw3_h = glfw_include_path + "/GLFW/glfw3.h"
     if RAYLIB_PLATFORM=="Desktop" and check_header_exists(glfw3_h):
         ffi_includes += """
@@ -168,7 +181,7 @@ def build_unix():
 
     raygui_include_path = os.getenv("RAYGUI_INCLUDE_PATH")
     if raygui_include_path is None:
-        raygui_include_path = get_the_include_path_from_pkgconfig()
+        raygui_include_path = get_the_include_path_from_pkgconfig("raygui")
     raygui_h = raygui_include_path + "/raygui.h"
     if check_header_exists(raygui_h):
         ffi_includes += """
@@ -179,7 +192,7 @@ def build_unix():
 
     physac_include_path = os.getenv("PHYSAC_INCLUDE_PATH")
     if physac_include_path is None:
-        physac_include_path = get_the_include_path_from_pkgconfig()
+        physac_include_path = get_the_include_path_from_pkgconfig("physac")
     physac_h = physac_include_path + "/physac.h"
     if check_header_exists(physac_h):
         ffi_includes += """
@@ -189,7 +202,7 @@ def build_unix():
 
     libffi_include_path = os.getenv("LIBFFI_INCLUDE_PATH")
     if libffi_include_path is None:
-        libffi_include_path = get_the_include_path_from_pkgconfig()
+        libffi_include_path = get_the_include_path_from_pkgconfig("libffi")
 
     ffibuilder.cdef(pre_process_header(raylib_h))
     ffibuilder.cdef(pre_process_header(rlgl_h))
