@@ -154,6 +154,9 @@ jobs:
           export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
           ls -l /usr/local/lib/pkgconfig
           pkg-config --libs raylib
+          echo $PKG_CONFIG_PATH
+          pkg-config --exists raylib
+          echo $?
           ${{ matrix.python-version }} -m pip install --upgrade pip
           ${{ matrix.python-version }} -m pip install --upgrade "cffi>=1.17.1"
           ${{ matrix.python-version }} -m pip install --upgrade wheel

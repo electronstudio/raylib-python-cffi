@@ -110,9 +110,12 @@ def check_header_exists(file):
 
 def build_unix():
     if not check_raylib_installed():
+        print("PKG_CONFIG_PATH is set to: "+os.getenv("PKG_CONFIG_PATH"))
+        print(get_lib_flags())
         raise Exception("ERROR: raylib not found by pkg-config.  Please install pkg-config and Raylib.")
 
     if RAYLIB_PLATFORM=="SDL" and not check_SDL_installed():
+        print("PKG_CONFIG_PATH is set to: "+os.getenv("PKG_CONFIG_PATH"))
         raise Exception("ERROR: SDL2 not found by pkg-config.  Please install pkg-config and SDL2.")
 
     raylib_h = get_the_include_path() + "/raylib.h"
