@@ -160,7 +160,7 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade auditwheel
           ${{ matrix.python-version }} -m pip install --upgrade patchelf
           ${{ matrix.python-version }} -m build --wheel
-          ${{ matrix.python-version }} -m auditwheel show --verbose dist/*.whl
+          ${{ matrix.python-version }} -m auditwheel -v show dist/*.whl
           ${{ matrix.python-version }} -m auditwheel repair dist/*.whl
         shell: bash
       - name: Test
