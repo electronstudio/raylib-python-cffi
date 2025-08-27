@@ -34,8 +34,8 @@ setup(
     author="Electron Studio",
     author_email="github@electronstudio.co.uk",
     license="EPL-2.0",
+    license_files = ['LICENSE'],
     classifiers=[
-        "License :: OSI Approved :: Eclipse Public License 2.0 (EPL-2.0)",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.13",
         "Programming Language :: Python :: 3.12",
