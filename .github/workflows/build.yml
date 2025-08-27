@@ -75,7 +75,7 @@ jobs:
       - name: Build raylib-python-cffi
         env:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
-          PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
+
         run: |
           python -m pip install --upgrade pip
           pip3 install --upgrade "cffi>=1.17.1"
@@ -149,6 +149,7 @@ jobs:
       - name: Build raylib-python-cffi
         env:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
+          PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
         run: |
           ${{ matrix.python-version }} -m pip install --upgrade pip
           ${{ matrix.python-version }} -m pip install --upgrade "cffi>=1.17.1"
