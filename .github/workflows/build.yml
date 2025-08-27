@@ -165,7 +165,7 @@ jobs:
         shell: bash
       - name: Test
         run: |
-          ${{ matrix.python-version }} -m pip install wheelhouse/*.whl
+          ${{ matrix.python-version }} -m pip install --force-reinstall --no-deps wheelhouse/*.whl
           cd /
           ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
@@ -248,11 +248,12 @@ jobs:
           pip3 install --upgrade "cffi>=1.17.1"
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
+          pip3 install --upgrade build
           del raylib\dynamic\*.so* >nul 2>&1
           del raylib\dynamic\*.dll >nul 2>&1
           del raylib\dynamic\*.dylib >nul 2>&1
           del raylib\dynamic\32bit\* >nul 2>&1
-          python setup.py bdist_wheel
+          python -m build --wheel
         shell: cmd
 
       - name: Test
