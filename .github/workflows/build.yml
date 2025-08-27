@@ -155,6 +155,7 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade "cffi>=1.17.1"
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
+          ${{ matrix.python-version }} -m pip install --upgrade build
           ${{ matrix.python-version }} -m pip install --upgrade auditwheel
           ${{ matrix.python-version }} -m build --wheel
           ${{ matrix.python-version }} -m auditwheel repair dist/*.whl

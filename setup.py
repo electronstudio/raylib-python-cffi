@@ -33,7 +33,6 @@ setup(
     url="https://github.com/electronstudio/raylib-python-cffi",
     author="Electron Studio",
     author_email="github@electronstudio.co.uk",
-    license="EPL-2.0",
     license_files = ['LICENSE'],
     classifiers=[
         "Programming Language :: Python :: 3",
