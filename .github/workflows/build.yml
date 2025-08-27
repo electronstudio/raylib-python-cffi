@@ -159,6 +159,7 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ${{ matrix.python-version }} setup.py bdist_wheel --plat-name manylinux2014_x86_64
+        shell: bash
       - name: Test
         run: |
           ${{ matrix.python-version }} -m pip install dist/*.whl
