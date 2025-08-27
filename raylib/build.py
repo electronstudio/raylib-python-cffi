@@ -33,10 +33,12 @@ REPO_ROOT = THIS_DIR.parent
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 
 def check_raylib_installed():
-    return subprocess.run(['pkg-config', '--exists', 'raylib'], text=True, stdout=subprocess.PIPE).returncode == 0
+    # this should be 'pkg-config --exists raylib' but result is non-deterministic on old versions of pkg-config!
+    return subprocess.run(['pkg-config', '--libs', 'raylib'], text=True, stdout=subprocess.PIPE).returncode == 0
 
 def check_SDL_installed():
-    return subprocess.run(['pkg-config', '--exists', 'sdl2'], text=True, stdout=subprocess.PIPE).returncode == 0
+    # this should be 'pkg-config --exists sdl2' but result is non-deterministic on old versions of pkg-config!
+    return subprocess.run(['pkg-config', '--libs', 'sdl2'], text=True, stdout=subprocess.PIPE).returncode == 0
 
 def get_the_include_path():
     return subprocess.run(['pkg-config', '--variable=includedir', 'raylib'], text=True,
@@ -110,9 +112,11 @@ def check_header_exists(file):
 
 def build_unix():
     if not check_raylib_installed():
+        print("PKG_CONFIG_PATH is set to: "+os.getenv("PKG_CONFIG_PATH"))
         raise Exception("ERROR: raylib not found by pkg-config.  Please install pkg-config and Raylib.")
 
     if RAYLIB_PLATFORM=="SDL" and not check_SDL_installed():
+        print("PKG_CONFIG_PATH is set to: "+os.getenv("PKG_CONFIG_PATH"))
         raise Exception("ERROR: SDL2 not found by pkg-config.  Please install pkg-config and SDL2.")
 
     raylib_h = get_the_include_path() + "/raylib.h"

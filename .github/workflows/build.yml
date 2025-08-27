@@ -15,7 +15,7 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10', 'pypy-3.11' ]
+        python-version: [ '3.10', '3.11', '3.12', '3.13', '3.14.0-rc.2', 'pypy-3.10', 'pypy-3.11' ]
         raylib-platform: ['Desktop', 'SDL']
     env:
       MACOSX_DEPLOYMENT_TARGET: '10.13'
@@ -31,11 +31,11 @@ jobs:
 
       - name: Build SDL
         run: |
-          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
-          tar xvfz release-2.30.7.tar.gz
+          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.8.tar.gz
+          tar xvfz release-2.32.8.tar.gz
           mkdir build
           cd build
-          cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake ../SDL-release-2.32.8 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
           sudo cmake --install .
 
@@ -75,11 +75,12 @@ jobs:
       - name: Build raylib-python-cffi
         env:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
+
         run: |
           python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
+          pip3 install --upgrade "cffi>=1.17.1"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
           python setup.py bdist_wheel --plat-name macosx_10_13_x86_64
 
       - name: Test
@@ -102,128 +103,34 @@ jobs:
           name: wheel-mac-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/*
 
-#  build-mac-universal:
-#    runs-on: macos-14
-#    strategy:
-#      matrix:
-#        python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.8', 'pypy-3.9', 'pypy-3.10' ]
-#        raylib-platform: ['Desktop', 'SDL']
-#    env:
-#      MACOSX_DEPLOYMENT_TARGET: 11.0
-#    steps:
-#      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#      - uses: actions/checkout@v4
-#        with:
-#          submodules: recursive
-#
-#      - name: Build SDL
-#        run: |
-#          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
-#          tar xvfz release-2.30.7.tar.gz
-#          mkdir build
-#          cd build
-#          cmake ../SDL-release-2.30.7 -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
-#          cmake --build . --config Release
-#          sudo cmake --install .
-#
-#      - name: Setup Python
-#        uses: actions/setup-python@v5
-#        with:
-#          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-#          python-version: ${{ matrix.python-version }}
-#          architecture: arm64
-#
-#      # Runs a set of commands using the runners shell
-#      - name: Build raylib without SDL because SDL version has incorrect pkg-config
-#        run: |
-#          cd raylib-c
-#          mkdir build
-#          cd build
-#          cmake -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-#          make -j2
-#          sudo make install
-#
-#      - name: Build raylib with SDL if selected
-#        run: |
-#          cd raylib-c
-#          mkdir build2
-#          cd build2
-#          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DPLATFORM=SDL -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-#          make -j2
-#          sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
-#
-#      - name: Copy extras
-#        run: |
-#          sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
-#          sudo cp physac/src/physac.h /usr/local/include/
-#          sudo cp raygui/src/raygui.h /usr/local/include/
-#
-#      - name: Build raylib-python-cffi
-#        run: |
-#          python -m pip install --upgrade pip
-#          pip3 install "cffi>=1.17.1"
-#          pip3 install wheel
-#          pip3 install setuptools
-#          RAYLIB_PLATFORM=${{ matrix.raylib-platform }} python setup.py bdist_wheel
-#
-#      - name: Upload build Artifact wheel
-#        uses: actions/upload-artifact@v3.2.1
-#        with:
-#          name: wheel
-#          path: dist/*
-
-#
-#      # Name defaults to universal2 and it technically is, but we override name to arm64.  Why don't we make a working universal2 wheel?  Because
-#      # I'd rather have a separate x86_64 that I can test, and I want it to work on 10_15 but I'm not sure a 'macosx_10_15_universal2' is valid
-#      # given that there is no SDK for universal until macosx_11_0
-#      - name: Build raylib-python-cffi
-#        run: |
-#          python -m pip install --upgrade pip
-#          pip3 install cffi
-#          pip3 install wheel
-#          python setup.py bdist_wheel --plat-name macosx_12_0_arm64
-
 
 
   build-linux:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    container:
+      image: electronstudio/ubuntu16-modern:latest
+      options: --user root
+      volumes:
+        # override /__e/node20 because GitHub Actions uses a version that requires too-recent glibc
+        - /tmp:/__e/node20
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10', 'pypy-3.11' ]
+        python-version: ['python3.10', 'python3.11', 'python3.12', 'python3.13', 'pypy3.10', 'pypy3.11']
         raylib-platform: ['Desktop', 'SDL', 'DRM']
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: fix node
+        run: |
+          ln -s /usr/local/bin /__e/node20/bin
+
+      - uses: actions/checkout@v2
         with:
           submodules: recursive
 
       - name: fix raygui bug
         run: |
           patch -p0 <raygui.h.diff
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: ${{ matrix.python-version }}
-          # The target architecture (x86, x64) of the Python interpreter.
-          architecture: x64
-
-      - name: install prereqs
-        run: |
-          sudo apt update
-          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev
-      - name: Build SDL
-        run: |          
-          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.7.tar.gz
-          tar xvfz release-2.30.7.tar.gz
-          mkdir build
-          cd build
-          cmake ../SDL-release-2.30.7 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
-          cmake --build . --config Release
-          sudo cmake --install .
 
       # Runs a set of commands using the runners shell
       - name: Build raylib
@@ -233,26 +140,28 @@ jobs:
           cd build
           cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
           make -j2
-          sudo make install
+          make install
       - name: Copy extras
         run: |
-          sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
-          sudo cp physac/src/physac.h /usr/local/include/
-          sudo cp raygui/src/raygui.h /usr/local/include/
+          cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+          cp physac/src/physac.h /usr/local/include/
+          cp raygui/src/raygui.h /usr/local/include/
       - name: Build raylib-python-cffi
         env:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
+          PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
         run: |
-          python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
-          python setup.py bdist_wheel --plat-name manylinux2014_x86_64
+          ${{ matrix.python-version }} -m pip install --upgrade pip
+          ${{ matrix.python-version }} -m pip install --upgrade "cffi>=1.17.1"
+          ${{ matrix.python-version }} -m pip install --upgrade wheel
+          ${{ matrix.python-version }} -m pip install --upgrade setuptools
+          ${{ matrix.python-version }} setup.py bdist_wheel --plat-name manylinux2014_x86_64
+        shell: bash
       - name: Test
         run: |
-          pip3 install dist/*.whl
+          ${{ matrix.python-version }} -m pip install dist/*.whl
           cd /
-          python3 -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+          ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
           if grep -q "INFO: Initializing raylib" /tmp/output; then
             echo "Passed"
@@ -261,7 +170,7 @@ jobs:
             echo "Failed"
             exit 1
           fi
-                    
+                 
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -270,25 +179,19 @@ jobs:
           path: dist/*
 
 
-
-
   build-windows:
     # The type of runner that the job will run on
-    runs-on: windows-2019
+    runs-on: windows-2022
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version:  [ '3.9', '3.10', '3.11', '3.12', '3.13', 'pypy-3.9', 'pypy-3.10', 'pypy-3.11' ]
+        python-version:  [ '3.10', '3.11', '3.12', '3.13', '3.14.0-rc.2', 'pypy-3.10', 'pypy-3.11' ]
         raylib-platform: ['Desktop', 'SDL']
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-
-      - name: fix raygui bug
-        run: |
-          patch -p0 <raygui.h.diff
 
       - name: Download SDL2
         run: curl -L -o SDL2.zip https://github.com/libsdl-org/SDL/releases/download/release-2.30.8/SDL2-devel-2.30.8-VC.zip
@@ -313,6 +216,11 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
 
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+        shell: cmd
+
       - name: Build raylib
         run: |
           cd raylib-c
@@ -331,9 +239,9 @@ jobs:
           copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.lib .
           copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.dll raylib\
           python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
+          pip3 install --upgrade "cffi>=1.17.1"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
           del raylib\dynamic\*.so* >nul 2>&1
           del raylib\dynamic\*.dll >nul 2>&1
           del raylib\dynamic\*.dylib >nul 2>&1
@@ -402,9 +310,9 @@ jobs:
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
+          pip3 install --upgrade "cffi>=1.17.1"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
           python setup.py sdist
 
       - name: Upload build Artifact wheel
@@ -437,9 +345,9 @@ jobs:
       - name: Build raylib-python-cffi-dynamic
         run: |
           python -m pip install --upgrade pip
-          pip3 install "cffi>=1.17.1"
-          pip3 install wheel
-          pip3 install setuptools
+          pip3 install --upgrade "cffi>=1.17.1"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
           cd dynamic
           python setup.py sdist
 
