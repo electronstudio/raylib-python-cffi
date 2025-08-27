@@ -157,16 +157,19 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
-          if [[ "${{ matrix.python-version }}" == pypy* ]]; then
-            ${{ matrix.python-version }} -m pip install "auditwheel<5.0"
-          else
+          if [[ "${{ matrix.python-version }}" != pypy* ]]; then
             ${{ matrix.python-version }} -m pip install --upgrade auditwheel
+            ${{ matrix.python-version }} -m pip install --upgrade patchelf
+            ${{ matrix.python-version }} -m pip show -f patchelf
           fi
-          ${{ matrix.python-version }} -m pip install --upgrade patchelf
-          ${{ matrix.python-version }} -m pip show -f patchelf
           ${{ matrix.python-version }} -m build --wheel
-          ${{ matrix.python-version }} -m auditwheel -v show dist/*.whl
-          ${{ matrix.python-version }} -m auditwheel repair dist/*.whl
+          if [[ "${{ matrix.python-version }}" != pypy* ]]; then
+            ${{ matrix.python-version }} -m auditwheel -v show dist/*.whl
+            ${{ matrix.python-version }} -m auditwheel repair dist/*.whl
+          else
+            mkdir -p wheelhouse
+            cp dist/*.whl wheelhouse/
+          fi
         shell: bash
       - name: Rename wheel for testing
         run: |
