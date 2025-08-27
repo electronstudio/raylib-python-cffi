@@ -4,7 +4,6 @@
 pi_task:
   arm_container:
     matrix:
-#      - image: dtcooper/raspberrypi-os:python3.14-bullseye
       - image: dtcooper/raspberrypi-os:python3.13-bullseye
       - image: dtcooper/raspberrypi-os:python3.12-bullseye
       - image: dtcooper/raspberrypi-os:python3.11-bullseye
