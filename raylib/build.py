@@ -15,13 +15,11 @@
 # Assumes raylib, GL, etc are all already installed as system libraries.  We dont distribute them.
 # Raylib must be installed and compiled with:  cmake -DWITH_PIC=ON -DSHARED=ON -DSTATIC=ON ..
 
-# We use /usr/local/lib/libraylib.a to ensure we link to static version
-import re
 
+import re
 from cffi import FFI
 import os
 import platform
-import sys
 import subprocess
 import time
 from pathlib import Path
@@ -29,29 +27,58 @@ from pathlib import Path
 THIS_DIR = Path(__file__).resolve().parent
 REPO_ROOT = THIS_DIR.parent
 
+# TODO: I think the customisation is making this file overly complex and probably isn't used
+# by many/any users, see discussion at https://github.com/electronstudio/raylib-python-cffi/pull/172
+#
+# Environment variables you can set before build
+#
+# RAYLIB_PLATFORM: Any one of: Desktop, SDL, DRM, PLATFORM_COMMA
+# RAYLIB_LINK_ARGS: Arguments to pass to the linker rather than getting them from pkg-config.
+#    e.g.: -L/usr/local/lib -lraylib
+# RAYLIB_INCLUDE_PATH: Directory to find raylib.h rather than getting from pkg-config.
+#    e.g.: /usr/local/include
+# RAYGUI_INCLUDE_PATH: Directory to find raygui.h
+#    e.g.: /usr/local/include
+# GLFW_INCLUDE_PATH: Directory to find glfw3.h
+#    e.g.: /usr/local/include/GLFW
+# PHYSAC_INCLUDE_PATH: Directory to find physac.h
+#    e.g.: /usr/local/include
+# LIBFFI_INCLUDE_PATH:
+#    e.g.: /usr/local/include
+#
+# PKG_CONFIG_LIB_raylib: the package to request from pkg-config for raylib include files, default 'raylib'
+# PKG_CONFIG_LIB_raygui: the package to request from pkg-config for raygui include files
+#   set to 'raygui' if you have a separate raygui package, else unset for default 'raylib'
+# PKG_CONFIG_LIB_physac: the package to request from pkg-config for physac indlude files
+#   set to 'physac' if you have a separate raygui physac, else unset for default 'raylib'
+# PKG_CONFIG_LIB_glfw3: the package to request from pkg-config for glfw3 include files
+#   set to 'glfw3' if you have a separate glfw3 package, else unset for default 'raylib'
+# PKG_CONFIG_LIB_libffi: the package to request from pkg-config for libffi include files
 
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 
-def check_raylib_installed():
+def check_raylib_pkgconfig_installed():
     # this should be 'pkg-config --exists raylib' but result is non-deterministic on old versions of pkg-config!
     return subprocess.run(['pkg-config', '--libs', 'raylib'], text=True, stdout=subprocess.PIPE).returncode == 0
 
-def check_SDL_installed():
+def check_sdl_pkgconfig_installed():
     # this should be 'pkg-config --exists sdl2' but result is non-deterministic on old versions of pkg-config!
     return subprocess.run(['pkg-config', '--libs', 'sdl2'], text=True, stdout=subprocess.PIPE).returncode == 0
 
-def get_the_include_path():
-    return subprocess.run(['pkg-config', '--variable=includedir', 'raylib'], text=True,
-                          stdout=subprocess.PIPE).stdout.strip()
+
+def get_the_include_path_from_pkgconfig(libname):
+    return subprocess.run(
+        ['pkg-config', '--variable=includedir', os.environ.get("PKG_CONFIG_LIB_" + libname, 'raylib')], text=True,
+        stdout=subprocess.PIPE).stdout.strip()
 
 
-def get_the_lib_path():
+def get_the_lib_path_from_pkgconfig():
     return subprocess.run(['pkg-config', '--variable=libdir', 'raylib'], text=True,
                           stdout=subprocess.PIPE).stdout.strip()
 
-def get_lib_flags():
+def get_lib_flags_from_pkgconfig():
     return subprocess.run(['pkg-config', '--libs', 'raylib'], text=True,
-                          stdout=subprocess.PIPE).stdout.strip().split()
+                          stdout=subprocess.PIPE).stdout.strip()
 
 def pre_process_header(filename, remove_function_bodies=False):
     print("Pre-processing " + filename)
@@ -111,26 +138,31 @@ def check_header_exists(file):
 
 
 def build_unix():
-    if not check_raylib_installed():
+    if os.getenv("RAYLIB_LINK_ARGS") is None and not check_raylib_pkgconfig_installed():
         print("PKG_CONFIG_PATH is set to: "+os.getenv("PKG_CONFIG_PATH"))
-        raise Exception("ERROR: raylib not found by pkg-config.  Please install pkg-config and Raylib.")
+        raise Exception("ERROR: raylib not found by pkg-config.  Please install pkg-config and Raylib"
+                        "or else set RAYLIB_LINK_ARGS env variable.")
 
-    if RAYLIB_PLATFORM=="SDL" and not check_SDL_installed():
+    if RAYLIB_PLATFORM=="SDL" and os.getenv("RAYLIB_LINK_ARGS") is None and not check_sdl_pkgconfig_installed():
         print("PKG_CONFIG_PATH is set to: "+os.getenv("PKG_CONFIG_PATH"))
-        raise Exception("ERROR: SDL2 not found by pkg-config.  Please install pkg-config and SDL2.")
+        raise Exception("ERROR: SDL2 not found by pkg-config.  Please install pkg-config and SDL2."
+                        "or else set RAYLIB_LINK_ARGS env variable.")
 
-    raylib_h = get_the_include_path() + "/raylib.h"
-    rlgl_h = get_the_include_path() + "/rlgl.h"
-    raymath_h = get_the_include_path() + "/raymath.h"
+    raylib_include_path = os.getenv("RAYLIB_INCLUDE_PATH")
+    if raylib_include_path is None:
+        raylib_include_path = get_the_include_path_from_pkgconfig("raylib")
+    raylib_h = raylib_include_path + "/raylib.h"
+    rlgl_h = raylib_include_path + "/rlgl.h"
+    raymath_h = raylib_include_path + "/raymath.h"
 
     if not os.path.isfile(raylib_h):
-        raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
+        raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib or set RAYLIB_INCLUDE_PATH.")
 
     if not os.path.isfile(rlgl_h):
-        raise Exception("ERROR: " + rlgl_h + " not found.  Please install Raylib.")
+        raise Exception("ERROR: " + rlgl_h + " not found.  Please install Raylib or set RAYLIB_INCLUDE_PATH.")
 
     if not os.path.isfile(raymath_h):
-        raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib.")
+        raise Exception("ERROR: " + raylib_h + " not found.  Please install Raylib or set RAYLIB_INCLUDE_PATH.")
 
     ffi_includes = """
     #include "raylib.h"
@@ -138,13 +170,19 @@ def build_unix():
     #include "raymath.h"
     """
 
-    glfw3_h = get_the_include_path() + "/GLFW/glfw3.h"
+    glfw_include_path = os.getenv("GLFW_INCLUDE_PATH")
+    if glfw_include_path is None:
+        glfw_include_path = get_the_include_path_from_pkgconfig("glfw3")
+    glfw3_h = glfw_include_path + "/GLFW/glfw3.h"
     if RAYLIB_PLATFORM=="Desktop" and check_header_exists(glfw3_h):
         ffi_includes += """
         #include "GLFW/glfw3.h"
         """
 
-    raygui_h = get_the_include_path() + "/raygui.h"
+    raygui_include_path = os.getenv("RAYGUI_INCLUDE_PATH")
+    if raygui_include_path is None:
+        raygui_include_path = get_the_include_path_from_pkgconfig("raygui")
+    raygui_h = raygui_include_path + "/raygui.h"
     if check_header_exists(raygui_h):
         ffi_includes += """
         #define RAYGUI_IMPLEMENTATION
@@ -152,12 +190,19 @@ def build_unix():
         #include "raygui.h"
         """
 
-    physac_h = get_the_include_path() + "/physac.h"
+    physac_include_path = os.getenv("PHYSAC_INCLUDE_PATH")
+    if physac_include_path is None:
+        physac_include_path = get_the_include_path_from_pkgconfig("physac")
+    physac_h = physac_include_path + "/physac.h"
     if check_header_exists(physac_h):
         ffi_includes += """
         #define PHYSAC_IMPLEMENTATION
         #include "physac.h"
         """
+
+    libffi_include_path = os.getenv("LIBFFI_INCLUDE_PATH")
+    if libffi_include_path is None:
+        libffi_include_path = get_the_include_path_from_pkgconfig("libffi")
 
     ffibuilder.cdef(pre_process_header(raylib_h))
     ffibuilder.cdef(pre_process_header(rlgl_h))
@@ -173,7 +218,11 @@ def build_unix():
 
     if platform.system() == "Darwin":
         print("BUILDING FOR MAC")
-        extra_link_args = [get_the_lib_path() + '/libraylib.a', '-framework', 'OpenGL', '-framework', 'Cocoa',
+        flags = os.getenv("RAYLIB_LINK_ARGS")
+        if flags is None:
+            flags = get_the_lib_path_from_pkgconfig() + '/libraylib.a'
+        # We use /usr/local/lib/libraylib.a to ensure we link to static version
+        extra_link_args = flags.split() + ['-framework', 'OpenGL', '-framework', 'Cocoa',
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
                            'CoreVideo']
         if RAYLIB_PLATFORM=="SDL":
@@ -183,12 +232,18 @@ def build_unix():
         extra_compile_args = ["-Wno-error=incompatible-function-pointer-types", "-D_CFFI_NO_LIMITED_API"]
     else:  #platform.system() == "Linux":
         print("BUILDING FOR LINUX")
-        extra_link_args = get_lib_flags() + [ '-lm', '-lpthread', '-lGL',
+        flags = os.getenv("RAYLIB_LINK_ARGS")
+        if flags is None:
+            flags = get_lib_flags_from_pkgconfig()
+        extra_link_args = flags.split() + [ '-lm', '-lpthread', '-lGL',
                                               '-lrt', '-lm', '-ldl', '-lpthread', '-latomic']
         if RAYLIB_PLATFORM=="SDL":
             extra_link_args += ['-lX11','-lSDL2']
         elif RAYLIB_PLATFORM=="DRM":
             extra_link_args += ['-lEGL', '-lgbm']
+        elif RAYLIB_PLATFORM=="PLATFORM_COMMA":
+            extra_link_args.remove('-lGL')
+            extra_link_args += ['-lGLESv2', '-lEGL', '-lwayland-client', '-lwayland-egl']
         else:
             extra_link_args += ['-lX11']
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
@@ -201,7 +256,8 @@ def build_unix():
     ffibuilder.set_source("raylib._raylib_cffi",
                           ffi_includes,
                           py_limited_api=False,
-                          include_dirs=[get_the_include_path()],
+                          include_dirs=[raylib_include_path, raygui_include_path, physac_include_path, glfw_include_path,
+                                        libffi_include_path],
                           extra_link_args=extra_link_args,
                           extra_compile_args=extra_compile_args,
                           libraries=libraries)

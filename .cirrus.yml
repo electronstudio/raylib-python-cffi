@@ -4,7 +4,6 @@
 pi_task:
   arm_container:
     matrix:
-#      - image: dtcooper/raspberrypi-os:python3.14-bullseye
       - image: dtcooper/raspberrypi-os:python3.13-bullseye
       - image: dtcooper/raspberrypi-os:python3.12-bullseye
       - image: dtcooper/raspberrypi-os:python3.11-bullseye
@@ -76,12 +75,6 @@ mac_task:
   env:
     MACOSX_DEPLOYMENT_TARGET: "11.0"
   matrix:
-    - env:
-#        PY_VER: "3.14"
-#        RAYLIB_PLATFORM: Desktop
-#    - env:
-#        PY_VER: "3.14"
-#        RAYLIB_PLATFORM: SDL
     - env:
         PY_VER: "3.10"
         RAYLIB_PLATFORM: Desktop
