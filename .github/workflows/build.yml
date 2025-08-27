@@ -87,7 +87,7 @@ jobs:
       - name: Rename wheels from universal2 to x86_64
         run: |
           # Rename universal2 wheels to x86_64 since they aren't truly universal
-          for wheel in dist/*-universal2.whl; do
+          for wheel in dist/*universal2.whl; do
             if [ -f "$wheel" ]; then
               new_wheel=$(echo "$wheel" | sed 's/universal2/x86_64/')
               echo "Renaming: $(basename "$wheel") -> $(basename "$new_wheel")"
