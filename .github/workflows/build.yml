@@ -82,13 +82,11 @@ jobs:
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
           python -m pip install --upgrade build
-          python -m pip install --upgrade auditwheel
           python -m build --wheel
-          python -m auditwheel repair dist/*.whl
 
       - name: Test
         run: |
-          pip3 install wheelhouse/*.whl
+          pip3 install dist/*.whl
           cd /
           python3 -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
@@ -104,7 +102,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wheel-mac-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
-          path: wheelhouse/*
+          path: dist/*
 
 
 
@@ -162,6 +160,7 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade auditwheel
           ${{ matrix.python-version }} -m pip install --upgrade patchelf
           ${{ matrix.python-version }} -m build --wheel
+          ${{ matrix.python-version }} -m auditwheel show --verbose dist/*.whl
           ${{ matrix.python-version }} -m auditwheel repair dist/*.whl
         shell: bash
       - name: Test
