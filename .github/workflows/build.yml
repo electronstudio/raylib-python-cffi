@@ -157,7 +157,11 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
-          ${{ matrix.python-version }} -m pip install --upgrade auditwheel
+          if [[ "${{ matrix.python-version }}" == pypy* ]]; then
+            ${{ matrix.python-version }} -m pip install "auditwheel<5.0"
+          else
+            ${{ matrix.python-version }} -m pip install --upgrade auditwheel
+          fi
           ${{ matrix.python-version }} -m pip install --upgrade patchelf
           ${{ matrix.python-version }} -m pip show -f patchelf
           ${{ matrix.python-version }} -m build --wheel
