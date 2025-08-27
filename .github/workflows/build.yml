@@ -164,19 +164,37 @@ jobs:
           ${{ matrix.python-version }} -m auditwheel -v show dist/*.whl
           ${{ matrix.python-version }} -m auditwheel repair dist/*.whl
         shell: bash
+      - name: Rename wheel for testing
+        run: |
+          # Rename wheelhouse wheels to be maximally compatible for testing
+          for wheel in wheelhouse/raylib*.whl; do
+            if [ -f "$wheel" ]; then
+              basename=$(basename "$wheel")
+              # Extract package and version using regex
+              if [[ $basename =~ ^([^-]+)-([^-]+.*)-[^-]+-[^-]+-[^-]+\.whl$ ]]; then
+                package="${BASH_REMATCH[1]}"
+                version="${BASH_REMATCH[2]}"
+                new_name="${package}-${version}-py3-none-linux_x86_64.whl"
+                echo "Renaming: $basename -> $new_name"
+                cp "$wheel" "wheelhouse/$new_name"
+              fi
+            fi
+          done
+        shell: bash
       - name: Test
         run: |
-          ${{ matrix.python-version }} -m pip install --force-reinstall --no-deps --platform linux_x86_64 wheelhouse/*.whl
+          ${{ matrix.python-version }} -m pip install --no-deps wheelhouse/*-py3-none-linux_x86_64.whl
           cd /
           ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
           if grep -q "INFO: Initializing raylib" /tmp/output; then
             echo "Passed"
-            exit 0
           else
             echo "Failed"
             exit 1
           fi
+          # Clean up test wheels
+          rm -f wheelhouse/*-py3-none-linux_x86_64.whl
                  
 
       - name: Upload build Artifact wheel
