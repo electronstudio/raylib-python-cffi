@@ -166,7 +166,7 @@ jobs:
         shell: bash
       - name: Test
         run: |
-          ${{ matrix.python-version }} -m pip install --force-reinstall --no-deps wheelhouse/*.whl
+          ${{ matrix.python-version }} -m pip install --force-reinstall --no-deps --platform linux_x86_64 wheelhouse/*.whl
           cd /
           ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
