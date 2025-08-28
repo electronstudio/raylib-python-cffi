@@ -81,7 +81,20 @@ jobs:
           pip3 install --upgrade "cffi>=1.17.1"
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
-          python setup.py bdist_wheel --plat-name macosx_10_13_x86_64
+          python -m pip install --upgrade build
+          python -m build --wheel
+
+      - name: Rename wheels from universal2 to x86_64
+        run: |
+          # Rename universal2 wheels to x86_64 since they aren't truly universal
+          for wheel in dist/*universal2.whl; do
+            if [ -f "$wheel" ]; then
+              new_wheel=$(echo "$wheel" | sed 's/universal2/x86_64/')
+              echo "Renaming: $(basename "$wheel") -> $(basename "$new_wheel")"
+              mv "$wheel" "$new_wheel"
+            fi
+          done
+        shell: bash
 
       - name: Test
         run: |
@@ -155,17 +168,39 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade "cffi>=1.17.1"
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
-          ${{ matrix.python-version }} setup.py bdist_wheel --plat-name manylinux2014_x86_64
+          ${{ matrix.python-version }} -m pip install --upgrade build
+          ${{ matrix.python-version }} -m build --wheel
+          python3.13 -m pip install --upgrade auditwheel
+          python3.13 -m pip install --upgrade patchelf
+          python3.13 -m auditwheel repair dist/*.whl
+        shell: bash
+      - name: Rename wheel for testing
+        run: |
+          # Rename wheelhouse wheels to be maximally compatible for testing
+          for wheel in wheelhouse/raylib*.whl; do
+            if [ -f "$wheel" ]; then
+              basename=$(basename "$wheel")
+              # Extract package and version using regex
+              if [[ $basename =~ ^([^-]+)-([^-]+.*)-[^-]+-[^-]+-[^-]+\.whl$ ]]; then
+                package="${BASH_REMATCH[1]}"
+                version="${BASH_REMATCH[2]}"
+                new_name="${package}-${version}-py3-none-linux_x86_64.whl"
+                echo "Renaming: $basename -> $new_name"
+                cp "$wheel" "wheelhouse/$new_name"
+              fi
+            fi
+          done
         shell: bash
       - name: Test
         run: |
-          ${{ matrix.python-version }} -m pip install dist/*.whl
+          ${{ matrix.python-version }} -m pip install --no-deps wheelhouse/*-py3-none-linux_x86_64.whl
+          # Clean up test wheels
+          rm -f wheelhouse/*-py3-none-linux_x86_64.whl
           cd /
           ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
           if grep -q "INFO: Initializing raylib" /tmp/output; then
             echo "Passed"
-            exit 0
           else
             echo "Failed"
             exit 1
@@ -176,7 +211,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wheel-linux-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
-          path: dist/*
+          path: wheelhouse/*
 
 
   build-windows:
@@ -242,11 +277,12 @@ jobs:
           pip3 install --upgrade "cffi>=1.17.1"
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
+          pip3 install --upgrade build
           del raylib\dynamic\*.so* >nul 2>&1
           del raylib\dynamic\*.dll >nul 2>&1
           del raylib\dynamic\*.dylib >nul 2>&1
           del raylib\dynamic\32bit\* >nul 2>&1
-          python setup.py bdist_wheel
+          python -m build --wheel
         shell: cmd
 
       - name: Test

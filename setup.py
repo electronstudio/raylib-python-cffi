@@ -33,8 +33,6 @@ setup(
     url="https://github.com/electronstudio/raylib-python-cffi",
     author="Electron Studio",
     author_email="github@electronstudio.co.uk",
-    license="EPL-2.0",
-    license_files = ['LICENSE'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.13",
@@ -44,7 +42,6 @@ setup(
     ],
     packages=["raylib", "pyray"],
     include_package_data=True,
-    setup_requires=["cffi>=1.17.1"],
     install_requires=["cffi>=1.17.1"],
     distclass=BinaryDistribution,
     cffi_modules=["raylib/build.py:ffibuilder"]
