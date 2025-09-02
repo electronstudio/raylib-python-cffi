@@ -47,6 +47,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 5.5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#links">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#backends">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
@@ -1039,6 +1040,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsMusicStreamPlaying"><code class="docutils literal notranslate"><span class="pre">IsMusicStreamPlaying()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsMusicValid"><code class="docutils literal notranslate"><span class="pre">IsMusicValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsPathFile"><code class="docutils literal notranslate"><span class="pre">IsPathFile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.IsPhysicsEnabled"><code class="docutils literal notranslate"><span class="pre">IsPhysicsEnabled()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsRenderTextureValid"><code class="docutils literal notranslate"><span class="pre">IsRenderTextureValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsShaderValid"><code class="docutils literal notranslate"><span class="pre">IsShaderValid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.IsSoundPlaying"><code class="docutils literal notranslate"><span class="pre">IsSoundPlaying()</span></code></a></li>
@@ -1257,6 +1259,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MOUSE_CURSOR_RESIZE_NS"><code class="docutils literal notranslate"><span class="pre">MOUSE_CURSOR_RESIZE_NS</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MOUSE_CURSOR_RESIZE_NWSE"><code class="docutils literal notranslate"><span class="pre">MOUSE_CURSOR_RESIZE_NWSE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MakeDirectory"><code class="docutils literal notranslate"><span class="pre">MakeDirectory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.Mat2"><code class="docutils literal notranslate"><span class="pre">Mat2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.Mat2.m00"><code class="docutils literal notranslate"><span class="pre">Mat2.m00</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.Mat2.m01"><code class="docutils literal notranslate"><span class="pre">Mat2.m01</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.Mat2.m10"><code class="docutils literal notranslate"><span class="pre">Mat2.m10</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.Mat2.m11"><code class="docutils literal notranslate"><span class="pre">Mat2.m11</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.Material"><code class="docutils literal notranslate"><span class="pre">Material</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Material.maps"><code class="docutils literal notranslate"><span class="pre">Material.maps</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Material.params"><code class="docutils literal notranslate"><span class="pre">Material.params</span></code></a></li>
@@ -1287,13 +1296,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Matrix.m7"><code class="docutils literal notranslate"><span class="pre">Matrix.m7</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Matrix.m8"><code class="docutils literal notranslate"><span class="pre">Matrix.m8</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Matrix.m9"><code class="docutils literal notranslate"><span class="pre">Matrix.m9</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.Matrix2x2"><code class="docutils literal notranslate"><span class="pre">Matrix2x2</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.Matrix2x2.m00"><code class="docutils literal notranslate"><span class="pre">Matrix2x2.m00</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.Matrix2x2.m01"><code class="docutils literal notranslate"><span class="pre">Matrix2x2.m01</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.Matrix2x2.m10"><code class="docutils literal notranslate"><span class="pre">Matrix2x2.m10</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.Matrix2x2.m11"><code class="docutils literal notranslate"><span class="pre">Matrix2x2.m11</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MatrixAdd"><code class="docutils literal notranslate"><span class="pre">MatrixAdd()</span></code></a></li>
@@ -1470,19 +1472,20 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PhysicsShapeType"><code class="docutils literal notranslate"><span class="pre">PhysicsShapeType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">PhysicsShapeType</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PhysicsShatter"><code class="docutils literal notranslate"><span class="pre">PhysicsShatter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.PhysicsVertexData"><code class="docutils literal notranslate"><span class="pre">PhysicsVertexData</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.PhysicsVertexData.normals"><code class="docutils literal notranslate"><span class="pre">PhysicsVertexData.normals</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.PhysicsVertexData.positions"><code class="docutils literal notranslate"><span class="pre">PhysicsVertexData.positions</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.PhysicsVertexData.vertexCount"><code class="docutils literal notranslate"><span class="pre">PhysicsVertexData.vertexCount</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PixelFormat"><code class="docutils literal notranslate"><span class="pre">PixelFormat</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PlayAudioStream"><code class="docutils literal notranslate"><span class="pre">PlayAudioStream()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PlayAutomationEvent"><code class="docutils literal notranslate"><span class="pre">PlayAutomationEvent()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PlayMusicStream"><code class="docutils literal notranslate"><span class="pre">PlayMusicStream()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PlaySound"><code class="docutils literal notranslate"><span class="pre">PlaySound()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PollInputEvents"><code class="docutils literal notranslate"><span class="pre">PollInputEvents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.PolygonData"><code class="docutils literal notranslate"><span class="pre">PolygonData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.PolygonData.normals"><code class="docutils literal notranslate"><span class="pre">PolygonData.normals</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.PolygonData.positions"><code class="docutils literal notranslate"><span class="pre">PolygonData.positions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.PolygonData.vertexCount"><code class="docutils literal notranslate"><span class="pre">PolygonData.vertexCount</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.Quaternion"><code class="docutils literal notranslate"><span class="pre">Quaternion</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Quaternion.w"><code class="docutils literal notranslate"><span class="pre">Quaternion.w</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Quaternion.x"><code class="docutils literal notranslate"><span class="pre">Quaternion.x</span></code></a></li>
@@ -1663,11 +1666,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#raylib.RenderTexture2D.texture"><code class="docutils literal notranslate"><span class="pre">RenderTexture2D.texture</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.ResetPhysics"><code class="docutils literal notranslate"><span class="pre">ResetPhysics()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RestoreWindow"><code class="docutils literal notranslate"><span class="pre">RestoreWindow()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.ResumeAudioStream"><code class="docutils literal notranslate"><span class="pre">ResumeAudioStream()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.ResumeMusicStream"><code class="docutils literal notranslate"><span class="pre">ResumeMusicStream()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.ResumeSound"><code class="docutils literal notranslate"><span class="pre">ResumeSound()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.RunPhysicsStep"><code class="docutils literal notranslate"><span class="pre">RunPhysicsStep()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SCROLLBAR"><code class="docutils literal notranslate"><span class="pre">SCROLLBAR</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SCROLLBAR_SIDE"><code class="docutils literal notranslate"><span class="pre">SCROLLBAR_SIDE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SCROLLBAR_WIDTH"><code class="docutils literal notranslate"><span class="pre">SCROLLBAR_WIDTH</span></code></a></li>
@@ -1932,7 +1935,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateModelAnimation"><code class="docutils literal notranslate"><span class="pre">UpdateModelAnimation()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateModelAnimationBones"><code class="docutils literal notranslate"><span class="pre">UpdateModelAnimationBones()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateMusicStream"><code class="docutils literal notranslate"><span class="pre">UpdateMusicStream()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.UpdatePhysics"><code class="docutils literal notranslate"><span class="pre">UpdatePhysics()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateSound"><code class="docutils literal notranslate"><span class="pre">UpdateSound()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateTexture"><code class="docutils literal notranslate"><span class="pre">UpdateTexture()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateTextureRec"><code class="docutils literal notranslate"><span class="pre">UpdateTextureRec()</span></code></a></li>
@@ -3096,7 +3098,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.ClosePhysics">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">ClosePhysics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.ClosePhysics" title="Link to this definition"></a></dt>
-<dd><p>Close physics system and unload used memory.</p>
+<dd><p>Unitializes physics pointers and closes physics loop thread.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -3325,7 +3327,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.DestroyPhysicsBody">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">DestroyPhysicsBody</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.DestroyPhysicsBody" title="Link to this definition"></a></dt>
-<dd><p>Destroy a physics body.</p>
+<dd><p>Unitializes and destroy a physics body.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -7436,7 +7438,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.InitPhysics">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">InitPhysics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.InitPhysics" title="Link to this definition"></a></dt>
-<dd><p>Initializes physics system.</p>
+<dd><p>Initializes physics values, pointers and creates physics loop thread.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -7635,6 +7637,12 @@ are very, very similar to the C originals.</p>
 <dt class="sig sig-object py" id="raylib.IsPathFile">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsPathFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsPathFile" title="Link to this definition"></a></dt>
 <dd><p>Check if a given path is a file or a directory.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.IsPhysicsEnabled">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">IsPhysicsEnabled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#raylib.IsPhysicsEnabled" title="Link to this definition"></a></dt>
+<dd><p>Returns true if physics thread is currently enabled.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -8788,6 +8796,31 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="raylib.Mat2">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Mat2</span></span><a class="headerlink" href="#raylib.Mat2" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.Mat2.m00">
+<span class="sig-name descname"><span class="pre">m00</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Mat2.m00" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.Mat2.m01">
+<span class="sig-name descname"><span class="pre">m01</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Mat2.m01" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.Mat2.m10">
+<span class="sig-name descname"><span class="pre">m10</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Mat2.m10" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.Mat2.m11">
+<span class="sig-name descname"><span class="pre">m11</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Mat2.m11" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="raylib.Material">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Material</span></span><a class="headerlink" href="#raylib.Material" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
@@ -8913,31 +8946,6 @@ are very, very similar to the C originals.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Matrix.m9">
 <span class="sig-name descname"><span class="pre">m9</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Matrix.m9" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="raylib.Matrix2x2">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Matrix2x2</span></span><a class="headerlink" href="#raylib.Matrix2x2" title="Link to this definition"></a></dt>
-<dd><dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.Matrix2x2.m00">
-<span class="sig-name descname"><span class="pre">m00</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Matrix2x2.m00" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.Matrix2x2.m01">
-<span class="sig-name descname"><span class="pre">m01</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Matrix2x2.m01" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.Matrix2x2.m10">
-<span class="sig-name descname"><span class="pre">m10</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Matrix2x2.m10" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.Matrix2x2.m11">
-<span class="sig-name descname"><span class="pre">m11</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#raylib.Matrix2x2.m11" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -9748,7 +9756,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.PhysicsShape.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Matrix2x2" title="raylib.Matrix2x2"><span class="pre">Matrix2x2</span></a></em><a class="headerlink" href="#raylib.PhysicsShape.transform" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">transform</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Mat2" title="raylib.Mat2"><span class="pre">Mat2</span></a></em><a class="headerlink" href="#raylib.PhysicsShape.transform" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -9758,7 +9766,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.PhysicsShape.vertexData">
-<span class="sig-name descname"><span class="pre">vertexData</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.PhysicsVertexData" title="raylib.PhysicsVertexData"><span class="pre">PhysicsVertexData</span></a></em><a class="headerlink" href="#raylib.PhysicsShape.vertexData" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">vertexData</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.PolygonData" title="raylib.PolygonData"><span class="pre">PolygonData</span></a></em><a class="headerlink" href="#raylib.PhysicsShape.vertexData" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -9768,30 +9776,15 @@ are very, very similar to the C originals.</p>
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsShapeType</span></span><a class="headerlink" href="#raylib.PhysicsShapeType" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py data">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsShapeType</span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.PhysicsShatter">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsShatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Vector2" title="raylib.Vector2"><span class="pre">Vector2</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.PhysicsShatter" title="Link to this definition"></a></dt>
 <dd><p>Shatters a polygon shape physics body to little physics bodies with explosion force.</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="raylib.PhysicsVertexData">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PhysicsVertexData</span></span><a class="headerlink" href="#raylib.PhysicsVertexData" title="Link to this definition"></a></dt>
-<dd><dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.PhysicsVertexData.normals">
-<span class="sig-name descname"><span class="pre">normals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.PhysicsVertexData.normals" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.PhysicsVertexData.positions">
-<span class="sig-name descname"><span class="pre">positions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.PhysicsVertexData.positions" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.PhysicsVertexData.vertexCount">
-<span class="sig-name descname"><span class="pre">vertexCount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.PhysicsVertexData.vertexCount" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py data">
@@ -9827,6 +9820,26 @@ are very, very similar to the C originals.</p>
 <dt class="sig sig-object py" id="raylib.PollInputEvents">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PollInputEvents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.PollInputEvents" title="Link to this definition"></a></dt>
 <dd><p>Register all input events.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="raylib.PolygonData">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PolygonData</span></span><a class="headerlink" href="#raylib.PolygonData" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.PolygonData.normals">
+<span class="sig-name descname"><span class="pre">normals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.PolygonData.normals" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.PolygonData.positions">
+<span class="sig-name descname"><span class="pre">positions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#raylib.PolygonData.positions" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.PolygonData.vertexCount">
+<span class="sig-name descname"><span class="pre">vertexCount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#raylib.PolygonData.vertexCount" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -10695,12 +10708,6 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.ResetPhysics">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">ResetPhysics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.ResetPhysics" title="Link to this definition"></a></dt>
-<dd><p>Reset physics system (global variables).</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="raylib.RestoreWindow">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RestoreWindow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.RestoreWindow" title="Link to this definition"></a></dt>
 <dd><p>Set window state: not minimized/maximized.</p>
@@ -10722,6 +10729,12 @@ are very, very similar to the C originals.</p>
 <dt class="sig sig-object py" id="raylib.ResumeSound">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">ResumeSound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Sound" title="raylib.Sound"><span class="pre">Sound</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.ResumeSound" title="Link to this definition"></a></dt>
 <dd><p>Resume a paused sound.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.RunPhysicsStep">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RunPhysicsStep</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.RunPhysicsStep" title="Link to this definition"></a></dt>
+<dd><p>Run physics step, to be used if PHYSICS_NO_THREADS is set in your main loop.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -12106,12 +12119,6 @@ are very, very similar to the C originals.</p>
 <dt class="sig sig-object py" id="raylib.UpdateMusicStream">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">UpdateMusicStream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Music" title="raylib.Music"><span class="pre">Music</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.UpdateMusicStream" title="Link to this definition"></a></dt>
 <dd><p>Updates buffers for music streaming.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="raylib.UpdatePhysics">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">UpdatePhysics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.UpdatePhysics" title="Link to this definition"></a></dt>
-<dd><p>Update physics system.</p>
 </dd></dl>
 
 <dl class="py function">

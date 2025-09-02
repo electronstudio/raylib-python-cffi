@@ -33,7 +33,7 @@ Then ask Pip to build from source:
 Environment variables (new in 5.5.0.3)
 --------------------------------------
 
-If plg-config doesn't work you can manually set these environment variables:
+If pkg-config doesn't work you can manually set these environment variables:
 
 ``RAYLIB_PLATFORM``: Any one of: ``Desktop``, ``SDL``, ``DRM``, ``PLATFORM_COMMA``
 
@@ -54,6 +54,22 @@ e.g.: ``/usr/local/include``
 
 ``LIBFFI_INCLUDE_PATH``:
 e.g.: ``/usr/local/include``
+
+You can also override which package names pkg-config will search for:
+
+``PKG_CONFIG_LIB_raylib``: the package to request from pkg-config for raylib include files, default ``raylib``
+
+``PKG_CONFIG_LIB_raygui``: the package to request from pkg-config for raygui include files
+set to ``raygui``` if you have a separate raygui package, else unset for default ``raylib``
+
+``PKG_CONFIG_LIB_physac``: the package to request from pkg-config for physac include files
+set to ``physac``` if you have a separate physac package, else unset for default ``raylib``
+
+``PKG_CONFIG_LIB_glfw3``: the package to request from pkg-config for glfw3 include files
+set to ``glfw3`` if you have a separate glfw3 package, else unset for default ``raylib``
+
+``PKG_CONFIG_LIB_libffi``: the package to request from pkg-config for libffi include files
+
 
 Or, Build from source manually
 ------------------------------

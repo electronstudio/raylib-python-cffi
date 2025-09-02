@@ -125,6 +125,7 @@
 <section id="platforms-windows-mac-linux-raspberry-pi-web">
 <h2>Platforms: Windows, Mac, Linux, Raspberry Pi, Web<a class="headerlink" href="#platforms-windows-mac-linux-raspberry-pi-web" title="Link to this heading"></a></h2>
 <p><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/raylib" /></p>
+<p><a class="reference external" href="https://pepy.tech/projects/raylib"><img alt="PyPI Downloads" src="https://static.pepy.tech/personalized-badge/raylib?period=total&amp;units=NONE&amp;left_color=BLACK&amp;right_color=GREEN&amp;left_text=downloads" /></a></p>
 <p>HELP WANTED: <a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/issues/155">writing examples</a></p>
 <p>Features:</p>
 <ul class="simple">
@@ -140,7 +141,7 @@ original Raylib.</p></li>
 </section>
 <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==5.5.0.2</span> <span class="pre">--break-system-packages</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==5.5.0.3</span> <span class="pre">--break-system-packages</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyray</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">init_window</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>
@@ -156,7 +157,7 @@ original Raylib.</p></li>
 <h1>Links<a class="headerlink" href="#links" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=UoAsDlUwjy0&amp;amp;lc=UgxCR-tvnQJITZr2IvN4AaABAg">Tutorial video</a></p></li>
-<li><p><a class="reference external" href="http://electronstudio.github.io/raylib-python-cffi">Full documentation</a></p></li>
+<li><p><a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi">Full documentation</a></p></li>
 <li><p><a class="reference external" href="https://github.com/Scr44gr/raylib-imgui">Imgui integration</a></p></li>
 <li><p><a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/tree/master/examples">Examples</a></p></li>
 <li><p><a class="reference external" href="https://github.com/blep/pyray_examples">Blep’s examples</a></p></li>
@@ -180,7 +181,7 @@ source venv/bin/activate
 </div>
 <p>Then install</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install setuptools
-python3 -m pip install raylib==5.5.0.2
+python3 -m pip install raylib==5.5.0.3
 </pre></div>
 </div>
 <p>On most platforms it should install a binary wheel.  If yours isn’t available then pip will attempt to build from
@@ -201,7 +202,7 @@ using homebrew, apt, etc.</p>
 <p>Older MacOS requires building from source but this is usually simple:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>brew install pkg-config
 brew install raylib
-python3 -m pip install raylib==5.5.0.2
+python3 -m pip install raylib==5.5.0.3
 </pre></div>
 </div>
 <p>(I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue

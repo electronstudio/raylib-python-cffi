@@ -47,6 +47,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 5.5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#links">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#backends">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
@@ -775,6 +776,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.LIME"><code class="docutils literal notranslate"><span class="pre">LIME</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.MAGENTA"><code class="docutils literal notranslate"><span class="pre">MAGENTA</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.MAROON"><code class="docutils literal notranslate"><span class="pre">MAROON</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.Mat2"><code class="docutils literal notranslate"><span class="pre">Mat2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pyray.Mat2.m00"><code class="docutils literal notranslate"><span class="pre">Mat2.m00</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyray.Mat2.m01"><code class="docutils literal notranslate"><span class="pre">Mat2.m01</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyray.Mat2.m10"><code class="docutils literal notranslate"><span class="pre">Mat2.m10</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyray.Mat2.m11"><code class="docutils literal notranslate"><span class="pre">Mat2.m11</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.Material"><code class="docutils literal notranslate"><span class="pre">Material</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#pyray.Material.maps"><code class="docutils literal notranslate"><span class="pre">Material.maps</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pyray.Material.params"><code class="docutils literal notranslate"><span class="pre">Material.params</span></code></a></li>
@@ -818,13 +826,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#pyray.Matrix.m7"><code class="docutils literal notranslate"><span class="pre">Matrix.m7</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pyray.Matrix.m8"><code class="docutils literal notranslate"><span class="pre">Matrix.m8</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pyray.Matrix.m9"><code class="docutils literal notranslate"><span class="pre">Matrix.m9</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.Matrix2x2"><code class="docutils literal notranslate"><span class="pre">Matrix2x2</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pyray.Matrix2x2.m00"><code class="docutils literal notranslate"><span class="pre">Matrix2x2.m00</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pyray.Matrix2x2.m01"><code class="docutils literal notranslate"><span class="pre">Matrix2x2.m01</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pyray.Matrix2x2.m10"><code class="docutils literal notranslate"><span class="pre">Matrix2x2.m10</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pyray.Matrix2x2.m11"><code class="docutils literal notranslate"><span class="pre">Matrix2x2.m11</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.Mesh"><code class="docutils literal notranslate"><span class="pre">Mesh</span></code></a><ul>
@@ -960,12 +961,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#pyray.PhysicsShape.vertexData"><code class="docutils literal notranslate"><span class="pre">PhysicsShape.vertexData</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.PhysicsVertexData"><code class="docutils literal notranslate"><span class="pre">PhysicsVertexData</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pyray.PhysicsVertexData.normals"><code class="docutils literal notranslate"><span class="pre">PhysicsVertexData.normals</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pyray.PhysicsVertexData.positions"><code class="docutils literal notranslate"><span class="pre">PhysicsVertexData.positions</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pyray.PhysicsVertexData.vertexCount"><code class="docutils literal notranslate"><span class="pre">PhysicsVertexData.vertexCount</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.PhysicsShapeType"><code class="docutils literal notranslate"><span class="pre">PhysicsShapeType</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.PixelFormat"><code class="docutils literal notranslate"><span class="pre">PixelFormat</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#pyray.PixelFormat.PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA"><code class="docutils literal notranslate"><span class="pre">PixelFormat.PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pyray.PixelFormat.PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA"><code class="docutils literal notranslate"><span class="pre">PixelFormat.PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA</span></code></a></li>
@@ -991,6 +987,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#pyray.PixelFormat.PIXELFORMAT_UNCOMPRESSED_R5G6B5"><code class="docutils literal notranslate"><span class="pre">PixelFormat.PIXELFORMAT_UNCOMPRESSED_R5G6B5</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pyray.PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8"><code class="docutils literal notranslate"><span class="pre">PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pyray.PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8A8"><code class="docutils literal notranslate"><span class="pre">PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8A8</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.PolygonData"><code class="docutils literal notranslate"><span class="pre">PolygonData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pyray.PolygonData.normals"><code class="docutils literal notranslate"><span class="pre">PolygonData.normals</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyray.PolygonData.positions"><code class="docutils literal notranslate"><span class="pre">PolygonData.positions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyray.PolygonData.vertexCount"><code class="docutils literal notranslate"><span class="pre">PolygonData.vertexCount</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.RAYWHITE"><code class="docutils literal notranslate"><span class="pre">RAYWHITE</span></code></a></li>
@@ -1754,6 +1756,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_music_stream_playing"><code class="docutils literal notranslate"><span class="pre">is_music_stream_playing()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_music_valid"><code class="docutils literal notranslate"><span class="pre">is_music_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_path_file"><code class="docutils literal notranslate"><span class="pre">is_path_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.is_physics_enabled"><code class="docutils literal notranslate"><span class="pre">is_physics_enabled()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_render_texture_valid"><code class="docutils literal notranslate"><span class="pre">is_render_texture_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_shader_valid"><code class="docutils literal notranslate"><span class="pre">is_shader_valid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.is_sound_playing"><code class="docutils literal notranslate"><span class="pre">is_sound_playing()</span></code></a></li>
@@ -1881,7 +1884,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.quaternion_to_matrix"><code class="docutils literal notranslate"><span class="pre">quaternion_to_matrix()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.quaternion_transform"><code class="docutils literal notranslate"><span class="pre">quaternion_transform()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.remap"><code class="docutils literal notranslate"><span class="pre">remap()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.reset_physics"><code class="docutils literal notranslate"><span class="pre">reset_physics()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.restore_window"><code class="docutils literal notranslate"><span class="pre">restore_window()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.resume_audio_stream"><code class="docutils literal notranslate"><span class="pre">resume_audio_stream()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.resume_music_stream"><code class="docutils literal notranslate"><span class="pre">resume_music_stream()</span></code></a></li>
@@ -2215,6 +2217,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rl_viewport"><code class="docutils literal notranslate"><span class="pre">rl_viewport()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rlgl_close"><code class="docutils literal notranslate"><span class="pre">rlgl_close()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.rlgl_init"><code class="docutils literal notranslate"><span class="pre">rlgl_init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyray.run_physics_step"><code class="docutils literal notranslate"><span class="pre">run_physics_step()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.save_file_data"><code class="docutils literal notranslate"><span class="pre">save_file_data()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.save_file_text"><code class="docutils literal notranslate"><span class="pre">save_file_text()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.seek_music_stream"><code class="docutils literal notranslate"><span class="pre">seek_music_stream()</span></code></a></li>
@@ -2339,7 +2342,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#pyray.update_model_animation"><code class="docutils literal notranslate"><span class="pre">update_model_animation()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.update_model_animation_bones"><code class="docutils literal notranslate"><span class="pre">update_model_animation_bones()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.update_music_stream"><code class="docutils literal notranslate"><span class="pre">update_music_stream()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyray.update_physics"><code class="docutils literal notranslate"><span class="pre">update_physics()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.update_sound"><code class="docutils literal notranslate"><span class="pre">update_sound()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.update_texture"><code class="docutils literal notranslate"><span class="pre">update_texture()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyray.update_texture_rec"><code class="docutils literal notranslate"><span class="pre">update_texture_rec()</span></code></a></li>
@@ -5720,6 +5722,32 @@
 <dd></dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="pyray.Mat2">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">Mat2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m00</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m01</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m10</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m11</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.Mat2" title="Link to this definition"></a></dt>
+<dd><p>Mat2 type (used for polygon shape rotation matrix).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyray.Mat2.m00">
+<span class="sig-name descname"><span class="pre">m00</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.Mat2.m00" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyray.Mat2.m01">
+<span class="sig-name descname"><span class="pre">m01</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.Mat2.m01" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyray.Mat2.m10">
+<span class="sig-name descname"><span class="pre">m10</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.Mat2.m10" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyray.Mat2.m11">
+<span class="sig-name descname"><span class="pre">m11</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.Mat2.m11" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="pyray.Material">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">Material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Shader" title="pyray.Shader"><span class="pre">Shader</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.Material" title="Link to this definition"></a></dt>
 <dd><p>Material, includes shader and maps.</p>
@@ -5904,32 +5932,6 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyray.Matrix.m9">
 <span class="sig-name descname"><span class="pre">m9</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.Matrix.m9" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="pyray.Matrix2x2">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">Matrix2x2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m00</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m01</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m10</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m11</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.Matrix2x2" title="Link to this definition"></a></dt>
-<dd><p>Matrix2x2 type (used for polygon shape rotation matrix).</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pyray.Matrix2x2.m00">
-<span class="sig-name descname"><span class="pre">m00</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.Matrix2x2.m00" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pyray.Matrix2x2.m01">
-<span class="sig-name descname"><span class="pre">m01</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.Matrix2x2.m01" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pyray.Matrix2x2.m10">
-<span class="sig-name descname"><span class="pre">m10</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.Matrix2x2.m10" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pyray.Matrix2x2.m11">
-<span class="sig-name descname"><span class="pre">m11</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.Matrix2x2.m11" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -6471,7 +6473,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyray.PhysicsShape">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">PhysicsShape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PhysicsShapeType</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertexData</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.PhysicsVertexData" title="pyray.PhysicsVertexData"><span class="pre">PhysicsVertexData</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Matrix2x2" title="pyray.Matrix2x2"><span class="pre">Matrix2x2</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.PhysicsShape" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">PhysicsShape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PhysicsShapeType</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Mat2" title="pyray.Mat2"><span class="pre">Mat2</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertexData</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.PolygonData" title="pyray.PolygonData"><span class="pre">PolygonData</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.PhysicsShape" title="Link to this definition"></a></dt>
 <dd><p>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyray.PhysicsShape.body">
@@ -6485,7 +6487,7 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyray.PhysicsShape.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#pyray.Matrix2x2" title="pyray.Matrix2x2"><span class="pre">Matrix2x2</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PhysicsShape.transform" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">transform</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#pyray.Mat2" title="pyray.Mat2"><span class="pre">Mat2</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PhysicsShape.transform" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -6495,31 +6497,15 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyray.PhysicsShape.vertexData">
-<span class="sig-name descname"><span class="pre">vertexData</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#pyray.PhysicsVertexData" title="pyray.PhysicsVertexData"><span class="pre">PhysicsVertexData</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PhysicsShape.vertexData" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">vertexData</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#pyray.PolygonData" title="pyray.PolygonData"><span class="pre">PolygonData</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PhysicsShape.vertexData" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="pyray.PhysicsVertexData">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">PhysicsVertexData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexCount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.PhysicsVertexData" title="Link to this definition"></a></dt>
-<dd><p>.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pyray.PhysicsVertexData.normals">
-<span class="sig-name descname"><span class="pre">normals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PhysicsVertexData.normals" title="Link to this definition"></a></dt>
+<dl class="py data">
+<dt class="sig sig-object py" id="pyray.PhysicsShapeType">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">PhysicsShapeType</span></span><a class="headerlink" href="#pyray.PhysicsShapeType" title="Link to this definition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pyray.PhysicsVertexData.positions">
-<span class="sig-name descname"><span class="pre">positions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PhysicsVertexData.positions" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="pyray.PhysicsVertexData.vertexCount">
-<span class="sig-name descname"><span class="pre">vertexCount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PhysicsVertexData.vertexCount" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyray.PixelFormat">
@@ -6643,6 +6629,27 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyray.PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8A8">
 <span class="sig-name descname"><span class="pre">PIXELFORMAT_UNCOMPRESSED_R8G8B8A8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#pyray.PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8A8" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyray.PolygonData">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">PolygonData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexCount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyray.PolygonData" title="Link to this definition"></a></dt>
+<dd><p>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyray.PolygonData.normals">
+<span class="sig-name descname"><span class="pre">normals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PolygonData.normals" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyray.PolygonData.positions">
+<span class="sig-name descname"><span class="pre">positions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PolygonData.positions" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyray.PolygonData.vertexCount">
+<span class="sig-name descname"><span class="pre">vertexCount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyray.PolygonData.vertexCount" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -7579,7 +7586,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="pyray.close_physics">
 <span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">close_physics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pyray.close_physics" title="Link to this definition"></a></dt>
-<dd><p>Close physics system and unload used memory.</p>
+<dd><p>Unitializes physics pointers and closes physics loop thread.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -7723,7 +7730,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="pyray.destroy_physics_body">
 <span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">destroy_physics_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pyray.destroy_physics_body" title="Link to this definition"></a></dt>
-<dd><p>Destroy a physics body.</p>
+<dd><p>Unitializes and destroy a physics body.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -10606,7 +10613,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="pyray.init_physics">
 <span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">init_physics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pyray.init_physics" title="Link to this definition"></a></dt>
-<dd><p>Initializes physics system.</p>
+<dd><p>Initializes physics values, pointers and creates physics loop thread.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -10805,6 +10812,12 @@
 <dt class="sig sig-object py" id="pyray.is_path_file">
 <span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_path_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_path_file" title="Link to this definition"></a></dt>
 <dd><p>Check if a given path is a file or a directory.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyray.is_physics_enabled">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">is_physics_enabled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.is_physics_enabled" title="Link to this definition"></a></dt>
+<dd><p>Returns true if physics thread is currently enabled.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -11567,12 +11580,6 @@
 <dt class="sig sig-object py" id="pyray.remap">
 <span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">remap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputStart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputEnd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputStart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputEnd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#pyray.remap" title="Link to this definition"></a></dt>
 <dd><p>.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyray.reset_physics">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">reset_physics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pyray.reset_physics" title="Link to this definition"></a></dt>
-<dd><p>Reset physics system (global variables).</p>
 </dd></dl>
 
 <dl class="py function">
@@ -13273,6 +13280,12 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pyray.run_physics_step">
+<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">run_physics_step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pyray.run_physics_step" title="Link to this definition"></a></dt>
+<dd><p>Run physics step, to be used if PHYSICS_NO_THREADS is set in your main loop.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pyray.save_file_data">
 <span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">save_file_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pyray.save_file_data" title="Link to this definition"></a></dt>
 <dd><p>Save data to file from byte array (write), returns true on success.</p>
@@ -14014,12 +14027,6 @@
 <dt class="sig sig-object py" id="pyray.update_music_stream">
 <span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">update_music_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyray.Music" title="pyray.Music"><span class="pre">Music</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pyray.update_music_stream" title="Link to this definition"></a></dt>
 <dd><p>Updates buffers for music streaming.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyray.update_physics">
-<span class="sig-prename descclassname"><span class="pre">pyray.</span></span><span class="sig-name descname"><span class="pre">update_physics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pyray.update_physics" title="Link to this definition"></a></dt>
-<dd><p>Update physics system.</p>
 </dd></dl>
 
 <dl class="py function">

@@ -127,7 +127,7 @@ is to compile and install Raylib using CMake: <a class="reference external" href
 </section>
 <section id="environment-variables-new-in-5-5-0-3">
 <h2>Environment variables (new in 5.5.0.3)<a class="headerlink" href="#environment-variables-new-in-5-5-0-3" title="Link to this heading"></a></h2>
-<p>If plg-config doesn’t work you can manually set these environment variables:</p>
+<p>If pkg-config doesn’t work you can manually set these environment variables:</p>
 <p><code class="docutils literal notranslate"><span class="pre">RAYLIB_PLATFORM</span></code>: Any one of: <code class="docutils literal notranslate"><span class="pre">Desktop</span></code>, <code class="docutils literal notranslate"><span class="pre">SDL</span></code>, <code class="docutils literal notranslate"><span class="pre">DRM</span></code>, <code class="docutils literal notranslate"><span class="pre">PLATFORM_COMMA</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">RAYLIB_LINK_ARGS</span></code>: Arguments to pass to the linker rather than getting them from pkg-config.
 e.g.: <code class="docutils literal notranslate"><span class="pre">&quot;-L/usr/local/lib</span> <span class="pre">-lraylib&quot;</span></code></p>
@@ -141,6 +141,15 @@ e.g.: <code class="docutils literal notranslate"><span class="pre">/usr/local/in
 e.g.: <code class="docutils literal notranslate"><span class="pre">/usr/local/include</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">LIBFFI_INCLUDE_PATH</span></code>:
 e.g.: <code class="docutils literal notranslate"><span class="pre">/usr/local/include</span></code></p>
+<p>You can also override which package names pkg-config will search for:</p>
+<p><code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_LIB_raylib</span></code>: the package to request from pkg-config for raylib include files, default <code class="docutils literal notranslate"><span class="pre">raylib</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_LIB_raygui</span></code>: the package to request from pkg-config for raygui include files
+set to <code class="docutils literal notranslate"><span class="pre">raygui`</span></code> if you have a separate raygui package, else unset for default <code class="docutils literal notranslate"><span class="pre">raylib</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_LIB_physac</span></code>: the package to request from pkg-config for physac include files
+set to <code class="docutils literal notranslate"><span class="pre">physac`</span></code> if you have a separate physac package, else unset for default <code class="docutils literal notranslate"><span class="pre">raylib</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_LIB_glfw3</span></code>: the package to request from pkg-config for glfw3 include files
+set to <code class="docutils literal notranslate"><span class="pre">glfw3</span></code> if you have a separate glfw3 package, else unset for default <code class="docutils literal notranslate"><span class="pre">raylib</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_LIB_libffi</span></code>: the package to request from pkg-config for libffi include files</p>
 </section>
 <section id="or-build-from-source-manually">
 <h2>Or, Build from source manually<a class="headerlink" href="#or-build-from-source-manually" title="Link to this heading"></a></h2>

@@ -5,6 +5,8 @@
 
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/raylib)
 
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/raylib?period=total&units=NONE&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/raylib)
+
 HELP WANTED: [writing examples](https://github.com/electronstudio/raylib-python-cffi/issues/155)
 
 Features:
@@ -19,7 +21,7 @@ original Raylib.
 
 # Quickstart
 
-`pip3 install raylib==5.5.0.2 --break-system-packages`
+`pip3 install raylib==5.5.0.3 --break-system-packages`
 ```python
 from pyray import *
 init_window(800, 450, "Hello")
@@ -34,7 +36,7 @@ close_window()
 # Links
 
 * [Tutorial video](https://www.youtube.com/watch?v=UoAsDlUwjy0&lc=UgxCR-tvnQJITZr2IvN4AaABAg)
-* [Full documentation](http://electronstudio.github.io/raylib-python-cffi)
+* [Full documentation](https://electronstudio.github.io/raylib-python-cffi)
 * [Imgui integration](https://github.com/Scr44gr/raylib-imgui)
 * [Examples](https://github.com/electronstudio/raylib-python-cffi/tree/master/examples)
 * [Blep's examples](https://github.com/blep/pyray_examples)
@@ -58,7 +60,7 @@ Then make sure you have the latest pip installed:
 Then install
 
     python3 -m pip install setuptools
-    python3 -m pip install raylib==5.5.0.2
+    python3 -m pip install raylib==5.5.0.3
 
 On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from
 source, in which case you will need to have Raylib development libs installed, e.g. 
@@ -80,7 +82,7 @@ Older MacOS requires building from source but this is usually simple:
 
     brew install pkg-config
     brew install raylib
-    python3 -m pip install raylib==5.5.0.2
+    python3 -m pip install raylib==5.5.0.3
 
 (I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue
 if you want to test them.)
