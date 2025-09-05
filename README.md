@@ -33,6 +33,10 @@ while not window_should_close():
 close_window()
 ```
 
+[Example project](https://github.com/electronstudio/raylib-example-game)
+
+[Project generator](https://github.com/electronstudio/python-raylib-template)
+
 # Links
 
 * [Tutorial video](https://www.youtube.com/watch?v=UoAsDlUwjy0&lc=UgxCR-tvnQJITZr2IvN4AaABAg)
