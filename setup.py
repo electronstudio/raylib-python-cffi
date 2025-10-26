@@ -25,7 +25,7 @@ class BinaryDistribution(Distribution):
 
 # should be name="raylib"+NAME but then Github doesn't track dependants
 setup(
-    name="raylib",
+    name="raylib"+NAME,
     version=VERSION,
     description="Python CFFI bindings for Raylib",
     long_description=README,
@@ -35,14 +35,13 @@ setup(
     author_email="github@electronstudio.co.uk",
     classifiers=[
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.14",
         "Programming Language :: Python :: 3.13",
         "Programming Language :: Python :: 3.12",
-        "Programming Language :: Python :: 3.11",
-        "Programming Language :: Python :: 3.10",
     ],
     packages=["raylib", "pyray"],
     include_package_data=True,
-    install_requires=["cffi>=1.17.1"],
+    install_requires=["cffi>=2.0.0"],
     distclass=BinaryDistribution,
     cffi_modules=["raylib/build.py:ffibuilder"]
 )

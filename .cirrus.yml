@@ -4,10 +4,11 @@
 pi_task:
   arm_container:
     matrix:
-      - image: dtcooper/raspberrypi-os:python3.13-bullseye
-      - image: dtcooper/raspberrypi-os:python3.12-bullseye
-      - image: dtcooper/raspberrypi-os:python3.11-bullseye
-      - image: dtcooper/raspberrypi-os:python3.10-bullseye
+      - image: electronstudio/raspberrypi-os:python3.14-bookworm
+      - image: electronstudio/raspberrypi-os:python3.13-bullseye
+      - image: electronstudio/raspberrypi-os:python3.12-bullseye
+      - image: electronstudio/raspberrypi-os:python3.11-bullseye
+      - image: electronstudio/raspberrypi-os:python3.10-bullseye
   env:
     matrix:
       - RAYLIB_PLATFORM: "Desktop"
@@ -76,18 +77,6 @@ mac_task:
     MACOSX_DEPLOYMENT_TARGET: "11.0"
   matrix:
     - env:
-        PY_VER: "3.10"
-        RAYLIB_PLATFORM: Desktop
-    - env:
-        PY_VER: "3.10"
-        RAYLIB_PLATFORM: SDL
-    - env:
-        PY_VER: "3.11"
-        RAYLIB_PLATFORM: Desktop
-    - env:
-        PY_VER: "3.11"
-        RAYLIB_PLATFORM: SDL
-    - env:
         PY_VER: "3.12"
         RAYLIB_PLATFORM: Desktop
     - env:
@@ -98,6 +87,12 @@ mac_task:
         RAYLIB_PLATFORM: Desktop
     - env:
         PY_VER: "3.13"
+        RAYLIB_PLATFORM: SDL
+    - env:
+        PY_VER: "3.14"
+        RAYLIB_PLATFORM: Desktop
+    - env:
+        PY_VER: "3.14"
         RAYLIB_PLATFORM: SDL
 
 
