@@ -72,9 +72,9 @@ pi_task:
 mac_task:
   macos_instance:
     matrix:
-      - image: ghcr.io/cirruslabs/macos-sonoma-xcode:latest
+      - image: ghcr.io/cirruslabs/macos-sequoia-xcode:latest
   env:
-    MACOSX_DEPLOYMENT_TARGET: "11.0"
+    MACOSX_DEPLOYMENT_TARGET: "11"
   matrix:
     - env:
         PY_VER: "3.12"
