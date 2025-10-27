@@ -121,7 +121,7 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        python-version: [ '3.12', '3.13', '3.14', 'pypy-3.11' ]
+        python-version: [ '3.12', '3.13', '3.14']
         raylib-platform: ['Desktop', 'SDL']
     env:
       MACOSX_DEPLOYMENT_TARGET: '11'
