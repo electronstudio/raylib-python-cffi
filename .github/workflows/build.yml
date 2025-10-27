@@ -117,7 +117,7 @@ jobs:
           path: dist/*
 
 
-  build-mac-arm:
+  build-mac-arm64:
     runs-on: macos-13
     strategy:
       matrix:
@@ -190,17 +190,17 @@ jobs:
           python -m pip install --upgrade build
           python -m build --wheel
 
-#      - name: Rename wheels from universal2 to x86_64
-#        run: |
-#          # Rename universal2 wheels to x86_64 since they aren't truly universal
-#          for wheel in dist/*universal2.whl; do
-#            if [ -f "$wheel" ]; then
-#              new_wheel=$(echo "$wheel" | sed 's/universal2/x86_64/')
-#              echo "Renaming: $(basename "$wheel") -> $(basename "$new_wheel")"
-#              mv "$wheel" "$new_wheel"
-#            fi
-#          done
-#        shell: bash
+      - name: Rename wheels from universal2 to arm64
+        run: |
+          # Rename universal2 wheels to arm64 since they aren't truly universal
+          for wheel in dist/*universal2.whl; do
+            if [ -f "$wheel" ]; then
+              new_wheel=$(echo "$wheel" | sed 's/universal2/arm64/')
+              echo "Renaming: $(basename "$wheel") -> $(basename "$new_wheel")"
+              mv "$wheel" "$new_wheel"
+            fi
+          done
+        shell: bash
 
       - name: Test
         run: |
@@ -219,7 +219,7 @@ jobs:
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
-          name: wheel-mac-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
+          name: wheel-mac-arm64-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/*
 
 
@@ -500,7 +500,7 @@ jobs:
           path: dynamic/dist/*
 
   merge:
-    needs: [build-mac-intel, build-windows, build-linux, source-distro, dynamic-distro]
+    needs: [build-mac-intel, build-mac-arm64, build-windows, build-linux, source-distro, dynamic-distro]
     runs-on: ubuntu-latest
     steps:
       - name: Merge All Artifacts
