@@ -117,6 +117,112 @@ jobs:
           path: dist/*
 
 
+  build-mac-arm:
+    runs-on: macos-13
+    strategy:
+      matrix:
+        python-version: [ '3.12', '3.13', '3.14', 'pypy-3.11' ]
+        raylib-platform: ['Desktop', 'SDL']
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '11'
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+
+      - name: Build SDL
+        run: |
+          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.8.tar.gz
+          tar xvfz release-2.32.8.tar.gz
+          mkdir build
+          cd build
+          cmake ../SDL-release-2.32.8 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+          sudo cmake --install .
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
+          python-version: ${{ matrix.python-version }}
+          # The target architecture (x86, x64) of the Python interpreter.
+          architecture: arm64
+
+      # Runs a set of commands using the runners shell
+      - name: Build raylib without SDL because SDL version has incorrect pkg-config
+        run: |
+          cd raylib-c
+          mkdir build
+          cd build
+          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j2
+          sudo make install
+
+      - name: Build raylib with SDL if selected
+        run: |
+          cd raylib-c
+          mkdir build2
+          cd build2
+          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j2
+          sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
+
+      - name: Copy extras
+        run: |
+          sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+          sudo cp physac/src/physac.h /usr/local/include/
+          sudo cp raygui/src/raygui.h /usr/local/include/
+
+      - name: Build raylib-python-cffi
+        env:
+          RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
+
+        run: |
+          python -m pip install --upgrade pip
+          pip3 install --upgrade "cffi>=2.0.0"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
+          python -m pip install --upgrade build
+          python -m build --wheel
+
+#      - name: Rename wheels from universal2 to x86_64
+#        run: |
+#          # Rename universal2 wheels to x86_64 since they aren't truly universal
+#          for wheel in dist/*universal2.whl; do
+#            if [ -f "$wheel" ]; then
+#              new_wheel=$(echo "$wheel" | sed 's/universal2/x86_64/')
+#              echo "Renaming: $(basename "$wheel") -> $(basename "$new_wheel")"
+#              mv "$wheel" "$new_wheel"
+#            fi
+#          done
+#        shell: bash
+
+      - name: Test
+        run: |
+          pip3 install dist/*.whl
+          cd /
+          python3 -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+          cat /tmp/output
+          if grep -q "INFO: Initializing raylib" /tmp/output; then
+            echo "Passed"
+            exit 0
+          else
+            echo "Failed"
+            exit 1
+          fi
+
+      - name: Upload build Artifact wheel
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel-mac-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
+          path: dist/*
+
+
 
   build-linux:
     runs-on: ubuntu-latest
