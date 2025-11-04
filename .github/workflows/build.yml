@@ -365,7 +365,7 @@ jobs:
           PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
         run: |
           ${{ matrix.python-version }} -m pip install --upgrade pip
-          ${{ matrix.python-version }} -m pip install --upgrade "cffi>=1.17.1"
+          ${{ matrix.python-version }} -m pip install --upgrade cffi
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
