@@ -78,7 +78,7 @@ jobs:
 
         run: |
           python -m pip install --upgrade pip
-          pip3 install --upgrade "cffi>=2.0.0"
+          pip3 install --upgrade cffi
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
           python -m pip install --upgrade build
@@ -184,7 +184,7 @@ jobs:
 
         run: |
           python -m pip install --upgrade pip
-          pip3 install --upgrade "cffi>=2.0.0"
+          pip3 install --upgrade cffi
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
           python -m pip install --upgrade build
@@ -271,7 +271,7 @@ jobs:
           PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
         run: |
           ${{ matrix.python-version }} -m pip install --upgrade pip
-          ${{ matrix.python-version }} -m pip install --upgrade "cffi>=2.0.0"
+          ${{ matrix.python-version }} -m pip install --upgrade cffi
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
@@ -474,7 +474,7 @@ jobs:
           copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.lib .
           copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.dll raylib\
           python -m pip install --upgrade pip
-          pip3 install --upgrade "cffi>=2.0.0"
+          pip3 install --upgrade "cffi"
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
           pip3 install --upgrade build
@@ -546,7 +546,7 @@ jobs:
       - name: Build raylib-python-cffi
         run: |
           python -m pip install --upgrade pip
-          pip3 install --upgrade "cffi>=2.0.0"
+          pip3 install --upgrade cffi
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
           python setup.py sdist
@@ -581,7 +581,7 @@ jobs:
       - name: Build raylib-python-cffi-dynamic
         run: |
           python -m pip install --upgrade pip
-          pip3 install --upgrade "cffi>=2.0.0"
+          pip3 install --upgrade cffi
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
           cd dynamic
