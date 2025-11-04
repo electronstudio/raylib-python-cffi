@@ -330,7 +330,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: ['python3.12', 'python3.13', 'python3.14', 'pypy3.11']
+        python-version: ['python3.8', 'python3.7', 'python3.12', 'python3.13', 'python3.14', 'pypy3.11']
         raylib-platform: ['Desktop', 'SDL', 'DRM']
     steps:
       - name: fix node
@@ -393,9 +393,9 @@ jobs:
         shell: bash
       - name: Test
         run: |
-          ${{ matrix.python-version }} -m pip install --no-deps wheelhouse/*-py3-none-linux_x86_64.whl
+          ${{ matrix.python-version }} -m pip install --no-deps wheelhouse/*-py3-none-linux_i386.whl
           # Clean up test wheels
-          rm -f wheelhouse/*-py3-none-linux_x86_64.whl
+          rm -f wheelhouse/*-py3-none-linux_i386.whl
           cd /
           ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
