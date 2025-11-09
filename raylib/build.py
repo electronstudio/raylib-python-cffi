@@ -288,10 +288,15 @@ def build_windows():
     #define RAYGUI_IMPLEMENTATION
     #define RAYGUI_SUPPORT_RICONS
     #include "raygui.h"
-    #define PHYSAC_IMPLEMENTATION
-    #define PHYSAC_NO_THREADS
-    #include "physac.h"
     """
+
+    if platform.architecture()[0] != "32bit": # Physac wont compile on 32bit windows
+        ffi_includes += """
+        #define PHYSAC_IMPLEMENTATION
+        #define PHYSAC_NO_THREADS
+        #include "physac.h"
+        """
+
     libraries = ['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm']
     if RAYLIB_PLATFORM=="SDL":
         libraries += ['SDL2']
