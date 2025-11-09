@@ -505,7 +505,101 @@ jobs:
         with:
           name: wheel-windows-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/* 
-          
+
+  build-windows32:
+    # The type of runner that the job will run on
+    runs-on: windows-2022
+    strategy:
+      # You can use PyPy versions in python-version.
+      # For example, pypy2 and pypy3
+      matrix:
+        python-version: [ '3.12' ]
+        raylib-platform: [ 'Desktop', 'SDL' ]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Download SDL2
+        run: curl -L -o SDL2.zip https://github.com/libsdl-org/SDL/releases/download/release-2.32.10/SDL2-devel-2.32.10-VC.zip
+
+      - name: Create extraction directory
+        run: mkdir ${{ runner.temp }}\SDL2
+
+      - name: Unzip SDL2
+        run: tar -xf SDL2.zip -C ${{ runner.temp }}\SDL2 --strip-components=1
+
+      - name: Set SDL2_DIR environment variable
+        run: echo SDL2_DIR=${{ runner.temp }}\SDL2\cmake >> $env:GITHUB_ENV
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
+          python-version: ${{ matrix.python-version }}
+          # The target architecture (x86, x64) of the Python interpreter.
+          architecture: x86
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v2
+        with:
+          msbuild-architecture: x86
+
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+        shell: cmd
+
+      - name: Build raylib
+        run: |
+          cd raylib-c
+          mkdir build
+          cd build
+          cmake -A Win32 -DPLATFORM=${{ matrix.raylib-platform }} -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          msbuild raylib.sln /target:raylib /property:Configuration=Release
+          copy raylib\Release\raylib.lib ..\..
+          cd ..\..
+        shell: cmd
+
+      - name: Build raylib-python-cffi
+        env:
+          RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
+        run: |
+          copy ${{ runner.temp }}\SDL2\lib\x86\SDL2.lib .
+          copy ${{ runner.temp }}\SDL2\lib\x86\SDL2.dll raylib\
+          python -m pip install --upgrade pip
+          pip3 install --upgrade "cffi"
+          pip3 install --upgrade wheel
+          pip3 install --upgrade setuptools
+          pip3 install --upgrade build
+          del raylib\dynamic\*.so* >nul 2>&1
+          del raylib\dynamic\*.dll >nul 2>&1
+          del raylib\dynamic\*.dylib >nul 2>&1
+          del raylib\dynamic\32bit\* >nul 2>&1
+          python -m build --wheel
+        shell: cmd
+
+      - name: Test
+        shell: bash
+        run: |
+          pip3 install --no-deps dist/*.whl
+          cd /
+          python3 -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+          cat /tmp/output
+          if grep -q "INFO: Initializing raylib" /tmp/output; then
+            echo "Passed"
+            exit 0
+          else
+            echo "Failed"
+            exit 1
+          fi
+
+      - name: Upload build Artifact wheel
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel-windows32-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
+          path: dist/*
+
   source-distro:
     runs-on: ubuntu-latest
 
@@ -594,7 +688,7 @@ jobs:
           path: dynamic/dist/*
 
   merge:
-    needs: [build-mac-intel, build-mac-arm64, build-windows, build-linux, source-distro, dynamic-distro]
+    needs: [build-mac-intel, build-mac-arm64, build-windows, build-linux, build-linux32, build-windows32, source-distro, dynamic-distro]
     runs-on: ubuntu-latest
     steps:
       - name: Merge All Artifacts
