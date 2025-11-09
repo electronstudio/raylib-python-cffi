@@ -393,7 +393,7 @@ jobs:
         shell: bash
       - name: Test
         run: |
-          ${{ matrix.python-version }} -m pip install --no-deps wheelhouse/*-py3-none-linux_i386.whl
+          ${{ matrix.python-version }} -m pip install --no-deps wheelhouse/*-py3-none-linux_*.whl
           # Clean up test wheels
           rm -f wheelhouse/*-py3-none-linux_i386.whl
           cd /
@@ -513,7 +513,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11', 'pypy-3.10' ]
+        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14' ]
         raylib-platform: [ 'Desktop', 'SDL' ]
     steps:
       - uses: actions/checkout@v4
@@ -668,7 +668,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: '3.7'
+          python-version: '3.12'
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
