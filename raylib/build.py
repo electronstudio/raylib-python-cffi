@@ -270,7 +270,6 @@ def build_windows():
         ffibuilder.cdef((THIS_DIR / "glfw3.h.modified").read_text())
     ffibuilder.cdef((THIS_DIR / "rlgl.h.modified").read_text())
     ffibuilder.cdef((THIS_DIR / "raygui.h.modified").read_text())
-    ffibuilder.cdef((THIS_DIR / "physac.h.modified").read_text())
     ffibuilder.cdef((THIS_DIR / "raymath.h.modified").read_text())
 
     ffi_includes = """
@@ -291,6 +290,7 @@ def build_windows():
     """
 
     if platform.architecture()[0] != "32bit": # Physac wont compile on 32bit windows
+        ffibuilder.cdef((THIS_DIR / "physac.h.modified").read_text())
         ffi_includes += """
         #define PHYSAC_IMPLEMENTATION
         #define PHYSAC_NO_THREADS
