@@ -513,7 +513,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: [ '3.12' ]
+        python-version: [ '3.8' ]
         raylib-platform: [ 'Desktop', 'SDL' ]
     steps:
       - uses: actions/checkout@v4
@@ -668,7 +668,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: '3.12'
+          python-version: '3.8'
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
