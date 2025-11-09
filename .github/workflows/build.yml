@@ -470,12 +470,12 @@ jobs:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
           PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
         run: |
-          ${{ matrix.python-version }} -m pip install --upgrade pip
-          ${{ matrix.python-version }} -m pip install --upgrade cffi
-          ${{ matrix.python-version }} -m pip install --upgrade wheel
-          ${{ matrix.python-version }} -m pip install --upgrade setuptools
-          ${{ matrix.python-version }} -m pip install --upgrade build
-          ${{ matrix.python-version }} -m build --wheel
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade cffi
+          python3 -m pip install --upgrade wheel
+          python3 -m pip install --upgrade setuptools
+          python3 -m pip install --upgrade build
+          python3 -m build --wheel
           python3 -m pip install --upgrade auditwheel
           python3 -m pip install --upgrade patchelf
           python3 -m auditwheel repair dist/*.whl
@@ -499,11 +499,11 @@ jobs:
         shell: bash
       - name: Test
         run: |
-          ${{ matrix.python-version }} -m pip install --no-deps wheelhouse/*-py3-none-linux_aarch64.whl
+          python3 -m pip install --no-deps wheelhouse/*-py3-none-linux_aarch64.whl
           # Clean up test wheels
           rm -f wheelhouse/*-py3-none-linux_aarch64.whl
           cd /
-          ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+          python3 -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
           if grep -q "INFO: Initializing raylib" /tmp/output; then
             echo "Passed"
