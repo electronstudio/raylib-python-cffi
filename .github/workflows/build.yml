@@ -395,7 +395,7 @@ jobs:
         run: |
           ${{ matrix.python-version }} -m pip install --no-deps wheelhouse/*-py3-none-linux_*.whl
           # Clean up test wheels
-          rm -f wheelhouse/*-py3-none-linux_i386.whl
+          rm -f wheelhouse/*-py3-none-linux_i*.whl
           cd /
           ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
@@ -411,6 +411,106 @@ jobs:
           name: wheel-linux32-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: wheelhouse/*
 
+  build-linux-arm64:
+    runs-on: ubuntu-22.04-arm
+    strategy:
+      matrix:
+        python-version: [ '3.10', '3.11', '3.12', '3.13', '3.14']
+        raylib-platform: [ 'Desktop', 'SDL', 'DRM' ]
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+
+      - name: Build SDL
+        run: |
+          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.8.tar.gz
+          tar xvfz release-2.32.8.tar.gz
+          mkdir build
+          cd build
+          cmake ../SDL-release-2.32.8 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+          sudo cmake --install .
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
+          python-version: ${{ matrix.python-version }}
+
+
+
+      - name: Build raylib with SDL if selected
+        run: |
+          cd raylib-c
+          mkdir build2
+          cd build2
+          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j2
+          sudo make install
+
+      - name: Copy extras
+        run: |
+          sudo cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+          sudo cp physac/src/physac.h /usr/local/include/
+          sudo cp raygui/src/raygui.h /usr/local/include/
+
+      - name: Build raylib-python-cffi
+        env:
+          RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
+          PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
+        run: |
+          ${{ matrix.python-version }} -m pip install --upgrade pip
+          ${{ matrix.python-version }} -m pip install --upgrade cffi
+          ${{ matrix.python-version }} -m pip install --upgrade wheel
+          ${{ matrix.python-version }} -m pip install --upgrade setuptools
+          ${{ matrix.python-version }} -m pip install --upgrade build
+          ${{ matrix.python-version }} -m build --wheel
+          python3 -m pip install --upgrade auditwheel
+          python3 -m pip install --upgrade patchelf
+          python3 -m auditwheel repair dist/*.whl
+        shell: bash
+      - name: Rename wheel for testing
+        run: |
+          # Rename wheelhouse wheels to be maximally compatible for testing
+          for wheel in wheelhouse/raylib*.whl; do
+            if [ -f "$wheel" ]; then
+              basename=$(basename "$wheel")
+              # Extract package and version using regex
+              if [[ $basename =~ ^([^-]+)-([^-]+.*)-[^-]+-[^-]+-[^-]+\.whl$ ]]; then
+                package="${BASH_REMATCH[1]}"
+                version="${BASH_REMATCH[2]}"
+                new_name="${package}-${version}-py3-none-linux_aarch64.whl"
+                echo "Renaming: $basename -> $new_name"
+                cp "$wheel" "wheelhouse/$new_name"
+              fi
+            fi
+          done
+        shell: bash
+      - name: Test
+        run: |
+          ${{ matrix.python-version }} -m pip install --no-deps wheelhouse/*-py3-none-linux_aarch64.whl
+          # Clean up test wheels
+          rm -f wheelhouse/*-py3-none-linux_aarch64.whl
+          cd /
+          ${{ matrix.python-version }} -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+          cat /tmp/output
+          if grep -q "INFO: Initializing raylib" /tmp/output; then
+            echo "Passed"
+          else
+            echo "Failed"
+            exit 1
+          fi
+      - name: Upload build Artifact wheel
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel-linux-arm64-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
+          path: wheelhouse/*
 
 
 
@@ -688,7 +788,7 @@ jobs:
           path: dynamic/dist/*
 
   merge:
-    needs: [build-mac-intel, build-mac-arm64, build-windows, build-linux, build-linux32, build-windows32, source-distro, dynamic-distro]
+    needs: [build-mac-intel, build-mac-arm64, build-windows, build-linux, build-linux-arm64, build-linux32, build-windows32, source-distro, dynamic-distro]
     runs-on: ubuntu-latest
     steps:
       - name: Merge All Artifacts
