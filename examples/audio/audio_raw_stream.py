@@ -11,7 +11,7 @@ audio_frequency = 440.0
 old_frequency = 1.0
 sine_idx = 0.0
 
-
+# Need to wrap audio callback fucntion in ffi callback
 AUDIO_CALLBACK = ffi.callback("void(void *, unsigned int)")
 
 
@@ -20,6 +20,8 @@ def audio_input_callback(buffer_ptr, frames):
     audio_frequency = frequency + (audio_frequency - frequency) * 0.95
     
     incr = audio_frequency/44100.0
+
+    # cast the buffer_ptr to short (16 bit int)
     d = ffi.cast("short *", buffer_ptr)
 
     for i in range(frames):
@@ -39,6 +41,7 @@ set_audio_stream_buffer_size_default(MAX_SAMPLES_PER_UPDATE)
 
 stream = load_audio_stream(44100, 16, 1)
 
+# Wrapping auido_input_callback in ffi callback
 audio_cb = AUDIO_CALLBACK(audio_input_callback)
 
 set_audio_stream_callback(stream, audio_cb)
