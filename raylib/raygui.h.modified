@@ -541,8 +541,8 @@ typedef enum {
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetFont(Font font); // Set gui custom font (global state)
 /* Functions defined as 'extern' by default (implicit specifiers)*/ Font GuiGetFont(void); // Get gui custom font (global state)
 // Style set/get functions
-/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetStyle(int control, int property, int value); // Set one style property
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiGetStyle(int control, int property); // Get one style property
+/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetStyle(int control, int property, unsigned int value); // Set one style property
+/* Functions defined as 'extern' by default (implicit specifiers)*/ unsigned int GuiGetStyle(int control, int property); // Get one style property
 // Styles loading functions
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLoadStyle(const char *fileName); // Load style file over global style variable (.rgs)
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLoadStyleDefault(void); // Load style default over global style

@@ -1,4 +1,5 @@
 from pyray import *
+import raylib
 
 screenWidth = 800
 screenHeight = 480
@@ -40,13 +41,13 @@ while not exitWindow:
         match visualStyleActive[0]:
             case 0:
                 gui_set_style(GuiControl.DEFAULT, GuiDefaultProperty.BACKGROUND_COLOR,  0x000000FF) # black
-                gui_set_style(GuiControl.DEFAULT, GuiDefaultProperty.LINE_COLOR,  0x00FF00FF) # green
+                gui_set_style(GuiControl.DEFAULT, GuiDefaultProperty.LINE_COLOR,  color_to_int(GREEN))
             case 1:
                 gui_set_style(GuiControl.DEFAULT, GuiDefaultProperty.BACKGROUND_COLOR, 0xF5F5F5FF) # white
-                gui_set_style(GuiControl.DEFAULT, GuiDefaultProperty.LINE_COLOR,  0xFF0000FF) # red
+                gui_set_style(GuiControl.DEFAULT, GuiDefaultProperty.LINE_COLOR,  color_to_int(RED)) # red
             case 2:
                 gui_set_style(GuiControl.DEFAULT, GuiDefaultProperty.BACKGROUND_COLOR,  0xFF0000FF) # red
-                gui_set_style(GuiControl.DEFAULT, GuiDefaultProperty.LINE_COLOR,  0x0000FFFF) # blue
+                gui_set_style(GuiControl.DEFAULT, GuiDefaultProperty.LINE_COLOR,  color_to_int(BLUE)) # blue
 
         prevVisualStyleActive[0] = visualStyleActive[0]
 
