@@ -247,7 +247,7 @@ jobs:
         run: |
           wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-x86_64.tar.gz
           tar xvfz cmake-3.31.10-linux-x86_64.tar.gz
-          cp cmake-3.31.10-linux-x86_64/bin/* /usr/bin/
+          cp -r cmake-3.31.10-linux-x86_64/* /usr/
 
       - uses: actions/checkout@v2
         with:
@@ -347,7 +347,7 @@ jobs:
         run: |
           wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-x86_64.tar.gz
           tar xvfz cmake-3.31.10-linux-x86_64.tar.gz
-          cp cmake-3.31.10-linux-x86_64/bin/* /usr/bin/
+          cp -r cmake-3.31.10-linux-x86_64/* /usr/
 
       - uses: actions/checkout@v2
         with:
