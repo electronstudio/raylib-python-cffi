@@ -257,7 +257,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           make install
       - name: Copy extras
@@ -351,7 +351,7 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          setarch i386 cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+          setarch i386 cmake -DPLATFORM=${{ matrix.raylib-platform }} -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release  ..
           make -j2
           make install
       - name: Copy extras
@@ -455,7 +455,13 @@ jobs:
           cd raylib-c
           mkdir build2
           cd build2
-          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          if [ ${{ matrix.raylib-platform }} = "DRM" ]; then
+            OPENGL="ES 2.0"
+          else
+            OPENGL="2.1"
+          fi
+          echo "OPENGL VERSION $OPENGL"
+          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           sudo make install
 
