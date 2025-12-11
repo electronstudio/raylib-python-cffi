@@ -237,7 +237,7 @@ jobs:
       # For example, pypy2 and pypy3
       matrix:
         python-version: ['python3.7', 'python3.8', 'python3.9', 'python3.10', 'python3.11', 'python3.12', 'python3.13', 'python3.14', 'pypy3.11']
-        raylib-platform: ['Desktop', 'SDL', 'DRM']
+        raylib-platform: ['Desktop', 'SDL', 'DRM', 'SDL_SOFT']
     steps:
       - name: fix node
         run: |
@@ -273,7 +273,17 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          PLATFORM = ${{ matrix.raylib-platform }}
+          if [ ${{ matrix.raylib-platform }} = "DRM" ]; then
+            OPENGL="ES 2.0"
+          elif [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
+            OPENGL="Software"
+            PLATFORM = "SDL"
+          else
+            OPENGL="3.3"
+          fi
+          echo "OPENGL $OPENGL PLATFORM $PLATFORM"
+          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           make install
       - name: Copy extras
@@ -358,6 +368,16 @@ jobs:
           wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-x86_64.tar.gz
           tar xvfz cmake-3.31.10-linux-x86_64.tar.gz
           cp -r cmake-3.31.10-linux-x86_64/* /usr/
+
+      - name: Build SDL
+        run: |
+          wget https://github.com/libsdl-org/SDL/releases/download/release-3.2.28/SDL3-3.2.28.tar.gz
+          tar xvfz SDL3-3.2.28.tar.gz
+          mkdir build
+          cd build
+          cmake ../SDL3-3.2.28 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
+          cmake --build . --config Release
+          cmake --install .
 
       - uses: actions/checkout@v2
         with:
