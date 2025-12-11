@@ -249,6 +249,16 @@ jobs:
           tar xvfz cmake-3.31.10-linux-x86_64.tar.gz
           cp -r cmake-3.31.10-linux-x86_64/* /usr/
 
+      - name: Build SDL
+        run: |
+          wget https://github.com/libsdl-org/SDL/releases/download/release-3.2.28/SDL3-3.2.28.tar.gz
+          tar xvfz SDL3-3.2.28.tar.gz
+          mkdir build
+          cd build
+          cmake ../SDL3-3.2.28 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
+          cmake --build . --config Release
+          cmake --install .
+
       - uses: actions/checkout@v2
         with:
           submodules: recursive
