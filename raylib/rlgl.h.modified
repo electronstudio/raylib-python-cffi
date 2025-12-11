@@ -10,7 +10,7 @@
 *       When choosing an OpenGL backend different than OpenGL 1.1, some internal buffer are
 *       initialized on rlglInit() to accumulate vertex data
 *
-*       When an internal state change is required all the stored vertex data is renderer in batch,
+*       When an internal state change is required all the stored vertex data is rendered in batch,
 *       additionally, rlDrawRenderBatchActive() could be called to force flushing of the batch
 *
 *       Some resources are also loaded for convenience, here the complete list:
@@ -21,6 +21,7 @@
 *       Internal buffer (and resources) must be manually unloaded calling rlglClose()
 *
 *   CONFIGURATION:
+*       #define GRAPHICS_API_OPENGL_11_SOFTWARE
 *       #define GRAPHICS_API_OPENGL_11
 *       #define GRAPHICS_API_OPENGL_21
 *       #define GRAPHICS_API_OPENGL_33
@@ -56,8 +57,8 @@
 *
 *       #define RL_MAX_MATRIX_STACK_SIZE             32    // Maximum size of internal Matrix stack
 *       #define RL_MAX_SHADER_LOCATIONS              32    // Maximum number of shader locations supported
-*       #define RL_CULL_DISTANCE_NEAR              0.01    // Default projection matrix near cull distance
-*       #define RL_CULL_DISTANCE_FAR             1000.0    // Default projection matrix far cull distance
+*       #define RL_CULL_DISTANCE_NEAR              0.05    // Default projection matrix near cull distance
+*       #define RL_CULL_DISTANCE_FAR             4000.0    // Default projection matrix far cull distance
 *
 *       When loading a shader, the following vertex attributes and uniform
 *       location names are tried to be set automatically:
@@ -88,7 +89,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2014-2024 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2014-2025 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -114,6 +115,7 @@
 // Allow custom memory allocators
 // Security check in case no GRAPHICS_API_OPENGL_* defined
 // Security check in case multiple GRAPHICS_API_OPENGL_* defined
+// Software implementation uses OpenGL 1.1 functionality
 // OpenGL 2.1 uses most of OpenGL 3.3 Core functionality
 // WARNING: Specific parts are checked with #if defines
 // OpenGL 4.3 uses OpenGL 3.3 Core functionality
@@ -177,7 +179,8 @@ typedef struct rlRenderBatch {
 } rlRenderBatch;
 // OpenGL version
 typedef enum {
-    RL_OPENGL_11 = 1, // OpenGL 1.1
+    RL_OPENGL_11_SOFTWARE = 0, // Software rendering
+    RL_OPENGL_11, // OpenGL 1.1
     RL_OPENGL_21, // OpenGL 2.1 (GLSL 120)
     RL_OPENGL_33, // OpenGL 3.3 (GLSL 330)
     RL_OPENGL_43, // OpenGL 4.3 (using GLSL 330)
@@ -372,6 +375,8 @@ typedef enum {
  void rlDisableVertexBufferElement(void); // Disable vertex buffer element (VBO element)
  void rlEnableVertexAttribute(unsigned int index); // Enable vertex attribute index
  void rlDisableVertexAttribute(unsigned int index); // Disable vertex attribute index
+ void rlEnableStatePointer(int vertexAttribType, void *buffer); // Enable attribute state pointer
+ void rlDisableStatePointer(int vertexAttribType); // Disable attribute state pointer
 // Textures state
  void rlActiveTextureSlot(int slot); // Select and active a texture slot
  void rlEnableTexture(unsigned int id); // Enable texture
@@ -404,9 +409,12 @@ typedef enum {
  void rlEnableScissorTest(void); // Enable scissor test
  void rlDisableScissorTest(void); // Disable scissor test
  void rlScissor(int x, int y, int width, int height); // Scissor test
- void rlEnableWireMode(void); // Enable wire mode
  void rlEnablePointMode(void); // Enable point mode
- void rlDisableWireMode(void); // Disable wire (and point) mode
+ void rlDisablePointMode(void); // Disable point mode
+ void rlSetPointSize(float size); // Set the point drawing size
+ float rlGetPointSize(void); // Get the point drawing size
+ void rlEnableWireMode(void); // Enable wire mode
+ void rlDisableWireMode(void); // Disable wire mode
  void rlSetLineWidth(float width); // Set the line drawing width
  float rlGetLineWidth(void); // Get the line drawing width
  void rlEnableSmoothLines(void); // Enable line aliasing
@@ -427,6 +435,7 @@ typedef enum {
  void rlglInit(int width, int height); // Initialize rlgl (buffers, shaders, textures, states)
  void rlglClose(void); // De-initialize rlgl (buffers, shaders, textures)
  void rlLoadExtensions(void *loader); // Load OpenGL extensions (loader function required)
+ void *rlGetProcAddress(const char *procName); // Get OpenGL procedure address
  int rlGetVersion(void); // Get current OpenGL version
  void rlSetFramebufferWidth(int width); // Set current framebuffer width
  int rlGetFramebufferWidth(void); // Get default framebuffer width
@@ -477,13 +486,16 @@ typedef enum {
  void rlFramebufferAttach(unsigned int fboId, unsigned int texId, int attachType, int texType, int mipLevel); // Attach texture/renderbuffer to a framebuffer
  bool rlFramebufferComplete(unsigned int id); // Verify framebuffer is complete
  void rlUnloadFramebuffer(unsigned int id); // Delete framebuffer from GPU
+// WARNING: Copy and resize framebuffer functionality only defined for software backend
+ void rlCopyFramebuffer(int x, int y, int width, int height, int format, void *pixels); // Copy framebuffer pixel data to internal buffer
+ void rlResizeFramebuffer(int width, int height); // Resize internal framebuffer
 // Shaders management
  unsigned int rlLoadShaderCode(const char *vsCode, const char *fsCode); // Load shader from code strings
  unsigned int rlCompileShader(const char *shaderCode, int type); // Compile custom shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER)
  unsigned int rlLoadShaderProgram(unsigned int vShaderId, unsigned int fShaderId); // Load custom shader program
  void rlUnloadShaderProgram(unsigned int id); // Unload shader program
- int rlGetLocationUniform(unsigned int shaderId, const char *uniformName); // Get shader location uniform
- int rlGetLocationAttrib(unsigned int shaderId, const char *attribName); // Get shader location attribute
+ int rlGetLocationUniform(unsigned int shaderId, const char *uniformName); // Get shader location uniform, requires shader program id
+ int rlGetLocationAttrib(unsigned int shaderId, const char *attribName); // Get shader location attribute, requires shader program id
  void rlSetUniform(int locIndex, const void *value, int uniformType, int count); // Set shader value uniform
  void rlSetUniformMatrix(int locIndex, Matrix mat); // Set shader value matrix
  void rlSetUniformMatrices(int locIndex, const Matrix *mat, int count); // Set shader value matrices

@@ -187,7 +187,7 @@ class GamepadButton(int):
     GAMEPAD_BUTTON_RIGHT_THUMB = 17
 
 class GamepadAxis(int):
-    """Gamepad axis."""
+    """Gamepad axes."""
     GAMEPAD_AXIS_LEFT_X = 0
     GAMEPAD_AXIS_LEFT_Y = 1
     GAMEPAD_AXIS_RIGHT_X = 2
@@ -240,6 +240,7 @@ class ShaderLocationIndex(int):
     SHADER_LOC_VERTEX_BONEIDS = 26
     SHADER_LOC_VERTEX_BONEWEIGHTS = 27
     SHADER_LOC_BONE_MATRICES = 28
+    SHADER_LOC_VERTEX_INSTANCE_TX = 29
 
 class ShaderUniformDataType(int):
     """Shader uniform data type."""
@@ -251,7 +252,11 @@ class ShaderUniformDataType(int):
     SHADER_UNIFORM_IVEC2 = 5
     SHADER_UNIFORM_IVEC3 = 6
     SHADER_UNIFORM_IVEC4 = 7
-    SHADER_UNIFORM_SAMPLER2D = 8
+    SHADER_UNIFORM_UINT = 8
+    SHADER_UNIFORM_UIVEC2 = 9
+    SHADER_UNIFORM_UIVEC3 = 10
+    SHADER_UNIFORM_UIVEC4 = 11
+    SHADER_UNIFORM_SAMPLER2D = 12
 
 class ShaderAttributeDataType(int):
     """Shader attribute data types."""
@@ -911,10 +916,10 @@ ffi: _cffi_backend.FFI
 PhysicsShapeType = int
 
 def attach_audio_mixed_processor(processor: Any,) -> None:
-    """Attach audio stream processor to the entire audio pipeline, receives the samples as 'float'."""
+    """Attach audio stream processor to the entire audio pipeline, receives frames x 2 samples as 'float' (stereo)."""
     ...
 def attach_audio_stream_processor(stream: AudioStream|list|tuple,processor: Any,) -> None:
-    """Attach audio stream processor to stream, receives the samples as 'float'."""
+    """Attach audio stream processor to stream, receives frames x 2 samples as 'float' (stereo)."""
     ...
 def begin_blend_mode(mode: int,) -> None:
     """Begin blending mode (alpha, additive, multiplied, subtract, custom)."""
@@ -940,7 +945,7 @@ def begin_texture_mode(target: RenderTexture|list|tuple,) -> None:
 def begin_vr_stereo_mode(config: VrStereoConfig|list|tuple,) -> None:
     """Begin stereo rendering (requires VR simulator)."""
     ...
-def change_directory(dir: str,) -> bool:
+def change_directory(dirPath: str,) -> bool:
     """Change working directory, return true on success."""
     ...
 def check_collision_box_sphere(box: BoundingBox|list|tuple,center: Vector3|list|tuple,radius: float,) -> bool:
@@ -1052,6 +1057,9 @@ def compute_md5(data: str,dataSize: int,) -> Any:
 def compute_sha1(data: str,dataSize: int,) -> Any:
     """Compute SHA1 hash code, returns static int[5] (20 bytes)."""
     ...
+def compute_sha256(data: str,dataSize: int,) -> Any:
+    """Compute SHA256 hash code, returns static int[8] (32 bytes)."""
+    ...
 @deprecated("Raylib no longer recommends the use of Physac library")
 def create_physics_body_circle(pos: Vector2|list|tuple,radius: float,density: float,) -> Any:
     """Creates a new circle physics body with generic parameters."""
@@ -1064,8 +1072,8 @@ def create_physics_body_polygon(pos: Vector2|list|tuple,radius: float,sides: int
 def create_physics_body_rectangle(pos: Vector2|list|tuple,width: float,height: float,density: float,) -> Any:
     """Creates a new rectangle physics body with generic parameters."""
     ...
-def decode_data_base64(data: str,outputSize: Any,) -> str:
-    """Decode Base64 string data, memory must be MemFree()."""
+def decode_data_base64(text: str,outputSize: Any,) -> str:
+    """Decode Base64 string (expected NULL terminated), memory must be MemFree()."""
     ...
 def decompress_data(compData: str,compDataSize: int,dataSize: Any,) -> str:
     """Decompress data (DEFLATE algorithm), memory must be MemFree()."""
@@ -1161,6 +1169,12 @@ def draw_ellipse(centerX: int,centerY: int,radiusH: float,radiusV: float,color: 
 def draw_ellipse_lines(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
     """Draw ellipse outline."""
     ...
+def draw_ellipse_lines_v(center: Vector2|list|tuple,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
+    """Draw ellipse outline (Vector version)."""
+    ...
+def draw_ellipse_v(center: Vector2|list|tuple,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
+    """Draw ellipse (Vector version)."""
+    ...
 def draw_fps(posX: int,posY: int,) -> None:
     """Draw current FPS."""
     ...
@@ -1175,6 +1189,9 @@ def draw_line_3d(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,color: 
     ...
 def draw_line_bezier(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
     """Draw line segment cubic-bezier in-out interpolation."""
+    ...
+def draw_line_dashed(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,dashSize: int,spaceSize: int,color: Color|list|tuple,) -> None:
+    """Draw a dashed line."""
     ...
 def draw_line_ex(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
     """Draw a line (using triangles/quads)."""
@@ -1236,7 +1253,7 @@ def draw_ray(ray: Ray|list|tuple,color: Color|list|tuple,) -> None:
 def draw_rectangle(posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
     """Draw a color-filled rectangle."""
     ...
-def draw_rectangle_gradient_ex(rec: Rectangle|list|tuple,topLeft: Color|list|tuple,bottomLeft: Color|list|tuple,topRight: Color|list|tuple,bottomRight: Color|list|tuple,) -> None:
+def draw_rectangle_gradient_ex(rec: Rectangle|list|tuple,topLeft: Color|list|tuple,bottomLeft: Color|list|tuple,bottomRight: Color|list|tuple,topRight: Color|list|tuple,) -> None:
     """Draw a gradient-filled rectangle with custom vertex colors."""
     ...
 def draw_rectangle_gradient_h(posX: int,posY: int,width: int,height: int,left: Color|list|tuple,right: Color|list|tuple,) -> None:
@@ -1372,7 +1389,7 @@ def enable_event_waiting() -> None:
     """Enable waiting for events on EndDrawing(), no automatic event polling."""
     ...
 def encode_data_base64(data: str,dataSize: int,outputSize: Any,) -> str:
-    """Encode data to Base64 string, memory must be MemFree()."""
+    """Encode data to Base64 string (includes NULL terminator), memory must be MemFree()."""
     ...
 def end_blend_mode() -> None:
     """End blending mode (reset to default: alpha blending)."""
@@ -1431,8 +1448,26 @@ def export_wave_as_code(wave: Wave|list|tuple,fileName: str,) -> bool:
 def fade(color: Color|list|tuple,alpha: float,) -> Color:
     """Get color with alpha applied, alpha goes from 0.0f to 1.0f."""
     ...
+def file_copy(srcPath: str,dstPath: str,) -> int:
+    """Copy file from one path to another, dstPath created if it doesn't exist."""
+    ...
 def file_exists(fileName: str,) -> bool:
     """Check if file exists."""
+    ...
+def file_move(srcPath: str,dstPath: str,) -> int:
+    """Move file from one directory to another, dstPath created if it doesn't exist."""
+    ...
+def file_remove(fileName: str,) -> int:
+    """Remove file (if exists)."""
+    ...
+def file_rename(fileName: str,fileRename: str,) -> int:
+    """Rename file (if exists)."""
+    ...
+def file_text_find_index(fileName: str,search: str,) -> int:
+    """Find text in existing file."""
+    ...
+def file_text_replace(fileName: str,search: str,replacement: str,) -> int:
+    """Replace text in an existing file."""
     ...
 def float_equals(x: float,y: float,) -> int:
     """."""
@@ -1573,10 +1608,10 @@ def get_frame_time() -> float:
     """Get time in seconds for last frame drawn (delta time)."""
     ...
 def get_gamepad_axis_count(gamepad: int,) -> int:
-    """Get gamepad axis count for a gamepad."""
+    """Get axis count for a gamepad."""
     ...
 def get_gamepad_axis_movement(gamepad: int,axis: int,) -> float:
-    """Get axis movement value for a gamepad axis."""
+    """Get movement value for a gamepad axis."""
     ...
 def get_gamepad_button_pressed() -> int:
     """Get the last gamepad button pressed."""
@@ -1616,6 +1651,9 @@ def get_image_alpha_border(image: Image|list|tuple,threshold: float,) -> Rectang
     ...
 def get_image_color(image: Image|list|tuple,x: int,y: int,) -> Color:
     """Get image pixel color at (x, y) position."""
+    ...
+def get_key_name(key: int,) -> str:
+    """Get name of a QWERTY key on the current keyboard layout (eg returns string 'q' for KEY_A on an AZERTY keyboard)."""
     ...
 def get_key_pressed() -> int:
     """Get key pressed (keycode), call it multiple times for keys queued, returns 0 when the queue is empty."""
@@ -1771,6 +1809,9 @@ def get_spline_point_catmull_rom(p1: Vector2|list|tuple,p2: Vector2|list|tuple,p
     ...
 def get_spline_point_linear(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,t: float,) -> Vector2:
     """Get (evaluate) spline point: Linear."""
+    ...
+def get_text_between(text: str,begin: str,end: str,) -> str:
+    """Get text between two strings."""
     ...
 def get_time() -> float:
     """Get elapsed time in seconds since InitWindow()."""
@@ -2173,7 +2214,7 @@ def is_file_dropped() -> bool:
     """Check if a file has been dropped into window."""
     ...
 def is_file_extension(fileName: str,ext: str,) -> bool:
-    """Check file extension (including point: .png, .wav)."""
+    """Check file extension (recommended include point: .png, .wav)."""
     ...
 def is_file_name_valid(fileName: str,) -> bool:
     """Check if fileName is valid for the platform/OS."""
@@ -2323,7 +2364,7 @@ def load_file_text(fileName: str,) -> str:
 def load_font(fileName: str,) -> Font:
     """Load font from file into GPU memory (VRAM)."""
     ...
-def load_font_data(fileData: str,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,type: int,) -> Any:
+def load_font_data(fileData: str,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,type: int,glyphCount: Any,) -> Any:
     """Load font data for further use."""
     ...
 def load_font_ex(fileName: str,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
@@ -2404,6 +2445,9 @@ def load_sound_alias(source: Sound|list|tuple,) -> Sound:
 def load_sound_from_wave(wave: Wave|list|tuple,) -> Sound:
     """Load sound from wave data."""
     ...
+def load_text_lines(text: str,count: Any,) -> list[str]:
+    """Load text as separate lines ('\n')."""
+    ...
 def load_texture(fileName: str,) -> Texture:
     """Load texture from file into GPU memory (VRAM)."""
     ...
@@ -2432,6 +2476,9 @@ def make_directory(dirPath: str,) -> int:
     """Create directories (including full path requested), returns 0 on success."""
     ...
 def matrix_add(left: Matrix|list|tuple,right: Matrix|list|tuple,) -> Matrix:
+    """."""
+    ...
+def matrix_compose(translation: Vector3|list|tuple,rotation: Vector4|list|tuple,scale: Vector3|list|tuple,) -> Matrix:
     """."""
     ...
 def matrix_decompose(mat: Matrix|list|tuple,translation: Any|list|tuple,rotation: Any|list|tuple,scale: Any|list|tuple,) -> None:
@@ -2636,7 +2683,7 @@ def remap(value: float,inputStart: float,inputEnd: float,outputStart: float,outp
     """."""
     ...
 def restore_window() -> None:
-    """Set window state: not minimized/maximized."""
+    """Restore window from being minimized/maximized."""
     ...
 def resume_audio_stream(stream: AudioStream|list|tuple,) -> None:
     """Resume audio stream."""
@@ -2727,7 +2774,7 @@ def set_mouse_scale(scaleX: float,scaleY: float,) -> None:
     """Set mouse scaling."""
     ...
 def set_music_pan(music: Music|list|tuple,pan: float,) -> None:
-    """Set pan for a music (0.5 is center)."""
+    """Set pan for a music (-1.0 left, 0.0 center, 1.0 right)."""
     ...
 def set_music_pitch(music: Music|list|tuple,pitch: float,) -> None:
     """Set pitch for a music (1.0 is base level)."""
@@ -2766,7 +2813,7 @@ def set_shader_value_matrix(shader: Shader|list|tuple,locIndex: int,mat: Matrix|
     """Set shader uniform value (matrix 4x4)."""
     ...
 def set_shader_value_texture(shader: Shader|list|tuple,locIndex: int,texture: Texture|list|tuple,) -> None:
-    """Set shader uniform value for texture (sampler2d)."""
+    """Set shader uniform value and bind the texture (sampler2d)."""
     ...
 def set_shader_value_v(shader: Shader|list|tuple,locIndex: int,value: Any,uniformType: int,count: int,) -> None:
     """Set shader uniform value vector."""
@@ -2775,7 +2822,7 @@ def set_shapes_texture(texture: Texture|list|tuple,source: Rectangle|list|tuple,
     """Set texture and rectangle to be used on shapes drawing."""
     ...
 def set_sound_pan(sound: Sound|list|tuple,pan: float,) -> None:
-    """Set pan for a sound (0.5 is center)."""
+    """Set pan for a sound (-1.0 left, 0.0 center, 1.0 right)."""
     ...
 def set_sound_pitch(sound: Sound|list|tuple,pitch: float,) -> None:
     """Set pitch for a sound (1.0 is base level)."""
@@ -2859,13 +2906,13 @@ def take_screenshot(fileName: str,) -> None:
     """Takes a screenshot of current screen (filename extension defines format)."""
     ...
 def text_append(text: str,append: str,position: Any,) -> None:
-    """Append text at specific position and move cursor!."""
+    """Append text at specific position and move cursor."""
     ...
 def text_copy(dst: str,src: str,) -> int:
     """Copy one string to another, returns bytes copied."""
     ...
-def text_find_index(text: str,find: str,) -> int:
-    """Find first text occurrence within a string."""
+def text_find_index(text: str,search: str,) -> int:
+    """Find first text occurrence within a string, -1 if not found."""
     ...
 def text_format(*args) -> str:
         """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""
@@ -2882,11 +2929,17 @@ def text_join(textList: list[str],count: int,delimiter: str,) -> str:
 def text_length(text: str,) -> int:
     """Get text length, checks for '\0' ending."""
     ...
-def text_replace(text: str,replace: str,by: str,) -> str:
+def text_remove_spaces(text: str,) -> str:
+    """Remove text spaces, concat words."""
+    ...
+def text_replace(text: str,search: str,replacement: str,) -> str:
     """Replace text string (WARNING: memory must be freed!)."""
     ...
+def text_replace_between(text: str,begin: str,end: str,replacement: str,) -> str:
+    """Replace text between two specific strings (WARNING: memory must be freed!)."""
+    ...
 def text_split(text: str,delimiter: str,count: Any,) -> list[str]:
-    """Split text into multiple strings."""
+    """Split text into multiple strings, using MAX_TEXTSPLIT_COUNT static strings."""
     ...
 def text_subtext(text: str,position: int,length: int,) -> str:
     """Get a piece of a text string."""
@@ -2895,10 +2948,10 @@ def text_to_camel(text: str,) -> str:
     """Get Camel case notation version of provided string."""
     ...
 def text_to_float(text: str,) -> float:
-    """Get float value from text (negative values not supported)."""
+    """Get float value from text."""
     ...
 def text_to_integer(text: str,) -> int:
-    """Get integer value from text (negative values not supported)."""
+    """Get integer value from text."""
     ...
 def text_to_lower(text: str,) -> str:
     """Get lower case version of provided string."""
@@ -2990,6 +3043,9 @@ def unload_sound(sound: Sound|list|tuple,) -> None:
 def unload_sound_alias(alias: Sound|list|tuple,) -> None:
     """Unload a sound alias (does not deallocate sample data)."""
     ...
+def unload_text_lines(text: list[str],lineCount: int,) -> None:
+    """Unload text lines."""
+    ...
 def unload_texture(texture: Texture|list|tuple,) -> None:
     """Unload texture from GPU memory (VRAM)."""
     ...
@@ -3027,13 +3083,13 @@ def update_music_stream(music: Music|list|tuple,) -> None:
     """Updates buffers for music streaming."""
     ...
 def update_sound(sound: Sound|list|tuple,data: Any,sampleCount: int,) -> None:
-    """Update sound buffer with new data."""
+    """Update sound buffer with new data (default data format: 32 bit float, stereo)."""
     ...
 def update_texture(texture: Texture|list|tuple,pixels: Any,) -> None:
-    """Update GPU texture with new data."""
+    """Update GPU texture with new data (pixels should be able to fill texture)."""
     ...
 def update_texture_rec(texture: Texture|list|tuple,rec: Rectangle|list|tuple,pixels: Any,) -> None:
-    """Update GPU texture rectangle with new data."""
+    """Update GPU texture rectangle with new data (pixels and rec should fit in texture)."""
     ...
 def upload_mesh(mesh: Any|list|tuple,dynamic: bool,) -> None:
     """Upload mesh vertex data in GPU and provide VAO/VBO ids."""
@@ -3051,6 +3107,9 @@ def vector2_clamp(v: Vector2|list|tuple,min_1: Vector2|list|tuple,max_2: Vector2
     """."""
     ...
 def vector2_clamp_value(v: Vector2|list|tuple,min_1: float,max_2: float,) -> Vector2:
+    """."""
+    ...
+def vector2_cross_product(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> float:
     """."""
     ...
 def vector2_distance(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> float:
@@ -3770,6 +3829,9 @@ def rl_disable_shader() -> None:
 def rl_disable_smooth_lines() -> None:
     """Disable line aliasing."""
     ...
+def rl_disable_state_pointer(vertexAttribType: int,) -> None:
+    """Disable attribute state pointer."""
+    ...
 def rl_disable_stereo_render() -> None:
     """Disable stereo rendering."""
     ...
@@ -3838,6 +3900,9 @@ def rl_enable_shader(id: int,) -> None:
     ...
 def rl_enable_smooth_lines() -> None:
     """Enable line aliasing."""
+    ...
+def rl_enable_state_pointer(vertexAttribType: int,buffer: Any,) -> None:
+    """Enable attribute state pointer."""
     ...
 def rl_enable_stereo_render() -> None:
     """Enable stereo rendering."""

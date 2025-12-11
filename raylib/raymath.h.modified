@@ -31,7 +31,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2015-2024 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2015-2025 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -86,10 +86,12 @@ inline /* Functions may be inlined or external definition used*/ Vector2 Vector2
 inline /* Functions may be inlined or external definition used*/ Vector2 Vector2SubtractValue(Vector2 v, float sub);// Calculate vector length
 inline /* Functions may be inlined or external definition used*/ float Vector2Length(Vector2 v);// Calculate vector square length
 inline /* Functions may be inlined or external definition used*/ float Vector2LengthSqr(Vector2 v);// Calculate two vectors dot product
-inline /* Functions may be inlined or external definition used*/ float Vector2DotProduct(Vector2 v1, Vector2 v2);// Calculate distance between two vectors
+inline /* Functions may be inlined or external definition used*/ float Vector2DotProduct(Vector2 v1, Vector2 v2);// Calculate two vectors cross product
+inline /* Functions may be inlined or external definition used*/ float Vector2CrossProduct(Vector2 v1, Vector2 v2);// Calculate distance between two vectors
 inline /* Functions may be inlined or external definition used*/ float Vector2Distance(Vector2 v1, Vector2 v2);// Calculate square distance between two vectors
-inline /* Functions may be inlined or external definition used*/ float Vector2DistanceSqr(Vector2 v1, Vector2 v2);// Calculate angle between two vectors
-// NOTE: Angle is calculated from origin point (0, 0)
+inline /* Functions may be inlined or external definition used*/ float Vector2DistanceSqr(Vector2 v1, Vector2 v2);// Calculate the signed angle from v1 to v2, relative to the origin (0, 0)
+// NOTE: Coordinate system convention: positive X right, positive Y down
+// positive angles appear clockwise, and negative angles appear counterclockwise
 inline /* Functions may be inlined or external definition used*/ float Vector2Angle(Vector2 v1, Vector2 v2);// Calculate angle defined by a two vectors line
 // NOTE: Parameters need to be normalized
 // Current implementation should be aligned with glm::angle
@@ -245,5 +247,8 @@ inline /* Functions may be inlined or external definition used*/ Quaternion Quat
 // NOTE: Angles are returned in a Vector3 struct in radians
 inline /* Functions may be inlined or external definition used*/ Vector3 QuaternionToEuler(Quaternion q);// Transform a quaternion given a transformation matrix
 inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionTransform(Quaternion q, Matrix mat);// Check whether two given quaternions are almost equal
-inline /* Functions may be inlined or external definition used*/ int QuaternionEquals(Quaternion p, Quaternion q);// Decompose a transformation matrix into its rotational, translational and scaling components
+inline /* Functions may be inlined or external definition used*/ int QuaternionEquals(Quaternion p, Quaternion q);// Compose a transformation matrix from rotational, translational and scaling components
+// TODO: This function is not following raymath conventions defined in header: NOT self-contained
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixCompose(Vector3 translation, Quaternion rotation, Vector3 scale);// Decompose a transformation matrix into its rotational, translational and scaling components and remove shear
+// TODO: This function is not following raymath conventions defined in header: NOT self-contained
 inline /* Functions may be inlined or external definition used*/ void MatrixDecompose(Matrix mat, Vector3 *translation, Quaternion *rotation, Vector3 *scale);

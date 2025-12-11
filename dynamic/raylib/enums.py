@@ -189,7 +189,7 @@ class GamepadButton(IntEnum):
     GAMEPAD_BUTTON_RIGHT_THUMB = 17
 
 class GamepadAxis(IntEnum):
-    """Gamepad axis."""
+    """Gamepad axes."""
     GAMEPAD_AXIS_LEFT_X = 0
     GAMEPAD_AXIS_LEFT_Y = 1
     GAMEPAD_AXIS_RIGHT_X = 2
@@ -242,6 +242,7 @@ class ShaderLocationIndex(IntEnum):
     SHADER_LOC_VERTEX_BONEIDS = 26
     SHADER_LOC_VERTEX_BONEWEIGHTS = 27
     SHADER_LOC_BONE_MATRICES = 28
+    SHADER_LOC_VERTEX_INSTANCE_TX = 29
 
 class ShaderUniformDataType(IntEnum):
     """Shader uniform data type."""
@@ -253,7 +254,11 @@ class ShaderUniformDataType(IntEnum):
     SHADER_UNIFORM_IVEC2 = 5
     SHADER_UNIFORM_IVEC3 = 6
     SHADER_UNIFORM_IVEC4 = 7
-    SHADER_UNIFORM_SAMPLER2D = 8
+    SHADER_UNIFORM_UINT = 8
+    SHADER_UNIFORM_UIVEC2 = 9
+    SHADER_UNIFORM_UIVEC3 = 10
+    SHADER_UNIFORM_UIVEC4 = 11
+    SHADER_UNIFORM_SAMPLER2D = 12
 
 class ShaderAttributeDataType(IntEnum):
     """Shader attribute data types."""
