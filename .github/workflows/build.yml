@@ -35,7 +35,7 @@ jobs:
           tar xvfz SDL3-3.2.28.tar.gz
           mkdir build
           cd build
-          cmake ../SDL3-3.2.28 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF
+          cmake ../SDL3-3.2.28 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           sudo cmake --install .
 
@@ -141,7 +141,7 @@ jobs:
           tar xvfz SDL3-3.2.28.tar.gz
           mkdir build
           cd build
-          cmake ../SDL3-3.2.28 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF
+          cmake ../SDL3-3.2.28 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           sudo cmake --install .
 
@@ -243,6 +243,12 @@ jobs:
         run: |
           ln -s /usr/local/bin /__e/node20/bin
 
+      - name: update cmake
+        run: |
+          wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-x86_64.tar.gz
+          tar xvfz cmake-3.31.10-linux-x86_64.tar.gz
+          cp cmake-3.31.10-linux-x86_64/bin/* /usr/bin/
+
       - uses: actions/checkout@v2
         with:
           submodules: recursive
@@ -336,6 +342,12 @@ jobs:
       - name: fix node
         run: |
           ln -s /usr/local/bin /__e/node20/bin
+
+      - name: update cmake
+        run: |
+          wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-x86_64.tar.gz
+          tar xvfz cmake-3.31.10-linux-x86_64.tar.gz
+          cp cmake-3.31.10-linux-x86_64/bin/* /usr/bin/
 
       - uses: actions/checkout@v2
         with:
@@ -444,7 +456,7 @@ jobs:
           tar xvfz SDL3-3.2.28.tar.gz
           mkdir build
           cd build
-          cmake ../SDL3-3.2.28 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF
+          cmake ../SDL3-3.2.28 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           sudo cmake --install .
 

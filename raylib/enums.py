@@ -406,7 +406,7 @@ class GuiControl(IntEnum):
     DROPDOWNBOX = 8
     TEXTBOX = 9
     VALUEBOX = 10
-    SPINNER = 11
+    CONTROL11 = 11
     LISTVIEW = 12
     COLORPICKER = 13
     SCROLLBAR = 14
@@ -482,10 +482,10 @@ class GuiTextBoxProperty(IntEnum):
     """TextBox/TextBoxMulti/ValueBox/Spinner."""
     TEXT_READONLY = 16
 
-class GuiSpinnerProperty(IntEnum):
-    """Spinner."""
-    SPIN_BUTTON_WIDTH = 16
-    SPIN_BUTTON_SPACING = 17
+class GuiValueBoxProperty(IntEnum):
+    """ValueBox/Spinner."""
+    SPINNER_BUTTON_WIDTH = 16
+    SPINNER_BUTTON_SPACING = 17
 
 class GuiListViewProperty(IntEnum):
     """ListView."""
@@ -493,7 +493,8 @@ class GuiListViewProperty(IntEnum):
     LIST_ITEMS_SPACING = 17
     SCROLLBAR_WIDTH = 18
     SCROLLBAR_SIDE = 19
-    LIST_ITEMS_BORDER_WIDTH = 20
+    LIST_ITEMS_BORDER_NORMAL = 20
+    LIST_ITEMS_BORDER_WIDTH = 21
 
 class GuiColorPickerProperty(IntEnum):
     """ColorPicker."""
@@ -734,27 +735,27 @@ class GuiIconName(IntEnum):
     ICON_MLAYERS = 226
     ICON_MAPS = 227
     ICON_HOT = 228
-    ICON_229 = 229
-    ICON_230 = 230
-    ICON_231 = 231
-    ICON_232 = 232
-    ICON_233 = 233
-    ICON_234 = 234
-    ICON_235 = 235
-    ICON_236 = 236
-    ICON_237 = 237
-    ICON_238 = 238
-    ICON_239 = 239
-    ICON_240 = 240
-    ICON_241 = 241
-    ICON_242 = 242
-    ICON_243 = 243
-    ICON_244 = 244
-    ICON_245 = 245
-    ICON_246 = 246
-    ICON_247 = 247
-    ICON_248 = 248
-    ICON_249 = 249
+    ICON_LABEL = 229
+    ICON_NAME_ID = 230
+    ICON_SLICING = 231
+    ICON_MANUAL_CONTROL = 232
+    ICON_COLLISION = 233
+    ICON_CIRCLE_ADD = 234
+    ICON_CIRCLE_ADD_FILL = 235
+    ICON_CIRCLE_WARNING = 236
+    ICON_CIRCLE_WARNING_FILL = 237
+    ICON_BOX_MORE = 238
+    ICON_BOX_MORE_FILL = 239
+    ICON_BOX_MINUS = 240
+    ICON_BOX_MINUS_FILL = 241
+    ICON_UNION = 242
+    ICON_INTERSECTION = 243
+    ICON_DIFFERENCE = 244
+    ICON_SPHERE = 245
+    ICON_CYLINDER = 246
+    ICON_CONE = 247
+    ICON_ELLIPSOID = 248
+    ICON_CAPSULE = 249
     ICON_250 = 250
     ICON_251 = 251
     ICON_252 = 252
