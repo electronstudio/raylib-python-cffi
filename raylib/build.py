@@ -32,7 +32,7 @@ REPO_ROOT = THIS_DIR.parent
 #
 # Environment variables you can set before build
 #
-# RAYLIB_PLATFORM: Any one of: Desktop, SDL, DRM, PLATFORM_COMMA
+# RAYLIB_PLATFORM: Any one of: Desktop, SDL, DRM, PLATFORM_COMMA, SDL_SOFTWARE
 # RAYLIB_LINK_ARGS: Arguments to pass to the linker rather than getting them from pkg-config.
 #    e.g.: -L/usr/local/lib -lraylib
 # RAYLIB_INCLUDE_PATH: Directory to find raylib.h rather than getting from pkg-config.
@@ -143,7 +143,7 @@ def build_unix():
         raise Exception("ERROR: raylib not found by pkg-config.  Please install pkg-config and Raylib"
                         "or else set RAYLIB_LINK_ARGS env variable.")
 
-    if RAYLIB_PLATFORM=="SDL" and os.getenv("RAYLIB_LINK_ARGS") is None and not check_sdl_pkgconfig_installed():
+    if RAYLIB_PLATFORM.startswith("SDL") and os.getenv("RAYLIB_LINK_ARGS") is None and not check_sdl_pkgconfig_installed():
         print("PKG_CONFIG_PATH is set to: "+os.getenv("PKG_CONFIG_PATH"))
         raise Exception("ERROR: SDL3 not found by pkg-config.  Please install pkg-config and SDL3."
                         "or else set RAYLIB_LINK_ARGS env variable.")
@@ -235,17 +235,20 @@ def build_unix():
         flags = os.getenv("RAYLIB_LINK_ARGS")
         if flags is None:
             flags = get_lib_flags_from_pkgconfig()
-        extra_link_args = flags.split() + [ '-lm', '-lpthread', '-lGL',
+        extra_link_args = flags.split() + [ '-lm', '-lpthread',
                                               '-lrt', '-lm', '-ldl', '-lpthread', '-latomic']
         if RAYLIB_PLATFORM=="SDL":
-            extra_link_args += ['-lX11','-lSDL3']
+            extra_link_args += ['-lX11','-lGL', '-lSDL3']
         elif RAYLIB_PLATFORM=="DRM":
-            extra_link_args += ['-lEGL', '-lgbm']
+            extra_link_args += ['-lGL', '-lEGL', '-lgbm']
         elif RAYLIB_PLATFORM=="PLATFORM_COMMA":
-            extra_link_args.remove('-lGL')
             extra_link_args += ['-lGLESv2', '-lEGL', '-lwayland-client', '-lwayland-egl']
+        elif RAYLIB_PLATFORM=="Desktop":
+            extra_link_args += ['-lX11','-lGL']
+        elif RAYLIB_PLATFORM=="SDL_SOFT":
+            extra_link_args += ['-lX11', '-lSDL3']
         else:
-            extra_link_args += ['-lX11']
+            raise Exception("Unknown or not set RAYLIB_PLATFORM")
         extra_compile_args = ["-Wno-incompatible-pointer-types", "-D_CFFI_NO_LIMITED_API"]
         libraries = [] # Not sure why but we put them in extra_link_args instead so *shouldnt* be needed here
 
