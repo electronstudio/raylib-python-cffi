@@ -273,12 +273,12 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          PLATFORM = ${{ matrix.raylib-platform }}
+          PLATFORM="${{ matrix.raylib-platform }}"
           if [ ${{ matrix.raylib-platform }} = "DRM" ]; then
             OPENGL="ES 2.0"
           elif [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
             OPENGL="Software"
-            PLATFORM = "SDL"
+            PLATFORM="SDL"
           else
             OPENGL="3.3"
           fi
