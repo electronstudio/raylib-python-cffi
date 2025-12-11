@@ -62,8 +62,8 @@ def check_raylib_pkgconfig_installed():
     return subprocess.run(['pkg-config', '--libs', 'raylib'], text=True, stdout=subprocess.PIPE).returncode == 0
 
 def check_sdl_pkgconfig_installed():
-    # this should be 'pkg-config --exists sdl2' but result is non-deterministic on old versions of pkg-config!
-    return subprocess.run(['pkg-config', '--libs', 'sdl2'], text=True, stdout=subprocess.PIPE).returncode == 0
+    # this should be 'pkg-config --exists sdl3' but result is non-deterministic on old versions of pkg-config!
+    return subprocess.run(['pkg-config', '--libs', 'sdl3'], text=True, stdout=subprocess.PIPE).returncode == 0
 
 
 def get_the_include_path_from_pkgconfig(libname):
@@ -145,7 +145,7 @@ def build_unix():
 
     if RAYLIB_PLATFORM=="SDL" and os.getenv("RAYLIB_LINK_ARGS") is None and not check_sdl_pkgconfig_installed():
         print("PKG_CONFIG_PATH is set to: "+os.getenv("PKG_CONFIG_PATH"))
-        raise Exception("ERROR: SDL2 not found by pkg-config.  Please install pkg-config and SDL2."
+        raise Exception("ERROR: SDL3 not found by pkg-config.  Please install pkg-config and SDL3."
                         "or else set RAYLIB_LINK_ARGS env variable.")
 
     raylib_include_path = os.getenv("RAYLIB_INCLUDE_PATH")
@@ -226,7 +226,7 @@ def build_unix():
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
                            'CoreVideo']
         if RAYLIB_PLATFORM=="SDL":
-            extra_link_args += ['/usr/local/lib/libSDL2.a', '-framework', 'CoreHaptics', '-framework', 'ForceFeedback',
+            extra_link_args += ['/usr/local/lib/libSDL3.a', '-framework', 'CoreHaptics', '-framework', 'ForceFeedback',
             '-framework', 'GameController']
         libraries = []
         extra_compile_args = ["-Wno-error=incompatible-function-pointer-types", "-D_CFFI_NO_LIMITED_API"]
@@ -238,7 +238,7 @@ def build_unix():
         extra_link_args = flags.split() + [ '-lm', '-lpthread', '-lGL',
                                               '-lrt', '-lm', '-ldl', '-lpthread', '-latomic']
         if RAYLIB_PLATFORM=="SDL":
-            extra_link_args += ['-lX11','-lSDL2']
+            extra_link_args += ['-lX11','-lSDL3']
         elif RAYLIB_PLATFORM=="DRM":
             extra_link_args += ['-lEGL', '-lgbm']
         elif RAYLIB_PLATFORM=="PLATFORM_COMMA":
@@ -299,7 +299,7 @@ def build_windows():
 
     libraries = ['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm']
     if RAYLIB_PLATFORM=="SDL":
-        libraries += ['SDL2']
+        libraries += ['SDL3']
 
     print("libraries: "+str(libraries))
     ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
