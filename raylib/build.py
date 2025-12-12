@@ -225,7 +225,7 @@ def build_unix():
         extra_link_args = flags.split() + ['-framework', 'OpenGL', '-framework', 'Cocoa',
                            '-framework', 'IOKit', '-framework', 'CoreFoundation', '-framework',
                            'CoreVideo']
-        if RAYLIB_PLATFORM=="SDL":
+        if RAYLIB_PLATFORM=="SDL" or RAYLIB_PLATFORM=="SDL_SOFT":
             extra_link_args += ['/usr/local/lib/libSDL3.a', '-framework', 'CoreHaptics', '-framework', 'ForceFeedback',
             '-framework', 'GameController']
         libraries = []
@@ -300,9 +300,15 @@ def build_windows():
         #include "physac.h"
         """
 
-    libraries = ['raylib', 'gdi32', 'shell32', 'user32', 'OpenGL32', 'winmm']
-    if RAYLIB_PLATFORM=="SDL":
+    libraries = ['raylib', 'gdi32', 'shell32', 'user32', 'winmm']
+    if RAYLIB_PLATFORM=="Desktop":
+        libraries += ['OpenGL32']
+    elif RAYLIB_PLATFORM=="SDL":
+        libraries += ['OpenGL32', 'SDL3']
+    elif RAYLIB_PLATFORM=="SDL_SOFT":
         libraries += ['SDL3']
+    else:
+        raise Exception("Unknown or not set RAYLIB_PLATFORM")
 
     print("libraries: "+str(libraries))
     ffibuilder.set_source("raylib._raylib_cffi", ffi_includes,
