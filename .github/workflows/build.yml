@@ -590,11 +590,13 @@ jobs:
       - name: Download SDL3
         run: curl -L -o SDL3.zip https://github.com/libsdl-org/SDL/releases/download/prerelease-3.3.4/SDL3-devel-3.3.4-VC.zip
 
-      - name: Create extraction directory
-        run: mkdir ${{ runner.temp }}\SDL3
-
-      - name: Unzip SDL3
-        run: tar -xf SDL3.zip -C ${{ runner.temp }}\SDL3 --strip-components=1
+      - name: Unpack SDL3
+        shell: bash
+        run: |
+          mkdir -p "${{ runner.temp }}/SDL3"
+          mkdir -p "${{ runner.temp }}/ziptmp"
+          unzip SDL3.zip -d "${{ runner.temp }}/ziptmp"
+          mv "${{ runner.temp }}/ziptmp"/*/* SDL3
 
       - name: Set SDL3_DIR environment variable
         run: echo SDL3_DIR=${{ runner.temp }}\SDL3\cmake >> $env:GITHUB_ENV
@@ -682,11 +684,13 @@ jobs:
       - name: Download SDL3
         run: curl -L -o SDL3.zip https://github.com/libsdl-org/SDL/releases/download/prerelease-3.3.4/SDL3-devel-3.3.4-VC.zip
 
-      - name: Create extraction directory
-        run: mkdir ${{ runner.temp }}\SDL3
-
-      - name: Unzip SDL3
-        run: tar -xf SDL3.zip -C ${{ runner.temp }}\SDL3 --strip-components=1
+      - name: Unpack SDL3
+        shell: bash
+        run: |
+          mkdir -p "${{ runner.temp }}/SDL3"
+          mkdir -p "${{ runner.temp }}/ziptmp"
+          unzip SDL3.zip -d "${{ runner.temp }}/ziptmp"
+          mv "${{ runner.temp }}/ziptmp"/*/* SDL3
 
       - name: Set SDL3_DIR environment variable
         run: echo SDL3_DIR=${{ runner.temp }}\SDL3\cmake >> $env:GITHUB_ENV
