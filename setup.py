@@ -13,6 +13,8 @@ VERSION = (HERE / "version.py").read_text().split()[-1].strip("\"'")
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 if RAYLIB_PLATFORM == "SDL":
     NAME = "_sdl"
+if RAYLIB_PLATFORM == "SDL_SOFT":
+    NAME = "_software"
 elif RAYLIB_PLATFORM == "DRM":
     NAME = "_drm"
 else:
@@ -38,6 +40,11 @@ setup(
         "Programming Language :: Python :: 3.14",
         "Programming Language :: Python :: 3.13",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.7"
     ],
     packages=["raylib", "pyray"],
     include_package_data=True,
