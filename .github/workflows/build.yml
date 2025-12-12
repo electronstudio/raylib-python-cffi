@@ -8,7 +8,12 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+    inputs:
+      publish_to_pypi:
+        description: 'Publish to PyPI?'
+        type: boolean
+        required: true
+        default: false
 
 jobs:
   build-mac-intel:
@@ -109,6 +114,12 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m pip install twine
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -215,6 +226,12 @@ jobs:
             fi
           done
         shell: bash
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m pip install twine
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -337,6 +354,13 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m pip install twine
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
@@ -453,6 +477,13 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m pip install twine
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
@@ -565,6 +596,13 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m pip install twine
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
@@ -673,6 +711,12 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m pip install twine
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl    
           
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -688,7 +732,7 @@ jobs:
       # For example, pypy2 and pypy3
       matrix:
         python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14' ]
-        raylib-platform: [ 'Desktop', 'SDL' ]
+        raylib-platform: [ 'Desktop', 'SDL', 'SDL_SOFT']
     steps:
       - uses: actions/checkout@v4
         with:
@@ -731,9 +775,22 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -A Win32 -DPLATFORM=${{ matrix.raylib-platform }} -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          PLATFORM="${{ matrix.raylib-platform }}"
+          if [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
+            OPENGL="Software"
+            PLATFORM="SDL"
+          else
+            OPENGL="2.1"
+          fi
+          echo "OPENGL $OPENGL PLATFORM $PLATFORM"
+          cmake -A Win32 -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL"  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+        shell: bash
+
+      - name: Build raylib2
+        run: |
+          cd raylib-c/build
           msbuild raylib.sln /target:raylib /property:Configuration=Release
-          copy raylib\Release\raylib.lib ..\..
+          cp raylib\Release\raylib.lib ..\..
           cd ..\..
         shell: cmd
 
@@ -769,6 +826,12 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m pip install twine
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -821,6 +884,12 @@ jobs:
           pip3 install --upgrade setuptools
           python setup.py sdist
 
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m pip install twine
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
@@ -857,6 +926,12 @@ jobs:
           cd dynamic
           python setup.py sdist
 
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m pip install twine
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dynamic/dist/*
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
@@ -868,6 +943,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Merge All Artifacts
+        if: ${{ inputs.publish_to_pypi == false }}
         uses: actions/upload-artifact/merge@v4
         with:
           name: wheel
