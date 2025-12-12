@@ -581,7 +581,7 @@ jobs:
       # For example, pypy2 and pypy3
       matrix:
         python-version:  [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11', 'pypy-3.10' ]
-        raylib-platform: ['Desktop', 'SDL']
+        raylib-platform: ['Desktop', 'SDL', 'SDL_SOFT']
     steps:
       - uses: actions/checkout@v4
         with:
@@ -624,9 +624,9 @@ jobs:
           cd build
           cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           msbuild raylib.sln /target:raylib /property:Configuration=Release
-          copy raylib\Release\raylib.lib ..\..
-          cd ..\..
-        shell: cmd
+          cp raylib/Release/raylib.lib ../..
+          cd ../..
+        shell: bash
 
       - name: Build raylib-python-cffi
         env:
