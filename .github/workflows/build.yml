@@ -596,7 +596,7 @@ jobs:
           mkdir -p "${{ runner.temp }}/SDL3"
           mkdir -p "${{ runner.temp }}/ziptmp"
           unzip SDL3.zip -d "${{ runner.temp }}/ziptmp"
-          mv "${{ runner.temp }}/ziptmp"/*/* SDL3
+          mv "${{ runner.temp }}/ziptmp"/*/* "${{ runner.temp }}/SDL3"
 
       - name: Set SDL3_DIR environment variable
         run: echo SDL3_DIR=${{ runner.temp }}\SDL3\cmake >> $env:GITHUB_ENV
@@ -690,7 +690,7 @@ jobs:
           mkdir -p "${{ runner.temp }}/SDL3"
           mkdir -p "${{ runner.temp }}/ziptmp"
           unzip SDL3.zip -d "${{ runner.temp }}/ziptmp"
-          mv "${{ runner.temp }}/ziptmp"/*/* SDL3
+          mv "${{ runner.temp }}/ziptmp"/*/* "${{ runner.temp }}/SDL3"
 
       - name: Set SDL3_DIR environment variable
         run: echo SDL3_DIR=${{ runner.temp }}\SDL3\cmake >> $env:GITHUB_ENV
