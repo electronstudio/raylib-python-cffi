@@ -13,7 +13,7 @@ VERSION = (HERE / "version.py").read_text().split()[-1].strip("\"'")
 RAYLIB_PLATFORM = os.getenv("RAYLIB_PLATFORM", "Desktop")
 if RAYLIB_PLATFORM == "SDL":
     NAME = "_sdl"
-if RAYLIB_PLATFORM == "SDL_SOFT":
+elif RAYLIB_PLATFORM == "SDL_SOFT":
     NAME = "_software"
 elif RAYLIB_PLATFORM == "DRM":
     NAME = "_drm"
