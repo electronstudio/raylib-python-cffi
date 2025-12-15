@@ -7,3 +7,6 @@
 [submodule "physac"]
 	path = physac
 	url = https://github.com/victorfisac/Physac
+[submodule "examples_ai_generated"]
+	path = examples_ai_generated
+	url = https://github.com/blep/pyray_examples
