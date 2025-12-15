@@ -20,7 +20,7 @@ jobs:
     runs-on: macos-15-intel
     strategy:
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11', 'pypy-3.10' ]
+        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11' ]
         raylib-platform: ['Desktop', 'SDL']
     env:
       MACOSX_DEPLOYMENT_TARGET: '10.13'
@@ -358,8 +358,8 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m pip install twine
-          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
+          python3.13 -m pip install twine
+          python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -481,8 +481,8 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m pip install twine
-          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
+          python3.13 -m pip install twine
+          python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -618,7 +618,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version:  [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11', 'pypy-3.10' ]
+        python-version:  [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11' ]
         raylib-platform: ['Desktop', 'SDL', 'SDL_SOFT']
     steps:
       - uses: actions/checkout@v4
