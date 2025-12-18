@@ -1,6 +1,6 @@
 # Python Bindings for Raylib 5.6
 ## Libraries: raymath, raygui, rlgl, physac and GLFW
-## Backends: Desktop, SDL, DRM, Web
+## Backends: Desktop, SDL, DRM, Web, Software rendering
 ## Platforms: Windows, Mac, Linux, Raspberry Pi, Web
 
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/raylib)
@@ -50,7 +50,6 @@ Use the [project generator](https://github.com/electronstudio/python-raylib-temp
 
 # Links
 
-* [Tutorial video](https://www.youtube.com/watch?v=UoAsDlUwjy0&lc=UgxCR-tvnQJITZr2IvN4AaABAg)
 * [Full documentation](https://electronstudio.github.io/raylib-python-cffi)
 * [Imgui integration](https://github.com/Scr44gr/raylib-imgui)
 * [Raylib Python Discord](https://discord.gg/fKDwt85aX6)
