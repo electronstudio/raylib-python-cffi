@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 5.5
+# Python Bindings for Raylib 5.6
 ## Libraries: raymath, raygui, rlgl, physac and GLFW
 ## Backends: Desktop, SDL, DRM, Web
 ## Platforms: Windows, Mac, Linux, Raspberry Pi, Web
@@ -21,7 +21,7 @@ original Raylib.
 
 # Quickstart
 
-`pip3 install raylib==5.5.0.3 --break-system-packages`
+`pip3 install raylib==5.5.0.4 --break-system-packages`
 ```python
 from pyray import *
 init_window(800, 450, "Hello")
@@ -33,17 +33,26 @@ while not window_should_close():
 close_window()
 ```
 
-[Example project](https://github.com/electronstudio/raylib-example-game)
 
-[Project generator](https://github.com/electronstudio/python-raylib-template)
+
+Use the [project generator](https://github.com/electronstudio/python-raylib-template) to generate a complete project.  [Example of project](https://github.com/electronstudio/raylib-example-game)
+
+# Videos
+
+
+<a href="https://www.youtube.com/watch?v=MIgq9w0MUsM"><img src="https://img.youtube.com/vi/MIgq9w0MUsM/0.jpg" alt="video"/></a>
+
+<a href="https://www.youtube.com/watch?v=UoAsDlUwjy0"><img src="https://img.youtube.com/vi/UoAsDlUwjy0/0.jpg" alt="video"/></a>
+
+
+
+[more videos](https://www.youtube.com/@FinFET/videos)
 
 # Links
 
 * [Tutorial video](https://www.youtube.com/watch?v=UoAsDlUwjy0&lc=UgxCR-tvnQJITZr2IvN4AaABAg)
 * [Full documentation](https://electronstudio.github.io/raylib-python-cffi)
 * [Imgui integration](https://github.com/Scr44gr/raylib-imgui)
-* [Examples](https://github.com/electronstudio/raylib-python-cffi/tree/master/examples)
-* [Blep's examples](https://github.com/blep/pyray_examples)
 * [Raylib Python Discord](https://discord.gg/fKDwt85aX6)
 * [Raylib General Discord](https://discord.com/invite/raylib)
 * [Python video player](https://github.com/anrayliu/pyvidplayer2)
@@ -64,7 +73,7 @@ Then make sure you have the latest pip installed:
 Then install
 
     python3 -m pip install setuptools
-    python3 -m pip install raylib==5.5.0.3
+    python3 -m pip install raylib==5.5.0.4
 
 On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from
 source, in which case you will need to have Raylib development libs installed, e.g. 
@@ -72,7 +81,7 @@ using homebrew, apt, etc.
 
 ## Windows
 
-Binaries require x64 Windows 10 or newer.  (For x86 or older Windows you will have to build from source.)
+Binaries require x64 or x86 Windows 10 or newer.
 
 Use an [official Windows Python release](https://www.python.org/downloads/windows/) rather than WSL, MSYS, etc.
 
@@ -86,14 +95,11 @@ Older MacOS requires building from source but this is usually simple:
 
     brew install pkg-config
     brew install raylib
-    python3 -m pip install raylib==5.5.0.3
-
-(I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue
-if you want to test them.)
+    python3 -m pip install raylib==5.5.0.4
 
 ## Linux
 
-Binaries require OS newer than Ubuntu 2020, x64 or arm64.   Otherwise build from source.
+Binaries require OS newer than Ubuntu 2016, x64/x86 or Ubuntu 2022 arm64.   Otherwise build from source.
 (Pip should attempt automatically but will need Raylib itself installed and also pkg-config.)
 
 The arm64 binaries are built on Raspberry Pi arm64 Bullseye with OpenGL 2.0
