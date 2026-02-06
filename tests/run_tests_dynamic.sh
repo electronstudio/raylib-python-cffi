@@ -14,4 +14,15 @@ do
       exit
   fi
 done
+
+# Execute pytest-style stub parity tests that do not run when files are executed directly.
+python3 -m pytest test_pyray_stub_parity.py
+
+# Ensure typing smoke checks are exercised by automation.
+if command -v uv >/dev/null 2>&1; then
+    uv run ty check typing/pyray_stub_smoke.py
+else
+    python3 -m ty check typing/pyray_stub_smoke.py
+fi
+
 rm raylib pyray examples
