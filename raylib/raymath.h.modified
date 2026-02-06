@@ -19,19 +19,24 @@
 *
 *   CONFIGURATION:
 *       #define RAYMATH_IMPLEMENTATION
-*           Generates the implementation of the library into the included file.
+*           Generates the implementation of the library into the included file
 *           If not defined, the library is in header only mode and can be included in other headers
-*           or source files without problems. But only ONE file should hold the implementation.
+*           or source files without problems. But only ONE file should hold the implementation
 *
 *       #define RAYMATH_STATIC_INLINE
-*           This may use up lots of memory.
+*           This may use up lots of memory
 *
 *       #define RAYMATH_DISABLE_CPP_OPERATORS
 *           Disables C++ operator overloads for raymath types.
 *
+*       #define RAYMATH_USE_SIMD_INTRINSICS
+*           Try to enable SIMD intrinsics for MatrixMultiply()
+*           Note that users enabling it must be aware of the target platform where application will
+*           run to support the selected SIMD intrinsic, for now, only SSE is supported
+*
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2015-2025 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2015-2026 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -116,7 +121,7 @@ inline /* Functions may be inlined or external definition used*/ int Vector2Equa
 // v: normalized direction of the incoming ray
 // n: normalized normal vector of the interface of two optical media
 // r: ratio of the refractive index of the medium from where the ray comes
-//    to the refractive index of the medium on the other side of the surface
+// to the refractive index of the medium on the other side of the surface
 inline /* Functions may be inlined or external definition used*/ Vector2 Vector2Refract(Vector2 v, Vector2 n, float r);//----------------------------------------------------------------------------------
 // Module Functions Definition - Vector3 math
 //----------------------------------------------------------------------------------
@@ -157,7 +162,7 @@ inline /* Functions may be inlined or external definition used*/ Vector3 Vector3
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Max(Vector3 v1, Vector3 v2);// Compute barycenter coordinates (u, v, w) for point p with respect to triangle (a, b, c)
 // NOTE: Assumes P is on the plane of the triangle
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Barycenter(Vector3 p, Vector3 a, Vector3 b, Vector3 c);// Projects a Vector3 from screen space into object space
-// NOTE: We are avoiding calling other raymath functions despite available
+// NOTE: Self-contained function, no other raymath functions are called
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Unproject(Vector3 source, Matrix projection, Matrix view);// Get Vector3 as float array
 inline /* Functions may be inlined or external definition used*/ float3 Vector3ToFloatV(Vector3 v);// Invert the given vector
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Invert(Vector3 v);// Clamp the components of the vector between
@@ -168,7 +173,7 @@ inline /* Functions may be inlined or external definition used*/ int Vector3Equa
 // v: normalized direction of the incoming ray
 // n: normalized normal vector of the interface of two optical media
 // r: ratio of the refractive index of the medium from where the ray comes
-//    to the refractive index of the medium on the other side of the surface
+// to the refractive index of the medium on the other side of the surface
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Refract(Vector3 v, Vector3 n, float r);//----------------------------------------------------------------------------------
 // Module Functions Definition - Vector4 math
 //----------------------------------------------------------------------------------

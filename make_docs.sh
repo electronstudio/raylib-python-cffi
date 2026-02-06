@@ -21,7 +21,7 @@ sudo cp -rv ./raylib-c/src/external/glfw/include/GLFW  /usr/local/include/
 
 echo "building raylib_parser"
 
-gcc raylib-c/parser/raylib_parser.c
+gcc raylib-c/tools/rlparser/rlparser.c
 
 echo "running parser"
 

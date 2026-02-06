@@ -316,7 +316,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2014-2025 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2014-2026 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -550,8 +550,8 @@ typedef enum {
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetFont(Font font); // Set gui custom font (global state)
 /* Functions defined as 'extern' by default (implicit specifiers)*/ Font GuiGetFont(void); // Get gui custom font (global state)
 // Style set/get functions
-/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetStyle(int control, int property, unsigned int value); // Set one style property
-/* Functions defined as 'extern' by default (implicit specifiers)*/ unsigned int GuiGetStyle(int control, int property); // Get one style property
+/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiSetStyle(int control, int property, int value); // Set one style property
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiGetStyle(int control, int property); // Get one style property
 // Styles loading functions
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLoadStyle(const char *fileName); // Load style file over global style variable (.rgs)
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLoadStyleDefault(void); // Load style default over global style
