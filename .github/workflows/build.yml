@@ -441,6 +441,7 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
+          python3.13 -m pip install cryptography==3.3.2
           python3.13 -m pip install twine
           setarch i386 ${{ matrix.python-version }} -m build --wheel
           python3.13 -m pip install --upgrade auditwheel
