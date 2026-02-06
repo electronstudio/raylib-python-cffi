@@ -81,7 +81,7 @@ def get_lib_flags_from_pkgconfig():
                           stdout=subprocess.PIPE).stdout.strip()
 
 def pre_process_header(filename, remove_function_bodies=False):
-    print("Pre-processing " + filename)
+    print("Pre-processing " + str(filename))
     file = open(filename, "r")
     filetext = "".join([line for line in file if '#include' not in line])
     command = ['gcc', '-CC', '-P', '-undef', '-nostdinc', '-DRL_MATRIX_TYPE',
@@ -95,7 +95,6 @@ def pre_process_header(filename, remove_function_bodies=False):
     filetext = "\n".join([line for line in filetext.splitlines() if not line.startswith("#")])
     file = open("raylib/"+os.path.basename(filename)+".modified", "w")
     file.write(filetext)
-    # print(r)
     return filetext
 
 
@@ -139,7 +138,7 @@ def check_header_exists(file):
 
 def build_unix():
     if os.getenv("RAYLIB_LINK_ARGS") is None and not check_raylib_pkgconfig_installed():
-        print("PKG_CONFIG_PATH is set to: "+os.getenv("PKG_CONFIG_PATH"))
+        print("PKG_CONFIG_PATH is set to: "+str(os.getenv("PKG_CONFIG_PATH")))
         raise Exception("ERROR: raylib not found by pkg-config.  Please install pkg-config and Raylib"
                         "or else set RAYLIB_LINK_ARGS env variable.")
 
