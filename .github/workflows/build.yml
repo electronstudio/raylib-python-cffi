@@ -82,12 +82,13 @@ jobs:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
 
         run: |
-          python -m pip install --upgrade pip
-          pip3 install --upgrade cffi
-          pip3 install --upgrade wheel
-          pip3 install --upgrade setuptools
-          python -m pip install --upgrade build
-          python -m build --wheel
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade cffi
+          python3 -m pip install --upgrade wheel
+          python3 -m pip install --upgrade setuptools
+          python3 -m pip install --upgrade twine
+          python3 -m pip install --upgrade build
+          python3 -m build --wheel
 
       - name: Rename wheels from universal2 to x86_64
         run: |
@@ -118,7 +119,6 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m pip install twine
           python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
 
       - name: Upload build Artifact wheel
@@ -194,12 +194,13 @@ jobs:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
 
         run: |
-          python -m pip install --upgrade pip
-          pip3 install --upgrade cffi
-          pip3 install --upgrade wheel
-          pip3 install --upgrade setuptools
-          python -m pip install --upgrade build
-          python -m build --wheel
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade cffi
+          python3 -m pip install --upgrade wheel
+          python3 -m pip install --upgrade setuptools
+          python3 -m pip install --upgrade twine
+          python3 -m pip install --upgrade build
+          python3 -m build --wheel
 
       - name: Test
         run: |
@@ -230,7 +231,6 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m pip install twine
           python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
 
       - name: Upload build Artifact wheel
@@ -319,6 +319,7 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
           ${{ matrix.python-version }} -m build --wheel
+          python3.13 -m pip install twine
           python3.13 -m pip install --upgrade auditwheel
           python3.13 -m pip install --upgrade patchelf
           python3.13 -m auditwheel repair dist/*.whl
@@ -358,7 +359,6 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3.13 -m pip install twine
           python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
 
       - name: Upload build Artifact wheel
@@ -441,6 +441,7 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
+          python3.13 -m pip install twine
           setarch i386 ${{ matrix.python-version }} -m build --wheel
           python3.13 -m pip install --upgrade auditwheel
           python3.13 -m pip install --upgrade patchelf
@@ -481,7 +482,6 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3.13 -m pip install twine
           python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
 
       - name: Upload build Artifact wheel
@@ -561,6 +561,7 @@ jobs:
           python3 -m pip install --upgrade setuptools
           python3 -m pip install --upgrade build
           python3 -m build --wheel
+          python3 -m pip install twine
           python3 -m pip install --upgrade auditwheel
           python3 -m pip install --upgrade patchelf
           python3 -m auditwheel repair dist/*.whl
@@ -600,7 +601,6 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m pip install twine
           python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
 
       - name: Upload build Artifact wheel
@@ -695,6 +695,7 @@ jobs:
           del raylib\dynamic\*.dylib >nul 2>&1
           del raylib\dynamic\32bit\* >nul 2>&1
           python -m build --wheel
+          python3 -m pip install twine
         shell: cmd
 
       - name: Test
@@ -715,7 +716,6 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m pip install twine
           python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl    
           
       - name: Upload build Artifact wheel
@@ -810,6 +810,7 @@ jobs:
           del raylib\dynamic\*.dylib >nul 2>&1
           del raylib\dynamic\32bit\* >nul 2>&1
           python -m build --wheel
+          python3 -m pip install twine
         shell: cmd
 
       - name: Test
@@ -830,7 +831,6 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m pip install twine
           python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
 
       - name: Upload build Artifact wheel
@@ -882,12 +882,12 @@ jobs:
           pip3 install --upgrade cffi
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
+          python3 -m pip install twine
           python setup.py sdist
 
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m pip install twine
           python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*
 
       - name: Upload build Artifact wheel
@@ -923,13 +923,13 @@ jobs:
           pip3 install --upgrade cffi
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
+          python3 -m pip install twine
           cd dynamic
           python setup.py sdist
 
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m pip install twine
           python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dynamic/dist/*
 
       - name: Upload build Artifact wheel
