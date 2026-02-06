@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
+
+cd "${SCRIPT_DIR}"
+
 cleanup() {
     rm -f raylib pyray examples
 }
@@ -23,11 +28,15 @@ do
 done
 
 # Execute pytest-style stub parity tests that do not run when files are executed directly.
-python3 -m pytest test_pyray_stub_parity.py
+PYRAY_STUB_PATH="${REPO_ROOT}/dynamic/pyray/__init__.pyi" \
+    python3 -m pytest test_pyray_stub_parity.py
 
 # Run typing smoke checks when ty is available, but do not require it.
-if python3 -c "import ty" >/dev/null 2>&1; then
-    python3 -m ty check typing/pyray_stub_smoke.py
+if command -v ty >/dev/null 2>&1; then
+    ty check \
+        --project "${REPO_ROOT}/dynamic" \
+        --extra-search-path "${REPO_ROOT}/dynamic" \
+        typing/pyray_stub_smoke.py
 else
-    echo "Skipping typing smoke check: ty is not installed."
+    echo "Skipping typing smoke check: ty CLI is not installed."
 fi

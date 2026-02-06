@@ -26,8 +26,8 @@ done
 python3 -m pytest test_pyray_stub_parity.py
 
 # Run typing smoke checks when ty is available, but do not require it.
-if python3 -c "import ty" >/dev/null 2>&1; then
-    python3 -m ty check typing/pyray_stub_smoke.py
+if command -v ty >/dev/null 2>&1; then
+    ty check typing/pyray_stub_smoke.py
 else
-    echo "Skipping typing smoke check: ty is not installed."
+    echo "Skipping typing smoke check: ty CLI is not installed."
 fi

@@ -1,9 +1,18 @@
 from pathlib import Path
 import ast
+import os
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PYRAY_STUB = ROOT / "pyray" / "__init__.pyi"
+_DEFAULT_PYRAY_STUB = ROOT / "pyray" / "__init__.pyi"
+_stub_override = os.environ.get("PYRAY_STUB_PATH")
+PYRAY_STUB = (
+    Path(_stub_override).expanduser()
+    if _stub_override
+    else _DEFAULT_PYRAY_STUB
+)
+if not PYRAY_STUB.is_absolute():
+    PYRAY_STUB = ROOT / PYRAY_STUB
 
 
 def _parse_stub() -> ast.Module:
