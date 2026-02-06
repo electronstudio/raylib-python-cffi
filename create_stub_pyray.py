@@ -20,7 +20,6 @@ import inflection, sys, json
 
 known_functions = {}
 known_structs = {}
-known_enum_values = set()
 emitted_top_level_names = set()
 for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json"),
                  Path("glfw3.json")):
@@ -38,7 +37,6 @@ for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), P
             print(f'    """{e['description']}."""')
             for value in e['values']:
                 print("    "+value['name']+" = "+str(value['value']))
-                known_enum_values.add(value['name'])
             print("")
 
 
@@ -102,6 +100,16 @@ def emit_top_level_name(name, type_name):
     print(f"{name}: {type_name}")
 
 
+def should_emit_module_constant(name):
+    # Keep only standalone rlgl/raylib constants that do not have enum-class replacements.
+    if not name.startswith("RL_"):
+        return False
+    # Backward-compat aliases from raylib.h that are intentionally discouraged.
+    if name in {"RL_SHADER_LOC_MAP_DIFFUSE", "RL_SHADER_LOC_MAP_SPECULAR"}:
+        return False
+    return True
+
+
 print("""from typing import Any
 from warnings import deprecated
 import _cffi_backend # type: ignore
@@ -110,11 +118,10 @@ ffi: _cffi_backend.FFI
 PhysicsShapeType = int
 """)
 
-for constant_name in sorted(known_enum_values):
-    emit_top_level_name(constant_name, "int")
-
 for name in sorted(dir(defines)):
     if not name.isupper():
+        continue
+    if not should_emit_module_constant(name):
         continue
     emit_top_level_name(name, value_to_python_type(getattr(defines, name)))
 
@@ -164,7 +171,9 @@ for name, attr in getmembers(rl):
             f'def {uname}(*args) -> {ctype_to_python_type(return_type)}:\n        """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""\n        ...')
     else:
         # print("*****", str(type(attr)))
-        emit_top_level_name(name, value_to_python_type(attr))
+        type_name = value_to_python_type(attr)
+        if type_name != "int":
+            emit_top_level_name(name, type_name)
 
 struct_aliases = {
     "Texture2D": "Texture",
