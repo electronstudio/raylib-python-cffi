@@ -257,7 +257,15 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+          extra_cmake_args=""
+          if [ "${{ matrix.raylib-platform }}" = "Desktop" ]; then
+            apt-get update
+            apt-get install -y wayland-protocols
+            # Ubuntu 16 has an older wayland-scanner that expects "code" instead of "private-code".
+            sed -i 's/private-code/code/g' ../src/external/glfw/src/CMakeLists.txt
+            extra_cmake_args="-DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=ON"
+          fi
+          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ${extra_cmake_args} ..
           make -j2
           make install
       - name: Copy extras
@@ -351,7 +359,15 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          setarch i386 cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
+          extra_cmake_args=""
+          if [ "${{ matrix.raylib-platform }}" = "Desktop" ]; then
+            apt-get update
+            apt-get install -y wayland-protocols
+            # Ubuntu 16 has an older wayland-scanner that expects "code" instead of "private-code".
+            sed -i 's/private-code/code/g' ../src/external/glfw/src/CMakeLists.txt
+            extra_cmake_args="-DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=ON"
+          fi
+          setarch i386 cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ${extra_cmake_args} ..
           make -j2
           make install
       - name: Copy extras
@@ -430,7 +446,7 @@ jobs:
       - name: install libs
         run: |
           sudo apt update
-          sudo apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libgbm-dev libdrm-dev
+          sudo apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libgbm-dev libdrm-dev wayland-protocols
 
       - name: Build SDL
         run: |
@@ -455,7 +471,11 @@ jobs:
           cd raylib-c
           mkdir build2
           cd build2
-          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          extra_cmake_args=""
+          if [ "${{ matrix.raylib-platform }}" = "Desktop" ]; then
+            extra_cmake_args="-DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=ON"
+          fi
+          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ${extra_cmake_args} ..
           make -j2
           sudo make install
 
