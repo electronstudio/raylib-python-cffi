@@ -97,16 +97,16 @@
              
   <section id="raspberry-pi">
 <h1>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Link to this heading"></a></h1>
-<p>Please use Raspberry Pi OS Bookworm.  Bullseye should also work.  Older OSes are not tested.</p>
+<p>Please use Raspberry Pi OS 13 Trixie 64 bit.  Bookworm should also work.  Older OSes are not tested.</p>
 <section id="option-1-binary-wheel">
 <h2>Option 1: Binary wheel<a class="headerlink" href="#option-1-binary-wheel" title="Link to this heading"></a></h2>
-<p>We have published binary wheels compiled for 64-bit Raspberry OS Bullseye in X11 mode.</p>
+<p>We have published binary wheels compiled for 64-bit Raspberry OS 12 Bookworm in X11 mode.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="k">break</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">packages</span> <span class="n">raylib</span>
 </pre></div>
 </div>
 <p>Alternatively there is a DRM wheel called <code class="docutils literal notranslate"><span class="pre">raylib_drm</span></code> to use the framebuffer without X11.  You can’t have both wheels
 installed at once.</p>
-<p>If it doesn’t work, or you’re not on Bullseye, or you’re 32 bit, you will need to compile your own raylib.  See below.
+<p>If it doesn’t work, or you’re not on Bookworm, or you’re 32 bit, you will need to compile your own raylib.  See below.
 For full instructions on this, see <a class="reference external" href="https://github.com/raysan5/raylib/wiki/Working-on-Raspberry-Pi">https://github.com/raysan5/raylib/wiki/Working-on-Raspberry-Pi</a> .  If you need help with this ask Raylib.</p>
 </section>
 <section id="option-2-compile-raylib-from-source-x11-mode">
@@ -114,7 +114,7 @@ For full instructions on this, see <a class="reference external" href="https://g
 <p>This should work for everyone.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="n">cmake</span> <span class="n">libegl1</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span> <span class="n">libgbm</span><span class="o">-</span><span class="n">dev</span> <span class="n">libgles2</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span> <span class="n">libdrm</span><span class="o">-</span><span class="n">dev</span> <span class="n">libglfw3</span><span class="o">-</span><span class="n">dev</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">raysan5</span><span class="o">/</span><span class="n">raylib</span><span class="o">.</span><span class="n">git</span> <span class="o">--</span><span class="n">branch</span> <span class="mf">5.0</span> <span class="o">--</span><span class="n">single</span><span class="o">-</span><span class="n">branch</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">raysan5</span><span class="o">/</span><span class="n">raylib</span><span class="o">.</span><span class="n">git</span> <span class="o">--</span><span class="n">branch</span> <span class="mf">5.5</span><span class="o">--</span><span class="n">single</span><span class="o">-</span><span class="n">branch</span>
 <span class="n">cd</span> <span class="n">raylib</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span><span class="o">/*</span>

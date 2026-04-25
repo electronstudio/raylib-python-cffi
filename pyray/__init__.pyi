@@ -239,8 +239,8 @@ class ShaderLocationIndex(int):
     SHADER_LOC_MAP_BRDF = 25
     SHADER_LOC_VERTEX_BONEIDS = 26
     SHADER_LOC_VERTEX_BONEWEIGHTS = 27
-    SHADER_LOC_BONE_MATRICES = 28
-    SHADER_LOC_VERTEX_INSTANCE_TX = 29
+    SHADER_LOC_MATRIX_BONETRANSFORMS = 28
+    SHADER_LOC_VERTEX_INSTANCETRANSFORM = 29
 
 class ShaderUniformDataType(int):
     """Shader uniform data type."""
@@ -368,7 +368,7 @@ class NPatchLayout(int):
 
 class rlGlVersion(int):
     """OpenGL version."""
-    RL_OPENGL_11_SOFTWARE = 0
+    RL_OPENGL_SOFTWARE = 0
     RL_OPENGL_11 = 1
     RL_OPENGL_21 = 2
     RL_OPENGL_33 = 3
@@ -599,6 +599,7 @@ class GuiSliderProperty(int):
 class GuiProgressBarProperty(int):
     """ProgressBar."""
     PROGRESS_PADDING = 16
+    PROGRESS_SIDE = 17
 
 class GuiScrollBarProperty(int):
     """ScrollBar."""
@@ -1123,7 +1124,7 @@ def draw_circle(centerX: int,centerY: int,radius: float,color: Color|list|tuple,
 def draw_circle_3d(center: Vector3|list|tuple,radius: float,rotationAxis: Vector3|list|tuple,rotationAngle: float,color: Color|list|tuple,) -> None:
     """Draw a circle in 3D world space."""
     ...
-def draw_circle_gradient(centerX: int,centerY: int,radius: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> None:
+def draw_circle_gradient(center: Vector2|list|tuple,radius: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> None:
     """Draw a gradient-filled circle."""
     ...
 def draw_circle_lines(centerX: int,centerY: int,radius: float,color: Color|list|tuple,) -> None:
@@ -1215,12 +1216,6 @@ def draw_model(model: Model|list|tuple,position: Vector3|list|tuple,scale: float
     ...
 def draw_model_ex(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
     """Draw a model with extended parameters."""
-    ...
-def draw_model_points(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
-    """Draw a model as points."""
-    ...
-def draw_model_points_ex(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
-    """Draw a model as points with extended parameters."""
     ...
 def draw_model_wires(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
     """Draw a model wires (with texture if set)."""
@@ -1433,7 +1428,7 @@ def export_image_as_code(image: Image|list|tuple,fileName: str,) -> bool:
     """Export image as code file defining an array of bytes, returns true on success."""
     ...
 def export_image_to_memory(image: Image|list|tuple,fileType: str,fileSize: Any,) -> str:
-    """Export image to memory buffer."""
+    """Export image to memory buffer, memory must be MemFree()."""
     ...
 def export_mesh(mesh: Mesh|list|tuple,fileName: str,) -> bool:
     """Export mesh data to file, returns true on success."""
@@ -2358,10 +2353,10 @@ def load_codepoints(text: str,count: Any,) -> Any:
     """Load all codepoints from a UTF-8 text string, codepoints count returned by parameter."""
     ...
 def load_directory_files(dirPath: str,) -> FilePathList:
-    """Load directory filepaths."""
+    """Load directory filepaths, files and directories, no subdirs scan."""
     ...
 def load_directory_files_ex(basePath: str,filter: str,scanSubdirs: bool,) -> FilePathList:
-    """Load directory filepaths with extension filtering and recursive directory scan. Use 'DIR' in the filter string to include directories in the result."""
+    """Load directory filepaths with extension filtering and subdir scan."""
     ...
 def load_dropped_files() -> FilePathList:
     """Load dropped filepaths."""
@@ -2513,6 +2508,9 @@ def matrix_look_at(eye: Vector3|list|tuple,target: Vector3|list|tuple,up: Vector
 def matrix_multiply(left: Matrix|list|tuple,right: Matrix|list|tuple,) -> Matrix:
     """."""
     ...
+def matrix_multiply_value(left: Matrix|list|tuple,value: float,) -> Matrix:
+    """."""
+    ...
 def matrix_ortho(left: float,right: float,bottom: float,top: float,nearPlane: float,farPlane: float,) -> Matrix:
     """."""
     ...
@@ -2560,6 +2558,9 @@ def maximize_window() -> None:
     ...
 def measure_text(text: str,fontSize: int,) -> int:
     """Measure string width for default font."""
+    ...
+def measure_text_codepoints(font: Font|list|tuple,codepoints: Any,length: int,fontSize: float,spacing: float,) -> Vector2:
+    """Measure string size for an existing array of codepoints for Font."""
     ...
 def measure_text_ex(font: Font|list|tuple,text: str,fontSize: float,spacing: float,) -> Vector2:
     """Measure string size for Font."""
@@ -2725,7 +2726,7 @@ def set_audio_stream_callback(stream: AudioStream|list|tuple,callback: Any,) -> 
     """Audio thread callback to request new data."""
     ...
 def set_audio_stream_pan(stream: AudioStream|list|tuple,pan: float,) -> None:
-    """Set pan for audio stream (0.5 is centered)."""
+    """Set pan for audio stream (-1.0 to 1.0 range, 0.0 is centered)."""
     ...
 def set_audio_stream_pitch(stream: AudioStream|list|tuple,pitch: float,) -> None:
     """Set pitch for audio stream (1.0 is base level)."""
@@ -2929,7 +2930,10 @@ def text_format(*args) -> str:
         """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""
         ...
 def text_insert(text: str,insert: str,position: int,) -> str:
-    """Insert text in a position (WARNING: memory must be freed!)."""
+    """Insert text in a defined byte position."""
+    ...
+def text_insert_alloc(text: str,insert: str,position: int,) -> str:
+    """Insert text in a defined byte position, memory must be MemFree()."""
     ...
 def text_is_equal(text1: str,text2: str,) -> bool:
     """Check if two text string are equal."""
@@ -2944,10 +2948,16 @@ def text_remove_spaces(text: str,) -> str:
     """Remove text spaces, concat words."""
     ...
 def text_replace(text: str,search: str,replacement: str,) -> str:
-    """Replace text string (WARNING: memory must be freed!)."""
+    """Replace text string with new string."""
+    ...
+def text_replace_alloc(text: str,search: str,replacement: str,) -> str:
+    """Replace text string with new string, memory must be MemFree()."""
     ...
 def text_replace_between(text: str,begin: str,end: str,replacement: str,) -> str:
-    """Replace text between two specific strings (WARNING: memory must be freed!)."""
+    """Replace text between two specific strings."""
+    ...
+def text_replace_between_alloc(text: str,begin: str,end: str,replacement: str,) -> str:
+    """Replace text between two specific strings, memory must be MemFree()."""
     ...
 def text_split(text: str,delimiter: str,count: Any,) -> list[str]:
     """Split text into multiple strings, using MAX_TEXTSPLIT_COUNT static strings."""
@@ -3030,9 +3040,6 @@ def unload_mesh(mesh: Mesh|list|tuple,) -> None:
 def unload_model(model: Model|list|tuple,) -> None:
     """Unload model (including meshes) from memory (RAM and/or VRAM)."""
     ...
-def unload_model_animation(anim: ModelAnimation|list|tuple,) -> None:
-    """Unload animation data."""
-    ...
 def unload_model_animations(animations: Any|list|tuple,animCount: int,) -> None:
     """Unload animation array data."""
     ...
@@ -3084,11 +3091,11 @@ def update_camera_pro(camera: Any|list|tuple,movement: Vector3|list|tuple,rotati
 def update_mesh_buffer(mesh: Mesh|list|tuple,index: int,data: Any,dataSize: int,offset: int,) -> None:
     """Update mesh vertex data in GPU for a specific buffer index."""
     ...
-def update_model_animation(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: int,) -> None:
-    """Update model animation pose (CPU)."""
+def update_model_animation(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: float,) -> None:
+    """Update model animation pose (vertex buffers and bone matrices)."""
     ...
-def update_model_animation_bones(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: int,) -> None:
-    """Update model animation mesh bone matrices (GPU skinning)."""
+def update_model_animation_ex(model: Model|list|tuple,animA: ModelAnimation|list|tuple,frameA: float,animB: ModelAnimation|list|tuple,frameB: float,blend: float,) -> None:
+    """Update model animation pose, blending two animations."""
     ...
 def update_music_stream(music: Music|list|tuple,) -> None:
     """Updates buffers for music streaming."""
@@ -3804,9 +3811,6 @@ def rl_color4ub(r: int,g: int,b: int,a: int,) -> None:
 def rl_color_mask(r: bool,g: bool,b: bool,a: bool,) -> None:
     """Color mask control."""
     ...
-def rl_compile_shader(shaderCode: str,type: int,) -> int:
-    """Compile custom shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER)."""
-    ...
 def rl_compute_shader_dispatch(groupX: int,groupY: int,groupZ: int,) -> None:
     """Dispatch compute shader (equivalent to *draw* for graphics pipeline)."""
     ...
@@ -3948,7 +3952,7 @@ def rl_enable_wire_mode() -> None:
 def rl_end() -> None:
     """Finish vertex providing."""
     ...
-def rl_framebuffer_attach(fboId: int,texId: int,attachType: int,texType: int,mipLevel: int,) -> None:
+def rl_framebuffer_attach(id: int,texId: int,attachType: int,texType: int,mipLevel: int,) -> None:
     """Attach texture/renderbuffer to a framebuffer."""
     ...
 def rl_framebuffer_complete(id: int,) -> bool:
@@ -3981,10 +3985,10 @@ def rl_get_gl_texture_formats(format: int,glInternalFormat: Any,glFormat: Any,gl
 def rl_get_line_width() -> float:
     """Get the line drawing width."""
     ...
-def rl_get_location_attrib(shaderId: int,attribName: str,) -> int:
+def rl_get_location_attrib(id: int,attribName: str,) -> int:
     """Get shader location attribute, requires shader program id."""
     ...
-def rl_get_location_uniform(shaderId: int,uniformName: str,) -> int:
+def rl_get_location_uniform(id: int,uniformName: str,) -> int:
     """Get shader location uniform, requires shader program id."""
     ...
 def rl_get_matrix_modelview() -> Matrix:
@@ -4029,9 +4033,6 @@ def rl_get_version() -> int:
 def rl_is_stereo_render_enabled() -> bool:
     """Check if stereo render is enabled."""
     ...
-def rl_load_compute_shader_program(shaderId: int,) -> int:
-    """Load compute shader program."""
-    ...
 def rl_load_draw_cube() -> None:
     """Load and draw a cube."""
     ...
@@ -4050,14 +4051,20 @@ def rl_load_identity() -> None:
 def rl_load_render_batch(numBuffers: int,bufferElements: int,) -> rlRenderBatch:
     """Load a render batch system."""
     ...
+def rl_load_shader(code: str,type: int,) -> int:
+    """Load (compile) shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER)."""
+    ...
 def rl_load_shader_buffer(size: int,data: Any,usageHint: int,) -> int:
     """Load shader storage buffer object (SSBO)."""
     ...
-def rl_load_shader_code(vsCode: str,fsCode: str,) -> int:
+def rl_load_shader_program(vsCode: str,fsCode: str,) -> int:
     """Load shader from code strings."""
     ...
-def rl_load_shader_program(vShaderId: int,fShaderId: int,) -> int:
-    """Load custom shader program."""
+def rl_load_shader_program_compute(csId: int,) -> int:
+    """Load compute shader program."""
+    ...
+def rl_load_shader_program_ex(vsId: int,fsId: int,) -> int:
+    """Load shader program, using already loaded shader ids."""
     ...
 def rl_load_texture(data: Any,width: int,height: int,format: int,mipmapCount: int,) -> int:
     """Load texture data."""
@@ -4199,6 +4206,9 @@ def rl_unload_framebuffer(id: int,) -> None:
     ...
 def rl_unload_render_batch(batch: rlRenderBatch|list|tuple,) -> None:
     """Unload render batch system."""
+    ...
+def rl_unload_shader(id: int,) -> None:
+    """Unload shader, loaded with rlLoadShader()."""
     ...
 def rl_unload_shader_buffer(ssboId: int,) -> None:
     """Unload shader storage buffer object (SSBO)."""
@@ -4373,7 +4383,7 @@ class Matrix:
         self.m15:float = m15 # type: ignore
 class Mesh:
     """Mesh, vertex data and vao/vbo."""
-    def __init__(self, vertexCount: int|None = None, triangleCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, texcoords2: Any|None = None, normals: Any|None = None, tangents: Any|None = None, colors: str|None = None, indices: Any|None = None, animVertices: Any|None = None, animNormals: Any|None = None, boneIds: str|None = None, boneWeights: Any|None = None, boneMatrices: Any|None = None, boneCount: int|None = None, vaoId: int|None = None, vboId: Any|None = None):
+    def __init__(self, vertexCount: int|None = None, triangleCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, texcoords2: Any|None = None, normals: Any|None = None, tangents: Any|None = None, colors: str|None = None, indices: Any|None = None, boneCount: int|None = None, boneIndices: str|None = None, boneWeights: Any|None = None, animVertices: Any|None = None, animNormals: Any|None = None, vaoId: int|None = None, vboId: Any|None = None):
         self.vertexCount:int = vertexCount # type: ignore
         self.triangleCount:int = triangleCount # type: ignore
         self.vertices:Any = vertices # type: ignore
@@ -4383,34 +4393,38 @@ class Mesh:
         self.tangents:Any = tangents # type: ignore
         self.colors:str = colors # type: ignore
         self.indices:Any = indices # type: ignore
+        self.boneCount:int = boneCount # type: ignore
+        self.boneIndices:str = boneIndices # type: ignore
+        self.boneWeights:Any = boneWeights # type: ignore
         self.animVertices:Any = animVertices # type: ignore
         self.animNormals:Any = animNormals # type: ignore
-        self.boneIds:str = boneIds # type: ignore
-        self.boneWeights:Any = boneWeights # type: ignore
-        self.boneMatrices:Any = boneMatrices # type: ignore
-        self.boneCount:int = boneCount # type: ignore
         self.vaoId:int = vaoId # type: ignore
         self.vboId:Any = vboId # type: ignore
 class Model:
     """Model, meshes, materials and animation data."""
-    def __init__(self, transform: Matrix|list|tuple|None = None, meshCount: int|None = None, materialCount: int|None = None, meshes: Any|None = None, materials: Any|None = None, meshMaterial: Any|None = None, boneCount: int|None = None, bones: Any|None = None, bindPose: Any|None = None):
+    def __init__(self, transform: Matrix|list|tuple|None = None, meshCount: int|None = None, materialCount: int|None = None, meshes: Any|None = None, materials: Any|None = None, meshMaterial: Any|None = None, skeleton: ModelSkeleton|list|tuple|None = None, currentPose: Any|None = None, boneMatrices: Any|None = None):
         self.transform:Matrix = transform # type: ignore
         self.meshCount:int = meshCount # type: ignore
         self.materialCount:int = materialCount # type: ignore
         self.meshes:Any = meshes # type: ignore
         self.materials:Any = materials # type: ignore
         self.meshMaterial:Any = meshMaterial # type: ignore
+        self.skeleton:ModelSkeleton = skeleton # type: ignore
+        self.currentPose:Any = currentPose # type: ignore
+        self.boneMatrices:Any = boneMatrices # type: ignore
+class ModelAnimation:
+    """ModelAnimation, contains a full animation sequence."""
+    def __init__(self, name: list|None = None, boneCount: int|None = None, keyframeCount: int|None = None, keyframePoses: Any|None = None):
+        self.name:list = name # type: ignore
+        self.boneCount:int = boneCount # type: ignore
+        self.keyframeCount:int = keyframeCount # type: ignore
+        self.keyframePoses:Any = keyframePoses # type: ignore
+class ModelSkeleton:
+    """Skeleton, animation bones hierarchy."""
+    def __init__(self, boneCount: int|None = None, bones: Any|None = None, bindPose: Any|None = None):
         self.boneCount:int = boneCount # type: ignore
         self.bones:Any = bones # type: ignore
         self.bindPose:Any = bindPose # type: ignore
-class ModelAnimation:
-    """ModelAnimation."""
-    def __init__(self, boneCount: int|None = None, frameCount: int|None = None, bones: Any|None = None, framePoses: Any|None = None, name: list|None = None):
-        self.boneCount:int = boneCount # type: ignore
-        self.frameCount:int = frameCount # type: ignore
-        self.bones:Any = bones # type: ignore
-        self.framePoses:Any = framePoses # type: ignore
-        self.name:list = name # type: ignore
 class Music:
     """Music, audio stream, anything longer than ~10 seconds should be streamed."""
     def __init__(self, stream: AudioStream|list|tuple|None = None, frameCount: int|None = None, looping: bool|None = None, ctxType: int|None = None, ctxData: Any|None = None):
@@ -4580,7 +4594,7 @@ class float16:
     def __init__(self, v: list|None = None):
         self.v:list = v # type: ignore
 class float3:
-    """NOTE: Helper types to be used instead of array return types for *ToFloat functions."""
+    """."""
     def __init__(self, v: list|None = None):
         self.v:list = v # type: ignore
 class rlDrawCall:

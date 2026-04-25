@@ -241,8 +241,8 @@ class ShaderLocationIndex(IntEnum):
     SHADER_LOC_MAP_BRDF = 25
     SHADER_LOC_VERTEX_BONEIDS = 26
     SHADER_LOC_VERTEX_BONEWEIGHTS = 27
-    SHADER_LOC_BONE_MATRICES = 28
-    SHADER_LOC_VERTEX_INSTANCE_TX = 29
+    SHADER_LOC_MATRIX_BONETRANSFORMS = 28
+    SHADER_LOC_VERTEX_INSTANCETRANSFORM = 29
 
 class ShaderUniformDataType(IntEnum):
     """Shader uniform data type."""
@@ -452,6 +452,7 @@ class GuiSliderProperty(IntEnum):
 class GuiProgressBarProperty(IntEnum):
     """ProgressBar."""
     PROGRESS_PADDING = 16
+    PROGRESS_SIDE = 17
 
 class GuiScrollBarProperty(IntEnum):
     """ScrollBar."""

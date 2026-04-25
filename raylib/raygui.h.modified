@@ -1,6 +1,6 @@
 /*******************************************************************************************
 *
-*   raygui v4.5-dev - A simple and easy-to-use immediate-mode gui library
+*   raygui v5.0 - A simple and easy-to-use immediate-mode gui library
 *
 *   DESCRIPTION:
 *       raygui is a tools-dev-focused immediate-mode-gui library based on raylib but also
@@ -83,8 +83,8 @@
 *       used for all controls, when any of those base values is set, it is automatically populated to all
 *       controls, so, specific control values overwriting generic style should be set after base values
 *
-*       After the first BASE set we have the EXTENDED properties (by default guiStyle[16..23]), those
-*       properties are actually common to all controls and can not be overwritten individually (like BASE ones)
+*       After the first BASE properties set, the EXTENDED properties set is defined (by default guiStyle[16..23]),
+*       those properties are actually common to all controls and can not be overwritten individually (like BASE ones)
 *       Some of those properties are: TEXT_SIZE, TEXT_SPACING, LINE_COLOR, BACKGROUND_COLOR
 *
 *       Custom control properties can be defined using the EXTENDED properties for each independent control.
@@ -141,13 +141,14 @@
 *           Draw text bounds rectangles for debug
 *
 *   VERSIONS HISTORY:
-*       5.0 (xx-Nov-2025) ADDED: Support up to 32 controls (v500)
+*       5.0 (xx-Mar-2026) ADDED: Support up to 32 controls (v500)
 *                         ADDED: guiControlExclusiveMode and guiControlExclusiveRec for exclusive modes
 *                         ADDED: GuiValueBoxFloat()
 *                         ADDED: GuiDropdonwBox() properties: DROPDOWN_ARROW_HIDDEN, DROPDOWN_ROLL_UP
 *                         ADDED: GuiListView() property: LIST_ITEMS_BORDER_WIDTH
 *                         ADDED: GuiLoadIconsFromMemory()
 *                         ADDED: Multiple new icons
+*                         ADDED: Macros for inputs customization, raylib decoupling
 *                         REMOVED: GuiSpinner() from controls list, using BUTTON + VALUEBOX properties
 *                         REMOVED: GuiSliderPro(), functionality was redundant
 *                         REVIEWED: Controls using text labels to use LABEL properties
@@ -165,6 +166,7 @@
 *                         REVIEWED: GuiTextBox(), multiple improvements: autocursor and more
 *                         REVIEWED: Functions descriptions, removed wrong return value reference
 *                         REDESIGNED: GuiColorPanel(), improved HSV <-> RGBA convertion
+*                         REDESIGNED: WARNING: TEXT_LINE_SPACING does not consider text height, only lines spacing
 *
 *       4.0 (12-Sep-2023) ADDED: GuiToggleSlider()
 *                         ADDED: GuiColorPickerHSV() and GuiColorPanelHSV()
@@ -342,6 +344,12 @@
 //----------------------------------------------------------------------------------
 // Simple log system to avoid printf() calls if required
 // NOTE: Avoiding those calls, also avoids const strings memory usage
+// Macros to define required UI inputs, including mapping to gamepad controls
+// TODO: Define additionally required macros for missing inputs 
+    //  Mapping to alternative button down pressed
+// TODO: WARNING: GuiTabBar() still requires IsMouseButtonPressed(MOUSE_MIDDLE_BUTTON)
+    // Mapping to scroll delta changes
+    // TODO: Review inconsistencies between platforms
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
 // NOTE: Some types are required for RAYGUI_STANDALONE usage
@@ -445,7 +453,7 @@ typedef enum {
 //----------------------------------------------------------------------------------
 // DEFAULT extended properties
 // NOTE: Those properties are common to all controls or global
-// WARNING: We only have 8 slots for those properties by default!!! -> New global control: TEXT?
+// WARNING: Only 8 slots vailable for those properties by default
 typedef enum {
     TEXT_SIZE = 16, // Text size (glyphs max height)
     TEXT_SPACING, // Text spacing between glyphs
@@ -476,6 +484,7 @@ typedef enum {
 // ProgressBar
 typedef enum {
     PROGRESS_PADDING = 16, // ProgressBar internal padding
+    PROGRESS_SIDE, // ProgressBar increment side: 0-left->right, 1-right-left 
 } GuiProgressBarProperty;
 // ScrollBar
 typedef enum {
@@ -574,7 +583,7 @@ typedef enum {
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiGroupBox(Rectangle bounds, const char *text); // Group Box control with text name
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiLine(Rectangle bounds, const char *text); // Line separator control, could contain text
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiPanel(Rectangle bounds, const char *text); // Panel control, useful to group controls
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiTabBar(Rectangle bounds, const char **text, int count, int *active); // Tab Bar control, returns TAB to be closed or -1
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiTabBar(Rectangle bounds, char **text, int count, int *active); // Tab Bar control, returns TAB to be closed or -1
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiScrollPanel(Rectangle bounds, const char *text, Rectangle content, Vector2 *scroll, Rectangle *view); // Scroll Panel control
 // Basic controls set
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiLabel(Rectangle bounds, const char *text); // Label control
@@ -598,7 +607,7 @@ typedef enum {
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiGrid(Rectangle bounds, const char *text, float spacing, int subdivs, Vector2 *mouseCell); // Grid control
 // Advance controls set
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiListView(Rectangle bounds, const char *text, int *scrollIndex, int *active); // List View control
-/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiListViewEx(Rectangle bounds, const char **text, int count, int *scrollIndex, int *active, int *focus); // List View with extended parameters
+/* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiListViewEx(Rectangle bounds, char **text, int count, int *scrollIndex, int *active, int *focus); // List View with extended parameters
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiMessageBox(Rectangle bounds, const char *title, const char *message, const char *buttons); // Message Box control, displays a message
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiTextInputBox(Rectangle bounds, const char *title, const char *message, const char *buttons, char *text, int textMaxSize, bool *secretViewActive); // Text Input Box control, ask for text, supports secret
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiColorPicker(Rectangle bounds, const char *text, Color *color); // Color Picker control (multiple color controls)

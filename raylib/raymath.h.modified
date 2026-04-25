@@ -15,7 +15,7 @@
 *     - Functions use always a "result" variable for return (except C++ operators)
 *     - Functions are always defined inline
 *     - Angles are always in radians (DEG2RAD/RAD2DEG macros provided for convenience)
-*     - No compound literals used to make sure libray is compatible with C++
+*     - No compound literals used to make sure the library is compatible with C++
 *
 *   CONFIGURATION:
 *       #define RAYMATH_IMPLEMENTATION
@@ -29,7 +29,7 @@
 *       #define RAYMATH_DISABLE_CPP_OPERATORS
 *           Disables C++ operator overloads for raymath types.
 *
-*       #define RAYMATH_USE_SIMD_INTRINSICS
+*       #define RAYMATH_USE_SIMD_INTRINSICS   1
 *           Try to enable SIMD intrinsics for MatrixMultiply()
 *           Note that users enabling it must be aware of the target platform where application will
 *           run to support the selected SIMD intrinsic, for now, only SSE is supported
@@ -177,9 +177,19 @@ inline /* Functions may be inlined or external definition used*/ int Vector3Equa
 inline /* Functions may be inlined or external definition used*/ Vector3 Vector3Refract(Vector3 v, Vector3 n, float r);//----------------------------------------------------------------------------------
 // Module Functions Definition - Vector4 math
 //----------------------------------------------------------------------------------
-inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Zero(void);inline /* Functions may be inlined or external definition used*/ Vector4 Vector4One(void);inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Add(Vector4 v1, Vector4 v2);inline /* Functions may be inlined or external definition used*/ Vector4 Vector4AddValue(Vector4 v, float add);inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Subtract(Vector4 v1, Vector4 v2);inline /* Functions may be inlined or external definition used*/ Vector4 Vector4SubtractValue(Vector4 v, float add);inline /* Functions may be inlined or external definition used*/ float Vector4Length(Vector4 v);inline /* Functions may be inlined or external definition used*/ float Vector4LengthSqr(Vector4 v);inline /* Functions may be inlined or external definition used*/ float Vector4DotProduct(Vector4 v1, Vector4 v2);// Calculate distance between two vectors
+// Get  vector zero
+inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Zero(void);// Get vector one
+inline /* Functions may be inlined or external definition used*/ Vector4 Vector4One(void);// Add two vectors
+inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Add(Vector4 v1, Vector4 v2);// Add value to vector components
+inline /* Functions may be inlined or external definition used*/ Vector4 Vector4AddValue(Vector4 v, float add);// Substract vectors
+inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Subtract(Vector4 v1, Vector4 v2);// Substract value from vector components
+inline /* Functions may be inlined or external definition used*/ Vector4 Vector4SubtractValue(Vector4 v, float add);// Vector length
+inline /* Functions may be inlined or external definition used*/ float Vector4Length(Vector4 v);// Vector square length
+inline /* Functions may be inlined or external definition used*/ float Vector4LengthSqr(Vector4 v);// Vectors dot product
+inline /* Functions may be inlined or external definition used*/ float Vector4DotProduct(Vector4 v1, Vector4 v2);// Calculate distance between two vectors
 inline /* Functions may be inlined or external definition used*/ float Vector4Distance(Vector4 v1, Vector4 v2);// Calculate square distance between two vectors
-inline /* Functions may be inlined or external definition used*/ float Vector4DistanceSqr(Vector4 v1, Vector4 v2);inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Scale(Vector4 v, float scale);// Multiply vector by vector
+inline /* Functions may be inlined or external definition used*/ float Vector4DistanceSqr(Vector4 v1, Vector4 v2);// Scale vector components by value (multiply)
+inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Scale(Vector4 v, float scale);// Multiply vector by vector
 inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Multiply(Vector4 v1, Vector4 v2);// Negate vector
 inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Negate(Vector4 v);// Divide vector by vector
 inline /* Functions may be inlined or external definition used*/ Vector4 Vector4Divide(Vector4 v1, Vector4 v2);// Normalize provided vector
@@ -201,7 +211,8 @@ inline /* Functions may be inlined or external definition used*/ Matrix MatrixId
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixAdd(Matrix left, Matrix right);// Subtract two matrices (left - right)
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixSubtract(Matrix left, Matrix right);// Get two matrix multiplication
 // NOTE: When multiplying matrices... the order matters!
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixMultiply(Matrix left, Matrix right);// Get translation matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixMultiply(Matrix left, Matrix right);// Multiply matrix components by value
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixMultiplyValue(Matrix left, float value);// Get translation matrix
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixTranslate(float x, float y, float z);// Create rotation matrix from axis and angle
 // NOTE: Angle should be provided in radians
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotate(Vector3 axis, float angle);// Get x-rotation matrix

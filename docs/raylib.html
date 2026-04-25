@@ -283,8 +283,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.DrawMeshInstanced"><code class="docutils literal notranslate"><span class="pre">DrawMeshInstanced()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.DrawModel"><code class="docutils literal notranslate"><span class="pre">DrawModel()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.DrawModelEx"><code class="docutils literal notranslate"><span class="pre">DrawModelEx()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.DrawModelPoints"><code class="docutils literal notranslate"><span class="pre">DrawModelPoints()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.DrawModelPointsEx"><code class="docutils literal notranslate"><span class="pre">DrawModelPointsEx()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.DrawModelWires"><code class="docutils literal notranslate"><span class="pre">DrawModelWires()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.DrawModelWiresEx"><code class="docutils literal notranslate"><span class="pre">DrawModelWiresEx()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.DrawPixel"><code class="docutils literal notranslate"><span class="pre">DrawPixel()</span></code></a></li>
@@ -1325,6 +1323,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MatrixInvert"><code class="docutils literal notranslate"><span class="pre">MatrixInvert()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MatrixLookAt"><code class="docutils literal notranslate"><span class="pre">MatrixLookAt()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MatrixMultiply"><code class="docutils literal notranslate"><span class="pre">MatrixMultiply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.MatrixMultiplyValue"><code class="docutils literal notranslate"><span class="pre">MatrixMultiplyValue()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MatrixOrtho"><code class="docutils literal notranslate"><span class="pre">MatrixOrtho()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MatrixPerspective"><code class="docutils literal notranslate"><span class="pre">MatrixPerspective()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MatrixRotate"><code class="docutils literal notranslate"><span class="pre">MatrixRotate()</span></code></a></li>
@@ -1341,6 +1340,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MatrixTranspose"><code class="docutils literal notranslate"><span class="pre">MatrixTranspose()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MaximizeWindow"><code class="docutils literal notranslate"><span class="pre">MaximizeWindow()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MeasureText"><code class="docutils literal notranslate"><span class="pre">MeasureText()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.MeasureTextCodepoints"><code class="docutils literal notranslate"><span class="pre">MeasureTextCodepoints()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MeasureTextEx"><code class="docutils literal notranslate"><span class="pre">MeasureTextEx()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MemAlloc"><code class="docutils literal notranslate"><span class="pre">MemAlloc()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MemFree"><code class="docutils literal notranslate"><span class="pre">MemFree()</span></code></a></li>
@@ -1349,8 +1349,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Mesh.animNormals"><code class="docutils literal notranslate"><span class="pre">Mesh.animNormals</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Mesh.animVertices"><code class="docutils literal notranslate"><span class="pre">Mesh.animVertices</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Mesh.boneCount"><code class="docutils literal notranslate"><span class="pre">Mesh.boneCount</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.Mesh.boneIds"><code class="docutils literal notranslate"><span class="pre">Mesh.boneIds</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.Mesh.boneMatrices"><code class="docutils literal notranslate"><span class="pre">Mesh.boneMatrices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.Mesh.boneIndices"><code class="docutils literal notranslate"><span class="pre">Mesh.boneIndices</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Mesh.boneWeights"><code class="docutils literal notranslate"><span class="pre">Mesh.boneWeights</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Mesh.colors"><code class="docutils literal notranslate"><span class="pre">Mesh.colors</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Mesh.indices"><code class="docutils literal notranslate"><span class="pre">Mesh.indices</span></code></a></li>
@@ -1367,23 +1366,28 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MinimizeWindow"><code class="docutils literal notranslate"><span class="pre">MinimizeWindow()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.Model.bindPose"><code class="docutils literal notranslate"><span class="pre">Model.bindPose</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.Model.boneCount"><code class="docutils literal notranslate"><span class="pre">Model.boneCount</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.Model.bones"><code class="docutils literal notranslate"><span class="pre">Model.bones</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.Model.boneMatrices"><code class="docutils literal notranslate"><span class="pre">Model.boneMatrices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.Model.currentPose"><code class="docutils literal notranslate"><span class="pre">Model.currentPose</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Model.materialCount"><code class="docutils literal notranslate"><span class="pre">Model.materialCount</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Model.materials"><code class="docutils literal notranslate"><span class="pre">Model.materials</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Model.meshCount"><code class="docutils literal notranslate"><span class="pre">Model.meshCount</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Model.meshMaterial"><code class="docutils literal notranslate"><span class="pre">Model.meshMaterial</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Model.meshes"><code class="docutils literal notranslate"><span class="pre">Model.meshes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.Model.skeleton"><code class="docutils literal notranslate"><span class="pre">Model.skeleton</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.Model.transform"><code class="docutils literal notranslate"><span class="pre">Model.transform</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.ModelAnimation"><code class="docutils literal notranslate"><span class="pre">ModelAnimation</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.ModelAnimation.boneCount"><code class="docutils literal notranslate"><span class="pre">ModelAnimation.boneCount</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.ModelAnimation.bones"><code class="docutils literal notranslate"><span class="pre">ModelAnimation.bones</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.ModelAnimation.frameCount"><code class="docutils literal notranslate"><span class="pre">ModelAnimation.frameCount</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raylib.ModelAnimation.framePoses"><code class="docutils literal notranslate"><span class="pre">ModelAnimation.framePoses</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.ModelAnimation.keyframeCount"><code class="docutils literal notranslate"><span class="pre">ModelAnimation.keyframeCount</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.ModelAnimation.keyframePoses"><code class="docutils literal notranslate"><span class="pre">ModelAnimation.keyframePoses</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raylib.ModelAnimation.name"><code class="docutils literal notranslate"><span class="pre">ModelAnimation.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.ModelSkeleton"><code class="docutils literal notranslate"><span class="pre">ModelSkeleton</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.ModelSkeleton.bindPose"><code class="docutils literal notranslate"><span class="pre">ModelSkeleton.bindPose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.ModelSkeleton.boneCount"><code class="docutils literal notranslate"><span class="pre">ModelSkeleton.boneCount</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raylib.ModelSkeleton.bones"><code class="docutils literal notranslate"><span class="pre">ModelSkeleton.bones</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.MouseButton"><code class="docutils literal notranslate"><span class="pre">MouseButton</span></code></a></li>
@@ -1441,6 +1445,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PIXELFORMAT_UNCOMPRESSED_R8G8B8A8"><code class="docutils literal notranslate"><span class="pre">PIXELFORMAT_UNCOMPRESSED_R8G8B8A8</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PROGRESSBAR"><code class="docutils literal notranslate"><span class="pre">PROGRESSBAR</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PROGRESS_PADDING"><code class="docutils literal notranslate"><span class="pre">PROGRESS_PADDING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.PROGRESS_SIDE"><code class="docutils literal notranslate"><span class="pre">PROGRESS_SIDE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PURPLE"><code class="docutils literal notranslate"><span class="pre">PURPLE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PauseAudioStream"><code class="docutils literal notranslate"><span class="pre">PauseAudioStream()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.PauseMusicStream"><code class="docutils literal notranslate"><span class="pre">PauseMusicStream()</span></code></a></li>
@@ -1575,12 +1580,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_LOG_TRACE"><code class="docutils literal notranslate"><span class="pre">RL_LOG_TRACE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_LOG_WARNING"><code class="docutils literal notranslate"><span class="pre">RL_LOG_WARNING</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_OPENGL_11"><code class="docutils literal notranslate"><span class="pre">RL_OPENGL_11</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.RL_OPENGL_11_SOFTWARE"><code class="docutils literal notranslate"><span class="pre">RL_OPENGL_11_SOFTWARE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_OPENGL_21"><code class="docutils literal notranslate"><span class="pre">RL_OPENGL_21</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_OPENGL_33"><code class="docutils literal notranslate"><span class="pre">RL_OPENGL_33</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_OPENGL_43"><code class="docutils literal notranslate"><span class="pre">RL_OPENGL_43</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_OPENGL_ES_20"><code class="docutils literal notranslate"><span class="pre">RL_OPENGL_ES_20</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_OPENGL_ES_30"><code class="docutils literal notranslate"><span class="pre">RL_OPENGL_ES_30</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.RL_OPENGL_SOFTWARE"><code class="docutils literal notranslate"><span class="pre">RL_OPENGL_SOFTWARE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA"><code class="docutils literal notranslate"><span class="pre">RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA"><code class="docutils literal notranslate"><span class="pre">RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.RL_PIXELFORMAT_COMPRESSED_DXT1_RGB"><code class="docutils literal notranslate"><span class="pre">RL_PIXELFORMAT_COMPRESSED_DXT1_RGB</span></code></a></li>
@@ -1702,7 +1707,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_ATTRIB_VEC2"><code class="docutils literal notranslate"><span class="pre">SHADER_ATTRIB_VEC2</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_ATTRIB_VEC3"><code class="docutils literal notranslate"><span class="pre">SHADER_ATTRIB_VEC3</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_ATTRIB_VEC4"><code class="docutils literal notranslate"><span class="pre">SHADER_ATTRIB_VEC4</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_BONE_MATRICES"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_BONE_MATRICES</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_COLOR_AMBIENT"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_COLOR_AMBIENT</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_COLOR_DIFFUSE"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_COLOR_DIFFUSE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_COLOR_SPECULAR"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_COLOR_SPECULAR</span></code></a></li>
@@ -1717,6 +1721,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_MAP_OCCLUSION"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_MAP_OCCLUSION</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_MAP_PREFILTER"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_MAP_PREFILTER</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_MAP_ROUGHNESS"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_MAP_ROUGHNESS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_MATRIX_BONETRANSFORMS"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_MATRIX_BONETRANSFORMS</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_MATRIX_MODEL"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_MATRIX_MODEL</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_MATRIX_MVP"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_MATRIX_MVP</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_MATRIX_NORMAL"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_MATRIX_NORMAL</span></code></a></li>
@@ -1726,7 +1731,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_VERTEX_BONEIDS"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_VERTEX_BONEIDS</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_VERTEX_BONEWEIGHTS"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_VERTEX_BONEWEIGHTS</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_VERTEX_COLOR"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_VERTEX_COLOR</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_VERTEX_INSTANCE_TX"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_VERTEX_INSTANCE_TX</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_VERTEX_INSTANCETRANSFORM"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_VERTEX_INSTANCETRANSFORM</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_VERTEX_NORMAL"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_VERTEX_NORMAL</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_VERTEX_POSITION"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_VERTEX_POSITION</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.SHADER_LOC_VERTEX_TANGENT"><code class="docutils literal notranslate"><span class="pre">SHADER_LOC_VERTEX_TANGENT</span></code></a></li>
@@ -1875,12 +1880,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextFindIndex"><code class="docutils literal notranslate"><span class="pre">TextFindIndex()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextFormat"><code class="docutils literal notranslate"><span class="pre">TextFormat()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextInsert"><code class="docutils literal notranslate"><span class="pre">TextInsert()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.TextInsertAlloc"><code class="docutils literal notranslate"><span class="pre">TextInsertAlloc()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextIsEqual"><code class="docutils literal notranslate"><span class="pre">TextIsEqual()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextJoin"><code class="docutils literal notranslate"><span class="pre">TextJoin()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextLength"><code class="docutils literal notranslate"><span class="pre">TextLength()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextRemoveSpaces"><code class="docutils literal notranslate"><span class="pre">TextRemoveSpaces()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextReplace"><code class="docutils literal notranslate"><span class="pre">TextReplace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.TextReplaceAlloc"><code class="docutils literal notranslate"><span class="pre">TextReplaceAlloc()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextReplaceBetween"><code class="docutils literal notranslate"><span class="pre">TextReplaceBetween()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.TextReplaceBetweenAlloc"><code class="docutils literal notranslate"><span class="pre">TextReplaceBetweenAlloc()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextSplit"><code class="docutils literal notranslate"><span class="pre">TextSplit()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextSubtext"><code class="docutils literal notranslate"><span class="pre">TextSubtext()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.TextToCamel"><code class="docutils literal notranslate"><span class="pre">TextToCamel()</span></code></a></li>
@@ -1941,7 +1949,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UnloadMaterial"><code class="docutils literal notranslate"><span class="pre">UnloadMaterial()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UnloadMesh"><code class="docutils literal notranslate"><span class="pre">UnloadMesh()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UnloadModel"><code class="docutils literal notranslate"><span class="pre">UnloadModel()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.UnloadModelAnimation"><code class="docutils literal notranslate"><span class="pre">UnloadModelAnimation()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UnloadModelAnimations"><code class="docutils literal notranslate"><span class="pre">UnloadModelAnimations()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UnloadMusicStream"><code class="docutils literal notranslate"><span class="pre">UnloadMusicStream()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UnloadRandomSequence"><code class="docutils literal notranslate"><span class="pre">UnloadRandomSequence()</span></code></a></li>
@@ -1960,7 +1967,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateCameraPro"><code class="docutils literal notranslate"><span class="pre">UpdateCameraPro()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateMeshBuffer"><code class="docutils literal notranslate"><span class="pre">UpdateMeshBuffer()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateModelAnimation"><code class="docutils literal notranslate"><span class="pre">UpdateModelAnimation()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateModelAnimationBones"><code class="docutils literal notranslate"><span class="pre">UpdateModelAnimationBones()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateModelAnimationEx"><code class="docutils literal notranslate"><span class="pre">UpdateModelAnimationEx()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateMusicStream"><code class="docutils literal notranslate"><span class="pre">UpdateMusicStream()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateSound"><code class="docutils literal notranslate"><span class="pre">UpdateSound()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.UpdateTexture"><code class="docutils literal notranslate"><span class="pre">UpdateTexture()</span></code></a></li>
@@ -2265,7 +2272,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlColor4f"><code class="docutils literal notranslate"><span class="pre">rlColor4f()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlColor4ub"><code class="docutils literal notranslate"><span class="pre">rlColor4ub()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlColorMask"><code class="docutils literal notranslate"><span class="pre">rlColorMask()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.rlCompileShader"><code class="docutils literal notranslate"><span class="pre">rlCompileShader()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlComputeShaderDispatch"><code class="docutils literal notranslate"><span class="pre">rlComputeShaderDispatch()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlCopyFramebuffer"><code class="docutils literal notranslate"><span class="pre">rlCopyFramebuffer()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlCopyShaderBuffer"><code class="docutils literal notranslate"><span class="pre">rlCopyShaderBuffer()</span></code></a></li>
@@ -2351,16 +2357,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGetVersion"><code class="docutils literal notranslate"><span class="pre">rlGetVersion()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlGlVersion"><code class="docutils literal notranslate"><span class="pre">rlGlVersion</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlIsStereoRenderEnabled"><code class="docutils literal notranslate"><span class="pre">rlIsStereoRenderEnabled()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadComputeShaderProgram"><code class="docutils literal notranslate"><span class="pre">rlLoadComputeShaderProgram()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadDrawCube"><code class="docutils literal notranslate"><span class="pre">rlLoadDrawCube()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadDrawQuad"><code class="docutils literal notranslate"><span class="pre">rlLoadDrawQuad()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadExtensions"><code class="docutils literal notranslate"><span class="pre">rlLoadExtensions()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadFramebuffer"><code class="docutils literal notranslate"><span class="pre">rlLoadFramebuffer()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadIdentity"><code class="docutils literal notranslate"><span class="pre">rlLoadIdentity()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadRenderBatch"><code class="docutils literal notranslate"><span class="pre">rlLoadRenderBatch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadShader"><code class="docutils literal notranslate"><span class="pre">rlLoadShader()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadShaderBuffer"><code class="docutils literal notranslate"><span class="pre">rlLoadShaderBuffer()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadShaderCode"><code class="docutils literal notranslate"><span class="pre">rlLoadShaderCode()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadShaderProgram"><code class="docutils literal notranslate"><span class="pre">rlLoadShaderProgram()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadShaderProgramCompute"><code class="docutils literal notranslate"><span class="pre">rlLoadShaderProgramCompute()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadShaderProgramEx"><code class="docutils literal notranslate"><span class="pre">rlLoadShaderProgramEx()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadTexture"><code class="docutils literal notranslate"><span class="pre">rlLoadTexture()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadTextureCubemap"><code class="docutils literal notranslate"><span class="pre">rlLoadTextureCubemap()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlLoadTextureDepth"><code class="docutils literal notranslate"><span class="pre">rlLoadTextureDepth()</span></code></a></li>
@@ -2423,6 +2430,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlTranslatef"><code class="docutils literal notranslate"><span class="pre">rlTranslatef()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadFramebuffer"><code class="docutils literal notranslate"><span class="pre">rlUnloadFramebuffer()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadRenderBatch"><code class="docutils literal notranslate"><span class="pre">rlUnloadRenderBatch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadShader"><code class="docutils literal notranslate"><span class="pre">rlUnloadShader()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadShaderBuffer"><code class="docutils literal notranslate"><span class="pre">rlUnloadShaderBuffer()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadShaderProgram"><code class="docutils literal notranslate"><span class="pre">rlUnloadShaderProgram()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raylib.rlUnloadTexture"><code class="docutils literal notranslate"><span class="pre">rlUnloadTexture()</span></code></a></li>
@@ -3457,7 +3465,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.DrawCircleGradient">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">DrawCircleGradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centerX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centerY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Color" title="raylib.Color"><span class="pre">Color</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Color" title="raylib.Color"><span class="pre">Color</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.DrawCircleGradient" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">DrawCircleGradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Vector2" title="raylib.Vector2"><span class="pre">Vector2</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Color" title="raylib.Color"><span class="pre">Color</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Color" title="raylib.Color"><span class="pre">Color</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.DrawCircleGradient" title="Link to this definition"></a></dt>
 <dd><p>Draw a gradient-filled circle.</p>
 </dd></dl>
 
@@ -3639,18 +3647,6 @@ are very, very similar to the C originals.</p>
 <dt class="sig sig-object py" id="raylib.DrawModelEx">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">DrawModelEx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Model" title="raylib.Model"><span class="pre">Model</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Vector3" title="raylib.Vector3"><span class="pre">Vector3</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAxis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Vector3" title="raylib.Vector3"><span class="pre">Vector3</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAngle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Vector3" title="raylib.Vector3"><span class="pre">Vector3</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Color" title="raylib.Color"><span class="pre">Color</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.DrawModelEx" title="Link to this definition"></a></dt>
 <dd><p>Draw a model with extended parameters.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="raylib.DrawModelPoints">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">DrawModelPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Model" title="raylib.Model"><span class="pre">Model</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Vector3" title="raylib.Vector3"><span class="pre">Vector3</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Color" title="raylib.Color"><span class="pre">Color</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.DrawModelPoints" title="Link to this definition"></a></dt>
-<dd><p>Draw a model as points.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="raylib.DrawModelPointsEx">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">DrawModelPointsEx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Model" title="raylib.Model"><span class="pre">Model</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Vector3" title="raylib.Vector3"><span class="pre">Vector3</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAxis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Vector3" title="raylib.Vector3"><span class="pre">Vector3</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAngle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Vector3" title="raylib.Vector3"><span class="pre">Vector3</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Color" title="raylib.Color"><span class="pre">Color</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.DrawModelPointsEx" title="Link to this definition"></a></dt>
-<dd><p>Draw a model as points with extended parameters.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -4076,7 +4072,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.ExportImageToMemory">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">ExportImageToMemory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Image" title="raylib.Image"><span class="pre">Image</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#raylib.ExportImageToMemory" title="Link to this definition"></a></dt>
-<dd><p>Export image to memory buffer.</p>
+<dd><p>Export image to memory buffer, memory must be MemFree().</p>
 </dd></dl>
 
 <dl class="py function">
@@ -8522,13 +8518,13 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.LoadDirectoryFiles">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">LoadDirectoryFiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dirPath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#raylib.FilePathList" title="raylib.FilePathList"><span class="pre">FilePathList</span></a></span></span><a class="headerlink" href="#raylib.LoadDirectoryFiles" title="Link to this definition"></a></dt>
-<dd><p>Load directory filepaths.</p>
+<dd><p>Load directory filepaths, files and directories, no subdirs scan.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.LoadDirectoryFilesEx">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">LoadDirectoryFilesEx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">basePath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scanSubdirs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#raylib.FilePathList" title="raylib.FilePathList"><span class="pre">FilePathList</span></a></span></span><a class="headerlink" href="#raylib.LoadDirectoryFilesEx" title="Link to this definition"></a></dt>
-<dd><p>Load directory filepaths with extension filtering and recursive directory scan. Use ‘DIR’ in the filter string to include directories in the result.</p>
+<dd><p>Load directory filepaths with extension filtering and subdir scan.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -9143,6 +9139,12 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="raylib.MatrixMultiplyValue">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">MatrixMultiplyValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Matrix" title="raylib.Matrix"><span class="pre">Matrix</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#raylib.Matrix" title="raylib.Matrix"><span class="pre">Matrix</span></a></span></span><a class="headerlink" href="#raylib.MatrixMultiplyValue" title="Link to this definition"></a></dt>
+<dd><p>.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="raylib.MatrixOrtho">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">MatrixOrtho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nearPlane</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">farPlane</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#raylib.Matrix" title="raylib.Matrix"><span class="pre">Matrix</span></a></span></span><a class="headerlink" href="#raylib.MatrixOrtho" title="Link to this definition"></a></dt>
 <dd><p>.</p>
@@ -9239,6 +9241,12 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="raylib.MeasureTextCodepoints">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">MeasureTextCodepoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Font" title="raylib.Font"><span class="pre">Font</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codepoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#raylib.Vector2" title="raylib.Vector2"><span class="pre">Vector2</span></a></span></span><a class="headerlink" href="#raylib.MeasureTextCodepoints" title="Link to this definition"></a></dt>
+<dd><p>Measure string size for an existing array of codepoints for Font.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="raylib.MeasureTextEx">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">MeasureTextEx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Font" title="raylib.Font"><span class="pre">Font</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#raylib.Vector2" title="raylib.Vector2"><span class="pre">Vector2</span></a></span></span><a class="headerlink" href="#raylib.MeasureTextEx" title="Link to this definition"></a></dt>
 <dd><p>Measure string size for Font.</p>
@@ -9281,13 +9289,8 @@ are very, very similar to the C originals.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.Mesh.boneIds">
-<span class="sig-name descname"><span class="pre">boneIds</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><a class="headerlink" href="#raylib.Mesh.boneIds" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.Mesh.boneMatrices">
-<span class="sig-name descname"><span class="pre">boneMatrices</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.Mesh.boneMatrices" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="raylib.Mesh.boneIndices">
+<span class="sig-name descname"><span class="pre">boneIndices</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><a class="headerlink" href="#raylib.Mesh.boneIndices" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -9362,18 +9365,13 @@ are very, very similar to the C originals.</p>
 <dt class="sig sig-object py" id="raylib.Model">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#raylib.Model" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.Model.bindPose">
-<span class="sig-name descname"><span class="pre">bindPose</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.Model.bindPose" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="raylib.Model.boneMatrices">
+<span class="sig-name descname"><span class="pre">boneMatrices</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.Model.boneMatrices" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.Model.boneCount">
-<span class="sig-name descname"><span class="pre">boneCount</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.Model.boneCount" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.Model.bones">
-<span class="sig-name descname"><span class="pre">bones</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.Model.bones" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="raylib.Model.currentPose">
+<span class="sig-name descname"><span class="pre">currentPose</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.Model.currentPose" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -9402,6 +9400,11 @@ are very, very similar to the C originals.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.Model.skeleton">
+<span class="sig-name descname"><span class="pre">skeleton</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.ModelSkeleton" title="raylib.ModelSkeleton"><span class="pre">ModelSkeleton</span></a></span><a class="headerlink" href="#raylib.Model.skeleton" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.Model.transform">
 <span class="sig-name descname"><span class="pre">transform</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#raylib.Matrix" title="raylib.Matrix"><span class="pre">Matrix</span></a></span><a class="headerlink" href="#raylib.Model.transform" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -9417,23 +9420,38 @@ are very, very similar to the C originals.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.ModelAnimation.bones">
-<span class="sig-name descname"><span class="pre">bones</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.ModelAnimation.bones" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="raylib.ModelAnimation.keyframeCount">
+<span class="sig-name descname"><span class="pre">keyframeCount</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.ModelAnimation.keyframeCount" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.ModelAnimation.frameCount">
-<span class="sig-name descname"><span class="pre">frameCount</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.ModelAnimation.frameCount" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="raylib.ModelAnimation.framePoses">
-<span class="sig-name descname"><span class="pre">framePoses</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.ModelAnimation.framePoses" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="raylib.ModelAnimation.keyframePoses">
+<span class="sig-name descname"><span class="pre">keyframePoses</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.ModelAnimation.keyframePoses" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="raylib.ModelAnimation.name">
 <span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><a class="headerlink" href="#raylib.ModelAnimation.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="raylib.ModelSkeleton">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">ModelSkeleton</span></span><a class="headerlink" href="#raylib.ModelSkeleton" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.ModelSkeleton.bindPose">
+<span class="sig-name descname"><span class="pre">bindPose</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.ModelSkeleton.bindPose" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.ModelSkeleton.boneCount">
+<span class="sig-name descname"><span class="pre">boneCount</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.ModelSkeleton.boneCount" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="raylib.ModelSkeleton.bones">
+<span class="sig-name descname"><span class="pre">bones</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#raylib.ModelSkeleton.bones" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -9693,6 +9711,11 @@ are very, very similar to the C originals.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="raylib.PROGRESS_PADDING">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PROGRESS_PADDING</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.PROGRESS_PADDING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="raylib.PROGRESS_SIDE">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">PROGRESS_SIDE</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.PROGRESS_SIDE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -10351,11 +10374,6 @@ are very, very similar to the C originals.</p>
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="raylib.RL_OPENGL_11_SOFTWARE">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RL_OPENGL_11_SOFTWARE</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.RL_OPENGL_11_SOFTWARE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
 <dt class="sig sig-object py" id="raylib.RL_OPENGL_21">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RL_OPENGL_21</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.RL_OPENGL_21" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -10378,6 +10396,11 @@ are very, very similar to the C originals.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="raylib.RL_OPENGL_ES_30">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RL_OPENGL_ES_30</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.RL_OPENGL_ES_30" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="raylib.RL_OPENGL_SOFTWARE">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">RL_OPENGL_SOFTWARE</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.RL_OPENGL_SOFTWARE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -10942,11 +10965,6 @@ are very, very similar to the C originals.</p>
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="raylib.SHADER_LOC_BONE_MATRICES">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">SHADER_LOC_BONE_MATRICES</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.SHADER_LOC_BONE_MATRICES" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
 <dt class="sig sig-object py" id="raylib.SHADER_LOC_COLOR_AMBIENT">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">SHADER_LOC_COLOR_AMBIENT</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.SHADER_LOC_COLOR_AMBIENT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -11017,6 +11035,11 @@ are very, very similar to the C originals.</p>
 <dd></dd></dl>
 
 <dl class="py data">
+<dt class="sig sig-object py" id="raylib.SHADER_LOC_MATRIX_BONETRANSFORMS">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">SHADER_LOC_MATRIX_BONETRANSFORMS</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.SHADER_LOC_MATRIX_BONETRANSFORMS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
 <dt class="sig sig-object py" id="raylib.SHADER_LOC_MATRIX_MODEL">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">SHADER_LOC_MATRIX_MODEL</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.SHADER_LOC_MATRIX_MODEL" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -11062,8 +11085,8 @@ are very, very similar to the C originals.</p>
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="raylib.SHADER_LOC_VERTEX_INSTANCE_TX">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">SHADER_LOC_VERTEX_INSTANCE_TX</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.SHADER_LOC_VERTEX_INSTANCE_TX" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="raylib.SHADER_LOC_VERTEX_INSTANCETRANSFORM">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">SHADER_LOC_VERTEX_INSTANCETRANSFORM</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#raylib.SHADER_LOC_VERTEX_INSTANCETRANSFORM" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -11244,7 +11267,7 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.SetAudioStreamPan">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">SetAudioStreamPan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.AudioStream" title="raylib.AudioStream"><span class="pre">AudioStream</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.SetAudioStreamPan" title="Link to this definition"></a></dt>
-<dd><p>Set pan for audio stream (0.5 is centered).</p>
+<dd><p>Set pan for audio stream (-1.0 to 1.0 range, 0.0 is centered).</p>
 </dd></dl>
 
 <dl class="py function">
@@ -11856,7 +11879,13 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.TextInsert">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">TextInsert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#raylib.TextInsert" title="Link to this definition"></a></dt>
-<dd><p>Insert text in a position (WARNING: memory must be freed!).</p>
+<dd><p>Insert text in a defined byte position.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.TextInsertAlloc">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">TextInsertAlloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#raylib.TextInsertAlloc" title="Link to this definition"></a></dt>
+<dd><p>Insert text in a defined byte position, memory must be MemFree().</p>
 </dd></dl>
 
 <dl class="py function">
@@ -11886,13 +11915,25 @@ are very, very similar to the C originals.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.TextReplace">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">TextReplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#raylib.TextReplace" title="Link to this definition"></a></dt>
-<dd><p>Replace text string (WARNING: memory must be freed!).</p>
+<dd><p>Replace text string with new string.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.TextReplaceAlloc">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">TextReplaceAlloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#raylib.TextReplaceAlloc" title="Link to this definition"></a></dt>
+<dd><p>Replace text string with new string, memory must be MemFree().</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.TextReplaceBetween">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">TextReplaceBetween</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">begin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#raylib.TextReplaceBetween" title="Link to this definition"></a></dt>
-<dd><p>Replace text between two specific strings (WARNING: memory must be freed!).</p>
+<dd><p>Replace text between two specific strings.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.TextReplaceBetweenAlloc">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">TextReplaceBetweenAlloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">begin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#raylib.TextReplaceBetweenAlloc" title="Link to this definition"></a></dt>
+<dd><p>Replace text between two specific strings, memory must be MemFree().</p>
 </dd></dl>
 
 <dl class="py function">
@@ -12183,12 +12224,6 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.UnloadModelAnimation">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">UnloadModelAnimation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">anim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.ModelAnimation" title="raylib.ModelAnimation"><span class="pre">ModelAnimation</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.UnloadModelAnimation" title="Link to this definition"></a></dt>
-<dd><p>Unload animation data.</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="raylib.UnloadModelAnimations">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">UnloadModelAnimations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">animations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animCount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.UnloadModelAnimations" title="Link to this definition"></a></dt>
 <dd><p>Unload animation array data.</p>
@@ -12292,14 +12327,14 @@ are very, very similar to the C originals.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.UpdateModelAnimation">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">UpdateModelAnimation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Model" title="raylib.Model"><span class="pre">Model</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.ModelAnimation" title="raylib.ModelAnimation"><span class="pre">ModelAnimation</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.UpdateModelAnimation" title="Link to this definition"></a></dt>
-<dd><p>Update model animation pose (CPU).</p>
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">UpdateModelAnimation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Model" title="raylib.Model"><span class="pre">Model</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.ModelAnimation" title="raylib.ModelAnimation"><span class="pre">ModelAnimation</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.UpdateModelAnimation" title="Link to this definition"></a></dt>
+<dd><p>Update model animation pose (vertex buffers and bone matrices).</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.UpdateModelAnimationBones">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">UpdateModelAnimationBones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Model" title="raylib.Model"><span class="pre">Model</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.ModelAnimation" title="raylib.ModelAnimation"><span class="pre">ModelAnimation</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.UpdateModelAnimationBones" title="Link to this definition"></a></dt>
-<dd><p>Update model animation mesh bone matrices (GPU skinning).</p>
+<dt class="sig sig-object py" id="raylib.UpdateModelAnimationEx">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">UpdateModelAnimationEx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.Model" title="raylib.Model"><span class="pre">Model</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.ModelAnimation" title="raylib.ModelAnimation"><span class="pre">ModelAnimation</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frameA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.ModelAnimation" title="raylib.ModelAnimation"><span class="pre">ModelAnimation</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frameB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.UpdateModelAnimationEx" title="Link to this definition"></a></dt>
+<dd><p>Update model animation pose, blending two animations.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -13981,12 +14016,6 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.rlCompileShader">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlCompileShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shaderCode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlCompileShader" title="Link to this definition"></a></dt>
-<dd><p>Compile custom shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER).</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="raylib.rlComputeShaderDispatch">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlComputeShaderDispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groupY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groupZ</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.rlComputeShaderDispatch" title="Link to this definition"></a></dt>
 <dd><p>Dispatch compute shader (equivalent to <em>draw</em> for graphics pipeline).</p>
@@ -14300,7 +14329,7 @@ are very, very similar to the C originals.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.rlFramebufferAttach">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlFramebufferAttach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fboId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attachType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mipLevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.rlFramebufferAttach" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlFramebufferAttach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attachType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mipLevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.rlFramebufferAttach" title="Link to this definition"></a></dt>
 <dd><p>Attach texture/renderbuffer to a framebuffer.</p>
 </dd></dl>
 
@@ -14376,13 +14405,13 @@ are very, very similar to the C originals.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.rlGetLocationAttrib">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlGetLocationAttrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shaderId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlGetLocationAttrib" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlGetLocationAttrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlGetLocationAttrib" title="Link to this definition"></a></dt>
 <dd><p>Get shader location attribute, requires shader program id.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="raylib.rlGetLocationUniform">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlGetLocationUniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shaderId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uniformName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlGetLocationUniform" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlGetLocationUniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uniformName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlGetLocationUniform" title="Link to this definition"></a></dt>
 <dd><p>Get shader location uniform, requires shader program id.</p>
 </dd></dl>
 
@@ -14476,12 +14505,6 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.rlLoadComputeShaderProgram">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlLoadComputeShaderProgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shaderId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlLoadComputeShaderProgram" title="Link to this definition"></a></dt>
-<dd><p>Load compute shader program.</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="raylib.rlLoadDrawCube">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlLoadDrawCube</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.rlLoadDrawCube" title="Link to this definition"></a></dt>
 <dd><p>Load and draw a cube.</p>
@@ -14518,21 +14541,33 @@ are very, very similar to the C originals.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="raylib.rlLoadShader">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlLoadShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlLoadShader" title="Link to this definition"></a></dt>
+<dd><p>Load (compile) shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER).</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="raylib.rlLoadShaderBuffer">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlLoadShaderBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usageHint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlLoadShaderBuffer" title="Link to this definition"></a></dt>
 <dd><p>Load shader storage buffer object (SSBO).</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.rlLoadShaderCode">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlLoadShaderCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vsCode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsCode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlLoadShaderCode" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="raylib.rlLoadShaderProgram">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlLoadShaderProgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vsCode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsCode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlLoadShaderProgram" title="Link to this definition"></a></dt>
 <dd><p>Load shader from code strings.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="raylib.rlLoadShaderProgram">
-<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlLoadShaderProgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vShaderId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fShaderId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlLoadShaderProgram" title="Link to this definition"></a></dt>
-<dd><p>Load custom shader program.</p>
+<dt class="sig sig-object py" id="raylib.rlLoadShaderProgramCompute">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlLoadShaderProgramCompute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlLoadShaderProgramCompute" title="Link to this definition"></a></dt>
+<dd><p>Load compute shader program.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.rlLoadShaderProgramEx">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlLoadShaderProgramEx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vsId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#raylib.rlLoadShaderProgramEx" title="Link to this definition"></a></dt>
+<dd><p>Load shader program, using already loaded shader ids.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -14880,6 +14915,12 @@ are very, very similar to the C originals.</p>
 <dt class="sig sig-object py" id="raylib.rlUnloadRenderBatch">
 <span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlUnloadRenderBatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#raylib.rlRenderBatch" title="raylib.rlRenderBatch"><span class="pre">rlRenderBatch</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.rlUnloadRenderBatch" title="Link to this definition"></a></dt>
 <dd><p>Unload render batch system.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raylib.rlUnloadShader">
+<span class="sig-prename descclassname"><span class="pre">raylib.</span></span><span class="sig-name descname"><span class="pre">rlUnloadShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#raylib.rlUnloadShader" title="Link to this definition"></a></dt>
+<dd><p>Unload shader, loaded with rlLoadShader().</p>
 </dd></dl>
 
 <dl class="py function">
