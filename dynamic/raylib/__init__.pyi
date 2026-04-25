@@ -262,7 +262,7 @@ def DrawCircle(centerX: int,centerY: int,radius: float,color: Color|list|tuple,)
 def DrawCircle3D(center: Vector3|list|tuple,radius: float,rotationAxis: Vector3|list|tuple,rotationAngle: float,color: Color|list|tuple,) -> None:
     """Draw a circle in 3D world space."""
     ...
-def DrawCircleGradient(centerX: int,centerY: int,radius: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> None:
+def DrawCircleGradient(center: Vector2|list|tuple,radius: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> None:
     """Draw a gradient-filled circle."""
     ...
 def DrawCircleLines(centerX: int,centerY: int,radius: float,color: Color|list|tuple,) -> None:
@@ -354,12 +354,6 @@ def DrawModel(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,
     ...
 def DrawModelEx(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
     """Draw a model with extended parameters."""
-    ...
-def DrawModelPoints(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
-    """Draw a model as points."""
-    ...
-def DrawModelPointsEx(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
-    """Draw a model as points with extended parameters."""
     ...
 def DrawModelWires(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
     """Draw a model wires (with texture if set)."""
@@ -572,7 +566,7 @@ def ExportImageAsCode(image: Image|list|tuple,fileName: bytes,) -> bool:
     """Export image as code file defining an array of bytes, returns true on success."""
     ...
 def ExportImageToMemory(image: Image|list|tuple,fileType: bytes,fileSize: Any,) -> bytes:
-    """Export image to memory buffer."""
+    """Export image to memory buffer, memory must be MemFree()."""
     ...
 def ExportMesh(mesh: Mesh|list|tuple,fileName: bytes,) -> bool:
     """Export mesh data to file, returns true on success."""
@@ -1937,10 +1931,10 @@ def LoadCodepoints(text: bytes,count: Any,) -> Any:
     """Load all codepoints from a UTF-8 text string, codepoints count returned by parameter."""
     ...
 def LoadDirectoryFiles(dirPath: bytes,) -> FilePathList:
-    """Load directory filepaths."""
+    """Load directory filepaths, files and directories, no subdirs scan."""
     ...
 def LoadDirectoryFilesEx(basePath: bytes,filter: bytes,scanSubdirs: bool,) -> FilePathList:
-    """Load directory filepaths with extension filtering and recursive directory scan. Use 'DIR' in the filter string to include directories in the result."""
+    """Load directory filepaths with extension filtering and subdir scan."""
     ...
 def LoadDroppedFiles() -> FilePathList:
     """Load dropped filepaths."""
@@ -2121,6 +2115,9 @@ def MatrixLookAt(eye: Vector3|list|tuple,target: Vector3|list|tuple,up: Vector3|
 def MatrixMultiply(left: Matrix|list|tuple,right: Matrix|list|tuple,) -> Matrix:
     """."""
     ...
+def MatrixMultiplyValue(left: Matrix|list|tuple,value: float,) -> Matrix:
+    """."""
+    ...
 def MatrixOrtho(left: float,right: float,bottom: float,top: float,nearPlane: float,farPlane: float,) -> Matrix:
     """."""
     ...
@@ -2168,6 +2165,9 @@ def MaximizeWindow() -> None:
     ...
 def MeasureText(text: bytes,fontSize: int,) -> int:
     """Measure string width for default font."""
+    ...
+def MeasureTextCodepoints(font: Font|list|tuple,codepoints: Any,length: int,fontSize: float,spacing: float,) -> Vector2:
+    """Measure string size for an existing array of codepoints for Font."""
     ...
 def MeasureTextEx(font: Font|list|tuple,text: bytes,fontSize: float,spacing: float,) -> Vector2:
     """Measure string size for Font."""
@@ -2221,6 +2221,7 @@ PIXELFORMAT_UNCOMPRESSED_R8G8B8: int
 PIXELFORMAT_UNCOMPRESSED_R8G8B8A8: int
 PROGRESSBAR: int
 PROGRESS_PADDING: int
+PROGRESS_SIDE: int
 def PauseAudioStream(stream: AudioStream|list|tuple,) -> None:
     """Pause audio stream."""
     ...
@@ -2366,12 +2367,12 @@ RL_LOG_NONE: int
 RL_LOG_TRACE: int
 RL_LOG_WARNING: int
 RL_OPENGL_11: int
-RL_OPENGL_11_SOFTWARE: int
 RL_OPENGL_21: int
 RL_OPENGL_33: int
 RL_OPENGL_43: int
 RL_OPENGL_ES_20: int
 RL_OPENGL_ES_30: int
+RL_OPENGL_SOFTWARE: int
 RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA: int
 RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA: int
 RL_PIXELFORMAT_COMPRESSED_DXT1_RGB: int
@@ -2475,7 +2476,6 @@ SHADER_ATTRIB_FLOAT: int
 SHADER_ATTRIB_VEC2: int
 SHADER_ATTRIB_VEC3: int
 SHADER_ATTRIB_VEC4: int
-SHADER_LOC_BONE_MATRICES: int
 SHADER_LOC_COLOR_AMBIENT: int
 SHADER_LOC_COLOR_DIFFUSE: int
 SHADER_LOC_COLOR_SPECULAR: int
@@ -2490,6 +2490,7 @@ SHADER_LOC_MAP_NORMAL: int
 SHADER_LOC_MAP_OCCLUSION: int
 SHADER_LOC_MAP_PREFILTER: int
 SHADER_LOC_MAP_ROUGHNESS: int
+SHADER_LOC_MATRIX_BONETRANSFORMS: int
 SHADER_LOC_MATRIX_MODEL: int
 SHADER_LOC_MATRIX_MVP: int
 SHADER_LOC_MATRIX_NORMAL: int
@@ -2499,7 +2500,7 @@ SHADER_LOC_VECTOR_VIEW: int
 SHADER_LOC_VERTEX_BONEIDS: int
 SHADER_LOC_VERTEX_BONEWEIGHTS: int
 SHADER_LOC_VERTEX_COLOR: int
-SHADER_LOC_VERTEX_INSTANCE_TX: int
+SHADER_LOC_VERTEX_INSTANCETRANSFORM: int
 SHADER_LOC_VERTEX_NORMAL: int
 SHADER_LOC_VERTEX_POSITION: int
 SHADER_LOC_VERTEX_TANGENT: int
@@ -2544,7 +2545,7 @@ def SetAudioStreamCallback(stream: AudioStream|list|tuple,callback: Any,) -> Non
     """Audio thread callback to request new data."""
     ...
 def SetAudioStreamPan(stream: AudioStream|list|tuple,pan: float,) -> None:
-    """Set pan for audio stream (0.5 is centered)."""
+    """Set pan for audio stream (-1.0 to 1.0 range, 0.0 is centered)."""
     ...
 def SetAudioStreamPitch(stream: AudioStream|list|tuple,pitch: float,) -> None:
     """Set pitch for audio stream (1.0 is base level)."""
@@ -2781,7 +2782,10 @@ def TextFormat(*args) -> bytes:
         """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""
         ...
 def TextInsert(text: bytes,insert: bytes,position: int,) -> bytes:
-    """Insert text in a position (WARNING: memory must be freed!)."""
+    """Insert text in a defined byte position."""
+    ...
+def TextInsertAlloc(text: bytes,insert: bytes,position: int,) -> bytes:
+    """Insert text in a defined byte position, memory must be MemFree()."""
     ...
 def TextIsEqual(text1: bytes,text2: bytes,) -> bool:
     """Check if two text string are equal."""
@@ -2796,10 +2800,16 @@ def TextRemoveSpaces(text: bytes,) -> bytes:
     """Remove text spaces, concat words."""
     ...
 def TextReplace(text: bytes,search: bytes,replacement: bytes,) -> bytes:
-    """Replace text string (WARNING: memory must be freed!)."""
+    """Replace text string with new string."""
+    ...
+def TextReplaceAlloc(text: bytes,search: bytes,replacement: bytes,) -> bytes:
+    """Replace text string with new string, memory must be MemFree()."""
     ...
 def TextReplaceBetween(text: bytes,begin: bytes,end: bytes,replacement: bytes,) -> bytes:
-    """Replace text between two specific strings (WARNING: memory must be freed!)."""
+    """Replace text between two specific strings."""
+    ...
+def TextReplaceBetweenAlloc(text: bytes,begin: bytes,end: bytes,replacement: bytes,) -> bytes:
+    """Replace text between two specific strings, memory must be MemFree()."""
     ...
 def TextSplit(text: bytes,delimiter: bytes,count: Any,) -> list[bytes]:
     """Split text into multiple strings, using MAX_TEXTSPLIT_COUNT static strings."""
@@ -2882,9 +2892,6 @@ def UnloadMesh(mesh: Mesh|list|tuple,) -> None:
 def UnloadModel(model: Model|list|tuple,) -> None:
     """Unload model (including meshes) from memory (RAM and/or VRAM)."""
     ...
-def UnloadModelAnimation(anim: ModelAnimation|list|tuple,) -> None:
-    """Unload animation data."""
-    ...
 def UnloadModelAnimations(animations: Any|list|tuple,animCount: int,) -> None:
     """Unload animation array data."""
     ...
@@ -2936,11 +2943,11 @@ def UpdateCameraPro(camera: Any|list|tuple,movement: Vector3|list|tuple,rotation
 def UpdateMeshBuffer(mesh: Mesh|list|tuple,index: int,data: Any,dataSize: int,offset: int,) -> None:
     """Update mesh vertex data in GPU for a specific buffer index."""
     ...
-def UpdateModelAnimation(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: int,) -> None:
-    """Update model animation pose (CPU)."""
+def UpdateModelAnimation(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: float,) -> None:
+    """Update model animation pose (vertex buffers and bone matrices)."""
     ...
-def UpdateModelAnimationBones(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: int,) -> None:
-    """Update model animation mesh bone matrices (GPU skinning)."""
+def UpdateModelAnimationEx(model: Model|list|tuple,animA: ModelAnimation|list|tuple,frameA: float,animB: ModelAnimation|list|tuple,frameB: float,blend: float,) -> None:
+    """Update model animation pose, blending two animations."""
     ...
 def UpdateMusicStream(music: Music|list|tuple,) -> None:
     """Updates buffers for music streaming."""
@@ -3657,9 +3664,6 @@ def rlColor4ub(r: bytes,g: bytes,b: bytes,a: bytes,) -> None:
 def rlColorMask(r: bool,g: bool,b: bool,a: bool,) -> None:
     """Color mask control."""
     ...
-def rlCompileShader(shaderCode: bytes,type: int,) -> int:
-    """Compile custom shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER)."""
-    ...
 def rlComputeShaderDispatch(groupX: int,groupY: int,groupZ: int,) -> None:
     """Dispatch compute shader (equivalent to *draw* for graphics pipeline)."""
     ...
@@ -3801,7 +3805,7 @@ def rlEnableWireMode() -> None:
 def rlEnd() -> None:
     """Finish vertex providing."""
     ...
-def rlFramebufferAttach(fboId: int,texId: int,attachType: int,texType: int,mipLevel: int,) -> None:
+def rlFramebufferAttach(id: int,texId: int,attachType: int,texType: int,mipLevel: int,) -> None:
     """Attach texture/renderbuffer to a framebuffer."""
     ...
 def rlFramebufferComplete(id: int,) -> bool:
@@ -3834,10 +3838,10 @@ def rlGetGlTextureFormats(format: int,glInternalFormat: Any,glFormat: Any,glType
 def rlGetLineWidth() -> float:
     """Get the line drawing width."""
     ...
-def rlGetLocationAttrib(shaderId: int,attribName: bytes,) -> int:
+def rlGetLocationAttrib(id: int,attribName: bytes,) -> int:
     """Get shader location attribute, requires shader program id."""
     ...
-def rlGetLocationUniform(shaderId: int,uniformName: bytes,) -> int:
+def rlGetLocationUniform(id: int,uniformName: bytes,) -> int:
     """Get shader location uniform, requires shader program id."""
     ...
 def rlGetMatrixModelview() -> Matrix:
@@ -3882,9 +3886,6 @@ def rlGetVersion() -> int:
 def rlIsStereoRenderEnabled() -> bool:
     """Check if stereo render is enabled."""
     ...
-def rlLoadComputeShaderProgram(shaderId: int,) -> int:
-    """Load compute shader program."""
-    ...
 def rlLoadDrawCube() -> None:
     """Load and draw a cube."""
     ...
@@ -3903,14 +3904,20 @@ def rlLoadIdentity() -> None:
 def rlLoadRenderBatch(numBuffers: int,bufferElements: int,) -> rlRenderBatch:
     """Load a render batch system."""
     ...
+def rlLoadShader(code: bytes,type: int,) -> int:
+    """Load (compile) shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER)."""
+    ...
 def rlLoadShaderBuffer(size: int,data: Any,usageHint: int,) -> int:
     """Load shader storage buffer object (SSBO)."""
     ...
-def rlLoadShaderCode(vsCode: bytes,fsCode: bytes,) -> int:
+def rlLoadShaderProgram(vsCode: bytes,fsCode: bytes,) -> int:
     """Load shader from code strings."""
     ...
-def rlLoadShaderProgram(vShaderId: int,fShaderId: int,) -> int:
-    """Load custom shader program."""
+def rlLoadShaderProgramCompute(csId: int,) -> int:
+    """Load compute shader program."""
+    ...
+def rlLoadShaderProgramEx(vsId: int,fsId: int,) -> int:
+    """Load shader program, using already loaded shader ids."""
     ...
 def rlLoadTexture(data: Any,width: int,height: int,format: int,mipmapCount: int,) -> int:
     """Load texture data."""
@@ -4052,6 +4059,9 @@ def rlUnloadFramebuffer(id: int,) -> None:
     ...
 def rlUnloadRenderBatch(batch: rlRenderBatch|list|tuple,) -> None:
     """Unload render batch system."""
+    ...
+def rlUnloadShader(id: int,) -> None:
+    """Unload shader, loaded with rlLoadShader()."""
     ...
 def rlUnloadShaderBuffer(ssboId: int,) -> None:
     """Unload shader storage buffer object (SSBO)."""
@@ -4266,12 +4276,11 @@ class Mesh:
     tangents: Any
     colors: bytes
     indices: Any
+    boneCount: int
+    boneIndices: bytes
+    boneWeights: Any
     animVertices: Any
     animNormals: Any
-    boneIds: bytes
-    boneWeights: Any
-    boneMatrices: Any
-    boneCount: int
     vaoId: int
     vboId: Any
 class Model:
@@ -4281,15 +4290,18 @@ class Model:
     meshes: Any
     materials: Any
     meshMaterial: Any
+    skeleton: ModelSkeleton
+    currentPose: Any
+    boneMatrices: Any
+class ModelAnimation:
+    name: bytes
+    boneCount: int
+    keyframeCount: int
+    keyframePoses: Any
+class ModelSkeleton:
     boneCount: int
     bones: Any
     bindPose: Any
-class ModelAnimation:
-    boneCount: int
-    frameCount: int
-    bones: Any
-    framePoses: Any
-    name: bytes
 MouseButton = int
 MouseCursor = int
 class Music:

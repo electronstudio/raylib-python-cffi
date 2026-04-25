@@ -32,6 +32,7 @@ echo "running parser"
 ./a.out -i raylib-c/src/raymath.h -d RMAPI -o raymath.json -f JSON
 ./a.out -i raylib-c/src/external/glfw/include/GLFW/glfw3.h -d GLFWAPI -o glfw3.json -f JSON
 sed -i "s|\/\*.*,$|,|g" glfw3.json
+sed -i 's/; some filters available: "\*\.\*", "FILES\*", "DIRS\*"//g' raylib.json
 
 echo "building raylib_python_cffi"
 
