@@ -19,7 +19,7 @@ Requirements for build: cmake, pkg-config.
         cd raylib-5.5
         mkdir build
         cd build
-        cmake  -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+        cmake  -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
         make
         sudo make install
         export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
@@ -157,7 +157,7 @@ Build and install Raylib from the raylib-c directory.
    cd raylib-python-cffi/raylib-c
    mkdir build
    cd build
-   cmake -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+   cmake -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
    sudo make install
    export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
