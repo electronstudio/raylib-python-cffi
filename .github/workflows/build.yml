@@ -551,7 +551,7 @@ jobs:
           echo "OPENGL $OPENGL PLATFORM $PLATFORM"
           cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           make -j2
-          make install
+          sudo make install
 
       - name: Copy extras
         run: |
