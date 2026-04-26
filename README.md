@@ -106,7 +106,7 @@ so may not work on other boards.
 
 ## Raspberry Pi
 
-[Using on Rasperry Pi](RPI)
+[Using on Rasperry Pi](RPI.rst)
 
 # Backends
 
@@ -141,7 +141,7 @@ You can't have multiple raylib packages installed at once.
 
 ## Problems?
 
-If it doesn't work, [try to build manually.](BUILDING).  If that works then [submit an issue](https://github.com/electronstudio/raylib-python-cffi/issues)
+If it doesn't work, [try to build manually.](BUILDING.rst).  If that works then [submit an issue](https://github.com/electronstudio/raylib-python-cffi/issues)
 to let us know what you did.
 
 If you need help you can try asking on [our discord](https://discord.gg/fKDwt85aX6).  There is also a large [Raylib discord](https://discord.gg/raylib)
