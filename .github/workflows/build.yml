@@ -381,7 +381,7 @@ jobs:
       # For example, pypy2 and pypy3
       matrix:
         python-version: ['python3.7', 'python3.8', 'python3.9', 'python3.10', 'python3.11', 'python3.12', 'python3.13', 'python3.14']
-        raylib-platform: ['Desktop', 'SDL', 'DRM']
+        raylib-platform: ['Desktop', 'SDL', 'DRM', 'SDL_SOFT']
     steps:
       - name: fix node
         run: |
@@ -417,13 +417,17 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
+          PLATFORM="${{ matrix.raylib-platform }}"
           if [ ${{ matrix.raylib-platform }} = "DRM" ]; then
             OPENGL="ES 2.0"
+          elif [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
+            OPENGL="Software"
+            PLATFORM="SDL"
           else
             OPENGL="2.1"
           fi
-          echo "OPENGL VERSION $OPENGL"
-          setarch i386 cmake -DPLATFORM=${{ matrix.raylib-platform }} -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release  ..
+          echo "OPENGL $OPENGL PLATFORM $PLATFORM"
+          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           make -j2
           make install
       - name: Copy extras
@@ -496,7 +500,7 @@ jobs:
     strategy:
       matrix:
         python-version: [ '3.10', '3.11', '3.12', '3.13', '3.14']
-        raylib-platform: [ 'Desktop', 'SDL', 'DRM' ]
+        raylib-platform: [ 'Desktop', 'SDL', 'DRM', 'SDL_SOFT' ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -533,17 +537,21 @@ jobs:
       - name: Build raylib with SDL if selected
         run: |
           cd raylib-c
-          mkdir build2
-          cd build2
+          mkdir build
+          cd build
+          PLATFORM="${{ matrix.raylib-platform }}"
           if [ ${{ matrix.raylib-platform }} = "DRM" ]; then
             OPENGL="ES 2.0"
+          elif [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
+            OPENGL="Software"
+            PLATFORM="SDL"
           else
             OPENGL="2.1"
           fi
-          echo "OPENGL VERSION $OPENGL"
-          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          echo "OPENGL $OPENGL PLATFORM $PLATFORM"
+          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
           make -j2
-          sudo make install
+          make install
 
       - name: Copy extras
         run: |
