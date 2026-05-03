@@ -645,6 +645,7 @@ jobs:
           path: wheelhouse/*
 
   build-linux-arm64-drm:
+    # separate build using RPI images because standard ubuntu build doesnt work on RPI DRM
     runs-on: ubuntu-22.04-arm
     container:
       image: electronstudio/raspberrypi-os:${{ matrix.docker-tag }}
@@ -653,13 +654,13 @@ jobs:
       matrix:
         include:
           - python-version: "3.10"
-            docker-tag: "python3.10-bookworm"
+            docker-tag: "python3.10-bullseye"
           - python-version: "3.11"
             docker-tag: "python3.11-bullseye"
           - python-version: "3.12"
             docker-tag: "python3.12-bullseye"
           - python-version: "3.13"
-            docker-tag: "python3.13-bookworm"
+            docker-tag: "python3.13-bullseye"
           - python-version: "3.14"
             docker-tag: "python3.14-bookworm"
     steps:
@@ -710,6 +711,18 @@ jobs:
           python3 -m build --wheel
           python3 -m pip install twine
 
+      - name:
+          Rename wheels from linux to manylinux
+          # proper solution would be to use auditwheel but it seems to bundle a libedit dll we dont want
+        run: |
+          for wheel in dist/*linux.whl; do
+            if [ -f "$wheel" ]; then
+              new_wheel=$(echo "$wheel" | sed 's/linux/manylinux/')
+              echo "Renaming: $(basename "$wheel") -> $(basename "$new_wheel")"
+              mv "$wheel" "$new_wheel"
+            fi
+          done
+        shell: bash
 
       - name: Test
         run: |
