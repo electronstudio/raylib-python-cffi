@@ -672,7 +672,7 @@ jobs:
       - name: install libs
         run: |
           apt update
-          apt -y install libdrm-dev libgbm-dev libegl-dev libgles2-mesa-dev libasound2-dev
+          apt -y install libdrm-dev libgbm-dev libegl-dev libgles2-mesa-dev libasound2-dev libedit2
 
       - uses: actions/checkout@v2
         with:
@@ -709,30 +709,11 @@ jobs:
           python3 -m pip install --upgrade build
           python3 -m build --wheel
           python3 -m pip install twine
-          python3 -m pip install --upgrade auditwheel
-          python3 -m pip install --upgrade patchelf
-          python3 -m auditwheel repair dist/*.whl
 
-      - name: Rename wheel for testing
-        run: |
-          for wheel in wheelhouse/raylib*.whl; do
-            if [ -f "$wheel" ]; then
-              basename=$(basename "$wheel")
-              if [[ $basename =~ ^([^-]+)-([^-]+.*)-[^-]+-[^-]+-[^-]+\.whl$ ]]; then
-                package="${BASH_REMATCH[1]}"
-                version="${BASH_REMATCH[2]}"
-                new_name="${package}-${version}-py3-none-linux_aarch64.whl"
-                echo "Renaming: $basename -> $new_name"
-                cp "$wheel" "wheelhouse/$new_name"
-              fi
-            fi
-          done
-        shell: bash
 
       - name: Test
         run: |
-          python3 -m pip install --no-deps wheelhouse/*-py3-none-linux_aarch64.whl
-          rm -f wheelhouse/*-py3-none-linux_aarch64.whl
+          python3 -m pip install --no-deps dist/*.whl
           cd /
           python3 -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
           cat /tmp/output
@@ -746,13 +727,13 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
           name: wheel-linux-arm64-DRM-${{ matrix.python-version }}
-          path: wheelhouse/*
+          path: dist/*
 
   build-windows:
     # The type of runner that the job will run on
