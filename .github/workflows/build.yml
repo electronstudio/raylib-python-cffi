@@ -715,9 +715,9 @@ jobs:
           Rename wheels from linux to manylinux
           # proper solution would be to use auditwheel but it seems to bundle a libedit dll we dont want
         run: |
-          for wheel in dist/*linux.whl; do
+          for wheel in dist/*linux*.whl; do
             if [ -f "$wheel" ]; then
-              new_wheel=$(echo "$wheel" | sed 's/linux/manylinux/')
+              new_wheel=$(echo "$wheel" | sed 's/linux/manylinux2014/')
               echo "Renaming: $(basename "$wheel") -> $(basename "$new_wheel")"
               mv "$wheel" "$new_wheel"
             fi
