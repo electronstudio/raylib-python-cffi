@@ -500,7 +500,7 @@ jobs:
     strategy:
       matrix:
         python-version: [ '3.10', '3.11', '3.12', '3.13', '3.14']
-        raylib-platform: [ 'Desktop', 'SDL', 'DRM', 'SDL_SOFT' ]
+        raylib-platform: [ 'Desktop', 'SDL', 'SDL_SOFT' ]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -616,6 +616,123 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wheel-linux-arm64-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
+          path: wheelhouse/*
+
+
+  build-linux-arm64-drm:
+    runs-on: ubuntu-22.04-arm
+    container:
+      image: electronstudio/raspberrypi-os:${{ matrix.docker-tag }}
+      options: --user root
+      volumes:
+        - /tmp:/__e/node20
+    strategy:
+      matrix:
+        include:
+          - python-version: '3.10'
+            docker-tag: 'python3.10-bookworm'
+          - python-version: '3.11'
+            docker-tag: 'python3.11-bullseye'
+          - python-version: '3.12'
+            docker-tag: 'python3.12-bullseye'
+          - python-version: '3.13'
+            docker-tag: 'python3.13-bookworm'
+          - python-version: '3.14'
+            docker-tag: 'python3.14-bookworm'
+    steps:
+      - name: fix node
+        run: |
+          ln -s /usr/local/bin /__e/node20/bin
+
+      - name: update cmake
+        run: |
+          wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-aarch64.tar.gz
+          tar xvfz cmake-3.31.10-linux-aarch64.tar.gz
+          cp -r cmake-3.31.10-linux-aarch64/* /usr/
+
+      - name: install libs
+        run: |
+          apt update
+          apt -y install libdrm-dev libgbm-dev libegl-dev libgles2-mesa-dev libasound2-dev
+
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+
+      - name: Build raylib
+        run: |
+          cd raylib-c
+          mkdir build
+          cd build
+          cmake -DPLATFORM="DRM" -DOPENGL_VERSION="ES 2.0" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j2
+          make install
+
+      - name: Copy extras
+        run: |
+          cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+          cp physac/src/physac.h /usr/local/include/
+          cp raygui/src/raygui.h /usr/local/include/
+
+      - name: Build raylib-python-cffi
+        env:
+          RAYLIB_PLATFORM: DRM
+          PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade cffi
+          python3 -m pip install --upgrade wheel
+          python3 -m pip install --upgrade setuptools
+          python3 -m pip install --upgrade build
+          python3 -m build --wheel
+          python3 -m pip install twine
+          python3 -m pip install --upgrade auditwheel
+          python3 -m pip install --upgrade patchelf
+          python3 -m auditwheel repair dist/*.whl
+
+      - name: Rename wheel for testing
+        run: |
+          for wheel in wheelhouse/raylib*.whl; do
+            if [ -f "$wheel" ]; then
+              basename=$(basename "$wheel")
+              if [[ $basename =~ ^([^-]+)-([^-]+.*)-[^-]+-[^-]+-[^-]+\.whl$ ]]; then
+                package="${BASH_REMATCH[1]}"
+                version="${BASH_REMATCH[2]}"
+                new_name="${package}-${version}-py3-none-linux_aarch64.whl"
+                echo "Renaming: $basename -> $new_name"
+                cp "$wheel" "wheelhouse/$new_name"
+              fi
+            fi
+          done
+        shell: bash
+
+      - name: Test
+        run: |
+          python3 -m pip install --no-deps wheelhouse/*-py3-none-linux_aarch64.whl
+          rm -f wheelhouse/*-py3-none-linux_aarch64.whl
+          cd /
+          python3 -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+          cat /tmp/output
+          if grep -q "INFO: Initializing raylib" /tmp/output; then
+            echo "Passed"
+          else
+            echo "Failed"
+            exit 1
+          fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl
+
+      - name: Upload build Artifact wheel
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel-linux-arm64-DRM-${{ matrix.python-version }}
           path: wheelhouse/*
 
 
@@ -948,7 +1065,7 @@ jobs:
           path: dynamic/dist/*
 
   merge:
-    needs: [build-mac-intel, build-mac-arm64, build-windows, build-linux, build-linux-arm64, build-linux32, build-windows32, source-distro, dynamic-distro]
+    needs: [build-mac-intel, build-mac-arm64, build-windows, build-linux, build-linux-arm64, build-linux-arm64-drm, build-linux32, build-windows32, source-distro, dynamic-distro]
     runs-on: ubuntu-latest
     steps:
       - name: Merge All Artifacts
