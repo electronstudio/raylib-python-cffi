@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       publish_to_pypi:
-        description: 'Publish to PyPI?'
+        description: "Publish to PyPI?"
         type: boolean
         required: true
         default: false
@@ -20,10 +20,21 @@ jobs:
     runs-on: macos-15-intel
     strategy:
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11' ]
-        raylib-platform: ['Desktop', 'SDL']
+        python-version:
+          [
+            "3.7",
+            "3.8",
+            "3.9",
+            "3.10",
+            "3.11",
+            "3.12",
+            "3.13",
+            "3.14",
+            "pypy-3.11",
+          ]
+        raylib-platform: ["Desktop", "SDL"]
     env:
-      MACOSX_DEPLOYMENT_TARGET: '10.13'
+      MACOSX_DEPLOYMENT_TARGET: "10.13"
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -127,15 +138,14 @@ jobs:
           name: wheel-mac-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/*
 
-
   build-mac-arm64:
     runs-on: macos-14
     strategy:
       matrix:
-        python-version: [ '3.10', '3.11', '3.12', '3.13', '3.14']
-        raylib-platform: ['Desktop', 'SDL']
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        raylib-platform: ["Desktop", "SDL"]
     env:
-      MACOSX_DEPLOYMENT_TARGET: '11'
+      MACOSX_DEPLOYMENT_TARGET: "11"
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -239,8 +249,6 @@ jobs:
           name: wheel-mac-arm64-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/*
 
-
-
   build-linux:
     runs-on: ubuntu-latest
     container:
@@ -253,8 +261,19 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: ['python3.7', 'python3.8', 'python3.9', 'python3.10', 'python3.11', 'python3.12', 'python3.13', 'python3.14', 'pypy3.11']
-        raylib-platform: ['Desktop', 'SDL', 'DRM', 'SDL_SOFT']
+        python-version:
+          [
+            "python3.7",
+            "python3.8",
+            "python3.9",
+            "python3.10",
+            "python3.11",
+            "python3.12",
+            "python3.13",
+            "python3.14",
+            "pypy3.11",
+          ]
+        raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
       - name: fix node
         run: |
@@ -359,14 +378,13 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
+          python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
           name: wheel-linux-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: wheelhouse/*
-
 
   build-linux32:
     runs-on: ubuntu-latest
@@ -380,8 +398,18 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: ['python3.7', 'python3.8', 'python3.9', 'python3.10', 'python3.11', 'python3.12', 'python3.13', 'python3.14']
-        raylib-platform: ['Desktop', 'SDL', 'DRM', 'SDL_SOFT']
+        python-version:
+          [
+            "python3.7",
+            "python3.8",
+            "python3.9",
+            "python3.10",
+            "python3.11",
+            "python3.12",
+            "python3.13",
+            "python3.14",
+          ]
+        raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
       - name: fix node
         run: |
@@ -487,7 +515,7 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
+          python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -499,8 +527,8 @@ jobs:
     runs-on: ubuntu-22.04-arm
     strategy:
       matrix:
-        python-version: [ '3.10', '3.11', '3.12', '3.13', '3.14']
-        raylib-platform: [ 'Desktop', 'SDL', 'SDL_SOFT' ]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -531,8 +559,6 @@ jobs:
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
           python-version: ${{ matrix.python-version }}
-
-
 
       - name: Build raylib with SDL if selected
         run: |
@@ -610,7 +636,7 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl    
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -618,32 +644,25 @@ jobs:
           name: wheel-linux-arm64-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: wheelhouse/*
 
-
   build-linux-arm64-drm:
     runs-on: ubuntu-22.04-arm
     container:
       image: electronstudio/raspberrypi-os:${{ matrix.docker-tag }}
       options: --user root
-      volumes:
-        - /tmp:/__e/node20
     strategy:
       matrix:
         include:
-          - python-version: '3.10'
-            docker-tag: 'python3.10-bookworm'
-          - python-version: '3.11'
-            docker-tag: 'python3.11-bullseye'
-          - python-version: '3.12'
-            docker-tag: 'python3.12-bullseye'
-          - python-version: '3.13'
-            docker-tag: 'python3.13-bookworm'
-          - python-version: '3.14'
-            docker-tag: 'python3.14-bookworm'
+          - python-version: "3.10"
+            docker-tag: "python3.10-bookworm"
+          - python-version: "3.11"
+            docker-tag: "python3.11-bullseye"
+          - python-version: "3.12"
+            docker-tag: "python3.12-bullseye"
+          - python-version: "3.13"
+            docker-tag: "python3.13-bookworm"
+          - python-version: "3.14"
+            docker-tag: "python3.14-bookworm"
     steps:
-      - name: fix node
-        run: |
-          ln -s /usr/local/bin /__e/node20/bin
-
       - name: update cmake
         run: |
           wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-aarch64.tar.gz
@@ -735,8 +754,6 @@ jobs:
           name: wheel-linux-arm64-DRM-${{ matrix.python-version }}
           path: wheelhouse/*
 
-
-
   build-windows:
     # The type of runner that the job will run on
     runs-on: windows-2022
@@ -744,8 +761,19 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version:  [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11' ]
-        raylib-platform: ['Desktop', 'SDL', 'SDL_SOFT']
+        python-version:
+          [
+            "3.7",
+            "3.8",
+            "3.9",
+            "3.10",
+            "3.11",
+            "3.12",
+            "3.13",
+            "3.14",
+            "pypy-3.11",
+          ]
+        raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -798,7 +826,7 @@ jobs:
         shell: bash
 
       - name: Build raylib2
-        run: |   
+        run: |
           cd raylib-c/build
           msbuild raylib.sln /target:raylib /property:Configuration=Release
           cp raylib\Release\raylib.lib ..\..
@@ -842,13 +870,13 @@ jobs:
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl    
-          
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
           name: wheel-windows-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
-          path: dist/* 
+          path: dist/*
 
   build-windows32:
     # The type of runner that the job will run on
@@ -857,8 +885,9 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14' ]
-        raylib-platform: [ 'Desktop', 'SDL', 'SDL_SOFT']
+        python-version:
+          ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+        raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -982,7 +1011,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: '3.12'
+          python-version: "3.12"
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
@@ -1039,7 +1068,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: '3.12'
+          python-version: "3.12"
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
@@ -1065,7 +1094,19 @@ jobs:
           path: dynamic/dist/*
 
   merge:
-    needs: [build-mac-intel, build-mac-arm64, build-windows, build-linux, build-linux-arm64, build-linux-arm64-drm, build-linux32, build-windows32, source-distro, dynamic-distro]
+    needs:
+      [
+        build-mac-intel,
+        build-mac-arm64,
+        build-windows,
+        build-linux,
+        build-linux-arm64,
+        build-linux-arm64-drm,
+        build-linux32,
+        build-windows32,
+        source-distro,
+        dynamic-distro,
+      ]
     runs-on: ubuntu-latest
     steps:
       - name: Merge All Artifacts
