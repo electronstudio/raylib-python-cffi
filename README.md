@@ -44,7 +44,7 @@ Use the [project generator](https://github.com/electronstudio/python-raylib-temp
 
 <a href="https://www.youtube.com/watch?v=UoAsDlUwjy0"><img src="https://img.youtube.com/vi/UoAsDlUwjy0/0.jpg" alt="video"/></a>
 
-
+<a href="https://www.youtube.com/watch?v=OSRbm2ocVjY"><img src="https://img.youtube.com/vi/OSRbm2ocVjY/0.jpg" alt="video"/></a>
 
 [more videos](https://www.youtube.com/@FinFET/videos)
 
