@@ -70,7 +70,7 @@ jobs:
           mkdir build
           cd build
           cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          make -j4
           sudo make install
 
       - name: Build raylib with SDL if selected
@@ -79,7 +79,7 @@ jobs:
           mkdir build2
           cd build2
           cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          make -j4
           sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
 
       - name: Copy extras
@@ -181,7 +181,7 @@ jobs:
           mkdir build
           cd build
           cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          make -j4
           sudo make install
 
       - name: Build raylib with SDL if selected
@@ -190,7 +190,7 @@ jobs:
           mkdir build2
           cd build2
           cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          make -j4
           sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
 
       - name: Copy extras
@@ -279,6 +279,13 @@ jobs:
         run: |
           ln -s /usr/local/bin /__e/node20/bin
 
+      - name: setup wayland
+        run: |
+          apt-get update
+          apt-get install -y libwayland-dev wayland-protocols
+          # Ubuntu 16 has an older wayland-scanner that expects "code" instead of "private-code".
+          sed -i 's/private-code/code/g' raylib-c/src/external/glfw/src/CMakeLists.txt
+
       - name: update cmake
         run: |
           wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-x86_64.tar.gz
@@ -319,8 +326,8 @@ jobs:
             OPENGL="3.3"
           fi
           echo "OPENGL $OPENGL PLATFORM $PLATFORM"
-          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=ON ..
+          make -j4
           make install
       - name: Copy extras
         run: |
@@ -456,7 +463,7 @@ jobs:
           fi
           echo "OPENGL $OPENGL PLATFORM $PLATFORM"
           cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          make -j4
           make install
       - name: Copy extras
         run: |
@@ -542,7 +549,7 @@ jobs:
       - name: install libs
         run: |
           sudo apt update
-          sudo apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libgbm-dev libdrm-dev
+          sudo apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev wayland-protocols libxkbcommon-dev libgbm-dev libdrm-dev
 
       - name: Build SDL
         run: |
@@ -575,8 +582,8 @@ jobs:
             OPENGL="2.1"
           fi
           echo "OPENGL $OPENGL PLATFORM $PLATFORM"
-          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=ON ..
+          make -j4
           sudo make install
 
       - name: Copy extras
@@ -689,7 +696,7 @@ jobs:
           mkdir build
           cd build
           cmake -DPLATFORM="DRM" -DOPENGL_VERSION="ES 2.0" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          make -j4
           make install
 
       - name: Copy extras
@@ -1017,7 +1024,7 @@ jobs:
           mkdir build
           cd build
           cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          make -j4
           sudo make install
       - name: Copy extras
         run: |

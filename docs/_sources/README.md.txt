@@ -21,7 +21,7 @@ original Raylib.
 
 # Quickstart
 
-`pip3 install raylib==6.0.0.0 --break-system-packages`
+`pip3 install raylib==6.0.1.0 --break-system-packages`
 ```python
 from pyray import *
 init_window(800, 450, "Hello")
@@ -39,14 +39,16 @@ Use the [project generator](https://github.com/electronstudio/python-raylib-temp
 
 # Videos
 
+<a href="https://www.youtube.com/watch?v=MIgq9w0MUsM">FinFET - Making a simple 3D game in Python (for real) with Raylib<br><img src="https://img.youtube.com/vi/MIgq9w0MUsM/0.jpg" alt="video"/></a>
 
-<a href="https://www.youtube.com/watch?v=MIgq9w0MUsM"><img src="https://img.youtube.com/vi/MIgq9w0MUsM/0.jpg" alt="video"/></a>
+[more on FinFET](https://www.youtube.com/@FinFET/videos)
 
-<a href="https://www.youtube.com/watch?v=UoAsDlUwjy0"><img src="https://img.youtube.com/vi/UoAsDlUwjy0/0.jpg" alt="video"/></a>
+<a href="https://www.youtube.com/watch?v=UoAsDlUwjy0">Clear Code - The ultimate introduction to Raylib<br><img src="https://img.youtube.com/vi/UoAsDlUwjy0/0.jpg" alt="video"/></a>
 
+<a href="https://www.youtube.com/watch?v=OSRbm2ocVjY">Unconventional Coding - I Made My Own Video Editor Because Kdenlive Is Too Slow<br><img src="https://img.youtube.com/vi/OSRbm2ocVjY/0.jpg" alt="video"/></a>
 
+<a href="https://www.youtube.com/watch?v=hbe1zKUAxuU">WOBLO GAMES - The Druid's Downfall<br><img src="https://img.youtube.com/vi/hbe1zKUAxuU/0.jpg" alt="video"/></a>
 
-[more videos](https://www.youtube.com/@FinFET/videos)
 
 # Links
 
@@ -72,7 +74,7 @@ Then make sure you have the latest pip installed:
 Then install
 
     python3 -m pip install setuptools
-    python3 -m pip install raylib==6.0.0.0
+    python3 -m pip install raylib==6.0.1.0
 
 On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from
 source, in which case you will need to have Raylib development libs installed, e.g. 
@@ -94,7 +96,7 @@ Older MacOS requires building from source but this is usually simple:
 
     brew install pkg-config
     brew install raylib
-    python3 -m pip install raylib==6.0.0.0
+    python3 -m pip install raylib==6.0.1.0
 
 ## Linux
 
