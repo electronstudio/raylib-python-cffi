@@ -283,8 +283,6 @@ jobs:
         run: |
           apt-get update
           apt-get install -y libwayland-dev wayland-protocols
-          # Ubuntu 16 has an older wayland-scanner that expects "code" instead of "private-code".
-          sed -i 's/private-code/code/g' raylib-c/src/external/glfw/src/CMakeLists.txt
 
       - name: update cmake
         run: |
@@ -313,6 +311,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build raylib
         run: |
+          # Ubuntu 16 has an older wayland-scanner that expects "code" instead of "private-code".
+          sed -i 's/private-code/code/g' raylib-c/src/external/glfw/src/CMakeLists.txt
           cd raylib-c
           mkdir build
           cd build

@@ -1,6 +1,6 @@
 /*******************************************************************************************
 *
-*   raygui v5.0 - A simple and easy-to-use immediate-mode gui library
+*   raygui v5.0-dev - A simple and easy-to-use immediate-mode gui library
 *
 *   DESCRIPTION:
 *       raygui is a tools-dev-focused immediate-mode-gui library based on raylib but also
@@ -141,7 +141,8 @@
 *           Draw text bounds rectangles for debug
 *
 *   VERSIONS HISTORY:
-*       5.0 (xx-Mar-2026) ADDED: Support up to 32 controls (v500)
+*       5.0 (xx-May-2026) ADDED: Support up to 32 controls (v500)
+*                         ADDED: Support up to 512 icons (v500)
 *                         ADDED: guiControlExclusiveMode and guiControlExclusiveRec for exclusive modes
 *                         ADDED: GuiValueBoxFloat()
 *                         ADDED: GuiDropdonwBox() properties: DROPDOWN_ARROW_HIDDEN, DROPDOWN_ROLL_UP
@@ -345,7 +346,7 @@
 // Simple log system to avoid printf() calls if required
 // NOTE: Avoiding those calls, also avoids const strings memory usage
 // Macros to define required UI inputs, including mapping to gamepad controls
-// TODO: Define additionally required macros for missing inputs 
+// TODO: Define additionally required macros for missing inputs
     //  Mapping to alternative button down pressed
 // TODO: WARNING: GuiTabBar() still requires IsMouseButtonPressed(MOUSE_MIDDLE_BUTTON)
     // Mapping to scroll delta changes
@@ -401,6 +402,7 @@ typedef enum {
     TEXT_WRAP_WORD
 } GuiTextWrapMode;
 // Gui controls
+// NOTE: Up to 16 controls supported or 32 controls (v500)
 typedef enum {
     // Default -> populates to all controls when set
     DEFAULT = 0,
@@ -420,6 +422,7 @@ typedef enum {
     COLORPICKER,
     SCROLLBAR,
     STATUSBAR
+    // NOTE: More controls can be added if required
 } GuiControl;
 // Gui base properties for every control
 // NOTE: RAYGUI_MAX_PROPS_BASE properties (by default 16 properties)
@@ -484,7 +487,7 @@ typedef enum {
 // ProgressBar
 typedef enum {
     PROGRESS_PADDING = 16, // ProgressBar internal padding
-    PROGRESS_SIDE, // ProgressBar increment side: 0-left->right, 1-right-left 
+    PROGRESS_SIDE, // ProgressBar increment side: 0-left->right, 1-right-left
 } GuiProgressBarProperty;
 // ScrollBar
 typedef enum {
@@ -563,6 +566,7 @@ typedef enum {
 /* Functions defined as 'extern' by default (implicit specifiers)*/ int GuiGetStyle(int control, int property); // Get one style property
 // Styles loading functions
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLoadStyle(const char *fileName); // Load style file over global style variable (.rgs)
+/* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLoadStyleFromMemory(const unsigned char *fileData, int dataSize); // Load style from memory (binary only)
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiLoadStyleDefault(void); // Load style default over global style
 // Tooltips management functions
 /* Functions defined as 'extern' by default (implicit specifiers)*/ void GuiEnableTooltip(void); // Enable gui tooltips (global state)

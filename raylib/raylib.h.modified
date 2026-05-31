@@ -1,6 +1,6 @@
 /**********************************************************************************************
 *
-*   raylib v6.0 - A simple and easy-to-use library to enjoy videogames programming (www.raylib.com)
+*   raylib v6.1-dev - A simple and easy-to-use library to enjoy videogames programming (www.raylib.com)
 *
 *   FEATURES:
 *       - NO external dependencies, all required libraries included with raylib
@@ -776,7 +776,7 @@ typedef enum {
 // WARNING: These callbacks are intended for advanced users
 typedef void (*TraceLogCallback)(int logLevel, const char *text, void * args); // Logging: Redirect trace log messages
 typedef unsigned char *(*LoadFileDataCallback)(const char *fileName, int *dataSize); // FileIO: Load binary data
-typedef bool (*SaveFileDataCallback)(const char *fileName, void *data, int dataSize); // FileIO: Save binary data
+typedef bool (*SaveFileDataCallback)(const char *fileName, const void *data, int dataSize); // FileIO: Save binary data
 typedef char *(*LoadFileTextCallback)(const char *fileName); // FileIO: Load text data
 typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); // FileIO: Save text data
 //------------------------------------------------------------------------------------
@@ -837,22 +837,22 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  void EnableEventWaiting(void); // Enable waiting for events on EndDrawing(), no automatic event polling
  void DisableEventWaiting(void); // Disable waiting for events on EndDrawing(), automatic events polling
 // Cursor-related functions
- void ShowCursor(void); // Shows cursor
- void HideCursor(void); // Hides cursor
+ void ShowCursor(void); // Show cursor
+ void HideCursor(void); // Hide cursor
  bool IsCursorHidden(void); // Check if cursor is not visible
- void EnableCursor(void); // Enables cursor (unlock cursor)
- void DisableCursor(void); // Disables cursor (lock cursor)
+ void EnableCursor(void); // Enable cursor (unlock cursor)
+ void DisableCursor(void); // Disable cursor (lock cursor)
  bool IsCursorOnScreen(void); // Check if cursor is on the screen
 // Drawing-related functions
- void ClearBackground(Color color); // Set background color (framebuffer clear color)
- void BeginDrawing(void); // Setup canvas (framebuffer) to start drawing
- void EndDrawing(void); // End canvas drawing and swap buffers (double buffering)
+ void ClearBackground(Color color); // Clear background (framebuffer) to color
+ void BeginDrawing(void); // Begin canvas (framebuffer) drawing
+ void EndDrawing(void); // End canvas (framebuffer) drawing and swap buffers (double buffering)
  void BeginMode2D(Camera2D camera); // Begin 2D mode with custom camera (2D)
- void EndMode2D(void); // Ends 2D mode with custom camera
+ void EndMode2D(void); // End 2D mode with custom camera
  void BeginMode3D(Camera3D camera); // Begin 3D mode with custom camera (3D)
- void EndMode3D(void); // Ends 3D mode and returns to default 2D orthographic mode
+ void EndMode3D(void); // End 3D mode and returns to default 2D orthographic mode
  void BeginTextureMode(RenderTexture2D target); // Begin drawing to render texture
- void EndTextureMode(void); // Ends drawing to render texture
+ void EndTextureMode(void); // End drawing to render texture
  void BeginShaderMode(Shader shader); // Begin custom shader drawing
  void EndShaderMode(void); // End custom shader drawing (use default shader)
  void BeginBlendMode(int mode); // Begin blending mode (alpha, additive, multiplied, subtract, custom)
@@ -879,10 +879,10 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
 // Screen-space-related functions
  Ray GetScreenToWorldRay(Vector2 position, Camera camera); // Get a ray trace from screen position (i.e mouse)
  Ray GetScreenToWorldRayEx(Vector2 position, Camera camera, int width, int height); // Get a ray trace from screen position (i.e mouse) in a viewport
- Vector2 GetWorldToScreen(Vector3 position, Camera camera); // Get the screen space position for a 3d world space position
- Vector2 GetWorldToScreenEx(Vector3 position, Camera camera, int width, int height); // Get size position for a 3d world space position
- Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera); // Get the screen space position for a 2d camera world space position
- Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera); // Get the world space position for a 2d camera screen space position
+ Vector2 GetWorldToScreen(Vector3 position, Camera camera); // Get screen space position for a 3d world space position
+ Vector2 GetWorldToScreenEx(Vector3 position, Camera camera, int width, int height); // Get sized screen space position for a 3d world space position
+ Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera); // Get screen space position for a 2d camera world space position
+ Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera); // Get world space position for a 2d camera screen space position
  Matrix GetCameraMatrix(Camera camera); // Get camera transform matrix (view matrix)
  Matrix GetCameraMatrix2D(Camera2D camera); // Get camera 2d transform matrix
 // Timing-related functions
@@ -904,7 +904,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  void UnloadRandomSequence(int *sequence); // Unload random values sequence
 // Misc. functions
  void TakeScreenshot(const char *fileName); // Takes a screenshot of current screen (filename extension defines format)
- void SetConfigFlags(unsigned int flags); // Setup init configuration flags (view FLAGS)
+ void SetConfigFlags(unsigned int flags); // Set up init configuration flags (view FLAGS)
  void OpenURL(const char *url); // Open URL with default system browser (if available)
 // Logging system
  void SetTraceLogLevel(int logLevel); // Set the current threshold (minimum) log level
@@ -917,7 +917,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
 // File system management functions
  unsigned char *LoadFileData(const char *fileName, int *dataSize); // Load file data as byte array (read)
  void UnloadFileData(unsigned char *data); // Unload file data allocated by LoadFileData()
- bool SaveFileData(const char *fileName, void *data, int dataSize); // Save data to file from byte array (write), returns true on success
+ bool SaveFileData(const char *fileName, const void *data, int dataSize); // Save data to file from byte array (write), returns true on success
  bool ExportDataAsCode(const unsigned char *data, int dataSize, const char *fileName); // Export data to code (.h), returns true on success
  char *LoadFileText(const char *fileName); // Load text data from file (read), returns a '\0' terminated string
  void UnloadFileText(char *text); // Unload file text data allocated by LoadFileText()
@@ -951,7 +951,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  bool IsPathFile(const char *path); // Check if a given path is a file or a directory
  bool IsFileNameValid(const char *fileName); // Check if fileName is valid for the platform/OS
  FilePathList LoadDirectoryFiles(const char *dirPath); // Load directory filepaths, files and directories, no subdirs scan
- FilePathList LoadDirectoryFilesEx(const char *basePath, const char *filter, bool scanSubdirs); // Load directory filepaths with extension filtering and subdir scan; some filters available: "*.*", "FILES*", "DIRS*"
+ FilePathList LoadDirectoryFilesEx(const char *basePath, const char *filter, bool scanSubdirs); // Load directory filepaths with extension filtering and subdir scan; some filters available: '*.*','FILES*','DIRS*'
  void UnloadDirectoryFiles(FilePathList files); // Unload filepaths
  bool IsFileDropped(void); // Check if a file has been dropped into window
  FilePathList LoadDroppedFiles(void); // Load dropped filepaths
@@ -963,10 +963,10 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  unsigned char *DecompressData(const unsigned char *compData, int compDataSize, int *dataSize); // Decompress data (DEFLATE algorithm), memory must be MemFree()
  char *EncodeDataBase64(const unsigned char *data, int dataSize, int *outputSize); // Encode data to Base64 string (includes NULL terminator), memory must be MemFree()
  unsigned char *DecodeDataBase64(const char *text, int *outputSize); // Decode Base64 string (expected NULL terminated), memory must be MemFree()
- unsigned int ComputeCRC32(unsigned char *data, int dataSize); // Compute CRC32 hash code
- unsigned int *ComputeMD5(unsigned char *data, int dataSize); // Compute MD5 hash code, returns static int[4] (16 bytes)
- unsigned int *ComputeSHA1(unsigned char *data, int dataSize); // Compute SHA1 hash code, returns static int[5] (20 bytes)
- unsigned int *ComputeSHA256(unsigned char *data, int dataSize); // Compute SHA256 hash code, returns static int[8] (32 bytes)
+ unsigned int ComputeCRC32(const unsigned char *data, int dataSize); // Compute CRC32 hash code
+ unsigned int *ComputeMD5(const unsigned char *data, int dataSize); // Compute MD5 hash code, returns static int[4] (16 bytes)
+ unsigned int *ComputeSHA1(const unsigned char *data, int dataSize); // Compute SHA1 hash code, returns static int[5] (20 bytes)
+ unsigned int *ComputeSHA256(const unsigned char *data, int dataSize); // Compute SHA256 hash code, returns static int[8] (32 bytes)
 // Automation events functionality
  AutomationEventList LoadAutomationEventList(const char *fileName); // Load automation events list from file, NULL for empty list, capacity = MAX_AUTOMATION_EVENTS
  void UnloadAutomationEventList(AutomationEventList list); // Unload automation events list from file
@@ -1026,7 +1026,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
 // Gestures and Touch Handling Functions (Module: rgestures)
 //------------------------------------------------------------------------------------
  void SetGesturesEnabled(unsigned int flags); // Enable a set of gestures using flags
- bool IsGestureDetected(unsigned int gesture); // Check if a gesture have been detected
+ bool IsGestureDetected(unsigned int gesture); // Check if a gesture has been detected
  int GetGestureDetected(void); // Get latest detected gesture
  float GetGestureHoldDuration(void); // Get gesture hold time in seconds
  Vector2 GetGestureDragVector(void); // Get gesture drag vector
@@ -1080,12 +1080,13 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  void DrawRectangleLinesEx(Rectangle rec, float lineThick, Color color); // Draw rectangle outline with extended parameters
  void DrawRectangleRounded(Rectangle rec, float roundness, int segments, Color color); // Draw rectangle with rounded edges
  void DrawRectangleRoundedLines(Rectangle rec, float roundness, int segments, Color color); // Draw rectangle lines with rounded edges
- void DrawRectangleRoundedLinesEx(Rectangle rec, float roundness, int segments, float lineThick, Color color); // Draw rectangle with rounded edges outline
+ void DrawRectangleRoundedLinesEx(Rectangle rec, float roundness, int segments, float lineThick, Color color); // Draw rectangle lines with rounded edges outline
  void DrawTriangle(Vector2 v1, Vector2 v2, Vector2 v3, Color color); // Draw a color-filled triangle (vertex in counter-clockwise order!)
+ void DrawTriangleGradient(Vector2 v1, Vector2 v2, Vector2 v3, Color c1, Color c2, Color c3); // Draw triangle with interpolated colors (vertex in counter-clockwise order!)
  void DrawTriangleLines(Vector2 v1, Vector2 v2, Vector2 v3, Color color); // Draw triangle outline (vertex in counter-clockwise order!)
  void DrawTriangleFan(const Vector2 *points, int pointCount, Color color); // Draw a triangle fan defined by points (first vertex is the center)
  void DrawTriangleStrip(const Vector2 *points, int pointCount, Color color); // Draw a triangle strip defined by points
- void DrawPoly(Vector2 center, int sides, float radius, float rotation, Color color); // Draw a regular polygon (Vector version)
+ void DrawPoly(Vector2 center, int sides, float radius, float rotation, Color color); // Draw a polygon of n sides
  void DrawPolyLines(Vector2 center, int sides, float radius, float rotation, Color color); // Draw a polygon outline of n sides
  void DrawPolyLinesEx(Vector2 center, int sides, float radius, float rotation, float lineThick, Color color); // Draw a polygon outline of n sides with extended parameters
 // Splines drawing functions
@@ -1103,13 +1104,13 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  Vector2 GetSplinePointLinear(Vector2 startPos, Vector2 endPos, float t); // Get (evaluate) spline point: Linear
  Vector2 GetSplinePointBasis(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, float t); // Get (evaluate) spline point: B-Spline
  Vector2 GetSplinePointCatmullRom(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, float t); // Get (evaluate) spline point: Catmull-Rom
- Vector2 GetSplinePointBezierQuad(Vector2 p1, Vector2 c2, Vector2 p3, float t); // Get (evaluate) spline point: Quadratic Bezier
+ Vector2 GetSplinePointBezierQuadratic(Vector2 p1, Vector2 c2, Vector2 p3, float t); // Get (evaluate) spline point: Quadratic Bezier
  Vector2 GetSplinePointBezierCubic(Vector2 p1, Vector2 c2, Vector2 c3, Vector2 p4, float t); // Get (evaluate) spline point: Cubic Bezier
 // Basic shapes collision detection functions
  bool CheckCollisionRecs(Rectangle rec1, Rectangle rec2); // Check collision between two rectangles
  bool CheckCollisionCircles(Vector2 center1, float radius1, Vector2 center2, float radius2); // Check collision between two circles
  bool CheckCollisionCircleRec(Vector2 center, float radius, Rectangle rec); // Check collision between circle and rectangle
- bool CheckCollisionCircleLine(Vector2 center, float radius, Vector2 p1, Vector2 p2); // Check if circle collides with a line created betweeen two points [p1] and [p2]
+ bool CheckCollisionCircleLine(Vector2 center, float radius, Vector2 p1, Vector2 p2); // Check if circle collides with a line created between two points [p1] and [p2]
  bool CheckCollisionPointRec(Vector2 point, Rectangle rec); // Check if point is inside rectangle
  bool CheckCollisionPointCircle(Vector2 point, Vector2 center, float radius); // Check if point is inside circle
  bool CheckCollisionPointTriangle(Vector2 point, Vector2 p1, Vector2 p2, Vector2 p3); // Check if point is inside a triangle
@@ -1128,7 +1129,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  Image LoadImageAnimFromMemory(const char *fileType, const unsigned char *fileData, int dataSize, int *frames); // Load image sequence from memory buffer
  Image LoadImageFromMemory(const char *fileType, const unsigned char *fileData, int dataSize); // Load image from memory buffer, fileType refers to extension: i.e. '.png'
  Image LoadImageFromTexture(Texture2D texture); // Load image from GPU texture data
- Image LoadImageFromScreen(void); // Load image from screen buffer and (screenshot)
+ Image LoadImageFromScreen(void); // Load image from screen buffer (screenshot)
  bool IsImageValid(Image image); // Check if an image is valid (data and parameters)
  void UnloadImage(Image image); // Unload image from CPU memory (RAM)
  bool ExportImage(Image image, const char *fileName); // Export image data to file, returns true on success
@@ -1172,7 +1173,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  void ImageColorTint(Image *image, Color color); // Modify image color: tint
  void ImageColorInvert(Image *image); // Modify image color: invert
  void ImageColorGrayscale(Image *image); // Modify image color: grayscale
- void ImageColorContrast(Image *image, float contrast); // Modify image color: contrast (-100 to 100)
+ void ImageColorContrast(Image *image, int contrast); // Modify image color: contrast (-100 to 100)
  void ImageColorBrightness(Image *image, int brightness); // Modify image color: brightness (-255 to 255)
  void ImageColorReplace(Image *image, Color color, Color replace); // Modify image color: replace color
  Color *LoadImageColors(Image image); // Load color data from image as a Color array (RGBA - 32bit)
@@ -1196,9 +1197,10 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  void ImageDrawRectangle(Image *dst, int posX, int posY, int width, int height, Color color); // Draw rectangle within an image
  void ImageDrawRectangleV(Image *dst, Vector2 position, Vector2 size, Color color); // Draw rectangle within an image (Vector version)
  void ImageDrawRectangleRec(Image *dst, Rectangle rec, Color color); // Draw rectangle within an image
- void ImageDrawRectangleLines(Image *dst, Rectangle rec, int thick, Color color); // Draw rectangle lines within an image
+ void ImageDrawRectangleLines(Image *dst, int posX, int posY, int width, int height, Color color); // Draw rectangle lines within an image
+ void ImageDrawRectangleLinesEx(Image *dst, Rectangle rec, int thick, Color color); // Draw rectangle lines within an image with extended parameters
  void ImageDrawTriangle(Image *dst, Vector2 v1, Vector2 v2, Vector2 v3, Color color); // Draw triangle within an image
- void ImageDrawTriangleEx(Image *dst, Vector2 v1, Vector2 v2, Vector2 v3, Color c1, Color c2, Color c3); // Draw triangle with interpolated colors within an image
+ void ImageDrawTriangleGradient(Image *dst, Vector2 v1, Vector2 v2, Vector2 v3, Color c1, Color c2, Color c3); // Draw triangle with interpolated colors within an image
  void ImageDrawTriangleLines(Image *dst, Vector2 v1, Vector2 v2, Vector2 v3, Color color); // Draw triangle outline within an image
  void ImageDrawTriangleFan(Image *dst, const Vector2 *points, int pointCount, Color color); // Draw a triangle fan defined by points within an image (first vertex is the center)
  void ImageDrawTriangleStrip(Image *dst, const Vector2 *points, int pointCount, Color color); // Draw a triangle strip defined by points within an image
@@ -1227,7 +1229,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  void DrawTextureEx(Texture2D texture, Vector2 position, float rotation, float scale, Color tint); // Draw a Texture2D with extended parameters
  void DrawTextureRec(Texture2D texture, Rectangle source, Vector2 position, Color tint); // Draw a part of a texture defined by a rectangle
  void DrawTexturePro(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint); // Draw a part of a texture defined by a rectangle with 'pro' parameters
- void DrawTextureNPatch(Texture2D texture, NPatchInfo nPatchInfo, Rectangle dest, Vector2 origin, float rotation, Color tint); // Draws a texture (or part of it) that stretches or shrinks nicely
+ void DrawTextureNPatch(Texture2D texture, NPatchInfo nPatchInfo, Rectangle dest, Vector2 origin, float rotation, Color tint); // Draw a texture (or part of it) that stretches or shrinks nicely
 // Color/pixel related functions
  bool ColorIsEqual(Color col1, Color col2); // Check if two colors are equal
  Color Fade(Color color, float alpha); // Get color with alpha applied, alpha goes from 0.0f to 1.0f
@@ -1267,7 +1269,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  void DrawTextEx(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint); // Draw text using font and additional parameters
  void DrawTextPro(Font font, const char *text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint); // Draw text using Font and pro parameters (rotation)
  void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float fontSize, Color tint); // Draw one character (codepoint)
- void DrawTextCodepoints(Font font, const int *codepoints, int codepointCount, Vector2 position, float fontSize, float spacing, Color tint); // Draw multiple character (codepoint)
+ void DrawTextCodepoints(Font font, const int *codepoints, int codepointCount, Vector2 position, float fontSize, float spacing, Color tint); // Draw multiple characters (codepoint)
 // Text font info functions
  void SetTextLineSpacing(int spacing); // Set vertical line spacing when drawing with line-breaks
  int MeasureText(const char *text, int fontSize); // Measure string width for default font
@@ -1292,7 +1294,7 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  char **LoadTextLines(const char *text, int *count); // Load text as separate lines ('\n')
  void UnloadTextLines(char **text, int lineCount); // Unload text lines
  int TextCopy(char *dst, const char *src); // Copy one string to another, returns bytes copied
- bool TextIsEqual(const char *text1, const char *text2); // Check if two text string are equal
+ bool TextIsEqual(const char *text1, const char *text2); // Check if two text strings are equal
  unsigned int TextLength(const char *text); // Get text length, checks for '\0' ending
  const char *TextFormat(const char *text, ...); // Text formatting with variables (sprintf() style)
  const char *TextSubtext(const char *text, int position, int length); // Get a piece of a text string
@@ -1334,9 +1336,9 @@ typedef bool (*SaveFileTextCallback)(const char *fileName, const char *text); //
  void DrawCylinder(Vector3 position, float radiusTop, float radiusBottom, float height, int slices, Color color); // Draw a cylinder/cone
  void DrawCylinderEx(Vector3 startPos, Vector3 endPos, float startRadius, float endRadius, int sides, Color color); // Draw a cylinder with base at startPos and top at endPos
  void DrawCylinderWires(Vector3 position, float radiusTop, float radiusBottom, float height, int slices, Color color); // Draw a cylinder/cone wires
- void DrawCylinderWiresEx(Vector3 startPos, Vector3 endPos, float startRadius, float endRadius, int sides, Color color); // Draw a cylinder wires with base at startPos and top at endPos
- void DrawCapsule(Vector3 startPos, Vector3 endPos, float radius, int slices, int rings, Color color); // Draw a capsule with the center of its sphere caps at startPos and endPos
- void DrawCapsuleWires(Vector3 startPos, Vector3 endPos, float radius, int slices, int rings, Color color); // Draw capsule wireframe with the center of its sphere caps at startPos and endPos
+ void DrawCylinderWiresEx(Vector3 startPos, Vector3 endPos, float startRadius, float endRadius, int slices, Color color); // Draw a cylinder wires with base at startPos and top at endPos
+ void DrawCapsule(Vector3 startPos, Vector3 endPos, float radius, int rings, int slices, Color color); // Draw a capsule with the center of its sphere caps at startPos and endPos
+ void DrawCapsuleWires(Vector3 startPos, Vector3 endPos, float radius, int rings, int slices, Color color); // Draw capsule wireframe with the center of its sphere caps at startPos and endPos
  void DrawPlane(Vector3 centerPos, Vector2 size, Color color); // Draw a plane XZ
  void DrawRay(Ray ray, Color color); // Draw a ray line
  void DrawGrid(int slices, float spacing); // Draw a grid (centered at (0, 0, 0))
@@ -1415,15 +1417,15 @@ typedef void (*AudioCallback)(void *bufferData, unsigned int frames);
 // Wave/Sound loading/unloading functions
  Wave LoadWave(const char *fileName); // Load wave data from file
  Wave LoadWaveFromMemory(const char *fileType, const unsigned char *fileData, int dataSize); // Load wave from memory buffer, fileType refers to extension: i.e. '.wav'
- bool IsWaveValid(Wave wave); // Checks if wave data is valid (data loaded and parameters)
+ bool IsWaveValid(Wave wave); // Check if wave data is valid (data loaded and parameters)
  Sound LoadSound(const char *fileName); // Load sound from file
  Sound LoadSoundFromWave(Wave wave); // Load sound from wave data
- Sound LoadSoundAlias(Sound source); // Create a new sound that shares the same sample data as the source sound, does not own the sound data
- bool IsSoundValid(Sound sound); // Checks if a sound is valid (data loaded and buffers initialized)
- void UpdateSound(Sound sound, const void *data, int sampleCount); // Update sound buffer with new data (default data format: 32 bit float, stereo)
+ Sound LoadSoundAlias(Sound source); // Load sound alias, new sound that shares the same sample data as the source sound, does not own the sound data
+ bool IsSoundValid(Sound sound); // Check if a sound is valid (data loaded and buffers initialized)
+ void UpdateSound(Sound sound, const void *data, int frameCount); // Update sound buffer with new data (default data format: 32 bit float, stereo)
  void UnloadWave(Wave wave); // Unload wave data
  void UnloadSound(Sound sound); // Unload sound
- void UnloadSoundAlias(Sound alias); // Unload a sound alias (does not deallocate sample data)
+ void UnloadSoundAlias(Sound alias); // Unload sound alias (does not deallocate sample data)
  bool ExportWave(Wave wave, const char *fileName); // Export wave data to file, returns true on success
  bool ExportWaveAsCode(Wave wave, const char *fileName); // Export wave sample data to code (.h), returns true on success
 // Wave/Sound management functions
@@ -1443,23 +1445,23 @@ typedef void (*AudioCallback)(void *bufferData, unsigned int frames);
 // Music management functions
  Music LoadMusicStream(const char *fileName); // Load music stream from file
  Music LoadMusicStreamFromMemory(const char *fileType, const unsigned char *data, int dataSize); // Load music stream from data
- bool IsMusicValid(Music music); // Checks if a music stream is valid (context and buffers initialized)
+ bool IsMusicValid(Music music); // Check if a music stream is valid (context and buffers initialized)
  void UnloadMusicStream(Music music); // Unload music stream
  void PlayMusicStream(Music music); // Start music playing
  bool IsMusicStreamPlaying(Music music); // Check if music is playing
- void UpdateMusicStream(Music music); // Updates buffers for music streaming
+ void UpdateMusicStream(Music music); // Update buffers for music streaming
  void StopMusicStream(Music music); // Stop music playing
  void PauseMusicStream(Music music); // Pause music playing
  void ResumeMusicStream(Music music); // Resume playing paused music
  void SeekMusicStream(Music music, float position); // Seek music to a position (in seconds)
  void SetMusicVolume(Music music, float volume); // Set volume for music (1.0 is max level)
- void SetMusicPitch(Music music, float pitch); // Set pitch for a music (1.0 is base level)
- void SetMusicPan(Music music, float pan); // Set pan for a music (-1.0 left, 0.0 center, 1.0 right)
+ void SetMusicPitch(Music music, float pitch); // Set pitch for music (1.0 is base level)
+ void SetMusicPan(Music music, float pan); // Set pan for music (-1.0 left, 0.0 center, 1.0 right)
  float GetMusicTimeLength(Music music); // Get music time length (in seconds)
  float GetMusicTimePlayed(Music music); // Get current music time played (in seconds)
 // AudioStream management functions
  AudioStream LoadAudioStream(unsigned int sampleRate, unsigned int sampleSize, unsigned int channels); // Load audio stream (to stream raw audio pcm data)
- bool IsAudioStreamValid(AudioStream stream); // Checks if an audio stream is valid (buffers initialized)
+ bool IsAudioStreamValid(AudioStream stream); // Check if an audio stream is valid (buffers initialized)
  void UnloadAudioStream(AudioStream stream); // Unload audio stream and free memory
  void UpdateAudioStream(AudioStream stream, const void *data, int frameCount); // Update audio stream buffers with data
  bool IsAudioStreamProcessed(AudioStream stream); // Check if any audio stream buffers requires refill
@@ -1470,7 +1472,7 @@ typedef void (*AudioCallback)(void *bufferData, unsigned int frames);
  void StopAudioStream(AudioStream stream); // Stop audio stream
  void SetAudioStreamVolume(AudioStream stream, float volume); // Set volume for audio stream (1.0 is max level)
  void SetAudioStreamPitch(AudioStream stream, float pitch); // Set pitch for audio stream (1.0 is base level)
- void SetAudioStreamPan(AudioStream stream, float pan); // Set pan for audio stream (-1.0 to 1.0 range, 0.0 is centered)
+ void SetAudioStreamPan(AudioStream stream, float pan); // Set pan for audio stream (-1.0 left, 0.0 center, 1.0 right)
  void SetAudioStreamBufferSizeDefault(int size); // Default size for new audio streams
  void SetAudioStreamCallback(AudioStream stream, AudioCallback callback); // Audio thread callback to request new data
  void AttachAudioStreamProcessor(AudioStream stream, AudioCallback processor); // Attach audio stream processor to stream, receives frames x 2 samples as 'float' (stereo)
