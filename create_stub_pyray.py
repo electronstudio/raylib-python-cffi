@@ -13,13 +13,14 @@
 #  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
 from pathlib import Path
-from raylib import rl, ffi
+from raylib import rl, ffi, defines
 from pyray import _underscore
 from inspect import ismethod, getmembers, isbuiltin
 import inflection, sys, json
 
 known_functions = {}
 known_structs = {}
+emitted_top_level_names = set()
 for filename in (Path("raylib.json"), Path("raymath.json"), Path("rlgl.json"), Path("raygui.json"), Path("physac.json"),
                  Path("glfw3.json")):
     f = open(filename, "r")
@@ -78,6 +79,37 @@ def ctype_to_python_type(t):
         return t
 
 
+def value_to_python_type(value):
+    if isinstance(value, bool):
+        return "bool"
+    if isinstance(value, int):
+        return "int"
+    if isinstance(value, float):
+        return "float"
+    if isinstance(value, str):
+        return "str"
+    return str(type(value))[8:-2]
+
+
+def emit_top_level_name(name, type_name):
+    if name.startswith("_"):
+        return
+    if name in emitted_top_level_names:
+        return
+    emitted_top_level_names.add(name)
+    print(f"{name}: {type_name}")
+
+
+def should_emit_module_constant(name):
+    # Keep only standalone rlgl/raylib constants that do not have enum-class replacements.
+    if not name.startswith("RL_"):
+        return False
+    # Backward-compat aliases from raylib.h that are intentionally discouraged.
+    if name in {"RL_SHADER_LOC_MAP_DIFFUSE", "RL_SHADER_LOC_MAP_SPECULAR"}:
+        return False
+    return True
+
+
 print("""from typing import Any
 from warnings import deprecated
 import _cffi_backend # type: ignore
@@ -85,6 +117,13 @@ import _cffi_backend # type: ignore
 ffi: _cffi_backend.FFI
 PhysicsShapeType = int
 """)
+
+for name in sorted(dir(defines)):
+    if not name.isupper():
+        continue
+    if not should_emit_module_constant(name):
+        continue
+    emit_top_level_name(name, value_to_python_type(getattr(defines, name)))
 
 # These words can be used for c arg names, but not in python
 reserved_words = ("in", "list", "tuple", "set", "dict", "from", "range", "min", "max", "any", "all", "len")
@@ -132,14 +171,25 @@ for name, attr in getmembers(rl):
             f'def {uname}(*args) -> {ctype_to_python_type(return_type)}:\n        """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""\n        ...')
     else:
         # print("*****", str(type(attr)))
-        t = str(type(attr))[8:-2]  # this isolates the type
-        if t != "int":
-            print(f"{name}: {t}")
+        type_name = value_to_python_type(attr)
+        if type_name != "int":
+            emit_top_level_name(name, type_name)
 
+struct_aliases = {
+    "Texture2D": "Texture",
+    "TextureCubemap": "Texture",
+    "RenderTexture2D": "RenderTexture",
+}
+emitted_structs = set()
+pending_aliases = {}
 for struct in ffi.list_types()[0]:
     print("processing", struct, file=sys.stderr)
 
     if ffi.typeof(struct).kind == "struct":
+        alias_target = struct_aliases.get(struct, None)
+        if alias_target is not None:
+            pending_aliases[struct] = alias_target
+            continue
         json_object = known_structs.get(struct, None)
         if json_object is None:
             # this is _not_ an exported struct from raylib, raymath, rlgl raygui or physac
@@ -160,11 +210,16 @@ for struct in ffi.list_types()[0]:
 
         for arg in ffi.typeof(struct).fields:
             print(f"        self.{arg[0]}:{ctype_to_python_type(arg[1].type.cname)} = {arg[0]} # type: ignore")
+        emitted_structs.add(struct)
 
     # elif ffi.typeof(struct).kind == "enum":
     #    print(f"{struct}: int")
     else:
         print("WARNING: SKIPPING UNKNOWN TYPE", ffi.typeof(struct), file=sys.stderr)
+
+for alias, target in sorted(pending_aliases.items()):
+    if target in emitted_structs:
+        print(f"{alias} = {target}")
 
 print("""
 LIGHTGRAY  : Color
