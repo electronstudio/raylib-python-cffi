@@ -1,0 +1,80 @@
+name: Test PyPI Install
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab only
+  workflow_dispatch:
+    inputs:
+      package_name:
+        description: "Package to install from PyPI (raylib, raylib_sdl, raylib_drm, raylib_dynamic)"
+        type: string
+        required: true
+        default: "raylib"
+      version:
+        description: "Package version to install (e.g., 5.5.0.2, or leave empty for latest)"
+        type: string
+        required: false
+        default: ""
+      pre_release:
+        description: "Allow pre-release versions?"
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  test-pypi-install:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15-intel, macos-14, macos-26]
+        python-version: ["3.14", "3.13"]
+        python-source: [homebrew, python-org]
+    steps:
+      - name: Install Python from Homebrew
+        if: matrix.python-source == 'homebrew'
+        run: |
+          brew install python@${{ matrix.python-version }}
+          PYTHON_BIN="$(brew --prefix python@${{ matrix.python-version }})/bin/python${{ matrix.python-version }}"
+          echo "PYTHON_BIN=$PYTHON_BIN" >> "$GITHUB_ENV"
+          $PYTHON_BIN --version
+
+      - name: Setup Python (python.org)
+        if: matrix.python-source == 'python-org'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set Python bin (python.org)
+        if: matrix.python-source == 'python-org'
+        shell: bash
+        run: |
+          PYTHON_BIN="$(command -v python${{ matrix.python-version }} || command -v python3)"
+          echo "PYTHON_BIN=$PYTHON_BIN" >> "$GITHUB_ENV"
+          $PYTHON_BIN --version
+
+      - name: Install package from PyPI
+        run: |
+          PRE_FLAG=""
+          if [ "${{ inputs.pre_release }}" = "true" ]; then
+            PRE_FLAG="--pre"
+          fi
+          if [ -n "${{ inputs.version }}" ]; then
+            "$PYTHON_BIN" -m pip install $PRE_FLAG "${{ inputs.package_name }}==${{ inputs.version }}"  --break-system-packages
+          else
+            "$PYTHON_BIN" -m pip install $PRE_FLAG "${{ inputs.package_name }}"  --break-system-packages
+          fi
+
+      - name: Test import and basic initialization
+        run: |
+          cd /
+          "$PYTHON_BIN" -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+          cat /tmp/output
+          if grep -q "INFO: Initializing raylib" /tmp/output; then
+            echo "Passed"
+            exit 0
+          else
+            echo "Failed"
+            exit 1
+          fi
+        shell: bash
