@@ -33,8 +33,6 @@ while not window_should_close():
 close_window()
 ```
 
-
-
 Use the [project generator](https://github.com/electronstudio/python-raylib-template) to generate a complete project.  [Example of project](https://github.com/electronstudio/raylib-example-game)
 
 # Videos
@@ -59,6 +57,7 @@ Use the [project generator](https://github.com/electronstudio/python-raylib-temp
 * [Python video player](https://github.com/anrayliu/pyvidplayer2)
 * [A Vector2 class](https://github.com/electronstudio/raylib-python-cffi/blob/master/examples/extra/vector2_extended.py)
 * [Raylib C FAQ](https://github.com/raysan5/raylib/wiki/Frequently-Asked-Questions/)
+* [Project generator](https://github.com/electronstudio/python-raylib-template)
 
 # Installation
 
@@ -216,6 +215,16 @@ Carefully read all their [documentation](https://pygame-web.github.io/).
 
 It does work for most of [these examples](https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/)
 
+# Startup without printing anything
+
+```python
+import logging
+logging.basicConfig(level=logging.ERROR)
+import pyray
+pyray.set_trace_log_level(pyray.LOG_ERROR)
+pyray.init_window(100,100,"test")
+```
+
 # App showcase
 
 [Tempest-raylib](https://github.com/Emtyloc/tempest-raylib)
@@ -229,8 +238,6 @@ It does work for most of [these examples](https://electronstudio.github.io/rayli
 [Tanki](https://github.com/pkulev/tanki)
 
 [Alloy Bloxel Editor](https://pebaz.itch.io/alloy-bloxel-editor)
-
-[Eidolon](https://github.com/Miou-zora/Eidolon)
 
 Add your app here!
 
@@ -297,3 +304,7 @@ You can create a standalone binary using the Nuitka compiler.  For example, here
 
 [Coding Games With Pygame Zero & Python](https://github.com/electronstudio/pygame-zero-book) is 
 a book for Python beginners.
+
+# Hall of shame!
+
+Apparently [comma.ai](https://comma.ai/) are now using raylib-python-cffi commercially and so have begun donating money to raylib but have chosen _not_ to give anything to raylib-python-cffi.  Yes it's perfectly legal usage, but it's not very nice behaviour.  😔

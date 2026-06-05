@@ -74,6 +74,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#running-in-a-web-browser">Running in a web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#startup-without-printing-anything">Startup without printing anything</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#help-wanted">Help wanted</a></li>
@@ -84,11 +85,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#packaging-your-app">Packaging your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#advert">Advert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#hall-of-shame">Hall of shame!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pyray.html">Python API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raylib.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic.html">Dynamic Bindings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BUILDING.html">Building from source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RPI.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AI_POLICY.html">AI Policy</a></li>
 </ul>
 
         </div>
@@ -173,6 +176,7 @@ original Raylib.</p></li>
 <li><p><a class="reference external" href="https://github.com/anrayliu/pyvidplayer2">Python video player</a></p></li>
 <li><p><a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/examples/extra/vector2_extended.py">A Vector2 class</a></p></li>
 <li><p><a class="reference external" href="https://github.com/raysan5/raylib/wiki/Frequently-Asked-Questions/">Raylib C FAQ</a></p></li>
+<li><p><a class="reference external" href="https://github.com/electronstudio/python-raylib-template">Project generator</a></p></li>
 </ul>
 </section>
 <section id="installation">
@@ -321,6 +325,16 @@ python3.12 -m pygbag --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl --git my
 Carefully read all their <a class="reference external" href="https://pygame-web.github.io/">documentation</a>.</p>
 <p>It does work for most of <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/">these examples</a></p>
 </section>
+<section id="startup-without-printing-anything">
+<h1>Startup without printing anything<a class="headerlink" href="#startup-without-printing-anything" title="Link to this heading"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyray</span>
+<span class="n">pyray</span><span class="o">.</span><span class="n">set_trace_log_level</span><span class="p">(</span><span class="n">pyray</span><span class="o">.</span><span class="n">LOG_ERROR</span><span class="p">)</span>
+<span class="n">pyray</span><span class="o">.</span><span class="n">init_window</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="app-showcase">
 <h1>App showcase<a class="headerlink" href="#app-showcase" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://github.com/Emtyloc/tempest-raylib">Tempest-raylib</a></p>
@@ -329,7 +343,6 @@ Carefully read all their <a class="reference external" href="https://pygame-web.
 <p><a class="reference external" href="https://github.com/StanislavPetrovV/DOOM-Clone">DOOM-Clone</a></p>
 <p><a class="reference external" href="https://github.com/pkulev/tanki">Tanki</a></p>
 <p><a class="reference external" href="https://pebaz.itch.io/alloy-bloxel-editor">Alloy Bloxel Editor</a></p>
-<p><a class="reference external" href="https://github.com/Miou-zora/Eidolon">Eidolon</a></p>
 <p>Add your app here!</p>
 </section>
 <section id="rlzero">
@@ -433,6 +446,10 @@ python3 -m nuitka --onefile --linux-onefile-icon resources/wabbit_alpha.png text
 <p><a class="reference external" href="https://store.steampowered.com/app/664240/RetroWar_8bit_Party_Battle/?git">RetroWar: 8-bit Party Battle</a> is out now.  Defeat up to 15 of your friends in a tournament of 80s-inspired retro mini games.</p>
 <p><a class="reference external" href="https://github.com/electronstudio/pygame-zero-book">Coding Games With Pygame Zero &amp; Python</a> is
 a book for Python beginners.</p>
+</section>
+<section id="hall-of-shame">
+<h1>Hall of shame!<a class="headerlink" href="#hall-of-shame" title="Link to this heading"></a></h1>
+<p>Apparently <a class="reference external" href="https://comma.ai/">comma.ai</a> are now using raylib-python-cffi commercially and so have begun donating money to raylib but have chosen <em>not</em> to give anything to raylib-python-cffi.  Yes it’s perfectly legal usage, but it’s not very nice behaviour.  😔</p>
 </section>
 
 

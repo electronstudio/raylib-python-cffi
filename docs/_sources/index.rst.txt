@@ -16,10 +16,7 @@ Raylib Python
    dynamic
    BUILDING
    RPI
+   AI_POLICY
 
 
 * :ref:`search`
-
-
-
-

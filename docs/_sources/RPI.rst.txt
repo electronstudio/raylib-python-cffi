@@ -6,13 +6,13 @@ Please use Raspberry Pi OS 13 Trixie 64 bit.  Bookworm should also work.  Older 
 Option 1: Binary wheel
 ----------------------
 
-We have published binary wheels compiled for 64-bit Raspberry OS 12 Bookworm in X11 mode.
+We have published binary wheels compiled for 64-bit Raspberry OS 12 Bookworm in Wayland/X11 mode.
 
 ::
 
     python -m pip install --break-system-packages raylib
 
-Alternatively there is a DRM wheel called ``raylib_drm`` to use the framebuffer without X11.  You can't have both wheels
+Alternatively there is a DRM wheel called ``raylib_drm`` to use the framebuffer mode.  You can't have both wheels
 installed at once.
 
 If it doesn't work, or you're not on Bookworm/Trixie, or you're 32 bit, you will need to compile your own raylib.  See below.
@@ -79,7 +79,7 @@ Build a shared lib version of Raylib in DRM mode and install to /usr:
     make
     sudo make install
 
-    
+
 Then have pip compile and install the wheel:
 
 ::
