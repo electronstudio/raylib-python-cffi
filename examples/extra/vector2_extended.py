@@ -255,6 +255,6 @@ if __name__ == "__main__":
 
     print("Rotate:", v1.rotate(45))
 
-    # I don't know why this not work
-    # mat = Matrix2x2(1, 0, 0, 1)
-    # print("Transform:", v1.transform(mat))
+    # now it work. :D
+    mat = matrix_identity()  # Matrix 4x4 [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    print("Transform:", v1.transform(mat))  # (3.0, 4.0)
