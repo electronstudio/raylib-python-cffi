@@ -7,15 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Index &mdash; Raylib Python  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -42,13 +42,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 5.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 6.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#videos">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#links">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#backends">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#running-in-a-web-browser">Running in a web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#startup-without-printing-anything">Startup without printing anything</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#help-wanted">Help wanted</a></li>
@@ -56,11 +58,13 @@
 <li class="toctree-l1"><a class="reference internal" href="README.html#performance">Performance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#packaging-your-app">Packaging your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#advert">Advert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#hall-of-shame">Hall of shame!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pyray.html">Python API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raylib.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic.html">Dynamic Bindings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BUILDING.html">Building from source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RPI.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AI_POLICY.html">AI Policy</a></li>
 </ul>
 
         </div>
@@ -286,10 +290,10 @@
         <li><a href="raylib.html#raylib.BEIGE">(in module raylib)</a>
 </li>
       </ul></li>
-      <li><a href="pyray.html#pyray.Model.bindPose">bindPose (pyray.Model attribute)</a>
+      <li><a href="pyray.html#pyray.ModelSkeleton.bindPose">bindPose (pyray.ModelSkeleton attribute)</a>
 
       <ul>
-        <li><a href="raylib.html#raylib.Model.bindPose">(raylib.Model attribute)</a>
+        <li><a href="raylib.html#raylib.ModelSkeleton.bindPose">(raylib.ModelSkeleton attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.BLACK">BLACK (in module pyray)</a>
@@ -346,14 +350,14 @@
         <li><a href="pyray.html#pyray.BlendMode.BLEND_MULTIPLIED">(pyray.BlendMode attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.BLEND_SUBTRACT_COLORS">BLEND_SUBTRACT_COLORS (in module raylib)</a>
 
       <ul>
         <li><a href="pyray.html#pyray.BlendMode.BLEND_SUBTRACT_COLORS">(pyray.BlendMode attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.BlendMode">BlendMode (class in pyray)</a>
 
       <ul>
@@ -391,21 +395,21 @@
       <li><a href="pyray.html#pyray.Mesh.boneCount">boneCount (pyray.Mesh attribute)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.Model.boneCount">(pyray.Model attribute)</a>
-</li>
         <li><a href="pyray.html#pyray.ModelAnimation.boneCount">(pyray.ModelAnimation attribute)</a>
+</li>
+        <li><a href="pyray.html#pyray.ModelSkeleton.boneCount">(pyray.ModelSkeleton attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Mesh.boneCount">(raylib.Mesh attribute)</a>
 </li>
-        <li><a href="raylib.html#raylib.Model.boneCount">(raylib.Model attribute)</a>
-</li>
         <li><a href="raylib.html#raylib.ModelAnimation.boneCount">(raylib.ModelAnimation attribute)</a>
 </li>
+        <li><a href="raylib.html#raylib.ModelSkeleton.boneCount">(raylib.ModelSkeleton attribute)</a>
+</li>
       </ul></li>
-      <li><a href="pyray.html#pyray.Mesh.boneIds">boneIds (pyray.Mesh attribute)</a>
+      <li><a href="pyray.html#pyray.Mesh.boneIndices">boneIndices (pyray.Mesh attribute)</a>
 
       <ul>
-        <li><a href="raylib.html#raylib.Mesh.boneIds">(raylib.Mesh attribute)</a>
+        <li><a href="raylib.html#raylib.Mesh.boneIndices">(raylib.Mesh attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.BoneInfo">BoneInfo (class in pyray)</a>
@@ -414,20 +418,16 @@
         <li><a href="raylib.html#raylib.BoneInfo">(class in raylib)</a>
 </li>
       </ul></li>
-      <li><a href="pyray.html#pyray.Mesh.boneMatrices">boneMatrices (pyray.Mesh attribute)</a>
+      <li><a href="pyray.html#pyray.Model.boneMatrices">boneMatrices (pyray.Model attribute)</a>
 
       <ul>
-        <li><a href="raylib.html#raylib.Mesh.boneMatrices">(raylib.Mesh attribute)</a>
+        <li><a href="raylib.html#raylib.Model.boneMatrices">(raylib.Model attribute)</a>
 </li>
       </ul></li>
-      <li><a href="pyray.html#pyray.Model.bones">bones (pyray.Model attribute)</a>
+      <li><a href="pyray.html#pyray.ModelSkeleton.bones">bones (pyray.ModelSkeleton attribute)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.ModelAnimation.bones">(pyray.ModelAnimation attribute)</a>
-</li>
-        <li><a href="raylib.html#raylib.Model.bones">(raylib.Model attribute)</a>
-</li>
-        <li><a href="raylib.html#raylib.ModelAnimation.bones">(raylib.ModelAnimation attribute)</a>
+        <li><a href="raylib.html#raylib.ModelSkeleton.bones">(raylib.ModelSkeleton attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.Mesh.boneWeights">boneWeights (pyray.Mesh attribute)</a>
@@ -581,11 +581,7 @@
       <li><a href="pyray.html#pyray.AutomationEventList.capacity">capacity (pyray.AutomationEventList attribute)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.FilePathList.capacity">(pyray.FilePathList attribute)</a>
-</li>
         <li><a href="raylib.html#raylib.AutomationEventList.capacity">(raylib.AutomationEventList attribute)</a>
-</li>
-        <li><a href="raylib.html#raylib.FilePathList.capacity">(raylib.FilePathList attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.change_directory">change_directory() (in module pyray)</a>
@@ -712,8 +708,6 @@
         <li><a href="raylib.html#raylib.MaterialMap.color">(raylib.MaterialMap attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.color_alpha">color_alpha() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.color_alpha_blend">color_alpha_blend() (in module pyray)</a>
@@ -722,6 +716,8 @@
 </li>
       <li><a href="pyray.html#pyray.color_contrast">color_contrast() (in module pyray)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.color_from_hsv">color_from_hsv() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.color_from_normalized">color_from_normalized() (in module pyray)</a>
@@ -812,11 +808,15 @@
 </li>
       <li><a href="pyray.html#pyray.compute_sha1">compute_sha1() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.compute_sha256">compute_sha256() (in module pyray)</a>
+</li>
       <li><a href="raylib.html#raylib.ComputeCRC32">ComputeCRC32() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.ComputeMD5">ComputeMD5() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.ComputeSHA1">ComputeSHA1() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.ComputeSHA256">ComputeSHA256() (in module raylib)</a>
 </li>
       <li><a href="pyray.html#pyray.ConfigFlags">ConfigFlags (class in pyray)</a>
 
@@ -834,6 +834,12 @@
 
       <ul>
         <li><a href="raylib.html#raylib.PhysicsManifoldData.contactsCount">(raylib.PhysicsManifoldData attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.CONTROL11">CONTROL11 (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiControl.CONTROL11">(pyray.GuiControl attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.GuiStyleProp.controlId">controlId (pyray.GuiStyleProp attribute)</a>
@@ -922,6 +928,12 @@
 
       <ul>
         <li><a href="raylib.html#raylib.rlRenderBatch.currentDepth">(raylib.rlRenderBatch attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="pyray.html#pyray.Model.currentPose">currentPose (pyray.Model attribute)</a>
+
+      <ul>
+        <li><a href="raylib.html#raylib.Model.currentPose">(raylib.Model attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -1078,6 +1090,10 @@
 </li>
       <li><a href="pyray.html#pyray.draw_ellipse_lines">draw_ellipse_lines() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.draw_ellipse_lines_v">draw_ellipse_lines_v() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.draw_ellipse_v">draw_ellipse_v() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.draw_fps">draw_fps() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.draw_grid">draw_grid() (in module pyray)</a>
@@ -1087,6 +1103,8 @@
       <li><a href="pyray.html#pyray.draw_line_3d">draw_line_3d() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.draw_line_bezier">draw_line_bezier() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.draw_line_dashed">draw_line_dashed() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.draw_line_ex">draw_line_ex() (in module pyray)</a>
 </li>
@@ -1101,10 +1119,6 @@
       <li><a href="pyray.html#pyray.draw_model">draw_model() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.draw_model_ex">draw_model_ex() (in module pyray)</a>
-</li>
-      <li><a href="pyray.html#pyray.draw_model_points">draw_model_points() (in module pyray)</a>
-</li>
-      <li><a href="pyray.html#pyray.draw_model_points_ex">draw_model_points_ex() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.draw_model_wires">draw_model_wires() (in module pyray)</a>
 </li>
@@ -1190,10 +1204,10 @@
 </li>
       <li><a href="pyray.html#pyray.draw_text_pro">draw_text_pro() (in module pyray)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.draw_texture">draw_texture() (in module pyray)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.draw_texture_ex">draw_texture_ex() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.draw_texture_n_patch">draw_texture_n_patch() (in module pyray)</a>
@@ -1209,6 +1223,8 @@
       <li><a href="pyray.html#pyray.draw_triangle_3d">draw_triangle_3d() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.draw_triangle_fan">draw_triangle_fan() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.draw_triangle_gradient">draw_triangle_gradient() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.draw_triangle_lines">draw_triangle_lines() (in module pyray)</a>
 </li>
@@ -1270,6 +1286,10 @@
 </li>
       <li><a href="raylib.html#raylib.DrawEllipseLines">DrawEllipseLines() (in module raylib)</a>
 </li>
+      <li><a href="raylib.html#raylib.DrawEllipseLinesV">DrawEllipseLinesV() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.DrawEllipseV">DrawEllipseV() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.DrawFPS">DrawFPS() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.DrawGrid">DrawGrid() (in module raylib)</a>
@@ -1279,6 +1299,8 @@
       <li><a href="raylib.html#raylib.DrawLine3D">DrawLine3D() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.DrawLineBezier">DrawLineBezier() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.DrawLineDashed">DrawLineDashed() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.DrawLineEx">DrawLineEx() (in module raylib)</a>
 </li>
@@ -1293,10 +1315,6 @@
       <li><a href="raylib.html#raylib.DrawModel">DrawModel() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.DrawModelEx">DrawModelEx() (in module raylib)</a>
-</li>
-      <li><a href="raylib.html#raylib.DrawModelPoints">DrawModelPoints() (in module raylib)</a>
-</li>
-      <li><a href="raylib.html#raylib.DrawModelPointsEx">DrawModelPointsEx() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.DrawModelWires">DrawModelWires() (in module raylib)</a>
 </li>
@@ -1405,6 +1423,8 @@
       <li><a href="raylib.html#raylib.DrawTriangle3D">DrawTriangle3D() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.DrawTriangleFan">DrawTriangleFan() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.DrawTriangleGradient">DrawTriangleGradient() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.DrawTriangleLines">DrawTriangleLines() (in module raylib)</a>
 </li>
@@ -1578,9 +1598,25 @@
         <li><a href="raylib.html#raylib.ffi">(in module raylib)</a>
 </li>
       </ul></li>
+      <li><a href="pyray.html#pyray.file_copy">file_copy() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.file_exists">file_exists() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.file_move">file_move() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.file_remove">file_remove() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.file_rename">file_rename() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.file_text_find_index">file_text_find_index() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.file_text_replace">file_text_replace() (in module pyray)</a>
+</li>
+      <li><a href="raylib.html#raylib.FileCopy">FileCopy() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.FileExists">FileExists() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.FileMove">FileMove() (in module raylib)</a>
 </li>
       <li><a href="pyray.html#pyray.FilePathList">FilePathList (class in pyray)</a>
 
@@ -1588,6 +1624,14 @@
         <li><a href="raylib.html#raylib.FilePathList">(class in raylib)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.FileRemove">FileRemove() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.FileRename">FileRename() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.FileTextFindIndex">FileTextFindIndex() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.FileTextReplace">FileTextReplace() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.FLAG_BORDERLESS_WINDOWED_MODE">FLAG_BORDERLESS_WINDOWED_MODE (in module raylib)</a>
 
       <ul>
@@ -1660,6 +1704,8 @@
         <li><a href="pyray.html#pyray.ConfigFlags.FLAG_WINDOW_RESIZABLE">(pyray.ConfigFlags attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.FLAG_WINDOW_TOPMOST">FLAG_WINDOW_TOPMOST (in module raylib)</a>
 
       <ul>
@@ -1690,8 +1736,6 @@
         <li><a href="raylib.html#raylib.float16">(class in raylib)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.float3">float3 (class in pyray)</a>
 
       <ul>
@@ -1743,8 +1787,6 @@
       <ul>
         <li><a href="pyray.html#pyray.Texture.format">(pyray.Texture attribute)</a>
 </li>
-        <li><a href="pyray.html#pyray.Texture2D.format">(pyray.Texture2D attribute)</a>
-</li>
         <li><a href="raylib.html#raylib.Image.format">(raylib.Image attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Texture.format">(raylib.Texture attribute)</a>
@@ -1768,28 +1810,18 @@
         <li><a href="raylib.html#raylib.AutomationEvent.frame">(raylib.AutomationEvent attribute)</a>
 </li>
       </ul></li>
-      <li><a href="pyray.html#pyray.ModelAnimation.frameCount">frameCount (pyray.ModelAnimation attribute)</a>
+      <li><a href="pyray.html#pyray.Music.frameCount">frameCount (pyray.Music attribute)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.Music.frameCount">(pyray.Music attribute)</a>
-</li>
         <li><a href="pyray.html#pyray.Sound.frameCount">(pyray.Sound attribute)</a>
 </li>
         <li><a href="pyray.html#pyray.Wave.frameCount">(pyray.Wave attribute)</a>
-</li>
-        <li><a href="raylib.html#raylib.ModelAnimation.frameCount">(raylib.ModelAnimation attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Music.frameCount">(raylib.Music attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Sound.frameCount">(raylib.Sound attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Wave.frameCount">(raylib.Wave attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="pyray.html#pyray.ModelAnimation.framePoses">framePoses (pyray.ModelAnimation attribute)</a>
-
-      <ul>
-        <li><a href="raylib.html#raylib.ModelAnimation.framePoses">(raylib.ModelAnimation attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.PhysicsBodyData.freezeOrient">freezeOrient (pyray.PhysicsBodyData attribute)</a>
@@ -2156,6 +2188,10 @@
 </li>
       <li><a href="pyray.html#pyray.get_current_monitor">get_current_monitor() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.get_directory_file_count">get_directory_file_count() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.get_directory_file_count_ex">get_directory_file_count_ex() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.get_directory_path">get_directory_path() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.get_file_extension">get_file_extension() (in module pyray)</a>
@@ -2203,6 +2239,8 @@
       <li><a href="pyray.html#pyray.get_image_alpha_border">get_image_alpha_border() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.get_image_color">get_image_color() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.get_key_name">get_key_name() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.get_key_pressed">get_key_pressed() (in module pyray)</a>
 </li>
@@ -2298,11 +2336,13 @@
 </li>
       <li><a href="pyray.html#pyray.get_spline_point_bezier_cubic">get_spline_point_bezier_cubic() (in module pyray)</a>
 </li>
-      <li><a href="pyray.html#pyray.get_spline_point_bezier_quad">get_spline_point_bezier_quad() (in module pyray)</a>
+      <li><a href="pyray.html#pyray.get_spline_point_bezier_quadratic">get_spline_point_bezier_quadratic() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.get_spline_point_catmull_rom">get_spline_point_catmull_rom() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.get_spline_point_linear">get_spline_point_linear() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.get_text_between">get_text_between() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.get_time">get_time() (in module pyray)</a>
 </li>
@@ -2356,6 +2396,10 @@
 </li>
       <li><a href="raylib.html#raylib.GetCurrentMonitor">GetCurrentMonitor() (in module raylib)</a>
 </li>
+      <li><a href="raylib.html#raylib.GetDirectoryFileCount">GetDirectoryFileCount() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.GetDirectoryFileCountEx">GetDirectoryFileCountEx() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.GetDirectoryPath">GetDirectoryPath() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.GetFileExtension">GetFileExtension() (in module raylib)</a>
@@ -2403,6 +2447,8 @@
       <li><a href="raylib.html#raylib.GetImageAlphaBorder">GetImageAlphaBorder() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.GetImageColor">GetImageColor() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.GetKeyName">GetKeyName() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.GetKeyPressed">GetKeyPressed() (in module raylib)</a>
 </li>
@@ -2498,11 +2544,13 @@
 </li>
       <li><a href="raylib.html#raylib.GetSplinePointBezierCubic">GetSplinePointBezierCubic() (in module raylib)</a>
 </li>
-      <li><a href="raylib.html#raylib.GetSplinePointBezierQuad">GetSplinePointBezierQuad() (in module raylib)</a>
+      <li><a href="raylib.html#raylib.GetSplinePointBezierQuadratic">GetSplinePointBezierQuadratic() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.GetSplinePointCatmullRom">GetSplinePointCatmullRom() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.GetSplinePointLinear">GetSplinePointLinear() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.GetTextBetween">GetTextBetween() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.GetTime">GetTime() (in module raylib)</a>
 </li>
@@ -2622,12 +2670,12 @@
 </li>
       <li><a href="pyray.html#pyray.glfw_get_window_attrib">glfw_get_window_attrib() (in module pyray)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.glfw_get_window_content_scale">glfw_get_window_content_scale() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.glfw_get_window_frame_size">glfw_get_window_frame_size() (in module pyray)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.glfw_get_window_monitor">glfw_get_window_monitor() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.glfw_get_window_opacity">glfw_get_window_opacity() (in module pyray)</a>
@@ -3120,6 +3168,8 @@
 </li>
       <li><a href="pyray.html#pyray.gui_get_style">gui_get_style() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.gui_get_text_width">gui_get_text_width() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.gui_grid">gui_grid() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.gui_group_box">gui_group_box() (in module pyray)</a>
@@ -3143,6 +3193,8 @@
       <li><a href="pyray.html#pyray.gui_load_style">gui_load_style() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.gui_load_style_default">gui_load_style_default() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.gui_load_style_from_memory">gui_load_style_from_memory() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.gui_lock">gui_lock() (in module pyray)</a>
 </li>
@@ -3276,6 +3328,8 @@
 </li>
       <li><a href="raylib.html#raylib.GuiGetStyle">GuiGetStyle() (in module raylib)</a>
 </li>
+      <li><a href="raylib.html#raylib.GuiGetTextWidth">GuiGetTextWidth() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.GuiGrid">GuiGrid() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.GuiGroupBox">GuiGroupBox() (in module raylib)</a>
@@ -3311,6 +3365,8 @@
       <li><a href="raylib.html#raylib.GuiLoadStyle">GuiLoadStyle() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.GuiLoadStyleDefault">GuiLoadStyleDefault() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.GuiLoadStyleFromMemory">GuiLoadStyleFromMemory() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.GuiLock">GuiLock() (in module raylib)</a>
 </li>
@@ -3358,12 +3414,6 @@
       </ul></li>
       <li><a href="raylib.html#raylib.GuiSpinner">GuiSpinner() (in module raylib)</a>
 </li>
-      <li><a href="pyray.html#pyray.GuiSpinnerProperty">GuiSpinnerProperty (class in pyray)</a>
-
-      <ul>
-        <li><a href="raylib.html#raylib.GuiSpinnerProperty">(in module raylib)</a>
-</li>
-      </ul></li>
       <li><a href="pyray.html#pyray.GuiState">GuiState (class in pyray)</a>
 
       <ul>
@@ -3426,6 +3476,12 @@
 </li>
       <li><a href="raylib.html#raylib.GuiValueBoxFloat">GuiValueBoxFloat() (in module raylib)</a>
 </li>
+      <li><a href="pyray.html#pyray.GuiValueBoxProperty">GuiValueBoxProperty (class in pyray)</a>
+
+      <ul>
+        <li><a href="raylib.html#raylib.GuiValueBoxProperty">(in module raylib)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.GuiWindowBox">GuiWindowBox() (in module raylib)</a>
 </li>
   </ul></td>
@@ -3440,8 +3496,6 @@
         <li><a href="pyray.html#pyray.Rectangle.height">(pyray.Rectangle attribute)</a>
 </li>
         <li><a href="pyray.html#pyray.Texture.height">(pyray.Texture attribute)</a>
-</li>
-        <li><a href="pyray.html#pyray.Texture2D.height">(pyray.Texture2D attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.GLFWimage.height">(raylib.GLFWimage attribute)</a>
 </li>
@@ -3462,14 +3516,14 @@
 </li>
       <li><a href="raylib.html#raylib.HideCursor">HideCursor() (in module raylib)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.RayCollision.hit">hit (pyray.RayCollision attribute)</a>
 
       <ul>
         <li><a href="raylib.html#raylib.RayCollision.hit">(raylib.RayCollision attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.VrDeviceInfo.hResolution">hResolution (pyray.VrDeviceInfo attribute)</a>
 
       <ul>
@@ -3516,132 +3570,6 @@
 
       <ul>
         <li><a href="pyray.html#pyray.GuiIconName.ICON_1UP">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_229">ICON_229 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_229">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_230">ICON_230 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_230">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_231">ICON_231 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_231">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_232">ICON_232 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_232">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_233">ICON_233 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_233">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_234">ICON_234 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_234">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_235">ICON_235 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_235">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_236">ICON_236 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_236">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_237">ICON_237 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_237">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_238">ICON_238 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_238">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_239">ICON_239 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_239">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_240">ICON_240 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_240">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_241">ICON_241 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_241">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_242">ICON_242 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_242">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_243">ICON_243 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_243">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_244">ICON_244 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_244">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_245">ICON_245 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_245">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_246">ICON_246 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_246">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_247">ICON_247 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_247">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_248">ICON_248 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_248">(pyray.GuiIconName attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.ICON_249">ICON_249 (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiIconName.ICON_249">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.ICON_250">ICON_250 (in module raylib)</a>
@@ -3842,6 +3770,30 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_BOX_LEFT">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.ICON_BOX_MINUS">ICON_BOX_MINUS (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_BOX_MINUS">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_BOX_MINUS_FILL">ICON_BOX_MINUS_FILL (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_BOX_MINUS_FILL">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_BOX_MORE">ICON_BOX_MORE (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_BOX_MORE">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_BOX_MORE_FILL">ICON_BOX_MORE_FILL (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_BOX_MORE_FILL">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.ICON_BOX_MULTISIZE">ICON_BOX_MULTISIZE (in module raylib)</a>
 
       <ul>
@@ -3908,10 +3860,40 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_CAMERA">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.ICON_CAPSULE">ICON_CAPSULE (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_CAPSULE">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.ICON_CASE_SENSITIVE">ICON_CASE_SENSITIVE (in module raylib)</a>
 
       <ul>
         <li><a href="pyray.html#pyray.GuiIconName.ICON_CASE_SENSITIVE">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_CIRCLE_ADD">ICON_CIRCLE_ADD (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_CIRCLE_ADD">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_CIRCLE_ADD_FILL">ICON_CIRCLE_ADD_FILL (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_CIRCLE_ADD_FILL">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_CIRCLE_WARNING">ICON_CIRCLE_WARNING (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_CIRCLE_WARNING">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_CIRCLE_WARNING_FILL">ICON_CIRCLE_WARNING_FILL (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_CIRCLE_WARNING_FILL">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.ICON_CLOCK">ICON_CLOCK (in module raylib)</a>
@@ -3926,6 +3908,12 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_COIN">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.ICON_COLLISION">ICON_COLLISION (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_COLLISION">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.ICON_COLOR_BUCKET">ICON_COLOR_BUCKET (in module raylib)</a>
 
       <ul>
@@ -3936,6 +3924,12 @@
 
       <ul>
         <li><a href="pyray.html#pyray.GuiIconName.ICON_COLOR_PICKER">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_CONE">ICON_CONE (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_CONE">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.ICON_CORNER">ICON_CORNER (in module raylib)</a>
@@ -4100,10 +4094,22 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_CURSOR_SCALE_RIGHT_FILL">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.ICON_CYLINDER">ICON_CYLINDER (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_CYLINDER">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.ICON_DEMON">ICON_DEMON (in module raylib)</a>
 
       <ul>
         <li><a href="pyray.html#pyray.GuiIconName.ICON_DEMON">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_DIFFERENCE">ICON_DIFFERENCE (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_DIFFERENCE">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.ICON_DITHERING">ICON_DITHERING (in module raylib)</a>
@@ -4116,6 +4122,12 @@
 
       <ul>
         <li><a href="pyray.html#pyray.GuiIconName.ICON_DOOR">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_ELLIPSOID">ICON_ELLIPSOID (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_ELLIPSOID">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.ICON_EMPTYBOX">ICON_EMPTYBOX (in module raylib)</a>
@@ -4430,10 +4442,22 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_INFO_BOX">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.ICON_INTERSECTION">ICON_INTERSECTION (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_INTERSECTION">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.ICON_KEY">ICON_KEY (in module raylib)</a>
 
       <ul>
         <li><a href="pyray.html#pyray.GuiIconName.ICON_KEY">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_LABEL">ICON_LABEL (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_LABEL">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.ICON_LASER">ICON_LASER (in module raylib)</a>
@@ -4538,6 +4562,12 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_MAILBOX">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.ICON_MANUAL_CONTROL">ICON_MANUAL_CONTROL (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_MANUAL_CONTROL">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.ICON_MAPS">ICON_MAPS (in module raylib)</a>
 
       <ul>
@@ -4584,6 +4614,12 @@
 
       <ul>
         <li><a href="pyray.html#pyray.GuiIconName.ICON_MUTATE_FILL">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_NAME_ID">ICON_NAME_ID (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_NAME_ID">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.ICON_NONE">ICON_NONE (in module raylib)</a>
@@ -4634,8 +4670,6 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_PLAYER">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.ICON_PLAYER_JUMP">ICON_PLAYER_JUMP (in module raylib)</a>
 
       <ul>
@@ -4654,6 +4688,8 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_PLAYER_PAUSE">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.ICON_PLAYER_PLAY">ICON_PLAYER_PLAY (in module raylib)</a>
 
       <ul>
@@ -4810,10 +4846,22 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_SHUFFLE_FILL">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.ICON_SLICING">ICON_SLICING (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_SLICING">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.ICON_SPECIAL">ICON_SPECIAL (in module raylib)</a>
 
       <ul>
         <li><a href="pyray.html#pyray.GuiIconName.ICON_SPECIAL">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.ICON_SPHERE">ICON_SPHERE (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_SPHERE">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.ICON_SQUARE_TOGGLE">ICON_SQUARE_TOGGLE (in module raylib)</a>
@@ -4966,6 +5014,12 @@
         <li><a href="pyray.html#pyray.GuiIconName.ICON_UNDO_FILL">(pyray.GuiIconName attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.ICON_UNION">ICON_UNION (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiIconName.ICON_UNION">(pyray.GuiIconName attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.ICON_VERTICAL_BARS">ICON_VERTICAL_BARS (in module raylib)</a>
 
       <ul>
@@ -5061,8 +5115,6 @@
 </li>
         <li><a href="pyray.html#pyray.Texture.id">(pyray.Texture attribute)</a>
 </li>
-        <li><a href="pyray.html#pyray.Texture2D.id">(pyray.Texture2D attribute)</a>
-</li>
         <li><a href="raylib.html#raylib.PhysicsBodyData.id">(raylib.PhysicsBodyData attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.PhysicsManifoldData.id">(raylib.PhysicsManifoldData attribute)</a>
@@ -5146,6 +5198,8 @@
 </li>
       <li><a href="pyray.html#pyray.image_draw_rectangle_lines">image_draw_rectangle_lines() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.image_draw_rectangle_lines_ex">image_draw_rectangle_lines_ex() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.image_draw_rectangle_rec">image_draw_rectangle_rec() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.image_draw_rectangle_v">image_draw_rectangle_v() (in module pyray)</a>
@@ -5156,9 +5210,9 @@
 </li>
       <li><a href="pyray.html#pyray.image_draw_triangle">image_draw_triangle() (in module pyray)</a>
 </li>
-      <li><a href="pyray.html#pyray.image_draw_triangle_ex">image_draw_triangle_ex() (in module pyray)</a>
-</li>
       <li><a href="pyray.html#pyray.image_draw_triangle_fan">image_draw_triangle_fan() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.image_draw_triangle_gradient">image_draw_triangle_gradient() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.image_draw_triangle_lines">image_draw_triangle_lines() (in module pyray)</a>
 </li>
@@ -5250,6 +5304,8 @@
 </li>
       <li><a href="raylib.html#raylib.ImageDrawRectangleLines">ImageDrawRectangleLines() (in module raylib)</a>
 </li>
+      <li><a href="raylib.html#raylib.ImageDrawRectangleLinesEx">ImageDrawRectangleLinesEx() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.ImageDrawRectangleRec">ImageDrawRectangleRec() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.ImageDrawRectangleV">ImageDrawRectangleV() (in module raylib)</a>
@@ -5260,9 +5316,9 @@
 </li>
       <li><a href="raylib.html#raylib.ImageDrawTriangle">ImageDrawTriangle() (in module raylib)</a>
 </li>
-      <li><a href="raylib.html#raylib.ImageDrawTriangleEx">ImageDrawTriangleEx() (in module raylib)</a>
-</li>
       <li><a href="raylib.html#raylib.ImageDrawTriangleFan">ImageDrawTriangleFan() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.ImageDrawTriangleGradient">ImageDrawTriangleGradient() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.ImageDrawTriangleLines">ImageDrawTriangleLines() (in module raylib)</a>
 </li>
@@ -5882,14 +5938,14 @@
         <li><a href="pyray.html#pyray.KeyboardKey.KEY_KP_ENTER">(pyray.KeyboardKey attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.KEY_KP_EQUAL">KEY_KP_EQUAL (in module raylib)</a>
 
       <ul>
         <li><a href="pyray.html#pyray.KeyboardKey.KEY_KP_EQUAL">(pyray.KeyboardKey attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.KEY_KP_MULTIPLY">KEY_KP_MULTIPLY (in module raylib)</a>
 
       <ul>
@@ -6214,6 +6270,18 @@
         <li><a href="raylib.html#raylib.KeyboardKey">(in module raylib)</a>
 </li>
       </ul></li>
+      <li><a href="pyray.html#pyray.ModelAnimation.keyframeCount">keyframeCount (pyray.ModelAnimation attribute)</a>
+
+      <ul>
+        <li><a href="raylib.html#raylib.ModelAnimation.keyframeCount">(raylib.ModelAnimation attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="pyray.html#pyray.ModelAnimation.keyframePoses">keyframePoses (pyray.ModelAnimation attribute)</a>
+
+      <ul>
+        <li><a href="raylib.html#raylib.ModelAnimation.keyframePoses">(raylib.ModelAnimation attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -6282,6 +6350,12 @@
 
       <ul>
         <li><a href="pyray.html#pyray.GuiDefaultProperty.LINE_COLOR">(pyray.GuiDefaultProperty attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.LIST_ITEMS_BORDER_NORMAL">LIST_ITEMS_BORDER_NORMAL (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiListViewProperty.LIST_ITEMS_BORDER_NORMAL">(pyray.GuiListViewProperty attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.LIST_ITEMS_BORDER_WIDTH">LIST_ITEMS_BORDER_WIDTH (in module raylib)</a>
@@ -6380,14 +6454,16 @@
 </li>
       <li><a href="pyray.html#pyray.load_sound_from_wave">load_sound_from_wave() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.load_text_lines">load_text_lines() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.load_texture">load_texture() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.load_texture_cubemap">load_texture_cubemap() (in module pyray)</a>
 </li>
-      <li><a href="pyray.html#pyray.load_texture_from_image">load_texture_from_image() (in module pyray)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pyray.html#pyray.load_texture_from_image">load_texture_from_image() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.load_utf8">load_utf8() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.load_vr_stereo_config">load_vr_stereo_config() (in module pyray)</a>
@@ -6469,6 +6545,8 @@
       <li><a href="raylib.html#raylib.LoadSoundAlias">LoadSoundAlias() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.LoadSoundFromWave">LoadSoundFromWave() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.LoadTextLines">LoadTextLines() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.LoadTexture">LoadTexture() (in module raylib)</a>
 </li>
@@ -6806,6 +6884,8 @@
       </ul></li>
       <li><a href="pyray.html#pyray.matrix_add">matrix_add() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.matrix_compose">matrix_compose() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.matrix_decompose">matrix_decompose() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.matrix_determinant">matrix_determinant() (in module pyray)</a>
@@ -6819,6 +6899,8 @@
       <li><a href="pyray.html#pyray.matrix_look_at">matrix_look_at() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.matrix_multiply">matrix_multiply() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.matrix_multiply_value">matrix_multiply_value() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.matrix_ortho">matrix_ortho() (in module pyray)</a>
 </li>
@@ -6846,11 +6928,13 @@
 </li>
       <li><a href="pyray.html#pyray.matrix_translate">matrix_translate() (in module pyray)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.matrix_transpose">matrix_transpose() (in module pyray)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.MatrixAdd">MatrixAdd() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.MatrixCompose">MatrixCompose() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.MatrixDecompose">MatrixDecompose() (in module raylib)</a>
 </li>
@@ -6865,6 +6949,8 @@
       <li><a href="raylib.html#raylib.MatrixLookAt">MatrixLookAt() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.MatrixMultiply">MatrixMultiply() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.MatrixMultiplyValue">MatrixMultiplyValue() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.MatrixOrtho">MatrixOrtho() (in module raylib)</a>
 </li>
@@ -6906,9 +6992,13 @@
 </li>
       <li><a href="pyray.html#pyray.measure_text">measure_text() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.measure_text_codepoints">measure_text_codepoints() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.measure_text_ex">measure_text_ex() (in module pyray)</a>
 </li>
       <li><a href="raylib.html#raylib.MeasureText">MeasureText() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.MeasureTextCodepoints">MeasureTextCodepoints() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.MeasureTextEx">MeasureTextEx() (in module raylib)</a>
 </li>
@@ -6963,8 +7053,6 @@
       <ul>
         <li><a href="pyray.html#pyray.Texture.mipmaps">(pyray.Texture attribute)</a>
 </li>
-        <li><a href="pyray.html#pyray.Texture2D.mipmaps">(pyray.Texture2D attribute)</a>
-</li>
         <li><a href="raylib.html#raylib.Image.mipmaps">(raylib.Image attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.Texture.mipmaps">(raylib.Texture attribute)</a>
@@ -6990,6 +7078,12 @@
 
       <ul>
         <li><a href="raylib.html#raylib.ModelAnimation">(class in raylib)</a>
+</li>
+      </ul></li>
+      <li><a href="pyray.html#pyray.ModelSkeleton">ModelSkeleton (class in pyray)</a>
+
+      <ul>
+        <li><a href="raylib.html#raylib.ModelSkeleton">(class in raylib)</a>
 </li>
       </ul></li>
       <li>
@@ -7557,6 +7651,12 @@
         <li><a href="pyray.html#pyray.GuiProgressBarProperty.PROGRESS_PADDING">(pyray.GuiProgressBarProperty attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.PROGRESS_SIDE">PROGRESS_SIDE (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.GuiProgressBarProperty.PROGRESS_SIDE">(pyray.GuiProgressBarProperty attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.PROGRESSBAR">PROGRESSBAR (in module raylib)</a>
 
       <ul>
@@ -8023,9 +8123,9 @@
 </li>
       <li><a href="pyray.html#pyray.rl_color_mask">rl_color_mask() (in module pyray)</a>
 </li>
-      <li><a href="pyray.html#pyray.rl_compile_shader">rl_compile_shader() (in module pyray)</a>
-</li>
       <li><a href="pyray.html#pyray.rl_compute_shader_dispatch">rl_compute_shader_dispatch() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.rl_copy_framebuffer">rl_copy_framebuffer() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_copy_shader_buffer">rl_copy_shader_buffer() (in module pyray)</a>
 </li>
@@ -8053,11 +8153,15 @@
 </li>
       <li><a href="pyray.html#pyray.rl_disable_framebuffer">rl_disable_framebuffer() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.rl_disable_point_mode">rl_disable_point_mode() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.rl_disable_scissor_test">rl_disable_scissor_test() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_disable_shader">rl_disable_shader() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_disable_smooth_lines">rl_disable_smooth_lines() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.rl_disable_state_pointer">rl_disable_state_pointer() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_disable_stereo_render">rl_disable_stereo_render() (in module pyray)</a>
 </li>
@@ -8104,6 +8208,8 @@
       <li><a href="pyray.html#pyray.rl_enable_shader">rl_enable_shader() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_enable_smooth_lines">rl_enable_smooth_lines() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.rl_enable_state_pointer">rl_enable_state_pointer() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_enable_stereo_render">rl_enable_stereo_render() (in module pyray)</a>
 </li>
@@ -8161,6 +8267,10 @@
 </li>
       <li><a href="pyray.html#pyray.rl_get_pixel_format_name">rl_get_pixel_format_name() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.rl_get_point_size">rl_get_point_size() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.rl_get_proc_address">rl_get_proc_address() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.rl_get_shader_buffer_size">rl_get_shader_buffer_size() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_get_shader_id_default">rl_get_shader_id_default() (in module pyray)</a>
@@ -8172,8 +8282,6 @@
       <li><a href="pyray.html#pyray.rl_get_version">rl_get_version() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_is_stereo_render_enabled">rl_is_stereo_render_enabled() (in module pyray)</a>
-</li>
-      <li><a href="pyray.html#pyray.rl_load_compute_shader_program">rl_load_compute_shader_program() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_load_draw_cube">rl_load_draw_cube() (in module pyray)</a>
 </li>
@@ -8187,11 +8295,15 @@
 </li>
       <li><a href="pyray.html#pyray.rl_load_render_batch">rl_load_render_batch() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.rl_load_shader">rl_load_shader() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.rl_load_shader_buffer">rl_load_shader_buffer() (in module pyray)</a>
 </li>
-      <li><a href="pyray.html#pyray.rl_load_shader_code">rl_load_shader_code() (in module pyray)</a>
-</li>
       <li><a href="pyray.html#pyray.rl_load_shader_program">rl_load_shader_program() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.rl_load_shader_program_compute">rl_load_shader_program_compute() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.rl_load_shader_program_ex">rl_load_shader_program_ex() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_load_texture">rl_load_texture() (in module pyray)</a>
 </li>
@@ -8293,6 +8405,12 @@
 
       <ul>
         <li><a href="pyray.html#pyray.rlGlVersion.RL_OPENGL_ES_30">(pyray.rlGlVersion attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.RL_OPENGL_SOFTWARE">RL_OPENGL_SOFTWARE (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.rlGlVersion.RL_OPENGL_SOFTWARE">(pyray.rlGlVersion attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.rl_ortho">rl_ortho() (in module pyray)</a>
@@ -8451,6 +8569,8 @@
 </li>
       <li><a href="pyray.html#pyray.rl_read_texture_pixels">rl_read_texture_pixels() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.rl_resize_framebuffer">rl_resize_framebuffer() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.rl_rotatef">rl_rotatef() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_scalef">rl_scalef() (in module pyray)</a>
@@ -8480,6 +8600,8 @@
       <li><a href="pyray.html#pyray.rl_set_matrix_projection_stereo">rl_set_matrix_projection_stereo() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_set_matrix_view_offset_stereo">rl_set_matrix_view_offset_stereo() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.rl_set_point_size">rl_set_point_size() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_set_render_batch_active">rl_set_render_batch_active() (in module pyray)</a>
 </li>
@@ -8807,6 +8929,8 @@
 </li>
       <li><a href="pyray.html#pyray.rl_unload_render_batch">rl_unload_render_batch() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.rl_unload_shader">rl_unload_shader() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.rl_unload_shader_buffer">rl_unload_shader_buffer() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.rl_unload_shader_program">rl_unload_shader_program() (in module pyray)</a>
@@ -8869,9 +8993,9 @@
 </li>
       <li><a href="raylib.html#raylib.rlColorMask">rlColorMask() (in module raylib)</a>
 </li>
-      <li><a href="raylib.html#raylib.rlCompileShader">rlCompileShader() (in module raylib)</a>
-</li>
       <li><a href="raylib.html#raylib.rlComputeShaderDispatch">rlComputeShaderDispatch() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.rlCopyFramebuffer">rlCopyFramebuffer() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlCopyShaderBuffer">rlCopyShaderBuffer() (in module raylib)</a>
 </li>
@@ -8893,11 +9017,15 @@
 </li>
       <li><a href="raylib.html#raylib.rlDisableFramebuffer">rlDisableFramebuffer() (in module raylib)</a>
 </li>
+      <li><a href="raylib.html#raylib.rlDisablePointMode">rlDisablePointMode() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.rlDisableScissorTest">rlDisableScissorTest() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlDisableShader">rlDisableShader() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlDisableSmoothLines">rlDisableSmoothLines() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.rlDisableStatePointer">rlDisableStatePointer() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlDisableStereoRender">rlDisableStereoRender() (in module raylib)</a>
 </li>
@@ -8950,6 +9078,8 @@
       <li><a href="raylib.html#raylib.rlEnableShader">rlEnableShader() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlEnableSmoothLines">rlEnableSmoothLines() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.rlEnableStatePointer">rlEnableStatePointer() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlEnableStereoRender">rlEnableStereoRender() (in module raylib)</a>
 </li>
@@ -9019,6 +9149,10 @@
 </li>
       <li><a href="raylib.html#raylib.rlGetPixelFormatName">rlGetPixelFormatName() (in module raylib)</a>
 </li>
+      <li><a href="raylib.html#raylib.rlGetPointSize">rlGetPointSize() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.rlGetProcAddress">rlGetProcAddress() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.rlGetShaderBufferSize">rlGetShaderBufferSize() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlGetShaderIdDefault">rlGetShaderIdDefault() (in module raylib)</a>
@@ -9045,8 +9179,6 @@
       </ul></li>
       <li><a href="raylib.html#raylib.rlIsStereoRenderEnabled">rlIsStereoRenderEnabled() (in module raylib)</a>
 </li>
-      <li><a href="raylib.html#raylib.rlLoadComputeShaderProgram">rlLoadComputeShaderProgram() (in module raylib)</a>
-</li>
       <li><a href="raylib.html#raylib.rlLoadDrawCube">rlLoadDrawCube() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlLoadDrawQuad">rlLoadDrawQuad() (in module raylib)</a>
@@ -9059,11 +9191,15 @@
 </li>
       <li><a href="raylib.html#raylib.rlLoadRenderBatch">rlLoadRenderBatch() (in module raylib)</a>
 </li>
+      <li><a href="raylib.html#raylib.rlLoadShader">rlLoadShader() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.rlLoadShaderBuffer">rlLoadShaderBuffer() (in module raylib)</a>
 </li>
-      <li><a href="raylib.html#raylib.rlLoadShaderCode">rlLoadShaderCode() (in module raylib)</a>
-</li>
       <li><a href="raylib.html#raylib.rlLoadShaderProgram">rlLoadShaderProgram() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.rlLoadShaderProgramCompute">rlLoadShaderProgramCompute() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.rlLoadShaderProgramEx">rlLoadShaderProgramEx() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlLoadTexture">rlLoadTexture() (in module raylib)</a>
 </li>
@@ -9107,6 +9243,8 @@
         <li><a href="raylib.html#raylib.rlRenderBatch">(class in raylib)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.rlResizeFramebuffer">rlResizeFramebuffer() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.rlRotatef">rlRotatef() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlScalef">rlScalef() (in module raylib)</a>
@@ -9136,6 +9274,8 @@
       <li><a href="raylib.html#raylib.rlSetMatrixProjectionStereo">rlSetMatrixProjectionStereo() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlSetMatrixViewOffsetStereo">rlSetMatrixViewOffsetStereo() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.rlSetPointSize">rlSetPointSize() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlSetRenderBatchActive">rlSetRenderBatchActive() (in module raylib)</a>
 </li>
@@ -9196,6 +9336,8 @@
       <li><a href="raylib.html#raylib.rlUnloadFramebuffer">rlUnloadFramebuffer() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlUnloadRenderBatch">rlUnloadRenderBatch() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.rlUnloadShader">rlUnloadShader() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.rlUnloadShaderBuffer">rlUnloadShaderBuffer() (in module raylib)</a>
 </li>
@@ -9567,8 +9709,6 @@
 </li>
       <li><a href="raylib.html#raylib.SetWindowTitle">SetWindowTitle() (in module raylib)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyray.html#pyray.Shader">Shader (class in pyray)</a>
 
       <ul>
@@ -9587,6 +9727,8 @@
         <li><a href="pyray.html#pyray.ShaderAttributeDataType.SHADER_ATTRIB_FLOAT">(pyray.ShaderAttributeDataType attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.SHADER_ATTRIB_VEC2">SHADER_ATTRIB_VEC2 (in module raylib)</a>
 
       <ul>
@@ -9603,12 +9745,6 @@
 
       <ul>
         <li><a href="pyray.html#pyray.ShaderAttributeDataType.SHADER_ATTRIB_VEC4">(pyray.ShaderAttributeDataType attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.SHADER_LOC_BONE_MATRICES">SHADER_LOC_BONE_MATRICES (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.ShaderLocationIndex.SHADER_LOC_BONE_MATRICES">(pyray.ShaderLocationIndex attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.SHADER_LOC_COLOR_AMBIENT">SHADER_LOC_COLOR_AMBIENT (in module raylib)</a>
@@ -9695,6 +9831,12 @@
         <li><a href="pyray.html#pyray.ShaderLocationIndex.SHADER_LOC_MAP_ROUGHNESS">(pyray.ShaderLocationIndex attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.SHADER_LOC_MATRIX_BONETRANSFORMS">SHADER_LOC_MATRIX_BONETRANSFORMS (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.ShaderLocationIndex.SHADER_LOC_MATRIX_BONETRANSFORMS">(pyray.ShaderLocationIndex attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.SHADER_LOC_MATRIX_MODEL">SHADER_LOC_MATRIX_MODEL (in module raylib)</a>
 
       <ul>
@@ -9747,6 +9889,12 @@
 
       <ul>
         <li><a href="pyray.html#pyray.ShaderLocationIndex.SHADER_LOC_VERTEX_COLOR">(pyray.ShaderLocationIndex attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.SHADER_LOC_VERTEX_INSTANCETRANSFORM">SHADER_LOC_VERTEX_INSTANCETRANSFORM (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.ShaderLocationIndex.SHADER_LOC_VERTEX_INSTANCETRANSFORM">(pyray.ShaderLocationIndex attribute)</a>
 </li>
       </ul></li>
       <li><a href="raylib.html#raylib.SHADER_LOC_VERTEX_NORMAL">SHADER_LOC_VERTEX_NORMAL (in module raylib)</a>
@@ -9815,6 +9963,30 @@
         <li><a href="pyray.html#pyray.ShaderUniformDataType.SHADER_UNIFORM_SAMPLER2D">(pyray.ShaderUniformDataType attribute)</a>
 </li>
       </ul></li>
+      <li><a href="raylib.html#raylib.SHADER_UNIFORM_UINT">SHADER_UNIFORM_UINT (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.ShaderUniformDataType.SHADER_UNIFORM_UINT">(pyray.ShaderUniformDataType attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.SHADER_UNIFORM_UIVEC2">SHADER_UNIFORM_UIVEC2 (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.ShaderUniformDataType.SHADER_UNIFORM_UIVEC2">(pyray.ShaderUniformDataType attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.SHADER_UNIFORM_UIVEC3">SHADER_UNIFORM_UIVEC3 (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.ShaderUniformDataType.SHADER_UNIFORM_UIVEC3">(pyray.ShaderUniformDataType attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="raylib.html#raylib.SHADER_UNIFORM_UIVEC4">SHADER_UNIFORM_UIVEC4 (in module raylib)</a>
+
+      <ul>
+        <li><a href="pyray.html#pyray.ShaderUniformDataType.SHADER_UNIFORM_UIVEC4">(pyray.ShaderUniformDataType attribute)</a>
+</li>
+      </ul></li>
       <li><a href="raylib.html#raylib.SHADER_UNIFORM_VEC2">SHADER_UNIFORM_VEC2 (in module raylib)</a>
 
       <ul>
@@ -9863,6 +10035,12 @@
 </li>
       <li><a href="raylib.html#raylib.GLFWgammaramp.size">size (raylib.GLFWgammaramp attribute)</a>
 </li>
+      <li><a href="pyray.html#pyray.Model.skeleton">skeleton (pyray.Model attribute)</a>
+
+      <ul>
+        <li><a href="raylib.html#raylib.Model.skeleton">(raylib.Model attribute)</a>
+</li>
+      </ul></li>
       <li><a href="pyray.html#pyray.SKYBLUE">SKYBLUE (in module pyray)</a>
 
       <ul>
@@ -9899,22 +10077,16 @@
         <li><a href="raylib.html#raylib.NPatchInfo.source">(raylib.NPatchInfo attribute)</a>
 </li>
       </ul></li>
-      <li><a href="raylib.html#raylib.SPIN_BUTTON_SPACING">SPIN_BUTTON_SPACING (in module raylib)</a>
+      <li><a href="raylib.html#raylib.SPINNER_BUTTON_SPACING">SPINNER_BUTTON_SPACING (in module raylib)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.GuiSpinnerProperty.SPIN_BUTTON_SPACING">(pyray.GuiSpinnerProperty attribute)</a>
+        <li><a href="pyray.html#pyray.GuiValueBoxProperty.SPINNER_BUTTON_SPACING">(pyray.GuiValueBoxProperty attribute)</a>
 </li>
       </ul></li>
-      <li><a href="raylib.html#raylib.SPIN_BUTTON_WIDTH">SPIN_BUTTON_WIDTH (in module raylib)</a>
+      <li><a href="raylib.html#raylib.SPINNER_BUTTON_WIDTH">SPINNER_BUTTON_WIDTH (in module raylib)</a>
 
       <ul>
-        <li><a href="pyray.html#pyray.GuiSpinnerProperty.SPIN_BUTTON_WIDTH">(pyray.GuiSpinnerProperty attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="raylib.html#raylib.SPINNER">SPINNER (in module raylib)</a>
-
-      <ul>
-        <li><a href="pyray.html#pyray.GuiControl.SPINNER">(pyray.GuiControl attribute)</a>
+        <li><a href="pyray.html#pyray.GuiValueBoxProperty.SPINNER_BUTTON_WIDTH">(pyray.GuiValueBoxProperty attribute)</a>
 </li>
       </ul></li>
       <li><a href="pyray.html#pyray.start_automation_event_recording">start_automation_event_recording() (in module pyray)</a>
@@ -10119,6 +10291,8 @@
 </li>
       <li><a href="pyray.html#pyray.text_insert">text_insert() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.text_insert_alloc">text_insert_alloc() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.text_is_equal">text_is_equal() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.text_join">text_join() (in module pyray)</a>
@@ -10143,7 +10317,15 @@
         <li><a href="pyray.html#pyray.GuiTextBoxProperty.TEXT_READONLY">(pyray.GuiTextBoxProperty attribute)</a>
 </li>
       </ul></li>
+      <li><a href="pyray.html#pyray.text_remove_spaces">text_remove_spaces() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.text_replace">text_replace() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.text_replace_alloc">text_replace_alloc() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.text_replace_between">text_replace_between() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.text_replace_between_alloc">text_replace_between_alloc() (in module pyray)</a>
 </li>
       <li><a href="raylib.html#raylib.TEXT_SIZE">TEXT_SIZE (in module raylib)</a>
 
@@ -10217,13 +10399,23 @@
 </li>
       <li><a href="raylib.html#raylib.TextInsert">TextInsert() (in module raylib)</a>
 </li>
+      <li><a href="raylib.html#raylib.TextInsertAlloc">TextInsertAlloc() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.TextIsEqual">TextIsEqual() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.TextJoin">TextJoin() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.TextLength">TextLength() (in module raylib)</a>
 </li>
+      <li><a href="raylib.html#raylib.TextRemoveSpaces">TextRemoveSpaces() (in module raylib)</a>
+</li>
       <li><a href="raylib.html#raylib.TextReplace">TextReplace() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.TextReplaceAlloc">TextReplaceAlloc() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.TextReplaceBetween">TextReplaceBetween() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.TextReplaceBetweenAlloc">TextReplaceBetweenAlloc() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.TextSplit">TextSplit() (in module raylib)</a>
 </li>
@@ -10265,12 +10457,8 @@
         <li><a href="raylib.html#raylib.RenderTexture2D.texture">(raylib.RenderTexture2D attribute)</a>
 </li>
       </ul></li>
-      <li><a href="pyray.html#pyray.Texture2D">Texture2D (class in pyray)</a>
-
-      <ul>
-        <li><a href="raylib.html#raylib.Texture2D">(class in raylib)</a>
+      <li><a href="raylib.html#raylib.Texture2D">Texture2D (class in raylib)</a>
 </li>
-      </ul></li>
       <li><a href="raylib.html#raylib.TEXTURE_FILTER_ANISOTROPIC_16X">TEXTURE_FILTER_ANISOTROPIC_16X (in module raylib)</a>
 
       <ul>
@@ -10461,8 +10649,6 @@
 </li>
       <li><a href="pyray.html#pyray.unload_model">unload_model() (in module pyray)</a>
 </li>
-      <li><a href="pyray.html#pyray.unload_model_animation">unload_model_animation() (in module pyray)</a>
-</li>
       <li><a href="pyray.html#pyray.unload_model_animations">unload_model_animations() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.unload_music_stream">unload_music_stream() (in module pyray)</a>
@@ -10476,6 +10662,8 @@
       <li><a href="pyray.html#pyray.unload_sound">unload_sound() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.unload_sound_alias">unload_sound_alias() (in module pyray)</a>
+</li>
+      <li><a href="pyray.html#pyray.unload_text_lines">unload_text_lines() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.unload_texture">unload_texture() (in module pyray)</a>
 </li>
@@ -10519,8 +10707,6 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="raylib.html#raylib.UnloadModel">UnloadModel() (in module raylib)</a>
 </li>
-      <li><a href="raylib.html#raylib.UnloadModelAnimation">UnloadModelAnimation() (in module raylib)</a>
-</li>
       <li><a href="raylib.html#raylib.UnloadModelAnimations">UnloadModelAnimations() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.UnloadMusicStream">UnloadMusicStream() (in module raylib)</a>
@@ -10534,6 +10720,8 @@
       <li><a href="raylib.html#raylib.UnloadSound">UnloadSound() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.UnloadSoundAlias">UnloadSoundAlias() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.UnloadTextLines">UnloadTextLines() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.UnloadTexture">UnloadTexture() (in module raylib)</a>
 </li>
@@ -10563,7 +10751,7 @@
 </li>
       <li><a href="pyray.html#pyray.update_model_animation">update_model_animation() (in module pyray)</a>
 </li>
-      <li><a href="pyray.html#pyray.update_model_animation_bones">update_model_animation_bones() (in module pyray)</a>
+      <li><a href="pyray.html#pyray.update_model_animation_ex">update_model_animation_ex() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.update_music_stream">update_music_stream() (in module pyray)</a>
 </li>
@@ -10583,7 +10771,7 @@
 </li>
       <li><a href="raylib.html#raylib.UpdateModelAnimation">UpdateModelAnimation() (in module raylib)</a>
 </li>
-      <li><a href="raylib.html#raylib.UpdateModelAnimationBones">UpdateModelAnimationBones() (in module raylib)</a>
+      <li><a href="raylib.html#raylib.UpdateModelAnimationEx">UpdateModelAnimationEx() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.UpdateMusicStream">UpdateMusicStream() (in module raylib)</a>
 </li>
@@ -10673,6 +10861,8 @@
 </li>
       <li><a href="pyray.html#pyray.vector2_clamp_value">vector2_clamp_value() (in module pyray)</a>
 </li>
+      <li><a href="pyray.html#pyray.vector2_cross_product">vector2_cross_product() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.vector2_distance">vector2_distance() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.vector2_distance_sqr">vector2_distance_sqr() (in module pyray)</a>
@@ -10732,6 +10922,8 @@
       <li><a href="raylib.html#raylib.Vector2Clamp">Vector2Clamp() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.Vector2ClampValue">Vector2ClampValue() (in module raylib)</a>
+</li>
+      <li><a href="raylib.html#raylib.Vector2CrossProduct">Vector2CrossProduct() (in module raylib)</a>
 </li>
       <li><a href="raylib.html#raylib.Vector2Distance">Vector2Distance() (in module raylib)</a>
 </li>
@@ -10859,10 +11051,10 @@
 </li>
       <li><a href="pyray.html#pyray.vector3_subtract_value">vector3_subtract_value() (in module pyray)</a>
 </li>
-      <li><a href="pyray.html#pyray.vector3_to_float_v">vector3_to_float_v() (in module pyray)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pyray.html#pyray.vector3_to_float_v">vector3_to_float_v() (in module pyray)</a>
+</li>
       <li><a href="pyray.html#pyray.vector3_transform">vector3_transform() (in module pyray)</a>
 </li>
       <li><a href="pyray.html#pyray.vector3_unproject">vector3_unproject() (in module pyray)</a>
@@ -11175,8 +11367,6 @@
         <li><a href="pyray.html#pyray.Rectangle.width">(pyray.Rectangle attribute)</a>
 </li>
         <li><a href="pyray.html#pyray.Texture.width">(pyray.Texture attribute)</a>
-</li>
-        <li><a href="pyray.html#pyray.Texture2D.width">(pyray.Texture2D attribute)</a>
 </li>
         <li><a href="raylib.html#raylib.GLFWimage.width">(raylib.GLFWimage attribute)</a>
 </li>

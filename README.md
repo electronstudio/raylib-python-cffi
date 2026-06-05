@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 5.6
+# Python Bindings for Raylib 6.0
 ## Libraries: raymath, raygui, rlgl, physac and GLFW
 ## Backends: Desktop, SDL, DRM, Web, Software rendering
 ## Platforms: Windows, Mac, Linux, Raspberry Pi, Web
@@ -21,7 +21,7 @@ original Raylib.
 
 # Quickstart
 
-`pip3 install raylib==5.5.0.4 --break-system-packages`
+`pip3 install raylib==6.0.1.0 --break-system-packages`
 ```python
 from pyray import *
 init_window(800, 450, "Hello")
@@ -33,20 +33,20 @@ while not window_should_close():
 close_window()
 ```
 
-
-
 Use the [project generator](https://github.com/electronstudio/python-raylib-template) to generate a complete project.  [Example of project](https://github.com/electronstudio/raylib-example-game)
 
 # Videos
 
+<a href="https://www.youtube.com/watch?v=MIgq9w0MUsM">FinFET - Making a simple 3D game in Python (for real) with Raylib<br><img src="https://img.youtube.com/vi/MIgq9w0MUsM/0.jpg" alt="video"/></a>
 
-<a href="https://www.youtube.com/watch?v=MIgq9w0MUsM"><img src="https://img.youtube.com/vi/MIgq9w0MUsM/0.jpg" alt="video"/></a>
+[more on FinFET](https://www.youtube.com/@FinFET/videos)
 
-<a href="https://www.youtube.com/watch?v=UoAsDlUwjy0"><img src="https://img.youtube.com/vi/UoAsDlUwjy0/0.jpg" alt="video"/></a>
+<a href="https://www.youtube.com/watch?v=UoAsDlUwjy0">Clear Code - The ultimate introduction to Raylib<br><img src="https://img.youtube.com/vi/UoAsDlUwjy0/0.jpg" alt="video"/></a>
 
+<a href="https://www.youtube.com/watch?v=OSRbm2ocVjY">Unconventional Coding - I Made My Own Video Editor Because Kdenlive Is Too Slow<br><img src="https://img.youtube.com/vi/OSRbm2ocVjY/0.jpg" alt="video"/></a>
 
+<a href="https://www.youtube.com/watch?v=hbe1zKUAxuU">WOBLO GAMES - The Druid's Downfall<br><img src="https://img.youtube.com/vi/hbe1zKUAxuU/0.jpg" alt="video"/></a>
 
-[more videos](https://www.youtube.com/@FinFET/videos)
 
 # Links
 
@@ -57,6 +57,7 @@ Use the [project generator](https://github.com/electronstudio/python-raylib-temp
 * [Python video player](https://github.com/anrayliu/pyvidplayer2)
 * [A Vector2 class](https://github.com/electronstudio/raylib-python-cffi/blob/master/examples/extra/vector2_extended.py)
 * [Raylib C FAQ](https://github.com/raysan5/raylib/wiki/Frequently-Asked-Questions/)
+* [Project generator](https://github.com/electronstudio/python-raylib-template)
 
 # Installation
 
@@ -72,7 +73,7 @@ Then make sure you have the latest pip installed:
 Then install
 
     python3 -m pip install setuptools
-    python3 -m pip install raylib==5.5.0.4
+    python3 -m pip install raylib==6.0.1.0
 
 On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from
 source, in which case you will need to have Raylib development libs installed, e.g. 
@@ -94,7 +95,7 @@ Older MacOS requires building from source but this is usually simple:
 
     brew install pkg-config
     brew install raylib
-    python3 -m pip install raylib==5.5.0.4
+    python3 -m pip install raylib==6.0.1.0
 
 ## Linux
 
@@ -214,6 +215,16 @@ Carefully read all their [documentation](https://pygame-web.github.io/).
 
 It does work for most of [these examples](https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/)
 
+# Startup without printing anything
+
+```python
+import logging
+logging.basicConfig(level=logging.ERROR)
+import pyray
+pyray.set_trace_log_level(pyray.LOG_ERROR)
+pyray.init_window(100,100,"test")
+```
+
 # App showcase
 
 [Tempest-raylib](https://github.com/Emtyloc/tempest-raylib)
@@ -227,8 +238,6 @@ It does work for most of [these examples](https://electronstudio.github.io/rayli
 [Tanki](https://github.com/pkulev/tanki)
 
 [Alloy Bloxel Editor](https://pebaz.itch.io/alloy-bloxel-editor)
-
-[Eidolon](https://github.com/Miou-zora/Eidolon)
 
 Add your app here!
 
@@ -295,3 +304,7 @@ You can create a standalone binary using the Nuitka compiler.  For example, here
 
 [Coding Games With Pygame Zero & Python](https://github.com/electronstudio/pygame-zero-book) is 
 a book for Python beginners.
+
+# Hall of shame!
+
+Apparently [comma.ai](https://comma.ai/) are now using raylib-python-cffi commercially and so have begun donating money to raylib but have chosen _not_ to give anything to raylib-python-cffi.  Yes it's perfectly legal usage, but it's not very nice behaviour.  😔

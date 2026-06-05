@@ -1,21 +1,21 @@
 Raspberry Pi
 ====================
 
-Please use Raspberry Pi OS Bookworm.  Bullseye should also work.  Older OSes are not tested.
+Please use Raspberry Pi OS 13 Trixie 64 bit.  Bookworm should also work.  Older OSes are not tested.
 
 Option 1: Binary wheel
 ----------------------
 
-We have published binary wheels compiled for 64-bit Raspberry OS Bullseye in X11 mode.
+We have published binary wheels compiled for 64-bit Raspberry OS 12 Bookworm in Wayland/X11 mode.
 
 ::
 
     python -m pip install --break-system-packages raylib
 
-Alternatively there is a DRM wheel called ``raylib_drm`` to use the framebuffer without X11.  You can't have both wheels
+Alternatively there is a DRM wheel called ``raylib_drm`` to use the framebuffer mode.  You can't have both wheels
 installed at once.
 
-If it doesn't work, or you're not on Bullseye, or you're 32 bit, you will need to compile your own raylib.  See below.
+If it doesn't work, or you're not on Bookworm/Trixie, or you're 32 bit, you will need to compile your own raylib.  See below.
 For full instructions on this, see https://github.com/raysan5/raylib/wiki/Working-on-Raspberry-Pi .  If you need help with this ask Raylib.
 
 Option 2: Compile Raylib from source X11 mode
@@ -27,12 +27,12 @@ This should work for everyone.
 
     sudo apt update
     sudo apt install python3-pip cmake libegl1-mesa-dev libgbm-dev libgles2-mesa-dev libdrm-dev libglfw3-dev
-    git clone https://github.com/raysan5/raylib.git --branch 5.0 --single-branch
+    git clone https://github.com/raysan5/raylib.git --branch 6.0 --single-branch
     cd raylib
     mkdir build
     rm -rf build/*
     cd build
-    cmake -DPLATFORM="Desktop" -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DPLATFORM="Desktop" -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
     make
     sudo make install
     sudo cp -r ../src/external/glfw/include/GLFW /usr/local/include/
@@ -75,11 +75,11 @@ Build a shared lib version of Raylib in DRM mode and install to /usr:
     mkdir build
     rm rf build/*
     cd build
-    cmake -DPLATFORM="DRM" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+    cmake -DPLATFORM="DRM" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
     make
     sudo make install
 
-    
+
 Then have pip compile and install the wheel:
 
 ::

@@ -187,7 +187,7 @@ class GamepadButton(int):
     GAMEPAD_BUTTON_RIGHT_THUMB = 17
 
 class GamepadAxis(int):
-    """Gamepad axis."""
+    """Gamepad axes."""
     GAMEPAD_AXIS_LEFT_X = 0
     GAMEPAD_AXIS_LEFT_Y = 1
     GAMEPAD_AXIS_RIGHT_X = 2
@@ -239,7 +239,8 @@ class ShaderLocationIndex(int):
     SHADER_LOC_MAP_BRDF = 25
     SHADER_LOC_VERTEX_BONEIDS = 26
     SHADER_LOC_VERTEX_BONEWEIGHTS = 27
-    SHADER_LOC_BONE_MATRICES = 28
+    SHADER_LOC_MATRIX_BONETRANSFORMS = 28
+    SHADER_LOC_VERTEX_INSTANCETRANSFORM = 29
 
 class ShaderUniformDataType(int):
     """Shader uniform data type."""
@@ -251,7 +252,11 @@ class ShaderUniformDataType(int):
     SHADER_UNIFORM_IVEC2 = 5
     SHADER_UNIFORM_IVEC3 = 6
     SHADER_UNIFORM_IVEC4 = 7
-    SHADER_UNIFORM_SAMPLER2D = 8
+    SHADER_UNIFORM_UINT = 8
+    SHADER_UNIFORM_UIVEC2 = 9
+    SHADER_UNIFORM_UIVEC3 = 10
+    SHADER_UNIFORM_UIVEC4 = 11
+    SHADER_UNIFORM_SAMPLER2D = 12
 
 class ShaderAttributeDataType(int):
     """Shader attribute data types."""
@@ -363,6 +368,7 @@ class NPatchLayout(int):
 
 class rlGlVersion(int):
     """OpenGL version."""
+    RL_OPENGL_SOFTWARE = 0
     RL_OPENGL_11 = 1
     RL_OPENGL_21 = 2
     RL_OPENGL_33 = 3
@@ -547,7 +553,7 @@ class GuiControl(int):
     DROPDOWNBOX = 8
     TEXTBOX = 9
     VALUEBOX = 10
-    SPINNER = 11
+    CONTROL11 = 11
     LISTVIEW = 12
     COLORPICKER = 13
     SCROLLBAR = 14
@@ -593,6 +599,7 @@ class GuiSliderProperty(int):
 class GuiProgressBarProperty(int):
     """ProgressBar."""
     PROGRESS_PADDING = 16
+    PROGRESS_SIDE = 17
 
 class GuiScrollBarProperty(int):
     """ScrollBar."""
@@ -623,10 +630,10 @@ class GuiTextBoxProperty(int):
     """TextBox/TextBoxMulti/ValueBox/Spinner."""
     TEXT_READONLY = 16
 
-class GuiSpinnerProperty(int):
-    """Spinner."""
-    SPIN_BUTTON_WIDTH = 16
-    SPIN_BUTTON_SPACING = 17
+class GuiValueBoxProperty(int):
+    """ValueBox/Spinner."""
+    SPINNER_BUTTON_WIDTH = 16
+    SPINNER_BUTTON_SPACING = 17
 
 class GuiListViewProperty(int):
     """ListView."""
@@ -634,7 +641,8 @@ class GuiListViewProperty(int):
     LIST_ITEMS_SPACING = 17
     SCROLLBAR_WIDTH = 18
     SCROLLBAR_SIDE = 19
-    LIST_ITEMS_BORDER_WIDTH = 20
+    LIST_ITEMS_BORDER_NORMAL = 20
+    LIST_ITEMS_BORDER_WIDTH = 21
 
 class GuiColorPickerProperty(int):
     """ColorPicker."""
@@ -875,27 +883,27 @@ class GuiIconName(int):
     ICON_MLAYERS = 226
     ICON_MAPS = 227
     ICON_HOT = 228
-    ICON_229 = 229
-    ICON_230 = 230
-    ICON_231 = 231
-    ICON_232 = 232
-    ICON_233 = 233
-    ICON_234 = 234
-    ICON_235 = 235
-    ICON_236 = 236
-    ICON_237 = 237
-    ICON_238 = 238
-    ICON_239 = 239
-    ICON_240 = 240
-    ICON_241 = 241
-    ICON_242 = 242
-    ICON_243 = 243
-    ICON_244 = 244
-    ICON_245 = 245
-    ICON_246 = 246
-    ICON_247 = 247
-    ICON_248 = 248
-    ICON_249 = 249
+    ICON_LABEL = 229
+    ICON_NAME_ID = 230
+    ICON_SLICING = 231
+    ICON_MANUAL_CONTROL = 232
+    ICON_COLLISION = 233
+    ICON_CIRCLE_ADD = 234
+    ICON_CIRCLE_ADD_FILL = 235
+    ICON_CIRCLE_WARNING = 236
+    ICON_CIRCLE_WARNING_FILL = 237
+    ICON_BOX_MORE = 238
+    ICON_BOX_MORE_FILL = 239
+    ICON_BOX_MINUS = 240
+    ICON_BOX_MINUS_FILL = 241
+    ICON_UNION = 242
+    ICON_INTERSECTION = 243
+    ICON_DIFFERENCE = 244
+    ICON_SPHERE = 245
+    ICON_CYLINDER = 246
+    ICON_CONE = 247
+    ICON_ELLIPSOID = 248
+    ICON_CAPSULE = 249
     ICON_250 = 250
     ICON_251 = 251
     ICON_252 = 252
@@ -911,16 +919,16 @@ ffi: _cffi_backend.FFI
 PhysicsShapeType = int
 
 def attach_audio_mixed_processor(processor: Any,) -> None:
-    """Attach audio stream processor to the entire audio pipeline, receives the samples as 'float'."""
+    """Attach audio stream processor to the entire audio pipeline, receives frames x 2 samples as 'float' (stereo)."""
     ...
 def attach_audio_stream_processor(stream: AudioStream|list|tuple,processor: Any,) -> None:
-    """Attach audio stream processor to stream, receives the samples as 'float'."""
+    """Attach audio stream processor to stream, receives frames x 2 samples as 'float' (stereo)."""
     ...
 def begin_blend_mode(mode: int,) -> None:
     """Begin blending mode (alpha, additive, multiplied, subtract, custom)."""
     ...
 def begin_drawing() -> None:
-    """Setup canvas (framebuffer) to start drawing."""
+    """Begin canvas (framebuffer) drawing."""
     ...
 def begin_mode_2d(camera: Camera2D|list|tuple,) -> None:
     """Begin 2D mode with custom camera (2D)."""
@@ -940,7 +948,7 @@ def begin_texture_mode(target: RenderTexture|list|tuple,) -> None:
 def begin_vr_stereo_mode(config: VrStereoConfig|list|tuple,) -> None:
     """Begin stereo rendering (requires VR simulator)."""
     ...
-def change_directory(dir: str,) -> bool:
+def change_directory(dirPath: str,) -> bool:
     """Change working directory, return true on success."""
     ...
 def check_collision_box_sphere(box: BoundingBox|list|tuple,center: Vector3|list|tuple,radius: float,) -> bool:
@@ -950,7 +958,7 @@ def check_collision_boxes(box1: BoundingBox|list|tuple,box2: BoundingBox|list|tu
     """Check collision between two bounding boxes."""
     ...
 def check_collision_circle_line(center: Vector2|list|tuple,radius: float,p1: Vector2|list|tuple,p2: Vector2|list|tuple,) -> bool:
-    """Check if circle collides with a line created betweeen two points [p1] and [p2]."""
+    """Check if circle collides with a line created between two points [p1] and [p2]."""
     ...
 def check_collision_circle_rec(center: Vector2|list|tuple,radius: float,rec: Rectangle|list|tuple,) -> bool:
     """Check collision between circle and rectangle."""
@@ -986,7 +994,7 @@ def clamp(value: float,min_1: float,max_2: float,) -> float:
     """."""
     ...
 def clear_background(color: Color|list|tuple,) -> None:
-    """Set background color (framebuffer clear color)."""
+    """Clear background (framebuffer) to color."""
     ...
 def clear_window_state(flags: int,) -> None:
     """Clear window configuration state flags."""
@@ -1052,6 +1060,9 @@ def compute_md5(data: str,dataSize: int,) -> Any:
 def compute_sha1(data: str,dataSize: int,) -> Any:
     """Compute SHA1 hash code, returns static int[5] (20 bytes)."""
     ...
+def compute_sha256(data: str,dataSize: int,) -> Any:
+    """Compute SHA256 hash code, returns static int[8] (32 bytes)."""
+    ...
 @deprecated("Raylib no longer recommends the use of Physac library")
 def create_physics_body_circle(pos: Vector2|list|tuple,radius: float,density: float,) -> Any:
     """Creates a new circle physics body with generic parameters."""
@@ -1064,8 +1075,8 @@ def create_physics_body_polygon(pos: Vector2|list|tuple,radius: float,sides: int
 def create_physics_body_rectangle(pos: Vector2|list|tuple,width: float,height: float,density: float,) -> Any:
     """Creates a new rectangle physics body with generic parameters."""
     ...
-def decode_data_base64(data: str,outputSize: Any,) -> str:
-    """Decode Base64 string data, memory must be MemFree()."""
+def decode_data_base64(text: str,outputSize: Any,) -> str:
+    """Decode Base64 string (expected NULL terminated), memory must be MemFree()."""
     ...
 def decompress_data(compData: str,compDataSize: int,dataSize: Any,) -> str:
     """Decompress data (DEFLATE algorithm), memory must be MemFree()."""
@@ -1084,7 +1095,7 @@ def directory_exists(dirPath: str,) -> bool:
     """Check if a directory path exists."""
     ...
 def disable_cursor() -> None:
-    """Disables cursor (lock cursor)."""
+    """Disable cursor (lock cursor)."""
     ...
 def disable_event_waiting() -> None:
     """Disable waiting for events on EndDrawing(), automatic events polling."""
@@ -1101,10 +1112,10 @@ def draw_billboard_rec(camera: Camera3D|list|tuple,texture: Texture|list|tuple,s
 def draw_bounding_box(box: BoundingBox|list|tuple,color: Color|list|tuple,) -> None:
     """Draw bounding box (wires)."""
     ...
-def draw_capsule(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,radius: float,slices: int,rings: int,color: Color|list|tuple,) -> None:
+def draw_capsule(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,radius: float,rings: int,slices: int,color: Color|list|tuple,) -> None:
     """Draw a capsule with the center of its sphere caps at startPos and endPos."""
     ...
-def draw_capsule_wires(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,radius: float,slices: int,rings: int,color: Color|list|tuple,) -> None:
+def draw_capsule_wires(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,radius: float,rings: int,slices: int,color: Color|list|tuple,) -> None:
     """Draw capsule wireframe with the center of its sphere caps at startPos and endPos."""
     ...
 def draw_circle(centerX: int,centerY: int,radius: float,color: Color|list|tuple,) -> None:
@@ -1113,7 +1124,7 @@ def draw_circle(centerX: int,centerY: int,radius: float,color: Color|list|tuple,
 def draw_circle_3d(center: Vector3|list|tuple,radius: float,rotationAxis: Vector3|list|tuple,rotationAngle: float,color: Color|list|tuple,) -> None:
     """Draw a circle in 3D world space."""
     ...
-def draw_circle_gradient(centerX: int,centerY: int,radius: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> None:
+def draw_circle_gradient(center: Vector2|list|tuple,radius: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> None:
     """Draw a gradient-filled circle."""
     ...
 def draw_circle_lines(centerX: int,centerY: int,radius: float,color: Color|list|tuple,) -> None:
@@ -1152,7 +1163,7 @@ def draw_cylinder_ex(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,sta
 def draw_cylinder_wires(position: Vector3|list|tuple,radiusTop: float,radiusBottom: float,height: float,slices: int,color: Color|list|tuple,) -> None:
     """Draw a cylinder/cone wires."""
     ...
-def draw_cylinder_wires_ex(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,startRadius: float,endRadius: float,sides: int,color: Color|list|tuple,) -> None:
+def draw_cylinder_wires_ex(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,startRadius: float,endRadius: float,slices: int,color: Color|list|tuple,) -> None:
     """Draw a cylinder wires with base at startPos and top at endPos."""
     ...
 def draw_ellipse(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
@@ -1160,6 +1171,12 @@ def draw_ellipse(centerX: int,centerY: int,radiusH: float,radiusV: float,color: 
     ...
 def draw_ellipse_lines(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
     """Draw ellipse outline."""
+    ...
+def draw_ellipse_lines_v(center: Vector2|list|tuple,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
+    """Draw ellipse outline (Vector version)."""
+    ...
+def draw_ellipse_v(center: Vector2|list|tuple,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
+    """Draw ellipse (Vector version)."""
     ...
 def draw_fps(posX: int,posY: int,) -> None:
     """Draw current FPS."""
@@ -1175,6 +1192,9 @@ def draw_line_3d(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,color: 
     ...
 def draw_line_bezier(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
     """Draw line segment cubic-bezier in-out interpolation."""
+    ...
+def draw_line_dashed(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,dashSize: int,spaceSize: int,color: Color|list|tuple,) -> None:
+    """Draw a dashed line."""
     ...
 def draw_line_ex(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
     """Draw a line (using triangles/quads)."""
@@ -1197,12 +1217,6 @@ def draw_model(model: Model|list|tuple,position: Vector3|list|tuple,scale: float
 def draw_model_ex(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
     """Draw a model with extended parameters."""
     ...
-def draw_model_points(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
-    """Draw a model as points."""
-    ...
-def draw_model_points_ex(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
-    """Draw a model as points with extended parameters."""
-    ...
 def draw_model_wires(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
     """Draw a model wires (with texture if set)."""
     ...
@@ -1222,7 +1236,7 @@ def draw_point_3d(position: Vector3|list|tuple,color: Color|list|tuple,) -> None
     """Draw a point in 3D space, actually a small line."""
     ...
 def draw_poly(center: Vector2|list|tuple,sides: int,radius: float,rotation: float,color: Color|list|tuple,) -> None:
-    """Draw a regular polygon (Vector version)."""
+    """Draw a polygon of n sides."""
     ...
 def draw_poly_lines(center: Vector2|list|tuple,sides: int,radius: float,rotation: float,color: Color|list|tuple,) -> None:
     """Draw a polygon outline of n sides."""
@@ -1236,7 +1250,7 @@ def draw_ray(ray: Ray|list|tuple,color: Color|list|tuple,) -> None:
 def draw_rectangle(posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
     """Draw a color-filled rectangle."""
     ...
-def draw_rectangle_gradient_ex(rec: Rectangle|list|tuple,topLeft: Color|list|tuple,bottomLeft: Color|list|tuple,topRight: Color|list|tuple,bottomRight: Color|list|tuple,) -> None:
+def draw_rectangle_gradient_ex(rec: Rectangle|list|tuple,topLeft: Color|list|tuple,bottomLeft: Color|list|tuple,bottomRight: Color|list|tuple,topRight: Color|list|tuple,) -> None:
     """Draw a gradient-filled rectangle with custom vertex colors."""
     ...
 def draw_rectangle_gradient_h(posX: int,posY: int,width: int,height: int,left: Color|list|tuple,right: Color|list|tuple,) -> None:
@@ -1264,7 +1278,7 @@ def draw_rectangle_rounded_lines(rec: Rectangle|list|tuple,roundness: float,segm
     """Draw rectangle lines with rounded edges."""
     ...
 def draw_rectangle_rounded_lines_ex(rec: Rectangle|list|tuple,roundness: float,segments: int,lineThick: float,color: Color|list|tuple,) -> None:
-    """Draw rectangle with rounded edges outline."""
+    """Draw rectangle lines with rounded edges outline."""
     ...
 def draw_rectangle_v(position: Vector2|list|tuple,size: Vector2|list|tuple,color: Color|list|tuple,) -> None:
     """Draw a color-filled rectangle (Vector version)."""
@@ -1321,7 +1335,7 @@ def draw_text_codepoint(font: Font|list|tuple,codepoint: int,position: Vector2|l
     """Draw one character (codepoint)."""
     ...
 def draw_text_codepoints(font: Font|list|tuple,codepoints: Any,codepointCount: int,position: Vector2|list|tuple,fontSize: float,spacing: float,tint: Color|list|tuple,) -> None:
-    """Draw multiple character (codepoint)."""
+    """Draw multiple characters (codepoint)."""
     ...
 def draw_text_ex(font: Font|list|tuple,text: str,position: Vector2|list|tuple,fontSize: float,spacing: float,tint: Color|list|tuple,) -> None:
     """Draw text using font and additional parameters."""
@@ -1336,7 +1350,7 @@ def draw_texture_ex(texture: Texture|list|tuple,position: Vector2|list|tuple,rot
     """Draw a Texture2D with extended parameters."""
     ...
 def draw_texture_n_patch(texture: Texture|list|tuple,nPatchInfo: NPatchInfo|list|tuple,dest: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
-    """Draws a texture (or part of it) that stretches or shrinks nicely."""
+    """Draw a texture (or part of it) that stretches or shrinks nicely."""
     ...
 def draw_texture_pro(texture: Texture|list|tuple,source: Rectangle|list|tuple,dest: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
     """Draw a part of a texture defined by a rectangle with 'pro' parameters."""
@@ -1356,6 +1370,9 @@ def draw_triangle_3d(v1: Vector3|list|tuple,v2: Vector3|list|tuple,v3: Vector3|l
 def draw_triangle_fan(points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
     """Draw a triangle fan defined by points (first vertex is the center)."""
     ...
+def draw_triangle_gradient(v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,c1: Color|list|tuple,c2: Color|list|tuple,c3: Color|list|tuple,) -> None:
+    """Draw triangle with interpolated colors (vertex in counter-clockwise order!)."""
+    ...
 def draw_triangle_lines(v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
     """Draw triangle outline (vertex in counter-clockwise order!)."""
     ...
@@ -1366,25 +1383,25 @@ def draw_triangle_strip_3d(points: Any|list|tuple,pointCount: int,color: Color|l
     """Draw a triangle strip defined by points."""
     ...
 def enable_cursor() -> None:
-    """Enables cursor (unlock cursor)."""
+    """Enable cursor (unlock cursor)."""
     ...
 def enable_event_waiting() -> None:
     """Enable waiting for events on EndDrawing(), no automatic event polling."""
     ...
 def encode_data_base64(data: str,dataSize: int,outputSize: Any,) -> str:
-    """Encode data to Base64 string, memory must be MemFree()."""
+    """Encode data to Base64 string (includes NULL terminator), memory must be MemFree()."""
     ...
 def end_blend_mode() -> None:
     """End blending mode (reset to default: alpha blending)."""
     ...
 def end_drawing() -> None:
-    """End canvas drawing and swap buffers (double buffering)."""
+    """End canvas (framebuffer) drawing and swap buffers (double buffering)."""
     ...
 def end_mode_2d() -> None:
-    """Ends 2D mode with custom camera."""
+    """End 2D mode with custom camera."""
     ...
 def end_mode_3d() -> None:
-    """Ends 3D mode and returns to default 2D orthographic mode."""
+    """End 3D mode and returns to default 2D orthographic mode."""
     ...
 def end_scissor_mode() -> None:
     """End scissor mode."""
@@ -1393,7 +1410,7 @@ def end_shader_mode() -> None:
     """End custom shader drawing (use default shader)."""
     ...
 def end_texture_mode() -> None:
-    """Ends drawing to render texture."""
+    """End drawing to render texture."""
     ...
 def end_vr_stereo_mode() -> None:
     """End stereo rendering (requires VR simulator)."""
@@ -1414,7 +1431,7 @@ def export_image_as_code(image: Image|list|tuple,fileName: str,) -> bool:
     """Export image as code file defining an array of bytes, returns true on success."""
     ...
 def export_image_to_memory(image: Image|list|tuple,fileType: str,fileSize: Any,) -> str:
-    """Export image to memory buffer."""
+    """Export image to memory buffer, memory must be MemFree()."""
     ...
 def export_mesh(mesh: Mesh|list|tuple,fileName: str,) -> bool:
     """Export mesh data to file, returns true on success."""
@@ -1431,8 +1448,26 @@ def export_wave_as_code(wave: Wave|list|tuple,fileName: str,) -> bool:
 def fade(color: Color|list|tuple,alpha: float,) -> Color:
     """Get color with alpha applied, alpha goes from 0.0f to 1.0f."""
     ...
+def file_copy(srcPath: str,dstPath: str,) -> int:
+    """Copy file from one path to another, dstPath created if it doesn't exist."""
+    ...
 def file_exists(fileName: str,) -> bool:
     """Check if file exists."""
+    ...
+def file_move(srcPath: str,dstPath: str,) -> int:
+    """Move file from one directory to another, dstPath created if it doesn't exist."""
+    ...
+def file_remove(fileName: str,) -> int:
+    """Remove file (if exists)."""
+    ...
+def file_rename(fileName: str,fileRename: str,) -> int:
+    """Rename file (if exists)."""
+    ...
+def file_text_find_index(fileName: str,search: str,) -> int:
+    """Find text in existing file."""
+    ...
+def file_text_replace(fileName: str,search: str,replacement: str,) -> int:
+    """Replace text in an existing file."""
     ...
 def float_equals(x: float,y: float,) -> int:
     """."""
@@ -1545,6 +1580,12 @@ def get_color(hexValue: int,) -> Color:
 def get_current_monitor() -> int:
     """Get current monitor where window is placed."""
     ...
+def get_directory_file_count(dirPath: str,) -> int:
+    """Get the file count in a directory."""
+    ...
+def get_directory_file_count_ex(basePath: str,filter: str,scanSubdirs: bool,) -> int:
+    """Get the file count in a directory with extension filtering and recursive directory scan. Use 'DIR' in the filter string to include directories in the result."""
+    ...
 def get_directory_path(filePath: str,) -> str:
     """Get full path for a given fileName with path (uses static string)."""
     ...
@@ -1573,10 +1614,10 @@ def get_frame_time() -> float:
     """Get time in seconds for last frame drawn (delta time)."""
     ...
 def get_gamepad_axis_count(gamepad: int,) -> int:
-    """Get gamepad axis count for a gamepad."""
+    """Get axis count for a gamepad."""
     ...
 def get_gamepad_axis_movement(gamepad: int,axis: int,) -> float:
-    """Get axis movement value for a gamepad axis."""
+    """Get movement value for a gamepad axis."""
     ...
 def get_gamepad_button_pressed() -> int:
     """Get the last gamepad button pressed."""
@@ -1616,6 +1657,9 @@ def get_image_alpha_border(image: Image|list|tuple,threshold: float,) -> Rectang
     ...
 def get_image_color(image: Image|list|tuple,x: int,y: int,) -> Color:
     """Get image pixel color at (x, y) position."""
+    ...
+def get_key_name(key: int,) -> str:
+    """Get name of a QWERTY key on the current keyboard layout (eg returns string 'q' for KEY_A on an AZERTY keyboard)."""
     ...
 def get_key_pressed() -> int:
     """Get key pressed (keycode), call it multiple times for keys queued, returns 0 when the queue is empty."""
@@ -1734,7 +1778,7 @@ def get_screen_height() -> int:
     """Get current screen height."""
     ...
 def get_screen_to_world_2d(position: Vector2|list|tuple,camera: Camera2D|list|tuple,) -> Vector2:
-    """Get the world space position for a 2d camera screen space position."""
+    """Get world space position for a 2d camera screen space position."""
     ...
 def get_screen_to_world_ray(position: Vector2|list|tuple,camera: Camera3D|list|tuple,) -> Ray:
     """Get a ray trace from screen position (i.e mouse)."""
@@ -1763,7 +1807,7 @@ def get_spline_point_basis(p1: Vector2|list|tuple,p2: Vector2|list|tuple,p3: Vec
 def get_spline_point_bezier_cubic(p1: Vector2|list|tuple,c2: Vector2|list|tuple,c3: Vector2|list|tuple,p4: Vector2|list|tuple,t: float,) -> Vector2:
     """Get (evaluate) spline point: Cubic Bezier."""
     ...
-def get_spline_point_bezier_quad(p1: Vector2|list|tuple,c2: Vector2|list|tuple,p3: Vector2|list|tuple,t: float,) -> Vector2:
+def get_spline_point_bezier_quadratic(p1: Vector2|list|tuple,c2: Vector2|list|tuple,p3: Vector2|list|tuple,t: float,) -> Vector2:
     """Get (evaluate) spline point: Quadratic Bezier."""
     ...
 def get_spline_point_catmull_rom(p1: Vector2|list|tuple,p2: Vector2|list|tuple,p3: Vector2|list|tuple,p4: Vector2|list|tuple,t: float,) -> Vector2:
@@ -1771,6 +1815,9 @@ def get_spline_point_catmull_rom(p1: Vector2|list|tuple,p2: Vector2|list|tuple,p
     ...
 def get_spline_point_linear(startPos: Vector2|list|tuple,endPos: Vector2|list|tuple,t: float,) -> Vector2:
     """Get (evaluate) spline point: Linear."""
+    ...
+def get_text_between(text: str,begin: str,end: str,) -> str:
+    """Get text between two strings."""
     ...
 def get_time() -> float:
     """Get elapsed time in seconds since InitWindow()."""
@@ -1803,13 +1850,13 @@ def get_working_directory() -> str:
     """Get current working directory (uses static string)."""
     ...
 def get_world_to_screen(position: Vector3|list|tuple,camera: Camera3D|list|tuple,) -> Vector2:
-    """Get the screen space position for a 3d world space position."""
+    """Get screen space position for a 3d world space position."""
     ...
 def get_world_to_screen_2d(position: Vector2|list|tuple,camera: Camera2D|list|tuple,) -> Vector2:
-    """Get the screen space position for a 2d camera world space position."""
+    """Get screen space position for a 2d camera world space position."""
     ...
 def get_world_to_screen_ex(position: Vector3|list|tuple,camera: Camera3D|list|tuple,width: int,height: int,) -> Vector2:
-    """Get size position for a 3d world space position."""
+    """Get sized screen space position for a 3d world space position."""
     ...
 def gui_button(bounds: Rectangle|list|tuple,text: str,) -> int:
     """Button control, returns true when clicked."""
@@ -1871,6 +1918,9 @@ def gui_get_state() -> int:
 def gui_get_style(control: int,property: int,) -> int:
     """Get one style property."""
     ...
+def gui_get_text_width(text: str,) -> int:
+    """Get text width considering gui style and icon size (if required)."""
+    ...
 def gui_grid(bounds: Rectangle|list|tuple,text: str,spacing: float,subdivs: int,mouseCell: Any|list|tuple,) -> int:
     """Grid control."""
     ...
@@ -1906,6 +1956,9 @@ def gui_load_style(fileName: str,) -> None:
     ...
 def gui_load_style_default() -> None:
     """Load style default over global style."""
+    ...
+def gui_load_style_from_memory(fileData: str,dataSize: int,) -> None:
+    """Load style from memory (binary only)."""
     ...
 def gui_lock() -> None:
     """Lock gui controls (global state)."""
@@ -1983,7 +2036,7 @@ def gui_window_box(bounds: Rectangle|list|tuple,title: str,) -> int:
     """Window Box control, shows a window that can be closed."""
     ...
 def hide_cursor() -> None:
-    """Hides cursor."""
+    """Hide cursor."""
     ...
 def image_alpha_clear(image: Any|list|tuple,color: Color|list|tuple,threshold: float,) -> None:
     """Clear alpha channel to desired color."""
@@ -2006,7 +2059,7 @@ def image_clear_background(dst: Any|list|tuple,color: Color|list|tuple,) -> None
 def image_color_brightness(image: Any|list|tuple,brightness: int,) -> None:
     """Modify image color: brightness (-255 to 255)."""
     ...
-def image_color_contrast(image: Any|list|tuple,contrast: float,) -> None:
+def image_color_contrast(image: Any|list|tuple,contrast: int,) -> None:
     """Modify image color: contrast (-100 to 100)."""
     ...
 def image_color_grayscale(image: Any|list|tuple,) -> None:
@@ -2063,8 +2116,11 @@ def image_draw_pixel_v(dst: Any|list|tuple,position: Vector2|list|tuple,color: C
 def image_draw_rectangle(dst: Any|list|tuple,posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
     """Draw rectangle within an image."""
     ...
-def image_draw_rectangle_lines(dst: Any|list|tuple,rec: Rectangle|list|tuple,thick: int,color: Color|list|tuple,) -> None:
+def image_draw_rectangle_lines(dst: Any|list|tuple,posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
     """Draw rectangle lines within an image."""
+    ...
+def image_draw_rectangle_lines_ex(dst: Any|list|tuple,rec: Rectangle|list|tuple,thick: int,color: Color|list|tuple,) -> None:
+    """Draw rectangle lines within an image with extended parameters."""
     ...
 def image_draw_rectangle_rec(dst: Any|list|tuple,rec: Rectangle|list|tuple,color: Color|list|tuple,) -> None:
     """Draw rectangle within an image."""
@@ -2081,11 +2137,11 @@ def image_draw_text_ex(dst: Any|list|tuple,font: Font|list|tuple,text: str,posit
 def image_draw_triangle(dst: Any|list|tuple,v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
     """Draw triangle within an image."""
     ...
-def image_draw_triangle_ex(dst: Any|list|tuple,v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,c1: Color|list|tuple,c2: Color|list|tuple,c3: Color|list|tuple,) -> None:
-    """Draw triangle with interpolated colors within an image."""
-    ...
 def image_draw_triangle_fan(dst: Any|list|tuple,points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
     """Draw a triangle fan defined by points within an image (first vertex is the center)."""
+    ...
+def image_draw_triangle_gradient(dst: Any|list|tuple,v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,c1: Color|list|tuple,c2: Color|list|tuple,c3: Color|list|tuple,) -> None:
+    """Draw triangle with interpolated colors within an image."""
     ...
 def image_draw_triangle_lines(dst: Any|list|tuple,v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
     """Draw triangle outline within an image."""
@@ -2161,7 +2217,7 @@ def is_audio_stream_processed(stream: AudioStream|list|tuple,) -> bool:
     """Check if any audio stream buffers requires refill."""
     ...
 def is_audio_stream_valid(stream: AudioStream|list|tuple,) -> bool:
-    """Checks if an audio stream is valid (buffers initialized)."""
+    """Check if an audio stream is valid (buffers initialized)."""
     ...
 def is_cursor_hidden() -> bool:
     """Check if cursor is not visible."""
@@ -2173,7 +2229,7 @@ def is_file_dropped() -> bool:
     """Check if a file has been dropped into window."""
     ...
 def is_file_extension(fileName: str,ext: str,) -> bool:
-    """Check file extension (including point: .png, .wav)."""
+    """Check file extension (recommended include point: .png, .wav)."""
     ...
 def is_file_name_valid(fileName: str,) -> bool:
     """Check if fileName is valid for the platform/OS."""
@@ -2197,7 +2253,7 @@ def is_gamepad_button_up(gamepad: int,button: int,) -> bool:
     """Check if a gamepad button is NOT being pressed."""
     ...
 def is_gesture_detected(gesture: int,) -> bool:
-    """Check if a gesture have been detected."""
+    """Check if a gesture has been detected."""
     ...
 def is_image_valid(image: Image|list|tuple,) -> bool:
     """Check if an image is valid (data and parameters)."""
@@ -2242,7 +2298,7 @@ def is_music_stream_playing(music: Music|list|tuple,) -> bool:
     """Check if music is playing."""
     ...
 def is_music_valid(music: Music|list|tuple,) -> bool:
-    """Checks if a music stream is valid (context and buffers initialized)."""
+    """Check if a music stream is valid (context and buffers initialized)."""
     ...
 def is_path_file(path: str,) -> bool:
     """Check if a given path is a file or a directory."""
@@ -2261,13 +2317,13 @@ def is_sound_playing(sound: Sound|list|tuple,) -> bool:
     """Check if a sound is currently playing."""
     ...
 def is_sound_valid(sound: Sound|list|tuple,) -> bool:
-    """Checks if a sound is valid (data loaded and buffers initialized)."""
+    """Check if a sound is valid (data loaded and buffers initialized)."""
     ...
 def is_texture_valid(texture: Texture|list|tuple,) -> bool:
     """Check if a texture is valid (loaded in GPU)."""
     ...
 def is_wave_valid(wave: Wave|list|tuple,) -> bool:
-    """Checks if wave data is valid (data loaded and parameters)."""
+    """Check if wave data is valid (data loaded and parameters)."""
     ...
 def is_window_focused() -> bool:
     """Check if window is currently focused."""
@@ -2306,10 +2362,10 @@ def load_codepoints(text: str,count: Any,) -> Any:
     """Load all codepoints from a UTF-8 text string, codepoints count returned by parameter."""
     ...
 def load_directory_files(dirPath: str,) -> FilePathList:
-    """Load directory filepaths."""
+    """Load directory filepaths, files and directories, no subdirs scan."""
     ...
 def load_directory_files_ex(basePath: str,filter: str,scanSubdirs: bool,) -> FilePathList:
-    """Load directory filepaths with extension filtering and recursive directory scan. Use 'DIR' in the filter string to include directories in the result."""
+    """Load directory filepaths with extension filtering and subdir scan; some filters available: '*.*','FILES*','DIRS*'."""
     ...
 def load_dropped_files() -> FilePathList:
     """Load dropped filepaths."""
@@ -2323,7 +2379,7 @@ def load_file_text(fileName: str,) -> str:
 def load_font(fileName: str,) -> Font:
     """Load font from file into GPU memory (VRAM)."""
     ...
-def load_font_data(fileData: str,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,type: int,) -> Any:
+def load_font_data(fileData: str,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,type: int,glyphCount: Any,) -> Any:
     """Load font data for further use."""
     ...
 def load_font_ex(fileName: str,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
@@ -2351,7 +2407,7 @@ def load_image_from_memory(fileType: str,fileData: str,dataSize: int,) -> Image:
     """Load image from memory buffer, fileType refers to extension: i.e. '.png'."""
     ...
 def load_image_from_screen() -> Image:
-    """Load image from screen buffer and (screenshot)."""
+    """Load image from screen buffer (screenshot)."""
     ...
 def load_image_from_texture(texture: Texture|list|tuple,) -> Image:
     """Load image from GPU texture data."""
@@ -2399,10 +2455,13 @@ def load_sound(fileName: str,) -> Sound:
     """Load sound from file."""
     ...
 def load_sound_alias(source: Sound|list|tuple,) -> Sound:
-    """Create a new sound that shares the same sample data as the source sound, does not own the sound data."""
+    """Load sound alias, new sound that shares the same sample data as the source sound, does not own the sound data."""
     ...
 def load_sound_from_wave(wave: Wave|list|tuple,) -> Sound:
     """Load sound from wave data."""
+    ...
+def load_text_lines(text: str,count: Any,) -> list[str]:
+    """Load text as separate lines ('\n')."""
     ...
 def load_texture(fileName: str,) -> Texture:
     """Load texture from file into GPU memory (VRAM)."""
@@ -2434,6 +2493,9 @@ def make_directory(dirPath: str,) -> int:
 def matrix_add(left: Matrix|list|tuple,right: Matrix|list|tuple,) -> Matrix:
     """."""
     ...
+def matrix_compose(translation: Vector3|list|tuple,rotation: Vector4|list|tuple,scale: Vector3|list|tuple,) -> Matrix:
+    """."""
+    ...
 def matrix_decompose(mat: Matrix|list|tuple,translation: Any|list|tuple,rotation: Any|list|tuple,scale: Any|list|tuple,) -> None:
     """."""
     ...
@@ -2453,6 +2515,9 @@ def matrix_look_at(eye: Vector3|list|tuple,target: Vector3|list|tuple,up: Vector
     """."""
     ...
 def matrix_multiply(left: Matrix|list|tuple,right: Matrix|list|tuple,) -> Matrix:
+    """."""
+    ...
+def matrix_multiply_value(left: Matrix|list|tuple,value: float,) -> Matrix:
     """."""
     ...
 def matrix_ortho(left: float,right: float,bottom: float,top: float,nearPlane: float,farPlane: float,) -> Matrix:
@@ -2502,6 +2567,9 @@ def maximize_window() -> None:
     ...
 def measure_text(text: str,fontSize: int,) -> int:
     """Measure string width for default font."""
+    ...
+def measure_text_codepoints(font: Font|list|tuple,codepoints: Any,length: int,fontSize: float,spacing: float,) -> Vector2:
+    """Measure string size for an existing array of codepoints for Font."""
     ...
 def measure_text_ex(font: Font|list|tuple,text: str,fontSize: float,spacing: float,) -> Vector2:
     """Measure string size for Font."""
@@ -2636,7 +2704,7 @@ def remap(value: float,inputStart: float,inputEnd: float,outputStart: float,outp
     """."""
     ...
 def restore_window() -> None:
-    """Set window state: not minimized/maximized."""
+    """Restore window from being minimized/maximized."""
     ...
 def resume_audio_stream(stream: AudioStream|list|tuple,) -> None:
     """Resume audio stream."""
@@ -2667,7 +2735,7 @@ def set_audio_stream_callback(stream: AudioStream|list|tuple,callback: Any,) -> 
     """Audio thread callback to request new data."""
     ...
 def set_audio_stream_pan(stream: AudioStream|list|tuple,pan: float,) -> None:
-    """Set pan for audio stream (0.5 is centered)."""
+    """Set pan for audio stream (-1.0 left, 0.0 center, 1.0 right)."""
     ...
 def set_audio_stream_pitch(stream: AudioStream|list|tuple,pitch: float,) -> None:
     """Set pitch for audio stream (1.0 is base level)."""
@@ -2685,7 +2753,7 @@ def set_clipboard_text(text: str,) -> None:
     """Set clipboard text content."""
     ...
 def set_config_flags(flags: int,) -> None:
-    """Setup init configuration flags (view FLAGS)."""
+    """Set up init configuration flags (view FLAGS)."""
     ...
 def set_exit_key(key: int,) -> None:
     """Set a custom key to exit program (default is ESC)."""
@@ -2727,10 +2795,10 @@ def set_mouse_scale(scaleX: float,scaleY: float,) -> None:
     """Set mouse scaling."""
     ...
 def set_music_pan(music: Music|list|tuple,pan: float,) -> None:
-    """Set pan for a music (0.5 is center)."""
+    """Set pan for music (-1.0 left, 0.0 center, 1.0 right)."""
     ...
 def set_music_pitch(music: Music|list|tuple,pitch: float,) -> None:
-    """Set pitch for a music (1.0 is base level)."""
+    """Set pitch for music (1.0 is base level)."""
     ...
 def set_music_volume(music: Music|list|tuple,volume: float,) -> None:
     """Set volume for music (1.0 is max level)."""
@@ -2766,7 +2834,7 @@ def set_shader_value_matrix(shader: Shader|list|tuple,locIndex: int,mat: Matrix|
     """Set shader uniform value (matrix 4x4)."""
     ...
 def set_shader_value_texture(shader: Shader|list|tuple,locIndex: int,texture: Texture|list|tuple,) -> None:
-    """Set shader uniform value for texture (sampler2d)."""
+    """Set shader uniform value and bind the texture (sampler2d)."""
     ...
 def set_shader_value_v(shader: Shader|list|tuple,locIndex: int,value: Any,uniformType: int,count: int,) -> None:
     """Set shader uniform value vector."""
@@ -2775,7 +2843,7 @@ def set_shapes_texture(texture: Texture|list|tuple,source: Rectangle|list|tuple,
     """Set texture and rectangle to be used on shapes drawing."""
     ...
 def set_sound_pan(sound: Sound|list|tuple,pan: float,) -> None:
-    """Set pan for a sound (0.5 is center)."""
+    """Set pan for a sound (-1.0 left, 0.0 center, 1.0 right)."""
     ...
 def set_sound_pitch(sound: Sound|list|tuple,pitch: float,) -> None:
     """Set pitch for a sound (1.0 is base level)."""
@@ -2835,7 +2903,7 @@ def set_window_title(title: str,) -> None:
     """Set title for window."""
     ...
 def show_cursor() -> None:
-    """Shows cursor."""
+    """Show cursor."""
     ...
 def start_automation_event_recording() -> None:
     """Start recording automation events (AutomationEventList must be set)."""
@@ -2859,22 +2927,25 @@ def take_screenshot(fileName: str,) -> None:
     """Takes a screenshot of current screen (filename extension defines format)."""
     ...
 def text_append(text: str,append: str,position: Any,) -> None:
-    """Append text at specific position and move cursor!."""
+    """Append text at specific position and move cursor."""
     ...
 def text_copy(dst: str,src: str,) -> int:
     """Copy one string to another, returns bytes copied."""
     ...
-def text_find_index(text: str,find: str,) -> int:
-    """Find first text occurrence within a string."""
+def text_find_index(text: str,search: str,) -> int:
+    """Find first text occurrence within a string, -1 if not found."""
     ...
 def text_format(*args) -> str:
         """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""
         ...
 def text_insert(text: str,insert: str,position: int,) -> str:
-    """Insert text in a position (WARNING: memory must be freed!)."""
+    """Insert text in a defined byte position."""
+    ...
+def text_insert_alloc(text: str,insert: str,position: int,) -> str:
+    """Insert text in a defined byte position, memory must be MemFree()."""
     ...
 def text_is_equal(text1: str,text2: str,) -> bool:
-    """Check if two text string are equal."""
+    """Check if two text strings are equal."""
     ...
 def text_join(textList: list[str],count: int,delimiter: str,) -> str:
     """Join text strings with delimiter."""
@@ -2882,11 +2953,23 @@ def text_join(textList: list[str],count: int,delimiter: str,) -> str:
 def text_length(text: str,) -> int:
     """Get text length, checks for '\0' ending."""
     ...
-def text_replace(text: str,replace: str,by: str,) -> str:
-    """Replace text string (WARNING: memory must be freed!)."""
+def text_remove_spaces(text: str,) -> str:
+    """Remove text spaces, concat words."""
+    ...
+def text_replace(text: str,search: str,replacement: str,) -> str:
+    """Replace text string with new string."""
+    ...
+def text_replace_alloc(text: str,search: str,replacement: str,) -> str:
+    """Replace text string with new string, memory must be MemFree()."""
+    ...
+def text_replace_between(text: str,begin: str,end: str,replacement: str,) -> str:
+    """Replace text between two specific strings."""
+    ...
+def text_replace_between_alloc(text: str,begin: str,end: str,replacement: str,) -> str:
+    """Replace text between two specific strings, memory must be MemFree()."""
     ...
 def text_split(text: str,delimiter: str,count: Any,) -> list[str]:
-    """Split text into multiple strings."""
+    """Split text into multiple strings, using MAX_TEXTSPLIT_COUNT static strings."""
     ...
 def text_subtext(text: str,position: int,length: int,) -> str:
     """Get a piece of a text string."""
@@ -2895,10 +2978,10 @@ def text_to_camel(text: str,) -> str:
     """Get Camel case notation version of provided string."""
     ...
 def text_to_float(text: str,) -> float:
-    """Get float value from text (negative values not supported)."""
+    """Get float value from text."""
     ...
 def text_to_integer(text: str,) -> int:
-    """Get integer value from text (negative values not supported)."""
+    """Get integer value from text."""
     ...
 def text_to_lower(text: str,) -> str:
     """Get lower case version of provided string."""
@@ -2966,9 +3049,6 @@ def unload_mesh(mesh: Mesh|list|tuple,) -> None:
 def unload_model(model: Model|list|tuple,) -> None:
     """Unload model (including meshes) from memory (RAM and/or VRAM)."""
     ...
-def unload_model_animation(anim: ModelAnimation|list|tuple,) -> None:
-    """Unload animation data."""
-    ...
 def unload_model_animations(animations: Any|list|tuple,animCount: int,) -> None:
     """Unload animation array data."""
     ...
@@ -2988,7 +3068,10 @@ def unload_sound(sound: Sound|list|tuple,) -> None:
     """Unload sound."""
     ...
 def unload_sound_alias(alias: Sound|list|tuple,) -> None:
-    """Unload a sound alias (does not deallocate sample data)."""
+    """Unload sound alias (does not deallocate sample data)."""
+    ...
+def unload_text_lines(text: list[str],lineCount: int,) -> None:
+    """Unload text lines."""
     ...
 def unload_texture(texture: Texture|list|tuple,) -> None:
     """Unload texture from GPU memory (VRAM)."""
@@ -3017,23 +3100,23 @@ def update_camera_pro(camera: Any|list|tuple,movement: Vector3|list|tuple,rotati
 def update_mesh_buffer(mesh: Mesh|list|tuple,index: int,data: Any,dataSize: int,offset: int,) -> None:
     """Update mesh vertex data in GPU for a specific buffer index."""
     ...
-def update_model_animation(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: int,) -> None:
-    """Update model animation pose (CPU)."""
+def update_model_animation(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: float,) -> None:
+    """Update model animation pose (vertex buffers and bone matrices)."""
     ...
-def update_model_animation_bones(model: Model|list|tuple,anim: ModelAnimation|list|tuple,frame: int,) -> None:
-    """Update model animation mesh bone matrices (GPU skinning)."""
+def update_model_animation_ex(model: Model|list|tuple,animA: ModelAnimation|list|tuple,frameA: float,animB: ModelAnimation|list|tuple,frameB: float,blend: float,) -> None:
+    """Update model animation pose, blending two animations."""
     ...
 def update_music_stream(music: Music|list|tuple,) -> None:
-    """Updates buffers for music streaming."""
+    """Update buffers for music streaming."""
     ...
-def update_sound(sound: Sound|list|tuple,data: Any,sampleCount: int,) -> None:
-    """Update sound buffer with new data."""
+def update_sound(sound: Sound|list|tuple,data: Any,frameCount: int,) -> None:
+    """Update sound buffer with new data (default data format: 32 bit float, stereo)."""
     ...
 def update_texture(texture: Texture|list|tuple,pixels: Any,) -> None:
-    """Update GPU texture with new data."""
+    """Update GPU texture with new data (pixels should be able to fill texture)."""
     ...
 def update_texture_rec(texture: Texture|list|tuple,rec: Rectangle|list|tuple,pixels: Any,) -> None:
-    """Update GPU texture rectangle with new data."""
+    """Update GPU texture rectangle with new data (pixels and rec should fit in texture)."""
     ...
 def upload_mesh(mesh: Any|list|tuple,dynamic: bool,) -> None:
     """Upload mesh vertex data in GPU and provide VAO/VBO ids."""
@@ -3051,6 +3134,9 @@ def vector2_clamp(v: Vector2|list|tuple,min_1: Vector2|list|tuple,max_2: Vector2
     """."""
     ...
 def vector2_clamp_value(v: Vector2|list|tuple,min_1: float,max_2: float,) -> Vector2:
+    """."""
+    ...
+def vector2_cross_product(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> float:
     """."""
     ...
 def vector2_distance(v1: Vector2|list|tuple,v2: Vector2|list|tuple,) -> float:
@@ -3734,11 +3820,11 @@ def rl_color4ub(r: int,g: int,b: int,a: int,) -> None:
 def rl_color_mask(r: bool,g: bool,b: bool,a: bool,) -> None:
     """Color mask control."""
     ...
-def rl_compile_shader(shaderCode: str,type: int,) -> int:
-    """Compile custom shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER)."""
-    ...
 def rl_compute_shader_dispatch(groupX: int,groupY: int,groupZ: int,) -> None:
     """Dispatch compute shader (equivalent to *draw* for graphics pipeline)."""
+    ...
+def rl_copy_framebuffer(x: int,y: int,width: int,height: int,format: int,pixels: Any,) -> None:
+    """Copy framebuffer pixel data to internal buffer."""
     ...
 def rl_copy_shader_buffer(destId: int,srcId: int,destOffset: int,srcOffset: int,count: int,) -> None:
     """Copy SSBO data between buffers."""
@@ -3761,6 +3847,9 @@ def rl_disable_depth_test() -> None:
 def rl_disable_framebuffer() -> None:
     """Disable render texture (fbo), return to default framebuffer."""
     ...
+def rl_disable_point_mode() -> None:
+    """Disable point mode."""
+    ...
 def rl_disable_scissor_test() -> None:
     """Disable scissor test."""
     ...
@@ -3769,6 +3858,9 @@ def rl_disable_shader() -> None:
     ...
 def rl_disable_smooth_lines() -> None:
     """Disable line aliasing."""
+    ...
+def rl_disable_state_pointer(vertexAttribType: int,) -> None:
+    """Disable attribute state pointer."""
     ...
 def rl_disable_stereo_render() -> None:
     """Disable stereo rendering."""
@@ -3792,7 +3884,7 @@ def rl_disable_vertex_buffer_element() -> None:
     """Disable vertex buffer element (VBO element)."""
     ...
 def rl_disable_wire_mode() -> None:
-    """Disable wire (and point) mode."""
+    """Disable wire mode."""
     ...
 def rl_draw_render_batch(batch: Any|list|tuple,) -> None:
     """Draw render batch data (Update->Draw->Reset)."""
@@ -3839,6 +3931,9 @@ def rl_enable_shader(id: int,) -> None:
 def rl_enable_smooth_lines() -> None:
     """Enable line aliasing."""
     ...
+def rl_enable_state_pointer(vertexAttribType: int,buffer: Any,) -> None:
+    """Enable attribute state pointer."""
+    ...
 def rl_enable_stereo_render() -> None:
     """Enable stereo rendering."""
     ...
@@ -3866,7 +3961,7 @@ def rl_enable_wire_mode() -> None:
 def rl_end() -> None:
     """Finish vertex providing."""
     ...
-def rl_framebuffer_attach(fboId: int,texId: int,attachType: int,texType: int,mipLevel: int,) -> None:
+def rl_framebuffer_attach(id: int,texId: int,attachType: int,texType: int,mipLevel: int,) -> None:
     """Attach texture/renderbuffer to a framebuffer."""
     ...
 def rl_framebuffer_complete(id: int,) -> bool:
@@ -3899,11 +3994,11 @@ def rl_get_gl_texture_formats(format: int,glInternalFormat: Any,glFormat: Any,gl
 def rl_get_line_width() -> float:
     """Get the line drawing width."""
     ...
-def rl_get_location_attrib(shaderId: int,attribName: str,) -> int:
-    """Get shader location attribute."""
+def rl_get_location_attrib(id: int,attribName: str,) -> int:
+    """Get shader location attribute, requires shader program id."""
     ...
-def rl_get_location_uniform(shaderId: int,uniformName: str,) -> int:
-    """Get shader location uniform."""
+def rl_get_location_uniform(id: int,uniformName: str,) -> int:
+    """Get shader location uniform, requires shader program id."""
     ...
 def rl_get_matrix_modelview() -> Matrix:
     """Get internal modelview matrix."""
@@ -3923,6 +4018,12 @@ def rl_get_matrix_view_offset_stereo(eye: int,) -> Matrix:
 def rl_get_pixel_format_name(format: int,) -> str:
     """Get name string for pixel format."""
     ...
+def rl_get_point_size() -> float:
+    """Get the point drawing size."""
+    ...
+def rl_get_proc_address(procName: str,) -> Any:
+    """Get OpenGL procedure address."""
+    ...
 def rl_get_shader_buffer_size(id: int,) -> int:
     """Get SSBO buffer size."""
     ...
@@ -3940,9 +4041,6 @@ def rl_get_version() -> int:
     ...
 def rl_is_stereo_render_enabled() -> bool:
     """Check if stereo render is enabled."""
-    ...
-def rl_load_compute_shader_program(shaderId: int,) -> int:
-    """Load compute shader program."""
     ...
 def rl_load_draw_cube() -> None:
     """Load and draw a cube."""
@@ -3962,14 +4060,20 @@ def rl_load_identity() -> None:
 def rl_load_render_batch(numBuffers: int,bufferElements: int,) -> rlRenderBatch:
     """Load a render batch system."""
     ...
+def rl_load_shader(code: str,type: int,) -> int:
+    """Load (compile) shader and return shader id (type: RL_VERTEX_SHADER, RL_FRAGMENT_SHADER, RL_COMPUTE_SHADER)."""
+    ...
 def rl_load_shader_buffer(size: int,data: Any,usageHint: int,) -> int:
     """Load shader storage buffer object (SSBO)."""
     ...
-def rl_load_shader_code(vsCode: str,fsCode: str,) -> int:
+def rl_load_shader_program(vsCode: str,fsCode: str,) -> int:
     """Load shader from code strings."""
     ...
-def rl_load_shader_program(vShaderId: int,fShaderId: int,) -> int:
-    """Load custom shader program."""
+def rl_load_shader_program_compute(csId: int,) -> int:
+    """Load compute shader program."""
+    ...
+def rl_load_shader_program_ex(vsId: int,fsId: int,) -> int:
+    """Load shader program, using already loaded shader ids."""
     ...
 def rl_load_texture(data: Any,width: int,height: int,format: int,mipmapCount: int,) -> int:
     """Load texture data."""
@@ -4016,6 +4120,9 @@ def rl_read_shader_buffer(id: int,dest: Any,count: int,offset: int,) -> None:
 def rl_read_texture_pixels(id: int,width: int,height: int,format: int,) -> Any:
     """Read texture pixel data."""
     ...
+def rl_resize_framebuffer(width: int,height: int,) -> None:
+    """Resize internal framebuffer."""
+    ...
 def rl_rotatef(angle: float,x: float,y: float,z: float,) -> None:
     """Multiply the current matrix by a rotation matrix."""
     ...
@@ -4061,6 +4168,9 @@ def rl_set_matrix_projection_stereo(right: Matrix|list|tuple,left: Matrix|list|t
 def rl_set_matrix_view_offset_stereo(right: Matrix|list|tuple,left: Matrix|list|tuple,) -> None:
     """Set eyes view offsets matrices for stereo rendering."""
     ...
+def rl_set_point_size(size: float,) -> None:
+    """Set the point drawing size."""
+    ...
 def rl_set_render_batch_active(batch: Any|list|tuple,) -> None:
     """Set the active render batch for rlgl (NULL for default internal)."""
     ...
@@ -4105,6 +4215,9 @@ def rl_unload_framebuffer(id: int,) -> None:
     ...
 def rl_unload_render_batch(batch: rlRenderBatch|list|tuple,) -> None:
     """Unload render batch system."""
+    ...
+def rl_unload_shader(id: int,) -> None:
+    """Unload shader, loaded with rlLoadShader()."""
     ...
 def rl_unload_shader_buffer(ssboId: int,) -> None:
     """Unload shader storage buffer object (SSBO)."""
@@ -4205,8 +4318,7 @@ class Color:
         self.a:int = a # type: ignore
 class FilePathList:
     """File path list."""
-    def __init__(self, capacity: int|None = None, count: int|None = None, paths: list[str]|None = None):
-        self.capacity:int = capacity # type: ignore
+    def __init__(self, count: int|None = None, paths: list[str]|None = None):
         self.count:int = count # type: ignore
         self.paths:list[str] = paths # type: ignore
 class Font:
@@ -4280,7 +4392,7 @@ class Matrix:
         self.m15:float = m15 # type: ignore
 class Mesh:
     """Mesh, vertex data and vao/vbo."""
-    def __init__(self, vertexCount: int|None = None, triangleCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, texcoords2: Any|None = None, normals: Any|None = None, tangents: Any|None = None, colors: str|None = None, indices: Any|None = None, animVertices: Any|None = None, animNormals: Any|None = None, boneIds: str|None = None, boneWeights: Any|None = None, boneMatrices: Any|None = None, boneCount: int|None = None, vaoId: int|None = None, vboId: Any|None = None):
+    def __init__(self, vertexCount: int|None = None, triangleCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, texcoords2: Any|None = None, normals: Any|None = None, tangents: Any|None = None, colors: str|None = None, indices: Any|None = None, boneCount: int|None = None, boneIndices: str|None = None, boneWeights: Any|None = None, animVertices: Any|None = None, animNormals: Any|None = None, vaoId: int|None = None, vboId: Any|None = None):
         self.vertexCount:int = vertexCount # type: ignore
         self.triangleCount:int = triangleCount # type: ignore
         self.vertices:Any = vertices # type: ignore
@@ -4290,34 +4402,38 @@ class Mesh:
         self.tangents:Any = tangents # type: ignore
         self.colors:str = colors # type: ignore
         self.indices:Any = indices # type: ignore
+        self.boneCount:int = boneCount # type: ignore
+        self.boneIndices:str = boneIndices # type: ignore
+        self.boneWeights:Any = boneWeights # type: ignore
         self.animVertices:Any = animVertices # type: ignore
         self.animNormals:Any = animNormals # type: ignore
-        self.boneIds:str = boneIds # type: ignore
-        self.boneWeights:Any = boneWeights # type: ignore
-        self.boneMatrices:Any = boneMatrices # type: ignore
-        self.boneCount:int = boneCount # type: ignore
         self.vaoId:int = vaoId # type: ignore
         self.vboId:Any = vboId # type: ignore
 class Model:
     """Model, meshes, materials and animation data."""
-    def __init__(self, transform: Matrix|list|tuple|None = None, meshCount: int|None = None, materialCount: int|None = None, meshes: Any|None = None, materials: Any|None = None, meshMaterial: Any|None = None, boneCount: int|None = None, bones: Any|None = None, bindPose: Any|None = None):
+    def __init__(self, transform: Matrix|list|tuple|None = None, meshCount: int|None = None, materialCount: int|None = None, meshes: Any|None = None, materials: Any|None = None, meshMaterial: Any|None = None, skeleton: ModelSkeleton|list|tuple|None = None, currentPose: Any|None = None, boneMatrices: Any|None = None):
         self.transform:Matrix = transform # type: ignore
         self.meshCount:int = meshCount # type: ignore
         self.materialCount:int = materialCount # type: ignore
         self.meshes:Any = meshes # type: ignore
         self.materials:Any = materials # type: ignore
         self.meshMaterial:Any = meshMaterial # type: ignore
+        self.skeleton:ModelSkeleton = skeleton # type: ignore
+        self.currentPose:Any = currentPose # type: ignore
+        self.boneMatrices:Any = boneMatrices # type: ignore
+class ModelAnimation:
+    """ModelAnimation, contains a full animation sequence."""
+    def __init__(self, name: list|None = None, boneCount: int|None = None, keyframeCount: int|None = None, keyframePoses: Any|None = None):
+        self.name:list = name # type: ignore
+        self.boneCount:int = boneCount # type: ignore
+        self.keyframeCount:int = keyframeCount # type: ignore
+        self.keyframePoses:Any = keyframePoses # type: ignore
+class ModelSkeleton:
+    """Skeleton, animation bones hierarchy."""
+    def __init__(self, boneCount: int|None = None, bones: Any|None = None, bindPose: Any|None = None):
         self.boneCount:int = boneCount # type: ignore
         self.bones:Any = bones # type: ignore
         self.bindPose:Any = bindPose # type: ignore
-class ModelAnimation:
-    """ModelAnimation."""
-    def __init__(self, boneCount: int|None = None, frameCount: int|None = None, bones: Any|None = None, framePoses: Any|None = None, name: list|None = None):
-        self.boneCount:int = boneCount # type: ignore
-        self.frameCount:int = frameCount # type: ignore
-        self.bones:Any = bones # type: ignore
-        self.framePoses:Any = framePoses # type: ignore
-        self.name:list = name # type: ignore
 class Music:
     """Music, audio stream, anything longer than ~10 seconds should be streamed."""
     def __init__(self, stream: AudioStream|list|tuple|None = None, frameCount: int|None = None, looping: bool|None = None, ctxType: int|None = None, ctxData: Any|None = None):
@@ -4427,14 +4543,6 @@ class Texture:
         self.height:int = height # type: ignore
         self.mipmaps:int = mipmaps # type: ignore
         self.format:int = format # type: ignore
-class Texture2D:
-    """It should be redesigned to be provided by user."""
-    def __init__(self, id: int|None = None, width: int|None = None, height: int|None = None, mipmaps: int|None = None, format: int|None = None):
-        self.id:int = id # type: ignore
-        self.width:int = width # type: ignore
-        self.height:int = height # type: ignore
-        self.mipmaps:int = mipmaps # type: ignore
-        self.format:int = format # type: ignore
 class Transform:
     """Transform, vertex transformation data."""
     def __init__(self, translation: Vector3|list|tuple|None = None, rotation: Vector4|list|tuple|None = None, scale: Vector3|list|tuple|None = None):
@@ -4495,7 +4603,7 @@ class float16:
     def __init__(self, v: list|None = None):
         self.v:list = v # type: ignore
 class float3:
-    """NOTE: Helper types to be used instead of array return types for *ToFloat functions."""
+    """."""
     def __init__(self, v: list|None = None):
         self.v:list = v # type: ignore
 class rlDrawCall:

@@ -8,17 +8,33 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+    inputs:
+      publish_to_pypi:
+        description: "Publish to PyPI?"
+        type: boolean
+        required: true
+        default: false
 
 jobs:
   build-mac-intel:
     runs-on: macos-15-intel
     strategy:
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11', 'pypy-3.10' ]
-        raylib-platform: ['Desktop', 'SDL']
+        python-version:
+          [
+            "3.7",
+            "3.8",
+            "3.9",
+            "3.10",
+            "3.11",
+            "3.12",
+            "3.13",
+            "3.14",
+            "pypy-3.11",
+          ]
+        raylib-platform: ["Desktop", "SDL"]
     env:
-      MACOSX_DEPLOYMENT_TARGET: '10.13'
+      MACOSX_DEPLOYMENT_TARGET: "10.13"
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -31,11 +47,11 @@ jobs:
 
       - name: Build SDL
         run: |
-          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.8.tar.gz
-          tar xvfz release-2.32.8.tar.gz
+          wget https://github.com/libsdl-org/SDL/releases/download/release-3.4.4/SDL3-3.4.4.tar.gz
+          tar xvfz SDL3-3.4.4.tar.gz
           mkdir build
           cd build
-          cmake ../SDL-release-2.32.8 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake ../SDL3-3.4.4 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           sudo cmake --install .
 
@@ -53,8 +69,8 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j4
           sudo make install
 
       - name: Build raylib with SDL if selected
@@ -62,8 +78,8 @@ jobs:
           cd raylib-c
           mkdir build2
           cd build2
-          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j4
           sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
 
       - name: Copy extras
@@ -77,12 +93,13 @@ jobs:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
 
         run: |
-          python -m pip install --upgrade pip
-          pip3 install --upgrade cffi
-          pip3 install --upgrade wheel
-          pip3 install --upgrade setuptools
-          python -m pip install --upgrade build
-          python -m build --wheel
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade cffi
+          python3 -m pip install --upgrade wheel
+          python3 -m pip install --upgrade setuptools
+          python3 -m pip install --upgrade twine
+          python3 -m pip install --upgrade build
+          python3 -m build --wheel
 
       - name: Rename wheels from universal2 to x86_64
         run: |
@@ -110,21 +127,25 @@ jobs:
             exit 1
           fi
 
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
           name: wheel-mac-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/*
 
-
   build-mac-arm64:
     runs-on: macos-14
     strategy:
       matrix:
-        python-version: [ '3.10', '3.11', '3.12', '3.13', '3.14']
-        raylib-platform: ['Desktop', 'SDL']
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        raylib-platform: ["Desktop", "SDL"]
     env:
-      MACOSX_DEPLOYMENT_TARGET: '11'
+      MACOSX_DEPLOYMENT_TARGET: "11"
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -137,11 +158,11 @@ jobs:
 
       - name: Build SDL
         run: |
-          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.8.tar.gz
-          tar xvfz release-2.32.8.tar.gz
+          wget https://github.com/libsdl-org/SDL/releases/download/release-3.4.4/SDL3-3.4.4.tar.gz
+          tar xvfz SDL3-3.4.4.tar.gz
           mkdir build
           cd build
-          cmake ../SDL-release-2.32.8 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake ../SDL3-3.4.4 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           sudo cmake --install .
 
@@ -159,8 +180,8 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j4
           sudo make install
 
       - name: Build raylib with SDL if selected
@@ -168,8 +189,8 @@ jobs:
           cd raylib-c
           mkdir build2
           cd build2
-          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j4
           sudo cp raylib/libraylib.a /usr/local/lib/libraylib.a
 
       - name: Copy extras
@@ -183,12 +204,13 @@ jobs:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
 
         run: |
-          python -m pip install --upgrade pip
-          pip3 install --upgrade cffi
-          pip3 install --upgrade wheel
-          pip3 install --upgrade setuptools
-          python -m pip install --upgrade build
-          python -m build --wheel
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade cffi
+          python3 -m pip install --upgrade wheel
+          python3 -m pip install --upgrade setuptools
+          python3 -m pip install --upgrade twine
+          python3 -m pip install --upgrade build
+          python3 -m build --wheel
 
       - name: Test
         run: |
@@ -216,13 +238,16 @@ jobs:
           done
         shell: bash
 
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
           name: wheel-mac-arm64-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: dist/*
-
-
 
   build-linux:
     runs-on: ubuntu-latest
@@ -236,12 +261,44 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: ['python3.7', 'python3.8', 'python3.9', 'python3.10', 'python3.11', 'python3.12', 'python3.13', 'python3.14', 'pypy3.11']
-        raylib-platform: ['Desktop', 'SDL', 'DRM']
+        python-version:
+          [
+            "python3.7",
+            "python3.8",
+            "python3.9",
+            "python3.10",
+            "python3.11",
+            "python3.12",
+            "python3.13",
+            "python3.14",
+            "pypy3.11",
+          ]
+        raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
       - name: fix node
         run: |
           ln -s /usr/local/bin /__e/node20/bin
+
+      - name: setup wayland
+        run: |
+          apt-get update
+          apt-get install -y libwayland-dev wayland-protocols
+
+      - name: update cmake
+        run: |
+          wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-x86_64.tar.gz
+          tar xvfz cmake-3.31.10-linux-x86_64.tar.gz
+          cp -r cmake-3.31.10-linux-x86_64/* /usr/
+
+      - name: Build SDL
+        run: |
+          wget https://github.com/libsdl-org/SDL/releases/download/release-3.4.4/SDL3-3.4.4.tar.gz
+          tar xvfz SDL3-3.4.4.tar.gz
+          mkdir build
+          cd build
+          cmake ../SDL3-3.4.4 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
+          cmake --build . --config Release
+          cmake --install .
 
       - uses: actions/checkout@v2
         with:
@@ -254,11 +311,23 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build raylib
         run: |
+          # Ubuntu 16 has an older wayland-scanner that expects "code" instead of "private-code".
+          sed -i 's/private-code/code/g' raylib-c/src/external/glfw/src/CMakeLists.txt
           cd raylib-c
           mkdir build
           cd build
-          cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
-          make -j2
+          PLATFORM="${{ matrix.raylib-platform }}"
+          if [ ${{ matrix.raylib-platform }} = "DRM" ]; then
+            OPENGL="ES 2.0"
+          elif [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
+            OPENGL="Software"
+            PLATFORM="SDL"
+          else
+            OPENGL="3.3"
+          fi
+          echo "OPENGL $OPENGL PLATFORM $PLATFORM"
+          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=ON ..
+          make -j4
           make install
       - name: Copy extras
         run: |
@@ -276,6 +345,7 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
           ${{ matrix.python-version }} -m build --wheel
+          python3.13 -m pip install twine
           python3.13 -m pip install --upgrade auditwheel
           python3.13 -m pip install --upgrade patchelf
           python3.13 -m auditwheel repair dist/*.whl
@@ -311,12 +381,17 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
           name: wheel-linux-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: wheelhouse/*
-
 
   build-linux32:
     runs-on: ubuntu-latest
@@ -330,12 +405,38 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: ['python3.7', 'python3.8', 'python3.9', 'python3.10', 'python3.11', 'python3.12', 'python3.13', 'python3.14']
-        raylib-platform: ['Desktop', 'SDL', 'DRM']
+        python-version:
+          [
+            "python3.7",
+            "python3.8",
+            "python3.9",
+            "python3.10",
+            "python3.11",
+            "python3.12",
+            "python3.13",
+            "python3.14",
+          ]
+        raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
       - name: fix node
         run: |
           ln -s /usr/local/bin /__e/node20/bin
+
+      - name: update cmake
+        run: |
+          wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-x86_64.tar.gz
+          tar xvfz cmake-3.31.10-linux-x86_64.tar.gz
+          cp -r cmake-3.31.10-linux-x86_64/* /usr/
+
+      - name: Build SDL
+        run: |
+          wget https://github.com/libsdl-org/SDL/releases/download/release-3.4.4/SDL3-3.4.4.tar.gz
+          tar xvfz SDL3-3.4.4.tar.gz
+          mkdir build
+          cd build
+          cmake ../SDL3-3.4.4 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
+          cmake --build . --config Release
+          cmake --install .
 
       - uses: actions/checkout@v2
         with:
@@ -351,8 +452,18 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          setarch i386 cmake -DPLATFORM=${{ matrix.raylib-platform }} -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DOpenGL_GL_PREFERENCE=GLVND ..
-          make -j2
+          PLATFORM="${{ matrix.raylib-platform }}"
+          if [ ${{ matrix.raylib-platform }} = "DRM" ]; then
+            OPENGL="ES 2.0"
+          elif [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
+            OPENGL="Software"
+            PLATFORM="SDL"
+          else
+            OPENGL="2.1"
+          fi
+          echo "OPENGL $OPENGL PLATFORM $PLATFORM"
+          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j4
           make install
       - name: Copy extras
         run: |
@@ -369,6 +480,8 @@ jobs:
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
+          python3.13 -m pip install cryptography==3.3.2
+          python3.13 -m pip install twine
           setarch i386 ${{ matrix.python-version }} -m build --wheel
           python3.13 -m pip install --upgrade auditwheel
           python3.13 -m pip install --upgrade patchelf
@@ -405,6 +518,12 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3.13 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
@@ -415,8 +534,8 @@ jobs:
     runs-on: ubuntu-22.04-arm
     strategy:
       matrix:
-        python-version: [ '3.10', '3.11', '3.12', '3.13', '3.14']
-        raylib-platform: [ 'Desktop', 'SDL', 'DRM' ]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -430,15 +549,15 @@ jobs:
       - name: install libs
         run: |
           sudo apt update
-          sudo apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libgbm-dev libdrm-dev
+          sudo apt -y install cmake libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev libwayland-dev wayland-protocols libxkbcommon-dev libgbm-dev libdrm-dev
 
       - name: Build SDL
         run: |
-          wget https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.8.tar.gz
-          tar xvfz release-2.32.8.tar.gz
+          wget https://github.com/libsdl-org/SDL/releases/download/release-3.4.4/SDL3-3.4.4.tar.gz
+          tar xvfz SDL3-3.4.4.tar.gz
           mkdir build
           cd build
-          cmake ../SDL-release-2.32.8 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake ../SDL3-3.4.4 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           sudo cmake --install .
 
@@ -448,15 +567,23 @@ jobs:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
           python-version: ${{ matrix.python-version }}
 
-
-
       - name: Build raylib with SDL if selected
         run: |
           cd raylib-c
-          mkdir build2
-          cd build2
-          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          mkdir build
+          cd build
+          PLATFORM="${{ matrix.raylib-platform }}"
+          if [ ${{ matrix.raylib-platform }} = "DRM" ]; then
+            OPENGL="ES 2.0"
+          elif [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
+            OPENGL="Software"
+            PLATFORM="SDL"
+          else
+            OPENGL="2.1"
+          fi
+          echo "OPENGL $OPENGL PLATFORM $PLATFORM"
+          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=ON ..
+          make -j4
           sudo make install
 
       - name: Copy extras
@@ -476,6 +603,7 @@ jobs:
           python3 -m pip install --upgrade setuptools
           python3 -m pip install --upgrade build
           python3 -m build --wheel
+          python3 -m pip install twine
           python3 -m pip install --upgrade auditwheel
           python3 -m pip install --upgrade patchelf
           python3 -m auditwheel repair dist/*.whl
@@ -511,13 +639,121 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} wheelhouse/*.whl
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
           name: wheel-linux-arm64-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
           path: wheelhouse/*
 
+  build-linux-arm64-drm:
+    # separate build using RPI images because standard ubuntu build doesnt work on RPI DRM
+    runs-on: ubuntu-22.04-arm
+    container:
+      image: electronstudio/raspberrypi-os:${{ matrix.docker-tag }}
+      options: --user root
+    strategy:
+      matrix:
+        include:
+          - python-version: "3.10"
+            docker-tag: "python3.10-bullseye"
+          - python-version: "3.11"
+            docker-tag: "python3.11-bullseye"
+          - python-version: "3.12"
+            docker-tag: "python3.12-bullseye"
+          - python-version: "3.13"
+            docker-tag: "python3.13-bullseye"
+          - python-version: "3.14"
+            docker-tag: "python3.14-bookworm"
+    steps:
+      - name: update cmake
+        run: |
+          wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-aarch64.tar.gz
+          tar xvfz cmake-3.31.10-linux-aarch64.tar.gz
+          cp -r cmake-3.31.10-linux-aarch64/* /usr/
 
+      - name: install libs
+        run: |
+          apt update
+          apt -y install libdrm-dev libgbm-dev libegl-dev libgles2-mesa-dev libasound2-dev libedit2
+
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: fix raygui bug
+        run: |
+          patch -p0 <raygui.h.diff
+
+      - name: Build raylib
+        run: |
+          cd raylib-c
+          mkdir build
+          cd build
+          cmake -DPLATFORM="DRM" -DOPENGL_VERSION="ES 2.0" -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j4
+          make install
+
+      - name: Copy extras
+        run: |
+          cp -r raylib-c/src/external/glfw/include/GLFW /usr/local/include/
+          cp physac/src/physac.h /usr/local/include/
+          cp raygui/src/raygui.h /usr/local/include/
+
+      - name: Build raylib-python-cffi
+        env:
+          RAYLIB_PLATFORM: DRM
+          PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade cffi
+          python3 -m pip install --upgrade wheel
+          python3 -m pip install --upgrade setuptools
+          python3 -m pip install --upgrade build
+          python3 -m build --wheel
+          python3 -m pip install twine
+
+      - name:
+          Rename wheels from linux to manylinux
+          # proper solution would be to use auditwheel but it seems to bundle a libedit dll we dont want
+        run: |
+          for wheel in dist/*linux*.whl; do
+            if [ -f "$wheel" ]; then
+              new_wheel=$(echo "$wheel" | sed 's/linux/manylinux2014/')
+              echo "Renaming: $(basename "$wheel") -> $(basename "$new_wheel")"
+              mv "$wheel" "$new_wheel"
+            fi
+          done
+        shell: bash
+
+      - name: Test
+        run: |
+          python3 -m pip install --no-deps dist/*.whl
+          cd /
+          python3 -c 'import pyray; pyray.init_window(100,100,"test")' >/tmp/output 2>&1 || true
+          cat /tmp/output
+          if grep -q "INFO: Initializing raylib" /tmp/output; then
+            echo "Passed"
+          else
+            echo "Failed"
+            exit 1
+          fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
+
+      - name: Upload build Artifact wheel
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel-linux-arm64-DRM-${{ matrix.python-version }}
+          path: dist/*
 
   build-windows:
     # The type of runner that the job will run on
@@ -526,24 +762,37 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version:  [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14', 'pypy-3.11', 'pypy-3.10' ]
-        raylib-platform: ['Desktop', 'SDL']
+        python-version:
+          [
+            "3.7",
+            "3.8",
+            "3.9",
+            "3.10",
+            "3.11",
+            "3.12",
+            "3.13",
+            "3.14",
+            "pypy-3.11",
+          ]
+        raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Download SDL2
-        run: curl -L -o SDL2.zip https://github.com/libsdl-org/SDL/releases/download/release-2.30.8/SDL2-devel-2.30.8-VC.zip
+      - name: Download SDL3
+        run: curl -L -o SDL3.zip https://github.com/libsdl-org/SDL/releases/download/release-3.4.4/SDL3-devel-3.4.4-VC.zip
 
-      - name: Create extraction directory
-        run: mkdir ${{ runner.temp }}\SDL2
+      - name: Unpack SDL3
+        shell: bash
+        run: |
+          mkdir -p "${{ runner.temp }}/SDL3"
+          mkdir -p "${{ runner.temp }}/ziptmp"
+          unzip SDL3.zip -d "${{ runner.temp }}/ziptmp"
+          mv "${{ runner.temp }}/ziptmp"/*/* "${{ runner.temp }}/SDL3"
 
-      - name: Unzip SDL2
-        run: tar -xf SDL2.zip -C ${{ runner.temp }}\SDL2 --strip-components=1
-
-      - name: Set SDL2_DIR environment variable
-        run: echo SDL2_DIR=${{ runner.temp }}\SDL2\cmake >> $env:GITHUB_ENV
+      - name: Set SDL3_DIR environment variable
+        run: echo SDL3_DIR=${{ runner.temp }}\SDL3\cmake >> $env:GITHUB_ENV
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -566,9 +815,22 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DPLATFORM=${{ matrix.raylib-platform }}  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          PLATFORM="${{ matrix.raylib-platform }}"
+          if [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
+            OPENGL="Software"
+            PLATFORM="SDL"
+          else
+            OPENGL="3.3"
+          fi
+          echo "OPENGL $OPENGL PLATFORM $PLATFORM"
+          cmake -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL"  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+        shell: bash
+
+      - name: Build raylib2
+        run: |
+          cd raylib-c/build
           msbuild raylib.sln /target:raylib /property:Configuration=Release
-          copy raylib\Release\raylib.lib ..\..
+          cp raylib\Release\raylib.lib ..\..
           cd ..\..
         shell: cmd
 
@@ -576,8 +838,8 @@ jobs:
         env:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
         run: |
-          copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.lib .
-          copy ${{ runner.temp }}\SDL2\lib\x64\SDL2.dll raylib\
+          copy ${{ runner.temp }}\SDL3\lib\x64\SDL3.lib .
+          copy ${{ runner.temp }}\SDL3\lib\x64\SDL3.dll raylib\
           python -m pip install --upgrade pip
           pip3 install --upgrade "cffi"
           pip3 install --upgrade wheel
@@ -588,6 +850,7 @@ jobs:
           del raylib\dynamic\*.dylib >nul 2>&1
           del raylib\dynamic\32bit\* >nul 2>&1
           python -m build --wheel
+          python3 -m pip install twine
         shell: cmd
 
       - name: Test
@@ -604,12 +867,17 @@ jobs:
             echo "Failed"
             exit 1
           fi
-          
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
+
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
         with:
           name: wheel-windows-${{ matrix.raylib-platform }}-${{ matrix.python-version }}
-          path: dist/* 
+          path: dist/*
 
   build-windows32:
     # The type of runner that the job will run on
@@ -618,24 +886,27 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14' ]
-        raylib-platform: [ 'Desktop', 'SDL' ]
+        python-version:
+          ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+        raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Download SDL2
-        run: curl -L -o SDL2.zip https://github.com/libsdl-org/SDL/releases/download/release-2.32.10/SDL2-devel-2.32.10-VC.zip
+      - name: Download SDL3
+        run: curl -L -o SDL3.zip https://github.com/libsdl-org/SDL/releases/download/release-3.4.4/SDL3-devel-3.4.4-VC.zip
 
-      - name: Create extraction directory
-        run: mkdir ${{ runner.temp }}\SDL2
+      - name: Unpack SDL3
+        shell: bash
+        run: |
+          mkdir -p "${{ runner.temp }}/SDL3"
+          mkdir -p "${{ runner.temp }}/ziptmp"
+          unzip SDL3.zip -d "${{ runner.temp }}/ziptmp"
+          mv "${{ runner.temp }}/ziptmp"/*/* "${{ runner.temp }}/SDL3"
 
-      - name: Unzip SDL2
-        run: tar -xf SDL2.zip -C ${{ runner.temp }}\SDL2 --strip-components=1
-
-      - name: Set SDL2_DIR environment variable
-        run: echo SDL2_DIR=${{ runner.temp }}\SDL2\cmake >> $env:GITHUB_ENV
+      - name: Set SDL3_DIR environment variable
+        run: echo SDL3_DIR=${{ runner.temp }}\SDL3\cmake >> $env:GITHUB_ENV
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -660,9 +931,22 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -A Win32 -DPLATFORM=${{ matrix.raylib-platform }} -DOPENGL_VERSION=2.1 -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          PLATFORM="${{ matrix.raylib-platform }}"
+          if [ ${{ matrix.raylib-platform }} = "SDL_SOFT" ]; then
+            OPENGL="Software"
+            PLATFORM="SDL"
+          else
+            OPENGL="2.1"
+          fi
+          echo "OPENGL $OPENGL PLATFORM $PLATFORM"
+          cmake -A Win32 -DPLATFORM="$PLATFORM" -DOPENGL_VERSION="$OPENGL"  -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+        shell: bash
+
+      - name: Build raylib2
+        run: |
+          cd raylib-c/build
           msbuild raylib.sln /target:raylib /property:Configuration=Release
-          copy raylib\Release\raylib.lib ..\..
+          cp raylib\Release\raylib.lib ..\..
           cd ..\..
         shell: cmd
 
@@ -670,8 +954,8 @@ jobs:
         env:
           RAYLIB_PLATFORM: ${{ matrix.raylib-platform }}
         run: |
-          copy ${{ runner.temp }}\SDL2\lib\x86\SDL2.lib .
-          copy ${{ runner.temp }}\SDL2\lib\x86\SDL2.dll raylib\
+          copy ${{ runner.temp }}\SDL3\lib\x86\SDL3.lib .
+          copy ${{ runner.temp }}\SDL3\lib\x86\SDL3.dll raylib\
           python -m pip install --upgrade pip
           pip3 install --upgrade "cffi"
           pip3 install --upgrade wheel
@@ -682,6 +966,7 @@ jobs:
           del raylib\dynamic\*.dylib >nul 2>&1
           del raylib\dynamic\32bit\* >nul 2>&1
           python -m build --wheel
+          python3 -m pip install twine
         shell: cmd
 
       - name: Test
@@ -698,6 +983,11 @@ jobs:
             echo "Failed"
             exit 1
           fi
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -722,7 +1012,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: '3.12'
+          python-version: "3.12"
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
@@ -733,8 +1023,8 @@ jobs:
           cd raylib-c
           mkdir build
           cd build
-          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-          make -j2
+          cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+          make -j4
           sudo make install
       - name: Copy extras
         run: |
@@ -748,7 +1038,13 @@ jobs:
           pip3 install --upgrade cffi
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
+          python3 -m pip install twine
           python setup.py sdist
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -773,7 +1069,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: '3.12'
+          python-version: "3.12"
           # The target architecture (x86, x64) of the Python interpreter.
           architecture: x64
 
@@ -783,8 +1079,14 @@ jobs:
           pip3 install --upgrade cffi
           pip3 install --upgrade wheel
           pip3 install --upgrade setuptools
+          python3 -m pip install twine
           cd dynamic
           python setup.py sdist
+
+      - name: Publish to PyPI
+        if: ${{ inputs.publish_to_pypi == true }}
+        run: |
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dynamic/dist/*
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
@@ -793,10 +1095,23 @@ jobs:
           path: dynamic/dist/*
 
   merge:
-    needs: [build-mac-intel, build-mac-arm64, build-windows, build-linux, build-linux-arm64, build-linux32, build-windows32, source-distro, dynamic-distro]
+    needs:
+      [
+        build-mac-intel,
+        build-mac-arm64,
+        build-windows,
+        build-linux,
+        build-linux-arm64,
+        build-linux-arm64-drm,
+        build-linux32,
+        build-windows32,
+        source-distro,
+        dynamic-distro,
+      ]
     runs-on: ubuntu-latest
     steps:
       - name: Merge All Artifacts
+        if: ${{ inputs.publish_to_pypi == false }}
         uses: actions/upload-artifact/merge@v4
         with:
           name: wheel

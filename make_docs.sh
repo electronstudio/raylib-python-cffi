@@ -5,8 +5,8 @@ cd raylib-c
 rm -rf build
 mkdir build
 cd build
-cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
-make -j2
+cmake -DBUILD_EXAMPLES=OFF -DCUSTOMIZE_BUILD=ON -DSUPPORT_BUSY_WAIT_LOOP=OFF -DSUPPORT_CUSTOM_FRAME_CONTROL=OFF -DSUPPORT_FILEFORMAT_JPG=ON -DSUPPORT_FILEFORMAT_FLAC=ON -DWITH_PIC=ON -DCMAKE_BUILD_TYPE=Release ..
+make -j4
 sudo make install
 cd ../..
 
@@ -21,7 +21,7 @@ sudo cp -rv ./raylib-c/src/external/glfw/include/GLFW  /usr/local/include/
 
 echo "building raylib_parser"
 
-gcc raylib-c/parser/raylib_parser.c
+gcc raylib-c/tools/rlparser/rlparser.c
 
 echo "running parser"
 
@@ -32,6 +32,7 @@ echo "running parser"
 ./a.out -i raylib-c/src/raymath.h -d RMAPI -o raymath.json -f JSON
 ./a.out -i raylib-c/src/external/glfw/include/GLFW/glfw3.h -d GLFWAPI -o glfw3.json -f JSON
 sed -i "s|\/\*.*,$|,|g" glfw3.json
+sed -i 's/; some filters available: "\*\.\*", "FILES\*", "DIRS\*"//g' raylib.json
 
 echo "building raylib_python_cffi"
 

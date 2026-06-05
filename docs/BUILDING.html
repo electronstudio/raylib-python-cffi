@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Building from source &mdash; Raylib Python  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -45,13 +45,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 5.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Python Bindings for Raylib 6.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#videos">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#links">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#backends">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#how-to-use">How to use</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#running-in-a-web-browser">Running in a web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#startup-without-printing-anything">Startup without printing anything</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#help-wanted">Help wanted</a></li>
@@ -59,6 +61,7 @@
 <li class="toctree-l1"><a class="reference internal" href="README.html#performance">Performance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#packaging-your-app">Packaging your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html#advert">Advert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#hall-of-shame">Hall of shame!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pyray.html">Python API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raylib.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic.html">Dynamic Bindings</a></li>
@@ -74,6 +77,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="RPI.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AI_POLICY.html">AI Policy</a></li>
 </ul>
 
         </div>
@@ -109,12 +113,12 @@ Raylib with a different version of OpenGL than the default.  (e.g. on old hardwa
 <p>First make sure Raylib is installed.  On Linux/Mac it must include the pkg-config files.  Best way to ensure this
 is to compile and install Raylib using CMake: <a class="reference external" href="https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake">https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#build-raylib-using-cmake</a></p>
 <p>Requirements for build: cmake, pkg-config.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">raysan5</span><span class="o">/</span><span class="n">raylib</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">tags</span><span class="o">/</span><span class="mf">5.5</span><span class="o">.</span><span class="n">zip</span>
-<span class="n">unzip</span> <span class="mf">5.5</span><span class="o">.</span><span class="n">zip</span>
-<span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="mf">5.5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">raysan5</span><span class="o">/</span><span class="n">raylib</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">tags</span><span class="o">/</span><span class="mf">6.0</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">unzip</span> <span class="mf">6.0</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="mf">6.0</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span>  <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">cmake</span>  <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_BUSY_WAIT_LOOP</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DSUPPORT_CUSTOM_FRAME_CONTROL</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
 <span class="n">make</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 <span class="n">export</span> <span class="n">PKG_CONFIG_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pkgconfig</span>
@@ -216,7 +220,7 @@ work!</p>
 <span class="n">cd</span> <span class="n">raylib</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">cffi</span><span class="o">/</span><span class="n">raylib</span><span class="o">-</span><span class="n">c</span>
 <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DCUSTOMIZE_BUILD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_BUSY_WAIT_LOOP</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DSUPPORT_CUSTOM_FRAME_CONTROL</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_JPG</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DSUPPORT_FILEFORMAT_FLAC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DWITH_PIC</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 <span class="n">export</span> <span class="n">PKG_CONFIG_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pkgconfig</span>
 </pre></div>

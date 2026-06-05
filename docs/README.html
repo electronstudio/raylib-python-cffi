@@ -6,17 +6,17 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Bindings for Raylib 5.5 &mdash; Raylib Python  documentation</title>
+  <title>Python Bindings for Raylib 6.0 &mdash; Raylib Python  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -45,13 +45,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Bindings for Raylib 5.5</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Bindings for Raylib 6.0</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#libraries-raymath-raygui-rlgl-physac-and-glfw">Libraries: raymath, raygui, rlgl, physac and GLFW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#backends-desktop-sdl-drm-web">Backends: Desktop, SDL, DRM, Web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backends-desktop-sdl-drm-web-software-rendering">Backends: Desktop, SDL, DRM, Web, Software rendering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#platforms-windows-mac-linux-raspberry-pi-web">Platforms: Windows, Mac, Linux, Raspberry Pi, Web</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#videos">Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#links">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
@@ -73,6 +74,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#running-in-a-web-browser">Running in a web browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#startup-without-printing-anything">Startup without printing anything</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#app-showcase">App showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#rlzero">RLZero</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#help-wanted">Help wanted</a></li>
@@ -83,11 +85,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#packaging-your-app">Packaging your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#advert">Advert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#hall-of-shame">Hall of shame!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pyray.html">Python API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raylib.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic.html">Dynamic Bindings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BUILDING.html">Building from source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RPI.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AI_POLICY.html">AI Policy</a></li>
 </ul>
 
         </div>
@@ -104,7 +108,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Python Bindings for Raylib 5.5</li>
+      <li class="breadcrumb-item active">Python Bindings for Raylib 6.0</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/README.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -114,13 +118,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="python-bindings-for-raylib-5-5">
-<h1>Python Bindings for Raylib 5.5<a class="headerlink" href="#python-bindings-for-raylib-5-5" title="Link to this heading"></a></h1>
+  <section id="python-bindings-for-raylib-6-0">
+<h1>Python Bindings for Raylib 6.0<a class="headerlink" href="#python-bindings-for-raylib-6-0" title="Link to this heading"></a></h1>
 <section id="libraries-raymath-raygui-rlgl-physac-and-glfw">
 <h2>Libraries: raymath, raygui, rlgl, physac and GLFW<a class="headerlink" href="#libraries-raymath-raygui-rlgl-physac-and-glfw" title="Link to this heading"></a></h2>
 </section>
-<section id="backends-desktop-sdl-drm-web">
-<h2>Backends: Desktop, SDL, DRM, Web<a class="headerlink" href="#backends-desktop-sdl-drm-web" title="Link to this heading"></a></h2>
+<section id="backends-desktop-sdl-drm-web-software-rendering">
+<h2>Backends: Desktop, SDL, DRM, Web, Software rendering<a class="headerlink" href="#backends-desktop-sdl-drm-web-software-rendering" title="Link to this heading"></a></h2>
 </section>
 <section id="platforms-windows-mac-linux-raspberry-pi-web">
 <h2>Platforms: Windows, Mac, Linux, Raspberry Pi, Web<a class="headerlink" href="#platforms-windows-mac-linux-raspberry-pi-web" title="Link to this heading"></a></h2>
@@ -141,7 +145,7 @@ original Raylib.</p></li>
 </section>
 <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==5.5.0.3</span> <span class="pre">--break-system-packages</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==6.0.1.0</span> <span class="pre">--break-system-packages</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyray</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">init_window</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>
@@ -152,20 +156,27 @@ original Raylib.</p></li>
 <span class="n">close_window</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>Use the <a class="reference external" href="https://github.com/electronstudio/python-raylib-template">project generator</a> to generate a complete project.  <a class="reference external" href="https://github.com/electronstudio/raylib-example-game">Example of project</a></p>
+</section>
+<section id="videos">
+<h1>Videos<a class="headerlink" href="#videos" title="Link to this heading"></a></h1>
+<p><a href="https://www.youtube.com/watch?v=MIgq9w0MUsM">FinFET - Making a simple 3D game in Python (for real) with Raylib<br><img src="https://img.youtube.com/vi/MIgq9w0MUsM/0.jpg" alt="video"/></a></p>
+<p><a class="reference external" href="https://www.youtube.com/&#64;FinFET/videos">more on FinFET</a></p>
+<p><a href="https://www.youtube.com/watch?v=UoAsDlUwjy0">Clear Code - The ultimate introduction to Raylib<br><img src="https://img.youtube.com/vi/UoAsDlUwjy0/0.jpg" alt="video"/></a></p>
+<p><a href="https://www.youtube.com/watch?v=OSRbm2ocVjY">Unconventional Coding - I Made My Own Video Editor Because Kdenlive Is Too Slow<br><img src="https://img.youtube.com/vi/OSRbm2ocVjY/0.jpg" alt="video"/></a></p>
+<p><a href="https://www.youtube.com/watch?v=hbe1zKUAxuU">WOBLO GAMES - The Druid’s Downfall<br><img src="https://img.youtube.com/vi/hbe1zKUAxuU/0.jpg" alt="video"/></a></p>
 </section>
 <section id="links">
 <h1>Links<a class="headerlink" href="#links" title="Link to this heading"></a></h1>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=UoAsDlUwjy0&amp;amp;lc=UgxCR-tvnQJITZr2IvN4AaABAg">Tutorial video</a></p></li>
 <li><p><a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi">Full documentation</a></p></li>
 <li><p><a class="reference external" href="https://github.com/Scr44gr/raylib-imgui">Imgui integration</a></p></li>
-<li><p><a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/tree/master/examples">Examples</a></p></li>
-<li><p><a class="reference external" href="https://github.com/blep/pyray_examples">Blep’s examples</a></p></li>
 <li><p><a class="reference external" href="https://discord.gg/fKDwt85aX6">Raylib Python Discord</a></p></li>
 <li><p><a class="reference external" href="https://discord.com/invite/raylib">Raylib General Discord</a></p></li>
 <li><p><a class="reference external" href="https://github.com/anrayliu/pyvidplayer2">Python video player</a></p></li>
 <li><p><a class="reference external" href="https://github.com/electronstudio/raylib-python-cffi/blob/master/examples/extra/vector2_extended.py">A Vector2 class</a></p></li>
 <li><p><a class="reference external" href="https://github.com/raysan5/raylib/wiki/Frequently-Asked-Questions/">Raylib C FAQ</a></p></li>
+<li><p><a class="reference external" href="https://github.com/electronstudio/python-raylib-template">Project generator</a></p></li>
 </ul>
 </section>
 <section id="installation">
@@ -181,7 +192,7 @@ source venv/bin/activate
 </div>
 <p>Then install</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install setuptools
-python3 -m pip install raylib==5.5.0.3
+python3 -m pip install raylib==6.0.1.0
 </pre></div>
 </div>
 <p>On most platforms it should install a binary wheel.  If yours isn’t available then pip will attempt to build from
@@ -189,7 +200,7 @@ source, in which case you will need to have Raylib development libs installed, e
 using homebrew, apt, etc.</p>
 <section id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h2>
-<p>Binaries require x64 Windows 10 or newer.  (For x86 or older Windows you will have to build from source.)</p>
+<p>Binaries require x64 or x86 Windows 10 or newer.</p>
 <p>Use an <a class="reference external" href="https://www.python.org/downloads/windows/">official Windows Python release</a> rather than WSL, MSYS, etc.</p>
 </section>
 <section id="macos">
@@ -202,15 +213,13 @@ using homebrew, apt, etc.</p>
 <p>Older MacOS requires building from source but this is usually simple:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>brew install pkg-config
 brew install raylib
-python3 -m pip install raylib==5.5.0.3
+python3 -m pip install raylib==6.0.1.0
 </pre></div>
 </div>
-<p>(I do have binaries for arm64 MacOS 11, 12 and 13 but I have no way of testing they work, so post an issue
-if you want to test them.)</p>
 </section>
 <section id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h2>
-<p>Binaries require OS newer than Ubuntu 2020, x64 or arm64.   Otherwise build from source.
+<p>Binaries require OS newer than Ubuntu 2016, x64/x86 or Ubuntu 2022 arm64.   Otherwise build from source.
 (Pip should attempt automatically but will need Raylib itself installed and also pkg-config.)</p>
 <p>The arm64 binaries are built on Raspberry Pi arm64 Bullseye with OpenGL 2.0
 so may not work on other boards.</p>
@@ -316,6 +325,16 @@ python3.12 -m pygbag --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl --git my
 Carefully read all their <a class="reference external" href="https://pygame-web.github.io/">documentation</a>.</p>
 <p>It does work for most of <a class="reference external" href="https://electronstudio.github.io/raylib-python-cffi-pygbag-examples/">these examples</a></p>
 </section>
+<section id="startup-without-printing-anything">
+<h1>Startup without printing anything<a class="headerlink" href="#startup-without-printing-anything" title="Link to this heading"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyray</span>
+<span class="n">pyray</span><span class="o">.</span><span class="n">set_trace_log_level</span><span class="p">(</span><span class="n">pyray</span><span class="o">.</span><span class="n">LOG_ERROR</span><span class="p">)</span>
+<span class="n">pyray</span><span class="o">.</span><span class="n">init_window</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="app-showcase">
 <h1>App showcase<a class="headerlink" href="#app-showcase" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://github.com/Emtyloc/tempest-raylib">Tempest-raylib</a></p>
@@ -324,7 +343,6 @@ Carefully read all their <a class="reference external" href="https://pygame-web.
 <p><a class="reference external" href="https://github.com/StanislavPetrovV/DOOM-Clone">DOOM-Clone</a></p>
 <p><a class="reference external" href="https://github.com/pkulev/tanki">Tanki</a></p>
 <p><a class="reference external" href="https://pebaz.itch.io/alloy-bloxel-editor">Alloy Bloxel Editor</a></p>
-<p><a class="reference external" href="https://github.com/Miou-zora/Eidolon">Eidolon</a></p>
 <p>Add your app here!</p>
 </section>
 <section id="rlzero">
@@ -428,6 +446,10 @@ python3 -m nuitka --onefile --linux-onefile-icon resources/wabbit_alpha.png text
 <p><a class="reference external" href="https://store.steampowered.com/app/664240/RetroWar_8bit_Party_Battle/?git">RetroWar: 8-bit Party Battle</a> is out now.  Defeat up to 15 of your friends in a tournament of 80s-inspired retro mini games.</p>
 <p><a class="reference external" href="https://github.com/electronstudio/pygame-zero-book">Coding Games With Pygame Zero &amp; Python</a> is
 a book for Python beginners.</p>
+</section>
+<section id="hall-of-shame">
+<h1>Hall of shame!<a class="headerlink" href="#hall-of-shame" title="Link to this heading"></a></h1>
+<p>Apparently <a class="reference external" href="https://comma.ai/">comma.ai</a> are now using raylib-python-cffi commercially and so have begun donating money to raylib but have chosen <em>not</em> to give anything to raylib-python-cffi.  Yes it’s perfectly legal usage, but it’s not very nice behaviour.  😔</p>
 </section>
 
 
