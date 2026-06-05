@@ -10,6 +10,16 @@ on:
         type: string
         required: true
         default: "raylib"
+      version:
+        description: "Package version to install (e.g., 5.5.0.2, or leave empty for latest)"
+        type: string
+        required: false
+        default: ""
+      pre_release:
+        description: "Allow pre-release versions?"
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   test-pypi-install:
@@ -17,20 +27,43 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-15-intel, macos-14]
-        python-version: ["3.14", "3.11", "3.12", "3.13"]
+        os: [macos-15-intel, macos-14, macos-26]
+        python-version: ["3.14", "3.13"]
+        python-source: [homebrew, python-org]
     steps:
       - name: Install Python from Homebrew
+        if: matrix.python-source == 'homebrew'
         run: |
           brew install python@${{ matrix.python-version }}
           PYTHON_BIN="$(brew --prefix python@${{ matrix.python-version }})/bin/python${{ matrix.python-version }}"
           echo "PYTHON_BIN=$PYTHON_BIN" >> "$GITHUB_ENV"
           $PYTHON_BIN --version
 
+      - name: Setup Python (python.org)
+        if: matrix.python-source == 'python-org'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set Python bin (python.org)
+        if: matrix.python-source == 'python-org'
+        shell: bash
+        run: |
+          PYTHON_BIN="$(command -v python${{ matrix.python-version }} || command -v python3)"
+          echo "PYTHON_BIN=$PYTHON_BIN" >> "$GITHUB_ENV"
+          $PYTHON_BIN --version
+
       - name: Install package from PyPI
         run: |
-          "$PYTHON_BIN" -m pip install --upgrade pip
-          "$PYTHON_BIN" -m pip install "${{ inputs.package_name }}"
+          PRE_FLAG=""
+          if [ "${{ inputs.pre_release }}" = "true" ]; then
+            PRE_FLAG="--pre"
+          fi
+          if [ -n "${{ inputs.version }}" ]; then
+            "$PYTHON_BIN" -m pip install $PRE_FLAG "${{ inputs.package_name }}==${{ inputs.version }}"  --break-system-packages
+          else
+            "$PYTHON_BIN" -m pip install $PRE_FLAG "${{ inputs.package_name }}"  --break-system-packages
+          fi
 
       - name: Test import and basic initialization
         run: |
