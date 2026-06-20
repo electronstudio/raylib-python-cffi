@@ -93,7 +93,7 @@ reserved_words = ("in", "list", "tuple", "set", "dict", "from", "range", "min", 
 
 for name, attr in getmembers(rl):
     uname = _underscore(name)
-    if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>":
+    if isbuiltin(attr) or str(type(attr)) == "<class '_cffi_backend.__FFIFunctionWrapper'>" or str(type(attr)) == "<class '_cffi_backend._CDataBase'>":
         json_object = known_functions.get(name, None)
         if json_object is None:
             # this is _not_ an exported function from raylib, raymath, rlgl raygui or physac
@@ -115,6 +115,9 @@ for name, attr in getmembers(rl):
                 param_type += "|list|tuple"
             sig += f"{param_name}: {param_type},"
 
+        if str(type(attr)) == "<class '_cffi_backend._CDataBase'>":
+            sig += "*args: Any"
+
         return_type = ffi.typeof(attr).result.cname
 
         description = attr.__doc__
@@ -128,10 +131,6 @@ for name, attr in getmembers(rl):
         print(f'    """{description}."""')
         print(f'    ...')
 
-    elif str(type(attr)) == "<class '_cffi_backend._CDataBase'>":
-        return_type = ffi.typeof(attr).result.cname
-        print(
-            f'def {uname}(*args) -> {ctype_to_python_type(return_type)}:\n        """VARARG FUNCTION - MAY NOT BE SUPPORTED BY CFFI"""\n        ...')
     else:
         # print("*****", str(type(attr)))
         t = str(type(attr))[8:-2]  # this isolates the type
