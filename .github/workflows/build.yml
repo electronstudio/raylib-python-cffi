@@ -257,6 +257,9 @@ jobs:
       volumes:
         # override /__e/node20 because GitHub Actions uses a version that requires too-recent glibc
         - /tmp:/__e/node20
+    env:
+      # Github Actions Checkout now wants Node 24.  Maybe easier just to stop using Checkout than keep messing around with Node.
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true 
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
@@ -401,6 +404,9 @@ jobs:
       volumes:
         # override /__e/node20 because GitHub Actions uses a version that requires too-recent glibc
         - /tmp:/__e/node20
+    env:
+      # Github Actions Checkout now wants Node 24.  Maybe easier just to stop using Checkout than keep messing around with Node.
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true 
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
