@@ -58,6 +58,8 @@ def ctype_to_python_type(t):
         return "float"
     elif "char * *" in t:
         return "list[str]"
+    elif "unsigned char *" in t:
+        return "bytes"
     elif "char *" in t:
         return "str"
     elif t == "char":

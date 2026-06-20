@@ -1048,19 +1048,19 @@ def color_to_hsv(color: Color|list|tuple,) -> Vector3:
 def color_to_int(color: Color|list|tuple,) -> int:
     """Get hexadecimal value for a Color (0xRRGGBBAA)."""
     ...
-def compress_data(data: str,dataSize: int,compDataSize: Any,) -> str:
+def compress_data(data: bytes,dataSize: int,compDataSize: Any,) -> bytes:
     """Compress data (DEFLATE algorithm), memory must be MemFree()."""
     ...
-def compute_crc32(data: str,dataSize: int,) -> int:
+def compute_crc32(data: bytes,dataSize: int,) -> int:
     """Compute CRC32 hash code."""
     ...
-def compute_md5(data: str,dataSize: int,) -> Any:
+def compute_md5(data: bytes,dataSize: int,) -> Any:
     """Compute MD5 hash code, returns static int[4] (16 bytes)."""
     ...
-def compute_sha1(data: str,dataSize: int,) -> Any:
+def compute_sha1(data: bytes,dataSize: int,) -> Any:
     """Compute SHA1 hash code, returns static int[5] (20 bytes)."""
     ...
-def compute_sha256(data: str,dataSize: int,) -> Any:
+def compute_sha256(data: bytes,dataSize: int,) -> Any:
     """Compute SHA256 hash code, returns static int[8] (32 bytes)."""
     ...
 @deprecated("Raylib no longer recommends the use of Physac library")
@@ -1075,10 +1075,10 @@ def create_physics_body_polygon(pos: Vector2|list|tuple,radius: float,sides: int
 def create_physics_body_rectangle(pos: Vector2|list|tuple,width: float,height: float,density: float,) -> Any:
     """Creates a new rectangle physics body with generic parameters."""
     ...
-def decode_data_base64(text: str,outputSize: Any,) -> str:
+def decode_data_base64(text: str,outputSize: Any,) -> bytes:
     """Decode Base64 string (expected NULL terminated), memory must be MemFree()."""
     ...
-def decompress_data(compData: str,compDataSize: int,dataSize: Any,) -> str:
+def decompress_data(compData: bytes,compDataSize: int,dataSize: Any,) -> bytes:
     """Decompress data (DEFLATE algorithm), memory must be MemFree()."""
     ...
 @deprecated("Raylib no longer recommends the use of Physac library")
@@ -1388,7 +1388,7 @@ def enable_cursor() -> None:
 def enable_event_waiting() -> None:
     """Enable waiting for events on EndDrawing(), no automatic event polling."""
     ...
-def encode_data_base64(data: str,dataSize: int,outputSize: Any,) -> str:
+def encode_data_base64(data: bytes,dataSize: int,outputSize: Any,) -> str:
     """Encode data to Base64 string (includes NULL terminator), memory must be MemFree()."""
     ...
 def end_blend_mode() -> None:
@@ -1418,7 +1418,7 @@ def end_vr_stereo_mode() -> None:
 def export_automation_event_list(list_0: AutomationEventList|list|tuple,fileName: str,) -> bool:
     """Export automation events list as text file."""
     ...
-def export_data_as_code(data: str,dataSize: int,fileName: str,) -> bool:
+def export_data_as_code(data: bytes,dataSize: int,fileName: str,) -> bool:
     """Export data to code (.h), returns true on success."""
     ...
 def export_font_as_code(font: Font|list|tuple,fileName: str,) -> bool:
@@ -1430,7 +1430,7 @@ def export_image(image: Image|list|tuple,fileName: str,) -> bool:
 def export_image_as_code(image: Image|list|tuple,fileName: str,) -> bool:
     """Export image as code file defining an array of bytes, returns true on success."""
     ...
-def export_image_to_memory(image: Image|list|tuple,fileType: str,fileSize: Any,) -> str:
+def export_image_to_memory(image: Image|list|tuple,fileType: str,fileSize: Any,) -> bytes:
     """Export image to memory buffer, memory must be MemFree()."""
     ...
 def export_mesh(mesh: Mesh|list|tuple,fileName: str,) -> bool:
@@ -1957,7 +1957,7 @@ def gui_load_style(fileName: str,) -> None:
 def gui_load_style_default() -> None:
     """Load style default over global style."""
     ...
-def gui_load_style_from_memory(fileData: str,dataSize: int,) -> None:
+def gui_load_style_from_memory(fileData: bytes,dataSize: int,) -> None:
     """Load style from memory (binary only)."""
     ...
 def gui_lock() -> None:
@@ -2370,7 +2370,7 @@ def load_directory_files_ex(basePath: str,filter: str,scanSubdirs: bool,) -> Fil
 def load_dropped_files() -> FilePathList:
     """Load dropped filepaths."""
     ...
-def load_file_data(fileName: str,dataSize: Any,) -> str:
+def load_file_data(fileName: str,dataSize: Any,) -> bytes:
     """Load file data as byte array (read)."""
     ...
 def load_file_text(fileName: str,) -> str:
@@ -2379,7 +2379,7 @@ def load_file_text(fileName: str,) -> str:
 def load_font(fileName: str,) -> Font:
     """Load font from file into GPU memory (VRAM)."""
     ...
-def load_font_data(fileData: str,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,type: int,glyphCount: Any,) -> Any:
+def load_font_data(fileData: bytes,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,type: int,glyphCount: Any,) -> Any:
     """Load font data for further use."""
     ...
 def load_font_ex(fileName: str,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
@@ -2388,7 +2388,7 @@ def load_font_ex(fileName: str,fontSize: int,codepoints: Any,codepointCount: int
 def load_font_from_image(image: Image|list|tuple,key: Color|list|tuple,firstChar: int,) -> Font:
     """Load font from Image (XNA style)."""
     ...
-def load_font_from_memory(fileType: str,fileData: str,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
+def load_font_from_memory(fileType: str,fileData: bytes,dataSize: int,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
     """Load font from memory buffer, fileType refers to extension: i.e. '.ttf'."""
     ...
 def load_image(fileName: str,) -> Image:
@@ -2397,13 +2397,13 @@ def load_image(fileName: str,) -> Image:
 def load_image_anim(fileName: str,frames: Any,) -> Image:
     """Load image sequence from file (frames appended to image.data)."""
     ...
-def load_image_anim_from_memory(fileType: str,fileData: str,dataSize: int,frames: Any,) -> Image:
+def load_image_anim_from_memory(fileType: str,fileData: bytes,dataSize: int,frames: Any,) -> Image:
     """Load image sequence from memory buffer."""
     ...
 def load_image_colors(image: Image|list|tuple,) -> Any:
     """Load color data from image as a Color array (RGBA - 32bit)."""
     ...
-def load_image_from_memory(fileType: str,fileData: str,dataSize: int,) -> Image:
+def load_image_from_memory(fileType: str,fileData: bytes,dataSize: int,) -> Image:
     """Load image from memory buffer, fileType refers to extension: i.e. '.png'."""
     ...
 def load_image_from_screen() -> Image:
@@ -2436,7 +2436,7 @@ def load_model_from_mesh(mesh: Mesh|list|tuple,) -> Model:
 def load_music_stream(fileName: str,) -> Music:
     """Load music stream from file."""
     ...
-def load_music_stream_from_memory(fileType: str,data: str,dataSize: int,) -> Music:
+def load_music_stream_from_memory(fileType: str,data: bytes,dataSize: int,) -> Music:
     """Load music stream from data."""
     ...
 def load_random_sequence(count: int,min_1: int,max_2: int,) -> Any:
@@ -2481,7 +2481,7 @@ def load_vr_stereo_config(device: VrDeviceInfo|list|tuple,) -> VrStereoConfig:
 def load_wave(fileName: str,) -> Wave:
     """Load wave data from file."""
     ...
-def load_wave_from_memory(fileType: str,fileData: str,dataSize: int,) -> Wave:
+def load_wave_from_memory(fileType: str,fileData: bytes,dataSize: int,) -> Wave:
     """Load wave from memory buffer, fileType refers to extension: i.e. '.wav'."""
     ...
 def load_wave_samples(wave: Wave|list|tuple,) -> Any:
@@ -2767,7 +2767,7 @@ def set_gamepad_vibration(gamepad: int,leftMotor: float,rightMotor: float,durati
 def set_gestures_enabled(flags: int,) -> None:
     """Enable a set of gestures using flags."""
     ...
-def set_load_file_data_callback(callback: str,) -> None:
+def set_load_file_data_callback(callback: bytes,) -> None:
     """Set custom file binary data loader."""
     ...
 def set_load_file_text_callback(callback: str,) -> None:
@@ -3019,7 +3019,7 @@ def unload_directory_files(files: FilePathList|list|tuple,) -> None:
 def unload_dropped_files(files: FilePathList|list|tuple,) -> None:
     """Unload dropped filepaths."""
     ...
-def unload_file_data(data: str,) -> None:
+def unload_file_data(data: bytes,) -> None:
     """Unload file data allocated by LoadFileData()."""
     ...
 def unload_file_text(text: str,) -> None:
@@ -3469,13 +3469,13 @@ def glfw_get_input_mode(window: Any|list|tuple,mode: int,) -> int:
 def glfw_get_joystick_axes(jid: int,count: Any,) -> Any:
     """."""
     ...
-def glfw_get_joystick_buttons(jid: int,count: Any,) -> str:
+def glfw_get_joystick_buttons(jid: int,count: Any,) -> bytes:
     """."""
     ...
 def glfw_get_joystick_guid(jid: int,) -> str:
     """."""
     ...
-def glfw_get_joystick_hats(jid: int,count: Any,) -> str:
+def glfw_get_joystick_hats(jid: int,count: Any,) -> bytes:
     """."""
     ...
 def glfw_get_joystick_name(jid: int,) -> str:
@@ -4111,7 +4111,7 @@ def rl_pop_matrix() -> None:
 def rl_push_matrix() -> None:
     """Push the current matrix to stack."""
     ...
-def rl_read_screen_pixels(width: int,height: int,) -> str:
+def rl_read_screen_pixels(width: int,height: int,) -> bytes:
     """Read screen pixel data (color buffer)."""
     ...
 def rl_read_shader_buffer(id: int,dest: Any,count: int,offset: int,) -> None:
@@ -4392,7 +4392,7 @@ class Matrix:
         self.m15:float = m15 # type: ignore
 class Mesh:
     """Mesh, vertex data and vao/vbo."""
-    def __init__(self, vertexCount: int|None = None, triangleCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, texcoords2: Any|None = None, normals: Any|None = None, tangents: Any|None = None, colors: str|None = None, indices: Any|None = None, boneCount: int|None = None, boneIndices: str|None = None, boneWeights: Any|None = None, animVertices: Any|None = None, animNormals: Any|None = None, vaoId: int|None = None, vboId: Any|None = None):
+    def __init__(self, vertexCount: int|None = None, triangleCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, texcoords2: Any|None = None, normals: Any|None = None, tangents: Any|None = None, colors: bytes|None = None, indices: Any|None = None, boneCount: int|None = None, boneIndices: bytes|None = None, boneWeights: Any|None = None, animVertices: Any|None = None, animNormals: Any|None = None, vaoId: int|None = None, vboId: Any|None = None):
         self.vertexCount:int = vertexCount # type: ignore
         self.triangleCount:int = triangleCount # type: ignore
         self.vertices:Any = vertices # type: ignore
@@ -4400,10 +4400,10 @@ class Mesh:
         self.texcoords2:Any = texcoords2 # type: ignore
         self.normals:Any = normals # type: ignore
         self.tangents:Any = tangents # type: ignore
-        self.colors:str = colors # type: ignore
+        self.colors:bytes = colors # type: ignore
         self.indices:Any = indices # type: ignore
         self.boneCount:int = boneCount # type: ignore
-        self.boneIndices:str = boneIndices # type: ignore
+        self.boneIndices:bytes = boneIndices # type: ignore
         self.boneWeights:Any = boneWeights # type: ignore
         self.animVertices:Any = animVertices # type: ignore
         self.animNormals:Any = animNormals # type: ignore
@@ -4624,12 +4624,12 @@ class rlRenderBatch:
         self.currentDepth:float = currentDepth # type: ignore
 class rlVertexBuffer:
     """Dynamic vertex buffers (position + texcoords + colors + indices arrays)."""
-    def __init__(self, elementCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, normals: Any|None = None, colors: str|None = None, indices: Any|None = None, vaoId: int|None = None, vboId: list|None = None):
+    def __init__(self, elementCount: int|None = None, vertices: Any|None = None, texcoords: Any|None = None, normals: Any|None = None, colors: bytes|None = None, indices: Any|None = None, vaoId: int|None = None, vboId: list|None = None):
         self.elementCount:int = elementCount # type: ignore
         self.vertices:Any = vertices # type: ignore
         self.texcoords:Any = texcoords # type: ignore
         self.normals:Any = normals # type: ignore
-        self.colors:str = colors # type: ignore
+        self.colors:bytes = colors # type: ignore
         self.indices:Any = indices # type: ignore
         self.vaoId:int = vaoId # type: ignore
         self.vboId:list = vboId # type: ignore
