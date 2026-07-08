@@ -1,3 +1,5 @@
+# Tested version 6.0.1.0
+
 from array import array
 import pyray as pr
 
@@ -91,7 +93,7 @@ def make_cube(width, height, length):
     print(vertices, indices)
 
     return (pr.Mesh(24, 12, vertices, texcoords,
-                   None, normals, None, None, indices,
+                   None, normals, None, None, indices, 0,
                    None, None, None, None, 0, None))
 
 
