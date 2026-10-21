@@ -786,8 +786,7 @@ jobs:
             "3.13",
             "3.14",
             "3.15",
-            "pypy-3.11",
-            "pypy-3.12"
+            "pypy-3.11"
           ]
         raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
