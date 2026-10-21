@@ -30,7 +30,9 @@ jobs:
             "3.12",
             "3.13",
             "3.14",
+            "3.15",
             "pypy-3.11",
+            "pypy-3.12",
           ]
         raylib-platform: ["Desktop", "SDL"]
     env:
@@ -142,10 +144,10 @@ jobs:
     runs-on: macos-14
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14", "3.15", "pypy-3.11", "pypy-3.12"]
         raylib-platform: ["Desktop", "SDL"]
     env:
-      MACOSX_DEPLOYMENT_TARGET: "11"
+      MACOSX_DEPLOYMENT_TARGET: "12.0"
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -255,11 +257,13 @@ jobs:
       image: electronstudio/ubuntu16-modern:latest
       options: --user root
       volumes:
-        # override /__e/node20 because GitHub Actions uses a version that requires too-recent glibc
+        # override /__e/node20 AND /__e/node24 with the image's own node because the nodes
+        # that GitHub Actions provides require too-recent glibc.  Still needed for node
+        # actions such as actions/upload-artifact (we no longer use actions/checkout, we
+        # just run git directly).  Since June 2026 the runner resolves ALL js actions to
+        # /__e/node24, so both paths must be overridden.
         - /tmp:/__e/node20
-    env:
-      # Github Actions Checkout now wants Node 24.  Maybe easier just to stop using Checkout than keep messing around with Node.
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true 
+        - /tmp:/__e/node24
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
@@ -274,13 +278,27 @@ jobs:
             "python3.12",
             "python3.13",
             "python3.14",
+            "python3.15",
             "pypy3.11",
+            "pypy3.12"
           ]
         raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
+      # Must be the first step so the workspace is empty and git clone works
+      - name: Checkout
+        run: |
+          # workspace dir is owned by the host runner user but we are root in the
+          # container, so tell git that is OK (avoids "dubious ownership" error)
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git clone ${{ github.server_url }}/${{ github.repository }} .
+          git fetch --force origin "${{ github.ref }}"
+          git checkout --force FETCH_HEAD
+          git submodule update --init --recursive
+
       - name: fix node
         run: |
           ln -s /usr/local/bin /__e/node20/bin
+          ln -s /usr/local/bin /__e/node24/bin
 
       - name: setup wayland
         run: |
@@ -302,10 +320,6 @@ jobs:
           cmake ../SDL3-3.4.4 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           cmake --install .
-
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
 
       - name: fix raygui bug
         run: |
@@ -402,11 +416,13 @@ jobs:
       image: electronstudio/ubuntu16-modern:i386
       options: --user root --platform=linux/386
       volumes:
-        # override /__e/node20 because GitHub Actions uses a version that requires too-recent glibc
+        # override /__e/node20 AND /__e/node24 with the image's own node because the nodes
+        # that GitHub Actions provides require too-recent glibc.  Still needed for node
+        # actions such as actions/upload-artifact (we no longer use actions/checkout, we
+        # just run git directly).  Since June 2026 the runner resolves ALL js actions to
+        # /__e/node24, so both paths must be overridden.
         - /tmp:/__e/node20
-    env:
-      # Github Actions Checkout now wants Node 24.  Maybe easier just to stop using Checkout than keep messing around with Node.
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true 
+        - /tmp:/__e/node24
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
@@ -421,12 +437,25 @@ jobs:
             "python3.12",
             "python3.13",
             "python3.14",
+            "python3.15"
           ]
         raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
+      # Must be the first step so the workspace is empty and git clone works
+      - name: Checkout
+        run: |
+          # workspace dir is owned by the host runner user but we are root in the
+          # container, so tell git that is OK (avoids "dubious ownership" error)
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git clone ${{ github.server_url }}/${{ github.repository }} .
+          git fetch --force origin "${{ github.ref }}"
+          git checkout --force FETCH_HEAD
+          git submodule update --init --recursive
+
       - name: fix node
         run: |
           ln -s /usr/local/bin /__e/node20/bin
+          ln -s /usr/local/bin /__e/node24/bin
 
       - name: update cmake
         run: |
@@ -443,10 +472,6 @@ jobs:
           cmake ../SDL3-3.4.4 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           cmake --install .
-
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
 
       - name: fix raygui bug
         run: |
@@ -540,7 +565,7 @@ jobs:
     runs-on: ubuntu-22.04-arm
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
         raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -676,7 +701,20 @@ jobs:
             docker-tag: "python3.13-bullseye"
           - python-version: "3.14"
             docker-tag: "python3.14-bookworm"
+          - python-version: "3.15"
+            docker-tag: "python3.15-bookworm"
     steps:
+      # Must be the first step so the workspace is empty and git clone works
+      - name: Checkout
+        run: |
+          # workspace dir is owned by the host runner user but we are root in the
+          # container, so tell git that is OK (avoids "dubious ownership" error)
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git clone ${{ github.server_url }}/${{ github.repository }} .
+          git fetch --force origin "${{ github.ref }}"
+          git checkout --force FETCH_HEAD
+          git submodule update --init --recursive
+
       - name: update cmake
         run: |
           wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-aarch64.tar.gz
@@ -687,10 +725,6 @@ jobs:
         run: |
           apt update
           apt -y install libdrm-dev libgbm-dev libegl-dev libgles2-mesa-dev libasound2-dev libedit2
-
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
 
       - name: fix raygui bug
         run: |
@@ -778,7 +812,8 @@ jobs:
             "3.12",
             "3.13",
             "3.14",
-            "pypy-3.11",
+            "3.15",
+            "pypy-3.11"
           ]
         raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
@@ -893,7 +928,7 @@ jobs:
       # For example, pypy2 and pypy3
       matrix:
         python-version:
-          ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+          ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
         raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       - uses: actions/checkout@v4

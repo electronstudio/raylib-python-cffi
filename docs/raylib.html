@@ -2505,10 +2505,10 @@ are very, very similar to the C originals.</p>
 <p>Example program:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">raylib</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">InitWindow</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Hello Raylib&quot;</span><span class="p">)</span>
+<span class="n">InitWindow</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"Hello Raylib"</span><span class="p">)</span>
 <span class="n">SetTargetFPS</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 
-<span class="n">camera</span> <span class="o">=</span> <span class="n">ffi</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;struct Camera3D *&quot;</span><span class="p">,</span> <span class="p">[[</span><span class="mf">18.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="mf">45.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">camera</span> <span class="o">=</span> <span class="n">ffi</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"struct Camera3D *"</span><span class="p">,</span> <span class="p">[[</span><span class="mf">18.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="mf">45.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 
 <span class="k">while</span> <span class="ow">not</span> <span class="n">WindowShouldClose</span><span class="p">():</span>
     <span class="n">UpdateCamera</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">CAMERA_ORBITAL</span><span class="p">)</span>
@@ -2517,7 +2517,7 @@ are very, very similar to the C originals.</p>
     <span class="n">BeginMode3D</span><span class="p">(</span><span class="n">camera</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">DrawGrid</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
     <span class="n">EndMode3D</span><span class="p">()</span>
-    <span class="n">DrawText</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Hellow World&quot;</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">VIOLET</span><span class="p">)</span>
+    <span class="n">DrawText</span><span class="p">(</span><span class="sa">b</span><span class="s2">"Hellow World"</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">VIOLET</span><span class="p">)</span>
     <span class="n">EndDrawing</span><span class="p">()</span>
 <span class="n">CloseWindow</span><span class="p">()</span>
 </pre></div>
@@ -2525,7 +2525,7 @@ are very, very similar to the C originals.</p>
 <p>If you want to be more portable (i.e. same code will work with dynamic bindings) you can prefix the functions like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">raylib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ffi</span><span class="p">,</span> <span class="n">rl</span><span class="p">,</span> <span class="n">colors</span>
 
-<span class="n">rl</span><span class="o">.</span><span class="n">InitWindow</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Hello Raylib&quot;</span><span class="p">)</span>
+<span class="n">rl</span><span class="o">.</span><span class="n">InitWindow</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"Hello Raylib"</span><span class="p">)</span>
 <span class="n">rl</span><span class="o">.</span><span class="n">SetTargetFPS</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 
 <span class="o">...</span>
