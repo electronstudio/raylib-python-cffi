@@ -284,6 +284,9 @@ jobs:
       # Must be the first step so the workspace is empty and git clone works
       - name: Checkout
         run: |
+          # workspace dir is owned by the host runner user but we are root in the
+          # container, so tell git that is OK (avoids "dubious ownership" error)
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git clone ${{ github.server_url }}/${{ github.repository }} .
           git fetch --force origin "${{ github.ref }}"
           git checkout --force FETCH_HEAD
@@ -434,6 +437,9 @@ jobs:
       # Must be the first step so the workspace is empty and git clone works
       - name: Checkout
         run: |
+          # workspace dir is owned by the host runner user but we are root in the
+          # container, so tell git that is OK (avoids "dubious ownership" error)
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git clone ${{ github.server_url }}/${{ github.repository }} .
           git fetch --force origin "${{ github.ref }}"
           git checkout --force FETCH_HEAD
@@ -693,6 +699,9 @@ jobs:
       # Must be the first step so the workspace is empty and git clone works
       - name: Checkout
         run: |
+          # workspace dir is owned by the host runner user but we are root in the
+          # container, so tell git that is OK (avoids "dubious ownership" error)
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git clone ${{ github.server_url }}/${{ github.repository }} .
           git fetch --force origin "${{ github.ref }}"
           git checkout --force FETCH_HEAD
