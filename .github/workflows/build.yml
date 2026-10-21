@@ -30,7 +30,9 @@ jobs:
             "3.12",
             "3.13",
             "3.14",
+            "3.15",
             "pypy-3.11",
+            "pypy-3.12",
           ]
         raylib-platform: ["Desktop", "SDL"]
     env:
@@ -142,7 +144,7 @@ jobs:
     runs-on: macos-14
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14", "3.15", "pypy-3.11", "pypy-3.12"]
         raylib-platform: ["Desktop", "SDL"]
     env:
       MACOSX_DEPLOYMENT_TARGET: "11"
@@ -259,7 +261,7 @@ jobs:
         - /tmp:/__e/node20
     env:
       # Github Actions Checkout now wants Node 24.  Maybe easier just to stop using Checkout than keep messing around with Node.
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true 
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
@@ -274,7 +276,9 @@ jobs:
             "python3.12",
             "python3.13",
             "python3.14",
+            "python3.15",
             "pypy3.11",
+            "pypy3.12"
           ]
         raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
@@ -406,7 +410,7 @@ jobs:
         - /tmp:/__e/node20
     env:
       # Github Actions Checkout now wants Node 24.  Maybe easier just to stop using Checkout than keep messing around with Node.
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true 
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
@@ -421,6 +425,7 @@ jobs:
             "python3.12",
             "python3.13",
             "python3.14",
+            "python3.15"
           ]
         raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
@@ -540,7 +545,7 @@ jobs:
     runs-on: ubuntu-22.04-arm
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
         raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -676,6 +681,8 @@ jobs:
             docker-tag: "python3.13-bullseye"
           - python-version: "3.14"
             docker-tag: "python3.14-bookworm"
+          - python-version: "3.15"
+            docker-tag: "python3.15-bookworm"
     steps:
       - name: update cmake
         run: |
@@ -778,7 +785,9 @@ jobs:
             "3.12",
             "3.13",
             "3.14",
+            "3.15",
             "pypy-3.11",
+            "pypy-3.12"
           ]
         raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
@@ -893,7 +902,7 @@ jobs:
       # For example, pypy2 and pypy3
       matrix:
         python-version:
-          ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+          ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
         raylib-platform: ["Desktop", "SDL", "SDL_SOFT"]
     steps:
       - uses: actions/checkout@v4
