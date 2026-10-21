@@ -308,7 +308,10 @@ jobs:
 
       - name: Checkout
         run: |
-          git clone ${{ github.server_url }}/${{ github.repository }} .
+          # git init + fetch instead of actions/checkout (needs no node) and instead of
+          # git clone (earlier steps may have already put files in the workspace)
+          git init
+          git remote add origin ${{ github.server_url }}/${{ github.repository }}
           git fetch --force origin "${{ github.ref }}"
           git checkout --force FETCH_HEAD
           git submodule update --init --recursive
@@ -452,7 +455,10 @@ jobs:
 
       - name: Checkout
         run: |
-          git clone ${{ github.server_url }}/${{ github.repository }} .
+          # git init + fetch instead of actions/checkout (needs no node) and instead of
+          # git clone (earlier steps may have already put files in the workspace)
+          git init
+          git remote add origin ${{ github.server_url }}/${{ github.repository }}
           git fetch --force origin "${{ github.ref }}"
           git checkout --force FETCH_HEAD
           git submodule update --init --recursive
@@ -701,7 +707,10 @@ jobs:
 
       - name: Checkout
         run: |
-          git clone ${{ github.server_url }}/${{ github.repository }} .
+          # git init + fetch instead of actions/checkout (needs no node) and instead of
+          # git clone (earlier steps may have already put files in the workspace)
+          git init
+          git remote add origin ${{ github.server_url }}/${{ github.repository }}
           git fetch --force origin "${{ github.ref }}"
           git checkout --force FETCH_HEAD
           git submodule update --init --recursive
