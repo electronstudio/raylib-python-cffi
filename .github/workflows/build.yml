@@ -257,11 +257,10 @@ jobs:
       image: electronstudio/ubuntu16-modern:latest
       options: --user root
       volumes:
-        # override /__e/node20 because GitHub Actions uses a version that requires too-recent glibc
+        # override /__e/node20 with the image's own node because the node that GitHub Actions
+        # puts there requires too-recent glibc.  Still needed for node actions such as
+        # actions/upload-artifact (we no longer use actions/checkout, we just run git directly).
         - /tmp:/__e/node20
-    env:
-      # Github Actions Checkout now wants Node 24.  Maybe easier just to stop using Checkout than keep messing around with Node.
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
@@ -307,9 +306,12 @@ jobs:
           cmake --build . --config Release
           cmake --install .
 
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
+      - name: Checkout
+        run: |
+          git clone ${{ github.server_url }}/${{ github.repository }} .
+          git fetch --force origin "${{ github.ref }}"
+          git checkout --force FETCH_HEAD
+          git submodule update --init --recursive
 
       - name: fix raygui bug
         run: |
@@ -406,11 +408,10 @@ jobs:
       image: electronstudio/ubuntu16-modern:i386
       options: --user root --platform=linux/386
       volumes:
-        # override /__e/node20 because GitHub Actions uses a version that requires too-recent glibc
+        # override /__e/node20 with the image's own node because the node that GitHub Actions
+        # puts there requires too-recent glibc.  Still needed for node actions such as
+        # actions/upload-artifact (we no longer use actions/checkout, we just run git directly).
         - /tmp:/__e/node20
-    env:
-      # Github Actions Checkout now wants Node 24.  Maybe easier just to stop using Checkout than keep messing around with Node.
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     strategy:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
@@ -449,9 +450,12 @@ jobs:
           cmake --build . --config Release
           cmake --install .
 
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
+      - name: Checkout
+        run: |
+          git clone ${{ github.server_url }}/${{ github.repository }} .
+          git fetch --force origin "${{ github.ref }}"
+          git checkout --force FETCH_HEAD
+          git submodule update --init --recursive
 
       - name: fix raygui bug
         run: |
@@ -695,9 +699,12 @@ jobs:
           apt update
           apt -y install libdrm-dev libgbm-dev libegl-dev libgles2-mesa-dev libasound2-dev libedit2
 
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
+      - name: Checkout
+        run: |
+          git clone ${{ github.server_url }}/${{ github.repository }} .
+          git fetch --force origin "${{ github.ref }}"
+          git checkout --force FETCH_HEAD
+          git submodule update --init --recursive
 
       - name: fix raygui bug
         run: |
