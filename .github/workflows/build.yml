@@ -281,6 +281,14 @@ jobs:
           ]
         raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
+      # Must be the first step so the workspace is empty and git clone works
+      - name: Checkout
+        run: |
+          git clone ${{ github.server_url }}/${{ github.repository }} .
+          git fetch --force origin "${{ github.ref }}"
+          git checkout --force FETCH_HEAD
+          git submodule update --init --recursive
+
       - name: fix node
         run: |
           ln -s /usr/local/bin /__e/node20/bin
@@ -305,16 +313,6 @@ jobs:
           cmake ../SDL3-3.4.4 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           cmake --install .
-
-      - name: Checkout
-        run: |
-          # git init + fetch instead of actions/checkout (needs no node) and instead of
-          # git clone (earlier steps may have already put files in the workspace)
-          git init
-          git remote add origin ${{ github.server_url }}/${{ github.repository }}
-          git fetch --force origin "${{ github.ref }}"
-          git checkout --force FETCH_HEAD
-          git submodule update --init --recursive
 
       - name: fix raygui bug
         run: |
@@ -433,6 +431,14 @@ jobs:
           ]
         raylib-platform: ["Desktop", "SDL", "DRM", "SDL_SOFT"]
     steps:
+      # Must be the first step so the workspace is empty and git clone works
+      - name: Checkout
+        run: |
+          git clone ${{ github.server_url }}/${{ github.repository }} .
+          git fetch --force origin "${{ github.ref }}"
+          git checkout --force FETCH_HEAD
+          git submodule update --init --recursive
+
       - name: fix node
         run: |
           ln -s /usr/local/bin /__e/node20/bin
@@ -452,16 +458,6 @@ jobs:
           cmake ../SDL3-3.4.4 -DSDL_SHARED=OFF -DSDL_STATIC=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -DSDL_VULKAN=OFF -DSDL_CAMERA=OFF -DSDL_GPU=OFF
           cmake --build . --config Release
           cmake --install .
-
-      - name: Checkout
-        run: |
-          # git init + fetch instead of actions/checkout (needs no node) and instead of
-          # git clone (earlier steps may have already put files in the workspace)
-          git init
-          git remote add origin ${{ github.server_url }}/${{ github.repository }}
-          git fetch --force origin "${{ github.ref }}"
-          git checkout --force FETCH_HEAD
-          git submodule update --init --recursive
 
       - name: fix raygui bug
         run: |
@@ -694,6 +690,14 @@ jobs:
           - python-version: "3.15"
             docker-tag: "python3.15-bookworm"
     steps:
+      # Must be the first step so the workspace is empty and git clone works
+      - name: Checkout
+        run: |
+          git clone ${{ github.server_url }}/${{ github.repository }} .
+          git fetch --force origin "${{ github.ref }}"
+          git checkout --force FETCH_HEAD
+          git submodule update --init --recursive
+
       - name: update cmake
         run: |
           wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-aarch64.tar.gz
@@ -704,16 +708,6 @@ jobs:
         run: |
           apt update
           apt -y install libdrm-dev libgbm-dev libegl-dev libgles2-mesa-dev libasound2-dev libedit2
-
-      - name: Checkout
-        run: |
-          # git init + fetch instead of actions/checkout (needs no node) and instead of
-          # git clone (earlier steps may have already put files in the workspace)
-          git init
-          git remote add origin ${{ github.server_url }}/${{ github.repository }}
-          git fetch --force origin "${{ github.ref }}"
-          git checkout --force FETCH_HEAD
-          git submodule update --init --recursive
 
       - name: fix raygui bug
         run: |
