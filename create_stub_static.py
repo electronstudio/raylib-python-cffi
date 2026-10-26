@@ -137,17 +137,26 @@ for struct in ffi.list_types()[0]:
         #     continue
         print(f"class {struct}:")
         # sig = ""
-        fields = ffi.typeof(struct).fields
+        # Opaque structs (e.g. GLFWcursor, GLFWmonitor, GLFWwindow, rAudioBuffer,
+        # rAudioProcessor) are never defined in the parsed headers.  cffi >= 2.0.0
+        # hard-aborts the process (C assert) when accessing .fields on an opaque
+        # struct, instead of returning None like cffi 1.x did.  ffi.sizeof() raises
+        # a normal Python exception for opaque structs, so use it to test first.
+        fields = None
+        try:
+            ffi.sizeof(ffi.typeof(struct))
+            fields = ffi.typeof(struct).fields
+        except Exception:
+            pass
         if fields is not None:
             #print(ffi.typeof(struct).fields)
         #print(f"    {arg}: {arg}")
         # print(f"        def __init__(self{sig}):")
         #
-            for arg in ffi.typeof(struct).fields:
+            for arg in fields:
                 print(f"    {arg[0]}: {ctype_to_python_type(arg[1].type.cname)}")
         else:
             print("    ...")
-        #     print(f"            self.{arg[0]}={arg[0]}")
 
     elif ffi.typeof(struct).kind == "enum":
         print(f"{struct} = int")

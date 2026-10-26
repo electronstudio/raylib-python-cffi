@@ -145,13 +145,13 @@ original Raylib.</p></li>
 </section>
 <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==6.0.1.0</span> <span class="pre">--break-system-packages</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">raylib==6.0.1.1</span> <span class="pre">--break-system-packages</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyray</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="n">init_window</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="n">init_window</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">"Hello"</span><span class="p">)</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>
     <span class="n">begin_drawing</span><span class="p">()</span>
     <span class="n">clear_background</span><span class="p">(</span><span class="n">WHITE</span><span class="p">)</span>
-    <span class="n">draw_text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">VIOLET</span><span class="p">)</span>
+    <span class="n">draw_text</span><span class="p">(</span><span class="s2">"Hello world"</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">VIOLET</span><span class="p">)</span>
     <span class="n">end_drawing</span><span class="p">()</span>
 <span class="n">close_window</span><span class="p">()</span>
 </pre></div>
@@ -192,7 +192,7 @@ source venv/bin/activate
 </div>
 <p>Then install</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m pip install setuptools
-python3 -m pip install raylib==6.0.1.0
+python3 -m pip install raylib==6.0.1.1
 </pre></div>
 </div>
 <p>On most platforms it should install a binary wheel.  If yours isn’t available then pip will attempt to build from
@@ -213,7 +213,7 @@ using homebrew, apt, etc.</p>
 <p>Older MacOS requires building from source but this is usually simple:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>brew install pkg-config
 brew install raylib
-python3 -m pip install raylib==6.0.1.0
+python3 -m pip install raylib==6.0.1.1
 </pre></div>
 </div>
 </section>
@@ -288,8 +288,8 @@ is recommended.</p>
 <p>Make a folder <code class="docutils literal notranslate"><span class="pre">my_project</span></code> with a file <code class="docutils literal notranslate"><span class="pre">main.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
 <span class="c1"># dependencies = [</span>
-<span class="c1">#     &quot;cffi&quot;,</span>
-<span class="c1">#     &quot;raylib&quot;</span>
+<span class="c1">#     "cffi",</span>
+<span class="c1">#     "raylib"</span>
 <span class="c1"># ]</span>
 <span class="c1"># ///</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
@@ -297,12 +297,12 @@ is recommended.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pyray</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>   <span class="c1"># You MUST have an async main function</span>
-    <span class="n">init_window</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+    <span class="n">init_window</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">"Hello"</span><span class="p">)</span>
     <span class="n">platform</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">window_resize</span><span class="p">()</span>  <span class="c1"># You MAY want to add this line</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">window_should_close</span><span class="p">():</span>
         <span class="n">begin_drawing</span><span class="p">()</span>
         <span class="n">clear_background</span><span class="p">(</span><span class="n">WHITE</span><span class="p">)</span>
-        <span class="n">draw_text</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">VIOLET</span><span class="p">)</span>
+        <span class="n">draw_text</span><span class="p">(</span><span class="s2">"Hello world"</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">VIOLET</span><span class="p">)</span>
         <span class="n">end_drawing</span><span class="p">()</span>
         <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># You MUST call this in your main loop</span>
     <span class="n">close_window</span><span class="p">()</span>
@@ -317,7 +317,7 @@ python3.12 -m pygbag --PYBUILD 3.12 --ume_block 0 --template noctx.tmpl --git my
 </div>
 <p>Point your browser to http://localhost:8000</p>
 <p>Some features may not work, so you can disable them like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;Emscripten&quot;</span><span class="p">:</span>  <span class="c1"># audio may not work on current version of emscripten</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">"Emscripten"</span><span class="p">:</span>  <span class="c1"># audio may not work on current version of emscripten</span>
     <span class="n">init_audio_device</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -331,7 +331,7 @@ Carefully read all their <a class="reference external" href="https://pygame-web.
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyray</span>
 <span class="n">pyray</span><span class="o">.</span><span class="n">set_trace_log_level</span><span class="p">(</span><span class="n">pyray</span><span class="o">.</span><span class="n">LOG_ERROR</span><span class="p">)</span>
-<span class="n">pyray</span><span class="o">.</span><span class="n">init_window</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">pyray</span><span class="o">.</span><span class="n">init_window</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="s2">"test"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
