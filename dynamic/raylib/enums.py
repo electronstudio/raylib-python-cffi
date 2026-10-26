@@ -368,6 +368,13 @@ class NPatchLayout(IntEnum):
     NPATCH_THREE_PATCH_VERTICAL = 1
     NPATCH_THREE_PATCH_HORIZONTAL = 2
 
+class GuiResult(IntEnum):
+    """Gui control result."""
+    RESULT_NONE = 0
+    RESULT_PRESSED = 1
+    RESULT_CHANGED = 2
+    RESULT_TAB_CLOSE = 4
+
 class GuiState(IntEnum):
     """Gui control state."""
     STATE_NORMAL = 0
@@ -406,14 +413,14 @@ class GuiControl(IntEnum):
     DROPDOWNBOX = 8
     TEXTBOX = 9
     VALUEBOX = 10
-    CONTROL11 = 11
+    TABBAR = 11
     LISTVIEW = 12
     COLORPICKER = 13
     SCROLLBAR = 14
     STATUSBAR = 15
 
 class GuiControlProperty(IntEnum):
-    """Gui base properties for every control."""
+    """Controls BASE properties for every control (RAYGUI_MAX_PROPS_BASE = 16)."""
     BORDER_COLOR_NORMAL = 0
     BASE_COLOR_NORMAL = 1
     TEXT_COLOR_NORMAL = 2
@@ -429,9 +436,10 @@ class GuiControlProperty(IntEnum):
     BORDER_WIDTH = 12
     TEXT_PADDING = 13
     TEXT_ALIGNMENT = 14
+    BASEPROP16 = 15
 
 class GuiDefaultProperty(IntEnum):
-    """DEFAULT extended properties."""
+    """DEFAULT control, extended properties."""
     TEXT_SIZE = 16
     TEXT_SPACING = 17
     LINE_COLOR = 18
@@ -439,10 +447,12 @@ class GuiDefaultProperty(IntEnum):
     TEXT_LINE_SPACING = 20
     TEXT_ALIGNMENT_VERTICAL = 21
     TEXT_WRAP_MODE = 22
+    EXTPROP08 = 23
 
 class GuiToggleProperty(IntEnum):
     """Toggle/ToggleGroup."""
     GROUP_PADDING = 16
+    GROUP_WIDTH_FULL = 17
 
 class GuiSliderProperty(IntEnum):
     """Slider/SliderBar."""
@@ -478,6 +488,7 @@ class GuiDropdownBoxProperty(IntEnum):
     DROPDOWN_ITEMS_SPACING = 17
     DROPDOWN_ARROW_HIDDEN = 18
     DROPDOWN_ROLL_UP = 19
+    DROPDOWN_MAX_HEIGHT = 20
 
 class GuiTextBoxProperty(IntEnum):
     """TextBox/TextBoxMulti/ValueBox/Spinner."""
@@ -488,8 +499,14 @@ class GuiValueBoxProperty(IntEnum):
     SPINNER_BUTTON_WIDTH = 16
     SPINNER_BUTTON_SPACING = 17
 
+class GuiTabBarProperty(IntEnum):
+    """TabBar."""
+    TAB_ITEMS_WIDTH = 16
+    TAB_CLOSE_BUTTON = 17
+    TAB_LINE_SIDE = 18
+
 class GuiListViewProperty(IntEnum):
-    """ListView."""
+    """."""
     LIST_ITEMS_HEIGHT = 16
     LIST_ITEMS_SPACING = 17
     SCROLLBAR_WIDTH = 18
@@ -757,10 +774,11 @@ class GuiIconName(IntEnum):
     ICON_CONE = 247
     ICON_ELLIPSOID = 248
     ICON_CAPSULE = 249
-    ICON_250 = 250
-    ICON_251 = 251
-    ICON_252 = 252
-    ICON_253 = 253
-    ICON_254 = 254
-    ICON_255 = 255
+    ICON_FILETYPE_FONT = 250
+    ICON_FILETYPE_3D = 251
+    ICON_FILETYPE_CODE_XML = 252
+    ICON_FILETYPE_CODE_C = 253
+    ICON_FILETYPE_CODE_PYTHON = 254
+    ICON_FILETYPE_CODE_JS = 255
+    ICON_FILETYPE_ICON = 256
 

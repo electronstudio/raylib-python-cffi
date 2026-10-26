@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is **raylib-python-cffi** (version 6.0.1.1), Python CFFI bindings for Raylib 6.0 game development library. It provides two main Python modules:
+This is **raylib-python-cffi** (version 6.2.0.0), Python CFFI bindings for Raylib 6.2 game development library. It provides two main Python modules:
 - `raylib`: Direct C API bindings (exact copy of C functions)
 - `pyray`: More Pythonic API wrapper
 
