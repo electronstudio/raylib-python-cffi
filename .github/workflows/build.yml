@@ -912,12 +912,12 @@ jobs:
 
       - name: Install twine
         run: |
-          python3.14 -m pip install twine
+          python3 -m pip install twine
 
       - name: Publish to PyPI
         if: ${{ inputs.publish_to_pypi == true }}
         run: |
-          python3.14 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
+          python3 -m twine upload -u __token__ -p ${{ secrets.PYPI_KEY }} dist/*.whl
 
       - name: Upload build Artifact wheel
         uses: actions/upload-artifact@v4
