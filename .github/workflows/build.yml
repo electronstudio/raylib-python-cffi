@@ -847,6 +847,10 @@ jobs:
         shell: cmd
 
       - name: Build raylib
+        env:
+           # rlsw.h (software renderer) needs a conformant preprocessor for its
+           # variadic macro tricks; MSVC's legacy one fails with C1012 on rlsw.h:5276
+           CL: /Zc:preprocessor
         run: |
           cd raylib-c
           mkdir build
@@ -863,6 +867,10 @@ jobs:
         shell: bash
 
       - name: Build raylib2
+        env:
+           # rlsw.h (software renderer) needs a conformant preprocessor for its
+           # variadic macro tricks; MSVC's legacy one fails with C1012 on rlsw.h:5276
+           CL: /Zc:preprocessor
         run: |
           cd raylib-c/build
           msbuild raylib.sln /target:raylib /property:Configuration=Release
