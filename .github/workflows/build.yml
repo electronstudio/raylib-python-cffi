@@ -305,12 +305,6 @@ jobs:
           apt-get update
           apt-get install -y libwayland-dev wayland-protocols
 
-      - name: update cmake
-        run: |
-          wget https://github.com/Kitware/CMake/releases/download/v3.31.10/cmake-3.31.10-linux-x86_64.tar.gz
-          tar xvfz cmake-3.31.10-linux-x86_64.tar.gz
-          cp -r cmake-3.31.10-linux-x86_64/* /usr/
-
       - name: Build SDL
         run: |
           wget https://github.com/libsdl-org/SDL/releases/download/release-3.4.4/SDL3-3.4.4.tar.gz
@@ -357,7 +351,7 @@ jobs:
           PKG_CONFIG_PATH: /usr/local/lib/pkgconfig
         run: |
           ${{ matrix.python-version }} -m pip install --upgrade pip
-          ${{ matrix.python-version }} -m pip install --upgrade cffi
+          ${{ matrix.python-version }} -m pip install cffi
           ${{ matrix.python-version }} -m pip install --upgrade wheel
           ${{ matrix.python-version }} -m pip install --upgrade setuptools
           ${{ matrix.python-version }} -m pip install --upgrade build
