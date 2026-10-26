@@ -1,4 +1,4 @@
-# Python Bindings for Raylib 6.0
+# Python Bindings for Raylib 6.2
 ## Libraries: raymath, raygui, rlgl, physac and GLFW
 ## Backends: Desktop, SDL, DRM, Web, Software rendering
 ## Platforms: Windows, Mac, Linux, Raspberry Pi, Web
@@ -21,7 +21,7 @@ original Raylib.
 
 # Quickstart
 
-`pip3 install raylib==6.0.1.1 --break-system-packages`
+`pip3 install raylib==6.2.0.0 --break-system-packages`
 ```python
 from pyray import *
 init_window(800, 450, "Hello")
@@ -73,7 +73,7 @@ Then make sure you have the latest pip installed:
 Then install
 
     python3 -m pip install setuptools
-    python3 -m pip install raylib==6.0.1.1
+    python3 -m pip install raylib==6.2.0.0
 
 On most platforms it should install a binary wheel.  If yours isn't available then pip will attempt to build from
 source, in which case you will need to have Raylib development libs installed, e.g. 
@@ -95,7 +95,7 @@ Older MacOS requires building from source but this is usually simple:
 
     brew install pkg-config
     brew install raylib
-    python3 -m pip install raylib==6.0.1.1
+    python3 -m pip install raylib==6.2.0.0
 
 ## Linux
 

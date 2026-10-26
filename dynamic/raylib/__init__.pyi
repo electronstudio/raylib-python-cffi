@@ -19,6 +19,7 @@ def AttachAudioStreamProcessor(stream: AudioStream|list|tuple,processor: Any,) -
     """Attach audio stream processor to stream, receives frames x 2 samples as 'float' (stereo)."""
     ...
 BACKGROUND_COLOR: int
+BASEPROP16: int
 BASE_COLOR_DISABLED: int
 BASE_COLOR_FOCUSED: int
 BASE_COLOR_NORMAL: int
@@ -75,14 +76,13 @@ COLOR_SELECTOR_SIZE: int
 COMBOBOX: int
 COMBO_BUTTON_SPACING: int
 COMBO_BUTTON_WIDTH: int
-CONTROL11: int
 CUBEMAP_LAYOUT_AUTO_DETECT: int
 CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE: int
 CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR: int
 CUBEMAP_LAYOUT_LINE_HORIZONTAL: int
 CUBEMAP_LAYOUT_LINE_VERTICAL: int
-def ChangeDirectory(dirPath: bytes,) -> bool:
-    """Change working directory, return true on success."""
+def ChangeDirectory(dirPath: bytes,) -> int:
+    """Change working directory, returns 0 on success."""
     ...
 def CheckCollisionBoxSphere(box: BoundingBox|list|tuple,center: Vector3|list|tuple,radius: float,) -> bool:
     """Check collision between box and sphere."""
@@ -212,6 +212,7 @@ DEFAULT: int
 DROPDOWNBOX: int
 DROPDOWN_ARROW_HIDDEN: int
 DROPDOWN_ITEMS_SPACING: int
+DROPDOWN_MAX_HEIGHT: int
 DROPDOWN_ROLL_UP: int
 def DecodeDataBase64(text: bytes,outputSize: Any,) -> bytes:
     """Decode Base64 string (expected NULL terminated), memory must be MemFree()."""
@@ -230,7 +231,7 @@ def DetachAudioStreamProcessor(stream: AudioStream|list|tuple,processor: Any,) -
     """Detach audio stream processor from stream."""
     ...
 def DirectoryExists(dirPath: bytes,) -> bool:
-    """Check if a directory path exists."""
+    """Check if directory path exists."""
     ...
 def DisableCursor() -> None:
     """Disable cursor (lock cursor)."""
@@ -241,11 +242,11 @@ def DisableEventWaiting() -> None:
 def DrawBillboard(camera: Camera3D|list|tuple,texture: Texture|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
     """Draw a billboard texture."""
     ...
-def DrawBillboardPro(camera: Camera3D|list|tuple,texture: Texture|list|tuple,source: Rectangle|list|tuple,position: Vector3|list|tuple,up: Vector3|list|tuple,size: Vector2|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
-    """Draw a billboard texture defined by source and rotation."""
+def DrawBillboardPro(camera: Camera3D|list|tuple,texture: Texture|list|tuple,rec: Rectangle|list|tuple,position: Vector3|list|tuple,up: Vector3|list|tuple,size: Vector2|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
+    """Draw a billboard texture defined by source rectangle with scaling and rotation."""
     ...
-def DrawBillboardRec(camera: Camera3D|list|tuple,texture: Texture|list|tuple,source: Rectangle|list|tuple,position: Vector3|list|tuple,size: Vector2|list|tuple,tint: Color|list|tuple,) -> None:
-    """Draw a billboard texture defined by source."""
+def DrawBillboardRec(camera: Camera3D|list|tuple,texture: Texture|list|tuple,rec: Rectangle|list|tuple,position: Vector3|list|tuple,size: Vector2|list|tuple,tint: Color|list|tuple,) -> None:
+    """Draw a billboard texture defined by rectangle."""
     ...
 def DrawBoundingBox(box: BoundingBox|list|tuple,color: Color|list|tuple,) -> None:
     """Draw bounding box (wires)."""
@@ -268,6 +269,9 @@ def DrawCircleGradient(center: Vector2|list|tuple,radius: float,inner: Color|lis
 def DrawCircleLines(centerX: int,centerY: int,radius: float,color: Color|list|tuple,) -> None:
     """Draw circle outline."""
     ...
+def DrawCircleLinesEx(center: Vector2|list|tuple,radius: float,thick: float,color: Color|list|tuple,) -> None:
+    """Draw circle outline with line thickness."""
+    ...
 def DrawCircleLinesV(center: Vector2|list|tuple,radius: float,color: Color|list|tuple,) -> None:
     """Draw circle outline (Vector version)."""
     ...
@@ -276,6 +280,9 @@ def DrawCircleSector(center: Vector2|list|tuple,radius: float,startAngle: float,
     ...
 def DrawCircleSectorLines(center: Vector2|list|tuple,radius: float,startAngle: float,endAngle: float,segments: int,color: Color|list|tuple,) -> None:
     """Draw circle sector outline."""
+    ...
+def DrawCircleSectorLinesEx(center: Vector2|list|tuple,radius: float,startAngle: float,endAngle: float,segments: int,thick: float,color: Color|list|tuple,) -> None:
+    """Draw circle sector outline with thickness."""
     ...
 def DrawCircleV(center: Vector2|list|tuple,radius: float,color: Color|list|tuple,) -> None:
     """Draw a color-filled circle (Vector version)."""
@@ -292,16 +299,16 @@ def DrawCubeWires(position: Vector3|list|tuple,width: float,height: float,length
 def DrawCubeWiresV(position: Vector3|list|tuple,size: Vector3|list|tuple,color: Color|list|tuple,) -> None:
     """Draw cube wires (Vector version)."""
     ...
-def DrawCylinder(position: Vector3|list|tuple,radiusTop: float,radiusBottom: float,height: float,slices: int,color: Color|list|tuple,) -> None:
+def DrawCylinder(position: Vector3|list|tuple,radiusTop: float,radiusBottom: float,height: float,sides: int,color: Color|list|tuple,) -> None:
     """Draw a cylinder/cone."""
     ...
 def DrawCylinderEx(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,startRadius: float,endRadius: float,sides: int,color: Color|list|tuple,) -> None:
     """Draw a cylinder with base at startPos and top at endPos."""
     ...
-def DrawCylinderWires(position: Vector3|list|tuple,radiusTop: float,radiusBottom: float,height: float,slices: int,color: Color|list|tuple,) -> None:
+def DrawCylinderWires(position: Vector3|list|tuple,radiusTop: float,radiusBottom: float,height: float,sides: int,color: Color|list|tuple,) -> None:
     """Draw a cylinder/cone wires."""
     ...
-def DrawCylinderWiresEx(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,startRadius: float,endRadius: float,slices: int,color: Color|list|tuple,) -> None:
+def DrawCylinderWiresEx(startPos: Vector3|list|tuple,endPos: Vector3|list|tuple,startRadius: float,endRadius: float,sides: int,color: Color|list|tuple,) -> None:
     """Draw a cylinder wires with base at startPos and top at endPos."""
     ...
 def DrawEllipse(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
@@ -309,6 +316,9 @@ def DrawEllipse(centerX: int,centerY: int,radiusH: float,radiusV: float,color: C
     ...
 def DrawEllipseLines(centerX: int,centerY: int,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
     """Draw ellipse outline."""
+    ...
+def DrawEllipseLinesEx(center: Vector2|list|tuple,radiusH: float,radiusV: float,thick: float,color: Color|list|tuple,) -> None:
+    """Draw ellipse outline with line thickness."""
     ...
 def DrawEllipseLinesV(center: Vector2|list|tuple,radiusH: float,radiusV: float,color: Color|list|tuple,) -> None:
     """Draw ellipse outline (Vector version)."""
@@ -353,13 +363,13 @@ def DrawModel(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,
     """Draw a model (with texture if set)."""
     ...
 def DrawModelEx(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
-    """Draw a model with extended parameters."""
+    """Draw a model with custom transform."""
     ...
 def DrawModelWires(model: Model|list|tuple,position: Vector3|list|tuple,scale: float,tint: Color|list|tuple,) -> None:
     """Draw a model wires (with texture if set)."""
     ...
 def DrawModelWiresEx(model: Model|list|tuple,position: Vector3|list|tuple,rotationAxis: Vector3|list|tuple,rotationAngle: float,scale: Vector3|list|tuple,tint: Color|list|tuple,) -> None:
-    """Draw a model wires (with texture if set) with extended parameters."""
+    """Draw a model wires with custom transform."""
     ...
 def DrawPixel(posX: int,posY: int,color: Color|list|tuple,) -> None:
     """Draw a pixel using geometry [Can be slow, use with care]."""
@@ -379,8 +389,8 @@ def DrawPoly(center: Vector2|list|tuple,sides: int,radius: float,rotation: float
 def DrawPolyLines(center: Vector2|list|tuple,sides: int,radius: float,rotation: float,color: Color|list|tuple,) -> None:
     """Draw a polygon outline of n sides."""
     ...
-def DrawPolyLinesEx(center: Vector2|list|tuple,sides: int,radius: float,rotation: float,lineThick: float,color: Color|list|tuple,) -> None:
-    """Draw a polygon outline of n sides with extended parameters."""
+def DrawPolyLinesEx(center: Vector2|list|tuple,sides: int,radius: float,rotation: float,thick: float,color: Color|list|tuple,) -> None:
+    """Draw a polygon outline of n sides with line thickness."""
     ...
 def DrawRay(ray: Ray|list|tuple,color: Color|list|tuple,) -> None:
     """Draw a ray line."""
@@ -388,8 +398,8 @@ def DrawRay(ray: Ray|list|tuple,color: Color|list|tuple,) -> None:
 def DrawRectangle(posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
     """Draw a color-filled rectangle."""
     ...
-def DrawRectangleGradientEx(rec: Rectangle|list|tuple,topLeft: Color|list|tuple,bottomLeft: Color|list|tuple,bottomRight: Color|list|tuple,topRight: Color|list|tuple,) -> None:
-    """Draw a gradient-filled rectangle with custom vertex colors."""
+def DrawRectangleGradientEx(rec: Rectangle|list|tuple,col1: Color|list|tuple,col2: Color|list|tuple,col3: Color|list|tuple,col4: Color|list|tuple,) -> None:
+    """Draw a gradient-filled rectangle with custom vertex colors, counter-clockwise color order."""
     ...
 def DrawRectangleGradientH(posX: int,posY: int,width: int,height: int,left: Color|list|tuple,right: Color|list|tuple,) -> None:
     """Draw a horizontal-gradient-filled rectangle."""
@@ -400,8 +410,8 @@ def DrawRectangleGradientV(posX: int,posY: int,width: int,height: int,top: Color
 def DrawRectangleLines(posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
     """Draw rectangle outline."""
     ...
-def DrawRectangleLinesEx(rec: Rectangle|list|tuple,lineThick: float,color: Color|list|tuple,) -> None:
-    """Draw rectangle outline with extended parameters."""
+def DrawRectangleLinesEx(rec: Rectangle|list|tuple,thick: float,color: Color|list|tuple,) -> None:
+    """Draw rectangle outline with line thickness."""
     ...
 def DrawRectanglePro(rec: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,color: Color|list|tuple,) -> None:
     """Draw a color-filled rectangle with pro parameters."""
@@ -415,8 +425,8 @@ def DrawRectangleRounded(rec: Rectangle|list|tuple,roundness: float,segments: in
 def DrawRectangleRoundedLines(rec: Rectangle|list|tuple,roundness: float,segments: int,color: Color|list|tuple,) -> None:
     """Draw rectangle lines with rounded edges."""
     ...
-def DrawRectangleRoundedLinesEx(rec: Rectangle|list|tuple,roundness: float,segments: int,lineThick: float,color: Color|list|tuple,) -> None:
-    """Draw rectangle lines with rounded edges outline."""
+def DrawRectangleRoundedLinesEx(rec: Rectangle|list|tuple,roundness: float,segments: int,thick: float,color: Color|list|tuple,) -> None:
+    """Draw rectangle lines with rounded edges outline and line thickness."""
     ...
 def DrawRectangleV(position: Vector2|list|tuple,size: Vector2|list|tuple,color: Color|list|tuple,) -> None:
     """Draw a color-filled rectangle (Vector version)."""
@@ -427,11 +437,14 @@ def DrawRing(center: Vector2|list|tuple,innerRadius: float,outerRadius: float,st
 def DrawRingLines(center: Vector2|list|tuple,innerRadius: float,outerRadius: float,startAngle: float,endAngle: float,segments: int,color: Color|list|tuple,) -> None:
     """Draw ring outline."""
     ...
+def DrawRingLinesEx(center: Vector2|list|tuple,innerRadius: float,outerRadius: float,startAngle: float,endAngle: float,segments: int,thick: float,color: Color|list|tuple,) -> None:
+    """Draw ring outline with line thickness."""
+    ...
 def DrawSphere(centerPos: Vector3|list|tuple,radius: float,color: Color|list|tuple,) -> None:
     """Draw sphere."""
     ...
 def DrawSphereEx(centerPos: Vector3|list|tuple,radius: float,rings: int,slices: int,color: Color|list|tuple,) -> None:
-    """Draw sphere with extended parameters."""
+    """Draw sphere with defined rings and slices."""
     ...
 def DrawSphereWires(centerPos: Vector3|list|tuple,radius: float,rings: int,slices: int,color: Color|list|tuple,) -> None:
     """Draw sphere wires."""
@@ -485,34 +498,37 @@ def DrawTexture(texture: Texture|list|tuple,posX: int,posY: int,tint: Color|list
     """Draw a Texture2D."""
     ...
 def DrawTextureEx(texture: Texture|list|tuple,position: Vector2|list|tuple,rotation: float,scale: float,tint: Color|list|tuple,) -> None:
-    """Draw a Texture2D with extended parameters."""
+    """Draw a Texture2D with rotation and scale."""
     ...
-def DrawTextureNPatch(texture: Texture|list|tuple,nPatchInfo: NPatchInfo|list|tuple,dest: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
+def DrawTextureNPatch(texture: Texture|list|tuple,nPatchInfo: NPatchInfo|list|tuple,dstrec: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
     """Draw a texture (or part of it) that stretches or shrinks nicely."""
     ...
-def DrawTexturePro(texture: Texture|list|tuple,source: Rectangle|list|tuple,dest: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
-    """Draw a part of a texture defined by a rectangle with 'pro' parameters."""
+def DrawTexturePro(texture: Texture|list|tuple,srcrec: Rectangle|list|tuple,dstrec: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
+    """Draw a part of a texture defined by a source rectangle to destination rectangle, with scaling and rotation."""
     ...
-def DrawTextureRec(texture: Texture|list|tuple,source: Rectangle|list|tuple,position: Vector2|list|tuple,tint: Color|list|tuple,) -> None:
+def DrawTextureRec(texture: Texture|list|tuple,rec: Rectangle|list|tuple,position: Vector2|list|tuple,tint: Color|list|tuple,) -> None:
     """Draw a part of a texture defined by a rectangle."""
     ...
 def DrawTextureV(texture: Texture|list|tuple,position: Vector2|list|tuple,tint: Color|list|tuple,) -> None:
     """Draw a Texture2D with position defined as Vector2."""
     ...
 def DrawTriangle(v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
-    """Draw a color-filled triangle (vertex in counter-clockwise order!)."""
+    """Draw a color-filled triangle, counter-clockwise vertex order."""
     ...
 def DrawTriangle3D(v1: Vector3|list|tuple,v2: Vector3|list|tuple,v3: Vector3|list|tuple,color: Color|list|tuple,) -> None:
-    """Draw a color-filled triangle (vertex in counter-clockwise order!)."""
+    """Draw a color-filled triangle, counter-clockwise vertex order."""
     ...
 def DrawTriangleFan(points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
     """Draw a triangle fan defined by points (first vertex is the center)."""
     ...
 def DrawTriangleGradient(v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,c1: Color|list|tuple,c2: Color|list|tuple,c3: Color|list|tuple,) -> None:
-    """Draw triangle with interpolated colors (vertex in counter-clockwise order!)."""
+    """Draw triangle with interpolated colors, counter-clockwise vertex/color order."""
     ...
 def DrawTriangleLines(v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
-    """Draw triangle outline (vertex in counter-clockwise order!)."""
+    """Draw triangle outline, counter-clockwise vertex order."""
+    ...
+def DrawTriangleLinesEx(v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,thick: float,color: Color|list|tuple,) -> None:
+    """Draw triangle outline with line thickness, counter-clockwise vertex order."""
     ...
 def DrawTriangleStrip(points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
     """Draw a triangle strip defined by points."""
@@ -520,6 +536,7 @@ def DrawTriangleStrip(points: Any|list|tuple,pointCount: int,color: Color|list|t
 def DrawTriangleStrip3D(points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
     """Draw a triangle strip defined by points."""
     ...
+EXTPROP08: int
 def EnableCursor() -> None:
     """Enable cursor (unlock cursor)."""
     ...
@@ -606,25 +623,25 @@ def Fade(color: Color|list|tuple,alpha: float,) -> Color:
     """Get color with alpha applied, alpha goes from 0.0f to 1.0f."""
     ...
 def FileCopy(srcPath: bytes,dstPath: bytes,) -> int:
-    """Copy file from one path to another, dstPath created if it doesn't exist."""
+    """Copy file from one path to another, dstPath created if it doesn't exist, returns 0 on success."""
     ...
 def FileExists(fileName: bytes,) -> bool:
     """Check if file exists."""
     ...
 def FileMove(srcPath: bytes,dstPath: bytes,) -> int:
-    """Move file from one directory to another, dstPath created if it doesn't exist."""
+    """Move file from one directory to another, dstPath created if it doesn't exist, returns 0 on success."""
     ...
 def FileRemove(fileName: bytes,) -> int:
-    """Remove file (if exists)."""
+    """Remove file (if exists), returns 0 on success."""
     ...
 def FileRename(fileName: bytes,fileRename: bytes,) -> int:
-    """Rename file (if exists)."""
+    """Rename file (if exists), returns 0 on success."""
     ...
 def FileTextFindIndex(fileName: bytes,search: bytes,) -> int:
-    """Find text in existing file."""
+    """Find text in existing file, returns -1 if index not found or index otherwise."""
     ...
 def FileTextReplace(fileName: bytes,search: bytes,replacement: bytes,) -> int:
-    """Replace text in an existing file."""
+    """Replace text in an existing file, returns 0 on success."""
     ...
 def FloatEquals(x: float,y: float,) -> int:
     """."""
@@ -665,6 +682,7 @@ GESTURE_SWIPE_RIGHT: int
 GESTURE_SWIPE_UP: int
 GESTURE_TAP: int
 GROUP_PADDING: int
+GROUP_WIDTH_FULL: int
 def GenImageCellular(width: int,height: int,tileSize: int,) -> Image:
     """Generate image: cellular algorithm, bigger tileSize means bigger cells."""
     ...
@@ -780,7 +798,7 @@ def GetDirectoryFileCountEx(basePath: bytes,filter: bytes,scanSubdirs: bool,) ->
     """Get the file count in a directory with extension filtering and recursive directory scan. Use 'DIR' in the filter string to include directories in the result."""
     ...
 def GetDirectoryPath(filePath: bytes,) -> bytes:
-    """Get full path for a given fileName with path (uses static string)."""
+    """Get full path for a provided fileName with path (uses static string)."""
     ...
 def GetFPS() -> int:
     """Get current FPS."""
@@ -941,7 +959,7 @@ def GetPixelDataSize(width: int,height: int,format: int,) -> int:
     """Get pixel data size in bytes for certain format."""
     ...
 def GetPrevDirectoryPath(dirPath: bytes,) -> bytes:
-    """Get previous directory path for a given path (uses static string)."""
+    """Get previous directory path for a provided path (uses static string)."""
     ...
 def GetRandomValue(min_0: int,max_1: int,) -> int:
     """Get a random value between min and max (both included)."""
@@ -1019,7 +1037,7 @@ def GetTouchPointCount() -> int:
     """Get number of touch points."""
     ...
 def GetTouchPointId(index: int,) -> int:
-    """Get touch point identifier for given index."""
+    """Get touch point identifier for provided index."""
     ...
 def GetTouchPosition(index: int,) -> Vector2:
     """Get touch position XY for a touch point index (relative to screen size)."""
@@ -1067,13 +1085,13 @@ def GuiColorPanel(bounds: Rectangle|list|tuple,text: bytes,color: Any|list|tuple
     """Color Panel control."""
     ...
 def GuiColorPanelHSV(bounds: Rectangle|list|tuple,text: bytes,colorHsv: Any|list|tuple,) -> int:
-    """Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()."""
+    """Color Panel control, using Hue-Saturation-Value color data."""
     ...
 def GuiColorPicker(bounds: Rectangle|list|tuple,text: bytes,color: Any|list|tuple,) -> int:
-    """Color Picker control (multiple color controls)."""
+    """Color Picker control, includes Color bar controls."""
     ...
 def GuiColorPickerHSV(bounds: Rectangle|list|tuple,text: bytes,colorHsv: Any|list|tuple,) -> int:
-    """Color Picker control that avoids conversion to RGB on each call (multiple color controls)."""
+    """Color Picker control, using Hue-Saturation-Value color data, includes Color bar controls."""
     ...
 def GuiComboBox(bounds: Rectangle|list|tuple,text: bytes,active: Any,) -> int:
     """Combo Box control."""
@@ -1139,10 +1157,13 @@ def GuiListView(bounds: Rectangle|list|tuple,text: bytes,scrollIndex: Any,active
     """List View control."""
     ...
 def GuiListViewEx(bounds: Rectangle|list|tuple,text: list[bytes],count: int,scrollIndex: Any,active: Any,focus: Any,) -> int:
-    """List View with extended parameters."""
+    """List View control, using text entries list and returning focus entry."""
     ...
 def GuiLoadIcons(fileName: bytes,loadIconsName: bool,) -> list[bytes]:
     """Load raygui icons file (.rgi) into internal icons data."""
+    ...
+def GuiLoadIconsFromMemory(fileData: bytes,dataSize: int,loadIconsName: bool,) -> list[bytes]:
+    """Load raygui icons file (.rgi) from memory into internal icons data."""
     ...
 def GuiLoadStyle(fileName: bytes,) -> None:
     """Load style file over global style variable (.rgs)."""
@@ -1156,7 +1177,7 @@ def GuiLoadStyleFromMemory(fileData: bytes,dataSize: int,) -> None:
 def GuiLock() -> None:
     """Lock gui controls (global state)."""
     ...
-def GuiMessageBox(bounds: Rectangle|list|tuple,title: bytes,message: bytes,buttons: bytes,) -> int:
+def GuiMessageBox(bounds: Rectangle|list|tuple,title: bytes,message: bytes,btnText: bytes,btnActive: Any,) -> int:
     """Message Box control, displays a message."""
     ...
 def GuiPanel(bounds: Rectangle|list|tuple,text: bytes,) -> int:
@@ -1198,13 +1219,16 @@ def GuiSpinner(bounds: Rectangle|list|tuple,text: bytes,value: Any,minValue: int
 def GuiStatusBar(bounds: Rectangle|list|tuple,text: bytes,) -> int:
     """Status Bar control, shows info text."""
     ...
-def GuiTabBar(bounds: Rectangle|list|tuple,text: list[bytes],count: int,active: Any,) -> int:
-    """Tab Bar control, returns TAB to be closed or -1."""
+def GuiTabBar(bounds: Rectangle|list|tuple,text: bytes,hscroll: Any,active: Any,) -> int:
+    """Tab Bar control."""
+    ...
+def GuiTabBarEx(bounds: Rectangle|list|tuple,text: list[bytes],count: int,hscroll: Any,active: Any,focus: Any,) -> int:
+    """Tab Bar control, using text entries list and returning focus entry."""
     ...
 def GuiTextBox(bounds: Rectangle|list|tuple,text: bytes,textSize: int,editMode: bool,) -> int:
     """Text Box control, updates input text."""
     ...
-def GuiTextInputBox(bounds: Rectangle|list|tuple,title: bytes,message: bytes,buttons: bytes,text: bytes,textMaxSize: int,secretViewActive: Any,) -> int:
+def GuiTextInputBox(bounds: Rectangle|list|tuple,title: bytes,message: bytes,text: bytes,textSize: int,btnText: bytes,btnActive: Any,secretViewActive: Any,) -> int:
     """Text Input Box control, ask for text, supports secret."""
     ...
 def GuiToggle(bounds: Rectangle|list|tuple,text: bytes,active: Any,) -> int:
@@ -1236,12 +1260,6 @@ def HideCursor() -> None:
     """Hide cursor."""
     ...
 ICON_1UP: int
-ICON_250: int
-ICON_251: int
-ICON_252: int
-ICON_253: int
-ICON_254: int
-ICON_255: int
 ICON_ALARM: int
 ICON_ALPHA_CLEAR: int
 ICON_ALPHA_MULTIPLY: int
@@ -1336,10 +1354,17 @@ ICON_EXPLOSION: int
 ICON_EYE_OFF: int
 ICON_EYE_ON: int
 ICON_FILE: int
+ICON_FILETYPE_3D: int
 ICON_FILETYPE_ALPHA: int
 ICON_FILETYPE_AUDIO: int
 ICON_FILETYPE_BINARY: int
+ICON_FILETYPE_CODE_C: int
+ICON_FILETYPE_CODE_JS: int
+ICON_FILETYPE_CODE_PYTHON: int
+ICON_FILETYPE_CODE_XML: int
+ICON_FILETYPE_FONT: int
 ICON_FILETYPE_HOME: int
+ICON_FILETYPE_ICON: int
 ICON_FILETYPE_IMAGE: int
 ICON_FILETYPE_INFO: int
 ICON_FILETYPE_PLAY: int
@@ -1507,7 +1532,7 @@ def ImageBlurGaussian(image: Any|list|tuple,blurSize: int,) -> None:
     """Apply Gaussian blur using a box blur approximation."""
     ...
 def ImageClearBackground(dst: Any|list|tuple,color: Color|list|tuple,) -> None:
-    """Clear image background with given color."""
+    """Clear image background with provided color."""
     ...
 def ImageColorBrightness(image: Any|list|tuple,brightness: int,) -> None:
     """Modify image color: brightness (-255 to 255)."""
@@ -1536,11 +1561,11 @@ def ImageCrop(image: Any|list|tuple,crop: Rectangle|list|tuple,) -> None:
 def ImageDither(image: Any|list|tuple,rBpp: int,gBpp: int,bBpp: int,aBpp: int,) -> None:
     """Dither image data to 16bpp or lower (Floyd-Steinberg dithering)."""
     ...
-def ImageDraw(dst: Any|list|tuple,src: Image|list|tuple,srcRec: Rectangle|list|tuple,dstRec: Rectangle|list|tuple,tint: Color|list|tuple,) -> None:
-    """Draw a source image within a destination image (tint applied to source)."""
-    ...
 def ImageDrawCircle(dst: Any|list|tuple,centerX: int,centerY: int,radius: int,color: Color|list|tuple,) -> None:
     """Draw a filled circle within an image."""
+    ...
+def ImageDrawCircleGradient(dst: Any|list|tuple,center: Vector2|list|tuple,radius: float,inner: Color|list|tuple,outer: Color|list|tuple,) -> None:
+    """Draw a gradient-filled circle within an image."""
     ...
 def ImageDrawCircleLines(dst: Any|list|tuple,centerX: int,centerY: int,radius: int,color: Color|list|tuple,) -> None:
     """Draw circle outline within an image."""
@@ -1551,11 +1576,26 @@ def ImageDrawCircleLinesV(dst: Any|list|tuple,center: Vector2|list|tuple,radius:
 def ImageDrawCircleV(dst: Any|list|tuple,center: Vector2|list|tuple,radius: int,color: Color|list|tuple,) -> None:
     """Draw a filled circle within an image (Vector version)."""
     ...
+def ImageDrawImage(dst: Any|list|tuple,src: Image|list|tuple,posX: int,posY: int,tint: Color|list|tuple,) -> None:
+    """Draw an image within an image."""
+    ...
+def ImageDrawImageEx(dst: Any|list|tuple,src: Image|list|tuple,position: Vector2|list|tuple,rotation: float,scale: float,tint: Color|list|tuple,) -> None:
+    """Draw an image with scaling and rotation within an image."""
+    ...
+def ImageDrawImagePro(dst: Any|list|tuple,src: Image|list|tuple,srcRec: Rectangle|list|tuple,dstRec: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,tint: Color|list|tuple,) -> None:
+    """Draw a part of an image defined by a rectangle into destination rectangle, with scaling and rotation, within an image."""
+    ...
+def ImageDrawImageRec(dst: Any|list|tuple,src: Image|list|tuple,srcRec: Rectangle|list|tuple,position: Vector2|list|tuple,tint: Color|list|tuple,) -> None:
+    """Draw a part of an image defined by a rectangle within an image."""
+    ...
 def ImageDrawLine(dst: Any|list|tuple,startPosX: int,startPosY: int,endPosX: int,endPosY: int,color: Color|list|tuple,) -> None:
     """Draw line within an image."""
     ...
 def ImageDrawLineEx(dst: Any|list|tuple,start: Vector2|list|tuple,end: Vector2|list|tuple,thick: int,color: Color|list|tuple,) -> None:
     """Draw a line defining thickness within an image."""
+    ...
+def ImageDrawLineStrip(dst: Any|list|tuple,points: Any|list|tuple,pointCount: int,color: Color|list|tuple,) -> None:
+    """Draw a lines sequence within an image."""
     ...
 def ImageDrawLineV(dst: Any|list|tuple,start: Vector2|list|tuple,end: Vector2|list|tuple,color: Color|list|tuple,) -> None:
     """Draw line within an image (Vector version)."""
@@ -1569,11 +1609,17 @@ def ImageDrawPixelV(dst: Any|list|tuple,position: Vector2|list|tuple,color: Colo
 def ImageDrawRectangle(dst: Any|list|tuple,posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
     """Draw rectangle within an image."""
     ...
+def ImageDrawRectangleGradientEx(dst: Any|list|tuple,rec: Rectangle|list|tuple,col1: Color|list|tuple,col2: Color|list|tuple,col3: Color|list|tuple,col4: Color|list|tuple,) -> None:
+    """Draw rectangle with gradient colors within an image, counter-clockwise color order."""
+    ...
 def ImageDrawRectangleLines(dst: Any|list|tuple,posX: int,posY: int,width: int,height: int,color: Color|list|tuple,) -> None:
     """Draw rectangle lines within an image."""
     ...
 def ImageDrawRectangleLinesEx(dst: Any|list|tuple,rec: Rectangle|list|tuple,thick: int,color: Color|list|tuple,) -> None:
-    """Draw rectangle lines within an image with extended parameters."""
+    """Draw rectangle lines within an image with line thickness."""
+    ...
+def ImageDrawRectanglePro(dst: Any|list|tuple,rec: Rectangle|list|tuple,origin: Vector2|list|tuple,rotation: float,color: Color|list|tuple,) -> None:
+    """Draw a color-filled rectangle with pro parameters within and image."""
     ...
 def ImageDrawRectangleRec(dst: Any|list|tuple,rec: Rectangle|list|tuple,color: Color|list|tuple,) -> None:
     """Draw rectangle within an image."""
@@ -1586,6 +1632,9 @@ def ImageDrawText(dst: Any|list|tuple,text: bytes,posX: int,posY: int,fontSize: 
     ...
 def ImageDrawTextEx(dst: Any|list|tuple,font: Font|list|tuple,text: bytes,position: Vector2|list|tuple,fontSize: float,spacing: float,tint: Color|list|tuple,) -> None:
     """Draw text (custom sprite font) within an image (destination)."""
+    ...
+def ImageDrawTextPro(dst: Any|list|tuple,font: Font|list|tuple,text: bytes,position: Vector2|list|tuple,origin: Vector2|list|tuple,rotation: float,fontSize: float,spacing: float,tint: Color|list|tuple,) -> None:
+    """Draw text using Font and pro parameters (rotation)."""
     ...
 def ImageDrawTriangle(dst: Any|list|tuple,v1: Vector2|list|tuple,v2: Vector2|list|tuple,v3: Vector2|list|tuple,color: Color|list|tuple,) -> None:
     """Draw triangle within an image."""
@@ -1679,101 +1728,110 @@ def IsCursorOnScreen() -> bool:
     """Check if cursor is on the screen."""
     ...
 def IsFileDropped() -> bool:
-    """Check if a file has been dropped into window."""
+    """Check if file has been dropped into window."""
     ...
 def IsFileExtension(fileName: bytes,ext: bytes,) -> bool:
     """Check file extension (recommended include point: .png, .wav)."""
+    ...
+def IsFileHidden(filePath: bytes,) -> bool:
+    """Check if file path (file or directory) is hidden by OS."""
     ...
 def IsFileNameValid(fileName: bytes,) -> bool:
     """Check if fileName is valid for the platform/OS."""
     ...
 def IsFontValid(font: Font|list|tuple,) -> bool:
-    """Check if a font is valid (font data loaded, WARNING: GPU texture not checked)."""
+    """Check if font is valid (font data loaded, WARNING: GPU texture not checked)."""
     ...
 def IsGamepadAvailable(gamepad: int,) -> bool:
-    """Check if a gamepad is available."""
+    """Check if gamepad is available."""
     ...
 def IsGamepadButtonDown(gamepad: int,button: int,) -> bool:
-    """Check if a gamepad button is being pressed."""
+    """Check if gamepad button is being pressed."""
     ...
 def IsGamepadButtonPressed(gamepad: int,button: int,) -> bool:
-    """Check if a gamepad button has been pressed once."""
+    """Check if gamepad button has been pressed once."""
     ...
 def IsGamepadButtonReleased(gamepad: int,button: int,) -> bool:
-    """Check if a gamepad button has been released once."""
+    """Check if gamepad button has been released once."""
     ...
 def IsGamepadButtonUp(gamepad: int,button: int,) -> bool:
-    """Check if a gamepad button is NOT being pressed."""
+    """Check if gamepad button is NOT being pressed."""
     ...
 def IsGestureDetected(gesture: int,) -> bool:
-    """Check if a gesture has been detected."""
+    """Check if gesture has been detected."""
     ...
 def IsImageValid(image: Image|list|tuple,) -> bool:
     """Check if an image is valid (data and parameters)."""
     ...
 def IsKeyDown(key: int,) -> bool:
-    """Check if a key is being pressed."""
+    """Check if key is being pressed."""
     ...
 def IsKeyPressed(key: int,) -> bool:
-    """Check if a key has been pressed once."""
+    """Check if key has been pressed once."""
     ...
 def IsKeyPressedRepeat(key: int,) -> bool:
-    """Check if a key has been pressed again."""
+    """Check if key has been pressed again."""
     ...
 def IsKeyReleased(key: int,) -> bool:
-    """Check if a key has been released once."""
+    """Check if key has been released once."""
     ...
 def IsKeyUp(key: int,) -> bool:
-    """Check if a key is NOT being pressed."""
+    """Check if key is NOT being pressed."""
     ...
 def IsMaterialValid(material: Material|list|tuple,) -> bool:
-    """Check if a material is valid (shader assigned, map textures loaded in GPU)."""
+    """Check if material is valid (shader assigned, map textures loaded in GPU)."""
     ...
 def IsModelAnimationValid(model: Model|list|tuple,anim: ModelAnimation|list|tuple,) -> bool:
     """Check model animation skeleton match."""
     ...
 def IsModelValid(model: Model|list|tuple,) -> bool:
-    """Check if a model is valid (loaded in GPU, VAO/VBOs)."""
+    """Check if model is valid (loaded in GPU, VAO/VBOs)."""
     ...
 def IsMouseButtonDown(button: int,) -> bool:
-    """Check if a mouse button is being pressed."""
+    """Check if mouse button is being pressed."""
     ...
 def IsMouseButtonPressed(button: int,) -> bool:
-    """Check if a mouse button has been pressed once."""
+    """Check if mouse button has been pressed once."""
     ...
 def IsMouseButtonReleased(button: int,) -> bool:
-    """Check if a mouse button has been released once."""
+    """Check if mouse button has been released once."""
     ...
 def IsMouseButtonUp(button: int,) -> bool:
-    """Check if a mouse button is NOT being pressed."""
+    """Check if mouse button is NOT being pressed."""
     ...
 def IsMusicStreamPlaying(music: Music|list|tuple,) -> bool:
     """Check if music is playing."""
     ...
 def IsMusicValid(music: Music|list|tuple,) -> bool:
-    """Check if a music stream is valid (context and buffers initialized)."""
+    """Check if music stream is valid (context and buffers initialized)."""
+    ...
+def IsPathAbsolute(path: bytes,) -> bool:
+    """Check if provided path is an absolute path."""
+    ...
+def IsPathDirectory(path: bytes,) -> bool:
+    """Check if provided path points to a directory."""
     ...
 def IsPathFile(path: bytes,) -> bool:
-    """Check if a given path is a file or a directory."""
+    """Check if provided path points to a file."""
     ...
 @deprecated("Raylib no longer recommends the use of Physac library")
 def IsPhysicsEnabled() -> bool:
     """Returns true if physics thread is currently enabled."""
     ...
 def IsRenderTextureValid(target: RenderTexture|list|tuple,) -> bool:
-    """Check if a render texture is valid (loaded in GPU)."""
+    """Check if render texture is valid (loaded in GPU)."""
     ...
 def IsShaderValid(shader: Shader|list|tuple,) -> bool:
-    """Check if a shader is valid (loaded on GPU)."""
+    """Check if shader is valid (loaded on GPU)."""
     ...
 def IsSoundPlaying(sound: Sound|list|tuple,) -> bool:
-    """Check if a sound is currently playing."""
+    """Check if sound is currently playing."""
     ...
 def IsSoundValid(sound: Sound|list|tuple,) -> bool:
-    """Check if a sound is valid (data loaded and buffers initialized)."""
+    """Check if sound is valid (data loaded and buffers initialized)."""
     ...
 def IsTextureValid(texture: Texture|list|tuple,) -> bool:
-    """Check if a texture is valid (loaded in GPU)."""
+    """Check if texture is valid (loaded in GPU)."""
     ...
 def IsWaveValid(wave: Wave|list|tuple,) -> bool:
     """Check if wave data is valid (data loaded and parameters)."""
@@ -1961,7 +2019,7 @@ def LoadFontData(fileData: bytes,dataSize: int,fontSize: int,codepoints: Any,cod
     """Load font data for further use."""
     ...
 def LoadFontEx(fileName: bytes,fontSize: int,codepoints: Any,codepointCount: int,) -> Font:
-    """Load font from file with extended parameters, use NULL for codepoints and 0 for codepointCount to load the default character set, font size is provided in pixels height."""
+    """Load font from file with defined codepoints and generation size, use NULL for codepoints and 0 for codepointCount to load the default character set, font size is provided in pixels height."""
     ...
 def LoadFontFromImage(image: Image|list|tuple,key: Color|list|tuple,firstChar: int,) -> Font:
     """Load font from Image (XNA style)."""
@@ -2022,6 +2080,9 @@ def LoadRandomSequence(count: int,min_1: int,max_2: int,) -> Any:
     ...
 def LoadRenderTexture(width: int,height: int,) -> RenderTexture:
     """Load texture for rendering (framebuffer)."""
+    ...
+def LoadRenderTextureEx(width: int,height: int,format: int,) -> RenderTexture:
+    """Load texture for rendering (framebuffer), with specific format."""
     ...
 def LoadShader(vsFileName: bytes,fsFileName: bytes,) -> Shader:
     """Load shader from files and bind default locations."""
@@ -2339,6 +2400,10 @@ def QuaternionToMatrix(q: Vector4|list|tuple,) -> Matrix:
 def QuaternionTransform(q: Vector4|list|tuple,mat: Matrix|list|tuple,) -> Vector4:
     """."""
     ...
+RESULT_CHANGED: int
+RESULT_NONE: int
+RESULT_PRESSED: int
+RESULT_TAB_CLOSE: int
 RL_ATTACHMENT_COLOR_CHANNEL0: int
 RL_ATTACHMENT_COLOR_CHANNEL1: int
 RL_ATTACHMENT_COLOR_CHANNEL2: int
@@ -2572,7 +2637,7 @@ def SetClipboardText(text: bytes,) -> None:
     """Set clipboard text content."""
     ...
 def SetConfigFlags(flags: int,) -> None:
-    """Set up init configuration flags (view FLAGS)."""
+    """Set init configuration flags (view FLAGS)."""
     ...
 def SetExitKey(key: int,) -> None:
     """Set a custom key to exit program (default is ESC)."""
@@ -2658,7 +2723,7 @@ def SetShaderValueTexture(shader: Shader|list|tuple,locIndex: int,texture: Textu
 def SetShaderValueV(shader: Shader|list|tuple,locIndex: int,value: Any,uniformType: int,count: int,) -> None:
     """Set shader uniform value vector."""
     ...
-def SetShapesTexture(texture: Texture|list|tuple,source: Rectangle|list|tuple,) -> None:
+def SetShapesTexture(texture: Texture|list|tuple,rec: Rectangle|list|tuple,) -> None:
     """Set texture and rectangle to be used on shapes drawing."""
     ...
 def SetSoundPan(sound: Sound|list|tuple,pan: float,) -> None:
@@ -2742,6 +2807,10 @@ def StopSound(sound: Sound|list|tuple,) -> None:
 def SwapScreenBuffer() -> None:
     """Swap back buffer with front buffer (screen drawing)."""
     ...
+TABBAR: int
+TAB_CLOSE_BUTTON: int
+TAB_ITEMS_WIDTH: int
+TAB_LINE_SIDE: int
 TEXTBOX: int
 TEXTURE_FILTER_ANISOTROPIC_16X: int
 TEXTURE_FILTER_ANISOTROPIC_4X: int
@@ -4224,6 +4293,7 @@ GuiDropdownBoxProperty = int
 GuiIconName = int
 GuiListViewProperty = int
 GuiProgressBarProperty = int
+GuiResult = int
 GuiScrollBarProperty = int
 GuiSliderProperty = int
 GuiState = int
@@ -4231,6 +4301,7 @@ class GuiStyleProp:
     controlId: int
     propertyId: int
     propertyValue: int
+GuiTabBarProperty = int
 GuiTextAlignment = int
 GuiTextAlignmentVertical = int
 GuiTextBoxProperty = int

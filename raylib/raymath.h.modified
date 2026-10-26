@@ -1,6 +1,6 @@
 /**********************************************************************************************
 *
-*   raymath v2.0 - Math functions to work with Vector2, Vector3, Vector4, Matrix and Quaternions
+*   raymath v2.1 - Math functions to work with Vector2, Vector3, Vector4, Matrix and Quaternions
 *
 *   CONVENTIONS:
 *     - Matrix structure is defined as row-major (memory layout) but parameters naming AND all
@@ -9,6 +9,7 @@
 *       It benefits some functions making them cache-friendly and also avoids matrix
 *       transpositions sometimes required by OpenGL
 *       Example: In memory order, row0 is [m0 m4 m8 m12] but in semantic math row0 is [m0 m1 m2 m3]
+*     - All math is float only, no doubles usage
 *     - Functions are always self-contained, no function use another raymath function inside,
 *       required code is directly re-implemented inside
 *     - Functions input parameters are always received by value (2 unavoidable exceptions)
@@ -227,10 +228,10 @@ inline /* Functions may be inlined or external definition used*/ Matrix MatrixRo
 // NOTE: Angle must be provided in radians
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixRotateZYX(Vector3 angle);// Get scaling matrix
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixScale(float x, float y, float z);// Get perspective projection matrix
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixFrustum(double left, double right, double bottom, double top, double nearPlane, double farPlane);// Get perspective projection matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixFrustum(float left, float right, float bottom, float top, float nearPlane, float farPlane);// Get perspective projection matrix
 // NOTE: Fovy angle must be provided in radians
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixPerspective(double fovY, double aspect, double nearPlane, double farPlane);// Get orthographic projection matrix
-inline /* Functions may be inlined or external definition used*/ Matrix MatrixOrtho(double left, double right, double bottom, double top, double nearPlane, double farPlane);// Get camera look-at matrix (view matrix)
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixPerspective(float fovY, float aspect, float nearPlane, float farPlane);// Get orthographic projection matrix
+inline /* Functions may be inlined or external definition used*/ Matrix MatrixOrtho(float left, float right, float bottom, float top, float nearPlane, float farPlane);// Get camera look-at matrix (view matrix)
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixLookAt(Vector3 eye, Vector3 target, Vector3 up);// Get float array of matrix data
 inline /* Functions may be inlined or external definition used*/ float16 MatrixToFloatV(Matrix mat);//----------------------------------------------------------------------------------
 // Module Functions Definition - Quaternion math
@@ -264,7 +265,6 @@ inline /* Functions may be inlined or external definition used*/ Quaternion Quat
 inline /* Functions may be inlined or external definition used*/ Vector3 QuaternionToEuler(Quaternion q);// Transform a quaternion given a transformation matrix
 inline /* Functions may be inlined or external definition used*/ Quaternion QuaternionTransform(Quaternion q, Matrix mat);// Check whether two given quaternions are almost equal
 inline /* Functions may be inlined or external definition used*/ int QuaternionEquals(Quaternion p, Quaternion q);// Compose a transformation matrix from rotational, translational and scaling components
-// TODO: This function is not following raymath conventions defined in header: NOT self-contained
 inline /* Functions may be inlined or external definition used*/ Matrix MatrixCompose(Vector3 translation, Quaternion rotation, Vector3 scale);// Decompose a transformation matrix into its rotational, translational and scaling components and remove shear
-// TODO: This function is not following raymath conventions defined in header: NOT self-contained
+// TODO: WARNING: Following raymath convention and make the function self-contained
 inline /* Functions may be inlined or external definition used*/ void MatrixDecompose(Matrix mat, Vector3 *translation, Quaternion *rotation, Vector3 *scale);
